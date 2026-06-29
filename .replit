@@ -44,6 +44,10 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
+localPort = 5050
+externalPort = 3001
+
+[[ports]]
 localPort = 7777
 externalPort = 3000
 
@@ -63,7 +67,7 @@ packages = ["psmisc", "python312Packages.psycopg2", "lsof"]
 [deployment]
 deploymentTarget = "autoscale"
 build = ["npm", "run", "build"]
-run = ["node", "./dist/index.cjs"]
+run = ["npm", "run", "start"]
 
 [postMerge]
 path = "scripts/post-merge.sh"
