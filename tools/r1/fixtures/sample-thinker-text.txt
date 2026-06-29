@@ -1,0 +1,21 @@
+The following is a short philosophical text composed for R1 ingestion testing. It is fictional and exists only to verify the upload, chunking, embedding, and retrieval pipeline.
+
+On the Architecture of Attention
+
+Attention is not a spotlight. The spotlight metaphor is the first error of folk cognitive science. A spotlight illuminates uniformly within its cone and falls off sharply at the edges, but attention does no such thing. Attention is a gradient with a center of gravity, and that center is itself unstable. It drifts. It is pulled. It is recruited by salience long before it is deployed by intention.
+
+The second error is to treat attention as a faculty. There is no organ of attention. What we call attention is the residue of competition among representations for control of action. When a stimulus wins that competition, we say it was attended to. When it loses, we say it was ignored. But the competition itself is the phenomenon. The winners are merely its accounting.
+
+If the above is right, then training attention is not training a muscle. It is shaping a competition. To strengthen attention to a target is to handicap its competitors. This is why distraction is harder to resist than to predict: the competitor was not weak, it was merely outside our notice.
+
+I propose three claims that follow from this view.
+
+First: there is no such thing as paying attention to two things equally. The competition has no stable equilibrium with two co-winners. What looks like divided attention is rapid alternation, and the alternation cost is real even when it is invisible.
+
+Second: boredom is not the absence of stimulation. Boredom is a state in which no available stimulus is winning the competition decisively. A bored mind is a mind in which the candidates for attention are too close in salience to produce a clean victor. This is why low-stakes environments full of mild stimuli are more boring than environments with one moderately interesting object.
+
+Third: deep work is the deliberate suppression of competitors, not the deliberate selection of a target. The target wins by default once the competition is rigged. This is why removing notifications matters more than mustering willpower. Willpower is taxed; suppression of competitors, once it is automated, is not.
+
+These three claims have implications for the design of work, education, and the technologies of distraction. But the claims themselves are independent of those implications and stand on their own.
+
+The architecture of attention, then, is the architecture of a contest. The contest is held in the brain. Its rules are evolutionary and its referees are unconscious. What we experience as attention is only the announcement of the winner.

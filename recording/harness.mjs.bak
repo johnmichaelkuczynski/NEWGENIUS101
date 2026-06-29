@@ -1,0 +1,510 @@
+import { chromium } from 'playwright';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const TARGET = process.env.TARGET_URL || 'http://localhost:5000';
+const OUT_DIR = path.join(__dirname, 'videos');
+const W = 1280, H = 800;
+
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+const t0 = Date.now();
+function ts() { const s = Math.floor((Date.now() - t0) / 1000); return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; }
+function log(...a) { console.log(`[${ts()}]`, ...a); }
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+// ------- fake cursor injected into the page -------
+const CURSOR_SCRIPT = `
+(() => {
+  if (window.__cursorInit) return; window.__cursorInit = true;
+  const ensure = () => {
+    if (document.getElementById('__vcursor')) return;
+    const c = document.createElement('div');
+    c.id = '__vcursor';
+    c.style.cssText = 'position:fixed;left:0;top:0;width:22px;height:22px;z-index:2147483647;pointer-events:none;margin-left:-3px;margin-top:-3px;transition:transform .04s linear;';
+    c.innerHTML = '<svg width="22" height="22" viewBox="0 0 22 22"><path d="M2 2 L2 16 L6 12 L9 19 L12 18 L9 11 L15 11 Z" fill="black" stroke="white" stroke-width="1.4"/></svg>';
+    document.documentElement.appendChild(c);
+    const ring = document.createElement('div');
+    ring.id='__vring';
+    ring.style.cssText='position:fixed;left:0;top:0;width:34px;height:34px;border:3px solid rgba(59,130,246,.9);border-radius:50%;z-index:2147483646;pointer-events:none;margin-left:-17px;margin-top:-17px;opacity:0;transform:scale(.4);transition:opacity .25s,transform .25s;';
+    document.documentElement.appendChild(ring);
+  };
+  ensure();
+  const move = (x,y) => { const c=document.getElementById('__vcursor'); if(c) c.style.transform='translate('+x+'px,'+y+'px)'; const r=document.getElementById('__vring'); if(r){r.style.left=x+'px';r.style.top=y+'px';} };
+  document.addEventListener('mousemove', e => move(e.clientX, e.clientY), true);
+  document.addEventListener('mousedown', e => { const r=document.getElementById('__vring'); if(r){r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';r.style.opacity='1';r.style.transform='scale(1)';setTimeout(()=>{r.style.opacity='0';r.style.transform='scale(.4)';},260);} }, true);
+  setInterval(ensure, 1500);
+})();
+`;
+
+let page;
+async function glideTo(loc) {
+  try {
+    await loc.scrollIntoViewIfNeeded({ timeout: 8000 }).catch(()=>{});
+    const box = await loc.boundingBox();
+    if (!box) return null;
+    const x = box.x + box.width / 2, y = box.y + Math.min(box.height/2, box.height-3);
+    await page.mouse.move(x, y, { steps: 22 });
+    await sleep(220);
+    return { x, y };
+  } catch { return null; }
+}
+async function click(loc, opts={}) {
+  await glideTo(loc);
+  try {
+    await loc.click({ timeout: 12000, ...opts });
+  } catch (e) {
+    await dismissOverlays();
+    await glideTo(loc);
+    await loc.click({ timeout: 8000, force: true, ...opts });
+  }
+  await sleep(350);
+}
+async function typeInto(loc, text, delay=6) {
+  await glideTo(loc);
+  await loc.click({ timeout: 15000 }).catch(()=>{});
+  try { await loc.fill(''); } catch {}
+  await loc.pressSequentially(text, { delay });
+  await sleep(300);
+}
+async function selectRadix(triggerLoc, optionName, { required = true } = {}) {
+  const before = (await triggerLoc.innerText().catch(() => '')).trim();
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    await dismissOverlays();
+    await click(triggerLoc);
+    await sleep(500);
+    let opt = page.getByRole('option', { name: optionName, exact: true }).first();
+    if (!(await opt.count())) opt = page.locator('[role="option"]', { hasText: optionName }).first();
+    let clicked = false;
+    if (await opt.count()) {
+      try {
+        await opt.scrollIntoViewIfNeeded().catch(() => {});
+        await glideTo(opt);
+        await opt.click({ timeout: 5000 });
+        clicked = true;
+      } catch {
+        try { await opt.click({ timeout: 4000, force: true }); clicked = true; } catch {}
+      }
+    }
+    if (!clicked) {
+      // Radix typeahead: focus is on the open listbox; type to highlight, Enter to commit.
+      await page.keyboard.type(optionName, { delay: 45 });
+      await sleep(750);
+      await page.keyboard.press('Enter');
+    }
+    await sleep(500);
+    if (await page.locator('[role="listbox"],[role="option"]').count()) { await page.keyboard.press('Escape').catch(() => {}); await sleep(200); }
+    const after = (await triggerLoc.innerText().catch(() => '')).trim();
+    if (after && after !== before) { log(`  selectRadix: "${optionName}" committed -> "${after}"`); return after; }
+    log(`  selectRadix: attempt ${attempt} for "${optionName}" did not commit (trigger="${after}")`);
+  }
+  if (required) throw new Error(`selectRadix failed to commit "${optionName}"`);
+  return null;
+}
+async function scrollPage(px, steps=12) {
+  const per = px / steps;
+  for (let i=0;i<steps;i++){ await page.mouse.wheel(0, per); await sleep(280); }
+}
+async function scrollEl(loc, total=1400, steps=10) {
+  try {
+    const h = await loc.elementHandle();
+    if (!h) return;
+    for (let i=0;i<steps;i++){ await page.evaluate(([el,d])=>{ el.scrollBy(0,d); }, [h, total/steps]); await sleep(300); }
+  } catch {}
+}
+async function waitVisible(loc, capMs, label) {
+  const start = Date.now();
+  while (Date.now()-start < capMs) {
+    try { if (await loc.first().isVisible()) { log(`  done-signal: ${label} (${Math.round((Date.now()-start)/1000)}s)`); return true; } } catch {}
+    await sleep(2000);
+  }
+  log(`  WARN: ${label} not visible within ${Math.round(capMs/1000)}s`);
+  return false;
+}
+// Wait until a locator's text stabilizes (streaming finished). Optionally auto-scroll a container to follow stream.
+async function waitStable(loc, { stableMs=10000, capMs=300000, pollMs=2500, scroll=null } = {}, label='') {
+  const start = Date.now(); let last=''; let lastChange=Date.now(); let started=false;
+  while (Date.now()-start < capMs) {
+    let txt='';
+    try { txt = await loc.first().innerText({ timeout: 5000 }); } catch {}
+    if (txt !== last) { last = txt; lastChange = Date.now(); if (txt.trim().length>3) started=true; }
+    if (scroll) { try { const h = await scroll.elementHandle(); if (h) await page.evaluate(el=>el.scrollTo(0, el.scrollHeight), h); } catch {} }
+    if (started && (Date.now()-lastChange) >= stableMs) { log(`  stable: ${label} after ${Math.round((Date.now()-start)/1000)}s, ${last.length} chars`); return last; }
+    await sleep(pollMs);
+  }
+  log(`  WARN: ${label} cap reached (${Math.round(capMs/1000)}s), ${last.length} chars`);
+  return last;
+}
+async function dismissOverlays() {
+  await page.keyboard.press('Escape').catch(()=>{});
+  await sleep(300);
+}
+// Compare-modal is a CUSTOM modal (div.fixed.z-50, NOT role="dialog"). Both columns stream
+// concurrently; avatars carry `.animate-spin` only while isStreaming1/2 is true. Done = no
+// spinner visible AND the window text has settled.
+async function waitCompare({ stableMs=9000, capMs=420000, pollMs=2500 } = {}, label='comparison stream') {
+  const win = page.locator('div.fixed.z-50').last();
+  const start=Date.now(); let last=''; let lastChange=Date.now(); let started=false;
+  while (Date.now()-start < capMs) {
+    let txt=''; try { txt = await win.innerText({ timeout: 5000 }); } catch {}
+    if (txt !== last) { last = txt; lastChange = Date.now(); if (txt.trim().length>20) started=true; }
+    // follow both streaming columns
+    try { await page.evaluate(()=>{ document.querySelectorAll('div.fixed.z-50 [data-radix-scroll-area-viewport], div.fixed.z-50 .overflow-y-auto').forEach(el=>el.scrollTo(0, el.scrollHeight)); }); } catch {}
+    let spinning=false;
+    try { spinning = (await page.locator('div.fixed.z-50 .animate-spin').count()) > 0; } catch {}
+    if (started && !spinning && (Date.now()-lastChange) >= stableMs) {
+      log(`  stable: ${label} after ${Math.round((Date.now()-start)/1000)}s, ${last.length} chars`); return last;
+    }
+    await sleep(pollMs);
+  }
+  log(`  WARN: ${label} cap reached (${Math.round(capMs/1000)}s), ${last.length} chars`);
+  return last;
+}
+async function closeFigureChat() {
+  for (let i=0;i<3;i++){
+    const closeBtn = page.locator('button[title="Close"]').first();
+    if ((await closeBtn.count()) && await closeBtn.isVisible().catch(()=>false)) {
+      await closeBtn.click({ timeout: 5000 }).catch(()=>{});
+      await sleep(500);
+    }
+    // fallback: click the semi-transparent backdrop to dismiss
+    const backdrop = page.locator('div.fixed.inset-0.z-40').first();
+    if ((await backdrop.count()) && await backdrop.isVisible().catch(()=>false)) {
+      await backdrop.click({ position: { x: 6, y: 6 }, force: true }).catch(()=>{});
+      await sleep(500);
+    } else {
+      break;
+    }
+  }
+  await dismissOverlays();
+}
+async function closeAllMiniPopups() {
+  for (let i=0;i<6;i++){
+    const c = page.locator('[data-testid="button-mini-close"]').first();
+    if ((await c.count()) && await c.isVisible().catch(()=>false)) { await c.click().catch(()=>{}); await sleep(350); }
+    else break;
+  }
+}
+// Universal generator driver: clicks Generate, expands the streaming popup, follows the
+// stream, and finishes when the Stop button disappears (isGenerating=false) and text settles.
+async function runPopupGenerator(genBtn, label, capMs=360000) {
+  await closeAllMiniPopups();
+  await click(genBtn);
+  log(`  generating ${label}...`);
+  const dlg = page.locator('[role="dialog"]').last();
+  const t0 = Date.now();
+  while (Date.now()-t0 < 35000) {
+    if (await dlg.isVisible().catch(()=>false)) break;
+    const exp = page.locator('[data-testid="button-mini-expand"]').first();
+    if ((await exp.count()) && await exp.isVisible().catch(()=>false)) { await exp.click().catch(()=>{}); await sleep(900); }
+    await sleep(1000);
+  }
+  if (!(await dlg.isVisible().catch(()=>false))) log(`  WARN: ${label} popup not visible after start`);
+  const stopBtn = page.locator('[data-testid="button-popup-stop"]').first();
+  await stopBtn.waitFor({ state:'visible', timeout:30000 }).catch(()=>{});
+  const s2 = Date.now(); let lastLen=-1, lastChange=Date.now();
+  while (Date.now()-s2 < capMs) {
+    const gen = await stopBtn.isVisible().catch(()=>false);
+    let len=0; try { len = (await dlg.innerText({ timeout:4000 })).length; } catch {}
+    if (len !== lastLen) { lastLen = len; lastChange = Date.now(); }
+    if (!gen && (Date.now()-lastChange) > 4000 && lastLen > 0) break;
+    await sleep(2500);
+  }
+  log(`  ${label} finished (~${Math.round((Date.now()-s2)/1000)}s, ${lastLen} chars)`);
+  await sleep(2000);
+  const close = page.locator('[data-testid="button-popup-close"]').first();
+  if (await close.count()) await close.click().catch(()=>dismissOverlays());
+  await sleep(700);
+}
+async function segment(name, fn) {
+  await dismissOverlays();
+  log(`==== SEGMENT: ${name} ====`);
+  try { await fn(); } catch (e) { log(`  ERROR in ${name}: ${e.message.split('\n')[0]}`); }
+  await dismissOverlays();
+  await sleep(700);
+}
+
+(async () => {
+  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox','--disable-dev-shm-usage','--force-color-profile=srgb'] });
+  const context = await browser.newContext({
+    viewport: { width: W, height: H },
+    deviceScaleFactor: 1,
+    recordVideo: { dir: OUT_DIR, size: { width: W, height: H } },
+  });
+  await context.addInitScript(CURSOR_SCRIPT);
+  page = await context.newPage();
+  page.on('console', m => { if (m.type()==='error') log('  [browser console error]', m.text().slice(0,160)); });
+
+  log('Navigating to', TARGET);
+  await page.goto(TARGET, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.waitForLoadState('networkidle', { timeout: 60000 }).catch(()=>{});
+  await page.evaluate(CURSOR_SCRIPT).catch(()=>{});
+  await sleep(2500);
+  await dismissOverlays();
+  await sleep(1500);
+
+  // ---------------- 0:00 SIDEBAR + FIGURE CHAT ----------------
+  await segment('Sidebar scroll + Freud chat', async () => {
+    const search = page.getByTestId('input-search-figures');
+    // scroll the sidebar so many thinkers pass by
+    const firstBtn = page.locator('[data-testid^="button-talk-"]').first();
+    await glideTo(firstBtn);
+    for (let i=0;i<8;i++){ await page.mouse.wheel(0, 320); await sleep(420); }
+    for (let i=0;i<6;i++){ await page.mouse.wheel(0, -360); await sleep(300); }
+    // search Freud
+    await typeInto(search, 'Freud', 60);
+    await sleep(900);
+    await click(page.getByTestId('button-talk-freud'));
+    await sleep(1500);
+
+    // open audit panel so corpus queries are visible
+    await click(page.getByTestId('button-audit-trail')).catch(()=>{});
+    await sleep(800);
+
+    const LIBET = "Did Libet's experiment prove we lack free will? The subject is conscious of his intention only after it has long been in the making. He always feels as though he just came up with the decision and freely chose to move his finger. But the readiness potential was already underway. So the conscious event is an awareness of the decision, not the decision itself.";
+    await typeInto(page.getByTestId('input-figure-message'), LIBET, 4);
+    await sleep(500);
+    await click(page.getByTestId('button-send-figure-message'));
+    log('  sent Libet question; awaiting audited answer (can be slow)...');
+    // 0:40 thinking/audit grounding: wait for streamed answer to finish
+    const msgs = page.locator('[data-testid^="figure-message-"]').last();
+    await waitStable(msgs, { stableMs: 12000, capMs: 420000, pollMs: 3000 }, 'figure chat answer');
+    // scroll the finished answer so grounded content is visible
+    await scrollPage(700, 8);
+    await scrollPage(-700, 6);
+    await sleep(1500);
+  });
+
+  // close the figure chat floating window. It is a CUSTOM modal (backdrop div at z-40 +
+  // floating window at z-50), NOT a Radix Dialog — Escape does not close it. Click its
+  // Close button (title="Close"); fall back to clicking the backdrop.
+  await closeFigureChat();
+  await sleep(800);
+
+  // ---------------- 1:15 PAPER WRITER (1500) ----------------
+  await segment('Paper Writer (1500)', async () => {
+    const sec = page.locator('#paper-writer-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    await selectRadix(sec.getByTestId('select-philosopher-paper'), 'Kuczynski').catch(async()=>{
+      await selectRadix(sec.getByTestId('select-philosopher-paper'), 'Freud');
+    });
+    const TOPIC = "A constructive response to the Libet Experiment. The experiment has been replicated many times with the same results. The constructive move is to accept the data and model it, not to insist it must be spurious. Standing intentions cannot be constituents of consciousness. Consciousness approves or vetoes decisions already made.";
+    await typeInto(sec.getByTestId('input-topic-paper'), TOPIC, 4);
+    await typeInto(sec.getByTestId('input-word-length'), '1500', 40);
+    await sleep(400);
+    await runPopupGenerator(sec.getByTestId('button-generate-paper'), 'paper', 360000);
+  });
+
+  // ---------------- (6-stage workflow SKIPPED per user) ----------------
+  log('==== SEGMENT: 6-stage workflow — SKIPPED (feature not in app, per user) ====');
+
+  // ---------------- 3:30 MODEL BUILDER ----------------
+  await segment('Model Builder', async () => {
+    const sec = page.locator('#model-builder-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    // show both modes exist: toggle formal then back, toggle entire-text
+    await click(sec.getByTestId('switch-formal-mode'));
+    await sleep(900);
+    await click(sec.getByTestId('switch-formal-mode'));
+    await sleep(700);
+    await click(sec.getByTestId('switch-entire-text-mode'));
+    await sleep(700);
+    const INPUT = "If a stone became conscious while falling it would think it fell of its own free will. Find an interpretation on which the claim that conscious choices are awarenesses of prior decisions comes out true. Map W onto an after-the-fact approval signal. Map the readiness potential onto the operative cause.";
+    await typeInto(sec.getByTestId('input-original-theory'), INPUT, 4);
+    await sleep(400);
+    await click(sec.getByTestId('button-generate-model'));
+    log('  generating model...');
+    await waitStable(sec, { stableMs: 9000, capMs: 300000, pollMs: 3000 }, 'model stream');
+    await waitVisible(sec.getByTestId('button-copy-model'), 60000, 'model copy ready');
+    await scrollPage(700, 6);
+    await sleep(800);
+  });
+
+  // ---------------- 4:30 DIALOGUE CREATOR (Freud + Bergson) ----------------
+  await segment('Dialogue Creator (Freud + Bergson)', async () => {
+    const sec = page.locator('#dialogue-creator-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    const TOPIC = "Are our conscious decisions really ours to make, or only ours to behold?";
+    await typeInto(sec.getByTestId('textarea-input'), TOPIC, 6);
+    await selectRadix(sec.getByTestId('select-author-1'), 'Freud');
+    await selectRadix(sec.getByTestId('select-author-2'), 'Bergson');
+    await typeInto(sec.getByTestId('input-word-length'), '800', 40);
+    await sleep(400);
+    await runPopupGenerator(sec.getByTestId('button-generate'), 'dialogue', 360000);
+  });
+
+  // ---------------- 5:30 INTERVIEW CREATOR (Bergson) ----------------
+  await segment('Interview Creator (Bergson)', async () => {
+    const sec = page.locator('#interview-creator-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    await selectRadix(sec.getByTestId('select-thinker'), 'Bergson');
+    const TOPIC = "Press the difference between asking what the Libet experiment shows and asking what it shows about free will.";
+    await typeInto(sec.getByTestId('textarea-topic'), TOPIC, 6);
+    await typeInto(sec.getByTestId('input-word-length'), '800', 40);
+    await sleep(400);
+    await runPopupGenerator(sec.getByTestId('button-generate-interview'), 'interview', 360000);
+  });
+
+  // ---------------- 6:30 DEBATE CREATOR (Bergson vs James) ----------------
+  await segment('Debate Creator (Bergson vs James)', async () => {
+    const sec = page.locator('#debate-creator-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    await typeInto(sec.getByTestId('input-search-debate-thinker1'), 'Bergson', 50);
+    await sleep(600);
+    await click(sec.getByTestId('select-debate-thinker1-bergson'));
+    await typeInto(sec.getByTestId('input-search-debate-thinker2'), 'James', 50);
+    await sleep(600);
+    await click(sec.getByTestId('select-debate-thinker2-james'));
+    // switch to custom mode to enter the resolution topic
+    await click(sec.getByTestId('switch-debate-mode'));
+    await sleep(500);
+    const TOPIC = "Resolved: the readiness potential, not the conscious event W, is the operative intention behind the action.";
+    await typeInto(sec.getByTestId('textarea-custom-instructions'), TOPIC, 6);
+    await typeInto(sec.getByTestId('input-word-length'), '900', 40);
+    await sleep(400);
+    await runPopupGenerator(sec.getByTestId('button-generate-debate'), 'debate', 360000);
+  });
+
+  // ---------------- 7:30 QUOTE GENERATOR (author + upload) ----------------
+  await segment('Quote Generator (site author)', async () => {
+    const sec = page.locator('#quote-generator-section');
+    await sec.scrollIntoViewIfNeeded();
+    await sleep(800);
+    await click(sec.getByTestId('select-author-quotes'));
+    await sleep(500);
+    const ci = page.getByPlaceholder('Search authors...');
+    await ci.fill('Freud').catch(()=>{});
+    await sleep(700);
+    await page.getByRole('option', { name: 'Freud', exact: true }).first().click().catch(async()=>{
+      await page.getByText('Freud', { exact: true }).first().click();
+    });
+    await sleep(600);
+    await typeInto(sec.getByTestId('input-query-quotes'), 'free will', 12);
+    await typeInto(sec.getByTestId('input-num-quotes'), '10', 60);
+    await sleep(400);
+    await click(sec.getByTestId('button-generate-quotes'));
+    log('  generating quotes (JSON)...');
+    await waitStable(sec.locator('.prose').first(), { stableMs: 6000, capMs: 120000, pollMs: 2500 }, 'quotes (author)');
+    await scrollPage(500, 5);
+    await sleep(800);
+  });
+  await segment('Quote Generator (file upload)', async () => {
+    const sec = page.locator('#quote-generator-section');
+    await sec.scrollIntoViewIfNeeded();
+    await click(sec.getByTestId('tab-mode-upload'));
+    await sleep(800);
+    const fileInput = sec.locator('input[type="file"]').first();
+    await fileInput.setInputFiles(path.join(__dirname, 'sample-upload.txt'));
+    await sleep(1200);
+    await click(sec.getByTestId('button-generate-quotes'));
+    log('  extracting quotes from upload...');
+    await waitStable(sec.locator('.prose').first(), { stableMs: 6000, capMs: 120000, pollMs: 2500 }, 'quotes (upload)');
+    await sleep(900);
+  });
+
+  // ---------------- 8:15 COMPARE THINKERS ----------------
+  await segment('Compare Thinkers (Freud vs Jung)', async () => {
+    await page.evaluate(()=>window.scrollTo({top:0}));
+    await sleep(800);
+    await click(page.getByTestId('button-compare-thinkers'));
+    await sleep(1200);
+    await typeInto(page.getByTestId('input-search-figure1'), 'Freud', 50);
+    await sleep(600);
+    await click(page.getByTestId('select-figure1-freud'));
+    await typeInto(page.getByTestId('input-search-figure2'), 'Jung', 50);
+    await sleep(600);
+    await click(page.getByTestId('select-figure2-jung'));
+    await sleep(800);
+    await typeInto(page.getByTestId('input-comparison-message'), 'the unconscious origin of decisions', 8);
+    await sleep(400);
+    await click(page.getByTestId('button-send-comparison'));
+    log('  generating comparison...');
+    await waitCompare({ stableMs: 10000, capMs: 420000, pollMs: 2500 }, 'comparison stream');
+    await scrollPage(600, 6);
+    await sleep(1000);
+    await click(page.getByTestId('button-close-comparison')).catch(()=>dismissOverlays());
+    await sleep(800);
+  });
+
+  // ---------------- 8:50 SETTINGS (sidebar persona controls) ----------------
+  await segment('Settings — persona controls', async () => {
+    await page.evaluate(()=>window.scrollTo({top:0}));
+    await sleep(700);
+    // Response length 750 -> 1500
+    await typeInto(page.getByTestId('input-response-length'), '1500', 40);
+    await sleep(700);
+    // Number of quotes -> 12
+    await typeInto(page.getByTestId('input-quote-frequency'), '12', 60);
+    await sleep(700);
+    // AI model dropdown: open, show options, pick OpenAI
+    await selectRadix(page.getByTestId('select-ai-model'), 'OpenAI').catch(async()=>{
+      await click(page.getByTestId('select-ai-model'));
+      await page.getByTestId('option-openai').click().catch(()=>{});
+    });
+    await sleep(700);
+    // Intensity slider: Faithful -> Wild and back
+    const slider = page.getByTestId('slider-intensity-level').getByRole('slider').first();
+    await glideTo(slider);
+    await slider.focus().catch(()=>{});
+    for (let i=0;i<6;i++){ await page.keyboard.press('ArrowRight'); await sleep(350); }
+    await sleep(700);
+    for (let i=0;i<6;i++){ await page.keyboard.press('ArrowLeft'); await sleep(350); }
+    await sleep(700);
+    // Dialogue mode toggle
+    await click(page.getByTestId('switch-dialogue-mode'));
+    await sleep(800);
+  });
+
+  // ---------------- 9:30 NAV: My Chats + Diagnostics ----------------
+  await segment('My Chats', async () => {
+    await click(page.getByTestId('button-chat-history'));
+    await sleep(2000);
+    await scrollPage(300, 3);
+    await sleep(1200);
+    await dismissOverlays();
+    await sleep(800);
+  });
+  await segment('Diagnostics', async () => {
+    await click(page.getByTestId('link-diagnostics'));
+    await sleep(2500);
+    await page.evaluate(CURSOR_SCRIPT).catch(()=>{});
+    await waitVisible(page.getByTestId('heading-diagnostics'), 15000, 'diagnostics page');
+    // run one diagnostic check to show the panel working
+    const runBtn = page.locator('[data-testid^="button-run-"]').first();
+    if (await runBtn.isVisible().catch(()=>false)) {
+      await click(runBtn);
+      await sleep(8000);
+      await click(page.getByTestId('button-stop-diagnostics')).catch(()=>{});
+    }
+    await scrollPage(500, 5);
+    await sleep(1500);
+  });
+
+  log('All segments complete. Finalizing video...');
+  await sleep(1500);
+  const video = page.video();
+  await context.close();
+  await browser.close();
+  if (video) {
+    const p = await video.path();
+    const dest = path.join(OUT_DIR, 'genius101-promo.webm');
+    fs.copyFileSync(p, dest);
+    log('VIDEO SAVED:', dest, `(${(fs.statSync(dest).size/1e6).toFixed(1)} MB)`);
+  } else {
+    log('WARN: no video handle');
+  }
+  log('TOTAL RUNTIME:', ts());
+  log('DONE_MARKER');
+  if (process.env.HOLD) { log('HOLD: keeping process alive (remove workflow to stop)'); await new Promise(()=>{}); }
+})().catch(e => {
+  log('FATAL:', e.stack || e.message);
+  if (process.env.HOLD) { log('HOLD after fatal'); return new Promise(()=>{}); }
+  process.exit(1);
+});

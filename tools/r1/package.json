@@ -1,0 +1,16 @@
+{
+  "name": "r1-askthem-beta-tester",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Synthetic user agent that beta-tests AskThem end-to-end and produces raw reviewable evidence.",
+  "type": "module",
+  "scripts": {
+    "start": "node run.mjs",
+    "smoke": "MAX_THINKERS_TO_CHAT=2 SKIP_FUNCTIONS=7 node run.mjs",
+    "install:browser": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "playwright": "^1.49.0"
+  }
+}

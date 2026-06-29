@@ -1,0 +1,25 @@
+uploads = []
+
+[[generated]]
+id = "swyaRe3EBBWhMEpeXRWUz"
+uri = "file://attached_assets/LOCKE.png"
+type = "image"
+title = "generated_image"
+
+[[outputs]]
+id = "T2zllgYJUYksj9H6tYLkc"
+uri = "file://promo-video/genius101-promo.mp4"
+type = "video"
+title = "Genius 101 — Promo Video (click to play / download)"
+
+[[outputs]]
+id = "1mXy9KARHs03Fpo9yAqN5"
+uri = "file://recording/videos/genius101-demo.webm"
+type = "video"
+title = "Full Feature Walkthrough (20:52, real app, six operations)"
+
+[[outputs]]
+id = "TVVN6hcPVnCVy4SgD_IRY"
+uri = "file://recording/youtube-description.txt"
+type = "text"
+title = "YouTube Description — Philosophy: AI-Powered Course"

@@ -1,0 +1,33 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+.env
+
+# Large media — do not commit to git
+recording/videos/
+*.webm
+*.mp4
+*.mov
+
+# Large corpora / data dumps — keep in DB or storage, not git
+*.db
+attached_assets/
+corpora/
+spencer-texts/
+freud-texts/
+jung-texts/
+darwin-texts/
+lebon-texts/
+lenin-texts/
+schopenhauer-texts/
+maimonides-texts/
+gibbon-texts/
+dewey-texts/
+bacon-texts/
+server/data/
+logs/
+test_outputs/
+test-results.json
