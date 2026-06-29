@@ -7,10 +7,12 @@ vite.config.ts.*
 .env
 
 # Large media — do not commit to git
-recording/videos/
 *.webm
 *.mp4
 *.mov
+recording/videos/*
+# ...except keep the one demo video (under GitHub's 100MB limit)
+!recording/videos/genius101-demo.webm
 
 # Large corpora / data dumps — keep in DB or storage, not git
 *.db
