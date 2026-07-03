@@ -616,9 +616,7 @@ export function InterviewCreatorSection({
             >
               {interview}
             </div>
-            {elevenLabsMode && (
-              <ElevenLabsOutput rawText={interview} filename="interview.txt" />
-            )}
+            <ElevenLabsOutput rawText={interview} filename="interview.txt" />
           </CardContent>
         </Card>
       )}

@@ -770,9 +770,7 @@ export function DialogueCreatorSection({
                 {dialogue}
               </pre>
             </div>
-            {elevenLabsMode && (
-              <ElevenLabsOutput rawText={dialogue} filename="dialogue.txt" />
-            )}
+            <ElevenLabsOutput rawText={dialogue} filename="dialogue.txt" />
           </CardContent>
         </Card>
       )}

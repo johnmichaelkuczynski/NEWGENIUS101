@@ -693,9 +693,7 @@ export function DebateCreatorSection() {
                   <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap" data-testid="debate-result">
                     {debateResult}
                   </div>
-                  {elevenLabsMode && (
-                    <ElevenLabsOutput rawText={debateResult} filename="debate.txt" />
-                  )}
+                  <ElevenLabsOutput rawText={debateResult} filename="debate.txt" />
                 </ScrollArea>
               ) : (
                 <div className="flex items-center justify-center flex-1 text-center text-muted-foreground px-6 pb-6">
