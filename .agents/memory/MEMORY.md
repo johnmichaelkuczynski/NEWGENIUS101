@@ -3,3 +3,4 @@
 - [LLM model names & fallback](llm-provider-model-names.md) — retired Anthropic model = 404 kills ALL AI features; model names hardcoded everywhere; streamWithFallback + chat fallback loop in routes.ts; audited chat is slow (use long curl timeout).
 - [Diagnostic / generator endpoint quirks](diagnostic-endpoint-quirks.md) — debate needs mode:"auto"; quotes returns JSON not SSE; chat always runs slow audited search (~240s); SSE content keys vary; /diagnostics is intentionally public.
 - [Custom modals not Radix](custom-modals-not-radix.md) — figure-chat & compare are hand-rolled fixed-overlays (Escape won't close, [role=dialog] won't match); compare done = window text settled + .animate-spin gone; compare = 2 sequential chats (~5min).
+- [ElevenLabs TTS](elevenlabs-tts.md) — user key is not Pro tier: PCM formats 403; use mp3 + local ffmpeg transcode for WAV; restart workflow after editing dynamically-imported server modules.

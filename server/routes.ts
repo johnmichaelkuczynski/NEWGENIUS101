@@ -4921,6 +4921,42 @@ Begin:`;
   });
 
   // ========================================
+  // ElevenLabs TTS: convert generated dialogues/interviews/debates to audio
+  // Each distinct speaker gets a different voice.
+  app.post("/api/tts/convert", async (req, res) => {
+    try {
+      const { text, format: formatRaw } = req.body || {};
+      if (!text || typeof text !== 'string' || !text.trim()) {
+        return res.status(400).json({ error: "Missing 'text' to convert" });
+      }
+      if (text.length > 400_000) {
+        return res.status(400).json({ error: "Text too long for audio conversion (max ~400,000 characters)" });
+      }
+      const format = formatRaw === 'wav' ? 'wav' : 'mp3';
+      if (!process.env.ELEVENLABS_API_KEY) {
+        return res.status(503).json({ error: "ELEVENLABS_API_KEY is not configured" });
+      }
+
+      const { convertDialogueToAudio, parseSpeakerSegments } = await import('./services/ttsService');
+      if (parseSpeakerSegments(text).length === 0) {
+        return res.status(400).json({
+          error: "No speaker lines found. Expected lines like 'SOCRATES: ...' or 'Speaker 1: ...'",
+        });
+      }
+      const result = await convertDialogueToAudio(text, format);
+
+      res.setHeader('Content-Type', result.contentType);
+      res.setHeader('Content-Disposition', `attachment; filename="dialogue.${result.extension}"`);
+      res.setHeader('X-Voice-Map', encodeURIComponent(JSON.stringify(result.voiceMap)));
+      res.setHeader('Access-Control-Expose-Headers', 'X-Voice-Map, Content-Disposition');
+      res.send(result.audio);
+    } catch (error: any) {
+      console.error('[TTS] Conversion failed:', error?.message || error);
+      res.status(500).json({ error: error?.message || 'TTS conversion failed' });
+    }
+  });
+
+  // ========================================
   // THESIS TO WORLD: Documentary Incident Generator
   // Dialogue Creator endpoint
   app.post("/api/dialogue-creator", upload.single('file'), async (req, res) => {
