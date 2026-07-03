@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Copy, Download, Maximize2, Minimize2, Loader2, X, ChevronUp, ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
+import { ElevenLabsOutput } from "@/components/elevenlabs-output";
 
 interface StreamingOutputPopupProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface StreamingOutputPopupProps {
   wordCount?: number;
   onStop?: () => void;
   filename?: string;
+  enableAudio?: boolean;
 }
 
 export function StreamingOutputPopup({
@@ -25,6 +27,7 @@ export function StreamingOutputPopup({
   wordCount,
   onStop,
   filename = "output.txt",
+  enableAudio = false,
 }: StreamingOutputPopupProps) {
   const { toast } = useToast();
   const [isMaximized, setIsMaximized] = useState(false);
@@ -261,6 +264,9 @@ export function StreamingOutputPopup({
                 <span>No content yet</span>
               )}
             </div>
+          )}
+          {enableAudio && !isGenerating && content && (
+            <ElevenLabsOutput rawText={content} filename={filename} />
           )}
         </div>
 

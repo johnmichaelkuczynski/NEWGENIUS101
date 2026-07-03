@@ -5,6 +5,7 @@ import { Copy, Download, Maximize2, Minimize2, Loader2, X, ChevronUp, ChevronDow
 import { useToast } from "@/hooks/use-toast";
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { ElevenLabsOutput } from "@/components/elevenlabs-output";
 
 export function MultiPopupManager() {
   const { popups, activePopupId, closePopup, minimizePopup, expandPopup } = usePopupManager();
@@ -128,6 +129,11 @@ export function MultiPopupManager() {
                 <div className="prose prose-sm dark:prose-invert max-w-none">
                   <ReactMarkdown>{activePopup.content}</ReactMarkdown>
                   {activePopup.isGenerating && <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-1" />}
+                  {!activePopup.isGenerating && (
+                    <div className="not-prose">
+                      <ElevenLabsOutput rawText={activePopup.content} filename={activePopup.filename || "output.txt"} />
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="h-full flex items-center justify-center text-muted-foreground">
