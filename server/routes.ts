@@ -382,7 +382,6 @@ async function getSessionId(req: any): Promise<string> {
 
 import express from "express";
 import path from "path";
-import { clerkMiddleware, getAuth, clerkClient } from "@clerk/express";
 import { runSelfTest } from "./services/selfTest";
 import { runSyntheticUserTest } from "./services/syntheticUserTest";
 import { runAccuracyTest } from "./services/accuracyTest";
@@ -425,73 +424,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     },
   }));
 
-  // Clerk authentication (handles Google sign-in; works inside the Replit iframe).
-  // Scoped to the routes that need it so it never runs on Vite asset/HMR
-  // requests (a global mount conflicts with Vite's dev middleware).
-  const clerkAuth = clerkMiddleware();
-
-  // Get current user — single-owner mode, no sign-in required.
-  // Every visitor is auto-logged-in as the owner so chat history, settings,
-  // and any other "logged-in only" features work without a login flow.
-  app.get("/api/user", clerkAuth, async (req: any, res) => {
+  // Get current user — single-owner mode, no sign-in.
+  // Every visitor is automatically the owner; no login system exists.
+  app.get("/api/user", async (req: any, res) => {
     try {
-      // If the visitor signed in with Clerk, return that identity and bridge it
-      // into the session so chat history / conversations keep working unchanged.
-      const auth = getAuth(req);
-      if (auth?.userId) {
-        const cu = await clerkClient.users.getUser(auth.userId);
-        const email =
-          cu.primaryEmailAddress?.emailAddress ||
-          cu.emailAddresses?.[0]?.emailAddress ||
-          null;
-        const firstName = cu.firstName || null;
-        const lastName = cu.lastName || null;
-        const profileImageUrl = cu.imageUrl || null;
-
-        // Reuse an existing row by email (or Clerk id) so we don't violate the
-        // email/username unique constraints when a person who signed in before
-        // returns via Clerk.
-        const existing =
-          (email ? await storage.getUserByEmail(email) : undefined) ||
-          (await storage.getUser(cu.id));
-        const resolvedId = existing?.id ?? cu.id;
-
-        let username =
-          existing?.username ||
-          cu.username ||
-          email?.split("@")[0] ||
-          firstName ||
-          "user";
-        const taken = await storage.getUserByUsername(username);
-        if (taken && taken.id !== resolvedId) {
-          username = `${username}_${String(resolvedId).slice(-6)}`;
-        }
-
-        await storage.upsertUser({
-          id: resolvedId,
-          email: existing?.email ?? email,
-          firstName: firstName ?? existing?.firstName ?? null,
-          lastName: lastName ?? existing?.lastName ?? null,
-          profileImageUrl: profileImageUrl ?? existing?.profileImageUrl ?? null,
-          username,
-        });
-
-        req.session.userId = resolvedId;
-        req.session.username = username;
-
-        return res.json({
-          user: {
-            id: resolvedId,
-            username,
-            firstName: firstName ?? existing?.firstName ?? null,
-            profileImageUrl: profileImageUrl ?? existing?.profileImageUrl ?? null,
-            email: existing?.email ?? email,
-            provider: "google",
-          },
-        });
-      }
-
-      // Otherwise: single-owner auto-login fallback (guest experience).
       const OWNER_ID = "owner";
       const OWNER_NAME = "owner";
       if (!req.session.userId || req.session.userId !== OWNER_ID) {
@@ -521,21 +457,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Get user error:", error);
       res.status(500).json({ error: "Failed to get user" });
-    }
-  });
-
-  // Logout
-  app.post("/api/logout", async (req: any, res) => {
-    try {
-      req.session.destroy((err: any) => {
-        if (err) {
-          return res.status(500).json({ error: "Failed to logout" });
-        }
-        res.json({ success: true });
-      });
-    } catch (error) {
-      console.error("Logout error:", error);
-      res.status(500).json({ error: "Failed to logout" });
     }
   });
 

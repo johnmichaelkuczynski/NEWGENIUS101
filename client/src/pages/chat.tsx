@@ -15,9 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, LogOut, History, Download, MessageSquare, Plus, Stethoscope } from "lucide-react";
-import { SiGoogle } from "react-icons/si";
-import { SignInButton, useAuth, useClerk } from "@clerk/clerk-react";
+import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -123,33 +121,11 @@ export default function Chat() {
     queryKey: ["/api/figures"],
   });
 
-  // Clerk auth
-  const { isSignedIn, getToken } = useAuth();
-  const clerk = useClerk();
-
-  // User login state. When signed in with Clerk, attach the session token so the
-  // backend can identify the user and bridge it into the server session.
+  // Single-owner mode: everyone is automatically the owner, no login.
   const { data: userData, isLoading: userLoading } = useQuery<{ user: { id: string; username: string; firstName: string; profileImageUrl?: string | null; email?: string | null; provider?: string } | null }>({
-    queryKey: ["/api/user", isSignedIn ?? false],
-    queryFn: async () => {
-      const token = isSignedIn ? await getToken() : null;
-      const res = await fetch("/api/user", {
-        credentials: "include",
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
-      if (!res.ok) throw new Error(`${res.status}: ${await res.text()}`);
-      return res.json();
-    },
+    queryKey: ["/api/user"],
   });
 
-  // When the resolved identity changes (sign-in / sign-out), the server session
-  // is re-bridged in /api/user, so refetch session-keyed data to match it.
-  useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ["/api/messages"] });
-    queryClient.invalidateQueries({ queryKey: ["/api/persona-settings"] });
-    queryClient.invalidateQueries({ queryKey: ["/api/chat-history"] });
-  }, [userData?.user?.id]);
-  
 
   // Chat history
   const { data: chatHistoryData, refetch: refetchChatHistory } = useQuery<{ 
@@ -633,55 +609,6 @@ export default function Chat() {
                   Diagnostics
                 </Button>
               </Link>
-              {isSignedIn ? (
-                <div className="flex items-center gap-2 pl-1">
-                  {userData?.user?.profileImageUrl ? (
-                    <img
-                      src={userData.user.profileImageUrl}
-                      alt={userData.user.username}
-                      referrerPolicy="no-referrer"
-                      className="w-7 h-7 rounded-full object-cover border border-border"
-                      data-testid="img-user-avatar"
-                    />
-                  ) : (
-                    <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
-                      <User className="w-4 h-4 text-primary" />
-                    </div>
-                  )}
-                  <span
-                    className="text-sm font-medium max-w-[120px] truncate hidden sm:inline"
-                    data-testid="text-username"
-                  >
-                    {userData?.user?.firstName || userData?.user?.username || "Account"}
-                  </span>
-                  <Button
-                    onClick={async () => {
-                      try {
-                        await apiRequest("POST", "/api/logout");
-                      } catch {}
-                      await clerk.signOut({ redirectUrl: "/" });
-                    }}
-                    variant="ghost"
-                    size="sm"
-                    className="gap-1"
-                    data-testid="button-logout"
-                    title="Sign out"
-                  >
-                    <LogOut className="w-4 h-4" />
-                  </Button>
-                </div>
-              ) : (
-                <SignInButton mode="modal">
-                  <Button
-                    size="sm"
-                    className="gap-2"
-                    data-testid="button-login-google"
-                  >
-                    <SiGoogle className="w-4 h-4" />
-                    Sign in
-                  </Button>
-                </SignInButton>
-              )}
             </div>
           </div>
         </header>

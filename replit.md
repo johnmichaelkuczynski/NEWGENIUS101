@@ -75,10 +75,8 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- Username-only login for convenience.
-- Logged-in users can access past conversation history.
-- Conversations can be downloaded as text files.
-- In-progress guest conversations are automatically migrated upon login.
+- NO login system (removed July 2026 at user's demand — do not reintroduce).
+- Every visitor is automatically the single "owner" identity; chat history, settings, and conversation downloads all work with no sign-in.
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.
