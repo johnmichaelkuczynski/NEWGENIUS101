@@ -75,8 +75,11 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- NO login system (removed July 2026 at user's demand — do not reintroduce).
-- Every visitor is automatically the single "owner" identity; chat history, settings, and conversation downloads all work with no sign-in.
+- Custom Google-only OAuth (July 2026). NO Clerk, NO Replit Auth — do not reintroduce.
+- Manual OAuth code flow in `server/googleAuth.ts`: login `/api/auth/google`, callback `/api/auth/google/callback`, logout `POST /api/logout`. Uses secrets GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SESSION_SECRET (user-provided, unique to this app).
+- Signed-in users get identity `google_<sub>`; anonymous visitors still work via guest sessions (`getSessionId`). `/api/user` returns the Google user or `{user: null}`.
+- Every Google login is recorded (`login_records` + `login_events` tables). Admin analytics page at `/admin` (users table, unique-user counts + graphs for 24h/month/year/all-time) visible ONLY to johnmichaelkuczynski@gmail.com (server-gated via `/api/admin/logins`).
+- Sign-in button uses `target="_top"` because Google blocks OAuth inside the Replit preview iframe.
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.

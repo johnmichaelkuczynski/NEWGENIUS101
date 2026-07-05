@@ -16,6 +16,9 @@ import {
   type InsertConversation,
   type Message,
   type InsertMessage,
+  loginRecords,
+  loginEvents,
+  type LoginRecord,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, sql } from "drizzle-orm";
@@ -66,6 +69,19 @@ export interface IStorage {
   // Thinker operations (derived from positions table)
   getAllThinkers(): Promise<Thinker[]>;
   getThinker(id: string): Promise<Thinker | undefined>;
+
+  // Login tracking (Google auth analytics)
+  recordLogin(email: string): Promise<void>;
+  getLoginRecords(): Promise<LoginRecord[]>;
+  getLoginAnalytics(): Promise<{
+    uniqueUsers: { allTime: number; last24h: number; lastMonth: number; lastYear: number };
+    graphs: {
+      last24h: { label: string; users: number }[];
+      lastMonth: { label: string; users: number }[];
+      lastYear: { label: string; users: number }[];
+      allTime: { label: string; users: number }[];
+    };
+  }>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -480,6 +496,81 @@ export class DatabaseStorage implements IStorage {
   async getThinker(id: string): Promise<Thinker | undefined> {
     const thinkers = await this.getAllThinkers();
     return thinkers.find(t => t.id === id.toLowerCase());
+  }
+
+  // ===== Login tracking (Google auth analytics) =====
+
+  async recordLogin(email: string): Promise<void> {
+    const normalized = email.toLowerCase();
+    await db
+      .insert(loginRecords)
+      .values({ email: normalized })
+      .onConflictDoUpdate({
+        target: loginRecords.email,
+        set: {
+          lastVisit: new Date(),
+          visitCount: sql`${loginRecords.visitCount} + 1`,
+        },
+      });
+    await db.insert(loginEvents).values({ email: normalized });
+  }
+
+  async getLoginRecords(): Promise<LoginRecord[]> {
+    return await db.select().from(loginRecords).orderBy(desc(loginRecords.lastVisit));
+  }
+
+  async getLoginAnalytics() {
+    const countSince = async (interval: string): Promise<number> => {
+      const result = await db.execute(sql.raw(
+        `SELECT COUNT(DISTINCT email)::int AS n FROM login_events WHERE logged_in_at >= now() - interval '${interval}'`
+      ));
+      return (result.rows[0] as any)?.n ?? 0;
+    };
+
+    const bucketQuery = async (trunc: string, interval: string, format: string) => {
+      const result = await db.execute(sql.raw(
+        `SELECT to_char(date_trunc('${trunc}', logged_in_at), '${format}') AS label,
+                COUNT(DISTINCT email)::int AS users
+         FROM login_events
+         WHERE logged_in_at >= now() - interval '${interval}'
+         GROUP BY date_trunc('${trunc}', logged_in_at)
+         ORDER BY date_trunc('${trunc}', logged_in_at)`
+      ));
+      return (result.rows as any[]).map(r => ({ label: r.label, users: r.users }));
+    };
+
+    const [allTimeCount] = (await db.execute(sql.raw(
+      `SELECT COUNT(*)::int AS n FROM login_records`
+    ))).rows as any[];
+
+    const [last24h, lastMonth, lastYear] = await Promise.all([
+      countSince('24 hours'),
+      countSince('30 days'),
+      countSince('365 days'),
+    ]);
+
+    const [g24h, gMonth, gYear, gAll] = await Promise.all([
+      bucketQuery('hour', '24 hours', 'HH24:00'),
+      bucketQuery('day', '30 days', 'Mon DD'),
+      bucketQuery('month', '365 days', 'Mon YYYY'),
+      db.execute(sql.raw(
+        `SELECT to_char(date_trunc('month', logged_in_at), 'Mon YYYY') AS label,
+                COUNT(DISTINCT email)::int AS users
+         FROM login_events
+         GROUP BY date_trunc('month', logged_in_at)
+         ORDER BY date_trunc('month', logged_in_at)`
+      )).then(r => (r.rows as any[]).map(x => ({ label: x.label, users: x.users }))),
+    ]);
+
+    return {
+      uniqueUsers: {
+        allTime: allTimeCount?.n ?? 0,
+        last24h,
+        lastMonth,
+        lastYear,
+      },
+      graphs: { last24h: g24h, lastMonth: gMonth, lastYear: gYear, allTime: gAll },
+    };
   }
 }
 

@@ -1,8 +1,10 @@
 ---
-name: Auth removed (single-owner mode)
-description: Login system was completely removed at user's demand; do not reintroduce
+name: Auth history (custom Google OAuth now)
+description: Auth went Clerk → no login → custom Google-only OAuth (July 2026); constraints for any future auth work
 ---
-- On July 3, 2026 the user demanded the entire login system be ripped out ("RIP IT OUT. DO NOT PATCH. DO NOT REINSTALL. DO NOT FIX.").
-- Clerk (Google sign-in), the Sign in/Log out UI, /api/logout, and the Clerk packages were all removed. Every visitor is auto-assigned the single `owner` identity via GET /api/user; express-session + PG session store retained since all data routes key off req.session.userId.
-- **Why:** user explicitly wants NO login of any kind. Do not re-add auth, Clerk, or sign-in UI unless he explicitly asks.
-- **How to apply:** if a future task needs per-user data, ask first; default is single-owner mode. CLERK secrets may still exist in env but are unused.
+- July 3, 2026: user demanded the entire Clerk login be ripped out. July 5, 2026: user demanded a **custom Google-only OAuth** — explicitly NO Clerk, NO Replit Auth, NO Replit-branded consent screen; must show HIS Google Cloud app name with HIS own unique credentials (GOOGLE_CLIENT_ID/SECRET/SESSION_SECRET, never reused from another app).
+- Implemented as a manual OAuth code flow in `server/googleAuth.ts` (no passport). Login `/api/auth/google`, callback `/api/auth/google/callback`, logout POST `/api/logout`. Anonymous visitors still work via guest sessions; `/api/user` returns Google user or null.
+- Admin analytics: only johnmichaelkuczynski@gmail.com may access `/admin` + `/api/admin/logins`; logins recorded in `login_records`/`login_events` (created via raw SQL, NOT db:push — live DB ≠ schema.ts).
+- Google blocks OAuth inside the Replit preview iframe → sign-in links must use `target="_top"`; testing real login requires opening the app in a full browser tab.
+- **Why:** user is adamant about branding (consent screen must not say Replit) and about fresh credentials per app.
+- **How to apply:** never reintroduce Clerk/Replit Auth; any auth change must keep the custom flow and the redirect URIs `https://<domain>/api/auth/google/callback` registered in his Google Cloud console. Old CLERK_* secrets may linger unused.

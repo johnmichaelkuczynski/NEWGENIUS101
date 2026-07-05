@@ -121,9 +121,19 @@ export default function Chat() {
     queryKey: ["/api/figures"],
   });
 
-  // Single-owner mode: everyone is automatically the owner, no login.
-  const { data: userData, isLoading: userLoading } = useQuery<{ user: { id: string; username: string; firstName: string; profileImageUrl?: string | null; email?: string | null; provider?: string } | null }>({
+  // Google-only auth: user is null when not signed in.
+  const { data: userData, isLoading: userLoading } = useQuery<{ user: { id: string; username: string; firstName: string; profileImageUrl?: string | null; email?: string | null; provider?: string; isAdmin?: boolean } | null }>({
     queryKey: ["/api/user"],
+  });
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      return apiRequest("POST", "/api/logout", {});
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries();
+      toast({ title: "Logged out" });
+    },
   });
 
 
@@ -609,6 +619,53 @@ export default function Chat() {
                   Diagnostics
                 </Button>
               </Link>
+              {userData?.user?.isAdmin && (
+                <Link href="/admin">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                    data-testid="link-admin"
+                  >
+                    <Users className="w-4 h-4" />
+                    Admin
+                  </Button>
+                </Link>
+              )}
+              {userData?.user ? (
+                <div className="flex items-center gap-2">
+                  {userData.user.profileImageUrl && (
+                    <img
+                      src={userData.user.profileImageUrl}
+                      alt="Profile"
+                      className="w-7 h-7 rounded-full border"
+                      data-testid="img-user-avatar"
+                    />
+                  )}
+                  <span className="text-xs text-muted-foreground hidden md:inline" data-testid="text-user-email">
+                    {userData.user.email}
+                  </span>
+                  <Button
+                    onClick={() => logoutMutation.mutate()}
+                    variant="outline"
+                    size="sm"
+                    data-testid="button-logout"
+                  >
+                    Log out
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  asChild
+                  size="sm"
+                  className="gap-2"
+                  data-testid="button-google-signin"
+                >
+                  <a href="/api/auth/google" target="_top">
+                    Sign in with Google
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </header>
