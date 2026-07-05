@@ -75,11 +75,10 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- Custom Google-only OAuth (July 2026). NO Clerk, NO Replit Auth — do not reintroduce.
-- Manual OAuth code flow in `server/googleAuth.ts`: login `/api/auth/google`, callback `/api/auth/google/callback`, logout `POST /api/logout`. Uses secrets GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SESSION_SECRET (user-provided, unique to this app).
-- Signed-in users get identity `google_<sub>`; anonymous visitors still work via guest sessions (`getSessionId`). `/api/user` returns the Google user or `{user: null}`.
-- Every Google login is recorded (`login_records` + `login_events` tables). Admin analytics page at `/admin` (users table, unique-user counts + graphs for 24h/month/year/all-time) visible ONLY to johnmichaelkuczynski@gmail.com (server-gated via `/api/admin/logins`).
-- Sign-in button uses `target="_top"` because Google blocks OAuth inside the Replit preview iframe.
+- NO AUTHENTICATION SYSTEM (removed July 5, 2026 at user's explicit demand). NO Google OAuth, NO Clerk, NO Replit Auth — do not reintroduce any login system unless the user explicitly asks.
+- The Google OAuth system built earlier in July 2026 (login/callback routes, admin analytics page, login tracking) was completely ripped out: `server/googleAuth.ts` and `client/src/pages/admin.tsx` deleted; `/api/user`, `/api/logout`, `/api/admin/logins`, `/admin` removed; loginRecords/loginEvents removed from schema/storage; GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET and CLERK_* secrets deleted.
+- Anonymous guest sessions (`getSessionId` in routes.ts, express-session + SESSION_SECRET, Postgres-backed store) REMAIN — they power conversations, persona settings, and chat history and are app functionality, not auth. The `users` table remains for guest-user FK constraints.
+- Orphaned `login_records`/`login_events` tables may still exist in the database (harmless; code no longer references them).
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.

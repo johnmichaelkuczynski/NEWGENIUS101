@@ -121,28 +121,11 @@ export default function Chat() {
     queryKey: ["/api/figures"],
   });
 
-  // Google-only auth: user is null when not signed in.
-  const { data: userData, isLoading: userLoading } = useQuery<{ user: { id: string; username: string; firstName: string; profileImageUrl?: string | null; email?: string | null; provider?: string; isAdmin?: boolean } | null }>({
-    queryKey: ["/api/user"],
-  });
-
-  const logoutMutation = useMutation({
-    mutationFn: async () => {
-      return apiRequest("POST", "/api/logout", {});
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries();
-      toast({ title: "Logged out" });
-    },
-  });
-
-
   // Chat history
   const { data: chatHistoryData, refetch: refetchChatHistory } = useQuery<{ 
     conversations: { id: string; title: string; messageCount: number; preview: string; createdAt: string }[] 
   }>({
     queryKey: ["/api/chat-history"],
-    enabled: !!userData?.user,
   });
   
   const personaSettings = fetchedSettings || DEFAULT_PERSONA_SETTINGS as PersonaSettings;
@@ -619,48 +602,12 @@ export default function Chat() {
                   Diagnostics
                 </Button>
               </Link>
-              {userData?.user?.isAdmin && (
-                <Link href="/admin">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                    data-testid="link-admin"
-                  >
-                    <Users className="w-4 h-4" />
-                    Admin
-                  </Button>
-                </Link>
-              )}
-              {userData?.user ? (
-                <div className="flex items-center gap-2">
-                  {userData.user.profileImageUrl && (
-                    <img
-                      src={userData.user.profileImageUrl}
-                      alt="Profile"
-                      className="w-7 h-7 rounded-full border"
-                      data-testid="img-user-avatar"
-                    />
-                  )}
-                  <span className="text-xs text-muted-foreground hidden md:inline" data-testid="text-user-email">
-                    {userData.user.email}
-                  </span>
-                  <Button
-                    onClick={() => logoutMutation.mutate()}
-                    variant="outline"
-                    size="sm"
-                    data-testid="button-logout"
-                  >
-                    Log out
-                  </Button>
-                </div>
-              ) : null}
             </div>
           </div>
         </header>
 
         {/* Chat History Dropdown */}
-        {showChatHistory && userData?.user && (
+        {showChatHistory && (
           <div className="absolute right-4 top-20 z-30 w-80 bg-background border rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold flex items-center gap-2">

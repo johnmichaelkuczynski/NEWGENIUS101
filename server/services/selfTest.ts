@@ -151,13 +151,6 @@ function testAzureSpeechConfig(): TestResult {
   return { name: "Azure Speech (TTS)", category: "Voice", status: "fail", durationMs: 0, message: `Missing ${!haveKey ? "AZURE_SPEECH_KEY " : ""}${!haveRegion ? "AZURE_SPEECH_REGION" : ""}` };
 }
 
-function testGoogleOAuthConfig(): TestResult {
-  const ok = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
-  return ok
-    ? { name: "Google OAuth", category: "Auth", status: "pass", durationMs: 0, message: "Client ID and secret are configured." }
-    : { name: "Google OAuth", category: "Auth", status: "fail", durationMs: 0, message: "GOOGLE_CLIENT_ID and/or GOOGLE_CLIENT_SECRET missing." };
-}
-
 async function testFiguresEndpoint(originBase: string, signal?: AbortSignal): Promise<TestResult> {
   return timed("Figures API", "API Routes", async () => {
     const r = await fetch(`${originBase}/api/figures`, { signal });
@@ -267,7 +260,6 @@ export async function* runSelfTest(originBase: string, signal?: AbortSignal): As
     { name: "Venice", category: "AI Providers", run: () => testOpenAICompatible("Venice", "VENICE_API_KEY", "https://api.venice.ai/api/v1", "llama-3.3-70b") },
     { name: "Embeddings (text-embedding-ada-002)", category: "AI Providers", run: testEmbedding },
     { name: "Azure Speech (TTS)", category: "Voice", run: async () => testAzureSpeechConfig() },
-    { name: "Google OAuth", category: "Auth", run: async () => testGoogleOAuthConfig() },
     { name: "Figures API", category: "API Routes", run: () => testFiguresEndpoint(originBase, signal) },
     { name: "Long-form generator (skeleton)", category: "Generators", run: () => testLongFormSkeleton(originBase, signal) },
   ];

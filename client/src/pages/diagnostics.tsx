@@ -51,7 +51,7 @@ const CHECKS: Check[] = [
     key: "system",
     label: "System check",
     endpoint: "/api/admin/self-test/stream",
-    blurb: "Checks the backend, database, AI providers, voice service, OAuth, and the long-form generator.",
+    blurb: "Checks the backend, database, AI providers, voice service, and the long-form generator.",
   },
   {
     key: "synthetic",
@@ -235,7 +235,7 @@ export default function Diagnostics() {
           <h1 className="text-4xl font-bold mb-3" data-testid="heading-diagnostics">Diagnostics</h1>
           <p className="text-muted-foreground max-w-2xl">
             Run these if anything in the app is not working. The <strong>System check</strong> tests
-            the plumbing (backend, database, AI providers, voice, OAuth). The{" "}
+            the plumbing (backend, database, AI providers, voice). The{" "}
             <strong>Synthetic-user test</strong> acts like a real person and drives every feature to
             confirm it produces real output. The <strong>Accuracy test</strong> grades the app's
             answers against Claude. Each gives you a report you can copy and email to support.

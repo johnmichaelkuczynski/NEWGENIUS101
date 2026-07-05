@@ -1,10 +1,8 @@
 ---
-name: Auth history (custom Google OAuth now)
-description: Auth went Clerk → no login → custom Google-only OAuth (July 2026); constraints for any future auth work
+name: Auth history (NO auth now)
+description: Auth went Clerk → custom Google OAuth → fully removed (July 5, 2026); constraints for any future auth work
 ---
-- July 3, 2026: user demanded the entire Clerk login be ripped out. July 5, 2026: user demanded a **custom Google-only OAuth** — explicitly NO Clerk, NO Replit Auth, NO Replit-branded consent screen; must show HIS Google Cloud app name with HIS own unique credentials (GOOGLE_CLIENT_ID/SECRET/SESSION_SECRET, never reused from another app).
-- Implemented as a manual OAuth code flow in `server/googleAuth.ts` (no passport). Login `/api/auth/google`, callback `/api/auth/google/callback`, logout POST `/api/logout`. Anonymous visitors still work via guest sessions; `/api/user` returns Google user or null.
-- Admin analytics: only johnmichaelkuczynski@gmail.com may access `/admin` + `/api/admin/logins`; logins recorded in `login_records`/`login_events` (created via raw SQL, NOT db:push — live DB ≠ schema.ts).
-- Google blocks OAuth inside the Replit preview iframe → sign-in links must use `target="_top"`; testing real login requires opening the app in a full browser tab.
-- **Why:** user is adamant about branding (consent screen must not say Replit) and about fresh credentials per app.
-- **How to apply:** never reintroduce Clerk/Replit Auth; any auth change must keep the custom flow and the redirect URIs `https://<domain>/api/auth/google/callback` registered in his Google Cloud console. Old CLERK_* secrets may linger unused.
+- Timeline: Clerk ripped out July 3, 2026 → custom Google-only OAuth built July 5, 2026 → user demanded the ENTIRE auth system removed the same day after Google kept rejecting login with `redirect_uri_mismatch` (he never registered the callback URL in his Google Cloud console).
+- Current state: NO login system at all. No auth routes, no admin page, no login tracking, no GOOGLE_*/CLERK_* secrets. Guest sessions (express-session + SESSION_SECRET, Postgres store) remain — they are app functionality (conversations, persona settings, chat history), NOT auth. `users` table remains for guest FK constraints. Orphaned `login_records`/`login_events` tables may still exist in the live DB.
+- **Why:** user is volatile and demanded removal after login "did nothing" — root causes were (a) Replit preview iframe blocks navigation to Google (needs new-tab/`_top`), and (b) his Google Cloud client lacked the registered redirect URI. Neither is fixable in code.
+- **How to apply:** never reintroduce any login (Clerk, Replit Auth, or Google) unless he explicitly asks. If Google OAuth ever returns: manual code flow, HIS fresh credentials, consent screen must show HIS app name, sign-in must open in a new tab, and HE must register `https://<domain>/api/auth/google/callback` in his console before anything can work — test with an external screenshot of the auth URL first.

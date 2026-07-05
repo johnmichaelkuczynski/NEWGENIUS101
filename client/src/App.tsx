@@ -9,14 +9,12 @@ import { MultiPopupManager } from "@/components/ui/multi-popup-manager";
 import { VoiceDictation } from "@/components/voice-dictation";
 import Chat from "@/pages/chat";
 import Diagnostics from "@/pages/diagnostics";
-import Admin from "@/pages/admin";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Chat} />
       <Route path="/diagnostics" component={Diagnostics} />
-      <Route path="/admin" component={Admin} />
       <Route path="/model-builder">
         <Redirect to="/" />
       </Route>

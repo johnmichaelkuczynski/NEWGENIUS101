@@ -180,7 +180,7 @@ export function SelfTestButton() {
               System Self-Test
             </DialogTitle>
             <DialogDescription>
-              Runs a live health check across the database, AI providers, voice service, OAuth, and the long-form generator. Generates a downloadable report.
+              Runs a live health check across the database, AI providers, voice service, and the long-form generator. Generates a downloadable report.
             </DialogDescription>
           </DialogHeader>
 
@@ -220,7 +220,7 @@ export function SelfTestButton() {
                   <li>Verify database connectivity and schema</li>
                   <li>Ping every configured AI provider (Anthropic, OpenAI, DeepSeek, Grok, Perplexity)</li>
                   <li>Generate a real embedding</li>
-                  <li>Verify Azure Speech and Google OAuth configuration</li>
+                  <li>Verify Azure Speech configuration</li>
                   <li>Hit the public Figures API</li>
                   <li>Run a small live long-form generation (essay)</li>
                 </ul>

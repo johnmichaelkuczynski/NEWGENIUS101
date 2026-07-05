@@ -382,7 +382,6 @@ async function getSessionId(req: any): Promise<string> {
 
 import express from "express";
 import path from "path";
-import { setupGoogleAuth, isAdmin } from "./googleAuth";
 import { runSelfTest } from "./services/selfTest";
 import { runSyntheticUserTest } from "./services/syntheticUserTest";
 import { runAccuracyTest } from "./services/accuracyTest";
@@ -400,9 +399,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   const isProduction = process.env.NODE_ENV === 'production';
 
-  // Persist sessions in PostgreSQL so logins survive across autoscale
-  // instances and server restarts (an in-memory store loses them, which
-  // makes Google sign-in appear to "not work" in production).
+  // Persist anonymous guest sessions in PostgreSQL so they survive across
+  // autoscale instances and server restarts.
   const PgSession = connectPg(session);
   const sessionStore = new PgSession({
     pool,
@@ -425,41 +423,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     },
   }));
 
-  // Google OAuth: /api/auth/google, /api/auth/google/callback, /api/logout, /api/admin/logins
-  setupGoogleAuth(app);
-
-  // Get current user — Google-authenticated user if signed in, otherwise anonymous.
-  app.get("/api/user", async (req: any, res) => {
-    try {
-      if (req.session.authProvider === "google" && req.session.userId) {
-        const user = await storage.getUser(req.session.userId);
-        if (user) {
-          return res.json({
-            user: {
-              id: user.id,
-              username: user.email,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              profileImageUrl: user.profileImageUrl,
-              email: user.email,
-              provider: "google",
-              isAdmin: isAdmin(req),
-            },
-          });
-        }
-      }
-      // Not signed in
-      res.json({ user: null });
-    } catch (error) {
-      console.error("Get user error:", error);
-      res.status(500).json({ error: "Failed to get user" });
-    }
-  });
-
   // Get chat history for logged-in user
   app.get("/api/chat-history", async (req: any, res) => {
     try {
-      if (!req.session.userId || !req.session.username) {
+      if (!req.session.userId) {
         return res.json({ conversations: [] });
       }
       
