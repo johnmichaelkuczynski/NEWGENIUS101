@@ -32,7 +32,7 @@ export type Thinker = {
 };
 
 export interface IStorage {
-  // User operations (Replit Auth integration)
+  // User operations
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
@@ -85,7 +85,7 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
-  // Replit Auth integration
+  // User storage
   async upsertUser(userData: UpsertUser): Promise<User> {
     const [user] = await db
       .insert(users)
