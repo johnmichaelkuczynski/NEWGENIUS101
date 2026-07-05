@@ -75,10 +75,12 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- NO AUTHENTICATION SYSTEM (removed July 5, 2026 at user's explicit demand). NO Google OAuth, NO Clerk, NO Replit Auth — do not reintroduce any login system unless the user explicitly asks.
-- The Google OAuth system built earlier in July 2026 (login/callback routes, admin analytics page, login tracking) was completely ripped out: `server/googleAuth.ts` and `client/src/pages/admin.tsx` deleted; `/api/user`, `/api/logout`, `/api/admin/logins`, `/admin` removed; loginRecords/loginEvents removed from schema/storage; GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET and CLERK_* secrets deleted.
-- Anonymous guest sessions (`getSessionId` in routes.ts, express-session + SESSION_SECRET, Postgres-backed store) REMAIN — they power conversations, persona settings, and chat history and are app functionality, not auth. The `users` table remains for guest-user FK constraints.
-- Orphaned `login_records`/`login_events` tables may still exist in the database (harmless; code no longer references them).
+- Custom Google-only OAuth (rebuilt clean July 5, 2026 per user's 25-item spec). NO Clerk, NO Replit Auth — never use Replit-managed auth; consent screen must show HIS Google Cloud app name, not Replit.
+- Manual OAuth code flow in `server/googleAuth.ts` (no passport): login `GET /api/auth/google`, callback `GET /api/auth/google/callback`, logout `POST /api/logout`. Secrets: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SESSION_SECRET (all user-provided/generated fresh for this app).
+- Signed-in users get identity `google_<sub>`; anonymous visitors still work via guest sessions (`getSessionId`). `/api/user` returns the Google user or `{user: null}`.
+- Every Google login recorded in `login_records` + `login_events` (startup-safe DDL in googleAuth.ts creates them if missing). Admin analytics at `/admin` (users table, unique-user totals + graphs for 24h/month/year/all-time), server-gated via `/api/admin/logins` to johnmichaelkuczynski@gmail.com only.
+- PRODUCTION-ONLY OAuth policy (user's item 25): Google Cloud console must register ONLY the production domain's origin + callback URI — never *.replit.dev preview URLs. Sign-in link uses `target="_top"` (Google blocks OAuth inside the Replit preview iframe).
+- Prior history: Clerk removed July 3; custom OAuth built July 5, fully ripped out same day after redirect_uri_mismatch (URI not registered in his console), then rebuilt with production-only policy.
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.

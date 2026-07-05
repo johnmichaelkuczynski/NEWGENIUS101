@@ -27,6 +27,24 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Records every Google login for the admin analytics page
+export const loginRecords = pgTable("login_records", {
+  email: varchar("email").primaryKey(),
+  firstVisit: timestamp("first_visit").notNull().defaultNow(),
+  lastVisit: timestamp("last_visit").notNull().defaultNow(),
+  visitCount: integer("visit_count").notNull().default(1),
+});
+
+// One row per individual login event (for time-bucketed graphs)
+export const loginEvents = pgTable("login_events", {
+  id: serial("id").primaryKey(),
+  email: varchar("email").notNull(),
+  loggedInAt: timestamp("logged_in_at").notNull().defaultNow(),
+}, (table) => [index("IDX_login_events_time").on(table.loggedInAt)]);
+
+export type LoginRecord = typeof loginRecords.$inferSelect;
+export type LoginEvent = typeof loginEvents.$inferSelect;
+
 export const personaSettings = pgTable("persona_settings", {
   userId: varchar("user_id").primaryKey().references(() => users.id, { onDelete: "cascade" }),
   responseLength: integer("response_length").notNull().default(1000),

@@ -382,6 +382,7 @@ async function getSessionId(req: any): Promise<string> {
 
 import express from "express";
 import path from "path";
+import { setupGoogleAuth, isAdmin } from "./googleAuth";
 import { runSelfTest } from "./services/selfTest";
 import { runSyntheticUserTest } from "./services/syntheticUserTest";
 import { runAccuracyTest } from "./services/accuracyTest";
@@ -422,6 +423,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
       sameSite: 'lax', // CSRF protection
     },
   }));
+
+  // Google OAuth: /api/auth/google, /api/auth/google/callback, /api/logout, /api/admin/logins
+  setupGoogleAuth(app);
+
+  // Get current user — Google-authenticated user if signed in, otherwise anonymous.
+  app.get("/api/user", async (req: any, res) => {
+    try {
+      if (req.session.authProvider === "google" && req.session.userId) {
+        const user = await storage.getUser(req.session.userId);
+        if (user) {
+          return res.json({
+            user: {
+              id: user.id,
+              username: user.email,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              profileImageUrl: user.profileImageUrl,
+              email: user.email,
+              provider: "google",
+              isAdmin: isAdmin(req),
+            },
+          });
+        }
+      }
+      // Not signed in
+      res.json({ user: null });
+    } catch (error) {
+      console.error("Get user error:", error);
+      res.status(500).json({ error: "Failed to get user" });
+    }
+  });
 
   // Get chat history for logged-in user
   app.get("/api/chat-history", async (req: any, res) => {
