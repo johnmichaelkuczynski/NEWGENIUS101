@@ -654,19 +654,7 @@ export default function Chat() {
                     Log out
                   </Button>
                 </div>
-              ) : (
-                <Button
-                  onClick={() => {
-                    const w = window.open("/api/auth/google", "_blank", "noopener");
-                    if (!w) window.location.href = "/api/auth/google";
-                  }}
-                  size="sm"
-                  className="gap-2"
-                  data-testid="button-google-signin"
-                >
-                  Sign in with Google
-                </Button>
-              )}
+              ) : null}
             </div>
           </div>
         </header>

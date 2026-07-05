@@ -97,17 +97,6 @@ export default function Admin() {
           {!userData?.user && " Please sign in with Google first."}
         </p>
         <div className="flex gap-2">
-          {!userData?.user && (
-            <Button
-              onClick={() => {
-                const w = window.open("/api/auth/google", "_blank", "noopener");
-                if (!w) window.location.href = "/api/auth/google";
-              }}
-              data-testid="button-admin-signin"
-            >
-              Sign in with Google
-            </Button>
-          )}
           <Link href="/">
             <Button variant="outline" data-testid="link-back-home">
               <ArrowLeft className="w-4 h-4 mr-2" />
