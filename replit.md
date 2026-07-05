@@ -75,12 +75,10 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- Custom Google-only OAuth (rebuilt clean July 5, 2026 per user's 25-item spec). NO Clerk, NO Replit Auth — never use Replit-managed auth; consent screen must show HIS Google Cloud app name, not Replit.
-- Manual OAuth code flow in `server/googleAuth.ts` (no passport): login `GET /api/auth/google`, callback `GET /api/auth/google/callback`, logout `POST /api/logout`. Secrets: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SESSION_SECRET (all user-provided/generated fresh for this app).
-- Signed-in users get identity `google_<sub>`; anonymous visitors still work via guest sessions (`getSessionId`). `/api/user` returns the Google user or `{user: null}`.
-- Every Google login recorded in `login_records` + `login_events` (startup-safe DDL in googleAuth.ts creates them if missing). Admin analytics at `/admin` (users table, unique-user totals + graphs for 24h/month/year/all-time), server-gated via `/api/admin/logins` to johnmichaelkuczynski@gmail.com only.
-- PRODUCTION-ONLY OAuth policy (user's item 25): Google Cloud console must register ONLY the production domain's origin + callback URI — never *.replit.dev preview URLs. Sign-in link uses `target="_top"` (Google blocks OAuth inside the Replit preview iframe).
-- Prior history: Clerk removed July 3; custom OAuth built July 5, fully ripped out same day after redirect_uri_mismatch (URI not registered in his console), then rebuilt with production-only policy.
+- NO LOGIN OF ANY KIND (removed July 5, 2026 on user's order — "REMOVE GOOGLE LOGIN. REMOVE ALL LOGIN. I HAVE NEW APPROACH."). All visitors are anonymous guest sessions (`getSessionId`, express-session in Postgres). `/api/user` always returns `{user: null}`.
+- User has a NEW APPROACH he will explain — do not build any auth until he does.
+- History: Clerk removed July 3; custom Google OAuth built/removed/rebuilt July 5, then fully removed same day (googleAuth.ts, /admin page, login_records/login_events schema+storage, all auth UI deleted). SESSION_SECRET still required for guest sessions. GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET secrets still exist but nothing reads them.
+- If auth ever returns: never Clerk/Replit Auth; consent screen must show HIS app name; production-domain-only OAuth config (never *.replit.dev); sign-in links need `target="_top"`.
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.

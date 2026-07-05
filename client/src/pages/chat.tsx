@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogIn, LogOut, ShieldCheck } from "lucide-react";
+import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -115,24 +115,6 @@ export default function Chat() {
 
   const { data: fetchedSettings, isLoading: settingsLoading } = useQuery<PersonaSettings>({
     queryKey: ["/api/persona-settings"],
-  });
-
-  // Current Google-authenticated user (null when anonymous)
-  const { data: userData } = useQuery<{
-    user: { id: string; email: string; firstName?: string | null; profileImageUrl?: string | null; isAdmin: boolean } | null;
-  }>({
-    queryKey: ["/api/user"],
-  });
-  const currentUser = userData?.user ?? null;
-
-  const logoutMutation = useMutation({
-    mutationFn: async () => apiRequest("POST", "/api/logout", {}),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/user"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/chat-history"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/messages"] });
-      toast({ title: "Signed out" });
-    },
   });
 
   const { data: figures = [], isLoading: figuresLoading } = useQuery<Figure[]>({
@@ -588,47 +570,6 @@ export default function Chat() {
               </h1>
             </div>
             <div className="flex items-center gap-2">
-              {currentUser ? (
-                <div className="flex items-center gap-2">
-                  {currentUser.profileImageUrl && (
-                    <img
-                      src={currentUser.profileImageUrl}
-                      alt={currentUser.email}
-                      className="w-7 h-7 rounded-full border"
-                      data-testid="img-user-avatar"
-                    />
-                  )}
-                  <span className="text-xs text-muted-foreground hidden md:inline" data-testid="text-user-email">
-                    {currentUser.email}
-                  </span>
-                  {currentUser.isAdmin && (
-                    <Link href="/admin">
-                      <Button variant="outline" size="sm" className="gap-2" data-testid="link-admin">
-                        <ShieldCheck className="w-4 h-4" />
-                        Admin
-                      </Button>
-                    </Link>
-                  )}
-                  <Button
-                    onClick={() => logoutMutation.mutate()}
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                    disabled={logoutMutation.isPending}
-                    data-testid="button-logout"
-                  >
-                    <LogOut className="w-4 h-4" />
-                    Sign out
-                  </Button>
-                </div>
-              ) : (
-                <a href="/api/auth/google" target="_top" data-testid="link-google-signin">
-                  <Button variant="default" size="sm" className="gap-2" data-testid="button-google-signin">
-                    <LogIn className="w-4 h-4" />
-                    Sign in with Google
-                  </Button>
-                </a>
-              )}
               <Button
                 onClick={() => setShowChatHistory(!showChatHistory)}
                 variant="outline"

@@ -1,9 +1,10 @@
 ---
-name: Auth history (custom Google OAuth, production-only)
-description: Auth went Clerk → custom Google OAuth → removed → rebuilt July 5, 2026 with production-domain-only policy; constraints for any auth work
+name: Auth history (all login removed; new approach pending)
+description: Auth went Clerk → custom Google OAuth → fully removed July 5, 2026; user has an unexplained "new approach"; constraints if auth ever returns
 ---
-- Timeline: Clerk ripped out July 3, 2026. Custom Google-only OAuth built July 5 → user demanded full removal same day after `redirect_uri_mismatch` (he never registered the callback URI in his Google Cloud console) → hours later re-sent his 25-item spec demanding the same system rebuilt, now with item 25: **production domain only** — never configure, test, or register OAuth with *.replit.dev preview URLs.
-- Implementation: manual code flow in `server/googleAuth.ts` (no passport), routes `/api/auth/google`, `/api/auth/google/callback`, `POST /api/logout`, `/api/admin/logins`; admin page `/admin` gated to johnmichaelkuczynski@gmail.com. Login tracking in `login_records`/`login_events` with startup-safe `CREATE TABLE IF NOT EXISTS` (live DB ≠ schema.ts; never rely on db:push).
-- Google blocks OAuth inside the Replit preview iframe → sign-in links must use `target="_top"`; real login testing requires a full browser tab on the production domain.
-- **Why:** user is adamant: consent screen must show HIS app name (never Replit), fresh credentials per app (never reused), verification only against the deployed production domain. The original failure was HIS console missing the redirect URI — not code.
-- **How to apply:** never reintroduce Clerk/Replit Auth. Any auth change keeps the manual flow and requires him to register `https://<prod-domain>/api/auth/google/callback` (redirect URI) and `https://<prod-domain>` (JS origin) in his Google Cloud console. Verify the consent screen with an external screenshot of the auth URL before asking him to test.
+- Current state: NO login at all. All auth code removed July 5, 2026 on user's explicit order after repeated Google Console redirect_uri_mismatch failures (his console entry had a one-char typo he denied). Anonymous guest sessions remain (express-session + Postgres store, SESSION_SECRET required). `/api/user` returns `{user:null}` as a compatibility endpoint.
+- User announced "I HAVE NEW APPROACH. WILL EXPLAIN AFTER YOU REMOVE" — do NOT build any auth until he explains it.
+- Timeline: Clerk ripped out July 3 → custom Google-only OAuth built July 5 per his 25-item spec → removed → rebuilt with production-only policy → fully removed again the same day.
+- Leftovers: GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET secrets still exist (agent tools cannot delete secrets — only the user can, via Secrets tab). login_records / login_events tables may still physically exist in the Neon DB (harmless; nothing reads them).
+- **Why:** user is hostile to auth friction; the recurring failure was always Google Cloud console configuration on HIS side, not code. He blamed the system each time.
+- **How to apply if auth returns:** never Clerk/Replit Auth; consent screen must show HIS app name (never Replit); production-domain-only OAuth (never *.replit.dev); sign-in links need `target="_top"` (Google blocks OAuth in the Replit preview iframe); verify the consent screen yourself via external screenshot of the auth URL before asking him to test; expect his console entries to contain typos — verify them character by character against a live curl test of the domain.
