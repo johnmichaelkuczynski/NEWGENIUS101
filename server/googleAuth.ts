@@ -2,15 +2,20 @@ import type { Express, Request, Response } from "express";
 import crypto from "crypto";
 import { storage } from "./storage";
 
-const ADMIN_EMAIL = "johnmichaelkuczynski@gmail.com";
+// ============================================================
+// Clean Google-only OAuth (authorization-code flow, no libraries)
+// Routes: GET /api/auth/google, GET /api/auth/google/callback,
+//         POST /api/logout, GET /api/admin/logins
+// Secrets used: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SESSION_SECRET
+// ============================================================
 
-function getBaseUrl(req: Request): string {
-  const host = req.get("host");
-  return `https://${host}`;
-}
+const ADMIN_EMAIL = "johnmichaelkuczynski@gmail.com";
+const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
+const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo";
 
 function getRedirectUri(req: Request): string {
-  return `${getBaseUrl(req)}/api/auth/google/callback`;
+  return `https://${req.get("host")}/api/auth/google/callback`;
 }
 
 export function isAdmin(req: any): boolean {
@@ -22,7 +27,7 @@ export function isAdmin(req: any): boolean {
 }
 
 export function setupGoogleAuth(app: Express) {
-  // Step 1: redirect the browser to Google's consent screen
+  // ---- Step 1: send the browser to Google's consent screen ----
   app.get("/api/auth/google", (req: any, res: Response) => {
     const clientId = process.env.GOOGLE_CLIENT_ID;
     if (!clientId) {
@@ -41,13 +46,15 @@ export function setupGoogleAuth(app: Express) {
       prompt: "select_account",
     });
 
-    console.log(`[Google Auth] Login initiated, redirecting to Google (redirect_uri=${getRedirectUri(req)})`);
+    console.log(
+      `[Google Auth] /api/auth/google hit — redirecting to Google (redirect_uri=${getRedirectUri(req)})`,
+    );
     req.session.save(() => {
-      res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`);
+      res.redirect(`${GOOGLE_AUTH_URL}?${params.toString()}`);
     });
   });
 
-  // Step 2: Google redirects back with a code; exchange it for tokens
+  // ---- Step 2: Google redirects back; exchange code for tokens ----
   app.get("/api/auth/google/callback", async (req: any, res: Response) => {
     try {
       const { code, state, error } = req.query as Record<string, string>;
@@ -60,7 +67,7 @@ export function setupGoogleAuth(app: Express) {
         return res.redirect("/?login_error=missing_code");
       }
       if (!state || state !== req.session.oauthState) {
-        console.error("[Google Auth] State mismatch — possible CSRF");
+        console.error("[Google Auth] State mismatch — possible CSRF, login rejected");
         return res.redirect("/?login_error=state_mismatch");
       }
       delete req.session.oauthState;
@@ -71,8 +78,7 @@ export function setupGoogleAuth(app: Express) {
         return res.status(500).send("Google OAuth credentials are not configured");
       }
 
-      // Exchange authorization code for tokens
-      const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
+      const tokenRes = await fetch(GOOGLE_TOKEN_URL, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -92,8 +98,7 @@ export function setupGoogleAuth(app: Express) {
 
       const tokens = (await tokenRes.json()) as { access_token: string };
 
-      // Fetch the user's profile
-      const profileRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+      const profileRes = await fetch(GOOGLE_USERINFO_URL, {
         headers: { Authorization: `Bearer ${tokens.access_token}` },
       });
       if (!profileRes.ok) {
@@ -121,7 +126,6 @@ export function setupGoogleAuth(app: Express) {
       const email = profile.email.toLowerCase();
       const userId = `google_${profile.sub}`;
 
-      // Upsert the user record
       await storage.upsertUser({
         id: userId,
         email,
@@ -130,16 +134,17 @@ export function setupGoogleAuth(app: Express) {
         profileImageUrl: profile.picture || null,
       });
 
-      // Record the login for admin analytics
+      // Record login for admin analytics (first visit, last visit, count, timestamps)
       await storage.recordLogin(email);
 
-      // Establish the session
       req.session.userId = userId;
       req.session.username = email;
       req.session.email = email;
       req.session.authProvider = "google";
 
-      console.log(`[Google Auth] Login successful, session created for ${email} (userId=${userId})`);
+      console.log(
+        `[Google Auth] /api/auth/google/callback SUCCESS — session created for ${email} (userId=${userId})`,
+      );
 
       req.session.save(() => {
         res.redirect("/");
@@ -150,7 +155,7 @@ export function setupGoogleAuth(app: Express) {
     }
   });
 
-  // Logout: destroy the session entirely
+  // ---- Logout: destroy the session ----
   app.post("/api/logout", (req: any, res: Response) => {
     const email = req.session?.email;
     req.session.destroy((err: any) => {
@@ -164,7 +169,7 @@ export function setupGoogleAuth(app: Express) {
     });
   });
 
-  // Admin analytics — only for the admin email
+  // ---- Admin analytics: ONLY johnmichaelkuczynski@gmail.com ----
   app.get("/api/admin/logins", async (req: any, res: Response) => {
     if (!isAdmin(req)) {
       return res.status(403).json({ error: "Forbidden" });
