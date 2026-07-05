@@ -656,14 +656,15 @@ export default function Chat() {
                 </div>
               ) : (
                 <Button
-                  asChild
+                  onClick={() => {
+                    const w = window.open("/api/auth/google", "_blank", "noopener");
+                    if (!w) window.location.href = "/api/auth/google";
+                  }}
                   size="sm"
                   className="gap-2"
                   data-testid="button-google-signin"
                 >
-                  <a href="/api/auth/google" target="_top">
-                    Sign in with Google
-                  </a>
+                  Sign in with Google
                 </Button>
               )}
             </div>

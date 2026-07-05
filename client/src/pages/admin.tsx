@@ -98,8 +98,14 @@ export default function Admin() {
         </p>
         <div className="flex gap-2">
           {!userData?.user && (
-            <Button asChild data-testid="button-admin-signin">
-              <a href="/api/auth/google" target="_top">Sign in with Google</a>
+            <Button
+              onClick={() => {
+                const w = window.open("/api/auth/google", "_blank", "noopener");
+                if (!w) window.location.href = "/api/auth/google";
+              }}
+              data-testid="button-admin-signin"
+            >
+              Sign in with Google
             </Button>
           )}
           <Link href="/">
