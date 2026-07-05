@@ -1,5 +1,9 @@
 import {
   users,
+  authUsers,
+  visits,
+  type AuthUser,
+  type Visit,
   personaSettings,
   goals,
   conversations,
@@ -32,11 +36,22 @@ export interface IStorage {
   // User operations
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
-  getUserByEmail(email: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
   createUser(user: InsertUser): Promise<User>;
   createOrGetUserByUsername(username: string): Promise<User>;
   getCurrentUser(): Promise<User | undefined>;
+
+  // Auth user operations (Google OAuth — auth_users table)
+  getUserById(id: number): Promise<AuthUser | undefined>;
+  getUserByGoogleId(googleId: string): Promise<AuthUser | undefined>;
+  getUserByEmail(email: string): Promise<AuthUser | undefined>;
+  createUserWithGoogle(data: { username: string; googleId: string; email: string | null; displayName: string | null }): Promise<AuthUser>;
+  updateUserGoogle(id: number, data: { googleId?: string; displayName?: string | null }): Promise<AuthUser>;
+
+  // Visit/login analytics
+  recordVisit(userId: number, email: string | null): Promise<void>;
+  getVisits(limit: number): Promise<Visit[]>;
+  getVisitTimestampsSince(since: Date | null): Promise<Date[]>;
 
   // Persona settings operations
   getPersonaSettings(userId: string): Promise<PersonaSettings | undefined>;
@@ -96,9 +111,50 @@ export class DatabaseStorage implements IStorage {
     return user || undefined;
   }
 
-  async getUserByEmail(email: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.email, email));
+  // --- Auth user operations (Google OAuth — auth_users table) ---
+  async getUserById(id: number): Promise<AuthUser | undefined> {
+    const [user] = await db.select().from(authUsers).where(eq(authUsers.id, id));
     return user || undefined;
+  }
+
+  async getUserByGoogleId(googleId: string): Promise<AuthUser | undefined> {
+    const [user] = await db.select().from(authUsers).where(eq(authUsers.googleId, googleId));
+    return user || undefined;
+  }
+
+  async getUserByEmail(email: string): Promise<AuthUser | undefined> {
+    const [user] = await db.select().from(authUsers).where(eq(authUsers.email, email));
+    return user || undefined;
+  }
+
+  async createUserWithGoogle(data: { username: string; googleId: string; email: string | null; displayName: string | null }): Promise<AuthUser> {
+    const [user] = await db.insert(authUsers).values(data).returning();
+    return user;
+  }
+
+  async updateUserGoogle(id: number, data: { googleId?: string; displayName?: string | null }): Promise<AuthUser> {
+    const [user] = await db
+      .update(authUsers)
+      .set(data)
+      .where(eq(authUsers.id, id))
+      .returning();
+    return user;
+  }
+
+  // --- Visit/login analytics ---
+  async recordVisit(userId: number, email: string | null): Promise<void> {
+    await db.insert(visits).values({ userId, email });
+  }
+
+  async getVisits(limit: number): Promise<Visit[]> {
+    return db.select().from(visits).orderBy(desc(visits.visitedAt)).limit(limit);
+  }
+
+  async getVisitTimestampsSince(since: Date | null): Promise<Date[]> {
+    const rows = since
+      ? await db.select({ visitedAt: visits.visitedAt }).from(visits).where(sql`${visits.visitedAt} >= ${since}`)
+      : await db.select({ visitedAt: visits.visitedAt }).from(visits);
+    return rows.map((r) => r.visitedAt);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {

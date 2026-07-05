@@ -27,6 +27,26 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Auth users table (Google OAuth sign-in — separate from guest `users` table)
+export const authUsers = pgTable("auth_users", {
+  id: serial("id").primaryKey(),
+  username: varchar("username").notNull(),
+  googleId: varchar("google_id").unique(),
+  email: varchar("email"),
+  displayName: varchar("display_name"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+export type AuthUser = typeof authUsers.$inferSelect;
+
+// Login/visit events (admin analytics)
+export const visits = pgTable("visits", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id"),
+  email: varchar("email"),
+  visitedAt: timestamp("visited_at").notNull().defaultNow(),
+});
+export type Visit = typeof visits.$inferSelect;
+
 export const personaSettings = pgTable("persona_settings", {
   userId: varchar("user_id").primaryKey().references(() => users.id, { onDelete: "cascade" }),
   responseLength: integer("response_length").notNull().default(1000),

@@ -75,10 +75,14 @@
 The application functions as a centralized knowledge server, offering unified access to philosophical and psychoanalytic texts through a secure internal API. It features a unified single-page layout with a 3-column design (philosophers sidebar, settings, main content) and seven vertically stacked sections.
 
 #### User Authentication
-- NO LOGIN OF ANY KIND (removed July 5, 2026 on user's order — "REMOVE GOOGLE LOGIN. REMOVE ALL LOGIN. I HAVE NEW APPROACH."). All visitors are anonymous guest sessions (`getSessionId`, express-session in Postgres). `/api/user` always returns `{user: null}`.
-- User has a NEW APPROACH he will explain — do not build any auth until he does.
-- History: Clerk removed July 3; custom Google OAuth built/removed/rebuilt July 5, then fully removed same day (googleAuth.ts, /admin page, login_records/login_events schema+storage, all auth UI deleted). SESSION_SECRET still required for guest sessions. GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET secrets still exist but nothing reads them.
-- If auth ever returns: never Clerk/Replit Auth; consent screen must show HIS app name; production-domain-only OAuth config (never *.replit.dev); sign-in links need `target="_top"`.
+- CANONICAL AUTH FILE: `server/auth.ts` is the user's proven passport-based Google OAuth implementation copied verbatim from his textsurgeonplus.xyz app (July 5, 2026). DO NOT rewrite, regenerate, or replace it with any other auth system (no Clerk, no Replit Auth, no Auth.js). Only app-specific values (domains, callback path, DB env var, session table) may ever be touched.
+- Login is OPTIONAL — the app is fully open; anonymous guest sessions (`getSessionId`) still power all chat features. Signing in does not change chat data.
+- Modified-from-canonical values: CALLBACK_PATH=/api/auth/google/callback (matches his Google Console URIs); fallback prod domain genius101.xyz; trustedHosts = genius101.xyz, www.genius101.xyz, genius-101-xyz-2.replit.app, localhost:5000; session pool uses EXTERNAL_DATABASE_URL; session table "sessions" (preserves pre-existing guest sessions).
+- Tables: `auth_users` (serial int PK, separate from varchar-id guest `users` table) and `visits` (login events). Both exist in the live Neon DB (created via raw DDL — live DB ≠ schema.ts, never rely on db:push).
+- Endpoints: GET /api/auth/google (+/auth/google), GET /api/auth/google/callback (+/auth/google/callback), GET /api/auth/user, GET /api/auth/me, POST /api/auth/logout, GET /api/admin/visits (gated to johnmichaelkuczynski@gmail.com). Admin UI at /admin.
+- Secrets read (priority order): GOOGLE_LOGIN_CLIENT_ID/SECRET → GOOGLE_OAUTH_CLIENT_ID/SECRET → GOOGLE_CLIENT_ID/SECRET. Currently uses GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET.
+- Sign-in links use `target="_top"` (Google blocks OAuth inside the Replit preview iframe). Production-domain URIs must be registered in HIS Google Cloud Console: origin + /api/auth/google/callback for each domain.
+- History: Clerk removed July 3; custom hand-rolled OAuth built/removed July 5; replaced same day by this canonical passport implementation on his order.
 
 #### UI/UX Decisions
 - **Layout**: 3-column layout (philosophers sidebar, settings, main content) with seven vertically stacked sections.

@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope } from "lucide-react";
+import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogIn, LogOut, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -112,6 +112,24 @@ export default function Chat() {
   const handleDeleteMessage = (messageId: string) => {
     deleteMessageMutation.mutate(messageId);
   };
+
+  // Signed-in user (Google OAuth) — null/unauthenticated for anonymous guests
+  const { data: authData } = useQuery<{
+    authenticated: boolean;
+    user: { id: number; username: string; email: string | null; displayName: string | null } | null;
+  }>({
+    queryKey: ["/api/auth/user"],
+  });
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      return await apiRequest("POST", "/api/auth/logout");
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
+      window.location.reload();
+    },
+  });
 
   const { data: fetchedSettings, isLoading: settingsLoading } = useQuery<PersonaSettings>({
     queryKey: ["/api/persona-settings"],
@@ -602,6 +620,39 @@ export default function Chat() {
                   Diagnostics
                 </Button>
               </Link>
+              {authData?.authenticated && authData.user ? (
+                <>
+                  <span className="text-sm text-muted-foreground hidden md:inline" data-testid="text-signed-in-user">
+                    {authData.user.displayName || authData.user.email || authData.user.username}
+                  </span>
+                  {authData.user.email?.toLowerCase() === "johnmichaelkuczynski@gmail.com" && (
+                    <Link href="/admin">
+                      <Button variant="outline" size="sm" className="gap-2" data-testid="link-admin">
+                        <ShieldCheck className="w-4 h-4" />
+                        Admin
+                      </Button>
+                    </Link>
+                  )}
+                  <Button
+                    onClick={() => logoutMutation.mutate()}
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                    disabled={logoutMutation.isPending}
+                    data-testid="button-sign-out"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign out
+                  </Button>
+                </>
+              ) : (
+                <a href="/api/auth/google" target="_top" data-testid="link-sign-in">
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <LogIn className="w-4 h-4" />
+                    Sign in with Google
+                  </Button>
+                </a>
+              )}
             </div>
           </div>
         </header>

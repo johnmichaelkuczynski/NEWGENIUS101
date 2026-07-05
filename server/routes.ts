@@ -2,8 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
-import session from "express-session";
-import connectPg from "connect-pg-simple";
+import { setupAuth } from "./auth";
 import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
@@ -395,38 +394,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Serve attached_assets folder for avatar images
   app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
 
-  // Setup sessions (but not auth)
-  const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
-  const isProduction = process.env.NODE_ENV === 'production';
-
-  // Persist anonymous guest sessions in PostgreSQL so they survive across
-  // autoscale instances and server restarts.
-  const PgSession = connectPg(session);
-  const sessionStore = new PgSession({
-    pool,
-    tableName: "sessions",
-    createTableIfMissing: true,
-  });
-
-  app.set("trust proxy", 1); // required so secure cookies work behind Replit's proxy
-
-  app.use(session({
-    store: sessionStore,
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      secure: isProduction, // Require HTTPS in production
-      maxAge: sessionTtl,
-      sameSite: 'lax', // CSRF protection
-    },
-  }));
-
-  // No authentication — all visitors are anonymous guest sessions.
-  app.get("/api/user", (_req, res) => {
-    res.json({ user: null });
-  });
+  // Sessions + Google OAuth: canonical implementation in server/auth.ts.
+  // Guest sessions (getSessionId) ride on the same session middleware.
+  setupAuth(app);
 
   // Get chat history for logged-in user
   app.get("/api/chat-history", async (req: any, res) => {
