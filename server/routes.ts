@@ -7415,6 +7415,28 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
     }
   });
 
+  // Save pasted/typed text directly as a document
+  app.post("/api/user-documents/text", async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      const { name, text } = req.body as { name?: string; text?: string };
+      if (!text?.trim()) return res.status(400).json({ error: "Text is empty" });
+      const docName = (name?.trim() || "Pasted text") + ".txt";
+      const doc = await storage.createUserDocument({
+        authUserId: authUser.id,
+        originalName: docName,
+        fileType: "txt",
+        extractedText: text.trim(),
+        rawBytes: Buffer.from(text.trim()).toString("base64"),
+        sizeBytes: Buffer.byteLength(text.trim(), "utf8"),
+      });
+      res.json({ success: true, document: { id: doc.id, originalName: doc.originalName, fileType: doc.fileType, sizeBytes: doc.sizeBytes, uploadedAt: doc.uploadedAt } });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to save text" });
+    }
+  });
+
   // List documents for the signed-in user
   app.get("/api/user-documents", async (req: any, res) => {
     try {
