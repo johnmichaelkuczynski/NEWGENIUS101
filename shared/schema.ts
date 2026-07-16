@@ -651,3 +651,19 @@ export type InsertCoherenceDocument = z.infer<typeof insertCoherenceDocumentSche
 
 export type CoherenceChunk = typeof coherenceChunks.$inferSelect;
 export type InsertCoherenceChunk = z.infer<typeof insertCoherenceChunkSchema>;
+
+// Per-user document storage (tied to auth_users.id from Google OAuth)
+export const userDocuments = pgTable("user_documents", {
+  id: serial("id").primaryKey(),
+  authUserId: integer("auth_user_id").notNull(),
+  originalName: varchar("original_name", { length: 512 }).notNull(),
+  fileType: varchar("file_type", { length: 32 }).notNull(),
+  extractedText: text("extracted_text").notNull(),
+  rawBytes: text("raw_bytes"), // base64-encoded for download
+  sizeBytes: integer("size_bytes").notNull(),
+  uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
+});
+
+export type UserDocument = typeof userDocuments.$inferSelect;
+export const insertUserDocumentSchema = createInsertSchema(userDocuments).omit({ id: true, uploadedAt: true });
+export type InsertUserDocument = z.infer<typeof insertUserDocumentSchema>;

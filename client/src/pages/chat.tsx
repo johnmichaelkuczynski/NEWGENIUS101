@@ -32,6 +32,7 @@ import { DocumentReconstructorSection } from "@/components/sections/document-rec
 import { ThinkingPanel } from "@/components/thinking-panel";
 import { DocumentGeneratorTools } from "@/components/document-generator-tools";
 import { SelfTestButton } from "@/components/self-test-dialog";
+import UserDocuments from "@/components/user-documents";
 
 const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
   responseLength: 750,
@@ -67,6 +68,7 @@ export default function Chat() {
 
   // Content transfer system: refs to input setters
   const [chatInputContent, setChatInputContent] = useState<{ text: string; version: number }>({ text: "", version: 0 });
+  const [chatInputDocument, setChatInputDocument] = useState<{ name: string; text: string; version: number }>({ name: "", text: "", version: 0 });
   const modelBuilderInputRef = useRef<(text: string) => void>(() => {});
   const paperWriterTopicRef = useRef<(topic: string) => void>(() => {});
   const dialogueCreatorInputRef = useRef<(text: string) => void>(() => {});
@@ -588,6 +590,11 @@ export default function Chat() {
               </h1>
             </div>
             <div className="flex items-center gap-2">
+              <UserDocuments
+                onUseDocument={(name, text) =>
+                  setChatInputDocument(prev => ({ name, text, version: prev.version + 1 }))
+                }
+              />
               <Button
                 onClick={() => setShowChatHistory(!showChatHistory)}
                 variant="outline"
@@ -826,6 +833,7 @@ export default function Chat() {
               onSend={handleSendMessage} 
               disabled={isStreaming}
               externalContent={chatInputContent}
+              externalDocument={chatInputDocument}
             />
           </div>
 

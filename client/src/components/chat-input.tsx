@@ -8,9 +8,10 @@ interface ChatInputProps {
   onSend: (message: string, documentText?: string) => void;
   disabled?: boolean;
   externalContent?: { text: string; version: number };
+  externalDocument?: { name: string; text: string; version: number };
 }
 
-export function ChatInput({ onSend, disabled, externalContent }: ChatInputProps) {
+export function ChatInput({ onSend, disabled, externalContent, externalDocument }: ChatInputProps) {
   const [message, setMessage] = useState("");
   const [uploadedDocument, setUploadedDocument] = useState<{ name: string; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -21,13 +22,23 @@ export function ChatInput({ onSend, disabled, externalContent }: ChatInputProps)
   useEffect(() => {
     if (externalContent && externalContent.version > 0) {
       setMessage(externalContent.text);
-      // Focus and scroll to textarea
       if (textareaRef.current) {
         textareaRef.current.focus();
         textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
   }, [externalContent?.version]);
+
+  // Load a stored document into the chat (from My Documents panel)
+  useEffect(() => {
+    if (externalDocument && externalDocument.version > 0) {
+      setUploadedDocument({ name: externalDocument.name, text: externalDocument.text });
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [externalDocument?.version]);
 
   const handleSend = () => {
     if (message.trim() && !disabled) {

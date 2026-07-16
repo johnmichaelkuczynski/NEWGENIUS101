@@ -7399,6 +7399,126 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
     }
   });
 
+  // ── User Document Storage ──────────────────────────────────────────────
+  const docUpload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB per file
+    fileFilter: (_req, file, cb) => {
+      if (file.originalname.match(/\.(txt|md|pdf|docx|doc)$/i) ||
+          ['text/plain','application/pdf',
+           'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+           'application/msword'].includes(file.mimetype)) {
+        cb(null, true);
+      } else {
+        cb(new Error('Only .txt, .md, .pdf, .doc, .docx allowed'));
+      }
+    }
+  });
+
+  // List documents for the signed-in user
+  app.get("/api/user-documents", async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      const docs = await storage.getUserDocuments(authUser.id);
+      res.json({ documents: docs });
+    } catch (err) {
+      console.error("[UserDocs] list error:", err);
+      res.status(500).json({ error: "Failed to list documents" });
+    }
+  });
+
+  // Upload a document
+  app.post("/api/user-documents", docUpload.single("file"), async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+
+      const ext = req.file.originalname.split('.').pop()?.toLowerCase() ?? '';
+      let extractedText = '';
+
+      if (ext === 'txt' || ext === 'md') {
+        extractedText = req.file.buffer.toString('utf-8');
+      } else if (ext === 'pdf') {
+        const pdfData = await pdfParse(req.file.buffer);
+        extractedText = pdfData.text;
+      } else if (ext === 'docx' || ext === 'doc') {
+        const result = await mammoth.extractRawText({ buffer: req.file.buffer });
+        extractedText = result.value;
+      }
+
+      if (!extractedText.trim()) {
+        return res.status(400).json({ error: "Document is empty or could not be parsed" });
+      }
+
+      const rawBytes = req.file.buffer.toString('base64');
+      const doc = await storage.createUserDocument({
+        authUserId: authUser.id,
+        originalName: req.file.originalname,
+        fileType: ext,
+        extractedText,
+        rawBytes,
+        sizeBytes: req.file.size,
+      });
+
+      res.json({ success: true, document: { id: doc.id, originalName: doc.originalName, fileType: doc.fileType, sizeBytes: doc.sizeBytes, uploadedAt: doc.uploadedAt } });
+    } catch (err) {
+      console.error("[UserDocs] upload error:", err);
+      res.status(500).json({ error: err instanceof Error ? err.message : "Upload failed" });
+    }
+  });
+
+  // Get a document's extracted text (for "use in chat")
+  app.get("/api/user-documents/:id/text", async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      const doc = await storage.getUserDocument(Number(req.params.id), authUser.id);
+      if (!doc) return res.status(404).json({ error: "Document not found" });
+      res.json({ text: doc.extractedText, originalName: doc.originalName });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to retrieve document" });
+    }
+  });
+
+  // Download a document (returns base64 raw bytes)
+  app.get("/api/user-documents/:id/download", async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      const doc = await storage.getUserDocument(Number(req.params.id), authUser.id);
+      if (!doc) return res.status(404).json({ error: "Document not found" });
+      if (!doc.rawBytes) return res.status(404).json({ error: "No raw file stored" });
+
+      const buf = Buffer.from(doc.rawBytes, 'base64');
+      const mimeMap: Record<string, string> = {
+        pdf: 'application/pdf',
+        docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        doc: 'application/msword',
+        txt: 'text/plain',
+        md: 'text/markdown',
+      };
+      res.setHeader('Content-Type', mimeMap[doc.fileType] ?? 'application/octet-stream');
+      res.setHeader('Content-Disposition', `attachment; filename="${doc.originalName}"`);
+      res.send(buf);
+    } catch (err) {
+      res.status(500).json({ error: "Download failed" });
+    }
+  });
+
+  // Delete a document
+  app.delete("/api/user-documents/:id", async (req: any, res) => {
+    try {
+      const authUser = req.user;
+      if (!authUser) return res.status(401).json({ error: "Not authenticated" });
+      await storage.deleteUserDocument(Number(req.params.id), authUser.id);
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: "Delete failed" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

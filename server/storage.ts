@@ -2,8 +2,10 @@ import {
   users,
   authUsers,
   visits,
+  userDocuments,
   type AuthUser,
   type Visit,
+  type UserDocument,
   personaSettings,
   goals,
   conversations,
@@ -82,6 +84,11 @@ export interface IStorage {
   getAllThinkers(): Promise<Thinker[]>;
   getThinker(id: string): Promise<Thinker | undefined>;
 
+  // User document storage
+  getUserDocuments(authUserId: number): Promise<Omit<UserDocument, 'rawBytes' | 'extractedText'>[]>;
+  getUserDocument(id: number, authUserId: number): Promise<UserDocument | undefined>;
+  createUserDocument(doc: { authUserId: number; originalName: string; fileType: string; extractedText: string; rawBytes: string; sizeBytes: number }): Promise<UserDocument>;
+  deleteUserDocument(id: number, authUserId: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -537,6 +544,40 @@ export class DatabaseStorage implements IStorage {
   async getThinker(id: string): Promise<Thinker | undefined> {
     const thinkers = await this.getAllThinkers();
     return thinkers.find(t => t.id === id.toLowerCase());
+  }
+
+  // --- User document storage ---
+  async getUserDocuments(authUserId: number): Promise<Omit<UserDocument, 'rawBytes' | 'extractedText'>[]> {
+    const rows = await db
+      .select({
+        id: userDocuments.id,
+        authUserId: userDocuments.authUserId,
+        originalName: userDocuments.originalName,
+        fileType: userDocuments.fileType,
+        sizeBytes: userDocuments.sizeBytes,
+        uploadedAt: userDocuments.uploadedAt,
+      })
+      .from(userDocuments)
+      .where(eq(userDocuments.authUserId, authUserId))
+      .orderBy(desc(userDocuments.uploadedAt));
+    return rows;
+  }
+
+  async getUserDocument(id: number, authUserId: number): Promise<UserDocument | undefined> {
+    const [row] = await db
+      .select()
+      .from(userDocuments)
+      .where(and(eq(userDocuments.id, id), eq(userDocuments.authUserId, authUserId)));
+    return row || undefined;
+  }
+
+  async createUserDocument(doc: { authUserId: number; originalName: string; fileType: string; extractedText: string; rawBytes: string; sizeBytes: number }): Promise<UserDocument> {
+    const [row] = await db.insert(userDocuments).values(doc).returning();
+    return row;
+  }
+
+  async deleteUserDocument(id: number, authUserId: number): Promise<void> {
+    await db.delete(userDocuments).where(and(eq(userDocuments.id, id), eq(userDocuments.authUserId, authUserId)));
   }
 
 }
