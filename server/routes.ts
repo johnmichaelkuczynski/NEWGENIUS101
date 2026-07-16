@@ -398,9 +398,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Guest sessions (getSessionId) ride on the same session middleware.
   setupAuth(app);
 
-  // LOGIN REQUIRED: every /api route needs a signed-in Google user,
-  // except the auth endpoints themselves (needed to log in).
+  // LOGIN REQUIRED in production. Dev mode bypasses (replit.dev domain can't do Google OAuth).
   app.use("/api", (req: any, res, next) => {
+    if (process.env.NODE_ENV !== "production") return next();
     if (req.path.startsWith("/auth/")) return next();
     if (req.isAuthenticated && req.isAuthenticated()) return next();
     return res.status(401).json({ error: "Login required" });

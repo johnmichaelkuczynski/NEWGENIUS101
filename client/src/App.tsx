@@ -28,7 +28,10 @@ function AuthGate({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (!data?.authenticated) {
+  // Dev bypass: replit.dev preview can't do Google OAuth — skip the wall.
+  const isDev = window.location.hostname.endsWith(".replit.dev") || window.location.hostname === "localhost";
+
+  if (!isDev && !data?.authenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background px-4">
         <div className="w-full max-w-sm text-center space-y-6">
