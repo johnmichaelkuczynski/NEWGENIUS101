@@ -585,7 +585,7 @@ export default function Chat() {
                   data-testid="icon-kuczynski"
                 />
               </div>
-              <h1 className="font-display text-xl font-light whitespace-nowrap">
+              <h1 className="font-display text-base font-light whitespace-nowrap">
                 Genius 101
               </h1>
             </div>
