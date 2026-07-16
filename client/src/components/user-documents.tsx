@@ -53,6 +53,7 @@ export default function UserDocuments({ onUseDocument }: Props) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/user-documents"] });
       toast({ title: "Document saved" });
+      setOpen(false);
     },
     onError: (e: Error) => toast({ title: "Upload failed", description: e.message, variant: "destructive" }),
   });
