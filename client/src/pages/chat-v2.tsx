@@ -51,7 +51,7 @@ function intensityLabel(n: number): string {
   return "Wild man";
 }
 
-export default function Chat() {
+export default function ChatV2() {
   const { toast } = useToast();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [streamingMessage, setStreamingMessage] = useState<string>("");
@@ -575,8 +575,8 @@ export default function Chat() {
               >
                 Contact Us
               </a>
-              <Link href="/v2">
-                <span className="text-xs font-semibold text-primary border border-primary/40 px-2 py-0.5 rounded hover:bg-primary/10 transition-colors cursor-pointer">V2 →</span>
+              <Link href="/">
+                <span className="text-xs font-semibold text-muted-foreground border border-muted-foreground/40 px-2 py-0.5 rounded hover:bg-muted/30 transition-colors cursor-pointer">← V1</span>
               </Link>
             </div>
             <div className="flex items-center gap-3 mx-4">
@@ -589,7 +589,7 @@ export default function Chat() {
                 />
               </div>
               <h1 className="font-display text-base font-light whitespace-nowrap">
-                Genius 101
+                Genius 101 <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded ml-1">V2</span>
               </h1>
             </div>
             <div className="flex items-center gap-2">

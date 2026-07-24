@@ -9,6 +9,7 @@ import { PopupManagerProvider } from "@/contexts/popup-manager-context";
 import { MultiPopupManager } from "@/components/ui/multi-popup-manager";
 import { VoiceDictation } from "@/components/voice-dictation";
 import Chat from "@/pages/chat";
+import ChatV2 from "@/pages/chat-v2";
 import Diagnostics from "@/pages/diagnostics";
 import Admin from "@/pages/admin";
 
@@ -62,6 +63,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Chat} />
+      <Route path="/v2" component={ChatV2} />
       <Route path="/diagnostics" component={Diagnostics} />
       <Route path="/admin" component={Admin} />
       <Route path="/model-builder">
