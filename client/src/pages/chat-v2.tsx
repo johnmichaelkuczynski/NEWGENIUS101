@@ -575,9 +575,6 @@ export default function ChatV2() {
               >
                 Contact Us
               </a>
-              <Link href="/">
-                <span className="text-xs font-semibold text-muted-foreground border border-muted-foreground/40 px-2 py-0.5 rounded hover:bg-muted/30 transition-colors cursor-pointer">← V1</span>
-              </Link>
             </div>
             <div className="flex items-center gap-3 mx-4">
               <div className="relative flex-shrink-0">
@@ -593,6 +590,11 @@ export default function ChatV2() {
               </h1>
             </div>
             <div className="flex items-center gap-2">
+              <Link href="/">
+                <Button variant="outline" size="sm" className="gap-2" data-testid="button-switch-v1">
+                  ← V1
+                </Button>
+              </Link>
               <UserDocuments
                 onUseDocument={(name, text) =>
                   setChatInputDocument(prev => ({ name, text, version: prev.version + 1 }))
