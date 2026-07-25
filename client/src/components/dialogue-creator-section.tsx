@@ -147,11 +147,15 @@ export function DialogueCreatorSection({
     // Capture the prior dialogue BEFORE we clear state (used as sequel context).
     const priorDialogueText = isSequel ? dialogue : '';
 
-    // Resolve the source text/file. For a sequel we reuse the source from the
-    // last generation (the file may have been cleared from the active upload,
-    // and the textarea may have been edited) so the sequel keeps the SAME source.
-    const sourceFile = uploadedFileRef.current || (isSequel ? lastSourceFileRef.current : null);
-    const sourceText = isSequel ? (lastSourceTextRef.current || inputText) : inputText;
+    // Resolve the source text/file.
+    // In sequel mode: prefer whatever the user has NOW (new chapter) over the saved
+    // prior source. Fall back to the prior source only if the user left the input empty.
+    const currentInputText = inputText.trim();
+    const sourceFile = uploadedFileRef.current ||
+      (isSequel && !currentInputText ? lastSourceFileRef.current : null);
+    const sourceText = isSequel
+      ? (currentInputText || lastSourceTextRef.current)
+      : inputText;
 
     // Validate input: either a source file or pasted text (min 5 chars).
     // Continue resumes existing output so it needs no fresh source.
