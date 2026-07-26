@@ -41,6 +41,7 @@ export function InterviewCreatorSection({
   const [topic, setTopic] = useState('');
   const [interviewerTone, setInterviewerTone] = useState<InterviewerTone>('neutral');
   const [wordLengthInput, setWordLengthInput] = useState<string>('1500');
+  const [quoteCount, setQuoteCount] = useState<string>('3');
   const [elevenLabsMode, setElevenLabsMode] = useState(false);
   const [inputMode, setInputMode] = useState<'topic' | 'upload'>('topic');
   const [uploadedText, setUploadedText] = useState('');
@@ -189,6 +190,7 @@ export function InterviewCreatorSection({
       formData.append('mode', mode);
       formData.append('interviewerTone', interviewerTone);
       formData.append('wordLength', wordLength.toString());
+      formData.append('quoteCount', quoteCount);
       formData.append('elevenLabsMode', String(elevenLabsMode));
 
       if (inputMode === 'upload' && uploadedFileRef.current) {
@@ -441,6 +443,25 @@ export function InterviewCreatorSection({
               {interviewerTone === 'neutral' && "Listens attentively, asks clarifying questions, relates views to broader topics"}
               {interviewerTone === 'dialectical' && "Actively engaged, volunteers own views, sometimes agrees, sometimes disagrees"}
               {interviewerTone === 'hostile' && "Attempts to challenge and critique the interviewee's positions through rigorous logic"}
+            </p>
+          </div>
+
+          <div>
+            <Label htmlFor="quote-count-select-interview">Quotes from Source Material</Label>
+            <Select value={quoteCount} onValueChange={setQuoteCount}>
+              <SelectTrigger id="quote-count-select-interview" className="mt-2">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="0">None — no direct quotes required</SelectItem>
+                <SelectItem value="2">Light — ~2 quotes</SelectItem>
+                <SelectItem value="4">Moderate — ~4 quotes</SelectItem>
+                <SelectItem value="6">Rich — ~6 quotes</SelectItem>
+                <SelectItem value="10">Heavy — ~10 quotes</SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-sm text-muted-foreground mt-1">
+              How many verbatim quotes the thinker should weave in from their retrieved writings
             </p>
           </div>
 

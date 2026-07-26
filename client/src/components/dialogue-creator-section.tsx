@@ -44,6 +44,7 @@ export function DialogueCreatorSection({
   const [dialogue, setDialogue] = useState('');
   const [wordCount, setWordCount] = useState(0);
   const [wordLengthInput, setWordLengthInput] = useState<string>('1500');
+  const [quoteCount, setQuoteCount] = useState<string>('3');
   const [elevenLabsMode, setElevenLabsMode] = useState(false);
   const [canContinue, setCanContinue] = useState(false);
   const dialoguePopupIdRef = useRef<string>('');
@@ -247,6 +248,7 @@ export function DialogueCreatorSection({
       }
 
       formData.append('wordLength', wordLength.toString());
+      formData.append('quoteCount', quoteCount);
       formData.append('elevenLabsMode', String(elevenLabsMode));
 
       // Resume from existing partial output
@@ -620,6 +622,25 @@ export function DialogueCreatorSection({
             />
             <p className="text-sm text-muted-foreground mt-1">
               e.g., "Make it more confrontational" or "Focus on the psychological aspects"
+            </p>
+          </div>
+
+          <div>
+            <Label htmlFor="quote-count-select">Quotes from Source Material</Label>
+            <Select value={quoteCount} onValueChange={setQuoteCount}>
+              <SelectTrigger id="quote-count-select" className="mt-2">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="0">None — no direct quotes required</SelectItem>
+                <SelectItem value="2">Light — ~2 quotes per thinker</SelectItem>
+                <SelectItem value="4">Moderate — ~4 quotes per thinker</SelectItem>
+                <SelectItem value="6">Rich — ~6 quotes per thinker</SelectItem>
+                <SelectItem value="10">Heavy — ~10 quotes per thinker</SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-sm text-muted-foreground mt-1">
+              How many verbatim quotes each thinker should weave in from their retrieved writings
             </p>
           </div>
 

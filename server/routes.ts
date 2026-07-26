@@ -4829,7 +4829,8 @@ Begin:`;
   app.post("/api/dialogue-creator", upload.single('file'), async (req, res) => {
     try {
       let sourceText = '';
-      const { text, customInstructions, authorId1, authorId2, authorId3, authorId4, wordLength, elevenLabsMode: elevenLabsModeRaw, existingText, priorDialogue } = req.body;
+      const { text, customInstructions, authorId1, authorId2, authorId3, authorId4, wordLength, quoteCount: quoteCountRaw, elevenLabsMode: elevenLabsModeRaw, existingText, priorDialogue } = req.body;
+      const targetQuoteCount = Math.min(Math.max(parseInt(quoteCountRaw) || 0, 0), 20);
       const elevenLabsMode = elevenLabsModeRaw === 'true' || elevenLabsModeRaw === true;
       
       // Parse target word length
@@ -5063,6 +5064,12 @@ Structure your output exactly as:
 [CHARACTER NAME]: [Dialogue]
 
 Use CAPS for character names (${speakerNames.join(', ')}). Use proper paragraph breaks. No additional formatting.
+
+## QUOTE REQUIREMENT
+
+${targetQuoteCount > 0
+  ? `⚠️ MANDATORY: Each thinker MUST include at least ${targetQuoteCount} verbatim quotes from the reference material provided below. A "quote" means a direct, word-for-word excerpt from their writings, clearly attributed (e.g. "As I wrote in [title]..." or integrated naturally into speech). Do NOT paraphrase and call it a quote. If the reference material is thin, use the best passages available and note the source.`
+  : `No specific quote count is required. Draw on the reference material organically — thinkers may quote their own works when it feels natural, but are not obligated to.`}
 
 ## FINAL INSTRUCTION
 
@@ -5559,7 +5566,8 @@ ${fullResponse.slice(-1500)}`
   // ==================== INTERVIEW CREATOR ====================
   app.post("/api/interview-creator", upload.single('file'), async (req, res) => {
     try {
-      const { thinkerId, mode, interviewerTone, wordLength, topic, elevenLabsMode: elevenLabsModeRaw } = req.body;
+      const { thinkerId, mode, interviewerTone, wordLength, quoteCount: quoteCountRaw, topic, elevenLabsMode: elevenLabsModeRaw } = req.body;
+      const targetQuoteCount = Math.min(Math.max(parseInt(quoteCountRaw) || 0, 0), 20);
       const elevenLabsMode = elevenLabsModeRaw === 'true' || elevenLabsModeRaw === true;
       let sourceText = '';
 
@@ -5719,6 +5727,12 @@ Continue this pattern. Use CAPS for speaker names. No markdown formatting. Plain
 ## LENGTH TARGET
 Generate approximately ${wordsPerChapter} words for this ${totalChapters > 1 ? 'chapter' : 'interview'}. This is CRITICAL - do not cut short.
 ${totalChapters > 1 ? `This is chapter content - make it self-contained with a natural ending point. Each chapter MUST be approximately ${wordsPerChapter} words.` : ''}
+
+## QUOTE REQUIREMENT
+
+${targetQuoteCount > 0
+  ? `⚠️ MANDATORY: ${thinker.name} MUST include at least ${targetQuoteCount} verbatim quotes from the source passages provided above. A "quote" means a direct, word-for-word excerpt, woven naturally into speech (e.g. "As I wrote in [title], '...'"). Do NOT paraphrase and call it a quote. Use the best available passages even if the material is limited.`
+  : `No specific quote count is required. ${thinker.name} may quote from their works when it feels natural, but is not obligated to.`}
 
 ## QUALITY REQUIREMENTS
 - Every ${thinker.name} response must be traceable to the retrieved passages
