@@ -279,6 +279,106 @@ function getOpenAIClient(provider: string): OpenAI | null {
   }
 }
 
+// -------------------------------------------------------------------
+// Provider-agnostic helpers for dialogue / interview generators.
+// Always tries DeepSeek first (less restrictive content policy),
+// then OpenAI, then Claude as a last resort.
+// -------------------------------------------------------------------
+const GENERATION_PROVIDER_ORDER = ["deepseek", "openai", "anthropic", "grok", "venice"];
+
+/** Non-streaming: call an LLM and return the full response text. */
+async function callLLMPlan(system: string, user: string, maxTokens: number, temperature = 0.5): Promise<string> {
+  const providers = GENERATION_PROVIDER_ORDER.filter(isProviderAvailable);
+  if (providers.length === 0) throw new Error("No AI provider configured");
+  let lastErr: any;
+  for (const provider of providers) {
+    try {
+      if (provider === "anthropic" && anthropic) {
+        const r = await anthropic.messages.create({
+          model: "claude-sonnet-4-5-20250929",
+          max_tokens: maxTokens,
+          temperature,
+          system,
+          messages: [{ role: "user", content: user }],
+        });
+        return r.content[0]?.type === "text" ? r.content[0].text : "";
+      }
+      const client = getOpenAIClient(provider);
+      if (!client) continue;
+      const model = MODEL_CONFIG[provider]?.model ?? "deepseek-chat";
+      const r = await client.chat.completions.create({
+        model,
+        max_tokens: maxTokens,
+        temperature,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+      });
+      return r.choices[0]?.message?.content ?? "";
+    } catch (err) {
+      console.warn(`[callLLMPlan] ${provider} failed:`, (err as Error).message);
+      lastErr = err;
+    }
+  }
+  throw lastErr ?? new Error("All providers failed");
+}
+
+/** Streaming: yields text delta strings; tries DeepSeek → OpenAI → Claude. */
+async function* streamLLMText(
+  system: string,
+  user: string,
+  maxTokens: number,
+  temperature = 0.7
+): AsyncGenerator<string> {
+  const providers = GENERATION_PROVIDER_ORDER.filter(isProviderAvailable);
+  if (providers.length === 0) throw new Error("No AI provider configured");
+  let lastErr: any;
+  for (const provider of providers) {
+    try {
+      if (provider === "anthropic" && anthropic) {
+        const stream = await anthropic.messages.create({
+          model: "claude-sonnet-4-5-20250929",
+          max_tokens: maxTokens,
+          temperature,
+          stream: true,
+          system,
+          messages: [{ role: "user", content: user }],
+        });
+        let gotContent = false;
+        for await (const event of stream) {
+          if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+            const t = event.delta.text;
+            if (t) { gotContent = true; yield t; }
+          }
+        }
+        if (gotContent) return;
+        console.warn("[streamLLMText] anthropic produced no content, trying next provider");
+        continue;
+      }
+      const client = getOpenAIClient(provider);
+      if (!client) continue;
+      const model = MODEL_CONFIG[provider]?.model ?? "deepseek-chat";
+      const stream = await client.chat.completions.create({
+        model,
+        max_tokens: maxTokens,
+        temperature,
+        stream: true,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+      });
+      let gotContent = false;
+      for await (const chunk of stream) {
+        const t = chunk.choices[0]?.delta?.content ?? "";
+        if (t) { gotContent = true; yield t; }
+      }
+      if (gotContent) return;
+      console.warn(`[streamLLMText] ${provider} produced no content, trying next provider`);
+    } catch (err) {
+      console.warn(`[streamLLMText] ${provider} failed:`, (err as Error).message);
+      lastErr = err;
+    }
+  }
+  throw lastErr ?? new Error("All providers failed");
+}
+// -------------------------------------------------------------------
+
 // Stream a completion with automatic provider fallback.
 // Tries each available provider in FALLBACK_ORDER (starting at startProvider).
 // If a provider errors BEFORE producing any text, it transparently moves to the
@@ -5197,14 +5297,7 @@ ${isSequelMode ? `\nThis is a SEQUEL. The arc must be built entirely around the 
 
 Plan the arc now. Return ONLY the JSON object.`;
         try {
-          const planRes = await anthropic.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 2000,
-            temperature: 0.5,
-            system: planSystem,
-            messages: [{ role: "user", content: planUser }],
-          });
-          const rawPlan = planRes.content[0]?.type === 'text' ? planRes.content[0].text : '';
+          const rawPlan = await callLLMPlan(planSystem, planUser, 2000, 0.5);
           const jsonMatch = rawPlan.match(/\{[\s\S]*\}/);
           const parsedPlan = jsonMatch ? JSON.parse(jsonMatch[0]) : {};
           if (parsedPlan && Array.isArray(parsedPlan.beats) && parsedPlan.beats.length > 0) {
@@ -5309,15 +5402,6 @@ ${isFinalChunk
   : `\nAdvance the argument with these beats; do NOT wrap up yet — later beats still remain.`}`;
         }
 
-        const stream = await anthropic.messages.create({
-          model: "claude-sonnet-4-5-20250929",
-          max_tokens: Math.min(chunkMaxTokens, 8000),
-          temperature: 0.7,
-          stream: true,
-          system: DIALOGUE_SYSTEM_PROMPT,
-          messages: [{ role: "user", content: chunkPrompt }]
-        });
-
         // Guarantee a clean paragraph break at chunk seams so a new turn never
         // glues onto the previous chunk's last word (e.g. "...debateJAMES:").
         const hadContentBeforeChunk = fullResponse.length > 0;
@@ -5329,17 +5413,14 @@ ${isFinalChunk
           hadContentBeforeChunk && !/[.!?:;"'\u2019\u201d)\]]$/.test(trimmedTail);
         let isFirstDeltaOfChunk = true;
 
-        for await (const event of stream) {
-          if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-            let text = event.delta.text;
-
+        for await (let text of streamLLMText(DIALOGUE_SYSTEM_PROMPT, chunkPrompt, Math.min(chunkMaxTokens, 8000), 0.7)) {
             if (isFirstDeltaOfChunk) {
               isFirstDeltaOfChunk = false;
               if (hadContentBeforeChunk) {
                 if (endedMidSentence) {
                   // Mid-sentence resume: ensure exactly one space at the join, no line break.
                   text = text.replace(/^\s+/, '');
-                  if (!fullResponse.endsWith(' ') && !/^[\s.,!?;:'")\]]/.test(event.delta.text)) {
+                  if (!fullResponse.endsWith(' ') && !/^[\s.,!?;:'")\]]/.test(text)) {
                     fullResponse += ' ';
                     res.write(`data: ${JSON.stringify({ content: ' ' })}\n\n`);
                   }
@@ -5358,7 +5439,6 @@ ${isFinalChunk
 
             fullResponse += text;
             res.write(`data: ${JSON.stringify({ content: text })}\n\n`);
-          }
         }
 
         totalWords = fullResponse.split(/\s+/).filter((w: string) => w.length > 0).length;
@@ -5401,18 +5481,8 @@ ${elevenLabsMode
 
 Dialogue so far (continue from the end):
 ${fullResponse.slice(-2000)}`;
-          const closureStream = await anthropic.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 800,
-            temperature: 0.7,
-            stream: true,
-            system: DIALOGUE_SYSTEM_PROMPT,
-            messages: [{ role: 'user', content: closurePrompt }],
-          });
           let isFirstClosureDelta = true;
-          for await (const event of closureStream) {
-            if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-              let text = event.delta.text;
+          for await (let text of streamLLMText(DIALOGUE_SYSTEM_PROMPT, closurePrompt, 800, 0.7)) {
               if (isFirstClosureDelta) {
                 isFirstClosureDelta = false;
                 text = text.replace(/^\s+/, '');
@@ -5422,7 +5492,6 @@ ${fullResponse.slice(-2000)}`;
               }
               fullResponse += text;
               res.write(`data: ${JSON.stringify({ content: text })}\n\n`);
-            }
           }
           totalWords = fullResponse.split(/\s+/).filter((w: string) => w.length > 0).length;
         } catch (closureErr) {
@@ -5479,15 +5548,7 @@ ${fullResponse.slice(-2000)}`;
         // Buffer one completion tail and clean it: keep only enough to finish the
         // current turn (drop anything that starts a new speaker turn).
         const generateTail = async (): Promise<string> => {
-          const completionStream = await anthropic.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 400,
-            temperature: 0.7,
-            stream: true,
-            system: DIALOGUE_SYSTEM_PROMPT,
-            messages: [{
-              role: "user",
-              content: `The dialogue below was cut off and is incomplete. Continue from the EXACT character where it stops and write ONLY enough to finish the current speaker's incomplete sentence and bring their turn to a natural close.
+          const tailPrompt = `The dialogue below was cut off and is incomplete. Continue from the EXACT character where it stops and write ONLY enough to finish the current speaker's incomplete sentence and bring their turn to a natural close.
 
 STRICT RULES:
 - Do NOT start any new speaker turn or add any new speaker label.
@@ -5497,14 +5558,10 @@ STRICT RULES:
 - Output ONLY the short continuation text, nothing else.
 
 DIALOGUE (it cuts off abruptly):
-${fullResponse.slice(-1500)}`
-            }]
-          });
+${fullResponse.slice(-1500)}`;
           let buf = '';
-          for await (const event of completionStream) {
-            if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-              buf += event.delta.text;
-            }
+          for await (const text of streamLLMText(DIALOGUE_SYSTEM_PROMPT, tailPrompt, 400, 0.7)) {
+            buf += text;
           }
           // Only finish the CURRENT turn: drop anything from a new turn onward.
           const nlIdx = buf.indexOf('\n\n');
@@ -5801,14 +5858,7 @@ ${planTopic}
 
 Plan the arc now. Return ONLY the JSON object.`;
         try {
-          const planRes = await anthropic.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 2000,
-            temperature: 0.5,
-            system: planSystem,
-            messages: [{ role: "user", content: planUser }],
-          });
-          const rawPlan = planRes.content[0]?.type === 'text' ? planRes.content[0].text : '';
+          const rawPlan = await callLLMPlan(planSystem, planUser, 2000, 0.5);
           const jsonMatch = rawPlan.match(/\{[\s\S]*\}/);
           const parsedPlan = jsonMatch ? JSON.parse(jsonMatch[0]) : {};
           if (parsedPlan && Array.isArray(parsedPlan.beats) && parsedPlan.beats.length > 0) {
@@ -5850,7 +5900,7 @@ RULES:
       // produced. Returns the appended text so the caller can update its counts.
       // No-op when no scaffold was planned. Used before EVERY terminal exit.
       const deliverInterviewClosure = async (currentText: string): Promise<string> => {
-        if (interviewSkeletonBeats.length === 0 || !anthropic || res.writableEnded || clientGone) return '';
+        if (interviewSkeletonBeats.length === 0 || res.writableEnded || clientGone) return '';
         console.log('[Interview Creator] Delivering planned closure');
         let appended = '';
         const writeSeam = () => {
@@ -5876,18 +5926,8 @@ ${elevenLabsMode
 
 Interview so far (continue from the end):
 ${currentText.slice(-2000)}`;
-          const closureStream = await anthropic.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 800,
-            temperature: 0.7,
-            stream: true,
-            system: INTERVIEW_SYSTEM_PROMPT,
-            messages: [{ role: 'user', content: closurePrompt }],
-          });
           let isFirstClosureDelta = true;
-          for await (const event of closureStream) {
-            if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-              let text = event.delta.text;
+          for await (let text of streamLLMText(INTERVIEW_SYSTEM_PROMPT, closurePrompt, 800, 0.7)) {
               if (isFirstClosureDelta) {
                 isFirstClosureDelta = false;
                 text = text.replace(/^\s+/, '');
@@ -5896,7 +5936,6 @@ ${currentText.slice(-2000)}`;
               }
               appended += text;
               res.write(`data: ${JSON.stringify({ content: text })}\n\n`);
-            }
           }
         } catch (closureErr) {
           console.error('[Interview Creator] Forced-closure stream failed:', (closureErr as Error).message);
