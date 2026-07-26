@@ -5116,10 +5116,13 @@ ABSOLUTE RULES:
 ${priorExcerpt}
 === END PREVIOUS DIALOGUE ===
 
-This new dialogue is a SEQUEL to the dialogue above, on the same source text. Write a NEW, self-contained dialogue that takes place AFTER the previous one and advances the discussion:
-- Build on and deepen the ideas already explored; move into new territory rather than rehashing what was already said.
-- Treat the previous conversation as having already happened; participants may reference it naturally ("As we discussed before...").
-- Feature ONLY the current cast of speakers defined in the configuration above, which may differ from the previous dialogue. Any participant who was not in the previous dialogue enters fresh and is woven into the conversation naturally.
+This new dialogue is a SEQUEL. The thinkers are now engaging with the NEW SOURCE TEXT provided at the very top of this prompt — this is a different chapter or passage, NOT the same text as before. The previous dialogue is included ONLY so the speakers don't repeat arguments they already made; it must NOT determine the topic of this dialogue.
+
+RULES:
+- The topic, content, and focus of this dialogue must be driven entirely by the NEW SOURCE TEXT at the top of the prompt.
+- The previous dialogue is context only — it shows where the intellectual arc left off, so the speakers can continue naturally. Do NOT rehash or repeat any of its arguments.
+- Treat the previous conversation as having already happened; participants may reference it briefly and naturally ("We already covered X, so let's push further...").
+- Feature ONLY the current cast of speakers defined in the configuration above.
 - Do NOT repeat or restate the previous dialogue's exchanges.`;
       }
 
@@ -5183,7 +5186,7 @@ REQUIREMENTS:
 TARGET LENGTH: ~${targetWordLength} words
 ${customInstructions && customInstructions.trim() ? `EXTRA INSTRUCTIONS: ${customInstructions.trim()}\n` : ''}SOURCE / TOPIC:
 ${truncatedSourceText.slice(0, 6000)}
-${isSequelMode ? `\nThis is a SEQUEL that takes place AFTER a previous dialogue — the arc must move into NEW territory, not rehash the prior one.\nPRIOR DIALOGUE (for context; do NOT repeat it):\n${priorDialogueText.slice(-3000)}` : ''}
+${isSequelMode ? `\nThis is a SEQUEL. The arc must be built entirely around the NEW SOURCE TEXT above (a new chapter/passage). The prior dialogue is context only — plan beats that explore the NEW text, not the old one.\nPRIOR DIALOGUE (for context only; do NOT repeat it):\n${priorDialogueText.slice(-3000)}` : ''}
 
 Plan the arc now. Return ONLY the JSON object.`;
         try {
