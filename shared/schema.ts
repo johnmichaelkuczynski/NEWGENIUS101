@@ -664,6 +664,20 @@ export const userDocuments = pgTable("user_documents", {
   uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
 });
 
+// API keys for external apps to call the public Kuczynski API
+export const apiKeys = pgTable("api_keys", {
+  id: serial("id").primaryKey(),
+  keyHash: varchar("key_hash", { length: 64 }).notNull().unique(), // sha256 hex of the raw key
+  keyPrefix: varchar("key_prefix", { length: 16 }).notNull(),      // first chars, for display
+  label: varchar("label", { length: 256 }).notNull(),
+  revoked: boolean("revoked").default(false).notNull(),
+  requestCount: integer("request_count").default(0).notNull(),
+  lastUsedAt: timestamp("last_used_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type ApiKey = typeof apiKeys.$inferSelect;
+
 export type UserDocument = typeof userDocuments.$inferSelect;
 export const insertUserDocumentSchema = createInsertSchema(userDocuments).omit({ id: true, uploadedAt: true });
 export type InsertUserDocument = z.infer<typeof insertUserDocumentSchema>;

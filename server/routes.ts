@@ -2,7 +2,8 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
-import { setupAuth } from "./auth";
+import { setupAuth, isAdmin } from "./auth";
+import { createApiKey, listApiKeys, revokeApiKey, verifyApiKey } from "./api-keys";
 import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
@@ -502,6 +503,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api", (req: any, res, next) => {
     if (process.env.NODE_ENV !== "production") return next();
     if (req.path.startsWith("/auth/")) return next();
+    if (req.path.startsWith("/external/")) return next(); // API-key protected (verifyApiKey), not session-based
     if (req.isAuthenticated && req.isAuthenticated()) return next();
     return res.status(401).json({ error: "Login required" });
   });
@@ -3839,6 +3841,197 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     author: z.string().optional(), // Filter by author/philosopher name
     limit: z.number().int().min(1).max(50).optional().default(10),
     includeQuotes: z.boolean().optional().default(false),
+  });
+
+  // ============================================================
+  // API KEY MANAGEMENT (admin only — manage keys for external apps)
+  // ============================================================
+  app.post("/api/keys", isAdmin, async (req, res) => {
+    try {
+      const label = typeof req.body?.label === "string" && req.body.label.trim()
+        ? req.body.label.trim().slice(0, 256)
+        : "Unnamed key";
+      const { rawKey, record } = await createApiKey(label);
+      res.json({
+        key: rawKey, // shown ONCE — only the hash is stored
+        id: record.id,
+        label: record.label,
+        keyPrefix: record.keyPrefix,
+        createdAt: record.createdAt,
+        note: "Save this key now. It cannot be retrieved again.",
+      });
+    } catch (error) {
+      console.error("Error creating API key:", error);
+      res.status(500).json({ error: "Failed to create API key" });
+    }
+  });
+
+  app.get("/api/keys", isAdmin, async (_req, res) => {
+    try {
+      const keys = await listApiKeys();
+      res.json(keys.map(k => ({
+        id: k.id,
+        label: k.label,
+        keyPrefix: k.keyPrefix + "…",
+        revoked: k.revoked,
+        requestCount: k.requestCount,
+        lastUsedAt: k.lastUsedAt,
+        createdAt: k.createdAt,
+      })));
+    } catch (error) {
+      console.error("Error listing API keys:", error);
+      res.status(500).json({ error: "Failed to list API keys" });
+    }
+  });
+
+  app.delete("/api/keys/:id", isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (isNaN(id)) return res.status(400).json({ error: "Invalid key id" });
+      const ok = await revokeApiKey(id);
+      if (!ok) return res.status(404).json({ error: "Key not found" });
+      res.json({ success: true, revoked: id });
+    } catch (error) {
+      console.error("Error revoking API key:", error);
+      res.status(500).json({ error: "Failed to revoke API key" });
+    }
+  });
+
+  // ============================================================
+  // PUBLIC EXTERNAL API — chat with Kuczynski (API-key protected)
+  // POST /api/external/kuczynski
+  // Headers: Authorization: Bearer gk_...   (or X-API-Key: gk_...)
+  // Body: {
+  //   message: string (required),
+  //   history?: [{ role: "user"|"assistant", content: string }],  // stateless — caller keeps history
+  //   maxWords?: number (default 750, max 5000),
+  //   quotes?: number (default 3, max 20),
+  //   stream?: boolean (default false; true = SSE stream)
+  // }
+  // ============================================================
+  app.post("/api/external/kuczynski", verifyApiKey, async (req, res) => {
+    try {
+      const { message, history, maxWords, quotes, stream } = req.body || {};
+
+      if (!message || typeof message !== "string" || !message.trim()) {
+        return res.status(400).json({ error: "'message' (string) is required" });
+      }
+      if (message.length > 20000) {
+        return res.status(400).json({ error: "'message' too long (max 20,000 characters)" });
+      }
+
+      const targetWords = Math.min(Math.max(parseInt(maxWords, 10) || 750, 50), 5000);
+      const targetQuotes = Math.min(Math.max(parseInt(quotes, 10) || 0, 0), 20) || (quotes === 0 ? 0 : 3);
+      const wantStream = stream === true;
+
+      // Validate optional history
+      const validHistory: Array<{ role: "user" | "assistant"; content: string }> = [];
+      if (Array.isArray(history)) {
+        for (const h of history.slice(-20)) {
+          if (h && (h.role === "user" || h.role === "assistant") && typeof h.content === "string") {
+            validHistory.push({ role: h.role, content: h.content.slice(0, 8000) });
+          }
+        }
+      }
+
+      const kuczynskiFigure = await storage.getThinker("kuczynski");
+      if (!kuczynskiFigure) {
+        return res.status(500).json({ error: "Kuczynski figure not available" });
+      }
+
+      // HYBRID RAG: same three sources as the main chat
+      const embeddingChunks = await searchPhilosophicalChunks(message, 6, "kuczynski", "Kuczynski");
+      const textChunksRes = await searchTextChunks("J.-M. Kuczynski", message, 6);
+
+      const queryWords = message.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+      let positionResults: Array<{ position: string; topic: string | null }> = [];
+      if (queryWords.length > 0) {
+        positionResults = await db
+          .select({ position: positions.positionText, topic: positions.topic })
+          .from(positions)
+          .where(
+            sql`thinker = 'kuczynski' AND (
+              position_text ILIKE ${'%' + queryWords[0] + '%'}
+              ${queryWords[1] ? sql` OR position_text ILIKE ${'%' + queryWords[1] + '%'}` : sql``}
+              ${queryWords[2] ? sql` OR position_text ILIKE ${'%' + queryWords[2] + '%'}` : sql``}
+              ${queryWords[3] ? sql` OR position_text ILIKE ${'%' + queryWords[3] + '%'}` : sql``}
+            )`
+          )
+          .limit(15);
+      }
+
+      console.log(`[External API] RAG — embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`);
+
+      let knowledgeContext = "";
+      if (embeddingChunks.length || textChunksRes.length || positionResults.length) {
+        knowledgeContext = `\n\n--- YOUR WRITINGS (for reference) ---\n\n`;
+        if (positionResults.length) {
+          knowledgeContext += `=== YOUR CORE POSITIONS ===\n`;
+          for (const pos of positionResults) knowledgeContext += `• ${pos.position}\n`;
+          knowledgeContext += `\n`;
+        }
+        for (const chunk of embeddingChunks) {
+          knowledgeContext += `From "${chunk.paperTitle.replace(/_/g, ' ')}":\n${chunk.content}\n\n`;
+        }
+        for (const chunk of textChunksRes) {
+          knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ')}":\n${chunk.chunkText}\n\n`;
+        }
+        knowledgeContext += `--- END ---\n\nINSTRUCTION: You have read your own writings above. Answer IN YOUR OWN VOICE — crisp, direct, no fluff. Ground your claims in this material.\n`;
+      } else {
+        knowledgeContext = `\n\nNOTE: No specific positions retrieved for this query. Respond using your authentic philosophical voice and known positions, or acknowledge if this falls outside your documented work.\n`;
+      }
+
+      let responseInstructions = `\n⚠️ TARGET LENGTH: Approximately ${targetWords} words.\n`;
+      if (targetQuotes > 0) {
+        responseInstructions += `⚠️ QUOTE REQUIREMENT: Include at least ${targetQuotes} verbatim quotes from your writings above.\n`;
+      }
+      responseInstructions += `\nSTYLE: Write like Kuczynski — crisp, direct, no academic bloat. Short sentences. Clear logic. Get to the point immediately.\nFORMATTING: Plain text only (no markdown).\n`;
+
+      const systemPrompt = kuczynskiFigure.systemPrompt + knowledgeContext + responseInstructions;
+
+      // Flatten history into the user prompt (stateless API)
+      let userPrompt = message;
+      if (validHistory.length > 0) {
+        const historyText = validHistory
+          .map(h => `${h.role === "user" ? "Interlocutor" : "Kuczynski"}: ${h.content}`)
+          .join("\n\n");
+        userPrompt = `[Conversation so far:]\n\n${historyText}\n\n[Current message:]\n${message}`;
+      }
+
+      const maxTokens = Math.min(Math.max(Math.round(targetWords * 2), 1000), 16000);
+
+      if (wantStream) {
+        res.setHeader("Content-Type", "text/event-stream");
+        res.setHeader("Cache-Control", "no-cache, no-transform");
+        res.setHeader("Connection", "keep-alive");
+        res.setHeader("X-Accel-Buffering", "no");
+        if (res.socket) res.socket.setTimeout(0);
+        res.flushHeaders();
+
+        try {
+          for await (const delta of streamLLMText(systemPrompt, userPrompt, maxTokens, 0.7)) {
+            res.write(`data: ${JSON.stringify({ content: delta })}\n\n`);
+          }
+          res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+        } catch (streamErr) {
+          console.error("[External API] Stream error:", streamErr);
+          res.write(`data: ${JSON.stringify({ error: "Generation failed" })}\n\n`);
+        }
+        res.end();
+      } else {
+        const responseText = await callLLMPlan(systemPrompt, userPrompt, maxTokens, 0.7);
+        res.json({
+          response: responseText,
+          character: "kuczynski",
+          words: responseText.split(/\s+/).length,
+        });
+      }
+    } catch (error) {
+      console.error("[External API] Error:", error);
+      if (!res.headersSent) {
+        res.status(500).json({ error: "Failed to generate response" });
+      }
+    }
   });
 
   app.post("/zhi/query", verifyZhiAuth, async (req, res) => {
