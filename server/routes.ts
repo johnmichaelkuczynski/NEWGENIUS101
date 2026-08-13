@@ -17,6 +17,7 @@ import {
   positions,
   argumentStatements,
   insertArgumentStatementSchema,
+  uniqueVisitors,
 } from "@shared/schema";
 import { db, pool } from "./db";
 import { eq, ilike, sql } from "drizzle-orm";
@@ -504,6 +505,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (process.env.NODE_ENV !== "production") return next();
     if (req.path.startsWith("/auth/")) return next();
     if (req.path.startsWith("/external/")) return next(); // API-key protected (verifyApiKey), not session-based
+    if (req.path === "/track-visit") return next(); // anonymous visitor counting must work pre-login
     if (req.isAuthenticated && req.isAuthenticated()) return next();
     return res.status(401).json({ error: "Login required" });
   });
@@ -3841,6 +3843,85 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     author: z.string().optional(), // Filter by author/philosopher name
     limit: z.number().int().min(1).max(50).optional().default(10),
     includeQuotes: z.boolean().optional().default(false),
+  });
+
+  // ============================================================
+  // UNIQUE VISITOR TRACKING (anonymous, cookie-based)
+  // ============================================================
+  // In-memory IP throttle: max 10 track-visit writes per IP per minute
+  const trackVisitBuckets = new Map<string, number[]>();
+  app.post("/api/track-visit", async (req: any, res) => {
+    try {
+      const ip = (req.headers["x-forwarded-for"]?.toString().split(",")[0].trim()) || req.ip || "unknown";
+      const now = Date.now();
+      const bucket = (trackVisitBuckets.get(ip) || []).filter(t => now - t < 60_000);
+      if (bucket.length >= 10) {
+        trackVisitBuckets.set(ip, bucket);
+        return res.status(429).json({ ok: false });
+      }
+      bucket.push(now);
+      trackVisitBuckets.set(ip, bucket);
+      if (trackVisitBuckets.size > 10000) trackVisitBuckets.clear(); // bound memory
+
+      // Parse the visitor cookie manually (no cookie-parser in this app)
+      const cookieHeader: string = req.headers.cookie || "";
+      let visitorId = cookieHeader
+        .split(";")
+        .map((c: string) => c.trim())
+        .find((c: string) => c.startsWith("gvid="))
+        ?.slice(5);
+
+      const isNew = !visitorId || !/^[0-9a-f-]{36}$/.test(visitorId);
+      if (isNew) {
+        visitorId = uuidv4();
+        res.cookie("gvid", visitorId, {
+          maxAge: 2 * 365 * 24 * 60 * 60 * 1000, // 2 years
+          httpOnly: true,
+          sameSite: "lax",
+          secure: process.env.NODE_ENV === "production",
+        });
+      }
+
+      await db
+        .insert(uniqueVisitors)
+        .values({ visitorId: visitorId! })
+        .onConflictDoUpdate({
+          target: uniqueVisitors.visitorId,
+          set: {
+            lastSeenAt: new Date(),
+            visitCount: sql`${uniqueVisitors.visitCount} + 1`,
+          },
+        });
+
+      res.json({ ok: true });
+    } catch (error) {
+      console.error("Error tracking visit:", error);
+      res.status(200).json({ ok: false }); // never break the app over analytics
+    }
+  });
+
+  // Admin-only: unique visitor stats (johnmichaelkuczynski@gmail.com only)
+  app.get("/api/admin/unique-visitors", isAdmin, async (_req, res) => {
+    try {
+      const now = Date.now();
+      const dayAgo = new Date(now - 24 * 60 * 60 * 1000);
+      const monthAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
+
+      const [totals] = await db
+        .select({
+          total: sql<number>`count(*)::int`,
+          last24Hours: sql<number>`count(*) filter (where ${uniqueVisitors.lastSeenAt} >= ${dayAgo})::int`,
+          lastMonth: sql<number>`count(*) filter (where ${uniqueVisitors.lastSeenAt} >= ${monthAgo})::int`,
+          newLast24Hours: sql<number>`count(*) filter (where ${uniqueVisitors.firstSeenAt} >= ${dayAgo})::int`,
+          totalVisits: sql<number>`coalesce(sum(${uniqueVisitors.visitCount}), 0)::int`,
+        })
+        .from(uniqueVisitors);
+
+      res.json(totals);
+    } catch (error) {
+      console.error("Error fetching unique visitors:", error);
+      res.status(500).json({ error: "Failed to fetch unique visitor stats" });
+    }
   });
 
   // ============================================================

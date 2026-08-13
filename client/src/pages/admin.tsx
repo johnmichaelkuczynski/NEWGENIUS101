@@ -32,6 +32,14 @@ const RANGES = [
 
 type RangeKey = (typeof RANGES)[number]["key"];
 
+type UniqueVisitorStats = {
+  total: number;
+  last24Hours: number;
+  lastMonth: number;
+  newLast24Hours: number;
+  totalVisits: number;
+};
+
 function BarChart({ points }: { points: SeriesPoint[] }) {
   const max = Math.max(1, ...points.map((p) => p.count));
   return (
@@ -58,6 +66,10 @@ export default function Admin() {
     queryKey: ["/api/admin/visits"],
   });
 
+  const { data: uniqueStats } = useQuery<UniqueVisitorStats>({
+    queryKey: ["/api/admin/unique-visitors"],
+  });
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-5xl mx-auto space-y-6">
@@ -78,6 +90,36 @@ export default function Admin() {
           <p className="text-destructive" data-testid="text-admin-error">
             Not authorized. You must be signed in as the site owner.
           </p>
+        )}
+
+        {uniqueStats && (
+          <Card data-testid="card-unique-visitors">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium flex items-center gap-2">
+                <Users className="w-4 h-4" /> Unique Visitors (all visitors, not just logins)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                  <div className="text-3xl font-bold" data-testid="text-unique-total">{uniqueStats.total}</div>
+                  <div className="text-xs text-muted-foreground">All-time unique visitors</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold" data-testid="text-unique-24h">{uniqueStats.last24Hours}</div>
+                  <div className="text-xs text-muted-foreground">Active in last 24h</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold" data-testid="text-unique-new-24h">{uniqueStats.newLast24Hours}</div>
+                  <div className="text-xs text-muted-foreground">New in last 24h</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold" data-testid="text-unique-visits">{uniqueStats.totalVisits}</div>
+                  <div className="text-xs text-muted-foreground">Total visits</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {data && (

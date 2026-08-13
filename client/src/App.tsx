@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Switch, Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
@@ -80,6 +81,11 @@ function Router() {
 }
 
 function App() {
+  // Anonymous unique-visitor tracking (admin-only analytics)
+  useEffect(() => {
+    fetch("/api/track-visit", { method: "POST", credentials: "include" }).catch(() => {});
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light">

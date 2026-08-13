@@ -664,6 +664,17 @@ export const userDocuments = pgTable("user_documents", {
   uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
 });
 
+// Unique site visitors (anonymous, cookie-based) — admin-only analytics
+export const uniqueVisitors = pgTable("unique_visitors", {
+  id: serial("id").primaryKey(),
+  visitorId: varchar("visitor_id", { length: 64 }).notNull().unique(),
+  firstSeenAt: timestamp("first_seen_at").defaultNow().notNull(),
+  lastSeenAt: timestamp("last_seen_at").defaultNow().notNull(),
+  visitCount: integer("visit_count").default(1).notNull(),
+});
+
+export type UniqueVisitor = typeof uniqueVisitors.$inferSelect;
+
 // API keys for external apps to call the public Kuczynski API
 export const apiKeys = pgTable("api_keys", {
   id: serial("id").primaryKey(),

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /diagnostics
+Disallow: /api/
+
+Sitemap: https://genius101.xyz/sitemap.xml
