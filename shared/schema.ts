@@ -675,6 +675,15 @@ export const uniqueVisitors = pgTable("unique_visitors", {
 
 export type UniqueVisitor = typeof uniqueVisitors.$inferSelect;
 
+// Anonymous usage metering: free generated words before Google sign-in required
+export const anonUsage = pgTable("anon_usage", {
+  sessionId: varchar("session_id", { length: 128 }).primaryKey(),
+  wordsUsed: integer("words_used").default(0).notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type AnonUsage = typeof anonUsage.$inferSelect;
+
 // API keys for external apps to call the public Kuczynski API
 export const apiKeys = pgTable("api_keys", {
   id: serial("id").primaryKey(),

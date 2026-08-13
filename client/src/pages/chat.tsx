@@ -195,7 +195,12 @@ export default function Chat() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        let serverMsg = "Failed to send message";
+        try {
+          const errJson = await response.json();
+          if (errJson?.error) serverMsg = errJson.error;
+        } catch {}
+        throw new Error(serverMsg);
       }
 
       const reader = response.body?.getReader();
@@ -250,8 +255,8 @@ export default function Chat() {
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
+        title: (error as Error)?.message?.includes("Sign in") ? "Sign in to continue" : "Error",
+        description: (error as Error)?.message || "Failed to send message. Please try again.",
         variant: "destructive",
       });
       setIsStreaming(false);

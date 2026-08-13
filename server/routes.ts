@@ -18,6 +18,7 @@ import {
   argumentStatements,
   insertArgumentStatementSchema,
   uniqueVisitors,
+  anonUsage,
 } from "@shared/schema";
 import { db, pool } from "./db";
 import { eq, ilike, sql } from "drizzle-orm";
@@ -500,15 +501,114 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Guest sessions (getSessionId) ride on the same session middleware.
   setupAuth(app);
 
-  // LOGIN REQUIRED in production. Dev mode bypasses (replit.dev domain can't do Google OAuth).
-  app.use("/api", (req: any, res, next) => {
-    if (process.env.NODE_ENV !== "production") return next();
-    if (req.path.startsWith("/auth/")) return next();
-    if (req.path.startsWith("/external/")) return next(); // API-key protected (verifyApiKey), not session-based
-    if (req.path === "/track-visit") return next(); // anonymous visitor counting must work pre-login
-    if (req.isAuthenticated && req.isAuthenticated()) return next();
-    return res.status(401).json({ error: "Login required" });
-  });
+  // FREE TIER METERING: anonymous users may generate up to ANON_WORD_LIMIT words
+  // of AI output; beyond that they must sign in with Google. Signed-in users are unlimited.
+  const ANON_WORD_LIMIT = 1000;
+
+  // Rough word count of generated content in a response chunk. For SSE chunks,
+  // count only the "content" payloads; otherwise count words in the whole chunk.
+  const extractGeneratedWords = (s: string): number => {
+    const re = /"content"\s*:\s*"((?:\\.|[^"\\])*)"/g;
+    let m: RegExpExecArray | null;
+    let text = "";
+    let found = false;
+    while ((m = re.exec(s))) {
+      found = true;
+      text += " " + m[1];
+    }
+    if (!found) text = s;
+    return text.split(/\s+/).filter(w => w.length > 0).length;
+  };
+
+  const meterAnonUsage = async (req: any, res: any, next: any) => {
+    try {
+      // Signed-in users: unlimited
+      if (req.isAuthenticated && req.isAuthenticated()) return next();
+
+      const sessionId = await getSessionId(req);
+      const [row] = await db.select().from(anonUsage).where(eq(anonUsage.sessionId, sessionId)).limit(1);
+      const used = row?.wordsUsed ?? 0;
+
+      if (used >= ANON_WORD_LIMIT) {
+        console.log(`[Free Tier] Limit reached for ${sessionId} (${used} words) — sign-in required`);
+        return res.status(403).json({
+          error: "You've used up your free responses. Sign in with Google (top right) to keep going — it's free.",
+          code: "LOGIN_REQUIRED",
+        });
+      }
+
+      // Count words of generated output as it's written; hard-cut streams once
+      // the remaining allowance (plus a small margin) is exhausted, so a single
+      // request cannot blow far past the free limit.
+      let words = 0;
+      let cutOff = false;
+      const remaining = ANON_WORD_LIMIT - used;
+      const hardCap = remaining + 300; // margin so responses end gracefully
+      const countChunk = (chunk: any) => {
+        try {
+          if (typeof chunk === "string") words += extractGeneratedWords(chunk);
+          else if (Buffer.isBuffer(chunk)) words += extractGeneratedWords(chunk.toString("utf8"));
+        } catch {}
+      };
+      const origWrite = res.write.bind(res);
+      const origEnd = res.end.bind(res);
+      res.write = (chunk: any, ...args: any[]) => {
+        if (cutOff) return true; // swallow further output
+        countChunk(chunk);
+        const ok = origWrite(chunk, ...args);
+        if (words > hardCap) {
+          cutOff = true;
+          console.log(`[Free Tier] Hard cap hit mid-stream for ${sessionId} (${words} words) — ending response`);
+          try {
+            origWrite(`data: ${JSON.stringify({ content: "\n\n[Free limit reached — sign in with Google to continue.]", done: true, code: "LOGIN_REQUIRED" })}\n\n`);
+          } catch {}
+          try { origEnd(); } catch {}
+        }
+        return ok;
+      };
+      res.end = (chunk: any, ...args: any[]) => {
+        if (cutOff) return res;
+        if (chunk) countChunk(chunk);
+        return origEnd(chunk, ...args);
+      };
+
+      res.on("finish", () => {
+        if (words > 0) {
+          db.insert(anonUsage)
+            .values({ sessionId, wordsUsed: words })
+            .onConflictDoUpdate({
+              target: anonUsage.sessionId,
+              set: { wordsUsed: sql`${anonUsage.wordsUsed} + ${words}`, updatedAt: new Date() },
+            })
+            .then(() => console.log(`[Free Tier] ${sessionId}: +${words} words (was ${used})`))
+            .catch(e => console.warn("[Free Tier] usage update failed:", e.message));
+        }
+      });
+
+      next();
+    } catch (err) {
+      console.error("[Free Tier] metering error (failing open):", err);
+      next();
+    }
+  };
+
+  // Apply metering to all AI generation endpoints
+  app.use([
+    "/api/chat/stream",
+    "/api/figures/:figureId/chat",
+    "/api/figures/:figureId/write-paper",
+    "/api/figures/:figureId/long-form",
+    "/api/figures/:figureId/rewrite-paper",
+    "/api/model-builder",
+    "/api/dialogue-creator",
+    "/api/interview-creator",
+    "/api/debate/generate",
+    "/api/quotes/generate",
+    "/api/positions/generate",
+    "/api/arguments/generate",
+    "/api/reconstruction",
+    "/api/reconstruction/:jobId/resume",
+  ], meterAnonUsage);
 
   // Get chat history for logged-in user
   app.get("/api/chat-history", async (req: any, res) => {
@@ -553,8 +653,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Chat not found" });
       }
       
-      // Verify ownership if logged in
-      if (req.session.userId && conversation.userId !== req.session.userId) {
+      // Verify ownership unconditionally (guest sessions included)
+      const ownerId = await getSessionId(req);
+      if (conversation.userId !== ownerId) {
         return res.status(403).json({ error: "Access denied" });
       }
       
@@ -584,8 +685,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Chat not found" });
       }
       
-      // Verify ownership if logged in
-      if (req.session.userId && conversation.userId !== req.session.userId) {
+      // Verify ownership unconditionally (guest sessions included)
+      const ownerId = await getSessionId(req);
+      if (conversation.userId !== ownerId) {
         return res.status(403).json({ error: "Access denied" });
       }
       
@@ -3077,7 +3179,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   // ---------------- Self-Test (Beta Test) Endpoint ----------------
   // Streams a comprehensive health/integration check via SSE so the operator
   // can verify the live deployment from the UI without external tooling.
-  app.get("/api/admin/self-test/stream", async (req: any, res) => {
+  app.get("/api/admin/self-test/stream", isAdmin, async (req: any, res) => {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
@@ -3166,8 +3268,8 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
     }
   };
 
-  app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
-  app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
+  app.get("/api/admin/synthetic-test/stream", isAdmin, streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
+  app.get("/api/admin/accuracy-test/stream", isAdmin, streamDiagnostic("Accuracy test", runAccuracyTest));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {
@@ -7301,7 +7403,7 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
   // ============================================
 
   // Import argument statements (bulk upload)
-  app.post("/api/arguments/import", async (req, res) => {
+  app.post("/api/arguments/import", isAdmin, async (req, res) => {
     try {
       const { arguments: args } = req.body;
       
