@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { setupAuth, isAdmin } from "./auth";
 import { createApiKey, listApiKeys, revokeApiKey, verifyApiKey } from "./api-keys";
+import { isParadoxQuery, searchParadoxes, formatParadoxesContext } from "./paradoxes-client";
 import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
@@ -900,6 +901,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // 2. Keyword-based search from text_chunks (39,000+ chunks without vectors)
       const textChunks = await searchTextChunks("J.-M. Kuczynski", message, 6);
       
+      // 2b. If the question is about a paradox, also consult the external Paradoxes app
+      const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
+      if (paradoxMatches.length) {
+        console.log(`[Paradoxes] ${paradoxMatches.length} matches: ${paradoxMatches.map(p => p.name).join("; ")}`);
+      }
+      
       // 3. CRITICAL: Search positions table for verified philosophical positions
       // This is where the actual space/time, causation, and other core positions are stored
       const queryWords = message.toLowerCase().split(/\s+/).filter(w => w.length > 3);
@@ -972,6 +979,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Even with no RAG results, remind system to use authentic voice
         knowledgeContext = `\n\n⚠️ NOTE: No specific positions retrieved for this query. Respond using your authentic philosophical voice and known positions, or acknowledge if this falls outside your documented work.\n`;
       }
+      
+      // Append external Paradoxes app context (with conflict-reconciliation instruction)
+      knowledgeContext += formatParadoxesContext(paradoxMatches);
       
       // Build response instructions - ENFORCE word count and quote minimums
       let responseInstructions = "";
@@ -4125,6 +4135,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       // HYBRID RAG: same three sources as the main chat
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "kuczynski", "Kuczynski");
       const textChunksRes = await searchTextChunks("J.-M. Kuczynski", message, 6);
+      const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
 
       const queryWords = message.toLowerCase().split(/\s+/).filter(w => w.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
@@ -4163,6 +4174,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       } else {
         knowledgeContext = `\n\nNOTE: No specific positions retrieved for this query. Respond using your authentic philosophical voice and known positions, or acknowledge if this falls outside your documented work.\n`;
       }
+      knowledgeContext += formatParadoxesContext(paradoxMatches);
 
       let responseInstructions = `\n⚠️ TARGET LENGTH: Approximately ${targetWords} words.\n`;
       if (targetQuotes > 0) {
