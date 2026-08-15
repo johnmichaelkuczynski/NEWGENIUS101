@@ -729,7 +729,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // ============ END LOGIN/CHAT HISTORY ROUTES ============
+  // ====== END LOGIN/CHAT HISTORY ROUTES ======
 
   // Get persona settings
   app.get("/api/persona-settings", async (req: any, res) => {
@@ -1461,9 +1461,9 @@ Now ATTACK this problem directly using your full philosophical firepower:
     }
   });
 
-  // ====================================================================
+  // ======
   // VOICE DICTATION — AssemblyAI batch transcription
-  // ====================================================================
+  // ======
   const audioUpload = multer({
     storage: multer.memoryStorage(),
     limits: { fileSize: 25 * 1024 * 1024 }, // 25 MB
@@ -2569,9 +2569,9 @@ CRITICAL RULES:
       console.log(`[Paper Writer] Generating ${targetWords} word paper for ${figure.name} (normalized: ${normalizedAuthor}) on "${topic}"`);
       res.write(`data: ${JSON.stringify({ status: "Searching database for grounding material..." })}\n\n`);
 
-      // ============================================================
+      // ======
       // STEP 1: QUERY DATABASE DIRECTLY FOR GROUNDING MATERIAL
-      // ============================================================
+      // ======
       
       // Extract keywords for position search
       const topicKeywords = topic.toLowerCase()
@@ -2621,9 +2621,9 @@ CRITICAL RULES:
 
       res.write(`data: ${JSON.stringify({ status: `Found ${positionsResult.length} positions, ${chunksResult.length} chunks, ${quotes.length} quotes, ${args.length} arguments` })}\n\n`);
 
-      // ============================================================
+      // ======
       // STEP 2: BUILD COHERENCE MATERIAL FROM DATABASE RESULTS
-      // ============================================================
+      // ======
       const coherenceMaterial = {
         quotes: quotes,
         positions: positionsResult.map(p => `[${p.topic}] ${p.position}`),
@@ -2659,9 +2659,9 @@ CRITICAL RULES:
         ...coherenceMaterial.chunks.slice(0, 8)
       ].join("\n");
 
-      // ============================================================
+      // ======
       // STEP 3: THREE-PASS SEMANTIC SKELETON ARCHITECTURE
-      // ============================================================
+      // ======
       
       // PASS 1: Extract Global Skeleton BEFORE any generation
       res.write(`data: ${JSON.stringify({ status: "PASS 1: Extracting semantic skeleton..." })}\n\n`);
@@ -2846,9 +2846,9 @@ ${totalContent.slice(-1500)}`;
 
         console.log(`[Paper Writer] PASS 2 Complete: ${totalWordCount} words in ${numChunks} chunks`);
         
-        // ============================================================
+        // ======
         // PASS 3: GLOBAL CONSISTENCY STITCH
-        // ============================================================
+        // ======
         res.write(`data: ${JSON.stringify({ status: "PASS 3: Checking global consistency..." })}\n\n`);
         console.log(`[Paper Writer] PASS 3: Running global consistency check`);
         
@@ -2932,7 +2932,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
     }
   });
 
-  // ============================================================================
+  // ======
   // UNIFIED LONG-FORM ENDPOINT (two-tier skeleton, all modes)
   //
   // POST /api/figures/:figureId/long-form
@@ -2948,7 +2948,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   //
   // Streams SSE events: status, skeleton, section_skeleton, chunk_start,
   // content (text deltas), chunk_done, stitch, complete, [DONE].
-  // ============================================================================
+  // ======
   app.post("/api/figures/:figureId/long-form", async (req: any, res) => {
     const figureId = req.params.figureId;
     const {
@@ -3711,9 +3711,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     }
   });
 
-  // ========================================
+  // ======
   // INTERNAL API: ZHI Knowledge Provider
-  // ========================================
+  // ======
 
   // Request schema for knowledge queries
   // Note: figureId parameter retained for backward compatibility but queries unified 'common' pool
@@ -3945,9 +3945,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     return uniqueQuotes.slice(0, maxQuotes);
   }
 
-  // ========================================
+  // ======
   // ZHI QUERY API: Structured knowledge queries
-  // ========================================
+  // ======
   
   // Request schema for /zhi/query endpoint
   const zhiQuerySchema = z.object({
@@ -3957,9 +3957,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     includeQuotes: z.boolean().optional().default(false),
   });
 
-  // ============================================================
+  // ======
   // UNIQUE VISITOR TRACKING (anonymous, cookie-based)
-  // ============================================================
+  // ======
   // In-memory IP throttle: max 10 track-visit writes per IP per minute
   const trackVisitBuckets = new Map<string, number[]>();
   app.post("/api/track-visit", async (req: any, res) => {
@@ -4036,9 +4036,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     }
   });
 
-  // ============================================================
+  // ======
   // API KEY MANAGEMENT (admin only — manage keys for external apps)
-  // ============================================================
+  // ======
   app.post("/api/keys", isAdmin, async (req, res) => {
     try {
       const label = typeof req.body?.label === "string" && req.body.label.trim()
@@ -4090,7 +4090,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     }
   });
 
-  // ============================================================
+  // ======
   // PUBLIC EXTERNAL API — chat with Kuczynski (API-key protected)
   // POST /api/external/kuczynski
   // Headers: Authorization: Bearer gk_...   (or X-API-Key: gk_...)
@@ -4101,7 +4101,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
   //   quotes?: number (default 3, max 20),
   //   stream?: boolean (default false; true = SSE stream)
   // }
-  // ============================================================
+  // ======
   app.post("/api/external/kuczynski", verifyApiKey, async (req, res) => {
     try {
       const { message, history, maxWords, quotes, stream } = req.body || {};
@@ -4453,9 +4453,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     }
   });
 
-  // ========================================
+  // ======
   // QUOTE GENERATOR: Site Authors
-  // ========================================
+  // ======
   
   app.post("/api/quotes/generate", async (req, res) => {
     try {
@@ -4738,9 +4738,9 @@ Generate ${quotesLimit} quotes:`;
     }
   });
 
-  // ========================================
+  // ======
   // POSITION GENERATOR - DIRECT DATABASE QUERY
-  // ========================================
+  // ======
   
   app.post("/api/positions/generate", async (req, res) => {
     try {
@@ -4881,9 +4881,9 @@ OUTPUT RULES (STRICT):
     }
   });
 
-  // ========================================
+  // ======
   // ARGUMENT GENERATOR - DATABASE + LLM FALLBACK
-  // ========================================
+  // ======
   
   app.post("/api/arguments/generate", async (req, res) => {
     try {
@@ -5065,9 +5065,9 @@ Begin:`;
     }
   });
 
-  // ========================================
+  // ======
   // QUOTE EXTRACTION FROM UPLOADED FILES
-  // ========================================
+  // ======
 
   // Configure multer for file uploads
   const upload = multer({
@@ -5275,7 +5275,7 @@ Begin:`;
     }
   });
 
-  // ========================================
+  // ======
   // ElevenLabs TTS: convert generated dialogues/interviews/debates to audio
   // Each distinct speaker gets a different voice.
   app.post("/api/tts/convert", async (req, res) => {
@@ -5311,7 +5311,7 @@ Begin:`;
     }
   });
 
-  // ========================================
+  // ======
   // THESIS TO WORLD: Documentary Incident Generator
   // Dialogue Creator endpoint
   app.post("/api/dialogue-creator", upload.single('file'), async (req, res) => {
@@ -6008,7 +6008,7 @@ ${fullResponse.slice(-1500)}`;
     }
   });
 
-  // ==================== INTERVIEW CREATOR ====================
+  // ====== INTERVIEW CREATOR ======
   app.post("/api/interview-creator", upload.single('file'), async (req, res) => {
     try {
       const { thinkerId, mode, interviewerTone, wordLength, quoteCount: quoteCountRaw, topic, elevenLabsMode: elevenLabsModeRaw } = req.body;
@@ -6607,7 +6607,7 @@ Continue the interview with NEW questions and responses.${elevenLabsMode ? ' Mai
     }
   });
 
-  // ==================== PLATO SQLite DATABASE API ====================
+  // ====== PLATO SQLite DATABASE API ======
   
   // Import Plato database functions
   const { searchPlatoPositions, getAllDialogues, getAllSpeakers } = await import('./plato-db.js');
@@ -6840,23 +6840,23 @@ WRONG: "Kuczynski's position leads to..."
 RIGHT: "Your position leads to catastrophe because..."
 
 ${hasDocument ? `
-===========================================
+======
 MANDATORY: THE FOLLOWING DOCUMENT IS THE SOLE FOCUS OF THIS DEBATE
-===========================================
+======
 
 THE UPLOADED DOCUMENT:
 """
 ${truncatedPaperText}
 """
 
-===========================================
+======
 CRITICAL INSTRUCTIONS:
 1. THIS DOCUMENT IS THE ENTIRE SUBJECT OF THE DEBATE
 2. Both thinkers MUST engage DIRECTLY with the specific claims, arguments, and ideas in this document
 3. Quote specific phrases from the document when responding
 4. DO NOT debate generic philosophical topics - debate THIS DOCUMENT specifically
 5. Every exchange must reference and analyze the document's content
-===========================================
+======
 
 OBJECTIVE: ${thinker1.name} and ${thinker2.name} must debate the claims and ideas in the uploaded document above. They should analyze it, critique it, defend or attack its arguments, and reference its specific content throughout.
 ` : `
@@ -6904,19 +6904,19 @@ USER TOPIC/INSTRUCTIONS:
 ${instructions}
 
 ${hasDocument ? `
-===========================================
+======
 MANDATORY: THE FOLLOWING DOCUMENT MUST BE THE FOCUS OF THIS DEBATE
-===========================================
+======
 
 THE UPLOADED DOCUMENT:
 """
 ${truncatedPaperTextCustom}
 """
 
-===========================================
+======
 CRITICAL: Both thinkers MUST engage DIRECTLY with this document's content.
 Quote specific phrases. Analyze specific arguments. DO NOT ignore this document.
-===========================================
+======
 ` : ''}
 
 FORMAT:
@@ -7343,7 +7343,7 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
     }
   });
 
-  // ============ QUOTES API ============
+  // ====== QUOTES API ======
   
   // Get all quotes for a thinker
   app.get("/api/quotes/:thinkerId", async (req, res) => {
@@ -7410,9 +7410,9 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
     }
   });
 
-  // ============================================
+  // ======
   // ARGUMENT STATEMENTS API
-  // ============================================
+  // ======
 
   // Import argument statements (bulk upload)
   app.post("/api/arguments/import", isAdmin, async (req, res) => {

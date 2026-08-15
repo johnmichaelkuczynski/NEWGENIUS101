@@ -4,4 +4,5 @@
 - [Diagnostic / generator endpoint quirks](diagnostic-endpoint-quirks.md) — debate needs mode:"auto"; quotes returns JSON not SSE; chat always runs slow audited search (~240s); SSE content keys vary; /diagnostics is intentionally public.
 - [Custom modals not Radix](custom-modals-not-radix.md) — figure-chat & compare are hand-rolled fixed-overlays (Escape won't close, [role=dialog] won't match); compare done = window text settled + .animate-spin gone; compare = 2 sequential chats (~5min).
 - [Dual-DB schema sync](dual-db-schema-sync.md) — drizzle push targets DATABASE_URL but app runs on EXTERNAL_DATABASE_URL; create new tables in both via psql.
+- [Merge marker validator](merge-marker-validator.md) — continueMergeResolution flags ANY 7+ run of "="; shorten decorative banners to 6 chars if phantom "markers remain" errors persist.
 - [ElevenLabs TTS](elevenlabs-tts.md) — user key is not Pro tier: PCM formats 403; use mp3 + local ffmpeg transcode for WAV; restart workflow after editing dynamically-imported server modules.
