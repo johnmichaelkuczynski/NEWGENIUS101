@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogIn, LogOut, ShieldCheck } from "lucide-react";
+import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogIn, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -38,6 +38,7 @@ const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
   responseLength: 750,
   writePaper: false,
   quoteFrequency: 0,
+  selectedModel: "deepseek",
   enhancedMode: true,
   intensityLevel: 30,
   dialogueMode: false,
@@ -54,6 +55,7 @@ function intensityLabel(n: number): string {
 export default function Chat() {
   const { toast } = useToast();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const workspaceScrollRef = useRef<HTMLDivElement>(null);
   const [streamingMessage, setStreamingMessage] = useState<string>("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [pendingAssistantMessage, setPendingAssistantMessage] = useState<string>("");
@@ -65,6 +67,7 @@ export default function Chat() {
   const [figureSearchQuery, setFigureSearchQuery] = useState("");
   const [comparisonModalOpen, setComparisonModalOpen] = useState(false);
   const [showChatHistory, setShowChatHistory] = useState(false);
+  const [workspaceKey, setWorkspaceKey] = useState(0);
 
   // Content transfer system: refs to input setters
   const [chatInputContent, setChatInputContent] = useState<{ text: string; version: number }>({ text: "", version: 0 });
@@ -163,15 +166,49 @@ export default function Chat() {
     },
   });
 
-  // New chat mutation
+  // Start a clean session while preserving the old conversation in My Chats.
+  // Remounting the workspace also clears local drafts/results held by each tool.
   const newChatMutation = useMutation({
     mutationFn: async () => {
-      return apiRequest("POST", "/api/chat/new", {});
+      const [chatResult, settingsResult] = await Promise.allSettled([
+        apiRequest("POST", "/api/chat/new", {}),
+        apiRequest("POST", "/api/persona-settings", DEFAULT_PERSONA_SETTINGS),
+      ]);
+      if (chatResult.status === "rejected") throw chatResult.reason;
+      if (settingsResult.status === "rejected") {
+        console.warn("Fresh session created, but default settings could not be restored", settingsResult.reason);
+      }
+      return chatResult.value;
     },
     onSuccess: () => {
+      queryClient.setQueryData(["/api/messages"], []);
       queryClient.invalidateQueries({ queryKey: ["/api/messages"] });
       queryClient.invalidateQueries({ queryKey: ["/api/chat-history"] });
-      toast({ title: "New chat started" });
+      queryClient.invalidateQueries({ queryKey: ["/api/persona-settings"] });
+      setStreamingMessage("");
+      setPendingAssistantMessage("");
+      setPendingUserMessage("");
+      setMessageCountBeforePending(0);
+      setUserMessageCountBeforePending(0);
+      setChatInputContent(prev => ({ text: "", version: prev.version + 1 }));
+      setChatInputDocument(prev => ({ name: "", text: "", version: prev.version + 1 }));
+      setSelectedFigure(null);
+      setFigureDialogOpen(false);
+      setComparisonModalOpen(false);
+      setShowChatHistory(false);
+      setWorkspaceKey(key => key + 1);
+      workspaceScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+      toast({
+        title: "Fresh session ready",
+        description: "The slate is clean. Your previous chat is still available under My Chats.",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Could not start a fresh session",
+        description: "Nothing was cleared. Please try again.",
+        variant: "destructive",
+      });
     },
   });
 
@@ -616,6 +653,23 @@ export default function Chat() {
                 My Chats
               </Button>
               <Button
+                onClick={() => newChatMutation.mutate()}
+                variant="default"
+                size="sm"
+                className="gap-2"
+                disabled={isStreaming || newChatMutation.isPending}
+                title="Start an empty session and reset every tool; your previous chat remains in My Chats"
+                data-testid="button-start-fresh"
+              >
+                <RotateCcw className={`w-4 h-4 ${newChatMutation.isPending ? "animate-spin" : ""}`} />
+                <span className="hidden xl:inline">
+                  {newChatMutation.isPending ? "Clearing…" : "Start fresh"}
+                </span>
+                <span className="xl:hidden">
+                  {newChatMutation.isPending ? "…" : "New"}
+                </span>
+              </Button>
+              <Button
                 onClick={() => setComparisonModalOpen(true)}
                 variant="outline"
                 size="sm"
@@ -683,17 +737,15 @@ export default function Chat() {
                 Your Past Chats
               </h3>
               <Button
-                onClick={() => {
-                  newChatMutation.mutate();
-                  setShowChatHistory(false);
-                }}
+                onClick={() => newChatMutation.mutate()}
                 size="sm"
                 variant="outline"
                 className="gap-1"
+                disabled={isStreaming || newChatMutation.isPending}
                 data-testid="button-new-chat"
               >
                 <Plus className="w-3 h-3" />
-                New
+                Start fresh
               </Button>
             </div>
             {chatHistoryData?.conversations && chatHistoryData.conversations.length > 0 ? (
@@ -746,7 +798,11 @@ export default function Chat() {
         )}
 
         {/* Scrollable Content Area with All Three Sections */}
-        <div className="relative z-10 flex-1 overflow-y-auto">
+        <div
+          key={workspaceKey}
+          ref={workspaceScrollRef}
+          className="relative z-10 flex-1 overflow-y-auto"
+        >
           {/* Chat Messages Section */}
           <div className="min-h-[400px]">
             {messages.length === 0 && !streamingMessage && !pendingAssistantMessage ? (
