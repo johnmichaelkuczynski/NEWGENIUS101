@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogIn, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
+import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -639,6 +639,16 @@ export default function ChatV2() {
                 }
               />
               <Button
+                onClick={() => document.getElementById('dialogue-creator-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                data-testid="button-open-dialogue-creator"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Dialogue
+              </Button>
+              <Button
                 onClick={() => setShowChatHistory(!showChatHistory)}
                 variant="outline"
                 size="sm"
@@ -712,14 +722,7 @@ export default function ChatV2() {
                     Sign out
                   </Button>
                 </>
-              ) : (
-                <a href="/api/auth/google" target="_top" data-testid="link-sign-in">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <LogIn className="w-4 h-4" />
-                    Sign in with Google
-                  </Button>
-                </a>
-              )}
+              ) : null}
             </div>
           </div>
         </header>
@@ -899,6 +902,13 @@ export default function ChatV2() {
             />
           </div>
 
+          {/* Dialogue Creator — intentionally first tool, directly below the main chat */}
+          <div id="dialogue-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
+            <DialogueCreatorSection 
+              onRegisterInput={(setter) => { dialogueCreatorInputRef.current = setter; }}
+            />
+          </div>
+
           {/* Model Builder Section */}
           <div id="model-builder-section" className="px-4 py-8 border-t-4 border-primary/20">
             <ModelBuilderSection 
@@ -928,13 +938,6 @@ export default function ChatV2() {
           {/* Argument Generator Section */}
           <div id="argument-generator-section" className="px-4 py-8 border-t-4 border-primary/20">
             <ArgumentGeneratorSection />
-          </div>
-
-          {/* Dialogue Creator Section */}
-          <div id="dialogue-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <DialogueCreatorSection 
-              onRegisterInput={(setter) => { dialogueCreatorInputRef.current = setter; }}
-            />
           </div>
 
           {/* Interview Creator Section */}
