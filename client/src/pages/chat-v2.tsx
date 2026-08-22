@@ -332,21 +332,22 @@ export default function ChatV2() {
     }
   }, [messages, pendingAssistantMessage, messageCountBeforePending]);
 
-  // Auto-scroll: only scroll during active streaming, not after response completes
-  // This prevents the jarring jump to bottom after the response is saved
+  // Do not animate the whole page for every streamed token. That repeatedly
+  // retargets the browser's smooth-scroll animation and makes the conversation
+  // visibly bob up and down.
   const isActivelyStreaming = streamingMessage && streamingMessage.length > 0;
   const prevStreamingRef = useRef(false);
   
   useEffect(() => {
-    // Only scroll if we're actively streaming content
-    if (isActivelyStreaming) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // At most one non-animated, nearest-edge adjustment when a response starts.
+    // Never take control of scrolling again while the text grows.
+    if (isActivelyStreaming && !prevStreamingRef.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "nearest" });
       prevStreamingRef.current = true;
     } else if (prevStreamingRef.current && !isActivelyStreaming) {
-      // Streaming just ended - don't scroll, let user stay where they are
       prevStreamingRef.current = false;
     }
-  }, [isActivelyStreaming, streamingMessage]);
+  }, [isActivelyStreaming]);
 
   if (settingsLoading) {
     return (
@@ -594,11 +595,11 @@ export default function ChatV2() {
 
       {/* Main Chat Area */}
       <main
-        className="flex-1 flex relative bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-rose-50/60 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+        className="flex-1 min-h-0 flex relative bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-rose-50/60 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       >
         <div className="absolute inset-0 bg-background/40 dark:bg-background/60 backdrop-blur-[2px]" />
         
-        <div className="flex-1 flex flex-col relative">
+        <div className="flex-1 min-h-0 flex flex-col relative">
 
         {/* Header - Fixed */}
         <header className="border-b bg-background/95 backdrop-blur-md relative z-20">
@@ -796,7 +797,7 @@ export default function ChatV2() {
         <div
           key={workspaceKey}
           ref={workspaceScrollRef}
-          className="relative z-10 flex-1 overflow-y-auto"
+          className="relative z-10 flex-1 min-h-0 overflow-y-auto"
         >
           {/* Chat Messages Section */}
           <div className="min-h-[400px]">
