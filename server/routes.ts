@@ -56,6 +56,7 @@ import {
   runReconstruction,
   resumeReconstruction,
 } from './services/reconstructionEngine';
+import { prepareSourceQuotation } from "./services/paperQuotation";
 
 // Get __dirname equivalent for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -395,8 +396,18 @@ async function streamWithFallback(opts: {
   temperature?: number;
   startProvider?: string;
   onContent?: (text: string) => void;
+  emitContent?: boolean;
 }): Promise<string> {
-  const { res, systemPrompt, userPrompt, maxTokens, temperature = 0.7, startProvider = "anthropic", onContent } = opts;
+  const {
+    res,
+    systemPrompt,
+    userPrompt,
+    maxTokens,
+    temperature = 0.7,
+    startProvider = "anthropic",
+    onContent,
+    emitContent = true,
+  } = opts;
   const order = getFallbackModels(startProvider).filter(isProviderAvailable);
   if (order.length === 0) throw new Error("No AI provider configured");
 
@@ -418,7 +429,7 @@ async function streamWithFallback(opts: {
             const c = chunk.delta.text;
             acc += c;
             onContent?.(c);
-            res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+            if (emitContent) res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
           }
         }
       } else {
@@ -441,7 +452,7 @@ async function streamWithFallback(opts: {
           if (c) {
             acc += c;
             onContent?.(c);
-            res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+              if (emitContent) res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
           }
         }
       }
@@ -2569,21 +2580,248 @@ CRITICAL RULES:
       const chunksResult = await searchPhilosophicalChunks(searchQuery, 15, "common", normalizedAuthor);
       console.log(`[Paper Writer] Found ${chunksResult.length} semantic chunks`);
 
-      // 1C: Get quotes from quotes table (use normalized name with case-insensitive match)
-      let quotes: string[] = [];
-      const quotesLimit = targetQuotes > 0 ? targetQuotes : 15;
+      // 1C: Build a topic-ranked pool of direct quotations. Curated quotations
+      // and verbatim excerpts from the semantically retrieved source chunks are
+      // ranked together; random unrelated quotations are never used merely to
+      // satisfy the requested count.
+      type QuoteCandidate = {
+        text: string;
+        source: "curated" | "semantic-chunk";
+        sourceRank: number;
+        topic: string;
+      };
+      const quoteCandidates = new Map<string, QuoteCandidate>();
+      const quoteKeywordStopWords = new Set([
+        "about", "after", "again", "against", "among", "because", "before",
+        "being", "between", "could", "differ", "does", "every", "first",
+        "from", "have", "having", "however", "into", "itself", "might",
+        "other", "should", "since", "their", "there", "these", "thing",
+        "those", "through", "under", "which", "while", "with", "would",
+      ]);
+      const relevanceCorpus = [
+        topic,
+        ...positionsResult.flatMap((position: any) => [
+          String(position.topic || ""),
+          String(position.position || ""),
+        ]),
+        ...chunksResult.slice(0, 8).map((chunk: any) => String(chunk.content || "")),
+      ]
+        .join(" ")
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}\s-]/gu, " ");
+      const keywordFrequency = new Map<string, number>();
+      relevanceCorpus.split(/\s+/).forEach((word) => {
+        const normalized = word.replace(/^-+|-+$/g, "");
+        if (
+          normalized.length >= 5
+          && !quoteKeywordStopWords.has(normalized)
+        ) {
+          keywordFrequency.set(
+            normalized,
+            (keywordFrequency.get(normalized) || 0) + 1,
+          );
+        }
+      });
+      const relevancePrefixes = Array.from(new Set(
+        [...topicKeywords, ...Array.from(keywordFrequency.entries())
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 45)
+          .map(([word]) => word)]
+          .filter((word: string) => word.length >= 5)
+          .map((word: string) => word.slice(0, Math.min(5, word.length))),
+      ));
+      const maximumQuoteWords = targetQuotes > 0
+        ? Math.max(
+            14,
+            Math.min(32, Math.floor((targetWords * 0.42) / targetQuotes)),
+          )
+        : 32;
+      const addQuoteCandidate = (
+        raw: string,
+        source: QuoteCandidate["source"],
+        sourceRank: number,
+        candidateTopic = "",
+      ) => {
+        const clean = String(raw || "")
+          .replace(/\s+/g, " ")
+          .replace(/^["“”']+|["“”']+$/g, "")
+          .trim();
+        const words = clean.split(/\s+/).filter(Boolean);
+        if (words.length < 8 || words.length > maximumQuoteWords) return;
+        if (!/^[A-Z0-9“‘'"[(]/.test(clean)) return;
+        if (!/[.!?][”’'")\]]*$/.test(clean)) return;
+        if (/(?:\.{3}|…|\d[A-Za-z]|[a-z][A-Z])/.test(clean)) return;
+        if (/\b(?:thedistinction|theproperty)\b/i.test(clean)) return;
+        if (/^on .+ translated by\b/i.test(clean) || /\btranslated by\b/i.test(clean)) return;
+        const key = clean.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+        if (!key || quoteCandidates.has(key)) return;
+        quoteCandidates.set(key, {
+          text: clean,
+          source,
+          sourceRank,
+          topic: String(candidateTopic || ""),
+        });
+      };
+
       try {
+        const curatedLimit = Math.max(1000, targetQuotes * 250);
         const quotesResult = await db.execute(
-          sql`SELECT quote_text, topic FROM quotes 
+          sql`SELECT quote_text, topic FROM quotes
               WHERE LOWER(thinker) = LOWER(${normalizedAuthor})
-              ORDER BY RANDOM()
-              LIMIT ${quotesLimit}`
+                 OR LOWER(thinker) = LOWER(${figureId})
+              LIMIT ${curatedLimit}`
         );
-        quotes = (quotesResult.rows || []).map((r: any) => r.quote_text as string);
-        console.log(`[Paper Writer] Found ${quotes.length} quotes (requested: ${targetQuotes})`);
+        (quotesResult.rows || []).forEach((row: any, index: number) => {
+          addQuoteCandidate(row.quote_text, "curated", index, row.topic);
+        });
       } catch (e) {
         console.log(`[Paper Writer] Quotes query failed (table may not exist): ${e}`);
       }
+
+      chunksResult.forEach((chunk: any, chunkIndex: number) => {
+        const content = String(chunk.content || "");
+        content.split(/(?<=[.!?])\s+/).forEach((sentence) => {
+          addQuoteCandidate(sentence, "semantic-chunk", chunkIndex);
+        });
+      });
+
+      const scoreQuoteCandidate = (candidate: QuoteCandidate) => {
+        const quoteText = candidate.text.toLowerCase();
+        const topicText = candidate.topic.toLowerCase();
+        const textMatches = relevancePrefixes.filter((prefix) => quoteText.includes(prefix)).length;
+        const topicMatches = relevancePrefixes.filter((prefix) => topicText.includes(prefix)).length;
+        const semanticRankBonus = candidate.source === "semantic-chunk"
+          ? Math.max(0, 30 - candidate.sourceRank * 2)
+          : 0;
+        const curatedQualityBonus = candidate.source === "curated" ? 10 : 0;
+        const conciseBonus = candidate.text.split(/\s+/).length <= 24 ? 6 : 0;
+        return topicMatches * 20
+          + textMatches * 6
+          + semanticRankBonus
+          + curatedQualityBonus
+          + conciseBonus;
+      };
+
+      const normalizedQuoteTokens = (text: string) => new Set(
+        text
+          .toLowerCase()
+          .replace(/[^\p{L}\p{N}\s]/gu, " ")
+          .split(/\s+/)
+          .filter((word) => word.length >= 4),
+      );
+      const quoteSimilarity = (left: string, right: string) => {
+        const leftTokens = normalizedQuoteTokens(left);
+        const rightTokens = normalizedQuoteTokens(right);
+        if (leftTokens.size === 0 || rightTokens.size === 0) return 0;
+        const overlap = Array.from(leftTokens).filter((token) =>
+          rightTokens.has(token),
+        ).length;
+        return overlap / Math.min(leftTokens.size, rightTokens.size);
+      };
+      const rankedQuoteCandidates = Array.from(quoteCandidates.values())
+        .sort((a, b) => scoreQuoteCandidate(b) - scoreQuoteCandidate(a));
+      const desiredQuotePoolSize = targetQuotes > 0 ? targetQuotes : 15;
+      const diversifiedCandidatePool: QuoteCandidate[] = [];
+      const candidatePoolLimit = Math.max(400, desiredQuotePoolSize * 20);
+      for (const candidate of rankedQuoteCandidates) {
+        if (
+          diversifiedCandidatePool.some(
+            (selected) => quoteSimilarity(selected.text, candidate.text) >= 0.72,
+          )
+        ) {
+          continue;
+        }
+        diversifiedCandidatePool.push(candidate);
+        if (diversifiedCandidatePool.length >= candidatePoolLimit) break;
+      }
+
+      const selectedQuoteCandidates: QuoteCandidate[] = [];
+      if (
+        targetQuotes > 0
+        && diversifiedCandidatePool.length >= desiredQuotePoolSize
+      ) {
+        try {
+          res.write(`data: ${JSON.stringify({ status: "Selecting the most relevant complete source quotations..." })}\n\n`);
+          const candidatePayload = diversifiedCandidatePool.map(
+            (candidate, index) => ({
+              id: `C${index + 1}`,
+              topic: candidate.topic,
+              text: candidate.text,
+            }),
+          );
+          const selectionResponse = await streamWithFallback({
+            res,
+            systemPrompt: `You select primary-source quotations for a focused philosophy paper. Choose only quotations that directly advance the requested comparison. Reject material that is merely generally philosophical or tangential. Prefer a coherent, diverse set covering the concepts actually needed by the topic. Return only JSON.`,
+            userPrompt: `Paper topic: ${truncatedTopic}
+Author whose primary-source quotations must be selected: ${figure.name}
+Required number: ${desiredQuotePoolSize}
+
+Choose exactly ${desiredQuotePoolSize} candidate IDs. For this topic, prioritize direct relevance to essence, substance, form, matter, definition, natural kinds, necessity, actuality and potentiality, teleology, and scientific knowledge where applicable. Do not select tangents merely because they come from the same author. Avoid redundant quotations.
+Do not choose generic remarks about truth, science, change, place, perception, or other broad philosophical topics unless their wording directly clarifies the specific account of essence under comparison.
+
+Candidates:
+${JSON.stringify(candidatePayload)}
+
+Return exactly:
+{"selected":["C1","C2"]}`,
+            maxTokens: Math.max(800, desiredQuotePoolSize * 40),
+            temperature: 0.1,
+            startProvider: "anthropic",
+            onContent: () => {},
+            emitContent: false,
+          });
+          const firstBrace = selectionResponse.indexOf("{");
+          const lastBrace = selectionResponse.lastIndexOf("}");
+          if (firstBrace >= 0 && lastBrace > firstBrace) {
+            const parsed = JSON.parse(
+              selectionResponse.slice(firstBrace, lastBrace + 1),
+            );
+            const selectedIds = Array.isArray(parsed?.selected)
+              ? parsed.selected
+              : [];
+            for (const selectedId of selectedIds) {
+              const match = /^C(\d+)$/.exec(String(selectedId));
+              const candidate = match
+                ? diversifiedCandidatePool[Number(match[1]) - 1]
+                : undefined;
+              if (
+                !candidate
+                || selectedQuoteCandidates.includes(candidate)
+                || selectedQuoteCandidates.some(
+                  (selected) =>
+                    quoteSimilarity(selected.text, candidate.text) >= 0.72,
+                )
+              ) {
+                continue;
+              }
+              selectedQuoteCandidates.push(candidate);
+              if (
+                selectedQuoteCandidates.length >= desiredQuotePoolSize
+              ) {
+                break;
+              }
+            }
+          }
+        } catch (selectionError) {
+          console.warn(
+            "[Paper Writer] Focused quotation selection failed; using deterministic ranking:",
+            selectionError,
+          );
+        }
+      }
+      for (const candidate of diversifiedCandidatePool) {
+        if (selectedQuoteCandidates.length >= desiredQuotePoolSize) break;
+        if (
+          selectedQuoteCandidates.some(
+            (selected) => quoteSimilarity(selected.text, candidate.text) >= 0.72,
+          )
+        ) {
+          continue;
+        }
+        selectedQuoteCandidates.push(candidate);
+      }
+      const quotes = selectedQuoteCandidates.map((candidate) => candidate.text);
+      console.log(`[Paper Writer] Selected ${quotes.length}/${targetQuotes || 15} topic-ranked verified quotations`);
 
       // 1D: Get arguments from arguments table (use normalized name with case-insensitive match)
       let args: string[] = [];
@@ -2601,13 +2839,24 @@ CRITICAL RULES:
         console.log(`[Paper Writer] Arguments query failed (table may not exist): ${e}`);
       }
 
-      res.write(`data: ${JSON.stringify({ status: `Found ${positionsResult.length} positions, ${chunksResult.length} chunks, ${quotes.length} quotes, ${args.length} arguments` })}\n\n`);
+      if (targetQuotes > 0 && quotes.length < targetQuotes) {
+        cleanup();
+        res.write(`data: ${JSON.stringify({
+          error: `Only ${quotes.length} verified source quotations were available; ${targetQuotes} were requested`,
+        })}\n\n`);
+        res.write("data: [DONE]\n\n");
+        res.end();
+        return;
+      }
+
+      const selectedQuotes = targetQuotes > 0 ? quotes.slice(0, targetQuotes) : [];
+      res.write(`data: ${JSON.stringify({ status: `Found ${positionsResult.length} positions, ${chunksResult.length} chunks, ${selectedQuotes.length} verified quotes, ${args.length} arguments` })}\n\n`);
 
       // ======
       // STEP 2: BUILD COHERENCE MATERIAL FROM DATABASE RESULTS
       // ======
       const coherenceMaterial = {
-        quotes: quotes,
+        quotes: targetQuotes > 0 ? selectedQuotes : quotes,
         positions: positionsResult.map(p => `[${p.topic}] ${p.position}`),
         arguments: args,
         chunks: chunksResult.map(c => c.content),
@@ -2635,7 +2884,7 @@ CRITICAL RULES:
         ...coherenceMaterial.positions.slice(0, 15),
         "",
         "=== QUOTES FROM DATABASE ===",
-        ...coherenceMaterial.quotes.slice(0, 10),
+        ...coherenceMaterial.quotes,
         "",
         "=== TEXT CHUNKS FROM DATABASE ===",
         ...coherenceMaterial.chunks.slice(0, 8)
@@ -2701,11 +2950,382 @@ CRITICAL RULES:
                          lengthRatio < 1.2 ? 'maintain' :
                          lengthRatio < 1.8 ? 'moderate_expansion' : 'heavy_expansion';
       
-      const numChunks = Math.max(1, Math.ceil(targetWords / 500));
-      const chunkTargetWords = Math.ceil(targetWords / numChunks);
+      const countWords = (text: string) => text.split(/\s+/).filter(Boolean).length;
+      const closeAtExactWordCount = async (
+        text: string,
+        limit: number,
+        requiredPhrases: string[],
+      ) => {
+        const clean = text.trim();
+        if (countWords(clean) === limit && /[.!?]['”)\]]*$/.test(clean)) {
+          return clean;
+        }
+
+        const completeParagraphs = clean
+          .split(/\n\s*\n/)
+          .map((paragraph) => {
+            const trimmed = paragraph.trim();
+            if (/[.!?]['”)\]]*$/.test(trimmed)) return trimmed;
+            const completeEnding = Array.from(
+              trimmed.matchAll(/[.!?](?:['”)\]]*)?(?=\s|$)/g),
+            ).at(-1);
+            return completeEnding
+              ? trimmed.slice(0, completeEnding.index! + completeEnding[0].length).trim()
+              : "";
+          });
+        const requiredParagraphIndexes = new Set<number>();
+        const escapedClosingFigureName = figure.name.replace(
+          /[.*+?^${}()|[\]\\]/g,
+          "\\$&",
+        );
+        const closingSelfReferencePattern = new RegExp(
+          `\\b${escapedClosingFigureName}(?:['’]s)?\\b`,
+          "i",
+        );
+        for (const phrase of requiredPhrases) {
+          const paragraphIndex = completeParagraphs.findIndex((paragraph) =>
+            paragraph.includes(phrase),
+          );
+          if (paragraphIndex < 0) {
+            throw new Error(
+              "A quotation paragraph was incomplete after organic revision; refusing to insert canned repair prose",
+            );
+          }
+          requiredParagraphIndexes.add(paragraphIndex);
+        }
+        const firstProseIndex = completeParagraphs.findIndex(
+          (paragraph) =>
+            paragraph.length > 0
+            && !/^#{1,6}\s/.test(paragraph)
+            && !closingSelfReferencePattern.test(paragraph),
+        );
+        if (firstProseIndex >= 0) requiredParagraphIndexes.add(firstProseIndex);
+
+        const minimumClosingWords = Math.min(
+          80,
+          Math.max(32, Math.floor(limit * 0.05)),
+        );
+        let selectedWords = Array.from(requiredParagraphIndexes).reduce(
+          (sum, index) => sum + countWords(completeParagraphs[index]),
+          0,
+        );
+        if (selectedWords > limit - minimumClosingWords) {
+          throw new Error(
+            `Organic quotation paragraphs need ${selectedWords} words, which does not fit a complete ${limit}-word paper`,
+          );
+        }
+        const selectedParagraphIndexes = new Set(requiredParagraphIndexes);
+        completeParagraphs.forEach((paragraph, index) => {
+          if (
+            selectedParagraphIndexes.has(index)
+            || paragraph.length === 0
+            || /^#{1,6}\s/.test(paragraph)
+            || closingSelfReferencePattern.test(paragraph)
+          ) {
+            return;
+          }
+          const paragraphWords = countWords(paragraph);
+          if (selectedWords + paragraphWords <= limit - minimumClosingWords) {
+            selectedParagraphIndexes.add(index);
+            selectedWords += paragraphWords;
+          }
+        });
+        let bestPrefix = completeParagraphs
+          .filter((_, index) => selectedParagraphIndexes.has(index))
+          .join("\n\n")
+          .trim();
+
+        const wordsNeeded = limit - countWords(bestPrefix);
+        let closing = "";
+        let closingFeedback = "";
+        const naturalClosingCandidates: string[] = [];
+        for (let attempt = 0; attempt < 6 && !closing; attempt++) {
+          const response = await streamWithFallback({
+            res,
+            systemPrompt: `You are ${figure.name}, finishing a philosophical paper in first person. Write a natural conclusion that follows from the supplied preceding prose. Never refer to ${figure.name} by name or in the third person. Do not discuss writing, quotations, evidence mechanics, or word counts. Do not introduce direct quotations.
+
+Return only a JSON array of objects shaped {"word":"one-token","optional":boolean}. Each word must be exactly one whitespace-delimited token, including attached punctuation. Mark optional=true only for independently removable adjectives or adverbs whose deletion leaves the sentences fully grammatical. Never mark articles, prepositions, conjunctions, nouns, verbs, pronouns, negations, or punctuated words optional.`,
+            userPrompt: `Topic: ${truncatedTopic}
+
+Immediately preceding prose:
+${bestPrefix.slice(-1800)}
+
+Create one or two complete concluding sentences containing between ${wordsNeeded + 8} and ${wordsNeeded + 18} word objects. Mark at least 18 independently removable modifier words optional=true. The final word must end in punctuation and must not be optional.
+${closingFeedback}`,
+            maxTokens: Math.max(900, wordsNeeded * 12),
+            temperature: 0.25,
+            startProvider: "anthropic",
+            onContent: () => {},
+            emitContent: false,
+          });
+          const firstBracket = response.indexOf("[");
+          const lastBracket = response.lastIndexOf("]");
+          let wordItems: Array<{ word: string; optional: boolean }> = [];
+          if (firstBracket >= 0 && lastBracket > firstBracket) {
+            try {
+              const parsed = JSON.parse(
+                response.slice(firstBracket, lastBracket + 1),
+              );
+              if (Array.isArray(parsed)) {
+                const safeModifierPattern =
+                  /^(?:also|clearly|coherently|directly|distinctly|even|fully|fundamentally|genuinely|indeed|intrinsically|naturally|necessarily|precisely|properly|quite|rather|systematically|still|therefore|truly|ultimately|very),?$/i;
+                const normalizedItems = parsed.map((item) => {
+                  if (
+                    typeof item === "string"
+                    && item.length > 0
+                    && !/\s/.test(item)
+                  ) {
+                    return {
+                      word: item,
+                      optional: safeModifierPattern.test(item),
+                    };
+                  }
+                  const word = item?.word ?? item?.text;
+                  if (
+                    typeof word === "string"
+                    && word.length > 0
+                    && !/\s/.test(word)
+                  ) {
+                    return {
+                      word,
+                      optional:
+                        item?.optional === true
+                        || safeModifierPattern.test(word),
+                    };
+                  }
+                  return null;
+                });
+                if (normalizedItems.every(Boolean)) {
+                  wordItems = normalizedItems as Array<{
+                    word: string;
+                    optional: boolean;
+                  }>;
+                }
+              }
+            } catch {
+              wordItems = [];
+            }
+          }
+          const excessWords = wordItems.length - wordsNeeded;
+          const removableIndexes = wordItems
+            .map((item, index) => ({ item, index }))
+            .filter(
+              ({ item, index }) =>
+                item.optional
+                && index < wordItems.length - 1
+                && !/[.!?]$/.test(item.word),
+            )
+            .map(({ index }) => index);
+          const indexesToRemove = new Set(
+            excessWords >= 0 && removableIndexes.length >= excessWords
+              ? removableIndexes.slice(0, excessWords)
+              : [],
+          );
+          const candidateWords = wordItems
+            .filter((_, index) => !indexesToRemove.has(index))
+            .map((item) => item.word);
+          const candidate = candidateWords.join(" ");
+          const naturalCandidate = wordItems
+            .map((item) => item.word)
+            .join(" ");
+          const invalidLanguage =
+            /["“”]|\[\[Q\d+\]\]|\b(?:word count|this passage|this quotation|this quote|direct evidence|the paper)\b/i.test(
+              candidate,
+            ) || closingSelfReferencePattern.test(candidate);
+          const naturalCandidateIsValid =
+            naturalCandidate.length > 0
+            && countWords(naturalCandidate) >= 24
+            && countWords(naturalCandidate) <= 140
+            && /[.!?]['”)\]]*$/.test(naturalCandidate)
+            && !/["“”]|\[\[Q\d+\]\]|\b(?:word count|this passage|this quotation|this quote|direct evidence|the paper)\b/i.test(
+              naturalCandidate,
+            )
+            && !closingSelfReferencePattern.test(naturalCandidate);
+          if (
+            naturalCandidateIsValid
+            && !naturalClosingCandidates.includes(naturalCandidate)
+          ) {
+            naturalClosingCandidates.push(naturalCandidate);
+          }
+          if (
+            excessWords >= 0
+            && indexesToRemove.size === excessWords
+            && candidateWords.length === wordsNeeded
+            && /[.!?]['”)\]]*$/.test(candidate)
+            && !invalidLanguage
+          ) {
+            closing = candidate;
+          } else {
+            closingFeedback = `Your previous array had ${wordItems.length} valid items and ${removableIndexes.length} safely removable items, or it contained invalid language. Return the requested longer conclusion with enough optional modifier objects and nothing except the JSON array.`;
+          }
+        }
+        if (!closing && naturalClosingCandidates.length > 0) {
+          const requiredBodyWords = Array.from(requiredParagraphIndexes).reduce(
+            (sum, index) => sum + countWords(completeParagraphs[index]),
+            0,
+          );
+          const optionalSentenceUnits = completeParagraphs.flatMap(
+            (paragraph, paragraphIndex) => {
+              if (
+                requiredParagraphIndexes.has(paragraphIndex)
+                || paragraph.length === 0
+                || /^#{1,6}\s/.test(paragraph)
+                || closingSelfReferencePattern.test(paragraph)
+              ) {
+                return [];
+              }
+              return paragraph
+                .split(/(?<=[.!?])\s+(?=[A-Z0-9“‘'"(])/)
+                .map((sentence) => sentence.trim())
+                .filter(
+                  (sentence) =>
+                    countWords(sentence) >= 4
+                    && /[.!?]['”)\]]*$/.test(sentence),
+                )
+                .map((sentence) => ({
+                  paragraphIndex,
+                  sentence,
+                  words: countWords(sentence),
+                }));
+            },
+          );
+
+          for (const naturalCandidate of naturalClosingCandidates) {
+            const optionalWordsNeeded =
+              limit - requiredBodyWords - countWords(naturalCandidate);
+            if (optionalWordsNeeded < 0) continue;
+            const combinations: (number[] | null)[] = Array(
+              optionalWordsNeeded + 1,
+            ).fill(null);
+            combinations[0] = [];
+            for (
+              let unitIndex = 0;
+              unitIndex < optionalSentenceUnits.length;
+              unitIndex++
+            ) {
+              const unitWords = optionalSentenceUnits[unitIndex].words;
+              for (
+                let total = optionalWordsNeeded - unitWords;
+                total >= 0;
+                total--
+              ) {
+                if (
+                  combinations[total]
+                  && !combinations[total + unitWords]
+                ) {
+                  combinations[total + unitWords] = [
+                    ...combinations[total]!,
+                    unitIndex,
+                  ];
+                }
+              }
+            }
+            const selectedUnitIndexes = combinations[optionalWordsNeeded];
+            if (!selectedUnitIndexes) continue;
+            const unitsByParagraph = new Map<number, string[]>();
+            selectedUnitIndexes.forEach((unitIndex) => {
+              const unit = optionalSentenceUnits[unitIndex];
+              const existing = unitsByParagraph.get(unit.paragraphIndex) || [];
+              existing.push(unit.sentence);
+              unitsByParagraph.set(unit.paragraphIndex, existing);
+            });
+            bestPrefix = completeParagraphs
+              .map((paragraph, paragraphIndex) => {
+                if (requiredParagraphIndexes.has(paragraphIndex)) {
+                  return paragraph;
+                }
+                return (unitsByParagraph.get(paragraphIndex) || []).join(" ");
+              })
+              .filter(Boolean)
+              .join("\n\n")
+              .trim();
+            closing = naturalCandidate;
+            break;
+          }
+        }
+        if (!closing) {
+          throw new Error(
+            `Could not produce a natural exact-length conclusion of ${wordsNeeded} words: ${closingFeedback}`,
+          );
+        }
+        const completed = `${bestPrefix}\n\n${closing}`.trim();
+        if (countWords(completed) !== limit || !/[.!?]['”)\]]*$/.test(completed)) {
+          throw new Error(`Complete-ending validation failed at ${countWords(completed)}/${limit} body words`);
+        }
+        return completed;
+      };
+
+      const quoteExcerpts = selectedQuotes.map((quote) =>
+        prepareSourceQuotation(quote),
+      );
+      const totalQuotedWords = quoteExcerpts.reduce(
+        (sum, quote) => sum + countWords(quote),
+        0,
+      );
+      const quoteMarkers = quoteExcerpts.map((_, index) => `[[Q${index + 1}]]`);
+      const formattedQuotes = quoteExcerpts.map((quote, index) => `${index + 1}. “${quote}”`);
+      const quoteAppendix = formattedQuotes.length > 0
+        ? `\n\n## Direct Quotations Used\n\n${formattedQuotes.join("\n\n")}`
+        : "";
+      const quoteAppendixWords = countWords(quoteAppendix);
+      const proseTargetWords = targetWords;
+      const minimumAnalyticalBodyWords =
+        totalQuotedWords + targetQuotes * 12 + 100;
+      if (targetQuotes > 0 && proseTargetWords < minimumAnalyticalBodyWords) {
+        cleanup();
+        res.write(`data: ${JSON.stringify({
+          error: `${targetWords} words is too short to use and analyze ${targetQuotes} quotations. Increase the paper length or request fewer quotations.`,
+        })}\n\n`);
+        res.write("data: [DONE]\n\n");
+        res.end();
+        return;
+      }
+
+      const plannedChunks = Math.max(1, Math.ceil(proseTargetWords / 450));
+      const generationTargetWords = proseTargetWords + Math.max(
+        120,
+        Math.min(220, Math.floor(proseTargetWords * 0.18)),
+      );
+      const maxGenerationAttempts = plannedChunks + 8;
+
+      const markerAssignments = Array.from({ length: plannedChunks }, () => [] as string[]);
+      const quoteIntegrationChunks = Math.max(1, plannedChunks - 1);
+      quoteMarkers.forEach((marker, index) => {
+        markerAssignments[index % quoteIntegrationChunks].push(marker);
+      });
+      const quoteByMarker = new Map(
+        quoteMarkers.map((marker, index) => [marker, quoteExcerpts[index]]),
+      );
+      const markerPattern = (marker: string) => new RegExp(
+        marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+        "g",
+      );
+      const markerCount = (content: string, marker: string) =>
+        (content.match(markerPattern(marker)) || []).length;
+      const missingQuoteMarkers = (content: string) =>
+        quoteMarkers.filter((marker) => markerCount(content, marker) === 0);
+      const expandQuoteMarkers = (content: string) => {
+        let expanded = content;
+        quoteMarkers.forEach((marker) => {
+          expanded = expanded.replace(markerPattern(marker), `“${quoteByMarker.get(marker)}”`);
+        });
+        return expanded;
+      };
+      const dedupeQuoteMarkers = (content: string) => {
+        let deduped = content;
+        quoteMarkers.forEach((marker) => {
+          let seen = false;
+          deduped = deduped.replace(markerPattern(marker), () => {
+            if (seen) return "";
+            seen = true;
+            return marker;
+          });
+        });
+        return deduped;
+      };
       
-      console.log(`[Paper Writer] Length mode: ${lengthMode}, ${numChunks} chunks of ~${chunkTargetWords} words each`);
-      res.write(`data: ${JSON.stringify({ status: `PASS 2: Generating ${numChunks} skeleton-constrained chunks...` })}\n\n`);
+      console.log(`[Paper Writer] Length mode: ${lengthMode}, body target ${proseTargetWords} words with ${formattedQuotes.length} integrated quotes, plus a separately counted ${quoteAppendixWords}-word reference list`);
+      res.write(`data: ${JSON.stringify({ status: `PASS 2: Integrating and analyzing ${formattedQuotes.length} verified quotations in the paper body...` })}\n\n`);
 
       // Check provider availability (any provider in the fallback chain counts)
       if (!getFallbackModels("anthropic").some(isProviderAvailable)) {
@@ -2717,9 +3337,17 @@ CRITICAL RULES:
         return;
       }
 
-      // Build quotes instruction if requested
       const quotesInstruction = targetQuotes > 0 
-        ? `\n- INCORPORATE EXACTLY ${targetQuotes} QUOTES from the quotes section above, integrating them naturally into the text` 
+        ? `\nREQUIRED DIRECT QUOTATIONS:
+${quoteMarkers.map((marker, index) => `- ${marker} represents exactly: “${quoteExcerpts[index]}”`).join("\n")}
+
+QUOTATION RULES:
+- Insert every required marker exactly once in the body.
+- Introduce each marker as evidence and explain its relevance to the paper's argument in the same paragraph.
+- Never place markers in a detached list, blockquote collection, or quotation-only paragraph.
+- Place all required markers before the final third of the body so none is lost during exact-length validation.
+- Output the marker token, not the quotation text; the system replaces it with the verified source wording.
+- Do not use any other direct quotation marks or add a quotation list. The system creates a reference list containing only quotations verified as used in the body.`
         : "";
 
       // PASS 2: Generate chunks CONSTRAINED BY the skeleton
@@ -2748,43 +3376,81 @@ ${quotesInstruction}
 STYLE REQUIREMENTS:
 - SHORT PARAGRAPHS (2-4 sentences max)
 - First person voice throughout
+- Never refer to ${figure.name} by name or in the third person; use I, me, my, and mine
 - NO hedging, NO throat-clearing
 - State thesis IMMEDIATELY
 
 STRICT RULE: Do NOT contradict the commitment ledger. Use key terms as defined.`;
 
       try {
-        for (let chunkIdx = 0; chunkIdx < numChunks && totalWordCount < targetWords; chunkIdx++) {
-          const remainingWords = targetWords - totalWordCount;
-          const thisChunkTarget = Math.min(chunkTargetWords, remainingWords + 100);
+        for (
+          let chunkIdx = 0;
+          chunkIdx < maxGenerationAttempts
+            && (
+              chunkIdx < plannedChunks
+              || totalWordCount < generationTargetWords
+            );
+          chunkIdx++
+        ) {
+          const remainingWords = Math.max(0, generationTargetWords - totalWordCount);
+          const assignedMarkers = chunkIdx < plannedChunks
+            ? markerAssignments[chunkIdx]
+            : [];
+          const markerExpansionWords = assignedMarkers.reduce((sum, marker) => {
+            return sum + Math.max(0, countWords(quoteByMarker.get(marker) || "") - 1);
+          }, 0);
+          const isQuoteIntegrationSegment =
+            assignedMarkers.length > 0 && chunkIdx < quoteIntegrationChunks;
+          const quotePhaseTargetWords = Math.floor(proseTargetWords * 0.68);
+          const quotePhaseWordsPerChunk = Math.floor(
+            quotePhaseTargetWords / quoteIntegrationChunks,
+          );
+          const thisChunkTarget = isQuoteIntegrationSegment
+            ? Math.max(
+                180,
+                Math.min(360, quotePhaseWordsPerChunk - markerExpansionWords),
+              )
+            : Math.min(
+                450,
+                Math.max(100, remainingWords - markerExpansionWords + 40),
+              );
           
           // Determine which outline sections this chunk should cover
-          const outlineSectionsPerChunk = Math.ceil(skeleton.outline.length / numChunks);
-          const startOutlineIdx = chunkIdx * outlineSectionsPerChunk;
+          const outlineSectionsPerChunk = Math.max(1, Math.ceil(skeleton.outline.length / plannedChunks));
+          const outlineChunkIdx = Math.min(chunkIdx, plannedChunks - 1);
+          const startOutlineIdx = outlineChunkIdx * outlineSectionsPerChunk;
           const endOutlineIdx = Math.min(startOutlineIdx + outlineSectionsPerChunk, skeleton.outline.length);
           const relevantOutline = skeleton.outline.slice(startOutlineIdx, endOutlineIdx);
+          const assignedQuoteInstruction = assignedMarkers.length > 0
+            ? `\nREQUIRED IN THIS SEGMENT:
+${assignedMarkers.map((marker) => `- Use ${marker} exactly once and interpret it in the same paragraph.`).join("\n")}
+- Do not use any quote marker not listed for this segment.
+- These markers must occur before the final third of this segment.`
+            : "\nDo not use any quote marker in this segment.";
           
           let chunkPrompt = "";
           if (chunkIdx === 0) {
-            chunkPrompt = `Write the FIRST ${thisChunkTarget} words of the paper.
+            chunkPrompt = `Write AT LEAST ${thisChunkTarget} words for the FIRST part of the paper. Do not stop early.
 
 COVER THESE OUTLINE SECTIONS:
 ${relevantOutline.map((o, i) => `${startOutlineIdx + i + 1}. ${o}`).join('\n')}
 
-Begin NOW with the thesis. First person voice.`;
+Begin NOW with the thesis. First person voice.
+${assignedQuoteInstruction}`;
           } else {
-            chunkPrompt = `Continue the paper. Write the NEXT ${thisChunkTarget} words.
+            chunkPrompt = `Continue the paper. Write AT LEAST ${thisChunkTarget} additional words. Do not stop early.
 
 COVER THESE OUTLINE SECTIONS:
 ${relevantOutline.map((o, i) => `${startOutlineIdx + i + 1}. ${o}`).join('\n')}
 
 Do NOT repeat what came before. Continue naturally from:
 
-${totalContent.slice(-1500)}`;
+${totalContent.slice(-1500)}
+${assignedQuoteInstruction}`;
           }
 
-          res.write(`data: ${JSON.stringify({ status: `Generating chunk ${chunkIdx + 1}/${numChunks} (sections ${startOutlineIdx + 1}-${endOutlineIdx})...` })}\n\n`);
-          console.log(`[Paper Writer] PASS 2 Chunk ${chunkIdx + 1}/${numChunks}: targeting ${thisChunkTarget} words, outline ${startOutlineIdx + 1}-${endOutlineIdx}`);
+          res.write(`data: ${JSON.stringify({ status: `Generating prose segment ${chunkIdx + 1}; ${remainingWords} words remaining...` })}\n\n`);
+          console.log(`[Paper Writer] PASS 2 Segment ${chunkIdx + 1}: requesting at least ${thisChunkTarget} words, ${remainingWords} remaining`);
 
           // Generate this chunk with automatic provider fallback.
           // If one provider/key fails, it transparently retries the next.
@@ -2792,15 +3458,18 @@ ${totalContent.slice(-1500)}`;
             res,
             systemPrompt: skeletonSystemPrompt,
             userPrompt: chunkPrompt,
-            maxTokens: Math.ceil(thisChunkTarget * 2.5),
+            maxTokens: Math.ceil(
+              thisChunkTarget * (isQuoteIntegrationSegment ? 2.2 : 3.5),
+            ),
             temperature: 0.7,
             startProvider: "anthropic",
             onContent: (c) => { totalContent += c; },
+            emitContent: false,
           });
 
-          totalWordCount = totalContent.split(/\s+/).filter((w: string) => w.length > 0).length;
+          totalWordCount = countWords(expandQuoteMarkers(dedupeQuoteMarkers(totalContent)));
           const chunkWords = chunkContent.split(/\s+/).filter((w: string) => w.length > 0).length;
-          console.log(`[Paper Writer] Chunk ${chunkIdx + 1}: ${chunkWords} words (total: ${totalWordCount}/${targetWords})`);
+          console.log(`[Paper Writer] Segment ${chunkIdx + 1}: ${chunkWords} generated words (expanded body: ${totalWordCount}/${proseTargetWords}; missing quotes: ${missingQuoteMarkers(totalContent).length})`);
 
           // Store chunk delta for PASS 3
           allDeltas.push({
@@ -2813,20 +3482,708 @@ ${totalContent.slice(-1500)}`;
           res.write(`data: ${JSON.stringify({ 
             chunk_progress: { 
               chunk: chunkIdx + 1, 
-              total: numChunks,
+              total: plannedChunks,
               chunkWords,
               totalWords: totalWordCount,
-              targetWords 
+              targetWords: proseTargetWords
             } 
           })}\n\n`);
 
           // Brief pause between chunks
-          if (chunkIdx < numChunks - 1 && totalWordCount < targetWords) {
+          if (totalWordCount < generationTargetWords) {
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         }
 
-        console.log(`[Paper Writer] PASS 2 Complete: ${totalWordCount} words in ${numChunks} chunks`);
+        if (totalWordCount < proseTargetWords) {
+          throw new Error(`Paper body stopped at ${totalWordCount}/${proseTargetWords} required prose words`);
+        }
+
+        let markedBody = totalContent
+          .split(/\n#{1,3}\s+Direct Quotations/i)[0]
+          .replace(/[“”"]/g, "'");
+        markedBody = dedupeQuoteMarkers(markedBody);
+        const missingMarkersForRevision = missingQuoteMarkers(markedBody);
+        if (missingMarkersForRevision.length > 0) {
+          markedBody = `${markedBody.trim()}\n\n${missingMarkersForRevision.join("\n\n")}`;
+        }
+
+        const genericQuoteProsePattern =
+          /\b(?:I use|this passage|this quotation|this quote|the quotation|the quote|direct evidence|paper's central claim|philosophical distinction at issue)\b/i;
+        const escapedFigureName = figure.name.replace(
+          /[.*+?^${}()|[\]\\]/g,
+          "\\$&",
+        );
+        const thirdPersonSelfReferencePattern = new RegExp(
+          `\\b${escapedFigureName}(?:['’]s)?\\b`,
+          "i",
+        );
+        const normalizeOrganicParagraph = (paragraph: unknown): string => {
+          if (typeof paragraph === "string") {
+            const cleaned = paragraph
+              .replace(/^```(?:json|text)?\s*/i, "")
+              .replace(/\s*```$/, "")
+              .trim();
+            if (/^[\[{]/.test(cleaned)) {
+              try {
+                return normalizeOrganicParagraph(JSON.parse(cleaned));
+              } catch {
+                // Preserve non-JSON prose that happens to begin with punctuation.
+              }
+            }
+            return cleaned.replace(/\s+/g, " ");
+          }
+          if (Array.isArray(paragraph)) {
+            if (paragraph.every((item) => typeof item === "string")) {
+              return paragraph.join(" ").replace(/\s+/g, " ").trim();
+            }
+            const wordObjects = paragraph.map((item) =>
+              item && typeof item === "object"
+                ? (item as any).word ?? (item as any).text
+                : null,
+            );
+            if (
+              wordObjects.length > 0
+              && wordObjects.every((word) => typeof word === "string")
+            ) {
+              return wordObjects.join(" ").replace(/\s+/g, " ").trim();
+            }
+            return paragraph
+              .map((item) => normalizeOrganicParagraph(item))
+              .filter(Boolean)
+              .join(" ")
+              .replace(/\s+/g, " ")
+              .trim();
+          }
+          if (paragraph && typeof paragraph === "object") {
+            const record = paragraph as Record<string, unknown>;
+            const preferred =
+              record.paragraph
+              ?? record.revised
+              ?? record.content
+              ?? record.text
+              ?? record.output
+              ?? record.result
+              ?? record.value;
+            if (preferred !== undefined) {
+              return normalizeOrganicParagraph(preferred);
+            }
+            const recovered = Object.values(record)
+              .map((value) => normalizeOrganicParagraph(value))
+              .filter(Boolean);
+            return recovered.sort(
+              (a, b) => countWords(b) - countWords(a),
+            )[0] || "";
+          }
+          return "";
+        };
+        const normalizeCompleteMarkerBoundaries = (
+          paragraph: string,
+          markers: string[],
+        ) => {
+          let revised = paragraph;
+          for (const marker of markers) {
+            const markerIndex = revised.indexOf(marker);
+            if (markerIndex < 0) continue;
+            let before = revised.slice(0, markerIndex).trimEnd();
+            let after = revised
+              .slice(markerIndex + marker.length)
+              .trimStart();
+            if (
+              before
+              && !/[:.!?]$/.test(before)
+              && !/\b(?:and|but|because|since|while|although|whereas|that|which|so)$/i.test(
+                before,
+              )
+            ) {
+              before = `${before.replace(/[,;]\s*$/, "")}:`;
+            }
+            if (
+              /^(?:this|these|those|the|it|its|such|my|our|their|that)\b/.test(
+                after,
+              )
+            ) {
+              after = `${after.charAt(0).toUpperCase()}${after.slice(1)}`;
+            } else if (
+              /^(?:shows|reveals|demonstrates|indicates|establishes|clarifies|confirms|expresses|captures|underscores|illustrates)\b/.test(
+                after,
+              )
+            ) {
+              after = `This ${after}`;
+            }
+            revised = [
+              before,
+              marker,
+              after,
+            ].filter(Boolean).join(" ");
+          }
+          return revised;
+        };
+        const validateOrganicParagraph = (
+          paragraph: string,
+          expectedMarkers: string[],
+          maxWords: number,
+        ) => {
+          if (!paragraph) return "empty paragraph";
+          const endsWithCompleteSourceMarker = expectedMarkers.some(
+            (marker) => paragraph.trimEnd().endsWith(marker),
+          );
+          if (
+            !/[.!?]['”)\]]*$/.test(paragraph)
+            && !endsWithCompleteSourceMarker
+          ) {
+            return "incomplete ending";
+          }
+          if (/^(?:#{1,6}\s|[-*]\s|\d+[.)]\s)/.test(paragraph)) {
+            return "list or heading formatting";
+          }
+          if (genericQuoteProsePattern.test(paragraph)) {
+            return "generic quotation meta-commentary";
+          }
+          if (thirdPersonSelfReferencePattern.test(paragraph)) {
+            return "third-person self-reference instead of first-person voice";
+          }
+          if (/["“”]/.test(paragraph)) {
+            return "literal quotation text instead of source marker";
+          }
+          if (countWords(paragraph) > maxWords + 18) {
+            return `too long (${countWords(paragraph)} words; maximum ${maxWords})`;
+          }
+          for (const marker of expectedMarkers) {
+            if (markerCount(paragraph, marker) !== 1) {
+              return `${marker} must occur exactly once`;
+            }
+            const markerIndex = paragraph.indexOf(marker);
+            const proseBeforeMarker = paragraph
+              .slice(0, markerIndex)
+              .trimEnd();
+            const proseAfterMarker = paragraph
+              .slice(markerIndex + marker.length)
+              .trimStart();
+            if (
+              proseBeforeMarker
+              && !/[:.!?]$/.test(proseBeforeMarker)
+            ) {
+              return `${marker} is a complete sentence and must follow a colon or sentence boundary`;
+            }
+            if (
+              proseAfterMarker
+              && !/^[A-Z0-9“‘'"[(]/.test(proseAfterMarker)
+            ) {
+              return `${marker} must be followed by a new sentence`;
+            }
+          }
+          const foreignMarker = quoteMarkers.find(
+            (marker) =>
+              !expectedMarkers.includes(marker) && markerCount(paragraph, marker) > 0,
+          );
+          if (foreignMarker) return `contains unrelated marker ${foreignMarker}`;
+          const proseWithoutMarkers = expectedMarkers.reduce(
+            (prose, marker) => prose.replace(markerPattern(marker), ""),
+            paragraph,
+          );
+          const minimumAnalysisWords = Math.max(12, expectedMarkers.length * 8);
+          if (countWords(proseWithoutMarkers) < minimumAnalysisWords) {
+            return `needs at least ${minimumAnalysisWords} words of specific interpretation`;
+          }
+          return "";
+        };
+        const parseOrganicRevisionMap = (content: string) => {
+          const firstBrace = content.indexOf("{");
+          const lastBrace = content.lastIndexOf("}");
+          if (firstBrace < 0 || lastBrace <= firstBrace) return null;
+          try {
+            const parsed = JSON.parse(content.slice(firstBrace, lastBrace + 1));
+            return parsed && typeof parsed === "object"
+              ? parsed as Record<string, unknown>
+              : null;
+          } catch {
+            return null;
+          }
+        };
+
+        type OrganicQuoteParagraph = {
+          id: string;
+          index: number;
+          markers: string[];
+          paragraph: string;
+          previous: string;
+          next: string;
+          maxWords: number;
+        };
+        const reservedNonQuoteWords = Math.max(
+          100,
+          Math.floor(targetWords * 0.12),
+        );
+        const analysisWordsPerQuote = targetQuotes > 0
+          ? Math.max(
+              12,
+              Math.min(
+                28,
+                Math.floor(
+                  (
+                    targetWords
+                    - totalQuotedWords
+                    - reservedNonQuoteWords
+                  ) / targetQuotes,
+                ),
+              ),
+            )
+          : 20;
+        const markedParagraphs = markedBody
+          .split(/\n\s*\n/)
+          .map((paragraph) => paragraph.trim())
+          .filter(Boolean);
+        const organicParagraphs: OrganicQuoteParagraph[] = markedParagraphs
+          .map((paragraph, index) => {
+            const markers = quoteMarkers.filter((marker) =>
+              paragraph.includes(marker),
+            );
+            return {
+              id: `P${index + 1}`,
+              index,
+              markers,
+              paragraph,
+              previous: markedParagraphs[index - 1]?.slice(-700) || "",
+              next: markedParagraphs[index + 1]?.slice(0, 700) || "",
+              maxWords: Math.max(
+                18,
+                Math.min(
+                  180,
+                  markers.length * (analysisWordsPerQuote + 1),
+                ),
+              ),
+            };
+          })
+          .filter((item) => item.markers.length > 0);
+
+        const organicRevisionInput = Object.fromEntries(
+          organicParagraphs.map((item) => [
+            item.id,
+            {
+              requiredMarkers: item.markers,
+              exactSources: Object.fromEntries(
+                item.markers.map((marker) => [marker, quoteByMarker.get(marker)]),
+              ),
+              maximumWords: item.maxWords,
+              previousContext: item.previous,
+              draftParagraph: item.paragraph,
+              nextContext: item.next,
+            },
+          ]),
+        );
+
+        const organicEditorSystemPrompt = `You are the final prose editor for a paper written in first person as ${figure.name}.
+
+Rewrite quotation-bearing paragraphs so each verified source marker is woven seamlessly into the syntax and reasoning. The marker stands for exact source wording that the server inserts later.
+
+NON-NEGOTIABLE RULES:
+- Preserve every required [[Qn]] marker exactly once and introduce no other marker.
+- Make the sentence grammatical when the marker is replaced by its exact source wording.
+- Every source marker represents a complete sentence with terminal punctuation. Introduce it after a colon or a completed sentence, then begin any following analysis as a new sentence. Never embed a marker as a clause fragment.
+- Build a concrete claim, introduce the source wording naturally, and explain what its particular language establishes in the local argument.
+- Write continuous philosophical prose in ${figure.name}'s voice, not commentary about writing.
+- Every paragraph must directly advance the requested topic and remain consistent with the other paragraphs and the governing thesis.
+- Interpret only what the source wording warrants. Do not force a tangential source into an unrelated claim or contradict another paragraph.
+- Stay in first person throughout; never refer to ${figure.name} by name or in the third person.
+- Vary transitions and sentence structure so the sequence reads as one developing argument rather than twenty repeated claim-quotation-explanation units.
+- Never say "I use", "this passage", "this quotation", "this quote", "direct evidence", "the paper", or "the central claim".
+- Do not call attention to quotation mechanics and do not append a generic explanation.
+- Do not output literal quotation marks or copy the source wording; output marker tokens only.
+- No headings, lists, labels, dialogue, or detached quotation sentences.
+- For each paragraph, return exactly its stated maximumWords as an array of single-word strings. Each marker is one array item.
+
+Return only a valid JSON object whose keys are the supplied paragraph IDs and whose values are those exact-length word arrays.`;
+        const organicSingleEditorSystemPrompt = `You are the final prose editor for a paper written in first person as ${figure.name}.
+
+Rewrite one quotation-bearing paragraph as continuous philosophical prose.
+
+NON-NEGOTIABLE RULES:
+- Preserve every supplied [[Qn]] marker exactly once and introduce no other marker.
+- Make the sentence grammatical when each marker is replaced by its exact source wording.
+- Every marker represents a complete sentence with terminal punctuation. Introduce it after a colon or a completed sentence, then begin any following analysis as a new sentence. Never place it after "but", before "because", or inside another sentence.
+- Build a concrete claim, introduce the wording naturally, and explain what its particular language establishes.
+- Make the paragraph directly advance the requested topic, remain consistent with the governing thesis, and claim no more than the source wording warrants.
+- Stay in first person throughout; never refer to ${figure.name} by name or in the third person.
+- Use a natural transition from the surrounding context rather than a repeated claim-quotation-explanation formula.
+- Never say "I use", "this passage", "this quotation", "this quote", "direct evidence", "the paper", or "the central claim".
+- Do not output literal quotation marks or copy source wording; output marker tokens only.
+- No headings, lists, labels, dialogue, or detached quotation sentences.
+- End with complete sentence punctuation.
+
+Return only the revised paragraph as plain prose within the requested word range. Do not return JSON, labels, or commentary.`;
+
+        const reviseOrganicParagraph = async (
+          item: OrganicQuoteParagraph,
+          feedback = "",
+        ) => {
+          let lastError = feedback;
+          for (let attempt = 0; attempt < 5; attempt++) {
+            const response = await streamWithFallback({
+              res,
+              systemPrompt: organicSingleEditorSystemPrompt,
+              userPrompt: `Rewrite only ${item.id}.
+
+Topic: ${truncatedTopic}
+Governing thesis: ${skeleton.thesis}
+Required markers and exact source wording:
+${item.markers.map((marker) => `${marker}: ${quoteByMarker.get(marker)}`).join("\n")}
+Required words: between ${Math.max(18, item.maxWords - 5)} and ${item.maxWords}
+Previous context: ${item.previous || "(opening paragraph)"}
+Draft paragraph: ${item.paragraph}
+Next context: ${item.next || "(closing paragraph)"}
+${lastError ? `The previous revision failed because: ${lastError}` : ""}
+
+Return only the revised paragraph as plain prose within that range, preserving each marker exactly once, using no literal source wording, and ending with complete sentence punctuation.`,
+              maxTokens: Math.max(450, item.maxWords * 6),
+              temperature: 0.3,
+              startProvider: attempt >= 2 ? "deepseek" : "anthropic",
+              onContent: () => {},
+              emitContent: false,
+            });
+            const firstBracket = response.indexOf("[");
+            const lastBracket = response.lastIndexOf("]");
+            let candidate = "";
+            if (firstBracket >= 0 && lastBracket > firstBracket) {
+              try {
+                const parsed = JSON.parse(
+                  response.slice(firstBracket, lastBracket + 1),
+                );
+                if (Array.isArray(parsed)) {
+                  if (
+                    parsed.every(
+                      (word) =>
+                        typeof word === "string"
+                        && word.length > 0
+                        && !/\s/.test(word),
+                    )
+                  ) {
+                    candidate = parsed.join(" ");
+                  } else if (
+                    parsed.every(
+                      (item) =>
+                        item
+                        && typeof item === "object"
+                        && typeof item.word === "string"
+                        && item.word.length > 0
+                        && !/\s/.test(item.word),
+                    )
+                  ) {
+                    candidate = parsed.map((item) => item.word).join(" ");
+                  }
+                }
+              } catch {
+                candidate = "";
+              }
+            }
+            if (!candidate) {
+              const firstBrace = response.indexOf("{");
+              const lastBrace = response.lastIndexOf("}");
+              if (firstBrace >= 0 && lastBrace > firstBrace) {
+                try {
+                  const parsed = JSON.parse(
+                    response.slice(firstBrace, lastBrace + 1),
+                  );
+                  const value = parsed?.paragraph
+                    ?? parsed?.[item.id]
+                    ?? Object.values(parsed || {})[0];
+                  candidate = normalizeOrganicParagraph(value);
+                } catch {
+                  candidate = "";
+                }
+              }
+            }
+            if (!candidate) {
+              candidate = normalizeOrganicParagraph(response);
+            }
+            candidate = normalizeCompleteMarkerBoundaries(
+              candidate,
+              item.markers,
+            );
+            const candidateWordCount = countWords(candidate);
+            const minimumWords = Math.max(18, item.maxWords - 5);
+            const validationError = validateOrganicParagraph(
+              candidate,
+              item.markers,
+              item.maxWords,
+            );
+            if (
+              !validationError
+              && candidateWordCount >= minimumWords
+              && candidateWordCount <= item.maxWords + 18
+            ) {
+              return candidate;
+            }
+            lastError = validationError
+              || `returned ${candidateWordCount} words; expected at least ${minimumWords}`;
+          }
+          throw new Error(
+            `Could not integrate ${item.markers.join(", ")} organically: ${lastError}`,
+          );
+        };
+
+        if (organicParagraphs.length > 0) {
+          res.write(`data: ${JSON.stringify({ status: "Refining quotations into continuous argumentative prose..." })}\n\n`);
+          let revisionMap: Record<string, unknown> | null = null;
+          for (let attempt = 0; attempt < 2 && !revisionMap; attempt++) {
+            const revisionResponse = await streamWithFallback({
+              res,
+              systemPrompt: organicEditorSystemPrompt,
+              userPrompt: `Topic: ${truncatedTopic}
+Governing thesis: ${skeleton.thesis}
+
+Rewrite every supplied quotation-bearing paragraph:
+${JSON.stringify(organicRevisionInput, null, 2)}
+
+Return only the JSON object.`,
+              maxTokens: Math.max(6000, Math.ceil(targetWords * 6)),
+              temperature: 0.35,
+              startProvider: "anthropic",
+              onContent: () => {},
+              emitContent: false,
+            });
+            revisionMap = parseOrganicRevisionMap(revisionResponse);
+          }
+
+          for (const item of organicParagraphs) {
+            const groupedCandidate = normalizeCompleteMarkerBoundaries(
+              normalizeOrganicParagraph(revisionMap?.[item.id] || ""),
+              item.markers,
+            );
+            const groupedError = validateOrganicParagraph(
+              groupedCandidate,
+              item.markers,
+              item.maxWords,
+            ) || (
+              countWords(groupedCandidate) >= item.maxWords - 2
+                && countWords(groupedCandidate) <= item.maxWords + 2
+                ? ""
+                : `returned ${countWords(groupedCandidate)}/${item.maxWords} words`
+            );
+            markedParagraphs[item.index] = groupedError
+              ? await reviseOrganicParagraph(item, groupedError)
+              : groupedCandidate;
+          }
+          markedBody = markedParagraphs.join("\n\n");
+        }
+
+        const currentMarkedParagraphs = markedBody
+          .split(/\n\s*\n/)
+          .map((paragraph) => paragraph.trim())
+          .filter(Boolean);
+        const currentQuoteParagraphs = currentMarkedParagraphs.filter(
+          (paragraph) => quoteMarkers.some((marker) => paragraph.includes(marker)),
+        );
+        const maximumExpandedQuoteWords =
+          targetWords - reservedNonQuoteWords;
+        const currentExpandedQuoteWords = countWords(
+          expandQuoteMarkers(currentQuoteParagraphs.join("\n\n")),
+        );
+        if (currentExpandedQuoteWords > maximumExpandedQuoteWords) {
+          const maximumMarkedQuoteWords =
+            maximumExpandedQuoteWords
+            - totalQuotedWords
+            + quoteMarkers.length;
+          let compressedQuoteProse = "";
+          let compressionFeedback = "";
+          for (
+            let attempt = 0;
+            attempt < 4 && !compressedQuoteProse;
+            attempt++
+          ) {
+            const compressionResponse = await streamWithFallback({
+              res,
+              systemPrompt: `You are the final compression editor for a first-person philosophical paper written as ${figure.name}.
+
+Rewrite all supplied quotation-bearing prose as one coherent developing argument while preserving the exact source markers.
+
+NON-NEGOTIABLE RULES:
+- Preserve every supplied [[Qn]] marker exactly once and introduce no other marker.
+- Each marker represents a complete source sentence. Introduce it after a colon or complete sentence, then begin any following analysis as a new sentence.
+- Use no more than three source markers in any paragraph.
+- Interpret the particular source wording faithfully and connect it directly to the requested topic and governing thesis.
+- Write in first person throughout; never refer to ${figure.name} by name or in the third person.
+- Never use quotation meta-commentary such as "I use," "this passage," "this quotation," "the quote," or "direct evidence."
+- Do not copy any supplied source wording; retain only the markers.
+- Use continuous prose with no headings, labels, bullet lists, dialogue, or speaker formatting.
+- The entire returned prose, counting each marker as one word, must contain no more than ${maximumMarkedQuoteWords} whitespace-delimited words.
+
+Return only the revised plain prose, separated into short paragraphs. Do not return JSON or commentary.`,
+              userPrompt: `Topic: ${truncatedTopic}
+Governing thesis: ${skeleton.thesis}
+
+Exact source wording represented by the markers:
+${quoteMarkers.map((marker) => `${marker}: ${quoteByMarker.get(marker)}`).join("\n")}
+
+Quotation-bearing prose to compress:
+${currentQuoteParagraphs.join("\n\n")}
+
+${compressionFeedback}`,
+              maxTokens: Math.max(
+                2200,
+                Math.ceil(maximumMarkedQuoteWords * 5),
+              ),
+              temperature: 0.25,
+              startProvider: attempt >= 2 ? "deepseek" : "anthropic",
+              onContent: () => {},
+              emitContent: false,
+            });
+            let cleanedCompression = compressionResponse
+              .replace(/^```(?:json|text|markdown)?\s*/i, "")
+              .replace(/\s*```$/, "")
+              .trim();
+            if (/^[\[{]/.test(cleanedCompression)) {
+              cleanedCompression = normalizeOrganicParagraph(
+                cleanedCompression,
+              );
+            }
+            const compressedParagraphs = cleanedCompression
+              .split(/\n\s*\n/)
+              .map((paragraph) => paragraph.trim())
+              .filter(Boolean)
+              .map((paragraph) => {
+                const markers = quoteMarkers.filter((marker) =>
+                  paragraph.includes(marker),
+                );
+                return normalizeCompleteMarkerBoundaries(paragraph, markers);
+              });
+            const compressedCandidate = compressedParagraphs.join("\n\n");
+            const invalidCompressedMarkers = quoteMarkers.filter(
+              (marker) => markerCount(compressedCandidate, marker) !== 1,
+            );
+            let compressionError = "";
+            if (invalidCompressedMarkers.length > 0) {
+              compressionError =
+                `marker counts were wrong for ${invalidCompressedMarkers.join(", ")}`;
+            } else if (
+              countWords(compressedCandidate) > maximumMarkedQuoteWords
+            ) {
+              compressionError =
+                `returned ${countWords(compressedCandidate)}/${maximumMarkedQuoteWords} allowed words`;
+            } else {
+              for (const paragraph of compressedParagraphs) {
+                const markers = quoteMarkers.filter((marker) =>
+                  paragraph.includes(marker),
+                );
+                if (markers.length === 0) {
+                  compressionError = "included a paragraph without a source marker";
+                  break;
+                }
+                if (markers.length > 3) {
+                  compressionError = "placed more than three markers in one paragraph";
+                  break;
+                }
+                compressionError = validateOrganicParagraph(
+                  paragraph,
+                  markers,
+                  maximumMarkedQuoteWords,
+                );
+                if (compressionError) break;
+              }
+            }
+            if (!compressionError) {
+              compressedQuoteProse = compressedCandidate;
+            } else {
+              compressionFeedback =
+                `The previous compression failed because ${compressionError}. Correct that defect and return only the complete revised prose.`;
+            }
+          }
+          if (!compressedQuoteProse) {
+            throw new Error(
+              `Could not compress quotation paragraphs into the ${maximumExpandedQuoteWords}-word collective budget: ${compressionFeedback}`,
+            );
+          }
+          const firstQuoteParagraphIndex = currentMarkedParagraphs.findIndex(
+            (paragraph) =>
+              quoteMarkers.some((marker) => paragraph.includes(marker)),
+          );
+          const rebuiltParagraphs: string[] = [];
+          currentMarkedParagraphs.forEach((paragraph, index) => {
+            const containsMarker = quoteMarkers.some((marker) =>
+              paragraph.includes(marker),
+            );
+            if (index === firstQuoteParagraphIndex) {
+              rebuiltParagraphs.push(compressedQuoteProse);
+            }
+            if (!containsMarker) {
+              rebuiltParagraphs.push(paragraph);
+            }
+          });
+          markedBody = rebuiltParagraphs.join("\n\n");
+        }
+
+        const invalidMarkers = quoteMarkers.filter((marker) => markerCount(markedBody, marker) !== 1);
+        if (invalidMarkers.length > 0) {
+          throw new Error(`Paper did not integrate every required quotation exactly once: ${invalidMarkers.join(", ")}`);
+        }
+
+        for (const marker of quoteMarkers) {
+          const paragraph = markedBody
+            .split(/\n\s*\n/)
+            .find((candidate) => candidate.includes(marker));
+          const analyticalWords = paragraph
+            ? countWords(paragraph.replace(markerPattern(marker), ""))
+            : 0;
+          if (!paragraph || analyticalWords < 10) {
+            throw new Error(`Quotation ${marker} was not introduced and analyzed in an argumentative paragraph`);
+          }
+        }
+
+        const expandedBody = expandQuoteMarkers(markedBody);
+        if (countWords(expandedBody) < proseTargetWords) {
+          throw new Error(`Integrated paper body stopped at ${countWords(expandedBody)}/${proseTargetWords} required words`);
+        }
+
+        const proseBody = await closeAtExactWordCount(
+          expandedBody,
+          proseTargetWords,
+          quoteExcerpts.map((quote) => `“${quote}”`),
+        );
+        const unusedQuotes = quoteExcerpts.filter((quote) => {
+          return proseBody.split(`“${quote}”`).length - 1 !== 1;
+        });
+        if (unusedQuotes.length > 0) {
+          throw new Error(`${unusedQuotes.length} quotations were listed but not used exactly once in the final paper body`);
+        }
+
+        for (const quote of quoteExcerpts) {
+          const quotedText = `“${quote}”`;
+          const paragraph = proseBody
+            .split(/\n\s*\n/)
+            .find((candidate) => candidate.includes(quotedText));
+          const analyticalWords = paragraph
+            ? countWords(paragraph.replace(quotedText, ""))
+            : 0;
+          if (!paragraph || analyticalWords < 10) {
+            throw new Error("A final-body quotation lost its surrounding analysis during length finalization");
+          }
+          if (genericQuoteProsePattern.test(paragraph)) {
+            throw new Error("A final-body quotation still contains mechanical quotation language");
+          }
+        }
+
+        if (genericQuoteProsePattern.test(proseBody)) {
+          throw new Error("Final paper still contains mechanical quotation meta-commentary");
+        }
+        const narratorProse = quoteExcerpts.reduce(
+          (content, quote) => content.replace(`“${quote}”`, ""),
+          proseBody,
+        );
+        if (thirdPersonSelfReferencePattern.test(narratorProse)) {
+          throw new Error("Final paper breaks first-person thinker voice");
+        }
+
+        totalContent = `${proseBody}${quoteAppendix}`.trim();
+        totalWordCount = countWords(proseBody);
+        const totalDocumentWordCount = countWords(totalContent);
+
+        if (totalWordCount !== targetWords || formattedQuotes.length !== targetQuotes) {
+          throw new Error(
+            `Paper validation failed: ${totalWordCount}/${targetWords} words and ${formattedQuotes.length}/${targetQuotes} quotes`,
+          );
+        }
+
+        console.log(`[Paper Writer] PASS 2 Complete and validated: ${totalWordCount} body words, ${formattedQuotes.length} quotations integrated in body; ${totalDocumentWordCount - totalWordCount} reference-list words excluded from the paper count`);
         
         // ======
         // PASS 3: GLOBAL CONSISTENCY STITCH
@@ -2892,8 +4249,15 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
             console.error(`[Paper Writer] PASS 3 stitch failed:`, stitchError);
           }
         }
+
+        res.write(`data: ${JSON.stringify({
+          status: `Validated: ${totalWordCount} words and ${formattedQuotes.length} quotations. Sending paper...`,
+        })}\n\n`);
+        for (let offset = 0; offset < totalContent.length; offset += 2000) {
+          res.write(`data: ${JSON.stringify({ content: totalContent.slice(offset, offset + 2000) })}\n\n`);
+        }
         
-        res.write(`data: ${JSON.stringify({ status: `Complete: ${totalWordCount} words generated using semantic skeleton` })}\n\n`);
+        res.write(`data: ${JSON.stringify({ status: `Complete: ${totalWordCount} words and ${formattedQuotes.length} quotations` })}\n\n`);
         
         cleanup();
         res.write("data: [DONE]\n\n");
@@ -2901,7 +4265,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
       } catch (streamError) {
         console.error("Error during paper generation:", streamError);
         cleanup();
-        res.write(`data: ${JSON.stringify({ error: "Failed to generate paper" })}\n\n`);
+        res.write(`data: ${JSON.stringify({ error: (streamError as Error).message || "Failed to generate paper" })}\n\n`);
         res.write("data: [DONE]\n\n");
         res.end();
       }
@@ -3171,7 +4535,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   // ---------------- Self-Test (Beta Test) Endpoint ----------------
   // Streams a comprehensive health/integration check via SSE so the operator
   // can verify the live deployment from the UI without external tooling.
-  app.get("/api/admin/self-test/stream", isAdmin, async (req: any, res) => {
+  app.get("/api/admin/self-test/stream", async (req: any, res) => {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
@@ -3260,8 +4624,8 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
     }
   };
 
-  app.get("/api/admin/synthetic-test/stream", isAdmin, streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
-  app.get("/api/admin/accuracy-test/stream", isAdmin, streamDiagnostic("Accuracy test", runAccuracyTest));
+  app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
+  app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {

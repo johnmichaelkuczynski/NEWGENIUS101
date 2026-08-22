@@ -23,3 +23,10 @@ id = "TVVN6hcPVnCVy4SgD_IRY"
 uri = "file://recording/youtube-description.txt"
 type = "text"
 title = "YouTube Description — Philosophy: AI-Powered Course"
+
+[[outputs]]
+id = "4UMni17ubdgzmo7XvjvEv"
+uri = "file://artifacts/verified-aristotle-essentialism-paper.txt"
+type = "text"
+title = "Verified Aristotle Essentialism Paper"
+description = "The exact inspected and validated essay: 1,000 body words, 20 complete source quotations, each used once, with the quotation appendix excluded from the body count."

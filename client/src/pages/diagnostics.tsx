@@ -87,12 +87,16 @@ export default function Diagnostics() {
   const [running, setRunning] = useState(false);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [rows, setRows] = useState<RowState[]>([]);
+  const [logs, setLogs] = useState<string[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
+  const rowsRef = useRef<RowState[]>([]);
   const abortRef = useRef<AbortController | null>(null);
   const { toast } = useToast();
 
   const reset = () => {
+    rowsRef.current = [];
     setRows([]);
+    setLogs([]);
     setSummary(null);
   };
 
@@ -115,6 +119,7 @@ export default function Diagnostics() {
       const reader = resp.body.getReader();
       const dec = new TextDecoder();
       let buf = "";
+      let receivedSummary = false;
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
@@ -128,24 +133,56 @@ export default function Diagnostics() {
           let ev: any;
           try { ev = JSON.parse(payload); } catch { continue; }
           if (ev.type === "start") {
-            setRows((rs) => [...rs, {
-              name: ev.data.name,
-              category: ev.data.category,
-              status: "running",
-            }]);
+            setRows((rs) => {
+              const next = [...rs, {
+                name: ev.data.name,
+                category: ev.data.category,
+                status: "running" as Status,
+              }];
+              rowsRef.current = next;
+              return next;
+            });
           } else if (ev.type === "result") {
-            setRows((rs) => rs.map((r) =>
-              r.name === ev.data.name && r.status === "running"
-                ? { ...r, status: ev.data.status, message: ev.data.message, durationMs: ev.data.durationMs, details: ev.data.details }
-                : r
-            ));
+            setRows((rs) => {
+              const next = rs.map((r) =>
+                r.name === ev.data.name && r.status === "running"
+                  ? { ...r, status: ev.data.status, message: ev.data.message, durationMs: ev.data.durationMs, details: ev.data.details }
+                  : r
+              );
+              rowsRef.current = next;
+              return next;
+            });
           } else if (ev.type === "summary") {
+            receivedSummary = true;
             setSummary(ev.data);
+          } else if (ev.type === "log" && ev.data?.message) {
+            setLogs((current) => [...current, String(ev.data.message)]);
           }
         }
       }
+      if (!receivedSummary && rowsRef.current.length > 0) {
+        const completed = rowsRef.current.map((row) =>
+          row.status === "running"
+            ? { ...row, status: "fail" as Status, message: "Diagnostic stream ended before this check completed" }
+            : row
+        );
+        rowsRef.current = completed;
+        setRows(completed);
+        setSummary({
+          totalTests: completed.length,
+          passed: completed.filter((row) => row.status === "pass").length,
+          failed: completed.filter((row) => row.status === "fail").length,
+          skipped: completed.filter((row) => row.status === "skip").length,
+          durationMs: 0,
+          timestamp: new Date().toISOString(),
+          nodeVersion: "unknown",
+          environment: "unknown",
+          results: completed,
+        });
+      }
     } catch (err: any) {
       if (err?.name !== "AbortError") {
+        setLogs((current) => [...current, `Diagnostics error: ${err?.message || String(err)}`]);
         toast({ title: "Diagnostics error", description: err?.message || String(err), variant: "destructive" });
       }
     } finally {
@@ -175,6 +212,11 @@ export default function Diagnostics() {
         if (r.message) lines.push(`         ${r.message}`);
         if (r.details) lines.push(`         details: ${JSON.stringify(r.details)}`);
       }
+      lines.push(``);
+    }
+    if (logs.length > 0) {
+      lines.push(`--- RUN LOG ---`);
+      for (const line of logs) lines.push(`  ${line}`);
       lines.push(``);
     }
     return lines.join("\n");
@@ -237,7 +279,7 @@ export default function Diagnostics() {
             Run these if anything in the app is not working. The <strong>System check</strong> tests
             the plumbing (backend, database, AI providers, voice). The{" "}
             <strong>Synthetic-user test</strong> acts like a real person and drives every feature to
-            confirm it produces real output. The <strong>Accuracy test</strong> grades the app's
+            confirm it produces real output and finishes cleanly. The <strong>Accuracy test</strong> grades the app's
             answers against Claude. Each gives you a report you can copy and email to support.
           </p>
         </div>
@@ -356,15 +398,36 @@ export default function Diagnostics() {
                       {r.message}
                     </div>
                   )}
+                  {r.details && (
+                    <details className="mt-2 rounded border border-current/15 bg-background/60 px-2 py-1.5">
+                      <summary className="cursor-pointer select-none text-xs font-medium">
+                        Full readout
+                      </summary>
+                      <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap break-words text-[11px] leading-relaxed">
+                        {JSON.stringify(r.details, null, 2)}
+                      </pre>
+                    </details>
+                  )}
                   <div className="text-[10px] uppercase tracking-wide text-muted-foreground/70 mt-1">{r.category}</div>
                 </div>
               </div>
             ))}
           </div>
+
+          {logs.length > 0 && (
+            <details className="mt-4 rounded-md border bg-muted/20 p-3" open={running}>
+              <summary className="cursor-pointer text-sm font-semibold">
+                Run log ({logs.length})
+              </summary>
+              <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-[11px] text-muted-foreground">
+                {logs.join("\n")}
+              </pre>
+            </details>
+          )}
         </div>
 
         <p className="text-xs text-muted-foreground text-center mt-6">
-          This page is currently public. Anyone with the link can run diagnostics.
+          This page runs real end-to-end checks against the current app and reports each failure directly.
         </p>
       </main>
     </div>

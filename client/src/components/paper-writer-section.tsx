@@ -13,7 +13,7 @@ import ReactMarkdown from "react-markdown";
 import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
-import { CoherenceProgress } from '@/components/coherence-progress';
+import { countPaperBodyWords } from "@/lib/paper-content";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -37,8 +37,6 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
   const [customInstructions, setCustomInstructions] = useState("");
   const [generatedPaper, setGeneratedPaper] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [paperText, setPaperText] = useState<string>('');
-  const [coherenceResult, setCoherenceResult] = useState<any>(null);
   const [showRewritePanel, setShowRewritePanel] = useState(false);
   const [rewriteInstructions, setRewriteInstructions] = useState("");
   const [uploadedFileName, setUploadedFileName] = useState("");
@@ -140,8 +138,6 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
     }
 
     setIsGenerating(true);
-    setPaperText('');
-    setCoherenceResult(null);
     setGeneratedPaper("");
     
     const philosopher = figures.find(f => f.id === selectedPhilosopher);
@@ -204,15 +200,20 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                 updatePopup(popupId, { isGenerating: false });
                 continue;
               }
+              let parsed: any;
               try {
-                const parsed = JSON.parse(data);
-                if (parsed.content) {
-                  accumulatedText += parsed.content;
-                  setGeneratedPaper(accumulatedText);
-                  updatePopup(popupId, { content: accumulatedText });
-                }
+                parsed = JSON.parse(data);
               } catch (e) {
                 console.error("Parse error:", e);
+                continue;
+              }
+              if (parsed.error) {
+                throw new Error(parsed.error);
+              }
+              if (parsed.content) {
+                accumulatedText += parsed.content;
+                setGeneratedPaper(accumulatedText);
+                updatePopup(popupId, { content: accumulatedText });
               }
             }
           }
@@ -368,7 +369,7 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
     }
   };
 
-  const wordCount = generatedPaper.split(/\s+/).filter(w => w.length > 0).length;
+  const wordCount = countPaperBodyWords(generatedPaper);
   const philosopher = figures.find(f => f.id === selectedPhilosopher);
 
   return (
@@ -498,20 +499,6 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                 )}
               </Button>
 
-              {isGenerating && (
-                <CoherenceProgress
-                  sseUrl={`/api/figures/${selectedPhilosopher}/write-paper`}
-                  onComplete={(text, status, docId) => {
-                    setPaperText(text);
-                    setCoherenceResult({ status, documentId: docId });
-                    setIsGenerating(false);
-                  }}
-                  onError={(err) => {
-                    setIsGenerating(false);
-                    console.error('Generation error:', err);
-                  }}
-                />
-              )}
             </div>
 
             <div className="space-y-2">

@@ -47,6 +47,9 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
   // Window position and size state
   const [windowPos, setWindowPos] = useState({ x: 50, y: 50 }); // pixels from top-left
   const [windowSize, setWindowSize] = useState({ width: 800, height: 600 }); // pixels
+  const [isCompactViewport, setIsCompactViewport] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 640,
+  );
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -108,6 +111,22 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
     setWindowPos({ x: 20, y: 20 });
     setWindowSize({ width: window.innerWidth - 40, height: window.innerHeight - 40 });
   }, []);
+
+  useEffect(() => {
+    const updateViewportMode = () => setIsCompactViewport(window.innerWidth < 640);
+    updateViewportMode();
+    window.addEventListener("resize", updateViewportMode);
+    return () => window.removeEventListener("resize", updateViewportMode);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onOpenChange(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open, onOpenChange]);
 
   const handleCopyMessage = async (messageId: string | number, content: string) => {
     try {
@@ -390,17 +409,31 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
       <div
         ref={windowRef}
         className="fixed z-50 bg-background rounded-lg shadow-2xl border-2 border-border flex flex-col overflow-hidden"
-        style={{
-          left: windowPos.x,
-          top: windowPos.y,
-          width: windowSize.width,
-          height: windowSize.height,
-        }}
+        style={
+          isCompactViewport
+            ? {
+                left: 8,
+                right: 8,
+                top: 8,
+                bottom: 8,
+                width: "auto",
+                height: "auto",
+              }
+            : {
+                left: windowPos.x,
+                top: windowPos.y,
+                width: windowSize.width,
+                height: windowSize.height,
+              }
+        }
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Conversation with ${figure.name}`}
       >
         {/* Draggable header */}
         <div 
-          className="px-4 py-3 border-b bg-muted cursor-move flex items-center gap-3 select-none"
-          onMouseDown={handleDragStart}
+          className="px-3 sm:px-4 py-3 border-b bg-muted cursor-default sm:cursor-move flex items-center gap-2 sm:gap-3 select-none"
+          onMouseDown={isCompactViewport ? undefined : handleDragStart}
         >
           <Move className="w-4 h-4 text-muted-foreground flex-shrink-0" />
           <div className="relative flex-shrink-0">
@@ -427,10 +460,19 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
             <p className="text-xs text-muted-foreground truncate">{figure.title}</p>
           </div>
           <div className="flex items-center gap-1 flex-shrink-0">
-            <Button size="icon" variant="ghost" onClick={handleMaximize} title="Maximize">
-              <Maximize2 className="w-4 h-4" />
-            </Button>
-            <Button size="icon" variant="ghost" onClick={() => onOpenChange(false)} title="Close">
+            {!isCompactViewport && (
+              <Button size="icon" variant="ghost" onClick={handleMaximize} title="Maximize">
+                <Maximize2 className="w-4 h-4" />
+              </Button>
+            )}
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => onOpenChange(false)}
+              title="Close"
+              aria-label={`Close conversation with ${figure.name}`}
+              data-testid="button-close-figure-chat"
+            >
               <X className="w-4 h-4" />
             </Button>
           </div>
@@ -487,7 +529,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
           </Button>
         </div>
 
-        <ScrollArea className="flex-1 px-6">
+        <ScrollArea className="flex-1 px-3 sm:px-6">
           <div className="space-y-4 py-4">
             {messages.length === 0 && !streamingMessage && !pendingAssistantMessage && (
               <div className="text-center py-8">
@@ -602,7 +644,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
           </div>
         </ScrollArea>
 
-        <div className="px-6 py-4 border-t">
+        <div className="px-3 sm:px-6 py-3 sm:py-4 border-t">
           {uploadedFile && (
             <div className="mb-3 p-3 bg-muted rounded-lg flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -654,7 +696,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
               placeholder={uploadedFile ? `Ask ${figure.name} to analyze, evaluate, or rewrite the uploaded document...` : `Ask ${figure.name} a question...`}
               disabled={isStreaming}
               data-testid="input-figure-message"
-              className="min-h-[120px] resize-none"
+              className="min-w-0 flex-1 min-h-[88px] sm:min-h-[120px] resize-none"
               rows={5}
             />
             <Button
@@ -669,12 +711,14 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
         </div>
         
         {/* Resize handle - bottom right corner */}
-        <div 
-          onMouseDown={handleResizeStart}
-          className="absolute bottom-0 right-0 w-5 h-5 cursor-se-resize bg-gradient-to-tl from-muted-foreground/30 to-transparent rounded-tl-sm"
-          data-testid="handle-resize-dialog"
-          title="Drag to resize"
-        />
+        {!isCompactViewport && (
+          <div 
+            onMouseDown={handleResizeStart}
+            className="absolute bottom-0 right-0 w-5 h-5 cursor-se-resize bg-gradient-to-tl from-muted-foreground/30 to-transparent rounded-tl-sm"
+            data-testid="handle-resize-dialog"
+            title="Drag to resize"
+          />
+        )}
       </div>
       
       <PaperWriter 

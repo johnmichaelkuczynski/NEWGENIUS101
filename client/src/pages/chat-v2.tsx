@@ -4,9 +4,10 @@ import { queryClient, apiRequest } from "@/lib/queryClient";
 import { ChatMessage } from "@/components/chat-message";
 import { ChatInput } from "@/components/chat-input";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { FigureChat } from "@/components/figure-chat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
@@ -62,15 +63,12 @@ export default function ChatV2() {
   const [messageCountBeforePending, setMessageCountBeforePending] = useState<number>(0);
   const [userMessageCountBeforePending, setUserMessageCountBeforePending] = useState<number>(0);
   const [selectedFigure, setSelectedFigure] = useState<Figure | null>(null);
+  const [figureDialogOpen, setFigureDialogOpen] = useState(false);
+  const [mobileFigurePickerOpen, setMobileFigurePickerOpen] = useState(false);
   const [figureSearchQuery, setFigureSearchQuery] = useState("");
   const [comparisonModalOpen, setComparisonModalOpen] = useState(false);
   const [showChatHistory, setShowChatHistory] = useState(false);
   const [workspaceKey, setWorkspaceKey] = useState(0);
-  const activeFigureId = selectedFigure?.id ?? "kuczynski";
-  const activeFigureName = selectedFigure?.name ?? "J.-M. Kuczynski";
-  const activeMessagesEndpoint = activeFigureId === "kuczynski"
-    ? "/api/messages"
-    : `/api/figures/${activeFigureId}/messages`;
 
   // Content transfer system: refs to input setters
   const [chatInputContent, setChatInputContent] = useState<{ text: string; version: number }>({ text: "", version: 0 });
@@ -112,7 +110,7 @@ export default function ChatV2() {
       return await apiRequest("DELETE", `/api/messages/${messageId}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [activeMessagesEndpoint] });
+      queryClient.invalidateQueries({ queryKey: ["/api/messages"] });
     },
   });
 
@@ -157,7 +155,7 @@ export default function ChatV2() {
   const personaSettings = fetchedSettings || DEFAULT_PERSONA_SETTINGS as PersonaSettings;
 
   const { data: messages = [], isLoading: messagesLoading } = useQuery<Message[]>({
-    queryKey: [activeMessagesEndpoint],
+    queryKey: ["/api/messages"],
   });
 
   const updatePersonaMutation = useMutation({
@@ -196,6 +194,7 @@ export default function ChatV2() {
       setChatInputContent(prev => ({ text: "", version: prev.version + 1 }));
       setChatInputDocument(prev => ({ name: "", text: "", version: prev.version + 1 }));
       setSelectedFigure(null);
+      setFigureDialogOpen(false);
       setComparisonModalOpen(false);
       setShowChatHistory(false);
       setWorkspaceKey(key => key + 1);
@@ -220,38 +219,17 @@ export default function ChatV2() {
     setPendingAssistantMessage("");
 
     // CRITICAL FIX: Track pending user message to keep it visible until persisted
-    const currentMessages = queryClient.getQueryData<Message[]>([activeMessagesEndpoint]) || [];
+    const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
     setUserMessageCountBeforePending(currentMessages.length);
     setPendingUserMessage(content);
 
     try {
-      const isKuczynski = activeFigureId === "kuczynski";
-      const response = await fetch(
-        isKuczynski ? "/api/chat/stream" : `/api/figures/${activeFigureId}/chat`,
-        {
+      const response = await fetch("/api/chat/stream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
-        body: JSON.stringify(
-          isKuczynski
-            ? { message: content, documentText }
-            : {
-                message: content,
-                uploadedDocument: documentText
-                  ? { name: "Uploaded document", content: documentText }
-                  : undefined,
-                settings: {
-                  responseLength: personaSettings.responseLength || 750,
-                  quoteFrequency: personaSettings.quoteFrequency || 0,
-                  selectedModel: personaSettings.selectedModel || "zhi5",
-                  enhancedMode: personaSettings.enhancedMode ?? true,
-                  intensityLevel: personaSettings.intensityLevel ?? 30,
-                  dialogueMode: personaSettings.dialogueMode ?? false,
-                },
-              },
-        ),
+        body: JSON.stringify({ message: content, documentText }),
       });
 
       if (!response.ok) {
@@ -285,13 +263,13 @@ export default function ChatV2() {
                 // CRITICAL FIX v2: Don't clear streaming message yet
                 // Keep it visible as pendingAssistantMessage until refetch confirms persistence
                 // Track message count to ensure we wait for the NEW message, not just any matching text
-                const currentMessages = queryClient.getQueryData<Message[]>([activeMessagesEndpoint]) || [];
+                const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
                 setMessageCountBeforePending(currentMessages.length);
                 setPendingAssistantMessage(accumulatedText);
                 setStreamingMessage("");
                 
                 // Refetch to get the real message from backend (with correct ID)
-                queryClient.refetchQueries({ queryKey: [activeMessagesEndpoint] });
+                queryClient.refetchQueries({ queryKey: ["/api/messages"] });
                 break;
               }
               try {
@@ -385,7 +363,7 @@ export default function ChatV2() {
   );
 
   return (
-    <div className="h-screen flex flex-col lg:flex-row">
+    <div className="h-screen min-w-0 max-w-full overflow-x-hidden flex flex-col lg:flex-row">
       {/* Far Left Column: Philosopher Figures - ALWAYS VISIBLE */}
       <aside className="w-40 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/50 via-orange-50/30 to-amber-50/50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 hidden lg:block">
         <div className="p-2 border-b border-amber-200/30 dark:border-slate-700 sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10 space-y-2">
@@ -417,21 +395,10 @@ export default function ChatV2() {
                 <button
                   key={figure.id}
                   onClick={() => {
-                    if (isStreaming) return;
                     setSelectedFigure(figure);
-                    setStreamingMessage("");
-                    setPendingAssistantMessage("");
-                    setPendingUserMessage("");
-                    setMessageCountBeforePending(0);
-                    setUserMessageCountBeforePending(0);
-                    workspaceScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
+                    setFigureDialogOpen(true);
                   }}
-                  disabled={isStreaming}
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-colors text-left w-full ${
-                    activeFigureId === figure.id
-                      ? "bg-primary/15 ring-1 ring-primary/30"
-                      : "hover:bg-primary/10"
-                  }`}
+                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/10 transition-colors text-left w-full"
                   title={figure.name}
                   data-testid={`button-talk-${figure.id}`}
                 >
@@ -457,7 +424,7 @@ export default function ChatV2() {
       </aside>
 
       {/* Middle Sidebar: Settings */}
-      <aside className="lg:w-64 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/40 via-orange-50/20 to-amber-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
+      <aside className="min-w-0 max-w-full lg:w-64 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/40 via-orange-50/20 to-amber-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
         <div className="p-4 border-b border-amber-200/30 dark:border-slate-700 flex items-center justify-between sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-primary" />
@@ -629,15 +596,15 @@ export default function ChatV2() {
 
       {/* Main Chat Area */}
       <main
-        className="flex-1 min-h-0 flex relative bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-rose-50/60 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+        className="w-full min-w-0 max-w-full overflow-x-hidden flex-1 min-h-0 flex relative bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-rose-50/60 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
       >
         <div className="absolute inset-0 bg-background/40 dark:bg-background/60 backdrop-blur-[2px]" />
         
-        <div className="flex-1 min-h-0 flex flex-col relative">
+        <div className="w-full min-w-0 max-w-full flex-1 min-h-0 flex flex-col relative">
 
         {/* Header - Fixed */}
-        <header className="border-b bg-background/95 backdrop-blur-md relative z-20">
-          <div className="px-4 py-3 flex items-center justify-between">
+        <header className="min-w-0 max-w-full overflow-x-auto border-b bg-background/95 backdrop-blur-md relative z-20">
+          <div className="min-w-max lg:min-w-0 lg:w-full px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" data-testid="icon-gold-star" />
               <a
@@ -651,18 +618,15 @@ export default function ChatV2() {
             <div className="flex items-center gap-3 mx-4">
               <div className="relative flex-shrink-0">
                 <img
-                  src={selectedFigure?.icon || kuczynskiIcon}
-                  alt={activeFigureName}
+                  src={kuczynskiIcon}
+                  alt="J.-M. Kuczynski"
                   className={`w-12 h-12 rounded-full object-cover shadow-lg border-2 border-primary/20 ${isStreaming ? 'animate-[spin_0.5s_linear_infinite]' : ''}`}
-                  data-testid="icon-active-thinker"
+                  data-testid="icon-kuczynski"
                 />
               </div>
-              <div className="min-w-0">
-                <h1 className="font-display text-base font-light whitespace-nowrap" data-testid="text-active-thinker">
-                  {activeFigureName} <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded ml-1">V2</span>
-                </h1>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Genius 101</p>
-              </div>
+              <h1 className="font-display text-base font-light whitespace-nowrap">
+                Genius 101 <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded ml-1">V2</span>
+              </h1>
             </div>
             <div className="flex items-center gap-2">
               <Link href="/">
@@ -675,16 +639,6 @@ export default function ChatV2() {
                   setChatInputDocument(prev => ({ name, text, version: prev.version + 1 }))
                 }
               />
-              <Button
-                onClick={() => document.getElementById('dialogue-creator-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                variant="outline"
-                size="sm"
-                className="gap-2"
-                data-testid="button-open-dialogue-creator"
-              >
-                <MessageSquare className="w-4 h-4" />
-                Dialogue
-              </Button>
               <Button
                 onClick={() => setShowChatHistory(!showChatHistory)}
                 variant="outline"
@@ -763,6 +717,19 @@ export default function ChatV2() {
             </div>
           </div>
         </header>
+
+        <div className="lg:hidden w-full min-w-0 max-w-full border-b bg-background/95 px-4 py-2 relative z-10">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full justify-center gap-2"
+            onClick={() => setMobileFigurePickerOpen(true)}
+            data-testid="button-mobile-figure-picker"
+          >
+            <Users className="w-4 h-4" />
+            Talk with a thinker
+          </Button>
+        </div>
 
         {/* Chat History Dropdown */}
         {showChatHistory && (
@@ -939,13 +906,6 @@ export default function ChatV2() {
             />
           </div>
 
-          {/* Dialogue Creator — intentionally first tool, directly below the main chat */}
-          <div id="dialogue-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <DialogueCreatorSection 
-              onRegisterInput={(setter) => { dialogueCreatorInputRef.current = setter; }}
-            />
-          </div>
-
           {/* Model Builder Section */}
           <div id="model-builder-section" className="px-4 py-8 border-t-4 border-primary/20">
             <ModelBuilderSection 
@@ -977,6 +937,13 @@ export default function ChatV2() {
             <ArgumentGeneratorSection />
           </div>
 
+          {/* Dialogue Creator Section */}
+          <div id="dialogue-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
+            <DialogueCreatorSection 
+              onRegisterInput={(setter) => { dialogueCreatorInputRef.current = setter; }}
+            />
+          </div>
+
           {/* Interview Creator Section */}
           <div id="interview-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
             <InterviewCreatorSection />
@@ -1001,10 +968,69 @@ export default function ChatV2() {
         
         {/* Thinking Panel - appears when AI is generating response */}
         <ThinkingPanel 
-          thinkerName={activeFigureName}
+          thinkerName="J.-M. Kuczynski"
           isActive={isStreaming}
         />
       </main>
+
+      <Dialog open={mobileFigurePickerOpen} onOpenChange={setMobileFigurePickerOpen}>
+        <DialogContent className="max-w-md max-h-[80vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Talk with a thinker</DialogTitle>
+            <DialogDescription>Search for a thinker and open a dedicated conversation.</DialogDescription>
+          </DialogHeader>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              value={figureSearchQuery}
+              onChange={(event) => setFigureSearchQuery(event.target.value)}
+              placeholder="Search thinkers..."
+              className="pl-9"
+              data-testid="input-mobile-search-figures"
+            />
+          </div>
+          <div className="overflow-y-auto space-y-1 pr-1">
+            {figuresLoading ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">Loading thinkers…</p>
+            ) : filteredFigures.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">No thinkers found.</p>
+            ) : (
+              filteredFigures.map((figure) => (
+                <Button
+                  key={figure.id}
+                  type="button"
+                  variant="ghost"
+                  className="w-full h-auto justify-start gap-3 px-3 py-2 text-left"
+                  onClick={() => {
+                    setSelectedFigure(figure);
+                    setMobileFigurePickerOpen(false);
+                    setFigureDialogOpen(true);
+                  }}
+                  data-testid={`button-mobile-talk-${figure.id}`}
+                >
+                  {figure.icon && (figure.icon.startsWith("/") || figure.icon.startsWith("http")) ? (
+                    <img src={figure.icon} alt="" className="w-8 h-8 rounded-full object-cover shrink-0" />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                      <User className="w-4 h-4 text-primary" />
+                    </div>
+                  )}
+                  <span className="font-medium">{figure.name}</span>
+                </Button>
+              ))
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Figure Chat Dialog */}
+      <FigureChat 
+        key={selectedFigure?.id}
+        figure={selectedFigure} 
+        open={figureDialogOpen} 
+        onOpenChange={setFigureDialogOpen}
+        onTransferContent={handleContentTransfer}
+      />
 
       {/* Comparison Modal */}
       <ComparisonModal

@@ -6,6 +6,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
+import { countPaperBodyWords, countWords } from "@/lib/paper-content";
+import { supportsMultiSpeakerAudio } from "@/lib/popup-audio";
 
 export function MultiPopupManager() {
   const { popups, activePopupId, closePopup, minimizePopup, expandPopup } = usePopupManager();
@@ -16,11 +18,8 @@ export function MultiPopupManager() {
 
   const activePopup = popups.find((p) => p.id === activePopupId && !p.isMinimized);
   const minimizedPopups = popups.filter((p) => p.isMinimized);
-  const activePopupSupportsMultiSpeakerAudio = activePopup
-    ? /dialogue|debate|interview/i.test(
-        `${activePopup.id} ${activePopup.title} ${activePopup.filename || ""}`,
-      )
-    : false;
+  const activePopupSupportsMultiSpeakerAudio =
+    supportsMultiSpeakerAudio(activePopup);
 
   useEffect(() => {
     if (autoScroll && scrollRef.current && activePopup) {
@@ -52,8 +51,10 @@ export function MultiPopupManager() {
     });
   };
 
-  const getWordCount = (content: string) => {
-    return content.split(/\s+/).filter((w) => w.length > 0).length;
+  const getWordCount = (content: string, popupId = "") => {
+    return popupId.startsWith("paper-")
+      ? countPaperBodyWords(content)
+      : countWords(content);
   };
 
   if (popups.length === 0) return null;
@@ -81,14 +82,14 @@ export function MultiPopupManager() {
                     </div>
                   )}
                   <span className="text-sm text-muted-foreground" data-testid="text-popup-word-count">
-                    {getWordCount(activePopup.content).toLocaleString()} words
+                    {getWordCount(activePopup.content, activePopup.id).toLocaleString()} words
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => handleCopy(activePopup.content, getWordCount(activePopup.content))}
+                    onClick={() => handleCopy(activePopup.content, getWordCount(activePopup.content, activePopup.id))}
                     disabled={!activePopup.content}
                     data-testid="button-popup-copy"
                   >
@@ -183,7 +184,7 @@ export function MultiPopupManager() {
               popup={popup}
               onExpand={() => expandPopup(popup.id)}
               onClose={() => closePopup(popup.id)}
-              onCopy={() => handleCopy(popup.content, getWordCount(popup.content))}
+              onCopy={() => handleCopy(popup.content, getWordCount(popup.content, popup.id))}
               onDownload={() => handleDownload(popup.content, popup.filename || "output.txt")}
               style={{ zIndex: 50 + index }}
             />
@@ -212,7 +213,9 @@ function MinimizedPopupCard({ popup, onExpand, onClose, onCopy, onDownload, styl
   const [isExpanded, setIsExpanded] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const wordCount = popup.content.split(/\s+/).filter((w) => w.length > 0).length;
+  const wordCount = popup.id.startsWith("paper-")
+    ? countPaperBodyWords(popup.content)
+    : countWords(popup.content);
 
   useEffect(() => {
     if (scrollRef.current) {
