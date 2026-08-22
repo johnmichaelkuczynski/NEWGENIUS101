@@ -593,13 +593,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   };
 
-  // The anonymous allowance applies to the main chat only. Other tools must
-  // remain usable after a visitor has tried the main conversation; otherwise
-  // the shared quota makes every thinker and generator appear broken.
-  app.use([
-    "/api/chat/stream",
-  ], meterAnonUsage);
-
   // Get chat history for logged-in user
   app.get("/api/chat-history", async (req: any, res) => {
     try {
