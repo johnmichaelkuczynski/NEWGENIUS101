@@ -16,6 +16,11 @@ export function MultiPopupManager() {
 
   const activePopup = popups.find((p) => p.id === activePopupId && !p.isMinimized);
   const minimizedPopups = popups.filter((p) => p.isMinimized);
+  const activePopupSupportsMultiSpeakerAudio = activePopup
+    ? /dialogue|debate|interview/i.test(
+        `${activePopup.id} ${activePopup.title} ${activePopup.filename || ""}`,
+      )
+    : false;
 
   useEffect(() => {
     if (autoScroll && scrollRef.current && activePopup) {
@@ -129,7 +134,7 @@ export function MultiPopupManager() {
                 <div className="prose prose-sm dark:prose-invert max-w-none">
                   <ReactMarkdown>{activePopup.content}</ReactMarkdown>
                   {activePopup.isGenerating && <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-1" />}
-                  {!activePopup.isGenerating && (
+                  {!activePopup.isGenerating && activePopupSupportsMultiSpeakerAudio && (
                     <div className="not-prose">
                       <ElevenLabsOutput rawText={activePopup.content} filename={activePopup.filename || "output.txt"} />
                     </div>

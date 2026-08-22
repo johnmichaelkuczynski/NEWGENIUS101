@@ -4,7 +4,6 @@ import { queryClient, apiRequest } from "@/lib/queryClient";
 import { ChatMessage } from "@/components/chat-message";
 import { ChatInput } from "@/components/chat-input";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { FigureChat } from "@/components/figure-chat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -63,11 +62,15 @@ export default function Chat() {
   const [messageCountBeforePending, setMessageCountBeforePending] = useState<number>(0);
   const [userMessageCountBeforePending, setUserMessageCountBeforePending] = useState<number>(0);
   const [selectedFigure, setSelectedFigure] = useState<Figure | null>(null);
-  const [figureDialogOpen, setFigureDialogOpen] = useState(false);
   const [figureSearchQuery, setFigureSearchQuery] = useState("");
   const [comparisonModalOpen, setComparisonModalOpen] = useState(false);
   const [showChatHistory, setShowChatHistory] = useState(false);
   const [workspaceKey, setWorkspaceKey] = useState(0);
+  const activeFigureId = selectedFigure?.id ?? "kuczynski";
+  const activeFigureName = selectedFigure?.name ?? "J.-M. Kuczynski";
+  const activeMessagesEndpoint = activeFigureId === "kuczynski"
+    ? "/api/messages"
+    : `/api/figures/${activeFigureId}/messages`;
 
   // Content transfer system: refs to input setters
   const [chatInputContent, setChatInputContent] = useState<{ text: string; version: number }>({ text: "", version: 0 });
@@ -109,7 +112,7 @@ export default function Chat() {
       return await apiRequest("DELETE", `/api/messages/${messageId}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/messages"] });
+      queryClient.invalidateQueries({ queryKey: [activeMessagesEndpoint] });
     },
   });
 
@@ -154,7 +157,7 @@ export default function Chat() {
   const personaSettings = fetchedSettings || DEFAULT_PERSONA_SETTINGS as PersonaSettings;
 
   const { data: messages = [], isLoading: messagesLoading } = useQuery<Message[]>({
-    queryKey: ["/api/messages"],
+    queryKey: [activeMessagesEndpoint],
   });
 
   const updatePersonaMutation = useMutation({
@@ -193,7 +196,6 @@ export default function Chat() {
       setChatInputContent(prev => ({ text: "", version: prev.version + 1 }));
       setChatInputDocument(prev => ({ name: "", text: "", version: prev.version + 1 }));
       setSelectedFigure(null);
-      setFigureDialogOpen(false);
       setComparisonModalOpen(false);
       setShowChatHistory(false);
       setWorkspaceKey(key => key + 1);
@@ -218,17 +220,38 @@ export default function Chat() {
     setPendingAssistantMessage("");
 
     // CRITICAL FIX: Track pending user message to keep it visible until persisted
-    const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
+    const currentMessages = queryClient.getQueryData<Message[]>([activeMessagesEndpoint]) || [];
     setUserMessageCountBeforePending(currentMessages.length);
     setPendingUserMessage(content);
 
     try {
-      const response = await fetch("/api/chat/stream", {
+      const isKuczynski = activeFigureId === "kuczynski";
+      const response = await fetch(
+        isKuczynski ? "/api/chat/stream" : `/api/figures/${activeFigureId}/chat`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: content, documentText }),
+        credentials: "include",
+        body: JSON.stringify(
+          isKuczynski
+            ? { message: content, documentText }
+            : {
+                message: content,
+                uploadedDocument: documentText
+                  ? { name: "Uploaded document", content: documentText }
+                  : undefined,
+                settings: {
+                  responseLength: personaSettings.responseLength || 750,
+                  quoteFrequency: personaSettings.quoteFrequency || 0,
+                  selectedModel: personaSettings.selectedModel || "zhi5",
+                  enhancedMode: personaSettings.enhancedMode ?? true,
+                  intensityLevel: personaSettings.intensityLevel ?? 30,
+                  dialogueMode: personaSettings.dialogueMode ?? false,
+                },
+              },
+        ),
       });
 
       if (!response.ok) {
@@ -267,13 +290,13 @@ export default function Chat() {
                 // CRITICAL FIX v2: Don't clear streaming message yet
                 // Keep it visible as pendingAssistantMessage until refetch confirms persistence
                 // Track message count to ensure we wait for the NEW message, not just any matching text
-                const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
+                const currentMessages = queryClient.getQueryData<Message[]>([activeMessagesEndpoint]) || [];
                 setMessageCountBeforePending(currentMessages.length);
                 setPendingAssistantMessage(accumulatedText);
                 setStreamingMessage("");
                 
                 // Refetch to get the real message from backend (with correct ID)
-                queryClient.refetchQueries({ queryKey: ["/api/messages"] });
+                queryClient.refetchQueries({ queryKey: [activeMessagesEndpoint] });
                 break;
               }
               try {
@@ -399,10 +422,21 @@ export default function Chat() {
                 <button
                   key={figure.id}
                   onClick={() => {
+                    if (isStreaming) return;
                     setSelectedFigure(figure);
-                    setFigureDialogOpen(true);
+                    setStreamingMessage("");
+                    setPendingAssistantMessage("");
+                    setPendingUserMessage("");
+                    setMessageCountBeforePending(0);
+                    setUserMessageCountBeforePending(0);
+                    workspaceScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
                   }}
-                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-primary/10 transition-colors text-left w-full"
+                  disabled={isStreaming}
+                  className={`flex items-center gap-2 p-2 rounded-lg transition-colors text-left w-full ${
+                    activeFigureId === figure.id
+                      ? "bg-primary/15 ring-1 ring-primary/30"
+                      : "hover:bg-primary/10"
+                  }`}
                   title={figure.name}
                   data-testid={`button-talk-${figure.id}`}
                 >
@@ -622,15 +656,18 @@ export default function Chat() {
             <div className="flex items-center gap-3 mx-4">
               <div className="relative flex-shrink-0">
                 <img
-                  src={kuczynskiIcon}
-                  alt="J.-M. Kuczynski"
+                  src={selectedFigure?.icon || kuczynskiIcon}
+                  alt={activeFigureName}
                   className={`w-12 h-12 rounded-full object-cover shadow-lg border-2 border-primary/20 ${isStreaming ? 'animate-[spin_0.5s_linear_infinite]' : ''}`}
-                  data-testid="icon-kuczynski"
+                  data-testid="icon-active-thinker"
                 />
               </div>
-              <h1 className="font-display text-base font-light whitespace-nowrap">
-                Genius 101
-              </h1>
+              <div className="min-w-0">
+                <h1 className="font-display text-base font-light whitespace-nowrap" data-testid="text-active-thinker">
+                  {activeFigureName}
+                </h1>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Genius 101</p>
+              </div>
             </div>
             <div className="flex items-center gap-2">
               <Link href="/v2">
@@ -969,19 +1006,10 @@ export default function Chat() {
         
         {/* Thinking Panel - appears when AI is generating response */}
         <ThinkingPanel 
-          thinkerName="J.-M. Kuczynski"
+          thinkerName={activeFigureName}
           isActive={isStreaming}
         />
       </main>
-
-      {/* Figure Chat Dialog */}
-      <FigureChat 
-        key={selectedFigure?.id} // CRITICAL: Force remount when figure changes to clear React Query cache
-        figure={selectedFigure} 
-        open={figureDialogOpen} 
-        onOpenChange={setFigureDialogOpen}
-        onTransferContent={handleContentTransfer}
-      />
 
       {/* Comparison Modal */}
       <ComparisonModal
