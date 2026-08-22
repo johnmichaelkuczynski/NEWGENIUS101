@@ -4,7 +4,7 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, Download, FileText, Upload, X, ArrowRight, HelpCircle, Copy, Check, ClipboardList, Move, Maximize2 } from "lucide-react";
+import { Send, Download, FileText, Upload, X, ArrowRight, HelpCircle, Copy, Check, ClipboardList, Move, Maximize2, AlertCircle } from "lucide-react";
 import type { Figure, FigureMessage, PersonaSettings } from "@shared/schema";
 import { PaperWriter } from "@/components/paper-writer";
 import { WhatToAskModal } from "@/components/what-to-ask-modal";
@@ -42,6 +42,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
   const [auditPanelOpen, setAuditPanelOpen] = useState(false);
   const [auditData, setAuditData] = useState<AuditReport | null>(null);
   const [streamingAuditSteps, setStreamingAuditSteps] = useState<AuditStep[]>([]);
+  const [errorMessage, setErrorMessage] = useState("");
   
   // Window position and size state
   const [windowPos, setWindowPos] = useState({ x: 50, y: 50 }); // pixels from top-left
@@ -135,6 +136,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
     setUploadedFile(null);
     setStreamingMessage("");
     setPendingAssistantMessage("");
+    setErrorMessage("");
   }, [figure?.id, open]);
 
   const sendMessageMutation = useMutation({
@@ -146,12 +148,14 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
       setPendingAssistantMessage("");
       setStreamingAuditSteps([]);
       setAuditData(null);
+      setErrorMessage("");
 
       const response = await fetch(`/api/figures/${figure.id}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ 
           message,
           uploadedDocument: uploadedFile ? {
@@ -171,7 +175,12 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        let serverMessage = `The request failed (${response.status}).`;
+        try {
+          const body = await response.json();
+          if (body?.error) serverMessage = body.error;
+        } catch {}
+        throw new Error(serverMessage);
       }
 
       const reader = response.body?.getReader();
@@ -184,13 +193,15 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
       return new Promise<void>(async (resolve, reject) => {
         try {
           let accumulatedText = ""; // Local accumulator to avoid stale state
+          let sseBuffer = "";
           
           while (true) {
             const { done, value } = await reader.read();
             if (done) break;
 
-            const chunk = decoder.decode(value);
-            const lines = chunk.split("\n");
+            sseBuffer += decoder.decode(value, { stream: true });
+            const lines = sseBuffer.split("\n");
+            sseBuffer = lines.pop() || "";
 
             for (const line of lines) {
               if (line.startsWith("data: ")) {
@@ -228,6 +239,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
                   if (parsed.error) {
                     console.error("Streaming error:", parsed.error);
                     setIsStreaming(false);
+                    setErrorMessage(parsed.error);
                     reject(new Error(parsed.error));
                     return;
                   }
@@ -246,6 +258,12 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
           reject(error);
         }
       });
+    },
+    onError: (error) => {
+      setIsStreaming(false);
+      setStreamingMessage("");
+      setPendingAssistantMessage("");
+      setErrorMessage(error instanceof Error ? error.message : "The thinker could not answer. Please try again.");
     },
   });
 
@@ -476,6 +494,17 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
                 <p className="text-sm text-muted-foreground">
                   Start a conversation with {figure.name}
                 </p>
+              </div>
+            )}
+
+            {errorMessage && (
+              <div
+                className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+                role="alert"
+                data-testid="figure-chat-error"
+              >
+                <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                <span>{errorMessage}</span>
               </div>
             )}
 

@@ -593,22 +593,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   };
 
-  // Apply metering to all AI generation endpoints
+  // The anonymous allowance applies to the main chat only. Other tools must
+  // remain usable after a visitor has tried the main conversation; otherwise
+  // the shared quota makes every thinker and generator appear broken.
   app.use([
     "/api/chat/stream",
-    "/api/figures/:figureId/chat",
-    "/api/figures/:figureId/write-paper",
-    "/api/figures/:figureId/long-form",
-    "/api/figures/:figureId/rewrite-paper",
-    "/api/model-builder",
-    "/api/dialogue-creator",
-    "/api/interview-creator",
-    "/api/debate/generate",
-    "/api/quotes/generate",
-    "/api/positions/generate",
-    "/api/arguments/generate",
-    "/api/reconstruction",
-    "/api/reconstruction/:jobId/resume",
   ], meterAnonUsage);
 
   // Get chat history for logged-in user

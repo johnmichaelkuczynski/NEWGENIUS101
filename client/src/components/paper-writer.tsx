@@ -43,7 +43,12 @@ export function PaperWriter({ figure, open, onOpenChange }: PaperWriterProps) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate paper");
+        let serverMessage = `The request failed (${response.status}).`;
+        try {
+          const body = await response.json();
+          if (body?.error) serverMessage = body.error;
+        } catch {}
+        throw new Error(serverMessage);
       }
 
       const reader = response.body?.getReader();
@@ -90,7 +95,7 @@ export function PaperWriter({ figure, open, onOpenChange }: PaperWriterProps) {
       console.error("Error generating paper:", error);
       toast({
         title: "Error",
-        description: "Failed to generate paper. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to generate paper. Please try again.",
         variant: "destructive",
       });
       setIsGenerating(false);
