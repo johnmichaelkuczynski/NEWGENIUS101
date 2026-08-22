@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { randomBytes, createHash } from "crypto";
+import { randomBytes, createHash, timingSafeEqual } from "crypto";
 import { eq, sql } from "drizzle-orm";
 import { db } from "./db";
 import { apiKeys, type ApiKey } from "@shared/schema";
@@ -54,6 +54,7 @@ export async function revokeApiKey(id: number): Promise<boolean> {
 const RATE_LIMIT_MAX = 30;
 const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
 const rateBuckets = new Map<number, number[]>();
+const GENIUS_API_KEY_BUCKET_ID = -1;
 
 function checkRateLimit(keyId: number): boolean {
   const now = Date.now();
@@ -65,6 +66,12 @@ function checkRateLimit(keyId: number): boolean {
   bucket.push(now);
   rateBuckets.set(keyId, bucket);
   return true;
+}
+
+function secretsMatch(provided: string, expected: string): boolean {
+  const providedBytes = Buffer.from(provided);
+  const expectedBytes = Buffer.from(expected);
+  return providedBytes.length === expectedBytes.length && timingSafeEqual(providedBytes, expectedBytes);
 }
 
 /** Express middleware: require a valid, non-revoked API key. */
@@ -84,6 +91,20 @@ export async function verifyApiKey(req: Request, res: Response, next: NextFuncti
       return res.status(401).json({
         error: "API key required. Send it as 'Authorization: Bearer <key>' or 'X-API-Key: <key>'.",
       });
+    }
+
+    // GENIUS_API_KEY is the shared credential for the owner's other apps.
+    // It remains in Replit Secrets and is never stored in the database.
+    const geniusApiKey = process.env.GENIUS_API_KEY?.trim();
+    if (geniusApiKey && secretsMatch(rawKey, geniusApiKey)) {
+      if (!checkRateLimit(GENIUS_API_KEY_BUCKET_ID)) {
+        console.log("[API Key] Rate limited \"GENIUS_API_KEY\"");
+        return res.status(429).json({ error: `Rate limit exceeded: max ${RATE_LIMIT_MAX} requests per ${RATE_LIMIT_WINDOW_MS / 60000} minutes` });
+      }
+
+      (req as any).apiKey = { id: GENIUS_API_KEY_BUCKET_ID, label: "GENIUS_API_KEY" };
+      console.log(`[API Key] Authenticated "GENIUS_API_KEY" → ${req.originalUrl}`);
+      return next();
     }
 
     const keyHash = hashKey(rawKey);
