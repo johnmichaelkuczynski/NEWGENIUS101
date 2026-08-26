@@ -15,10 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, Star, User, History, Download, MessageSquare, Plus, Stethoscope, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
+import { Sparkles, Search, Users, User, History, Download, MessageSquare, Plus, Stethoscope, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
+import zhiLogo from "@assets/zhi_logoc_1787741086466.png";
 import { ComparisonModal } from "@/components/comparison-modal";
 import { ModelBuilderSection } from "@/components/model-builder-section";
 import { PaperWriterSection } from "@/components/paper-writer-section";
@@ -610,11 +611,20 @@ export default function Chat() {
         {/* Header - Fixed */}
         <header className="min-w-0 max-w-full overflow-x-auto border-b bg-background/95 backdrop-blur-md relative z-20">
           <div className="min-w-max lg:min-w-0 lg:w-full px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" data-testid="icon-gold-star" />
+            <div className="flex items-center gap-2.5">
               <a
-                href="mailto:zhi@zhicourses.org"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                href="https://zhisystems.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 rounded-md ring-1 ring-border shadow-sm transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="Visit ZHI Systems"
+                data-testid="link-zhi-logo"
+              >
+                <img src={zhiLogo} alt="ZHI Systems" className="h-7 w-7 rounded-md" />
+              </a>
+              <a
+                href="mailto:jmkuczynski@yahoo.com"
+                className="text-xs whitespace-nowrap text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-contact"
               >
                 Contact Us
