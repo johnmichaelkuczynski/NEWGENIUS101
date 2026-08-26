@@ -623,7 +623,7 @@ export default function Chat() {
                 <img src={zhiLogo} alt="ZHI Systems" className="h-7 w-7 rounded-md" />
               </a>
               <a
-                href="mailto:jmkuczynski@yahoo.com"
+                href="mailto:johnmichaelkuczynski@gmail.com"
                 className="text-xs whitespace-nowrap text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-contact"
               >
