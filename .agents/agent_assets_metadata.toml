@@ -30,3 +30,17 @@ uri = "file://artifacts/verified-aristotle-essentialism-paper.txt"
 type = "text"
 title = "Verified Aristotle Essentialism Paper"
 description = "The exact inspected and validated essay: 1,000 body words, 20 complete source quotations, each used once, with the quotation appendix excluded from the body count."
+
+[[outputs]]
+id = "MI7Ce9iV02KqiOjZMOfZE"
+uri = "file://attached_assets/generated_audio/genius101-tiktok-narration.mp3"
+type = "audio"
+title = "Genius 101 TikTok narration"
+description = "Text-to-speech audio: Imagine a library where the thinkers talk back. Genius 101 is trained on the works—the complete works—of these thinkers, not quick summaries. Ask questions or start a real dialo…"
+
+[[outputs]]
+id = "CruOaH18xY3ltmTKwoqyN"
+uri = "file://attached_assets/generated_videos/genius101-tiktok-promo.mp4"
+type = "video"
+title = "Genius 101 TikTok Promo"
+description = "33-second vertical 1080x1920 promo using real app screenshots, friendly narration, captions, no music, and the spoken/on-screen URL https://genius101.xyz/."

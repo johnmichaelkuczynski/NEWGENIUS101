@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,700
+Imagine a library where the thinkers talk back.
+
+2
+00:00:03,700 --> 00:00:09,300
+Genius 101 is trained on the works—the complete works—of these thinkers, not quick summaries.
+
+3
+00:00:09,300 --> 00:00:12,700
+Ask questions or start a real dialogue.
+
+4
+00:00:12,700 --> 00:00:18,300
+Generate essays, screenplays, debates, interviews, and grounded quotes.
+
+5
+00:00:18,300 --> 00:00:24,600
+It also writes long, coherent responses that stay focused from beginning to end.
+
+6
+00:00:24,600 --> 00:00:28,500
+Choose a thinker and see what they actually thought.
+
+7
+00:00:28,500 --> 00:00:33,100
+Visit genius101.xyz—that's genius one-oh-one dot X Y Z. Come ask a genius.
