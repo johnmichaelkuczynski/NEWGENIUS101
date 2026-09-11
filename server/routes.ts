@@ -34,6 +34,7 @@ import { verifySartreApiKey } from "./sartre-api-key";
 import { verifyNietzscheApiKey } from "./nietzsche-api-key";
 import { verifyEmmaGoldmanApiKey } from "./emma-goldman-api-key";
 import { verifyAdamSmithApiKey } from "./adam-smith-api-key";
+import { verifyConfuciusApiKey } from "./confucius-api-key";
 import multer from "multer";
 import { PDFParse } from "pdf-parse";
 import * as mammoth from "mammoth";
@@ -6471,6 +6472,125 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     } catch (error) {
       console.error("[Adam Smith API] Error:", error);
       if (!res.headersSent) res.status(500).json({ error: "Failed to generate Adam Smith response" });
+    }
+  });
+
+  app.post("/api/external/confucius", verifyConfuciusApiKey, async (req, res) => {
+    try {
+      const { message, history, maxWords, quotes, stream } = req.body || {};
+      if (!message || typeof message !== "string" || !message.trim()) {
+        return res.status(400).json({ error: "'message' (string) is required" });
+      }
+      if (message.length > 20000) {
+        return res.status(400).json({ error: "'message' too long (max 20,000 characters)" });
+      }
+
+      const targetWords = Math.min(Math.max(parseInt(maxWords, 10) || 750, 50), 5000);
+      const targetQuotes = Math.min(Math.max(parseInt(quotes, 10) || 0, 0), 20) || (quotes === 0 ? 0 : 3);
+      const wantStream = stream === true;
+      const validHistory: Array<{ role: "user" | "assistant"; content: string }> = [];
+      if (Array.isArray(history)) {
+        for (const item of history.slice(-20)) {
+          if (item && (item.role === "user" || item.role === "assistant") && typeof item.content === "string") {
+            validHistory.push({ role: item.role, content: item.content.slice(0, 8000) });
+          }
+        }
+      }
+
+      const confuciusFigure = await storage.getThinker("confucius");
+      if (!confuciusFigure) {
+        return res.status(500).json({ error: "Confucius figure not available" });
+      }
+
+      const embeddingChunks = await searchPhilosophicalChunks(message, 6, "confucius", "Confucius");
+      const textChunksRes = await searchTextChunks("Confucius", message, 6);
+      const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
+      let positionResults: Array<{ position: string; topic: string | null }> = [];
+      if (queryWords.length > 0) {
+        positionResults = await db
+          .select({ position: positions.positionText, topic: positions.topic })
+          .from(positions)
+          .where(
+            sql`thinker ILIKE ${"%Confucius%"} AND (
+              position_text ILIKE ${"%" + queryWords[0] + "%"}
+              ${queryWords[1] ? sql` OR position_text ILIKE ${"%" + queryWords[1] + "%"}` : sql``}
+              ${queryWords[2] ? sql` OR position_text ILIKE ${"%" + queryWords[2] + "%"}` : sql``}
+              ${queryWords[3] ? sql` OR position_text ILIKE ${"%" + queryWords[3] + "%"}` : sql``}
+            )`,
+          )
+          .limit(15);
+      }
+
+      console.log(
+        `[Confucius API] RAG — embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`,
+      );
+
+      let knowledgeContext = "";
+      if (embeddingChunks.length || textChunksRes.length || positionResults.length) {
+        knowledgeContext = "\n\n--- YOUR TEACHINGS (for reference) ---\n\n";
+        if (positionResults.length) {
+          knowledgeContext += "=== YOUR CORE POSITIONS ===\n";
+          for (const position of positionResults) knowledgeContext += `• ${position.position}\n`;
+          knowledgeContext += "\n";
+        }
+        for (const chunk of embeddingChunks) {
+          knowledgeContext += `From "${chunk.paperTitle.replace(/_/g, " ")}":\n${chunk.content}\n\n`;
+        }
+        for (const chunk of textChunksRes) {
+          knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, "").replace(/_/g, " ")}":\n${chunk.chunkText}\n\n`;
+        }
+        knowledgeContext +=
+          "--- END ---\n\nINSTRUCTION: Answer in Confucius's voice and ground your claims exclusively in the Confucian teachings above.\n";
+      } else {
+        knowledgeContext =
+          "\n\nNOTE: No specific Confucius passages were retrieved. Respond only from Confucius's documented teachings, or acknowledge when the question falls outside them.\n";
+      }
+
+      let responseInstructions = `\nTARGET LENGTH: Approximately ${targetWords} words.\n`;
+      if (targetQuotes > 0) {
+        responseInstructions += `QUOTE REQUIREMENT: Include at least ${targetQuotes} verbatim quotes from the Confucius material above.\n`;
+      }
+      responseInstructions +=
+        "\nSTYLE: Write as Confucius: measured, practical, humane, and attentive to virtue, ritual, learning, filial conduct, exemplary leadership, social harmony, and self-cultivation.\nFORMATTING: Plain text only (no markdown).\n";
+
+      const systemPrompt = confuciusFigure.systemPrompt + knowledgeContext + responseInstructions;
+      let userPrompt = message;
+      if (validHistory.length > 0) {
+        const historyText = validHistory
+          .map((item) => `${item.role === "user" ? "Student" : "Confucius"}: ${item.content}`)
+          .join("\n\n");
+        userPrompt = `[Conversation so far:]\n\n${historyText}\n\n[Current message:]\n${message}`;
+      }
+      const maxTokens = Math.min(Math.max(Math.round(targetWords * 2), 1000), 16000);
+
+      if (wantStream) {
+        res.setHeader("Content-Type", "text/event-stream");
+        res.setHeader("Cache-Control", "no-cache, no-transform");
+        res.setHeader("Connection", "keep-alive");
+        res.setHeader("X-Accel-Buffering", "no");
+        if (res.socket) res.socket.setTimeout(0);
+        res.flushHeaders();
+        try {
+          for await (const delta of streamLLMText(systemPrompt, userPrompt, maxTokens, 0.7)) {
+            res.write(`data: ${JSON.stringify({ content: delta })}\n\n`);
+          }
+          res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+        } catch (streamError) {
+          console.error("[Confucius API] Stream error:", streamError);
+          res.write(`data: ${JSON.stringify({ error: "Generation failed" })}\n\n`);
+        }
+        res.end();
+      } else {
+        const responseText = await callLLMPlan(systemPrompt, userPrompt, maxTokens, 0.7);
+        res.json({
+          response: responseText,
+          character: "confucius",
+          words: responseText.split(/\s+/).length,
+        });
+      }
+    } catch (error) {
+      console.error("[Confucius API] Error:", error);
+      if (!res.headersSent) res.status(500).json({ error: "Failed to generate Confucius response" });
     }
   });
 
