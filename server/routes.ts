@@ -37,6 +37,7 @@ import { verifyAdamSmithApiKey } from "./adam-smith-api-key";
 import { verifyConfuciusApiKey } from "./confucius-api-key";
 import { verifyRussellApiKey } from "./russell-api-key";
 import { verifyMardenApiKey } from "./marden-api-key";
+import { verifyGardnerApiKey } from "./gardner-api-key";
 import multer from "multer";
 import { PDFParse } from "pdf-parse";
 import * as mammoth from "mammoth";
@@ -6831,6 +6832,125 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     } catch (error) {
       console.error("[Marden API] Error:", error);
       if (!res.headersSent) res.status(500).json({ error: "Failed to generate Marden response" });
+    }
+  });
+
+  app.post("/api/external/gardner", verifyGardnerApiKey, async (req, res) => {
+    try {
+      const { message, history, maxWords, quotes, stream } = req.body || {};
+      if (!message || typeof message !== "string" || !message.trim()) {
+        return res.status(400).json({ error: "'message' (string) is required" });
+      }
+      if (message.length > 20000) {
+        return res.status(400).json({ error: "'message' too long (max 20,000 characters)" });
+      }
+
+      const targetWords = Math.min(Math.max(parseInt(maxWords, 10) || 750, 50), 5000);
+      const targetQuotes = Math.min(Math.max(parseInt(quotes, 10) || 0, 0), 20) || (quotes === 0 ? 0 : 3);
+      const wantStream = stream === true;
+      const validHistory: Array<{ role: "user" | "assistant"; content: string }> = [];
+      if (Array.isArray(history)) {
+        for (const item of history.slice(-20)) {
+          if (item && (item.role === "user" || item.role === "assistant") && typeof item.content === "string") {
+            validHistory.push({ role: item.role, content: item.content.slice(0, 8000) });
+          }
+        }
+      }
+
+      const gardnerFigure = await storage.getThinker("gardner");
+      if (!gardnerFigure) {
+        return res.status(500).json({ error: "Martin Gardner figure not available" });
+      }
+
+      const embeddingChunks = await searchPhilosophicalChunks(message, 6, "gardner", "Martin Gardner");
+      const textChunksRes = await searchTextChunks("Martin Gardner", message, 6);
+      const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
+      let positionResults: Array<{ position: string; topic: string | null }> = [];
+      if (queryWords.length > 0) {
+        positionResults = await db
+          .select({ position: positions.positionText, topic: positions.topic })
+          .from(positions)
+          .where(
+            sql`thinker ILIKE ${"%Gardner%"} AND (
+              position_text ILIKE ${"%" + queryWords[0] + "%"}
+              ${queryWords[1] ? sql` OR position_text ILIKE ${"%" + queryWords[1] + "%"}` : sql``}
+              ${queryWords[2] ? sql` OR position_text ILIKE ${"%" + queryWords[2] + "%"}` : sql``}
+              ${queryWords[3] ? sql` OR position_text ILIKE ${"%" + queryWords[3] + "%"}` : sql``}
+            )`,
+          )
+          .limit(15);
+      }
+
+      console.log(
+        `[Gardner API] RAG — embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`,
+      );
+
+      let knowledgeContext = "";
+      if (embeddingChunks.length || textChunksRes.length || positionResults.length) {
+        knowledgeContext = "\n\n--- YOUR WRITINGS (for reference) ---\n\n";
+        if (positionResults.length) {
+          knowledgeContext += "=== YOUR CORE POSITIONS ===\n";
+          for (const position of positionResults) knowledgeContext += `• ${position.position}\n`;
+          knowledgeContext += "\n";
+        }
+        for (const chunk of embeddingChunks) {
+          knowledgeContext += `From "${chunk.paperTitle.replace(/_/g, " ")}":\n${chunk.content}\n\n`;
+        }
+        for (const chunk of textChunksRes) {
+          knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, "").replace(/_/g, " ")}":\n${chunk.chunkText}\n\n`;
+        }
+        knowledgeContext +=
+          "--- END ---\n\nINSTRUCTION: Answer in Martin Gardner's voice and ground your claims exclusively in Gardner's writings above.\n";
+      } else {
+        knowledgeContext =
+          "\n\nNOTE: No specific Gardner passages were retrieved. Respond only from Martin Gardner's documented positions, or acknowledge when the question falls outside them.\n";
+      }
+
+      let responseInstructions = `\nTARGET LENGTH: Approximately ${targetWords} words.\n`;
+      if (targetQuotes > 0) {
+        responseInstructions += `QUOTE REQUIREMENT: Include at least ${targetQuotes} verbatim quotes from Gardner's writings above.\n`;
+      }
+      responseInstructions +=
+        "\nSTYLE: Write as Martin Gardner: lucid, playful, precise, skeptical, and attentive to mathematics, puzzles, scientific reasoning, pseudoscience, magic, and the delight of ideas.\nFORMATTING: Plain text only (no markdown).\n";
+
+      const systemPrompt = gardnerFigure.systemPrompt + knowledgeContext + responseInstructions;
+      let userPrompt = message;
+      if (validHistory.length > 0) {
+        const historyText = validHistory
+          .map((item) => `${item.role === "user" ? "Interlocutor" : "Gardner"}: ${item.content}`)
+          .join("\n\n");
+        userPrompt = `[Conversation so far:]\n\n${historyText}\n\n[Current message:]\n${message}`;
+      }
+      const maxTokens = Math.min(Math.max(Math.round(targetWords * 2), 1000), 16000);
+
+      if (wantStream) {
+        res.setHeader("Content-Type", "text/event-stream");
+        res.setHeader("Cache-Control", "no-cache, no-transform");
+        res.setHeader("Connection", "keep-alive");
+        res.setHeader("X-Accel-Buffering", "no");
+        if (res.socket) res.socket.setTimeout(0);
+        res.flushHeaders();
+        try {
+          for await (const delta of streamLLMText(systemPrompt, userPrompt, maxTokens, 0.7)) {
+            res.write(`data: ${JSON.stringify({ content: delta })}\n\n`);
+          }
+          res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+        } catch (streamError) {
+          console.error("[Gardner API] Stream error:", streamError);
+          res.write(`data: ${JSON.stringify({ error: "Generation failed" })}\n\n`);
+        }
+        res.end();
+      } else {
+        const responseText = await callLLMPlan(systemPrompt, userPrompt, maxTokens, 0.7);
+        res.json({
+          response: responseText,
+          character: "gardner",
+          words: responseText.split(/\s+/).length,
+        });
+      }
+    } catch (error) {
+      console.error("[Gardner API] Error:", error);
+      if (!res.headersSent) res.status(500).json({ error: "Failed to generate Gardner response" });
     }
   });
 
