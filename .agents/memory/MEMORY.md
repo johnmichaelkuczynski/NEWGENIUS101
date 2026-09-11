@@ -8,3 +8,4 @@
 - [ElevenLabs TTS](elevenlabs-tts.md) — user key is not Pro tier: PCM formats 403; use mp3 + local ffmpeg transcode for WAV; restart workflow after editing dynamically-imported server modules.
 - [Paper Writer exact counts](paper-writer-exact-counts.md) — count only the essay body; never raw-trim streams or trust quote placement; preserve analyzed quotes and finish on complete sentences.
 - [Independent thinker APIs](independent-thinker-apis.md) — each thinker needs a separate credential, endpoint, and corpus-restricted proxy; never broaden the Kuczynski proxy.
+- [Dependency pin verification](dependency-pin-verification.md) — audit success is insufficient; scan manifests and lockfiles for vulnerable exact versions because stale lower bounds can remain.
