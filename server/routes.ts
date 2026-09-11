@@ -31,6 +31,7 @@ import { verifyAristotleApiKey } from "./aristotle-api-key";
 import { verifyDarwinApiKey } from "./darwin-api-key";
 import { verifyPlatoApiKey } from "./plato-api-key";
 import { verifySartreApiKey } from "./sartre-api-key";
+import { verifyNietzscheApiKey } from "./nietzsche-api-key";
 import multer from "multer";
 import { PDFParse } from "pdf-parse";
 import * as mammoth from "mammoth";
@@ -6111,6 +6112,125 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     } catch (error) {
       console.error("[Sartre API] Error:", error);
       if (!res.headersSent) res.status(500).json({ error: "Failed to generate Sartre response" });
+    }
+  });
+
+  app.post("/api/external/nietzsche", verifyNietzscheApiKey, async (req, res) => {
+    try {
+      const { message, history, maxWords, quotes, stream } = req.body || {};
+      if (!message || typeof message !== "string" || !message.trim()) {
+        return res.status(400).json({ error: "'message' (string) is required" });
+      }
+      if (message.length > 20000) {
+        return res.status(400).json({ error: "'message' too long (max 20,000 characters)" });
+      }
+
+      const targetWords = Math.min(Math.max(parseInt(maxWords, 10) || 750, 50), 5000);
+      const targetQuotes = Math.min(Math.max(parseInt(quotes, 10) || 0, 0), 20) || (quotes === 0 ? 0 : 3);
+      const wantStream = stream === true;
+      const validHistory: Array<{ role: "user" | "assistant"; content: string }> = [];
+      if (Array.isArray(history)) {
+        for (const item of history.slice(-20)) {
+          if (item && (item.role === "user" || item.role === "assistant") && typeof item.content === "string") {
+            validHistory.push({ role: item.role, content: item.content.slice(0, 8000) });
+          }
+        }
+      }
+
+      const nietzscheFigure = await storage.getThinker("nietzsche");
+      if (!nietzscheFigure) {
+        return res.status(500).json({ error: "Nietzsche figure not available" });
+      }
+
+      const embeddingChunks = await searchPhilosophicalChunks(message, 6, "nietzsche", "Nietzsche");
+      const textChunksRes = await searchTextChunks("Nietzsche", message, 6);
+      const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
+      let positionResults: Array<{ position: string; topic: string | null }> = [];
+      if (queryWords.length > 0) {
+        positionResults = await db
+          .select({ position: positions.positionText, topic: positions.topic })
+          .from(positions)
+          .where(
+            sql`thinker ILIKE ${"%Nietzsche%"} AND (
+              position_text ILIKE ${"%" + queryWords[0] + "%"}
+              ${queryWords[1] ? sql` OR position_text ILIKE ${"%" + queryWords[1] + "%"}` : sql``}
+              ${queryWords[2] ? sql` OR position_text ILIKE ${"%" + queryWords[2] + "%"}` : sql``}
+              ${queryWords[3] ? sql` OR position_text ILIKE ${"%" + queryWords[3] + "%"}` : sql``}
+            )`,
+          )
+          .limit(15);
+      }
+
+      console.log(
+        `[Nietzsche API] RAG — embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`,
+      );
+
+      let knowledgeContext = "";
+      if (embeddingChunks.length || textChunksRes.length || positionResults.length) {
+        knowledgeContext = "\n\n--- YOUR WRITINGS (for reference) ---\n\n";
+        if (positionResults.length) {
+          knowledgeContext += "=== YOUR CORE POSITIONS ===\n";
+          for (const position of positionResults) knowledgeContext += `• ${position.position}\n`;
+          knowledgeContext += "\n";
+        }
+        for (const chunk of embeddingChunks) {
+          knowledgeContext += `From "${chunk.paperTitle.replace(/_/g, " ")}":\n${chunk.content}\n\n`;
+        }
+        for (const chunk of textChunksRes) {
+          knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, "").replace(/_/g, " ")}":\n${chunk.chunkText}\n\n`;
+        }
+        knowledgeContext +=
+          "--- END ---\n\nINSTRUCTION: Answer in Friedrich Nietzsche's voice and ground your claims exclusively in Nietzsche's writings above.\n";
+      } else {
+        knowledgeContext =
+          "\n\nNOTE: No specific Nietzsche passages were retrieved. Respond only from Nietzsche's documented positions, or acknowledge when the question falls outside them.\n";
+      }
+
+      let responseInstructions = `\nTARGET LENGTH: Approximately ${targetWords} words.\n`;
+      if (targetQuotes > 0) {
+        responseInstructions += `QUOTE REQUIREMENT: Include at least ${targetQuotes} verbatim quotes from Nietzsche's writings above.\n`;
+      }
+      responseInstructions +=
+        "\nSTYLE: Write as Friedrich Nietzsche: incisive, psychologically perceptive, aphoristic where apt, and attentive to values, power, self-overcoming, ressentiment, and cultural critique.\nFORMATTING: Plain text only (no markdown).\n";
+
+      const systemPrompt = nietzscheFigure.systemPrompt + knowledgeContext + responseInstructions;
+      let userPrompt = message;
+      if (validHistory.length > 0) {
+        const historyText = validHistory
+          .map((item) => `${item.role === "user" ? "Interlocutor" : "Nietzsche"}: ${item.content}`)
+          .join("\n\n");
+        userPrompt = `[Conversation so far:]\n\n${historyText}\n\n[Current message:]\n${message}`;
+      }
+      const maxTokens = Math.min(Math.max(Math.round(targetWords * 2), 1000), 16000);
+
+      if (wantStream) {
+        res.setHeader("Content-Type", "text/event-stream");
+        res.setHeader("Cache-Control", "no-cache, no-transform");
+        res.setHeader("Connection", "keep-alive");
+        res.setHeader("X-Accel-Buffering", "no");
+        if (res.socket) res.socket.setTimeout(0);
+        res.flushHeaders();
+        try {
+          for await (const delta of streamLLMText(systemPrompt, userPrompt, maxTokens, 0.7)) {
+            res.write(`data: ${JSON.stringify({ content: delta })}\n\n`);
+          }
+          res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+        } catch (streamError) {
+          console.error("[Nietzsche API] Stream error:", streamError);
+          res.write(`data: ${JSON.stringify({ error: "Generation failed" })}\n\n`);
+        }
+        res.end();
+      } else {
+        const responseText = await callLLMPlan(systemPrompt, userPrompt, maxTokens, 0.7);
+        res.json({
+          response: responseText,
+          character: "nietzsche",
+          words: responseText.split(/\s+/).length,
+        });
+      }
+    } catch (error) {
+      console.error("[Nietzsche API] Error:", error);
+      if (!res.headersSent) res.status(500).json({ error: "Failed to generate Nietzsche response" });
     }
   });
 
