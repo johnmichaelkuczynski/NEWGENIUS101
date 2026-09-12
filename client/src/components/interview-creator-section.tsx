@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -27,6 +28,7 @@ function getDisplayName(fullName: string): string {
 interface InterviewCreatorSectionProps {
   onRegisterInput?: (setter: (content: string) => void) => void;
   onRegisterOutputs?: (outputGetters: Record<string, () => string>) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
 type InterviewMode = 'conservative' | 'aggressive';
@@ -34,7 +36,8 @@ type InterviewerTone = 'neutral' | 'dialectical' | 'hostile';
 
 export function InterviewCreatorSection({ 
   onRegisterInput, 
-  onRegisterOutputs 
+  onRegisterOutputs,
+  onTransferContent
 }: InterviewCreatorSectionProps) {
   const [selectedThinker, setSelectedThinker] = useState<string>('');
   const [mode, setMode] = useState<InterviewMode>('conservative');
@@ -591,7 +594,7 @@ export function InterviewCreatorSection({
         </CardContent>
       </Card>
 
-      {interview && (
+      {interview.trim() && (
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
@@ -627,6 +630,9 @@ export function InterviewCreatorSection({
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
+                {onTransferContent && interview.trim() && !isGenerating && (
+                  <SendToDropdown content={interview} onTransfer={onTransferContent} testId="button-transfer-interview" />
+                )}
               </div>
             </div>
           </CardHeader>

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Download, FileText, Upload, X, ArrowRight, HelpCircle, Copy, Check, ClipboardList, Move, Maximize2, AlertCircle } from "lucide-react";
 import type { Figure, FigureMessage, PersonaSettings } from "@shared/schema";
+import type { DestinationType } from "@/components/send-to-dropdown";
+import { SendToDropdown } from "@/components/send-to-dropdown";
 import { PaperWriter } from "@/components/paper-writer";
 import { WhatToAskModal } from "@/components/what-to-ask-modal";
 import { ThinkingPanel } from "@/components/thinking-panel";
@@ -26,7 +28,7 @@ interface FigureChatProps {
   figure: Figure | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onTransferContent?: (content: string, target: 'chat' | 'model' | 'paper' | 'dialogue') => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
 export function FigureChat({ figure, open, onOpenChange, onTransferContent }: FigureChatProps) {
@@ -569,7 +571,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                     </div>
-                    {!isUser && (
+                    {!isUser && !isStreaming && message.content.trim() && (
                       <div className="flex items-center justify-between w-full">
                         <div className="flex gap-1">
                           <Button
@@ -591,6 +593,16 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
                               </>
                             )}
                           </Button>
+                          {onTransferContent && (
+                            <SendToDropdown
+                              content={message.content}
+                              onTransfer={(content, target) => {
+                                onTransferContent(content, target);
+                                onOpenChange(false);
+                              }}
+                              testId={`button-transfer-figure-${message.id}`}
+                            />
+                          )}
                           <Button
                             variant="ghost"
                             size="sm"
@@ -634,8 +646,17 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
 
             {pendingAssistantMessage && !streamingMessage && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] rounded-lg px-4 py-3 bg-muted">
-                  <p className="text-sm whitespace-pre-wrap">{pendingAssistantMessage}</p>
+                <div className="max-w-[80%] space-y-2">
+                  <div className="rounded-lg px-4 py-3 bg-muted">
+                    <p className="text-sm whitespace-pre-wrap">{pendingAssistantMessage}</p>
+                  </div>
+                  {onTransferContent && pendingAssistantMessage.trim() && !isStreaming && (
+                    <SendToDropdown
+                      content={pendingAssistantMessage}
+                      onTransfer={onTransferContent}
+                      testId="button-transfer-figure-pending"
+                    />
+                  )}
                 </div>
               </div>
             )}
@@ -725,6 +746,7 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
         figure={figure}
         open={paperWriterOpen}
         onOpenChange={setPaperWriterOpen}
+        onTransferContent={onTransferContent}
       />
 
       <WhatToAskModal

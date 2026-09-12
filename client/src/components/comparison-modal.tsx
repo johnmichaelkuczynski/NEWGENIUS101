@@ -9,14 +9,16 @@ import { Send, X, Users, Download, Search, Trash2, Copy, Check, ArrowRight, Move
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Figure, FigureMessage, PersonaSettings } from "@shared/schema";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface ComparisonModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   figures: Figure[];
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
-export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModalProps) {
+export function ComparisonModal({ open, onOpenChange, figures, onTransferContent }: ComparisonModalProps) {
   const [selectedFigure1, setSelectedFigure1] = useState<Figure | null>(null);
   const [selectedFigure2, setSelectedFigure2] = useState<Figure | null>(null);
   const [search1, setSearch1] = useState("");
@@ -797,7 +799,7 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                         >
                           <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                         </div>
-                        {message.role !== "user" && (
+                        {message.role !== "user" && !isStreaming1 && message.content.trim() && (
                           <div className="flex items-center justify-between w-full max-w-[90%] mt-1">
                             <div className="flex gap-1">
                               <Button
@@ -822,16 +824,30 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={() => {
-                                  const encodedText = encodeURIComponent(message.content);
-                                  window.location.href = `/model-builder?text=${encodedText}`;
-                                }}
+                                  onClick={() => {
+                                    if (onTransferContent) {
+                                      onTransferContent(message.content, "model");
+                                      onOpenChange(false);
+                                    } else {
+                                      document.getElementById("model-builder-section")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                  }}
                                 className="h-6 px-2 text-xs"
                                 data-testid={`button-model-builder-compare1-${message.id}`}
                               >
                                 Model Builder
                                 <ArrowRight className="h-3 w-3 ml-1" />
                               </Button>
+                              {onTransferContent && (
+                                <SendToDropdown
+                                  content={message.content}
+                                  onTransfer={(content, target) => {
+                                    onTransferContent(content, target);
+                                    onOpenChange(false);
+                                  }}
+                                  testId={`button-transfer-compare1-${message.id}`}
+                                />
+                              )}
                             </div>
                             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
                               {message.content.split(/\s+/).filter(w => w.length > 0).length.toLocaleString()} words
@@ -876,6 +892,16 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                                 </>
                               )}
                             </Button>
+                            {onTransferContent && pending1.trim() && !isStreaming1 && (
+                              <SendToDropdown
+                                content={pending1}
+                                onTransfer={(content, target) => {
+                                  onTransferContent(content, target);
+                                  onOpenChange(false);
+                                }}
+                                testId="button-transfer-compare-pending1"
+                              />
+                            )}
                           </div>
                           <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
                             {pending1.split(/\s+/).filter(w => w.length > 0).length.toLocaleString()} words
@@ -935,7 +961,7 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                         >
                           <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                         </div>
-                        {message.role !== "user" && (
+                        {message.role !== "user" && !isStreaming2 && message.content.trim() && (
                           <div className="flex items-center justify-between w-full max-w-[90%] mt-1">
                             <div className="flex gap-1">
                               <Button
@@ -960,16 +986,30 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={() => {
-                                  const encodedText = encodeURIComponent(message.content);
-                                  window.location.href = `/model-builder?text=${encodedText}`;
-                                }}
+                                  onClick={() => {
+                                    if (onTransferContent) {
+                                      onTransferContent(message.content, "model");
+                                      onOpenChange(false);
+                                    } else {
+                                      document.getElementById("model-builder-section")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                  }}
                                 className="h-6 px-2 text-xs"
                                 data-testid={`button-model-builder-compare2-${message.id}`}
                               >
                                 Model Builder
                                 <ArrowRight className="h-3 w-3 ml-1" />
                               </Button>
+                              {onTransferContent && (
+                                <SendToDropdown
+                                  content={message.content}
+                                  onTransfer={(content, target) => {
+                                    onTransferContent(content, target);
+                                    onOpenChange(false);
+                                  }}
+                                  testId={`button-transfer-compare2-${message.id}`}
+                                />
+                              )}
                             </div>
                             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
                               {message.content.split(/\s+/).filter(w => w.length > 0).length.toLocaleString()} words
@@ -1014,6 +1054,16 @@ export function ComparisonModal({ open, onOpenChange, figures }: ComparisonModal
                                 </>
                               )}
                             </Button>
+                            {onTransferContent && pending2.trim() && !isStreaming2 && (
+                              <SendToDropdown
+                                content={pending2}
+                                onTransfer={(content, target) => {
+                                  onTransferContent(content, target);
+                                  onOpenChange(false);
+                                }}
+                                testId="button-transfer-compare-pending2"
+                              />
+                            )}
                           </div>
                           <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
                             {pending2.split(/\s+/).filter(w => w.length > 0).length.toLocaleString()} words

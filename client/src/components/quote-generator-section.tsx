@@ -13,6 +13,7 @@ import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 // Convert full names to last names, with exceptions for disambiguation
 function getDisplayName(fullName: string): string {
@@ -28,9 +29,10 @@ function getDisplayName(fullName: string): string {
 
 interface QuoteGeneratorSectionProps {
   onRegisterInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
-export function QuoteGeneratorSection({ onRegisterInput }: QuoteGeneratorSectionProps) {
+export function QuoteGeneratorSection({ onRegisterInput, onTransferContent }: QuoteGeneratorSectionProps) {
   const [mode, setMode] = useState<'author' | 'upload'>('author');
   const [selectedAuthor, setSelectedAuthor] = useState('');
   const [authorComboboxOpen, setAuthorComboboxOpen] = useState(false);
@@ -424,7 +426,7 @@ export function QuoteGeneratorSection({ onRegisterInput }: QuoteGeneratorSection
                   </span>
                 )}
               </div>
-              {generatedQuotes && !isGenerating && (
+              {generatedQuotes.trim() && !isGenerating && (
                 <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
@@ -446,6 +448,9 @@ export function QuoteGeneratorSection({ onRegisterInput }: QuoteGeneratorSection
                     <Trash2 className="h-3 w-3 mr-1" />
                     Delete
                   </Button>
+                  {onTransferContent && generatedQuotes.trim() && !isGenerating && (
+                    <SendToDropdown content={generatedQuotes} onTransfer={onTransferContent} testId="button-transfer-quotes" />
+                  )}
                 </div>
               )}
             </div>

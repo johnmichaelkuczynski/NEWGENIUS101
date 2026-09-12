@@ -9,6 +9,7 @@ import { Loader2, GitBranch, Copy, Trash2, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -21,9 +22,10 @@ function getDisplayName(fullName: string): string {
 
 interface ArgumentGeneratorSectionProps {
   onRegisterInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
-export function ArgumentGeneratorSection({ onRegisterInput }: ArgumentGeneratorSectionProps) {
+export function ArgumentGeneratorSection({ onRegisterInput, onTransferContent }: ArgumentGeneratorSectionProps) {
   const [selectedThinker, setSelectedThinker] = useState('');
   const [keywords, setKeywords] = useState('');
   const [numArguments, setNumArguments] = useState('10');
@@ -258,7 +260,7 @@ export function ArgumentGeneratorSection({ onRegisterInput }: ArgumentGeneratorS
           )}
         </Button>
 
-        {generatedArguments && (
+        {generatedArguments.trim() && (
           <div className="space-y-3">
             <div className="flex justify-between items-center flex-wrap gap-2">
               <div className="flex items-center gap-3">
@@ -295,6 +297,9 @@ export function ArgumentGeneratorSection({ onRegisterInput }: ArgumentGeneratorS
                   <Trash2 className="w-4 h-4 mr-1" />
                   Clear
                 </Button>
+                {!isGenerating && onTransferContent && (
+                  <SendToDropdown content={generatedArguments} onTransfer={onTransferContent} testId="button-transfer-arguments" />
+                )}
               </div>
             </div>
             <div 

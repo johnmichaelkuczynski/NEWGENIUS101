@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Loader2, Wand2, StopCircle, Copy, Download, ChevronDown, ChevronUp, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface ChunkRow {
   index: number;
@@ -37,7 +38,12 @@ function countWords(t: string): number {
   return t.trim().split(/\s+/).filter(Boolean).length;
 }
 
-export function DocumentReconstructorSection() {
+interface DocumentReconstructorSectionProps {
+  onRegisterInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
+}
+
+export function DocumentReconstructorSection({ onRegisterInput, onTransferContent }: DocumentReconstructorSectionProps) {
   const [originalText, setOriginalText] = useState("");
   const [customInstructions, setCustomInstructions] = useState("");
   const [uploadedFileName, setUploadedFileName] = useState("");
@@ -54,6 +60,10 @@ export function DocumentReconstructorSection() {
 
   const abortRef = useRef<AbortController | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    onRegisterInput?.((content: string) => setOriginalText(content));
+  }, [onRegisterInput]);
 
   // Abort in-flight stream on unmount to avoid lingering fetch / setState.
   useEffect(() => {
@@ -241,6 +251,7 @@ export function DocumentReconstructorSection() {
           <DragDropUpload
             onFileAccepted={handleFileAccepted}
             accept=".txt,.md,.doc,.docx,.pdf"
+            maxSizeBytes={5 * 1024 * 1024}
             disabled={isRunning}
           />
           {uploadedFileName && (
@@ -439,7 +450,7 @@ export function DocumentReconstructorSection() {
         )}
 
         {/* Final output */}
-        {completed && (
+        {completed && !isRunning && getFinalOutput().trim() && (
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center justify-between">
@@ -451,6 +462,9 @@ export function DocumentReconstructorSection() {
                   <Button size="sm" variant="outline" onClick={handleDownload} data-testid="button-recon-download">
                     <Download className="w-3.5 h-3.5 mr-1" />Download
                   </Button>
+                  {onTransferContent && (
+                    <SendToDropdown content={getFinalOutput()} onTransfer={onTransferContent} testId="button-transfer-reconstructor" />
+                  )}
                 </div>
               </CardTitle>
             </CardHeader>

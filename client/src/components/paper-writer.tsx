@@ -7,14 +7,16 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileText, Download, Loader2 } from "lucide-react";
 import type { Figure } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface PaperWriterProps {
   figure: Figure;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
-export function PaperWriter({ figure, open, onOpenChange }: PaperWriterProps) {
+export function PaperWriter({ figure, open, onOpenChange, onTransferContent }: PaperWriterProps) {
   const [topic, setTopic] = useState("");
   const [paper, setPaper] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -153,16 +155,25 @@ export function PaperWriter({ figure, open, onOpenChange }: PaperWriterProps) {
                 Request an original paper (up to 1500 words) written by {figure.name} in their authentic voice, drawing on their philosophical knowledge
               </DialogDescription>
             </div>
-            {paper && !isGenerating && (
-              <Button
-                onClick={handleDownload}
-                variant="default"
-                size="sm"
-                data-testid="button-download-paper"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download Paper
-              </Button>
+            {paper.trim() && !isGenerating && (
+              <div className="flex items-center gap-2">
+                <Button
+                  onClick={handleDownload}
+                  variant="default"
+                  size="sm"
+                  data-testid="button-download-paper"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Paper
+                </Button>
+                {onTransferContent && paper.trim() && (
+                  <SendToDropdown
+                    content={paper}
+                    onTransfer={onTransferContent}
+                    testId="button-transfer-figure-paper"
+                  />
+                )}
+              </div>
             )}
           </div>
 

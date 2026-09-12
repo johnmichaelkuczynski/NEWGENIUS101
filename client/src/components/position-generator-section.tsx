@@ -9,6 +9,7 @@ import { Loader2, List, Copy, Trash2, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -21,9 +22,10 @@ function getDisplayName(fullName: string): string {
 
 interface PositionGeneratorSectionProps {
   onRegisterInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
-export function PositionGeneratorSection({ onRegisterInput }: PositionGeneratorSectionProps) {
+export function PositionGeneratorSection({ onRegisterInput, onTransferContent }: PositionGeneratorSectionProps) {
   const [selectedThinker, setSelectedThinker] = useState('');
   const [topic, setTopic] = useState('');
   const [numPositions, setNumPositions] = useState('20');
@@ -247,7 +249,7 @@ export function PositionGeneratorSection({ onRegisterInput }: PositionGeneratorS
           )}
         </Button>
 
-        {generatedPositions && (
+        {generatedPositions.trim() && (
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label>Generated Position Statements</Label>
@@ -279,6 +281,9 @@ export function PositionGeneratorSection({ onRegisterInput }: PositionGeneratorS
                   <Trash2 className="w-4 h-4 mr-1" />
                   Clear
                 </Button>
+                {!isGenerating && onTransferContent && (
+                  <SendToDropdown content={generatedPositions} onTransfer={onTransferContent} testId="button-transfer-positions" />
+                )}
               </div>
             </div>
             <div 

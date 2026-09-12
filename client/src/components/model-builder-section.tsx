@@ -9,10 +9,11 @@ import { Loader2, Sparkles, ArrowRight, Copy, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface ModelBuilderSectionProps {
   onRegisterInput?: (setter: (text: string) => void) => void;
-  onTransferContent?: (content: string, target: 'chat' | 'model' | 'paper') => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
 export function ModelBuilderSection({ onRegisterInput, onTransferContent }: ModelBuilderSectionProps) {
@@ -439,7 +440,7 @@ export function ModelBuilderSection({ onRegisterInput, onTransferContent }: Mode
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Label>Generated Model</Label>
-                {generatedModel && !isGenerating && (
+                {generatedModel.trim() && !isGenerating && (
                   <span className="text-xs text-muted-foreground" data-testid="text-model-word-count">
                     {generatedModel.split(/\s+/).filter(w => w.length > 0).length.toLocaleString()} words
                   </span>
@@ -467,34 +468,12 @@ export function ModelBuilderSection({ onRegisterInput, onTransferContent }: Mode
                     <Trash2 className="h-3 w-3 mr-1" />
                     Delete
                   </Button>
-                  {onTransferContent && (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="h-7 px-2 gap-1"
-                          data-testid="button-transfer-model"
-                        >
-                          Send to
-                          <ArrowRight className="h-3 w-3" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem 
-                          onClick={() => onTransferContent(generatedModel, 'chat')}
-                          data-testid="menu-transfer-to-chat"
-                        >
-                          Chat Input
-                        </DropdownMenuItem>
-                        <DropdownMenuItem 
-                          onClick={() => onTransferContent(generatedModel, 'paper')}
-                          data-testid="menu-transfer-to-paper"
-                        >
-                          Paper Writer
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                  {onTransferContent && generatedModel.trim() && !isGenerating && (
+                    <SendToDropdown
+                      content={generatedModel}
+                      onTransfer={onTransferContent}
+                      testId="button-transfer-model"
+                    />
                   )}
                 </div>
               )}

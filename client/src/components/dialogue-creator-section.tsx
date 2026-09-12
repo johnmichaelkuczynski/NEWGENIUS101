@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -27,11 +28,13 @@ function getDisplayName(fullName: string): string {
 interface DialogueCreatorSectionProps {
   onRegisterInput?: (setter: (content: string) => void) => void;
   onRegisterOutputs?: (outputGetters: Record<string, () => string>) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
 export function DialogueCreatorSection({ 
   onRegisterInput, 
-  onRegisterOutputs 
+  onRegisterOutputs,
+  onTransferContent
 }: DialogueCreatorSectionProps) {
   const [mode, setMode] = useState<'paste' | 'upload'>('paste');
   const [inputText, setInputText] = useState('');
@@ -748,7 +751,7 @@ export function DialogueCreatorSection({
         </CardContent>
       </Card>
 
-      {dialogue && (
+      {dialogue.trim() && (
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
@@ -786,6 +789,9 @@ export function DialogueCreatorSection({
                   <Trash2 className="h-4 w-4 mr-1" />
                   Delete
                 </Button>
+                {onTransferContent && dialogue.trim() && !isGenerating && (
+                  <SendToDropdown content={dialogue} onTransfer={onTransferContent} testId="button-transfer-dialogue" />
+                )}
               </div>
             </div>
           </CardHeader>

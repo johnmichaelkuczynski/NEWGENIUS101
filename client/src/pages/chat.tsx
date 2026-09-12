@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { ChatMessage } from "@/components/chat-message";
@@ -34,6 +34,7 @@ import { ThinkingPanel } from "@/components/thinking-panel";
 import { DocumentGeneratorTools } from "@/components/document-generator-tools";
 import { SelfTestButton } from "@/components/self-test-dialog";
 import UserDocuments from "@/components/user-documents";
+import type { DestinationType } from "@/components/send-to-dropdown";
 
 const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
   responseLength: 750,
@@ -77,13 +78,21 @@ export default function Chat() {
   const modelBuilderInputRef = useRef<(text: string) => void>(() => {});
   const paperWriterTopicRef = useRef<(topic: string) => void>(() => {});
   const dialogueCreatorInputRef = useRef<(text: string) => void>(() => {});
+  const quoteGeneratorInputRef = useRef<(text: string) => void>(() => {});
+  const positionGeneratorInputRef = useRef<(text: string) => void>(() => {});
+  const argumentGeneratorInputRef = useRef<(text: string) => void>(() => {});
+  const interviewCreatorInputRef = useRef<(text: string) => void>(() => {});
+  const debateCreatorInputRef = useRef<(text: string) => void>(() => {});
+  const reconstructorInputRef = useRef<(text: string) => void>(() => {});
+  const outlineInputRef = useRef<(text: string) => void>(() => {});
+  const fullDocumentInputRef = useRef<(text: string) => void>(() => {});
 
   // Transfer handler for cross-section content flow
-  const handleContentTransfer = (content: string, target: 'chat' | 'model' | 'paper' | 'dialogue') => {
+  const handleContentTransfer = (content: string, target: DestinationType) => {
     if (target === 'chat') {
       setChatInputContent(prev => ({ text: content, version: prev.version + 1 }));
       // Scroll to chat input
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      workspaceScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     } else if (target === 'model') {
       if (modelBuilderInputRef.current) {
         modelBuilderInputRef.current(content);
@@ -102,6 +111,20 @@ export default function Chat() {
         // Scroll to dialogue creator section
         document.getElementById('dialogue-creator-section')?.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      const targets: Record<Exclude<DestinationType, "chat" | "model" | "paper" | "dialogue">, { ref: MutableRefObject<(text: string) => void>; id: string }> = {
+        quote: { ref: quoteGeneratorInputRef, id: "quote-generator-section" },
+        position: { ref: positionGeneratorInputRef, id: "position-generator-section" },
+        argument: { ref: argumentGeneratorInputRef, id: "argument-generator-section" },
+        interview: { ref: interviewCreatorInputRef, id: "interview-creator-section" },
+        debate: { ref: debateCreatorInputRef, id: "debate-creator-section" },
+        reconstructor: { ref: reconstructorInputRef, id: "document-reconstructor-section" },
+        outline: { ref: outlineInputRef, id: "document-generator-section" },
+        fullDocument: { ref: fullDocumentInputRef, id: "document-generator-section" },
+      };
+      const destination = targets[target];
+      destination.ref.current(content);
+      document.getElementById(destination.id)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -939,44 +962,67 @@ export default function Chat() {
 
           {/* Quote Generator Section */}
           <div id="quote-generator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <QuoteGeneratorSection />
+            <QuoteGeneratorSection
+              onRegisterInput={(setter) => { quoteGeneratorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
 
           {/* Position Generator Section */}
           <div id="position-generator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <PositionGeneratorSection />
+            <PositionGeneratorSection
+              onRegisterInput={(setter) => { positionGeneratorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
 
           {/* Argument Generator Section */}
           <div id="argument-generator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <ArgumentGeneratorSection />
+            <ArgumentGeneratorSection
+              onRegisterInput={(setter) => { argumentGeneratorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
 
           {/* Dialogue Creator Section */}
           <div id="dialogue-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
             <DialogueCreatorSection 
               onRegisterInput={(setter) => { dialogueCreatorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
             />
           </div>
 
           {/* Interview Creator Section */}
           <div id="interview-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <InterviewCreatorSection />
+            <InterviewCreatorSection
+              onRegisterInput={(setter) => { interviewCreatorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
 
           {/* Debate Creator Section */}
           <div id="debate-creator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <DebateCreatorSection />
+            <DebateCreatorSection
+              onRegisterInput={(setter) => { debateCreatorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
           
           {/* Document Reconstructor Section (Cross-Chunk Coherence) */}
           <div id="document-reconstructor-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <DocumentReconstructorSection />
+            <DocumentReconstructorSection
+              onRegisterInput={(setter) => { reconstructorInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
 
           {/* Document Generator Tools (Debug) */}
           <div id="document-generator-section" className="px-4 py-8 border-t-4 border-primary/20">
-            <DocumentGeneratorTools />
+            <DocumentGeneratorTools
+              onRegisterOutlineInput={(setter) => { outlineInputRef.current = setter; }}
+              onRegisterFullDocumentInput={(setter) => { fullDocumentInputRef.current = setter; }}
+              onTransferContent={handleContentTransfer}
+            />
           </div>
         </div>
         </div>
@@ -1052,6 +1098,7 @@ export default function Chat() {
         open={comparisonModalOpen}
         onOpenChange={setComparisonModalOpen}
         figures={figures}
+        onTransferContent={handleContentTransfer}
       />
     </div>
   );

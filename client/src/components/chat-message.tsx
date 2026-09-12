@@ -1,14 +1,14 @@
 import { BibleVerseCard } from "./bible-verse-card";
 import { Button } from "./ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import { ArrowRight, Copy, Trash2 } from "lucide-react";
+import { Copy, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import type { Message } from "@shared/schema";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface ChatMessageProps {
   message: Message;
   isStreaming?: boolean;
-  onTransferContent?: (content: string, target: 'chat' | 'model' | 'paper' | 'dialogue') => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
   onDeleteMessage?: (messageId: string) => void;
 }
 
@@ -81,7 +81,7 @@ export function ChatMessage({ message, isStreaming, onTransferContent, onDeleteM
           </p>
         </div>
 
-        {!isUser && !isStreaming && message.content && (
+        {!isUser && !isStreaming && message.content.trim() && (
           <div className="w-full flex justify-between items-center mt-2">
             <Button
               variant="ghost"
@@ -106,40 +106,14 @@ export function ChatMessage({ message, isStreaming, onTransferContent, onDeleteM
           />
         )}
 
-        {!isUser && !isStreaming && onTransferContent && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="self-end text-xs gap-1"
-                data-testid="button-transfer-response"
-              >
-                Send to
-                <ArrowRight className="h-3 w-3" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem 
-                onClick={() => onTransferContent(message.content, 'model')}
-                data-testid="menu-transfer-to-model"
-              >
-                Model Builder
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                onClick={() => onTransferContent(message.content, 'paper')}
-                data-testid="menu-transfer-to-paper"
-              >
-                Paper Writer
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                onClick={() => onTransferContent(message.content, 'dialogue')}
-                data-testid="menu-transfer-to-dialogue"
-              >
-                Dialogue Creator
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+        {!isUser && !isStreaming && message.content.trim() && onTransferContent && (
+          <div className="self-end">
+            <SendToDropdown
+              content={message.content}
+              onTransfer={onTransferContent}
+              testId="button-transfer-response"
+            />
+          </div>
         )}
       </div>
     </div>

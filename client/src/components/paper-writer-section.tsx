@@ -14,6 +14,7 @@ import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { countPaperBodyWords } from "@/lib/paper-content";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -26,7 +27,7 @@ function getDisplayName(fullName: string): string {
 
 interface PaperWriterSectionProps {
   onRegisterInput?: (setter: (topic: string) => void) => void;
-  onTransferContent?: (content: string, target: 'chat' | 'model' | 'paper') => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
 }
 
 export function PaperWriterSection({ onRegisterInput, onTransferContent }: PaperWriterSectionProps) {
@@ -511,7 +512,7 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                     </span>
                   )}
                 </div>
-                {generatedPaper && (
+                  {generatedPaper.trim() && (
                   <div className="flex items-center gap-2">
                     <Button
                       variant="ghost"
@@ -533,34 +534,12 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                       <Trash2 className="h-3 w-3 mr-1" />
                       Delete
                     </Button>
-                    {onTransferContent && (
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="h-7 px-2 gap-1"
-                            data-testid="button-transfer-paper"
-                          >
-                            Send to
-                            <ArrowRight className="h-3 w-3" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem 
-                            onClick={() => onTransferContent(generatedPaper, 'chat')}
-                            data-testid="menu-transfer-to-chat"
-                          >
-                            Chat Input
-                          </DropdownMenuItem>
-                          <DropdownMenuItem 
-                            onClick={() => onTransferContent(generatedPaper, 'model')}
-                            data-testid="menu-transfer-to-model"
-                          >
-                            Model Builder
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                    {onTransferContent && generatedPaper.trim() && !isGenerating && (
+                      <SendToDropdown
+                        content={generatedPaper}
+                        onTransfer={onTransferContent}
+                        testId="button-transfer-paper"
+                      />
                     )}
                     <Button
                       variant="outline"

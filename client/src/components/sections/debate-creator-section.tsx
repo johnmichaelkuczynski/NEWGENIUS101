@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,8 +14,14 @@ import type { Figure } from "@shared/schema";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
-export function DebateCreatorSection() {
+interface DebateCreatorSectionProps {
+  onRegisterInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
+}
+
+export function DebateCreatorSection({ onRegisterInput, onTransferContent }: DebateCreatorSectionProps) {
   const [debateMode, setDebateMode] = useState<"auto" | "custom">("auto");
   const [selectedThinker1, setSelectedThinker1] = useState<Figure | null>(null);
   const [selectedThinker2, setSelectedThinker2] = useState<Figure | null>(null);
@@ -33,6 +39,13 @@ export function DebateCreatorSection() {
   const abortControllerRef = useRef<AbortController | null>(null);
   const { toast } = useToast();
   const { registerPopup, updatePopup } = usePopupManager();
+
+  useEffect(() => {
+    onRegisterInput?.((content: string) => {
+      setCustomInstructions(content);
+      setDebateMode("custom");
+    });
+  }, [onRegisterInput]);
 
   const handleStop = () => {
     abortControllerRef.current?.abort();
@@ -683,6 +696,9 @@ export function DebateCreatorSection() {
                       <Download className="w-4 h-4" />
                       Download
                     </Button>
+                    {onTransferContent && debateResult.trim() && !isStreaming && (
+                      <SendToDropdown content={debateResult} onTransfer={onTransferContent} testId="button-transfer-debate" />
+                    )}
                   </div>
                 )}
               </div>

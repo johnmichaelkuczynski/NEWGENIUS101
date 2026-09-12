@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { FileText, Upload, RefreshCw, Loader2, CheckCircle, AlertCircle, ClipboardList, Layers, Copy, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
 interface GlobalSkeleton {
   outline: string[];
@@ -29,7 +30,17 @@ interface StrictOutlineResult {
   };
 }
 
-export function DocumentGeneratorTools() {
+interface DocumentGeneratorToolsProps {
+  onRegisterFullDocumentInput?: (setter: (content: string) => void) => void;
+  onRegisterOutlineInput?: (setter: (content: string) => void) => void;
+  onTransferContent?: (content: string, target: DestinationType) => void;
+}
+
+export function DocumentGeneratorTools({
+  onRegisterFullDocumentInput,
+  onRegisterOutlineInput,
+  onTransferContent,
+}: DocumentGeneratorToolsProps) {
   const { toast } = useToast();
   const [outlineDocument, setOutlineDocument] = useState("");
   const [outlineInstructions, setOutlineInstructions] = useState("");
@@ -51,6 +62,11 @@ export function DocumentGeneratorTools() {
 
   const outlineFileRef = useRef<HTMLInputElement>(null);
   const fullDocFileRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    onRegisterFullDocumentInput?.((content: string) => setFullDocDocument(content));
+    onRegisterOutlineInput?.((content: string) => setOutlineDocument(content));
+  }, [onRegisterFullDocumentInput, onRegisterOutlineInput]);
 
   const handleFileUpload = useCallback(async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -358,7 +374,7 @@ export function DocumentGeneratorTools() {
             </div>
           )}
           
-          {outlineResult && (
+           {outlineResult && (
             <div className="space-y-4 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md">
               <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 flex-wrap">
                 <CheckCircle className="h-4 w-4" />
@@ -385,6 +401,13 @@ export function DocumentGeneratorTools() {
                     <Download className="h-4 w-4 mr-1" />
                     Download
                   </Button>
+                  {onTransferContent && outlineResult && !outlineLoading && (
+                    <SendToDropdown
+                      content={formatOutlineForExport(outlineResult)}
+                      onTransfer={onTransferContent}
+                      testId="button-transfer-outline"
+                    />
+                  )}
                 </div>
               </div>
               
@@ -566,7 +589,7 @@ export function DocumentGeneratorTools() {
             </div>
           )}
           
-          {fullDocOutput && (
+           {fullDocOutput.trim() && (
             <div className="space-y-2">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <h4 className="font-medium text-sm">Generated Output:</h4>
@@ -592,6 +615,13 @@ export function DocumentGeneratorTools() {
                     <Download className="h-4 w-4 mr-1" />
                     Download
                   </Button>
+                  {onTransferContent && fullDocOutput.trim() && !fullDocLoading && (
+                    <SendToDropdown
+                      content={fullDocOutput}
+                      onTransfer={onTransferContent}
+                      testId="button-transfer-fulldoc"
+                    />
+                  )}
                 </div>
               </div>
               <div className="max-h-[400px] overflow-y-auto p-4 bg-muted/50 rounded-md">
