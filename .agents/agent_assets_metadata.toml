@@ -72,3 +72,33 @@ mtime_ms = 1789184580150
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/97e064a8-4c50-4920-8ca6-350e8282f259/dd5ba555-a066-4f1d-bd7c-137f2d2f0773"
 storage_version_token = "1789184600970213"
 content_type = "video/mp4"
+
+[[outputs]]
+id = "LvT9-4oIAvZ-U4j4Wmj6K"
+uri = "file://attached_assets/generated_audio/genius101-convert-formats-voiceover.mp3"
+type = "audio"
+title = "Genius 101 answer conversion promo narration"
+description = "Text-to-speech audio: A strong answer is only the beginning. In Genius 101, once a question has been answered, the result can be transformed into the form you need—a formal paper, a mathematical mode…"
+logical_id = "6f807a06-001e-4176-8d43-8758a2790df6"
+
+[[outputs]]
+id = "2v9Ee6IRB8KW9tEnaIJdw"
+uri = "file://attached_assets/generated_audio/genius101-convert-formats-voiceover-v2.mp3"
+type = "audio"
+title = "Genius 101 conversion promo timed narration"
+description = "Text-to-speech audio: A strong answer is only the beginning. In Genius 101, you can transform it into a formal paper, a mathematical model, a screenplay, or a dialogue. Here, an answer about whether …"
+logical_id = "48002a97-ce8a-4237-af81-15ae723a7407"
+
+[[outputs]]
+id = "k9sTQpRePw_qGE9slWrtZ"
+uri = "file://attached_assets/generated_videos/genius101-16x9-answer-conversion-promo.mp4"
+type = "video"
+title = "Genius 101 — Convert Answers into New Formats"
+description = "42-second 16:9 promotional video showing a philosophical answer transformed into a dialogue among Plato, Aristotle, Leibniz, and Bertrand Russell, with relaxed authoritative male narration."
+logical_id = "503a1c98-1b51-4c68-8583-2a2c98889a72"
+content_hash = "sha256:90fb35f5a04f8f2162c42e017063cff50c5bfbe4ea1d2c63275e0488ed03e07b"
+size = 9441614
+mtime_ms = 1789185147437
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/503a1c98-1b51-4c68-8583-2a2c98889a72/e1c3b89d-3f82-4a21-9f97-9dca30fe2351"
+storage_version_token = "1789185162312822"
+content_type = "video/mp4"
