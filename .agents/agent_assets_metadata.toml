@@ -11,18 +11,21 @@ id = "T2zllgYJUYksj9H6tYLkc"
 uri = "file://promo-video/genius101-promo.mp4"
 type = "video"
 title = "Genius 101 — Promo Video (click to play / download)"
+logical_id = "7bd8aa69-4e91-4d4f-9ff9-e02f63021bd4"
 
 [[outputs]]
 id = "1mXy9KARHs03Fpo9yAqN5"
 uri = "file://recording/videos/genius101-demo.webm"
 type = "video"
 title = "Full Feature Walkthrough (20:52, real app, six operations)"
+logical_id = "b026cd11-fcc0-4b4c-af17-e4ae3f8adaa4"
 
 [[outputs]]
 id = "TVVN6hcPVnCVy4SgD_IRY"
 uri = "file://recording/youtube-description.txt"
 type = "text"
 title = "YouTube Description — Philosophy: AI-Powered Course"
+logical_id = "abdc5947-0121-4b38-8ddf-2bf35c225d2f"
 
 [[outputs]]
 id = "4UMni17ubdgzmo7XvjvEv"
@@ -30,6 +33,7 @@ uri = "file://artifacts/verified-aristotle-essentialism-paper.txt"
 type = "text"
 title = "Verified Aristotle Essentialism Paper"
 description = "The exact inspected and validated essay: 1,000 body words, 20 complete source quotations, each used once, with the quotation appendix excluded from the body count."
+logical_id = "881d32de-04fe-47f1-b896-a2d31cce486a"
 
 [[outputs]]
 id = "MI7Ce9iV02KqiOjZMOfZE"
@@ -37,6 +41,7 @@ uri = "file://attached_assets/generated_audio/genius101-tiktok-narration.mp3"
 type = "audio"
 title = "Genius 101 TikTok narration"
 description = "Text-to-speech audio: Imagine a library where the thinkers talk back. Genius 101 is trained on the works—the complete works—of these thinkers, not quick summaries. Ask questions or start a real dialo…"
+logical_id = "94d780bc-0919-40ec-a8fc-684d6de6622c"
 
 [[outputs]]
 id = "CruOaH18xY3ltmTKwoqyN"
@@ -44,3 +49,26 @@ uri = "file://attached_assets/generated_videos/genius101-tiktok-promo.mp4"
 type = "video"
 title = "Genius 101 TikTok Promo"
 description = "33-second vertical 1080x1920 promo using real app screenshots, friendly narration, captions, no music, and the spoken/on-screen URL https://genius101.xyz/."
+logical_id = "e8785b73-0e93-483a-824f-c54c65ee39fe"
+
+[[outputs]]
+id = "jSpdpwmfJ5IWWnAJ5yZHE"
+uri = "file://attached_assets/generated_audio/genius101-landscape-promo-voiceover.mp3"
+type = "audio"
+title = "Genius 101 landscape promo voiceover"
+description = "Text-to-speech audio: A serious philosophical question. An immediate answer—clear, cogent, and grounded in the thinker’s own ideas. This is just one of the many things Genius 101 can do. Explore majo…"
+logical_id = "1f443e6e-f8e1-4f19-b97c-16a06077bd82"
+
+[[outputs]]
+id = "JPjukzzejLn8SlL4GInFj"
+uri = "file://attached_assets/generated_videos/genius101-16x9-philosophy-promo.mp4"
+type = "video"
+title = "Genius 101 — 16:9 Philosophy Promo"
+description = "31.7-second landscape promotional video using the uploaded Genius 101 footage full-frame, with relaxed authoritative male narration and restrained opening and closing overlays."
+logical_id = "97e064a8-4c50-4920-8ca6-350e8282f259"
+content_hash = "sha256:2658e4ccab9227d6781492137086a480a4bf564de0b9edc018d1e4f7c095abbb"
+size = 4841497
+mtime_ms = 1789184580150
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/97e064a8-4c50-4920-8ca6-350e8282f259/dd5ba555-a066-4f1d-bd7c-137f2d2f0773"
+storage_version_token = "1789184600970213"
+content_type = "video/mp4"
