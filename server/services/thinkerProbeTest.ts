@@ -105,6 +105,20 @@ async function askThinker(
     const decoder = new TextDecoder();
     let buffer = "";
     let answer = "";
+    let answerType:
+      | "direct_aligned"
+      | "direct_conflicting"
+      | "indirect"
+      | "no_material"
+      | null = null;
+    let directCount = 0;
+    let works: string[] = [];
+    let representativeQuotations: Array<{
+      work: string;
+      quotation: string;
+      chunkIndex?: number;
+      relevanceScore?: number;
+    }> = [];
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
@@ -120,6 +134,21 @@ async function askThinker(
           const event = JSON.parse(payload);
           if (typeof event.content === "string") answer += event.content;
           if (typeof event.error === "string") throw new Error(event.error);
+          if (
+            event.auditEvent?.type === "search_complete"
+            && event.auditEvent?.data
+          ) {
+            answerType = event.auditEvent.data.answerType || null;
+            directCount = Number(event.auditEvent.data.directCount) || 0;
+          }
+          if (event.auditEvidence) {
+            works = Array.isArray(event.auditEvidence.works)
+              ? event.auditEvidence.works.filter((item: unknown) => typeof item === "string")
+              : [];
+            representativeQuotations = Array.isArray(event.auditEvidence.quotations)
+              ? event.auditEvidence.quotations.slice(0, 20)
+              : [];
+          }
         } catch (error) {
           if (error instanceof SyntaxError) continue;
           throw error;
@@ -129,17 +158,52 @@ async function askThinker(
 
     const cleanAnswer = answer.trim();
     if (cleanAnswer.length < 20) throw new Error("Thinker returned no substantive answer");
+    if (
+      answerType !== "direct_aligned"
+      || directCount < 1
+      || representativeQuotations.length < 5
+      || works.length < 1
+    ) {
+      return {
+        name: probe.name,
+        category: "Thinker probes",
+        status: "fail",
+        durationMs: Date.now() - startedAt,
+        message:
+          answerType === "direct_conflicting"
+            ? `Failed: the corpus returned conflicting direct evidence for “${question}”`
+            : `Failed: no direct corpus evidence supports an answer to “${question}”`,
+        details: {
+          thinkerId: probe.id,
+          question,
+          answer: cleanAnswer,
+          words: cleanAnswer.split(/\s+/).length,
+          answerType: answerType || "unknown",
+          directCount,
+          works,
+          representativeQuotations,
+          failureReason:
+            representativeQuotations.length < 5
+              ? `Only ${representativeQuotations.length} sourced representative quotation(s) were found; at least 5 are required.`
+              : "The diagnostic does not accept fluent output based on indirect or absent source material.",
+        },
+      };
+    }
     return {
       name: probe.name,
       category: "Thinker probes",
       status: "pass",
       durationMs: Date.now() - startedAt,
-      message: `Answered: ${question}`,
+      message: `Answered from ${works.join(", ")} with ${representativeQuotations.length} representative quotations: ${question}`,
       details: {
         thinkerId: probe.id,
         question,
         answer: cleanAnswer,
         words: cleanAnswer.split(/\s+/).length,
+        answerType,
+        directCount,
+        works,
+        representativeQuotations,
       },
     };
   } catch (error: any) {

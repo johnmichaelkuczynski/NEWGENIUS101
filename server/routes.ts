@@ -1883,6 +1883,24 @@ Now ATTACK this problem directly using your full philosophical firepower:
       );
       
       console.log(`[AUDITED SEARCH] Complete: ${auditedResult.directAnswers.length} direct answers, type=${auditedResult.answerType}`);
+
+      const sourcedQuotations = auditedResult.directAnswers
+        .filter((item) => item.passage.source === "chunks" && item.passage.sourceFile)
+        .slice(0, 20)
+        .map((item) => ({
+          work: item.passage.sourceFile,
+          quotation: item.passage.text,
+          chunkIndex: item.passage.chunkIndex,
+          relevanceScore: item.relevanceScore,
+        }));
+      res.write(`data: ${JSON.stringify({
+        auditEvidence: {
+          answerType: auditedResult.answerType,
+          directCount: auditedResult.directAnswers.length,
+          works: Array.from(new Set(sourcedQuotations.map((item) => item.work))),
+          quotations: sourcedQuotations,
+        },
+      })}\n\n`);
       
       // Build context from audited search results
       const { systemPrompt: auditSystemPrompt, contextPrompt: auditContextPrompt } = buildPromptFromAuditResult(auditedResult);

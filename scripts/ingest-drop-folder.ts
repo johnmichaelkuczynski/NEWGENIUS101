@@ -29,6 +29,8 @@ import { neon } from "@neondatabase/serverless";
 import OpenAI from "openai";
 import * as fs from "fs";
 import * as path from "path";
+import mammoth from "mammoth";
+import { PDFParse } from "pdf-parse";
 
 const DATABASE_URL = process.env.EXTERNAL_DATABASE_URL || process.env.DATABASE_URL!;
 if (!DATABASE_URL) {
@@ -43,12 +45,15 @@ const PROCESSED_DIR = path.join(DROP_DIR, "_processed");
 const FAILED_DIR = path.join(DROP_DIR, "_failed");
 
 const DRY_RUN = process.argv.includes("--dry-run");
+const ONLY_INDEX = process.argv.indexOf("--only");
+const ONLY_FILE = ONLY_INDEX >= 0 ? process.argv[ONLY_INDEX + 1] : null;
 
 const CHUNK_SIZE = 1500;
 const CHUNK_OVERLAP = 200;
 
 const CATEGORIES = ["WORKS", "QUOTES", "POSITIONS", "ARGUMENTS"] as const;
 type Category = (typeof CATEGORIES)[number];
+const AUTHOR_WORK_EXTENSIONS = new Set([".txt", ".md", ".rtf", ".docx", ".pdf"]);
 
 // ---------------------------------------------------------------------------
 // helpers
@@ -161,6 +166,24 @@ async function embed(text: string): Promise<number[]> {
     }
   }
   throw lastErr;
+}
+
+async function readDocumentContent(filePath: string): Promise<string> {
+  const extension = path.extname(filePath).toLowerCase();
+  if (extension === ".docx") {
+    const result = await mammoth.extractRawText({ path: filePath });
+    return result.value;
+  }
+  if (extension === ".pdf") {
+    const parser = new PDFParse({ data: fs.readFileSync(filePath) });
+    try {
+      const result = await parser.getText();
+      return result.text;
+    } finally {
+      await parser.destroy();
+    }
+  }
+  return fs.readFileSync(filePath, "utf-8");
 }
 
 function chunkText(text: string): string[] {
@@ -512,7 +535,11 @@ async function main() {
       const authorPath = path.join(ALL_AUTHOR_WORKS_DIR, authorDirectory.name);
       return fs
         .readdirSync(authorPath, { withFileTypes: true })
-        .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".txt"))
+        .filter(
+          (entry) =>
+            entry.isFile()
+            && AUTHOR_WORK_EXTENSIONS.has(path.extname(entry.name).toLowerCase()),
+        )
         .filter((entry) => !entry.name.toLowerCase().startsWith("readme"))
         .map((entry) => ({
           file: entry.name,
@@ -521,7 +548,7 @@ async function main() {
             author,
             category: "WORKS" as Category,
             lot: null,
-            title: entry.name.replace(/\.txt$/i, "").replace(/[_-]+/g, " ").trim(),
+            title: path.parse(entry.name).name.replace(/[_-]+/g, " ").trim(),
           },
           moveSubdirectory: path.join("all-author-works", author),
         }));
@@ -529,7 +556,11 @@ async function main() {
 
   const automaticallyAssignedFiles = fs
     .readdirSync(ALL_AUTHOR_WORKS_DIR, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".txt"))
+    .filter(
+      (entry) =>
+        entry.isFile()
+        && AUTHOR_WORK_EXTENSIONS.has(path.extname(entry.name).toLowerCase()),
+    )
     .filter((entry) => !entry.name.toLowerCase().startsWith("readme"))
     .map((entry) => ({
       file: entry.name,
@@ -543,7 +574,7 @@ async function main() {
     ...legacyFiles,
     ...allAuthorFiles,
     ...automaticallyAssignedFiles,
-  ];
+  ].filter((input) => !ONLY_FILE || input.file === ONLY_FILE);
 
   console.log(`\n=== DROP-FOLDER INGEST ${DRY_RUN ? "(DRY RUN)" : ""} ===`);
   console.log(`Folder: ${DROP_DIR}`);
@@ -557,7 +588,7 @@ async function main() {
   for (const input of files) {
     const { file, absolutePath, moveSubdirectory } = input;
     let parsed = input.parsed;
-    const content = fs.readFileSync(absolutePath, "utf-8");
+    const content = await readDocumentContent(absolutePath);
     if ("detectAuthor" in input && input.detectAuthor) {
       try {
         const detected = await detectAuthor(file, content);
@@ -565,7 +596,7 @@ async function main() {
           author: detected.author,
           category: "WORKS",
           lot: null,
-          title: file.replace(/\.txt$/i, "").replace(/[_-]+/g, " ").trim(),
+          title: path.parse(file).name.replace(/[_-]+/g, " ").trim(),
         };
         console.log(`DETECT ${file} -> ${detected.author} (${detected.method})`);
       } catch (error: any) {
@@ -587,7 +618,7 @@ async function main() {
     }
 
     const { author, category, lot } = parsed;
-    const sourceFile = `${author}/${file.replace(/\.txt$/i, "").toLowerCase()}`;
+    const sourceFile = `${author}/${path.parse(file).name.toLowerCase()}`;
     console.log(`FILE  ${file}  ->  ${author} / ${category}${lot ? ` (lot ${lot})` : ""}`);
 
     const move = (dir: string) => {

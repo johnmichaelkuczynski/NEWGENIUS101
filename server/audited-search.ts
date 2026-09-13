@@ -258,8 +258,9 @@ export async function auditedCorpusSearch(
       }
     }
 
-    // STEP 3: If we still don't have 3 direct answers, search CHUNKS table (full works)
-    if (directAnswers.length < 3) {
+    // STEP 3: Always search full works so diagnostics can cite named works and
+    // provide multiple representative verbatim passages.
+    if (directAnswers.length < 20) {
       emit({ type: 'table_search', detail: 'Searching CHUNKS table (full works)...', data: { table: 'chunks' } });
       
       // Use embedding search for chunks to find semantically relevant content
@@ -270,18 +271,28 @@ export async function auditedCorpusSearch(
       const queryEmbedding = embeddingResponse.data[0].embedding;
       
       const chunksQuery = sql`
-        SELECT id::text, thinker, chunk_text, source_text_id, chunk_index,
-               embedding <=> ${JSON.stringify(queryEmbedding)}::vector as distance
-        FROM chunks 
-        WHERE thinker ILIKE ${'%' + dbThinkerName + '%'}
-          AND embedding IS NOT NULL
+        SELECT c.id::text, c.thinker, c.chunk_text, c.source_text_id, c.chunk_index,
+               COALESCE(t.title, t.source_file, c.source_text_id::text) AS source_title,
+               c.embedding <=> ${JSON.stringify(queryEmbedding)}::vector as distance
+        FROM chunks c
+        LEFT JOIN texts t ON t.id = c.source_text_id
+        WHERE c.thinker ILIKE ${'%' + dbThinkerName + '%'}
+          AND c.embedding IS NOT NULL
         ORDER BY distance
-        LIMIT 30
+        LIMIT 40
       `;
       emit({ type: 'query', detail: `SQL: SELECT FROM chunks WHERE thinker ILIKE '%${dbThinkerName}%' ORDER BY embedding distance`, data: { table: 'chunks' } });
       
       const chunksResult = await db.execute(chunksQuery);
-      const chunks = (chunksResult.rows || []) as Array<{id: string, thinker: string, chunk_text: string, source_text_id: string, chunk_index: number, distance: number}>;
+      const chunks = (chunksResult.rows || []) as Array<{
+        id: string;
+        thinker: string;
+        chunk_text: string;
+        source_text_id: string;
+        source_title: string;
+        chunk_index: number;
+        distance: number;
+      }>;
       
       emit({ type: 'table_search', detail: `Found ${chunks.length} chunks from full works`, data: { count: chunks.length } });
 
@@ -289,7 +300,7 @@ export async function auditedCorpusSearch(
         id: chunk.id,
         source: 'chunks',
         text: chunk.chunk_text,
-        sourceFile: chunk.source_text_id,
+        sourceFile: chunk.source_title,
         chunkIndex: chunk.chunk_index
       }));
       for (let i = 0; i < chunkCandidates.length; i++) {
@@ -298,7 +309,7 @@ export async function auditedCorpusSearch(
       }
       const chunkJudgments = await judgeBatch(question, chunkCandidates);
       for (let i = 0; i < chunkCandidates.length; i++) {
-        if (directAnswers.length >= 3) break;
+        if (directAnswers.length >= 20) break;
         const candidate = chunkCandidates[i];
         const judgment = chunkJudgments[i];
         if (judgment.isDirectAnswer && judgment.relevanceScore >= 0.6) {
@@ -589,32 +600,29 @@ Do NOT invent a unified position. Present the conflict truthfully.`;
     }
   } else if (result.answerType === 'indirect') {
     systemPrompt = `You are ${result.authorName}. You have been asked a question and your corpus has been searched.
-Related material is available below.
+The corpus contains related material but NO direct answer to the question.
 
-YOUR ROLE:
-- Answer the question directly as ${result.authorName} would
-- Use your characteristic voice and philosophical framework
-- Draw on the related material to inform your answer
-- NO disclaimers about what is or isn't in the corpus
-- NO hedge sentences like "While I haven't directly addressed..."
-- Just answer authentically. If you're wrong, you're wrong.`;
+MANDATORY SOURCE-FAITHFUL RESPONSE:
+- Do NOT answer the question on ${result.authorName}'s behalf
+- Do NOT infer a position from general themes, style, or unrelated works
+- Do NOT convert adjacent material into a supposed direct answer
+- State plainly that the indexed corpus does not contain a direct answer
+- You may identify the material below only as related, never as the answer
+- Keep the response brief`;
 
     contextPrompt = `RELATED MATERIAL FROM YOUR CORPUS:\n\n`;
     for (const adj of result.adjacentMaterial) {
       contextPrompt += `[${adj.source}]: "${adj.text.substring(0, 800)}"\n\n`;
     }
   } else {
-    // NO_MATERIAL: Use LLM knowledge as fallback - no disclaimers
-    systemPrompt = `You are ${result.authorName}. Answer this question directly.
+    systemPrompt = `The indexed corpus contains no material supporting an answer from ${result.authorName}.
 
-YOUR ROLE:
-- Answer as ${result.authorName} would, using your philosophical framework
-- Use your characteristic voice, rhetoric, and reasoning style  
-- NO disclaimers about what is or isn't in any database or corpus
-- NO hedge sentences like "While I haven't addressed this..."
-- Just answer directly. If you're wrong, you're wrong.
-
-Answer the question as ${result.authorName}.`;
+MANDATORY RESPONSE:
+- State plainly that the indexed corpus does not contain an answer
+- Do NOT answer from model knowledge
+- Do NOT imitate ${result.authorName}'s voice
+- Do NOT infer or invent a position
+- Keep the response brief`;
     contextPrompt = ``;
   }
   
