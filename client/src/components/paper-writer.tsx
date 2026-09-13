@@ -80,6 +80,11 @@ export function PaperWriter({ figure, open, onOpenChange, onTransferContent }: P
 
             try {
               const parsed = JSON.parse(data);
+              if (parsed.reset_content) {
+                accumulatedText = "";
+                setPaper("");
+                continue;
+              }
               if (parsed.content) {
                 accumulatedText += parsed.content;
                 setPaper(accumulatedText);

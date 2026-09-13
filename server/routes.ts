@@ -3475,7 +3475,7 @@ ${assignedQuoteInstruction}`;
             temperature: 0.7,
             startProvider: "anthropic",
             onContent: (c) => { totalContent += c; },
-            emitContent: false,
+            emitContent: true,
           });
 
           totalWordCount = countWords(expandQuoteMarkers(dedupeQuoteMarkers(totalContent)));
@@ -4264,6 +4264,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
         res.write(`data: ${JSON.stringify({
           status: `Validated: ${totalWordCount} words and ${formattedQuotes.length} quotations. Sending paper...`,
         })}\n\n`);
+        res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
         for (let offset = 0; offset < totalContent.length; offset += 2000) {
           res.write(`data: ${JSON.stringify({ content: totalContent.slice(offset, offset + 2000) })}\n\n`);
         }

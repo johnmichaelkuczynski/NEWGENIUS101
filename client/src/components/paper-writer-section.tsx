@@ -211,6 +211,12 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
               if (parsed.error) {
                 throw new Error(parsed.error);
               }
+              if (parsed.reset_content) {
+                accumulatedText = "";
+                setGeneratedPaper("");
+                updatePopup(popupId, { content: "" });
+                continue;
+              }
               if (parsed.content) {
                 accumulatedText += parsed.content;
                 setGeneratedPaper(accumulatedText);
