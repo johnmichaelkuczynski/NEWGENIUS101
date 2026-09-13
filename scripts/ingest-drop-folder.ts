@@ -30,11 +30,15 @@ import OpenAI from "openai";
 import * as fs from "fs";
 import * as path from "path";
 
-const DATABASE_URL = process.env.DATABASE_URL!;
+const DATABASE_URL = process.env.EXTERNAL_DATABASE_URL || process.env.DATABASE_URL!;
+if (!DATABASE_URL) {
+  throw new Error("EXTERNAL_DATABASE_URL or DATABASE_URL is required");
+}
 const sql = neon(DATABASE_URL);
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const DROP_DIR = path.join(process.cwd(), "drop");
+const ALL_AUTHOR_WORKS_DIR = path.join(process.cwd(), "ALL_AUTHOR_WORKS");
 const PROCESSED_DIR = path.join(DROP_DIR, "_processed");
 const FAILED_DIR = path.join(DROP_DIR, "_failed");
 
@@ -70,6 +74,54 @@ interface ParsedName {
   author: string;
   category: Category;
   lot: number | null;
+  title?: string;
+}
+
+async function detectAuthor(filename: string, content: string): Promise<{ author: string; method: string }> {
+  const thinkerRows = await sql`
+    SELECT DISTINCT LOWER(thinker::text) AS thinker
+    FROM chunks
+    WHERE thinker IS NOT NULL AND embedding IS NOT NULL
+  `;
+  const thinkers = thinkerRows
+    .map((row: any) => String(row.thinker || "").trim())
+    .filter(Boolean)
+    .sort((a: string, b: string) => b.length - a.length);
+  const normalizedFilename = filename
+    .replace(/\.[^.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+  const filenameMatch = thinkers.find((thinker: string) => {
+    const tokens = thinker.replace(/[^a-z0-9]+/g, " ").trim();
+    return tokens.length >= 4 && (` ${normalizedFilename} `).includes(` ${tokens} `);
+  });
+  if (filenameMatch) {
+    return { author: filenameMatch, method: "filename" };
+  }
+
+  const sample = content.slice(0, 8000).trim();
+  if (!sample) throw new Error("Cannot identify author from an empty document");
+  const vector = await embed(sample);
+  const nearest = await sql`
+    SELECT LOWER(thinker::text) AS thinker,
+           AVG(distance) AS average_distance,
+           COUNT(*) AS matches
+    FROM (
+      SELECT thinker, embedding <=> ${JSON.stringify(vector)}::vector AS distance
+      FROM chunks
+      WHERE embedding IS NOT NULL
+      ORDER BY embedding <=> ${JSON.stringify(vector)}::vector
+      LIMIT 30
+    ) candidates
+    GROUP BY LOWER(thinker::text)
+    ORDER BY COUNT(*) DESC, AVG(distance) ASC
+    LIMIT 1
+  `;
+  const author = String(nearest[0]?.thinker || "").trim();
+  if (!author) throw new Error("Could not identify this document's author");
+  return { author, method: "corpus similarity" };
 }
 
 // Strict: AUTHOR_CATEGORY or AUTHOR_CATEGORY_N (N numeric). Author may contain
@@ -328,7 +380,7 @@ interface IngestResult {
 }
 
 async function ingestWorks(name: ParsedName, content: string, sourceFile: string): Promise<IngestResult> {
-  const title = `${titleCase(name.author)} Works${name.lot ? ` (Vol ${name.lot})` : ""}`;
+  const title = name.title || `${titleCase(name.author)} Works${name.lot ? ` (Vol ${name.lot})` : ""}`;
   const chunks = chunkText(content);
   if (DRY_RUN) {
     return { parsed: chunks.length, inserted: chunks.length, errors: 0, note: `${chunks.length} chunks would be embedded` };
@@ -432,14 +484,66 @@ async function ingestArguments(name: ParsedName, content: string): Promise<Inges
 // ---------------------------------------------------------------------------
 
 async function main() {
-  for (const d of [DROP_DIR, PROCESSED_DIR, FAILED_DIR]) {
+  for (const d of [
+    DROP_DIR,
+    ALL_AUTHOR_WORKS_DIR,
+    PROCESSED_DIR,
+    FAILED_DIR,
+  ]) {
     if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
   }
 
-  const files = fs
+  const legacyFiles = fs
     .readdirSync(DROP_DIR, { withFileTypes: true })
     .filter((e) => e.isFile() && e.name.toLowerCase().endsWith(".txt"))
-    .map((e) => e.name);
+    .filter((e) => e.name.toLowerCase() !== "readme.md")
+    .map((e) => ({
+      file: e.name,
+      absolutePath: path.join(DROP_DIR, e.name),
+      parsed: parseFilename(e.name),
+      moveSubdirectory: "",
+    }));
+
+  const allAuthorFiles = fs
+    .readdirSync(ALL_AUTHOR_WORKS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((authorDirectory) => {
+      const author = authorDirectory.name.toLowerCase();
+      const authorPath = path.join(ALL_AUTHOR_WORKS_DIR, authorDirectory.name);
+      return fs
+        .readdirSync(authorPath, { withFileTypes: true })
+        .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".txt"))
+        .filter((entry) => !entry.name.toLowerCase().startsWith("readme"))
+        .map((entry) => ({
+          file: entry.name,
+          absolutePath: path.join(authorPath, entry.name),
+          parsed: {
+            author,
+            category: "WORKS" as Category,
+            lot: null,
+            title: entry.name.replace(/\.txt$/i, "").replace(/[_-]+/g, " ").trim(),
+          },
+          moveSubdirectory: path.join("all-author-works", author),
+        }));
+    });
+
+  const automaticallyAssignedFiles = fs
+    .readdirSync(ALL_AUTHOR_WORKS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".txt"))
+    .filter((entry) => !entry.name.toLowerCase().startsWith("readme"))
+    .map((entry) => ({
+      file: entry.name,
+      absolutePath: path.join(ALL_AUTHOR_WORKS_DIR, entry.name),
+      parsed: null as ParsedName | null,
+      detectAuthor: true,
+      moveSubdirectory: path.join("all-author-works", "automatically-assigned"),
+    }));
+
+  const files = [
+    ...legacyFiles,
+    ...allAuthorFiles,
+    ...automaticallyAssignedFiles,
+  ];
 
   console.log(`\n=== DROP-FOLDER INGEST ${DRY_RUN ? "(DRY RUN)" : ""} ===`);
   console.log(`Folder: ${DROP_DIR}`);
@@ -450,22 +554,48 @@ async function main() {
     return;
   }
 
-  for (const file of files) {
-    const parsed = parseFilename(file);
+  for (const input of files) {
+    const { file, absolutePath, moveSubdirectory } = input;
+    let parsed = input.parsed;
+    const content = fs.readFileSync(absolutePath, "utf-8");
+    if ("detectAuthor" in input && input.detectAuthor) {
+      try {
+        const detected = await detectAuthor(file, content);
+        parsed = {
+          author: detected.author,
+          category: "WORKS",
+          lot: null,
+          title: file.replace(/\.txt$/i, "").replace(/[_-]+/g, " ").trim(),
+        };
+        console.log(`DETECT ${file} -> ${detected.author} (${detected.method})`);
+      } catch (error: any) {
+        console.log(`FAIL  ${file}`);
+        console.log(`      Author detection failed: ${error?.message || error}`);
+        if (!DRY_RUN) {
+          const destinationDirectory = path.join(FAILED_DIR, "author-unidentified");
+          fs.mkdirSync(destinationDirectory, { recursive: true });
+          fs.renameSync(absolutePath, path.join(destinationDirectory, file));
+        }
+        continue;
+      }
+    }
     if (!parsed) {
       console.log(`SKIP  ${file}`);
       console.log(`      Bad name. Use AUTHOR_CATEGORY[_N].txt with CATEGORY in ${CATEGORIES.join("|")}.`);
-      if (!DRY_RUN) fs.renameSync(path.join(DROP_DIR, file), path.join(FAILED_DIR, file));
+      if (!DRY_RUN) fs.renameSync(absolutePath, path.join(FAILED_DIR, file));
       continue;
     }
 
     const { author, category, lot } = parsed;
-    const sourceFile = file.replace(/\.txt$/i, "").toLowerCase();
-    const content = fs.readFileSync(path.join(DROP_DIR, file), "utf-8");
+    const sourceFile = `${author}/${file.replace(/\.txt$/i, "").toLowerCase()}`;
     console.log(`FILE  ${file}  ->  ${author} / ${category}${lot ? ` (lot ${lot})` : ""}`);
 
     const move = (dir: string) => {
-      if (!DRY_RUN) fs.renameSync(path.join(DROP_DIR, file), path.join(dir, file));
+      if (!DRY_RUN) {
+        const destinationDirectory = path.join(dir, moveSubdirectory);
+        fs.mkdirSync(destinationDirectory, { recursive: true });
+        fs.renameSync(absolutePath, path.join(destinationDirectory, file));
+      }
     };
 
     // empty file => failure

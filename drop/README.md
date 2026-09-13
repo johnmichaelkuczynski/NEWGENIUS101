@@ -1,12 +1,22 @@
 # Drop Folder — Author Ingestion
 
-Drag `.txt` files into **this folder**, then run:
+For primary works, drag ordinary `.txt` files into the appropriate author folder under:
+
+```
+ALL_AUTHOR_WORKS/
+```
+
+The author subfolder identifies the thinker; no special filename is required.
+
+Then run:
 
 ```
 npx tsx scripts/ingest-drop-folder.ts
 ```
 
 Add `--dry-run` to parse and preview counts without writing to the database.
+
+The ingester writes to `EXTERNAL_DATABASE_URL` when available, matching the database used by the running app.
 
 ## Naming convention
 
