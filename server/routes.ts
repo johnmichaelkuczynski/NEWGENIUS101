@@ -5239,10 +5239,18 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
     if (res.socket) res.socket.setTimeout(0);
     res.flushHeaders();
 
-    const keepAlive = setInterval(() => { try { res.write(": ka\n\n"); } catch {} }, 15000);
+    const flush = () => {
+      try { res.flush?.(); } catch {}
+    };
+    const keepAlive = setInterval(() => {
+      try {
+        res.write(": ka\n\n");
+        flush();
+      } catch {}
+    }, 15000);
     let clientGone = false;
     const abortCtrl = new AbortController();
-    req.on("close", () => {
+    res.on("close", () => {
       clientGone = true;
       clearInterval(keepAlive);
       try { abortCtrl.abort(); } catch {}
@@ -5254,10 +5262,16 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
 
     const send = (event: any) => {
       if (clientGone) return;
-      try { res.write(`data: ${JSON.stringify(event)}\n\n`); } catch {}
+      try {
+        res.write(`data: ${JSON.stringify(event)}\n\n`);
+        flush();
+      } catch {}
     };
 
     try {
+      // Force the initial SSE response through proxies that buffer very small chunks.
+      res.write(`: connected ${" ".repeat(2048)}\n\n`);
+      flush();
       send({ type: "log", data: { message: `${label} starting against ${originBase}` } });
       for await (const ev of runner(originBase, abortCtrl.signal)) {
         if (clientGone) break;

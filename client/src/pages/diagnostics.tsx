@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
@@ -101,9 +101,16 @@ export default function Diagnostics() {
   const [rows, setRows] = useState<RowState[]>([]);
   const [logs, setLogs] = useState<string[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const rowsRef = useRef<RowState[]>([]);
   const abortRef = useRef<AbortController | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (!running) return;
+    const timer = window.setInterval(() => setElapsedSeconds((value) => value + 1), 1000);
+    return () => window.clearInterval(timer);
+  }, [running]);
 
   const reset = () => {
     rowsRef.current = [];
@@ -120,6 +127,7 @@ export default function Diagnostics() {
 
   const start = useCallback(async (check: Check) => {
     reset();
+    setElapsedSeconds(0);
     setRunning(true);
     setActiveKey(check.key);
     const ctrl = new AbortController();
@@ -386,6 +394,23 @@ export default function Diagnostics() {
               <Stethoscope className="w-8 h-8 mx-auto mb-3 opacity-40" />
               <p className="mb-1">Pick a check above to begin.</p>
               <p className="text-xs">System check ~30–60s · Synthetic-user and Accuracy tests can take a few minutes.</p>
+            </div>
+          )}
+
+          {running && rows.length === 0 && (
+            <div
+              className="border rounded-md p-4 mb-2 flex items-center gap-3 bg-blue-50/70 border-blue-200 dark:bg-blue-950/20 dark:border-blue-900"
+              data-testid="diagnostics-connecting"
+            >
+              <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+              <div>
+                <div className="font-semibold text-sm">
+                  {CHECKS.find((c) => c.key === activeKey)?.label || "Diagnostic"} is running
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Waiting for the first result · {elapsedSeconds}s elapsed
+                </div>
+              </div>
             </div>
           )}
 
