@@ -20,6 +20,13 @@ export async function apiRequest(
   });
 
   await throwIfResNotOk(res);
+  if (res.headers.get("content-type")?.includes("application/json")) {
+    res.clone().json().then((body) => {
+      if (body?.accessRequired === "google_login" || body?.accessRequired === "payment") {
+        window.dispatchEvent(new CustomEvent("usage-gate", { detail: body.accessRequired }));
+      }
+    }).catch(() => {});
+  }
   return res;
 }
 

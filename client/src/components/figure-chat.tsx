@@ -204,6 +204,14 @@ export function FigureChat({ figure, open, onOpenChange, onTransferContent }: Fi
         throw new Error(serverMessage);
       }
 
+      if (response.headers.get("content-type")?.includes("application/json")) {
+        const gate = await response.json();
+        if (gate?.accessRequired === "google_login" || gate?.accessRequired === "payment") {
+          window.dispatchEvent(new CustomEvent("usage-gate", { detail: gate.accessRequired }));
+          return;
+        }
+      }
+
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
 

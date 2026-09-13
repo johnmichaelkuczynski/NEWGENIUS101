@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { setupAuth, isAdmin } from "./auth";
+import { hasHighestTierAccess, isPermanentOwner } from "./access-control";
 import { createApiKey, listApiKeys, revokeApiKey, verifyApiKey } from "./api-keys";
 import { isParadoxQuery, searchParadoxes, formatParadoxesContext } from "./paradoxes-client";
 import OpenAI from "openai";
@@ -545,6 +546,131 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Sessions + Google OAuth: canonical implementation in server/auth.ts.
   // Guest sessions (getSessionId) ride on the same session middleware.
   setupAuth(app);
+
+  const ANONYMOUS_OPERATION_LIMIT = 4;
+  const SIGNED_IN_OPERATION_LIMIT = 17;
+  const meteredOperationPaths = [
+    /^\/api\/chat\/stream$/,
+    /^\/api\/figures\/[^/]+\/chat$/,
+    /^\/api\/figures\/[^/]+\/write-paper$/,
+    /^\/api\/figures\/[^/]+\/rewrite-paper$/,
+    /^\/api\/model-builder$/,
+    /^\/api\/quotes\/generate$/,
+    /^\/api\/positions\/generate$/,
+    /^\/api\/arguments\/generate$/,
+    /^\/api\/dialogue-creator$/,
+    /^\/api\/interview-creator$/,
+    /^\/api\/debate\/generate$/,
+    /^\/api\/generate-strict-outline$/,
+  ];
+
+  const getUsageState = async (req: any) => {
+    const authenticated = !!(req.isAuthenticated?.() && req.user?.id);
+    const permanentOwner = authenticated && isPermanentOwner(req.user);
+    const identityKey = authenticated
+      ? `google:${req.user.id}`
+      : `anonymous:${req.sessionID}`;
+    const limit = authenticated ? SIGNED_IN_OPERATION_LIMIT : ANONYMOUS_OPERATION_LIMIT;
+    const result = await pool.query(
+      "SELECT operations_used, full_access FROM operation_usage WHERE identity_key = $1",
+      [identityKey],
+    );
+    const operationsUsed = Number(result.rows[0]?.operations_used || 0);
+    const fullAccess = hasHighestTierAccess(
+      authenticated ? req.user : null,
+      result.rows[0]?.full_access === true,
+    );
+    return {
+      authenticated,
+      identityKey,
+      operationsUsed,
+      remaining: fullAccess ? null : Math.max(0, limit - operationsUsed),
+      limit,
+      fullAccess,
+      permanentOwner,
+      tier: permanentOwner ? "owner" : fullAccess ? "full" : authenticated ? "signed_in" : "anonymous",
+      unlimitedCredits: fullAccess,
+      accessLevel: fullAccess
+        ? "full"
+        : operationsUsed >= limit
+        ? authenticated ? "payment" : "login"
+        : "available",
+    };
+  };
+
+  app.get("/api/usage/status", async (req: any, res) => {
+    try {
+      res.json(await getUsageState(req));
+    } catch {
+      const permanentOwner = !!(
+        req.isAuthenticated?.()
+        && req.user?.id
+        && isPermanentOwner(req.user)
+      );
+      res.json({
+        authenticated: !!req.isAuthenticated?.(),
+        operationsUsed: 0,
+        remaining: permanentOwner
+          ? null
+          : req.isAuthenticated?.() ? SIGNED_IN_OPERATION_LIMIT : ANONYMOUS_OPERATION_LIMIT,
+        limit: req.isAuthenticated?.() ? SIGNED_IN_OPERATION_LIMIT : ANONYMOUS_OPERATION_LIMIT,
+        fullAccess: permanentOwner,
+        permanentOwner,
+        tier: permanentOwner ? "owner" : req.isAuthenticated?.() ? "signed_in" : "anonymous",
+        unlimitedCredits: permanentOwner,
+        accessLevel: permanentOwner ? "full" : "available",
+      });
+    }
+  });
+
+  app.use(async (req: any, res, next) => {
+    if (
+      req.method !== "POST"
+      || !meteredOperationPaths.some((pattern) => pattern.test(req.path))
+      || req.get("x-internal-diagnostic") === process.env.SESSION_SECRET
+    ) {
+      return next();
+    }
+    try {
+      const state = await getUsageState(req);
+      if (state.fullAccess) return next();
+      const reservation = await pool.query(
+        `INSERT INTO operation_usage (identity_key, operations_used, updated_at)
+         VALUES ($1, 1, NOW())
+         ON CONFLICT (identity_key) DO UPDATE
+         SET operations_used = operation_usage.operations_used + 1, updated_at = NOW()
+         WHERE operation_usage.operations_used < $2
+         RETURNING operations_used`,
+        [state.identityKey, state.limit],
+      );
+      if (reservation.rowCount) {
+        let restored = false;
+        res.on("finish", () => {
+          if (restored || res.statusCode < 400) return;
+          restored = true;
+          pool.query(
+            `UPDATE operation_usage
+             SET operations_used = GREATEST(0, operations_used - 1), updated_at = NOW()
+             WHERE identity_key = $1`,
+            [state.identityKey],
+          ).catch((error) => console.error("[Usage Gate] Could not restore failed operation:", error));
+        });
+        return next();
+      }
+
+      return res.status(200).json({
+        accessRequired: state.authenticated ? "payment" : "google_login",
+        title: state.authenticated ? "Unlock full access" : "Continue with Google",
+        message: state.authenticated
+          ? "You have completed your signed-in preview. Full access is available with a subscription."
+          : "Your four-operation preview is complete. Continue with Google for seventeen more operations.",
+        actionUrl: state.authenticated ? null : "/api/auth/google",
+      });
+    } catch (error) {
+      console.error("[Usage Gate] Continuing after metering problem:", error);
+      return next();
+    }
+  });
 
   // FREE TIER METERING: anonymous users may generate up to ANON_WORD_LIMIT words
   // of AI output; beyond that they must sign in with Google. Signed-in users are unlimited.

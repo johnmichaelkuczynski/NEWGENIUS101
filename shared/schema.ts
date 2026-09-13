@@ -38,6 +38,13 @@ export const authUsers = pgTable("auth_users", {
 });
 export type AuthUser = typeof authUsers.$inferSelect;
 
+export const operationUsage = pgTable("operation_usage", {
+  identityKey: varchar("identity_key", { length: 255 }).primaryKey(),
+  operationsUsed: integer("operations_used").notNull().default(0),
+  fullAccess: boolean("full_access").notNull().default(false),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
 // Login/visit events (admin analytics)
 export const visits = pgTable("visits", {
   id: serial("id").primaryKey(),

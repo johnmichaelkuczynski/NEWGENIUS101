@@ -10,3 +10,4 @@
 - [Independent thinker APIs](independent-thinker-apis.md) — each thinker needs a separate credential, endpoint, and corpus-restricted proxy; never broaden the Kuczynski proxy.
 - [Dependency pin verification](dependency-pin-verification.md) — audit success is insufficient; scan manifests and lockfiles for vulnerable exact versions because stale lower bounds can remain.
 - [Author-grounded generation](author-grounded-generation.md) — verbatim primary texts govern; structured arguments are derived aids, with source-neighborhood retrieval and final contradiction rejection.
+- [Usage access tiers](usage-access-tiers.md) — no login wall: 4 anonymous operations, then Google login; 17 signed-in operations, then payment; Stripe waits for explicit setup.

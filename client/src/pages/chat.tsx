@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Search, Users, User, History, Download, MessageSquare, Plus, Stethoscope, LogOut, ShieldCheck, RotateCcw } from "lucide-react";
+import { Sparkles, Search, Users, User, History, Download, MessageSquare, Plus, Stethoscope, LogOut, ShieldCheck, RotateCcw, LogIn, CreditCard } from "lucide-react";
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
@@ -150,6 +150,20 @@ export default function Chat() {
   }>({
     queryKey: ["/api/auth/user"],
   });
+  const { data: usageData } = useQuery<{
+    remaining: number | null;
+    limit: number;
+    accessLevel: "available" | "login" | "payment" | "full";
+  }>({ queryKey: ["/api/usage/status"] });
+  const [accessGate, setAccessGate] = useState<"google_login" | "payment" | null>(null);
+  useEffect(() => {
+    const showGate = (event: Event) => {
+      const detail = (event as CustomEvent).detail;
+      if (detail === "google_login" || detail === "payment") setAccessGate(detail);
+    };
+    window.addEventListener("usage-gate", showGate);
+    return () => window.removeEventListener("usage-gate", showGate);
+  }, []);
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
@@ -263,6 +277,19 @@ export default function Chat() {
           if (errJson?.error) serverMsg = errJson.error;
         } catch {}
         throw new Error(serverMsg);
+      }
+
+      if (response.headers.get("content-type")?.includes("application/json")) {
+        const gate = await response.json();
+        if (gate?.accessRequired === "google_login" || gate?.accessRequired === "payment") {
+          setAccessGate(gate.accessRequired);
+          queryClient.invalidateQueries({ queryKey: ["/api/usage/status"] });
+          setIsStreaming(false);
+          setStreamingMessage("");
+          setPendingAssistantMessage("");
+          setPendingUserMessage("");
+          return;
+        }
       }
 
       const reader = response.body?.getReader();
@@ -393,6 +420,29 @@ export default function Chat() {
 
   return (
     <div className="h-screen min-w-0 max-w-full overflow-x-hidden flex flex-col lg:flex-row">
+      <Dialog open={accessGate !== null} onOpenChange={(open) => !open && setAccessGate(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{accessGate === "google_login" ? "Continue with Google" : "Unlock full access"}</DialogTitle>
+            <DialogDescription>
+              {accessGate === "google_login"
+                ? "Your anonymous preview is complete. Sign in securely with Google for seventeen more operations."
+                : "Your signed-in preview is complete. Use the payment button to unlock full functionality."}
+            </DialogDescription>
+          </DialogHeader>
+          {accessGate === "google_login" ? (
+            <Button onClick={() => window.location.assign("/api/auth/google")} className="gap-2">
+              <LogIn className="w-4 h-4" />
+              Continue with Google
+            </Button>
+          ) : (
+            <Button className="gap-2" disabled title="Secure payment setup will be connected next">
+              <CreditCard className="w-4 h-4" />
+              Payment
+            </Button>
+          )}
+        </DialogContent>
+      </Dialog>
       {/* Far Left Column: Philosopher Figures - ALWAYS VISIBLE */}
       <aside className="w-40 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/50 via-orange-50/30 to-amber-50/50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 hidden lg:block">
         <div className="p-2 border-b border-amber-200/30 dark:border-slate-700 sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10 space-y-2">
@@ -751,7 +801,23 @@ export default function Chat() {
                     Sign out
                   </Button>
                 </>
-              ) : null}
+              ) : (
+                <Button
+                  onClick={() => window.location.assign("/api/auth/google")}
+                  variant="outline"
+                  size="sm"
+                  className="gap-2 fixed top-3 right-4 z-50 bg-background shadow-sm"
+                  data-testid="button-google-sign-in"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Continue with Google
+                </Button>
+              )}
+              {usageData && usageData.remaining !== null && (
+                <span className="hidden xl:inline text-xs text-muted-foreground">
+                  {usageData.remaining} preview operations remaining
+                </span>
+              )}
             </div>
           </div>
         </header>
@@ -860,6 +926,18 @@ export default function Chat() {
                       <p className="text-[#0f172a]/80 dark:text-slate-200/70 text-sm leading-relaxed max-w-md mx-auto">
                         Powered by Zhi's proprietary LLM, trained directly on complete works—not summaries, not paraphrases, not third-party interpretations.
                       </p>
+                      {!authData?.authenticated && (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="gap-2"
+                          onClick={() => window.location.assign("/api/auth/google")}
+                        >
+                          <LogIn className="w-4 h-4" />
+                          Continue with Google
+                        </Button>
+                      )}
                     </div>
                     <div className="text-left text-sm text-[#0f172a]/70 dark:text-slate-300/60 space-y-1 max-w-md mx-auto">
                       <p><span className="font-semibold text-[#3b82f6]">Dialogue</span> — Conversation in their authentic voice</p>

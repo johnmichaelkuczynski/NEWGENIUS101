@@ -86,7 +86,10 @@ export async function askThinker(
   try {
     const response = await fetch(`${originBase}/api/figures/${probe.id}/chat`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-internal-diagnostic": process.env.SESSION_SECRET || "",
+      },
       body: JSON.stringify({
         message: question,
         settings: {
