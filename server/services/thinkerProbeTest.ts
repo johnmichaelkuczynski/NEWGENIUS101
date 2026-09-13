@@ -1,6 +1,6 @@
 import { SelfTestEvent, TestResult } from "./selfTest";
 
-interface ThinkerProbe {
+export interface ThinkerProbe {
   id: string;
   name: string;
   questions: [string, string, string];
@@ -71,11 +71,12 @@ function shuffled<T>(items: T[]): T[] {
   return result;
 }
 
-async function askThinker(
+export async function askThinker(
   originBase: string,
   probe: ThinkerProbe,
   question: string,
   externalSignal?: AbortSignal,
+  category = "Thinker probes",
 ): Promise<TestResult> {
   const startedAt = Date.now();
   const ctrl = new AbortController();
@@ -166,7 +167,7 @@ async function askThinker(
     ) {
       return {
         name: probe.name,
-        category: "Thinker probes",
+        category,
         status: "fail",
         durationMs: Date.now() - startedAt,
         message:
@@ -191,7 +192,7 @@ async function askThinker(
     }
     return {
       name: probe.name,
-      category: "Thinker probes",
+      category,
       status: "pass",
       durationMs: Date.now() - startedAt,
       message: `Answered from ${works.join(", ")} with ${representativeQuotations.length} representative quotations: ${question}`,
@@ -209,7 +210,7 @@ async function askThinker(
   } catch (error: any) {
     return {
       name: probe.name,
-      category: "Thinker probes",
+      category,
       status: "fail",
       durationMs: Date.now() - startedAt,
       message: error?.name === "AbortError" ? "Timed out or stopped" : error?.message || String(error),

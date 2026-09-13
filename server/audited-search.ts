@@ -429,14 +429,16 @@ async function judgeBatch(
 async function judgeDirectAnswer(question: string, passage: string): Promise<{isDirectAnswer: boolean, relevanceScore: number, reasoning: string}> {
   try {
     const response = await getOpenAI().chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.1,
+      model: "gpt-4o",
+      temperature: 0,
       max_tokens: 200,
       messages: [
         {
           role: "system",
-          content: `You are a strict relevance judge. Given a QUESTION and a PASSAGE, determine:
-1. Is this passage a DIRECT answer to the question? (not tangentially related, but directly addresses the question)
+          content: `You are a strict primary-source relevance judge. Given a QUESTION and a PASSAGE, determine:
+1. Does this passage state the AUTHOR'S ENDORSED direct answer to the question?
+An objection, quotation of another person, hypothetical, abandoned earlier belief, view introduced only to be rejected, or statement whose negation the author ultimately endorses is NOT an endorsed direct answer.
+Use the passage's argumentative context, including contrast words and explicit conclusions. Merely mentioning or clearly formulating a view does not mean the author endorses it.
 2. Relevance score 0.0-1.0 (1.0 = perfectly on-point direct answer)
 3. Brief reasoning
 
@@ -464,23 +466,30 @@ Respond ONLY in JSON format:
 
 async function checkAlignment(question: string, answers: DirectAnswer[]): Promise<AlignmentResult> {
   try {
-    const answersText = answers.map((a, i) => `Answer ${i + 1}: "${a.passage.text.substring(0, 500)}"`).join('\n\n');
+    const answersText = answers.map((a, i) => `Answer ${i + 1}: "${a.passage.text.substring(0, 1500)}"`).join('\n\n');
     
     const response = await getOpenAI().chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.1,
-      max_tokens: 300,
+      model: "gpt-4o",
+      temperature: 0,
+      max_tokens: 500,
       messages: [
         {
           role: "system",
-          content: `You are an alignment judge. Given a QUESTION and 3 ANSWER passages from the same author, determine:
-1. Do these answers ALIGN (say the same thing) or CONFLICT (say different/contradictory things)?
-2. If conflicting, briefly describe the conflict.
+          content: `You are a strict logical contradiction judge. Given a QUESTION and 3 endorsed ANSWER passages from the same author, determine whether they can all be true together.
 
-Be strict: Different aspects of the same view = ALIGNED. Contradictory claims = CONFLICTING.
+Mark CONFLICTING only if one passage affirms a proposition P and another passage denies P, with the same meaning, scope, time, and qualifications.
+
+The following are ALIGNED, not conflicting:
+- different arguments for the same conclusion
+- different aspects, implications, examples, or levels of detail
+- a general rule and a qualified application of that rule
+- absolute wording in one passage and explicit limiting detail in another, unless the claims logically exclude each other
+- complementary causal, logical, epistemic, or metaphysical explanations
+
+Do not equate "different" with "contradictory." If you cannot quote the specific P and not-P claims, mark aligned.
 
 Respond ONLY in JSON format:
-{"aligned": true/false, "conflicting": true/false, "summary": "brief summary", "conflictDescription": "if conflicting, explain"}`
+{"aligned": true/false, "conflicting": true/false, "summary": "brief summary", "conflictDescription": "if conflicting, quote the P and not-P claims"}`
         },
         {
           role: "user",

@@ -409,6 +409,25 @@ async function ingestWorks(name: ParsedName, content: string, sourceFile: string
     return { parsed: chunks.length, inserted: chunks.length, errors: 0, note: `${chunks.length} chunks would be embedded` };
   }
 
+  const normalizedContent = content
+    .replace(/^\uFEFF/, "")
+    .replace(/\s+/g, "");
+  const existing = await sql`
+    SELECT id
+    FROM texts
+    WHERE source_file = ${sourceFile}
+       OR regexp_replace(replace(content, chr(65279), ''), '[[:space:]]+', '', 'g') = ${normalizedContent}
+    LIMIT 1
+  `;
+  if (existing.length > 0) {
+    return {
+      parsed: chunks.length,
+      inserted: chunks.length,
+      errors: 0,
+      note: `already ingested (text id ${existing[0].id}); skipped duplicate`,
+    };
+  }
+
   const rows = await sql`
     INSERT INTO texts (id, thinker, title, source_file, content)
     VALUES (gen_random_uuid(), ${name.author}, ${title}, ${sourceFile}, ${content})
@@ -625,7 +644,12 @@ async function main() {
       if (!DRY_RUN) {
         const destinationDirectory = path.join(dir, moveSubdirectory);
         fs.mkdirSync(destinationDirectory, { recursive: true });
-        fs.renameSync(absolutePath, path.join(destinationDirectory, file));
+        const destinationPath = path.join(destinationDirectory, file);
+        if (moveSubdirectory) {
+          fs.copyFileSync(absolutePath, destinationPath);
+        } else {
+          fs.renameSync(absolutePath, destinationPath);
+        }
       }
     };
 
@@ -681,7 +705,7 @@ async function main() {
   }
 
   console.log(`\n=== DONE ===`);
-  if (!DRY_RUN) console.log(`Successful files -> drop/_processed/ ; failures -> drop/_failed/ (fix and re-drop).`);
+  if (!DRY_RUN) console.log(`Drop-folder files are moved to archive folders; ALL_AUTHOR_WORKS files remain visible and are copied to the matching archive.`);
 }
 
 main().catch((e) => {

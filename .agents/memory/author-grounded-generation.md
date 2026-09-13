@@ -12,3 +12,9 @@ Rank structured arguments by combined semantic similarity, lexical overlap, exac
 **Why:** A question about whether logic requires non-spatiotemporal entities was answered with the opposite of the author’s chapter. Structured records eventually produced the right polarity but still omitted and distorted the chapter’s actual property-based argument. The source already existed in the corpus but was missed because search was polluted by generic instructions and isolated chunks were retrieved without their neighbors.
 
 **How to apply:** Any author-response path must retrieve verbatim source passages first, with structured arguments used to expand—not replace—the source search. Confirm the actual document and its supporting neighboring passages are in context. Verify the final response reproduces the source’s argument, not merely its yes/no conclusion, and contains no sentence contradicted by the source.
+
+Quotation-generator inclusion requires more than verbatim containment. Retain only complete, self-contained, memorable passages that express a substantive thesis, distinction, argument, explanation, objection, or conclusion. Reject fragments, headings, setup, transitions, isolated examples, commonplace observations, and technically relevant but weak sentences. Never pad a work to meet a quota; fail explicitly if strict review leaves too few quotations.
+
+**Why:** A corpus-wide review found that exact-substring validation had admitted many weak or fragmentary selections. The author explicitly requires every displayed quotation to be excellent and representative, with no random sentences or sentence fragments.
+
+**How to apply:** Use a separate severe editorial review after exact-source validation. Require clean boundaries, standalone intelligibility, philosophical substance, and memorability. Audit existing records under the same standard rather than applying the rule only to new uploads.

@@ -71,6 +71,12 @@ const CHECKS: Check[] = [
     endpoint: "/api/admin/thinker-probe-test/stream",
     blurb: "Tests every thinker once, using one randomly selected question from that thinker's three-question diagnostic bank and a shuffled run order.",
   },
+  {
+    key: "kuczynski-50",
+    label: "Kuczynski 150-question proof",
+    endpoint: "/api/admin/kuczynski-diagnostic/stream",
+    blurb: "Runs 150 fixed questions through the real Kuczynski chat endpoint. Each question requires a substantive answer, direct aligned primary-source evidence, a named work, and at least five approved source-linked quotations.",
+  },
 ];
 
 const StatusIcon = ({ s }: { s: Status }) => {
@@ -287,7 +293,9 @@ export default function Diagnostics() {
             <strong>Synthetic-user test</strong> acts like a real person and drives every feature to
             confirm it produces real output and finishes cleanly. The <strong>Accuracy test</strong> grades the app's
              answers against Claude. The <strong>Thinker probe test</strong> asks every thinker one
-             randomly selected question from the uploaded three-question bank. Each check gives you
+              randomly selected question from the uploaded three-question bank. The <strong>Kuczynski
+              150-question proof</strong> runs a separate fixed battery against the real Kuczynski chat
+              endpoint and displays the answer and source evidence for every question. Each check gives you
              a report you can copy or download.
           </p>
         </div>

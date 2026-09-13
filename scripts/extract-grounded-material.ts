@@ -150,6 +150,120 @@ ${window}`;
   throw lastError;
 }
 
+async function extractQuotesOnly(
+  title: string,
+  window: string,
+  index: number,
+  total: number,
+): Promise<QuoteCandidate[]> {
+  const prompt = `Extract 5-10 representative quotations from John-Michael Kuczynski's work "${title}", section ${index + 1} of ${total}.
+
+Each quotation must be:
+- a contiguous VERBATIM substring copied exactly from SOURCE;
+- a complete, philosophically substantive statement;
+- understandable without a broken beginning or ending;
+- between 45 and 1,800 characters.
+
+Reject headings, fragments, citations by themselves, filler, and transitional prose.
+Return strict JSON only: {"quotes":[{"text":"exact source substring","topic":"concise topic"}]}
+
+SOURCE:
+${window}`;
+
+  const response = await openai.chat.completions.create({
+    model,
+    temperature: 0,
+    response_format: { type: "json_object" },
+    messages: [
+      {
+        role: "system",
+        content:
+          "Copy quotations exactly from the supplied source. Never paraphrase, repair, normalize, or fabricate quotation text.",
+      },
+      { role: "user", content: prompt },
+    ],
+  });
+  const parsed = JSON.parse(response.choices[0]?.message?.content || "{}") as Extraction;
+  return Array.isArray(parsed.quotes) ? parsed.quotes : [];
+}
+
+async function reviewQuoteQuality(
+  title: string,
+  candidates: QuoteCandidate[],
+): Promise<{ accepted: QuoteCandidate[]; rejected: number }> {
+  const accepted: QuoteCandidate[] = [];
+  let rejected = 0;
+
+  for (let start = 0; start < candidates.length; start += 12) {
+    const batch = candidates.slice(start, start + 12);
+    const numbered = batch
+      .map((candidate, index) => `${index}\t${JSON.stringify(candidate.text)}`)
+      .join("\n\n");
+    const response = await openai.chat.completions.create({
+      model,
+      temperature: 0,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "system",
+          content: `You are the final quotation editor for a serious philosopher's published corpus.
+Be severe. Verbatim accuracy has already been checked; your task is editorial quality.
+Accept a quotation only when ALL are true:
+1. It begins and ends cleanly and is not a sentence fragment, excerpt boundary, heading, list scrap, or dangling continuation.
+2. It is self-contained enough to understand without omitted surrounding prose.
+3. It states a philosophically substantive thesis, distinction, argument, explanation, objection, or conclusion.
+4. It is memorable, incisive, and strong enough to represent the author in a quotation generator.
+5. It is not merely setup, transition, summary scaffolding, an isolated example, or a commonplace observation.
+When uncertain, reject it. Do not reward quantity.`,
+        },
+        {
+          role: "user",
+          content: `Work: ${title}
+
+Judge each numbered candidate. Return strict JSON:
+{"decisions":[{"index":0,"accept":true,"complete":true,"substantive":true,"memorable":true,"reason":"brief reason"}]}
+
+CANDIDATES:
+${numbered}`,
+        },
+      ],
+    });
+    const parsed = JSON.parse(response.choices[0]?.message?.content || "{}") as {
+      decisions?: Array<{
+        index: number;
+        accept: boolean;
+        complete: boolean;
+        substantive: boolean;
+        memorable: boolean;
+      }>;
+    };
+    const decisions = new Map(
+      (parsed.decisions || []).map((decision) => [Number(decision.index), decision]),
+    );
+    for (let index = 0; index < batch.length; index++) {
+      const decision = decisions.get(index);
+      const text = batch[index].text.trim();
+      const cleanBoundary =
+        text.length >= 80
+        && /^[A-Z0-9“"'([]/.test(text)
+        && /[.!?…”"')\]]$/.test(text);
+      if (
+        cleanBoundary
+        && decision?.accept === true
+        && decision.complete === true
+        && decision.substantive === true
+        && decision.memorable === true
+      ) {
+        accepted.push(batch[index]);
+      } else {
+        rejected++;
+      }
+    }
+  }
+
+  return { accepted, rejected };
+}
+
 async function embeddings(inputs: string[]): Promise<number[][]> {
   const vectors: number[][] = [];
   for (let start = 0; start < inputs.length; start += 100) {
@@ -194,6 +308,9 @@ async function processSource(sourceId: string) {
   const existingQuotes = new Set(
     (await sql`SELECT quote_text FROM quotes WHERE LOWER(thinker::text) = LOWER(${source.thinker})`)
       .map((row: any) => normalized(String(row.quote_text || ""))),
+  );
+  const existingSourceQuoteCount = Number(
+    (await sql`SELECT COUNT(*)::int AS count FROM quotes WHERE source_text_id = ${source.id}`)[0]?.count || 0,
   );
   const existingPositions = new Set(
     (await sql`SELECT position_text FROM positions WHERE LOWER(thinker::text) = LOWER(${source.thinker})`)
@@ -261,12 +378,87 @@ async function processSource(sourceId: string) {
     }
   }
 
-  const quoteVectors = await embeddings(quotes.map((item) => item.text));
-  for (let i = 0; i < quotes.length; i++) {
+  if (existingSourceQuoteCount + quotes.length < 5) {
+    console.log("  fewer than 5 source quotations; running quote-only recovery");
+    for (let start = 0; start < windows.length; start += 3) {
+      const batch = windows.slice(start, start + 3);
+      const recoveredBatches = await Promise.all(
+        batch.map((window, offset) =>
+          extractQuotesOnly(source.title, window, start + offset, windows.length)
+        ),
+      );
+      for (let offset = 0; offset < recoveredBatches.length; offset++) {
+        const window = batch[offset];
+        for (const candidate of recoveredBatches[offset]) {
+          const windowVerbatim = recoverVerbatim(window, candidate.text);
+          const verbatim = windowVerbatim
+            ? recoverVerbatim(source.content, windowVerbatim)
+            : null;
+          if (!verbatim || verbatim.length < 45 || verbatim.length > 1800) {
+            rejectedEvidence++;
+            continue;
+          }
+          const key = normalized(verbatim);
+          if (existingQuotes.has(key)) continue;
+          existingQuotes.add(key);
+          quotes.push({ text: verbatim, topic: candidate.topic || source.title });
+        }
+      }
+    }
+  }
+
+  const qualityReview = await reviewQuoteQuality(source.title, quotes);
+  rejectedEvidence += qualityReview.rejected;
+  const acceptedQuotes = [...qualityReview.accepted];
+
+  if (existingSourceQuoteCount + acceptedQuotes.length < 5) {
+    console.log("  fewer than 5 quotations survived quality review; running strict quote-only recovery");
+    const recoveryCandidates: QuoteCandidate[] = [];
+    for (let start = 0; start < windows.length; start += 3) {
+      const batch = windows.slice(start, start + 3);
+      const recoveredBatches = await Promise.all(
+        batch.map((window, offset) =>
+          extractQuotesOnly(source.title, window, start + offset, windows.length)
+        ),
+      );
+      for (let offset = 0; offset < recoveredBatches.length; offset++) {
+        const window = batch[offset];
+        for (const candidate of recoveredBatches[offset]) {
+          const windowVerbatim = recoverVerbatim(window, candidate.text);
+          const verbatim = windowVerbatim
+            ? recoverVerbatim(source.content, windowVerbatim)
+            : null;
+          if (!verbatim || verbatim.length < 45 || verbatim.length > 1800) {
+            rejectedEvidence++;
+            continue;
+          }
+          const key = normalized(verbatim);
+          if (existingQuotes.has(key)) continue;
+          existingQuotes.add(key);
+          recoveryCandidates.push({
+            text: verbatim,
+            topic: candidate.topic || source.title,
+          });
+        }
+      }
+    }
+    const recoveryReview = await reviewQuoteQuality(source.title, recoveryCandidates);
+    rejectedEvidence += recoveryReview.rejected;
+    acceptedQuotes.push(...recoveryReview.accepted);
+  }
+
+  if (existingSourceQuoteCount + acceptedQuotes.length < 5) {
+    throw new Error(
+      `Only ${existingSourceQuoteCount + acceptedQuotes.length} quotations passed strict quality review; refusing to pad the quote generator`,
+    );
+  }
+
+  const quoteVectors = await embeddings(acceptedQuotes.map((item) => item.text));
+  for (let i = 0; i < acceptedQuotes.length; i++) {
     await sql`
       INSERT INTO quotes (id, thinker, quote_text, topic, source_text_id, embedding)
       VALUES (
-        gen_random_uuid(), ${source.thinker}, ${quotes[i].text}, ${quotes[i].topic},
+        gen_random_uuid(), ${source.thinker}, ${acceptedQuotes[i].text}, ${acceptedQuotes[i].topic},
         ${source.id}, ${JSON.stringify(quoteVectors[i])}::vector
       )
     `;
@@ -302,13 +494,13 @@ async function processSource(sourceId: string) {
   }
 
   console.log(
-    `  INSERTED ${quotes.length} quotes, ${positions.length} positions, `
+    `  INSERTED ${acceptedQuotes.length} quotes, ${positions.length} positions, `
       + `${argumentsFound.length} arguments; rejected ${rejectedEvidence} unsupported candidates`,
   );
   return {
     sourceId: source.id,
     title: source.title,
-    quotes: quotes.length,
+    quotes: acceptedQuotes.length,
     positions: positions.length,
     arguments: argumentsFound.length,
     rejectedEvidence,
