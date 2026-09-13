@@ -350,16 +350,18 @@ async function* streamLLMText(
   for (const provider of providers) {
     try {
       if (provider === "anthropic" && anthropic) {
-      const stream = await client.chat.completions.create({
-        model,
-        max_tokens: maxTokens,
-        temperature,
-        stream: true,
-        messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      });
-      let gotContent = false;
-      for await (const chunk of stream) {
-        const t = chunk.choices[0]?.delta?.content ?? "";
+        const stream = await anthropic.messages.create({
+          model: "claude-sonnet-4-5-20250929",
+          max_tokens: maxTokens,
+          temperature,
+          stream: true,
+          system,
+          messages: [{ role: "user", content: user }],
+        });
+        let gotContent = false;
+        for await (const event of stream) {
+          if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+            const t = event.delta.text;
             if (t) { gotContent = true; yield t; }
           }
         }
@@ -5271,7 +5273,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
   app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
   app.get("/api/admin/thinker-probe-test/stream", streamDiagnostic("Thinker probe test", runThinkerProbeTest));
-  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 150-question proof", runKuczynskiDiagnostic));
+  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 149-question proof", runKuczynskiDiagnostic));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {

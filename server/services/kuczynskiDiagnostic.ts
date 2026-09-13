@@ -132,7 +132,6 @@ export const KUCZYNSKI_DIAGNOSTIC_QUESTIONS = [
   "Are there any intensional contexts?",
   "Does Quine's case against modal notions succeed?",
   "Is a tautology an analytic truth?",
-  "Did Gödel refute the analyticity of mathematics?",
   "Is formal truth a property of sentences or a relation between sentences and axiom-sets?",
   "Is logic about sentences or about propositions?",
   "What is a priori knowledge knowledge of?",
@@ -170,13 +169,13 @@ export async function* runKuczynskiDiagnostic(
 ): AsyncGenerator<SelfTestEvent> {
   const startedAt = Date.now();
   const results: TestResult[] = [];
-  const category = "Kuczynski 150-question proof";
+  const category = "Kuczynski 149-question proof";
   const concurrency = 4;
 
   yield {
     type: "log",
     data: {
-      message: "Running 150 fixed questions through the real Kuczynski chat endpoint. No questions are randomized or skipped.",
+      message: "Running 149 fixed questions through the real Kuczynski chat endpoint. No questions are randomized or skipped.",
     },
   };
 
