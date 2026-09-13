@@ -1,1 +1,0 @@
-# Stekel Works
