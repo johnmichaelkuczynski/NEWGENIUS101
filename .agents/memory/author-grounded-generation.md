@@ -11,6 +11,8 @@ Chat must always answer the user's question. If retrieval finds the author's doc
 
 **How to apply:** Treat absent direct evidence as a retrieval limitation, not permission to withhold an answer. Preserve source fidelity whenever evidence is available; otherwise answer correctly without pretending the fallback came from the corpus.
 
+When direct retrieval fails, exclude adjacent author passages from the fallback prompt rather than using them to decorate an unrelated answer. The fallback must be an objective expert answer, not a forced imitation of the author built from irrelevant quotations. End with the answer itself; never append word-count advice or other meta-commentary.
+
 Search the user’s topic independently from generic custom-instruction language. Combine semantic and lexical source retrieval, normalize punctuation and compound forms consistently, and retrieve neighboring chunks from the same document so a relevant passage brings its supporting argument with it. Author identity filters must be exact after alias normalization.
 
 Rank structured arguments by combined semantic similarity, lexical overlap, exact topic/concept phrases, and importance, then use them to guide a second search of the primary text. Synthesize a direct answer from verbatim passages before outlining. That source-derived answer binds the thesis. Check final prose against both the answer and the source; remove exact contradictions and discard the visible draft if validation fails.

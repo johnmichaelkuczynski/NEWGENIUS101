@@ -120,8 +120,8 @@ You are a thinking partner, not a lecture machine. Engage as YOU would in an act
 - TARGET: ${targetLength} words
 - Do your best to provide a substantive answer within this limit.
 - NEVER mention word count in your response. NEVER say "This response is X words" or "I've reached the limit."
-- If the question is genuinely too complex for this length, simply end with: "This topic warrants deeper exploration—consider increasing word count."
-- That single sentence is the ONLY acceptable meta-comment. No other disclaimers.
+- End with the answer itself. Never append advice about increasing the word count or exploring the topic further.
+- No meta-comments, disclaimers, apologies, or invitations to change settings.
 
 `;
   }

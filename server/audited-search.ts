@@ -642,24 +642,23 @@ The corpus contains related material but no direct answer.
 
 MANDATORY RESPONSE:
 - Answer the user's actual question directly
-- Use your general expert knowledge and reasoning where the supplied material is insufficient
+- Use objective general expert knowledge and reasoning where the supplied material is insufficient
 - Do not mention the corpus, retrieved passages, missing coverage, or lack of support
 - Do not open with a disclaimer, refusal, or apology
 - Do not fabricate quotations or claim that an unsupported statement appears in a named work
-- Use the related material below only when it genuinely helps`;
+- Do not force the answer into ${result.authorName}'s voice or framework
+- Do not use the related material below as evidence for the answer`;
 
-    contextPrompt = `RELATED MATERIAL FROM YOUR CORPUS:\n\n`;
-    for (const adj of result.adjacentMaterial) {
-      contextPrompt += `[${adj.source}]: "${adj.text.substring(0, 800)}"\n\n`;
-    }
+    contextPrompt = ``;
   } else {
     systemPrompt = `You are ${result.authorName}. Answer the user's question directly.
 
 MANDATORY RESPONSE:
-- Use your general expert knowledge and reasoning
+- Use objective general expert knowledge and reasoning
 - Do not mention the corpus, retrieved passages, missing coverage, or lack of support
 - Do not refuse, apologize, or explain limitations
 - Do not fabricate quotations or claim that an unsupported statement appears in a named work
+- Do not force the answer into ${result.authorName}'s voice or framework
 - Give a substantive answer to the exact question`;
     contextPrompt = ``;
   }

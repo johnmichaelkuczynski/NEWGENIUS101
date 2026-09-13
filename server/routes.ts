@@ -1910,7 +1910,11 @@ Now ATTACK this problem directly using your full philosophical firepower:
       
       // Also include adjacent material for additional context
       let relevantPassages = auditContextPrompt;
-      if (auditedResult.adjacentMaterial.length > 0) {
+      if (
+        auditedResult.answerType !== "indirect"
+        && auditedResult.answerType !== "none"
+        && auditedResult.adjacentMaterial.length > 0
+      ) {
         relevantPassages += "\n\nADDITIONAL CONTEXT (not direct answers):\n";
         for (const adj of auditedResult.adjacentMaterial) {
           relevantPassages += `[${adj.source}]: "${adj.text.substring(0, 500)}..."\n\n`;

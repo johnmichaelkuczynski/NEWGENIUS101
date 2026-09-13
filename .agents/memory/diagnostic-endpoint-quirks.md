@@ -25,5 +25,8 @@ These bit me while building the synthetic-user and accuracy diagnostics that dri
 - **The fixed Kuczynski proof must release results individually**: maintain four in-flight questions, but emit each completed answer immediately and replace it with the next question.
   **Why:** batch-level `Promise.all` withheld already-generated answers whenever one question in the group was slow or stuck.
   **How to apply:** race pending requests, remove and emit the winner, then launch one replacement; never gate visible answers on the slowest member of a batch.
+- **Use native EventSource on the Diagnostics page**: do not hand-parse fetch response chunks for these GET-based SSE endpoints.
+  **Why:** the manual decoder left the browser on “Waiting for first result” while the server was already generating answers; native SSE displayed starts and results correctly.
+  **How to apply:** close EventSource on `[DONE]` or Stop, synthesize failures only for genuinely incomplete rows, and do not auto-reconnect a completed diagnostic.
 
 **Why:** these endpoints don't share a uniform contract; assuming SSE + a single content key + a fast chat path all produce silent zero-content failures. UI-level answer capture must account for late-appearing assistant nodes + persisted history. A previous Kuczynski repression probe passed solely because it returned 255 words, despite having no direct repression source and confabulating from unrelated causation material.
