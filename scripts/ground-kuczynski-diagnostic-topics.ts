@@ -74,6 +74,19 @@ const explicitGroundings = [
     conclusion:
       "Supervaluationism is not a solution to the Sorites paradox, because its departure from bivalence addresses the wrong analysis of the predicate.",
   },
+  {
+    question: "Can a man consciously believe p and unconsciously believe not-p?",
+    sourceFile: "kuczynski/a priori knowledge and other philosophical works",
+    position:
+      "A man can consciously accept p while a deeper part of him believes not-p: rationalization can convince him of one view while the psyche retains an inconsistent contrary view, producing a bifurcation or splitting of the self.",
+    premises: [
+      "A rationalizer can consciously convince himself of a proposition that validates what he wants to do.",
+      "Deep down, he may not really believe that proposition and may retain the contrary conviction.",
+      "Rationalization can split the psyche into parts that retain inconsistent values or judgments.",
+    ],
+    conclusion:
+      "Therefore conscious assent to p can coexist with a deeper, unconscious belief in not-p when rationalization divides the psyche into inconsistent parts.",
+  },
 ] as const;
 
 function normalize(value: string): string {

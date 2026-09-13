@@ -11,6 +11,7 @@ export const KUCZYNSKI_GROUNDED_TOPIC_QUESTIONS = [
   "Is defeasible inference a species of deduction?",
   "Are numbers objects?",
   "Is self-deception a refusal to spell out?",
+  "Can a man consciously believe p and unconsciously believe not-p?",
   "Is supervaluationism a solution to anything?",
   "Is wealth a continuous scale?",
 ] as const;
