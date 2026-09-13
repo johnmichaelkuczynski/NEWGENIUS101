@@ -116,7 +116,6 @@ mtime_ms = 1789275207836
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/da762f48-e205-4a13-b17b-a522785eaa3f/db9aa054-16c6-40cd-a5ae-b5ee98edd06e"
 storage_version_token = "1789275240109374"
 content_type = "text/plain"
-
 [[outputs]]
 id = "h1xL3C-7iQNOu5FEBQ0_a"
 uri = "file://attached_assets/verified-kuczynski-primary-source-answer.txt"
@@ -171,18 +170,4 @@ size = 695670
 mtime_ms = 1789294115974
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/f8e00c3a-42f1-474f-b213-72fda76be655/b79a4006-3822-4a1c-be79-45eeda281237"
 storage_version_token = "1789294133388082"
-content_type = "text/plain"
-
-[[outputs]]
-id = "qqlYJDTiK_YKMs-0fo9OM"
-uri = "file://reports/kuczynski-150-diagnostic-2026-09-13.txt"
-type = "text"
-title = "Kuczynski 150-Question Diagnostic Report"
-description = "Complete verified run with all 150 exact questions, answers, statuses, named works, direct-evidence counts, and representative source-linked quotations."
-logical_id = "12684008-37a2-4ce9-84ee-7a24d639a910"
-content_hash = "sha256:0f3ca46be27ba3723a7c4e0ee2fa30f9cbee02da250b0b32da4de45f07e0e5bf"
-size = 1047739
-mtime_ms = 1789295043596
-storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/12684008-37a2-4ce9-84ee-7a24d639a910/6750f9ae-04f7-4d7a-95bb-c7df14069668"
-storage_version_token = "1789295052797529"
 content_type = "text/plain"

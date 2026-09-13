@@ -11,6 +11,8 @@
     "test:paper-stream-parser": "tsx --test client/src/lib/paper-sse.test.ts",
     "check:paper-stream-live": "tsx scripts/check-paper-writer-stream.ts",
     "test:ingest": "EXTERNAL_DATABASE_URL=postgres://test:test@localhost/test node --import tsx --test scripts/ingest-drop-folder.test.ts",
+    "ground:kuczynski-topics": "tsx scripts/ground-kuczynski-diagnostic-topics.ts",
+    "check:kuczynski-topics": "tsx scripts/verify-kuczynski-diagnostic-topics.ts",
     "db:push": "drizzle-kit push",
     "seed": "tsx server/seed-figures.ts",
     "generate-embeddings": "tsx server/generate-embeddings.ts"
