@@ -8,6 +8,7 @@ import { FileText, Download, Loader2 } from "lucide-react";
 import type { Figure } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
+import { createPaperSseParser, type PaperStreamEvent } from "@/lib/paper-sse";
 
 interface PaperWriterProps {
   figure: Figure;
@@ -55,6 +56,7 @@ export function PaperWriter({ figure, open, onOpenChange, onTransferContent }: P
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
+      const parser = createPaperSseParser();
 
       if (!reader) {
         throw new Error("No response body");
@@ -62,42 +64,32 @@ export function PaperWriter({ figure, open, onOpenChange, onTransferContent }: P
 
       let accumulatedText = "";
 
+      const applyEvents = (events: PaperStreamEvent[]) => {
+        for (const event of events) {
+          if (event.type === "done") {
+            setIsGenerating(false);
+            continue;
+          }
+          if (event.type === "error") throw new Error(event.message);
+          if (event.type === "reset") {
+            accumulatedText = "";
+            setPaper("");
+            continue;
+          }
+          if (event.type === "content") {
+            accumulatedText += event.content;
+            setPaper(accumulatedText);
+          }
+        }
+      };
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split("\n");
-
-        for (const line of lines) {
-          if (line.startsWith("data: ")) {
-            const data = line.slice(6);
-            
-            if (data === "[DONE]") {
-              setIsGenerating(false);
-              return;
-            }
-
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.reset_content) {
-                accumulatedText = "";
-                setPaper("");
-                continue;
-              }
-              if (parsed.content) {
-                accumulatedText += parsed.content;
-                setPaper(accumulatedText);
-              }
-              if (parsed.error) {
-                throw new Error(parsed.error);
-              }
-            } catch (err) {
-              // Ignore parsing errors for incomplete chunks
-            }
-          }
-        }
+        applyEvents(parser.push(decoder.decode(value, { stream: true })));
       }
+      applyEvents(parser.push(decoder.decode()));
+      applyEvents(parser.finish());
     } catch (error) {
       console.error("Error generating paper:", error);
       toast({

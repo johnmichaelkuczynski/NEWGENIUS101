@@ -350,18 +350,16 @@ async function* streamLLMText(
   for (const provider of providers) {
     try {
       if (provider === "anthropic" && anthropic) {
-        const stream = await anthropic.messages.create({
-          model: "claude-sonnet-4-5-20250929",
-          max_tokens: maxTokens,
-          temperature,
-          stream: true,
-          system,
-          messages: [{ role: "user", content: user }],
-        });
-        let gotContent = false;
-        for await (const event of stream) {
-          if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-            const t = event.delta.text;
+      const stream = await client.chat.completions.create({
+        model,
+        max_tokens: maxTokens,
+        temperature,
+        stream: true,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+      });
+      let gotContent = false;
+      for await (const chunk of stream) {
+        const t = chunk.choices[0]?.delta?.content ?? "";
             if (t) { gotContent = true; yield t; }
           }
         }

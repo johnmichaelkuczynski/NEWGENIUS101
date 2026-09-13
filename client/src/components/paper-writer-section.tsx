@@ -15,6 +15,7 @@ import { usePopupManager } from "@/contexts/popup-manager-context";
 import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { countPaperBodyWords } from "@/lib/paper-content";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
+import { createPaperSseParser, type PaperStreamEvent } from "@/lib/paper-sse";
 
 function getDisplayName(fullName: string): string {
   const keepFullName = ["James Allen", "William James", "ALLEN"];
@@ -188,48 +189,39 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
 
       if (reader) {
         let accumulatedText = "";
-        let buffer = "";
+        const parser = createPaperSseParser();
+
+        const applyEvents = (events: PaperStreamEvent[]) => {
+          for (const event of events) {
+            if (event.type === "error") {
+              throw new Error(event.message);
+            }
+            if (event.type === "done") {
+              setIsGenerating(false);
+              updatePopup(popupId, { isGenerating: false });
+              continue;
+            }
+            if (event.type === "reset") {
+              accumulatedText = "";
+              setGeneratedPaper("");
+              updatePopup(popupId, { content: "" });
+              continue;
+            }
+            if (event.type === "content") {
+              accumulatedText += event.content;
+              setGeneratedPaper(accumulatedText);
+              updatePopup(popupId, { content: accumulatedText });
+            }
+          }
+        };
 
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() || "";
-
-          for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              const data = line.slice(6);
-              if (data === "[DONE]") {
-                setIsGenerating(false);
-                updatePopup(popupId, { isGenerating: false });
-                continue;
-              }
-              let parsed: any;
-              try {
-                parsed = JSON.parse(data);
-              } catch (e) {
-                console.error("Parse error:", e);
-                continue;
-              }
-              if (parsed.error) {
-                throw new Error(parsed.error);
-              }
-              if (parsed.reset_content) {
-                accumulatedText = "";
-                setGeneratedPaper("");
-                updatePopup(popupId, { content: "" });
-                continue;
-              }
-              if (parsed.content) {
-                accumulatedText += parsed.content;
-                setGeneratedPaper(accumulatedText);
-                updatePopup(popupId, { content: accumulatedText });
-              }
-            }
-          }
+          applyEvents(parser.push(decoder.decode(value, { stream: true })));
         }
+        applyEvents(parser.push(decoder.decode()));
+        applyEvents(parser.finish());
       }
       setIsGenerating(false);
       updatePopup(popupId, { isGenerating: false });
