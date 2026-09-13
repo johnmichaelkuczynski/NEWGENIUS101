@@ -5270,7 +5270,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
 
     try {
       // Force the initial SSE response through proxies that buffer very small chunks.
-      res.write(`: connected ${" ".repeat(2048)}\n\n`);
+      res.write(`: connected ${" ".repeat(16384)}\n\n`);
       flush();
       send({ type: "log", data: { message: `${label} starting against ${originBase}` } });
       for await (const ev of runner(originBase, abortCtrl.signal)) {

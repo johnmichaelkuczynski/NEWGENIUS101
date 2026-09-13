@@ -179,11 +179,20 @@ export async function* runKuczynskiDiagnostic(
     },
   };
 
-  for (let offset = 0; offset < KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length; offset += concurrency) {
-    if (signal?.aborted) break;
-    const batch = KUCZYNSKI_DIAGNOSTIC_QUESTIONS.slice(offset, offset + concurrency);
-    for (let index = 0; index < batch.length; index++) {
-      const questionNumber = offset + index + 1;
+  const pending = new Map<number, Promise<{ questionNumber: number; result: TestResult }>>();
+  let nextQuestionIndex = 0;
+
+  while (
+    (nextQuestionIndex < KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length || pending.size > 0)
+    && !signal?.aborted
+  ) {
+    while (
+      nextQuestionIndex < KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length
+      && pending.size < concurrency
+    ) {
+      const questionIndex = nextQuestionIndex++;
+      const questionNumber = questionIndex + 1;
+      const question = KUCZYNSKI_DIAGNOSTIC_QUESTIONS[questionIndex];
       yield {
         type: "start",
         data: {
@@ -193,29 +202,34 @@ export async function* runKuczynskiDiagnostic(
       };
       yield {
         type: "log",
-        data: { message: `${questionNumber}/${KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length}: ${batch[index]}` },
+        data: { message: `${questionNumber}/${KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length}: ${question}` },
       };
+      pending.set(
+        questionNumber,
+        askThinker(originBase, probe, question, signal, category).then((result) => ({
+          questionNumber,
+          result: {
+            ...result,
+            name: `Kuczynski ${String(questionNumber).padStart(3, "0")}`,
+            details: {
+              ...result.details,
+              questionNumber,
+              totalQuestions: KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length,
+            },
+          },
+        })),
+      );
     }
 
-    const batchResults = await Promise.all(
-      batch.map(async (question, index) => {
-        const questionNumber = offset + index + 1;
-        const result = await askThinker(originBase, probe, question, signal, category);
-        return {
-          ...result,
-          name: `Kuczynski ${String(questionNumber).padStart(3, "0")}`,
-          details: {
-            ...result.details,
-            questionNumber,
-            totalQuestions: KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length,
-          },
-        };
-      }),
-    );
-    for (const result of batchResults) {
-      results.push(result);
-      yield { type: "result", data: result };
-    }
+    if (pending.size === 0) break;
+    const completed = await Promise.race(pending.values());
+    pending.delete(completed.questionNumber);
+    results.push(completed.result);
+    yield { type: "result", data: completed.result };
+  }
+
+  if (signal?.aborted && pending.size > 0) {
+    await Promise.allSettled(pending.values());
   }
 
   const completed = results.length;

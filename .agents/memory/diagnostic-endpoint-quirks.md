@@ -22,5 +22,8 @@ These bit me while building the synthetic-user and accuracy diagnostics that dri
 - **Synthetic-user setup is ordered; generators are bounded-concurrent**: preserve the session-establishing checks in sequence, then run independent feature generators with a concurrency limit of four.
   **Why:** serial execution adds every AI generator's latency and timeout, allowing one diagnostic to consume roughly an hour.
   **How to apply:** keep chat persistence behind main chat, but do not serialize independent paper, essay, model, quote, dialogue, interview, debate, and voice checks.
+- **The fixed Kuczynski proof must release results individually**: maintain four in-flight questions, but emit each completed answer immediately and replace it with the next question.
+  **Why:** batch-level `Promise.all` withheld already-generated answers whenever one question in the group was slow or stuck.
+  **How to apply:** race pending requests, remove and emit the winner, then launch one replacement; never gate visible answers on the slowest member of a batch.
 
 **Why:** these endpoints don't share a uniform contract; assuming SSE + a single content key + a fast chat path all produce silent zero-content failures. UI-level answer capture must account for late-appearing assistant nodes + persisted history. A previous Kuczynski repression probe passed solely because it returned 255 words, despite having no direct repression source and confabulating from unrelated causation material.
