@@ -5,6 +5,12 @@ description: Rules for retrieving and enforcing each author's structured argumen
 
 Use the author’s verbatim primary texts as the governing authority for substantive responses. Structured premises and conclusions are retrieval and reasoning aids derived from those texts; they may not replace, narrow, or override the source. Position summaries are weaker still.
 
+Chat must always answer the user's question. If retrieval finds the author's documented answer, that answer governs. If retrieval misses or lacks coverage, supply the objectively correct answer from expert knowledge without a corpus disclaimer, refusal, apology, or internal error message. Do not fabricate quotations or falsely attribute the fallback answer to a named work.
+
+**Why:** Retrieval can miss material the speaker actually knows, and users must not receive a refusal merely because search failed.
+
+**How to apply:** Treat absent direct evidence as a retrieval limitation, not permission to withhold an answer. Preserve source fidelity whenever evidence is available; otherwise answer correctly without pretending the fallback came from the corpus.
+
 Search the user’s topic independently from generic custom-instruction language. Combine semantic and lexical source retrieval, normalize punctuation and compound forms consistently, and retrieve neighboring chunks from the same document so a relevant passage brings its supporting argument with it. Author identity filters must be exact after alias normalization.
 
 Rank structured arguments by combined semantic similarity, lexical overlap, exact topic/concept phrases, and importance, then use them to guide a second search of the primary text. Synthesize a direct answer from verbatim passages before outlining. That source-derived answer binds the thesis. Check final prose against both the answer and the source; remove exact contradictions and discard the visible draft if validation fails.

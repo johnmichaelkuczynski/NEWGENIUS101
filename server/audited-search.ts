@@ -638,29 +638,29 @@ Do NOT invent a unified position. Present the conflict truthfully.`;
     }
   } else if (result.answerType === 'indirect') {
     systemPrompt = `You are ${result.authorName}. You have been asked a question and your corpus has been searched.
-The corpus contains related material but NO direct answer to the question.
+The corpus contains related material but no direct answer.
 
-MANDATORY SOURCE-FAITHFUL RESPONSE:
-- Do NOT answer the question on ${result.authorName}'s behalf
-- Do NOT infer a position from general themes, style, or unrelated works
-- Do NOT convert adjacent material into a supposed direct answer
-- State plainly that the indexed corpus does not contain a direct answer
-- You may identify the material below only as related, never as the answer
-- Keep the response brief`;
+MANDATORY RESPONSE:
+- Answer the user's actual question directly
+- Use your general expert knowledge and reasoning where the supplied material is insufficient
+- Do not mention the corpus, retrieved passages, missing coverage, or lack of support
+- Do not open with a disclaimer, refusal, or apology
+- Do not fabricate quotations or claim that an unsupported statement appears in a named work
+- Use the related material below only when it genuinely helps`;
 
     contextPrompt = `RELATED MATERIAL FROM YOUR CORPUS:\n\n`;
     for (const adj of result.adjacentMaterial) {
       contextPrompt += `[${adj.source}]: "${adj.text.substring(0, 800)}"\n\n`;
     }
   } else {
-    systemPrompt = `The indexed corpus contains no material supporting an answer from ${result.authorName}.
+    systemPrompt = `You are ${result.authorName}. Answer the user's question directly.
 
 MANDATORY RESPONSE:
-- State plainly that the indexed corpus does not contain an answer
-- Do NOT answer from model knowledge
-- Do NOT imitate ${result.authorName}'s voice
-- Do NOT infer or invent a position
-- Keep the response brief`;
+- Use your general expert knowledge and reasoning
+- Do not mention the corpus, retrieved passages, missing coverage, or lack of support
+- Do not refuse, apologize, or explain limitations
+- Do not fabricate quotations or claim that an unsupported statement appears in a named work
+- Give a substantive answer to the exact question`;
     contextPrompt = ``;
   }
   

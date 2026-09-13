@@ -103,7 +103,7 @@ export default function Diagnostics() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const rowsRef = useRef<RowState[]>([]);
-  const abortRef = useRef<AbortController | null>(null);
+  const abortRef = useRef<{ abort: () => void } | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -125,61 +125,94 @@ export default function Diagnostics() {
     setRunning(false);
   };
 
-  const start = useCallback(async (check: Check) => {
+  const start = useCallback((check: Check) => {
     reset();
     setElapsedSeconds(0);
     setRunning(true);
     setActiveKey(check.key);
-    const ctrl = new AbortController();
-    abortRef.current = ctrl;
+    const source = new EventSource(`${check.endpoint}?run=${Date.now()}`);
+    let receivedSummary = false;
+    let finished = false;
 
-    try {
-      const resp = await fetch(check.endpoint, { signal: ctrl.signal });
-      if (!resp.ok || !resp.body) throw new Error(`HTTP ${resp.status}`);
-      const reader = resp.body.getReader();
-      const dec = new TextDecoder();
-      let buf = "";
-      let receivedSummary = false;
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buf += dec.decode(value, { stream: true });
-        const blocks = buf.split("\n\n");
-        buf = blocks.pop() || "";
-        for (const block of blocks) {
-          if (!block.startsWith("data:")) continue;
-          const payload = block.slice(5).trim();
-          if (payload === "[DONE]") continue;
-          let ev: any;
-          try { ev = JSON.parse(payload); } catch { continue; }
-          if (ev.type === "start") {
-            setRows((rs) => {
-              const next = [...rs, {
-                name: ev.data.name,
-                category: ev.data.category,
-                status: "running" as Status,
-              }];
-              rowsRef.current = next;
-              return next;
-            });
-          } else if (ev.type === "result") {
-            setRows((rs) => {
-              const next = rs.map((r) =>
-                r.name === ev.data.name && r.status === "running"
-                  ? { ...r, status: ev.data.status, message: ev.data.message, durationMs: ev.data.durationMs, details: ev.data.details }
-                  : r
-              );
-              rowsRef.current = next;
-              return next;
-            });
-          } else if (ev.type === "summary") {
-            receivedSummary = true;
-            setSummary(ev.data);
-          } else if (ev.type === "log" && ev.data?.message) {
-            setLogs((current) => [...current, String(ev.data.message)]);
-          }
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      source.close();
+      setRunning(false);
+      abortRef.current = null;
+    };
+
+    abortRef.current = {
+      abort: () => {
+        source.close();
+        finished = true;
+      },
+    };
+
+    source.onmessage = (message) => {
+      const payload = message.data?.trim();
+      if (!payload) return;
+      if (payload === "[DONE]") {
+        if (!receivedSummary && rowsRef.current.length > 0) {
+          const completed = rowsRef.current.map((row) =>
+            row.status === "running"
+              ? { ...row, status: "fail" as Status, message: "Diagnostic stream ended before this check completed" }
+              : row
+          );
+          rowsRef.current = completed;
+          setRows(completed);
+          setSummary({
+            totalTests: completed.length,
+            passed: completed.filter((row) => row.status === "pass").length,
+            failed: completed.filter((row) => row.status === "fail").length,
+            skipped: completed.filter((row) => row.status === "skip").length,
+            durationMs: 0,
+            timestamp: new Date().toISOString(),
+            nodeVersion: "unknown",
+            environment: "unknown",
+            results: completed,
+          });
         }
+        finish();
+        return;
       }
+
+      let ev: any;
+      try {
+        ev = JSON.parse(payload);
+      } catch {
+        return;
+      }
+      if (ev.type === "start") {
+        setRows((rs) => {
+          const next = [...rs, {
+            name: ev.data.name,
+            category: ev.data.category,
+            status: "running" as Status,
+          }];
+          rowsRef.current = next;
+          return next;
+        });
+      } else if (ev.type === "result") {
+        setRows((rs) => {
+          const next = rs.map((r) =>
+            r.name === ev.data.name && r.status === "running"
+              ? { ...r, status: ev.data.status, message: ev.data.message, durationMs: ev.data.durationMs, details: ev.data.details }
+              : r
+          );
+          rowsRef.current = next;
+          return next;
+        });
+      } else if (ev.type === "summary") {
+        receivedSummary = true;
+        setSummary(ev.data);
+      } else if (ev.type === "log" && ev.data?.message) {
+        setLogs((current) => [...current, String(ev.data.message)]);
+      }
+    };
+
+    source.onerror = () => {
+      if (finished) return;
       if (!receivedSummary && rowsRef.current.length > 0) {
         const completed = rowsRef.current.map((row) =>
           row.status === "running"
@@ -200,15 +233,10 @@ export default function Diagnostics() {
           results: completed,
         });
       }
-    } catch (err: any) {
-      if (err?.name !== "AbortError") {
-        setLogs((current) => [...current, `Diagnostics error: ${err?.message || String(err)}`]);
-        toast({ title: "Diagnostics error", description: err?.message || String(err), variant: "destructive" });
-      }
-    } finally {
-      setRunning(false);
-      abortRef.current = null;
-    }
+      setLogs((current) => [...current, "Diagnostics connection ended unexpectedly"]);
+      toast({ title: "Diagnostics error", description: "The live diagnostics connection ended unexpectedly.", variant: "destructive" });
+      finish();
+    };
   }, [toast]);
 
   const buildReportText = (s: Summary): string => {
