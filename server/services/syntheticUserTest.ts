@@ -651,8 +651,10 @@ export async function* runSyntheticUserTest(
   const results: TestResult[] = [];
   const startedAt = Date.now();
   const jar = new CookieJar();
+  const sequentialFlows = FLOWS.slice(0, 6);
 
-  for (const flow of FLOWS) {
+  // These establish and then verify one browser-like session. Keep them ordered.
+  for (const flow of sequentialFlows) {
     if (signal?.aborted) {
       yield { type: "log", data: { message: `Aborted before "${flow.name}". Stopping.` } };
       break;
@@ -665,6 +667,38 @@ export async function* runSyntheticUserTest(
     const result = await runFlow(flow, originBase, jar, signal);
     results.push(result);
     yield { type: "result", data: result };
+  }
+
+  // The remaining generators do not depend on one another. Running four at a
+  // time keeps the diagnostic representative without serializing an hour of AI work.
+  const concurrentFlows = signal?.aborted ? [] : FLOWS.slice(sequentialFlows.length);
+  const pending = new Map<number, Promise<{ index: number; result: TestResult }>>();
+  let nextIndex = 0;
+
+  while ((nextIndex < concurrentFlows.length || pending.size > 0) && !signal?.aborted) {
+    while (nextIndex < concurrentFlows.length && pending.size < 4) {
+      const index = nextIndex++;
+      const flow = concurrentFlows[index];
+      yield {
+        type: "log",
+        data: { message: `${flow.method || (flow.body === undefined ? "GET" : "POST")} ${flow.path}` },
+      };
+      yield { type: "start", data: { name: flow.name, category: flow.category } };
+      pending.set(
+        index,
+        runFlow(flow, originBase, jar, signal).then((result) => ({ index, result })),
+      );
+    }
+
+    if (pending.size === 0) break;
+    const completed = await Promise.race(pending.values());
+    pending.delete(completed.index);
+    results.push(completed.result);
+    yield { type: "result", data: completed.result };
+  }
+
+  if (signal?.aborted && pending.size > 0) {
+    await Promise.allSettled(pending.values());
   }
 
   yield {

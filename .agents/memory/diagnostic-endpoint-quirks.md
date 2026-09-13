@@ -19,5 +19,8 @@ These bit me while building the synthetic-user and accuracy diagnostics that dri
 - **Production diagnostic SSE needs a padded opening comment and explicit flushing**: headers and small events alone can leave the Diagnostics page blank while expensive checks continue server-side.
   **Why:** the production proxy buffered the synthetic-user stream for roughly an hour even though nested generator requests were running.
   **How to apply:** retain the opening padding, flush each event and heartbeat when supported, watch the response's close event for cancellation, and show a client-side elapsed timer before the first event.
+- **Synthetic-user setup is ordered; generators are bounded-concurrent**: preserve the session-establishing checks in sequence, then run independent feature generators with a concurrency limit of four.
+  **Why:** serial execution adds every AI generator's latency and timeout, allowing one diagnostic to consume roughly an hour.
+  **How to apply:** keep chat persistence behind main chat, but do not serialize independent paper, essay, model, quote, dialogue, interview, debate, and voice checks.
 
 **Why:** these endpoints don't share a uniform contract; assuming SSE + a single content key + a fast chat path all produce silent zero-content failures. UI-level answer capture must account for late-appearing assistant nodes + persisted history. A previous Kuczynski repression probe passed solely because it returned 255 words, despite having no direct repression source and confabulating from unrelated causation material.
