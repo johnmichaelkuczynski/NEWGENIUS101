@@ -1884,14 +1884,13 @@ Now ATTACK this problem directly using your full philosophical firepower:
       
       console.log(`[AUDITED SEARCH] Complete: ${auditedResult.directAnswers.length} direct answers, type=${auditedResult.answerType}`);
 
-      const sourcedQuotations = auditedResult.directAnswers
-        .filter((item) => item.passage.source === "chunks" && item.passage.sourceFile)
+      const sourcedQuotations = auditedResult.representativeQuotes
+        .filter((item) => item.sourceFile)
         .slice(0, 20)
         .map((item) => ({
-          work: item.passage.sourceFile,
-          quotation: item.passage.text,
-          chunkIndex: item.passage.chunkIndex,
-          relevanceScore: item.relevanceScore,
+          work: item.sourceFile,
+          quotation: item.text,
+          chunkIndex: item.chunkIndex,
         }));
       res.write(`data: ${JSON.stringify({
         auditEvidence: {

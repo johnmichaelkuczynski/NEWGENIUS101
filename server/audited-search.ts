@@ -52,6 +52,7 @@ export interface AuditedSearchResult {
   authorName: string;
   events: AuditEvent[];
   directAnswers: DirectAnswer[];
+  representativeQuotes: PassageCandidate[];
   alignmentResult: AlignmentResult | null;
   adjacentMaterial: PassageCandidate[];
   searchComplete: boolean;
@@ -68,6 +69,7 @@ export async function auditedCorpusSearch(
 ): Promise<AuditedSearchResult> {
   const events: AuditEvent[] = [];
   const directAnswers: DirectAnswer[] = [];
+  let representativeQuotes: PassageCandidate[] = [];
   const adjacentMaterial: PassageCandidate[] = [];
   
   const emit = (event: Omit<AuditEvent, 'timestamp'>) => {
@@ -216,21 +218,37 @@ export async function auditedCorpusSearch(
       }
     }
 
-    // STEP 2: If we don't have 3 direct answers, search QUOTES table
-    if (directAnswers.length < 3) {
+    const embeddingResponse = await getOpenAI().embeddings.create({
+      model: "text-embedding-ada-002",
+      input: question,
+    });
+    const queryEmbedding = embeddingResponse.data[0].embedding;
+
+    // STEP 2: Search source-linked representative quotations by semantic relevance.
+    if (directAnswers.length < 20) {
       emit({ type: 'table_search', detail: 'Searching QUOTES table...', data: { table: 'quotes' } });
       
       const quotesQuery = sql`
-        SELECT id::text, thinker, quote_text, topic 
-        FROM quotes 
-        WHERE thinker ILIKE ${'%' + dbThinkerName + '%'}
-        ORDER BY RANDOM()
-        LIMIT 30
+        SELECT q.id::text, q.thinker, q.quote_text, q.topic,
+               COALESCE(t.title, t.source_file) AS source_title,
+               q.embedding <=> ${JSON.stringify(queryEmbedding)}::vector AS distance
+        FROM quotes q
+        JOIN texts t ON t.id = q.source_text_id
+        WHERE q.thinker ILIKE ${'%' + dbThinkerName + '%'}
+          AND q.embedding IS NOT NULL
+        ORDER BY distance
+        LIMIT 40
       `;
       emit({ type: 'query', detail: `SQL: SELECT FROM quotes WHERE thinker ILIKE '%${dbThinkerName}%'`, data: { sql: quotesQuery.toString() } });
       
       const quotesResult = await db.execute(quotesQuery);
-      const quotes = (quotesResult.rows || []) as Array<{id: string, thinker: string, quote_text: string, topic: string | null}>;
+      const quotes = (quotesResult.rows || []) as Array<{
+        id: string;
+        thinker: string;
+        quote_text: string;
+        topic: string | null;
+        source_title: string;
+      }>;
       
       emit({ type: 'table_search', detail: `Found ${quotes.length} quotes`, data: { count: quotes.length } });
 
@@ -238,14 +256,16 @@ export async function auditedCorpusSearch(
         id: quote.id,
         source: 'quotes',
         text: quote.quote_text,
-        topic: quote.topic || undefined
+        topic: quote.topic || undefined,
+        sourceFile: quote.source_title,
       }));
+      representativeQuotes = quoteCandidates.slice(0, 20);
       for (const candidate of quoteCandidates) {
         emit({ type: 'passage_examined', detail: `Examining quote: "${candidate.text.substring(0, 80)}..."`, data: { id: candidate.id } });
       }
       const quoteJudgments = await judgeBatch(question, quoteCandidates);
       for (let i = 0; i < quoteCandidates.length; i++) {
-        if (directAnswers.length >= 3) break;
+        if (directAnswers.length >= 20) break;
         const candidate = quoteCandidates[i];
         const judgment = quoteJudgments[i];
         if (judgment.isDirectAnswer && judgment.relevanceScore >= 0.7) {
@@ -264,12 +284,6 @@ export async function auditedCorpusSearch(
       emit({ type: 'table_search', detail: 'Searching CHUNKS table (full works)...', data: { table: 'chunks' } });
       
       // Use embedding search for chunks to find semantically relevant content
-      const embeddingResponse = await getOpenAI().embeddings.create({
-        model: "text-embedding-ada-002",
-        input: question,
-      });
-      const queryEmbedding = embeddingResponse.data[0].embedding;
-      
       const chunksQuery = sql`
         SELECT c.id::text, c.thinker, c.chunk_text, c.source_text_id, c.chunk_index,
                COALESCE(t.title, t.source_file, c.source_text_id::text) AS source_title,
@@ -328,10 +342,17 @@ export async function auditedCorpusSearch(
     let alignmentResult: AlignmentResult | null = null;
     let answerType: AuditedSearchResult['answerType'] = 'no_material';
     
-    if (directAnswers.length >= 3) {
-      emit({ type: 'alignment_check', detail: 'Checking alignment of 3 direct answers...', data: { count: directAnswers.length } });
+    const fullWorkDirectAnswers = directAnswers.filter(
+      (item) => item.passage.source === 'chunks',
+    );
+    const governingAnswers = fullWorkDirectAnswers.length > 0
+      ? fullWorkDirectAnswers
+      : directAnswers;
+
+    if (governingAnswers.length >= 3) {
+      emit({ type: 'alignment_check', detail: 'Checking alignment of 3 primary-source answers...', data: { count: governingAnswers.length } });
       
-      alignmentResult = await checkAlignment(question, directAnswers.slice(0, 3));
+      alignmentResult = await checkAlignment(question, governingAnswers.slice(0, 3));
       
       if (alignmentResult.aligned) {
         emit({ type: 'alignment_check', detail: 'ALIGNED: All 3 answers agree. Proceeding to generate response.', data: alignmentResult });
@@ -340,8 +361,8 @@ export async function auditedCorpusSearch(
         emit({ type: 'alignment_check', detail: `CONFLICTING: ${alignmentResult.conflictDescription}. Will present all 3 separately.`, data: alignmentResult });
         answerType = 'direct_conflicting';
       }
-    } else if (directAnswers.length > 0) {
-      emit({ type: 'alignment_check', detail: `Found only ${directAnswers.length} direct answer(s). Using available evidence.`, data: { count: directAnswers.length } });
+    } else if (governingAnswers.length > 0) {
+      emit({ type: 'alignment_check', detail: `Found only ${governingAnswers.length} direct primary-source answer(s). Using available evidence.`, data: { count: governingAnswers.length } });
       answerType = 'direct_aligned';
     } else if (adjacentMaterial.length > 0) {
       emit({ type: 'no_direct_answer', detail: 'No direct answers found. Will use adjacent material cautiously.', data: { adjacentCount: adjacentMaterial.length } });
@@ -359,6 +380,7 @@ export async function auditedCorpusSearch(
       authorName,
       events,
       directAnswers,
+      representativeQuotes,
       alignmentResult,
       adjacentMaterial: adjacentMaterial.slice(0, 5),
       searchComplete: true,
@@ -374,6 +396,7 @@ export async function auditedCorpusSearch(
       authorName,
       events,
       directAnswers,
+      representativeQuotes,
       alignmentResult: null,
       adjacentMaterial,
       searchComplete: false,
@@ -561,6 +584,12 @@ export function generateAuditReport(result: AuditedSearchResult): string {
 export function buildPromptFromAuditResult(result: AuditedSearchResult): { systemPrompt: string; contextPrompt: string } {
   let systemPrompt = '';
   let contextPrompt = '';
+  const fullWorkAnswers = result.directAnswers.filter(
+    (item) => item.passage.source === 'chunks',
+  );
+  const governingAnswers = fullWorkAnswers.length > 0
+    ? fullWorkAnswers
+    : result.directAnswers;
   
   if (result.answerType === 'direct_aligned') {
     systemPrompt = `You are ${result.authorName}. You have been asked a question and your corpus has been searched.
@@ -575,8 +604,8 @@ YOUR ROLE IS LIMITED:
 Respond as ${result.authorName}, grounding every claim in the passages below.`;
 
     contextPrompt = `DIRECT ANSWERS FROM YOUR CORPUS:\n\n`;
-    for (let i = 0; i < result.directAnswers.length; i++) {
-      const da = result.directAnswers[i];
+    for (let i = 0; i < governingAnswers.length; i++) {
+      const da = governingAnswers[i];
       contextPrompt += `[${da.passage.source.toUpperCase()} ${i + 1}]: "${da.passage.text}"\n\n`;
     }
   } else if (result.answerType === 'direct_conflicting') {
@@ -591,8 +620,8 @@ Say: "I found different answers in my work. Here they are."
 Do NOT invent a unified position. Present the conflict truthfully.`;
 
     contextPrompt = `CONFLICTING ANSWERS FROM YOUR CORPUS:\n\n`;
-    for (let i = 0; i < result.directAnswers.length; i++) {
-      const da = result.directAnswers[i];
+    for (let i = 0; i < governingAnswers.length; i++) {
+      const da = governingAnswers[i];
       contextPrompt += `[ANSWER ${i + 1} - ${da.passage.source}]: "${da.passage.text}"\n\n`;
     }
     if (result.alignmentResult?.conflictDescription) {
