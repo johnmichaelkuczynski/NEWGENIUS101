@@ -440,7 +440,10 @@ async function streamWithFallback(opts: {
             const c = chunk.delta.text;
             acc += c;
             onContent?.(c);
-            if (emitContent) res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+            if (emitContent) {
+              res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+              res.flush?.();
+            }
           }
         }
       } else {
@@ -463,7 +466,10 @@ async function streamWithFallback(opts: {
           if (c) {
             acc += c;
             onContent?.(c);
-              if (emitContent) res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+              if (emitContent) {
+                res.write(`data: ${JSON.stringify({ content: c })}\n\n`);
+                res.flush?.();
+              }
           }
         }
       }
@@ -2549,6 +2555,7 @@ CRITICAL RULES:
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
       res.setHeader("X-Accel-Buffering", "no");
+      res.setHeader("Content-Encoding", "identity");
       res.flushHeaders();
 
       // Keep-alive ping every 15 seconds to prevent connection timeout
@@ -2572,6 +2579,23 @@ CRITICAL RULES:
       const normalizedAuthor = normalizeAuthorName(figure.name);
       console.log(`[Paper Writer] Generating ${targetWords} word paper for ${figure.name} (normalized: ${normalizedAuthor}) on "${topic}"`);
       res.write(`data: ${JSON.stringify({ status: "Searching database for grounding material..." })}\n\n`);
+      res.flush?.();
+
+      // Give the reader immediate prose while grounding retrieval and outline
+      // construction run. This preview is deliberately excluded from the final
+      // word count and is replaced before the grounded paper begins.
+      const openingPreviewPromise = streamWithFallback({
+        res,
+        systemPrompt: `Write as ${figure.name} in a clear, authoritative first-person voice. Produce only the opening paragraph of a serious paper. Do not use quotations, citations, headings, notes, or meta-commentary.`,
+        userPrompt: `Begin a concise opening paragraph on this topic now:\n\n${truncatedTopic}\n\nWrite approximately 100 words that frame the central issue and state a direct thesis.`,
+        maxTokens: 180,
+        temperature: 0.6,
+        startProvider: "anthropic",
+        emitContent: true,
+      }).catch((previewError) => {
+        console.warn("[Paper Writer] Immediate opening preview failed:", (previewError as Error).message);
+        return "";
+      });
 
       // ======
       // STEP 1: QUERY DATABASE DIRECTLY FOR GROUNDING MATERIAL
@@ -3336,7 +3360,11 @@ ${closingFeedback}`,
       };
       
       console.log(`[Paper Writer] Length mode: ${lengthMode}, body target ${proseTargetWords} words with ${formattedQuotes.length} integrated quotes, plus a separately counted ${quoteAppendixWords}-word reference list`);
+      await openingPreviewPromise;
+      res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+      res.flush?.();
       res.write(`data: ${JSON.stringify({ status: `PASS 2: Integrating and analyzing ${formattedQuotes.length} verified quotations in the paper body...` })}\n\n`);
+      res.flush?.();
 
       // Check provider availability (any provider in the fallback chain counts)
       if (!getFallbackModels("anthropic").some(isProviderAvailable)) {
