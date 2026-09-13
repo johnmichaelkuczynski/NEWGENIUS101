@@ -11,7 +11,7 @@ const sourceIds = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
 const model = process.env.EXTRACTION_MODEL || "gpt-4o";
 const WINDOW_SIZE = 14_000;
 
-type QuoteCandidate = { text: string; topic: string };
+export type QuoteCandidate = { text: string; topic: string };
 type PositionCandidate = { position: string; topic: string; evidence: string };
 type ArgumentCandidate = {
   premises: string[];
@@ -27,11 +27,11 @@ type Extraction = {
   arguments?: ArgumentCandidate[];
 };
 
-function normalized(value: string): string {
+export function normalized(value: string): string {
   return value.toLowerCase().replace(/\s+/g, " ").trim();
 }
 
-function recoverVerbatim(source: string, candidate: string): string | null {
+export function recoverVerbatim(source: string, candidate: string): string | null {
   if (!candidate?.trim()) return null;
   const exactIndex = source.indexOf(candidate);
   if (exactIndex >= 0) return source.slice(exactIndex, exactIndex + candidate.length).trim();
@@ -224,6 +224,68 @@ ${window}`;
   });
   const parsed = JSON.parse(response.choices[0]?.message?.content || "{}") as Extraction;
   return Array.isArray(parsed.quotes) ? parsed.quotes : [];
+}
+
+type EnsureMinimumQuotesOptions = {
+  title: string;
+  source: string;
+  windows: string[];
+  existingSourceQuoteCount: number;
+  quotes: QuoteCandidate[];
+  existingQuotes: Set<string>;
+  extract: (
+    title: string,
+    window: string,
+    index: number,
+    total: number,
+  ) => Promise<QuoteCandidate[]>;
+  minimum?: number;
+  onRejected?: () => void;
+};
+
+export async function ensureMinimumQuotes({
+  title,
+  source,
+  windows,
+  existingSourceQuoteCount,
+  quotes,
+  existingQuotes,
+  extract,
+  minimum = 5,
+  onRejected = () => undefined,
+}: EnsureMinimumQuotesOptions): Promise<void> {
+  if (existingSourceQuoteCount + quotes.length >= minimum) return;
+
+  console.log(`  fewer than ${minimum} source quotations; running quote-only recovery`);
+  for (let start = 0; start < windows.length; start += 3) {
+    const batch = windows.slice(start, start + 3);
+    const recoveredBatches = await Promise.all(
+      batch.map((window, offset) => extract(title, window, start + offset, windows.length)),
+    );
+    for (let offset = 0; offset < recoveredBatches.length; offset++) {
+      const window = batch[offset];
+      for (const candidate of recoveredBatches[offset]) {
+        const windowVerbatim = recoverVerbatim(window, candidate.text);
+        const verbatim = windowVerbatim ? recoverVerbatim(source, windowVerbatim) : null;
+        if (!verbatim || verbatim.length < 45 || verbatim.length > 1800) {
+          onRejected();
+          continue;
+        }
+        const key = normalized(verbatim);
+        if (existingQuotes.has(key)) continue;
+        existingQuotes.add(key);
+        quotes.push({ text: verbatim, topic: candidate.topic || title });
+      }
+    }
+  }
+
+  const completedCount = existingSourceQuoteCount + quotes.length;
+  if (completedCount < minimum) {
+    throw new Error(
+      `Source "${title}" has only ${completedCount} valid quotations after quote-only recovery; `
+        + `${minimum} are required`,
+    );
+  }
 }
 
 async function reviewQuoteQuality(
@@ -566,7 +628,9 @@ async function main() {
   console.log(`\nRESULTS\n${JSON.stringify(results, null, 2)}`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
