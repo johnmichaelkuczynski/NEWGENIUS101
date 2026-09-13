@@ -1,0 +1,14 @@
+---
+name: Author-grounded generation
+description: Rules for retrieving and enforcing each author's structured arguments across chat, Paper Writer, and author APIs.
+---
+
+Use the author’s verbatim primary texts as the governing authority for substantive responses. Structured premises and conclusions are retrieval and reasoning aids derived from those texts; they may not replace, narrow, or override the source. Position summaries are weaker still.
+
+Search the user’s topic independently from generic custom-instruction language. Combine semantic and lexical source retrieval, normalize punctuation and compound forms consistently, and retrieve neighboring chunks from the same document so a relevant passage brings its supporting argument with it. Author identity filters must be exact after alias normalization.
+
+Rank structured arguments by combined semantic similarity, lexical overlap, exact topic/concept phrases, and importance, then use them to guide a second search of the primary text. Synthesize a direct answer from verbatim passages before outlining. That source-derived answer binds the thesis. Check final prose against both the answer and the source; remove exact contradictions and discard the visible draft if validation fails.
+
+**Why:** A question about whether logic requires non-spatiotemporal entities was answered with the opposite of the author’s chapter. Structured records eventually produced the right polarity but still omitted and distorted the chapter’s actual property-based argument. The source already existed in the corpus but was missed because search was polluted by generic instructions and isolated chunks were retrieved without their neighbors.
+
+**How to apply:** Any author-response path must retrieve verbatim source passages first, with structured arguments used to expand—not replace—the source search. Confirm the actual document and its supporting neighboring passages are in context. Verify the final response reproduces the source’s argument, not merely its yes/no conclusion, and contains no sentence contradicted by the source.

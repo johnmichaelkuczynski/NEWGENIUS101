@@ -10,7 +10,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { buildSystemPrompt, intensityToTemperature, buildIntensityGuidance } from "./prompt-builder";
 import { findRelevantVerse } from "./bible-verses";
-import { findRelevantChunks, searchPhilosophicalChunks, searchTextChunks, searchPositions, normalizeAuthorName, type StructuredChunk, type StructuredPosition } from "./vector-search";
+import { findRelevantChunks, searchPhilosophicalChunks, searchTextChunks, searchPositions, searchArgumentStatements, getArgumentsForThinker, getSourceChunkNeighborhoods, normalizeAuthorName, type StructuredChunk, type StructuredPosition } from "./vector-search";
 import {
   insertPersonaSettingsSchema,
   insertGoalSchema,
@@ -516,6 +516,7 @@ import path from "path";
 import { runSelfTest } from "./services/selfTest";
 import { runSyntheticUserTest } from "./services/syntheticUserTest";
 import { runAccuracyTest } from "./services/accuracyTest";
+import { runThinkerProbeTest } from "./services/thinkerProbeTest";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Validate SESSION_SECRET is set
@@ -904,12 +905,91 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // HYBRID SEARCH: Combine embedding search (paper_chunks) with keyword search (text_chunks)
       // This ensures we get both semantically similar AND topic-matched content from Kuczynski's full corpus
+      let retrievalQuery = message;
+      try {
+        const normalizedQueryResponse = await streamWithFallback({
+          res,
+          systemPrompt: `Correct only obvious spelling and character-order errors in the user's question so it can be used for document retrieval. Preserve every concept, logical operator, polarity, and quantifier. Do not answer, explain, reframe, or add words. Return only the corrected question.`,
+          userPrompt: message,
+          maxTokens: 100,
+          temperature: 0,
+          startProvider: "deepseek",
+          onContent: () => {},
+          emitContent: false,
+        });
+        const candidate = normalizedQueryResponse
+          .replace(/^```(?:text)?\s*/i, "")
+          .replace(/\s*```$/, "")
+          .trim()
+          .split(/\n+/)[0]
+          .trim();
+        if (candidate) retrievalQuery = candidate;
+      } catch (normalizationError) {
+        console.warn("[Chat] Retrieval-query spelling normalization failed:", normalizationError);
+      }
+      console.log(`[Chat] Retrieval query: ${retrievalQuery}`);
       
       // 1. Embedding-based search from paper_chunks (120 chunks with vectors)
-      const embeddingChunks = await searchPhilosophicalChunks(message, 6, "kuczynski", "Kuczynski");
+      const embeddingChunks = await searchPhilosophicalChunks(retrievalQuery, 20, "kuczynski", "Kuczynski");
       
       // 2. Keyword-based search from text_chunks (39,000+ chunks without vectors)
-      const textChunks = await searchTextChunks("J.-M. Kuczynski", message, 6);
+      const textChunks = await searchTextChunks("Kuczynski", retrievalQuery, 20);
+      const retrievalTerms = Array.from(new Set(
+        retrievalQuery
+          .toLowerCase()
+          .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+          .split(/\s+/)
+          .filter((word) => word.length >= 5)
+          .flatMap((word) =>
+            word.startsWith("non") && word.length >= 9
+              ? [word.replace(/-/g, ""), word.replace(/-/g, "").slice(3)]
+              : [word.replace(/-/g, "")]
+          ),
+      ));
+      const chatSourceAnchors = [
+        ...textChunks.map((chunk) => ({
+          sourceFile: chunk.sourceFile,
+          chunkIndex: chunk.chunkIndex,
+          content: chunk.chunkText,
+        })),
+        ...embeddingChunks.map((chunk) => ({
+          sourceFile: chunk.paperTitle,
+          chunkIndex: chunk.chunkIndex,
+          content: chunk.content,
+        })),
+      ]
+        .map((chunk) => {
+          const normalizedContent = chunk.content
+            .toLowerCase()
+            .replace(/[^\p{L}\p{N}]+/gu, "");
+          return {
+            sourceFile: chunk.sourceFile,
+            chunkIndex: chunk.chunkIndex,
+            conceptMatches: retrievalTerms.filter((term) =>
+              normalizedContent.includes(term)
+            ).length,
+          };
+        })
+        .filter((anchor) => anchor.conceptMatches >= 2)
+        .sort((a, b) => b.conceptMatches - a.conceptMatches)
+        .slice(0, 6);
+      const chatPrimaryNeighborhoods = await getSourceChunkNeighborhoods(
+        "Kuczynski",
+        chatSourceAnchors,
+        7,
+        80,
+      );
+      console.log(
+        `[Chat] Retrieved ${chatPrimaryNeighborhoods.length} neighboring primary-source chunks`,
+      );
+      // 3. Structured arguments are the primary source of the author's actual
+      // premises and conclusions. Retrieve enough candidates to cover the
+      // question rather than relying on a handful of prose chunks.
+      const structuredArgumentsContext = await getArgumentsForThinker(
+        "Kuczynski",
+        retrievalQuery,
+        50,
+      );
       
       // 2b. If the question is about a paradox, also consult the external Paradoxes app
       const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
@@ -940,7 +1020,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         positionResults = positionsQuery;
       }
       
-      console.log(`[HYBRID RAG] Embedding: ${embeddingChunks.length} | Text: ${textChunks.length} | Positions: ${positionResults.length}`);
+      console.log(`[HYBRID RAG] Arguments: ${structuredArgumentsContext ? "yes" : "no"} | Embedding: ${embeddingChunks.length} | Text: ${textChunks.length} | Positions: ${positionResults.length}`);
       
       // Build knowledge context with ACTUAL Kuczynski content from ALL THREE sources
       let knowledgeContext = "";
@@ -948,11 +1028,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const hasTextContent = textChunks.length > 0;
       const hasPositions = positionResults.length > 0;
       
-      if (hasEmbeddingContent || hasTextContent || hasPositions) {
+      if (structuredArgumentsContext || hasEmbeddingContent || hasTextContent || hasPositions) {
         knowledgeContext = `\n\n--- YOUR WRITINGS (for reference) ---\n\n`;
-        
+
+        if (chatPrimaryNeighborhoods.length > 0) {
+          knowledgeContext += `=== PRIMARY SOURCE SECTION AND NEIGHBORING PASSAGES ===\n`;
+          for (const chunk of chatPrimaryNeighborhoods) {
+            knowledgeContext += `${chunk.chunkText}\n\n`;
+          }
+        }
+
         // PRIORITY 1: Add verified positions FIRST (most reliable source)
-        if (hasPositions) {
+        if (hasPositions && !structuredArgumentsContext) {
           console.log(`[RAG] POSITIONS for query: "${message.substring(0, 80)}..."`);
           knowledgeContext += `=== YOUR CORE POSITIONS ===\n`;
           for (const pos of positionResults) {
@@ -962,7 +1049,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
           knowledgeContext += `\n`;
         }
         
-        // Add embedding-based chunks (more semantically relevant)
+        // Primary source text governs derived arguments and summaries.
+        if (hasTextContent) {
+          console.log(`[RAG] Text chunks for query: "${message.substring(0, 80)}..."`);
+          for (const chunk of textChunks) {
+            const sourceFile = chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ');
+            console.log(`  [text] ${sourceFile.substring(0, 60)}`);
+            knowledgeContext += `From "${sourceFile}":\n${chunk.chunkText}\n\n`;
+          }
+        }
+
+        if (structuredArgumentsContext) {
+          knowledgeContext += `${structuredArgumentsContext}\n`;
+        }
+
+        // Add embedding-based chunks after direct keyword-matched source text.
         if (hasEmbeddingContent) {
           console.log(`[RAG] Embedding chunks for query: "${message.substring(0, 80)}..."`);
           for (const chunk of embeddingChunks) {
@@ -972,26 +1073,56 @@ export async function registerRoutes(app: Express): Promise<Server> {
           }
         }
         
-        // Add keyword-matched text chunks (topic-relevant from full corpus)
-        if (hasTextContent) {
-          console.log(`[RAG] Text chunks for query: "${message.substring(0, 80)}..."`);
-          for (const chunk of textChunks) {
-            const sourceFile = chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ');
-            console.log(`  [text] ${sourceFile.substring(0, 60)}`);
-            knowledgeContext += `From "${sourceFile}":\n${chunk.chunkText}\n\n`;
-          }
-        }
-        
         knowledgeContext += `--- END ---\n\n`;
-        knowledgeContext += `INSTRUCTION: You have read your own writings above. Now answer the question IN YOUR OWN VOICE - crisp, direct, no fluff. You MUST quote directly from this material to prove your claims are grounded in your actual work. If the material doesn't address the question, say so.\n`;
+        knowledgeContext += `INSTRUCTION: Answer from the author's primary source passages above. They govern all derived arguments, positions, and summaries. Do not substitute generic model knowledge or a nearby position. If the primary text and derived records do not establish an answer, say that the documented material is insufficient.\n`;
       } else {
         console.log(`[RAG] No relevant positions found for query: "${message.substring(0, 80)}..."`);
-        // Even with no RAG results, remind system to use authentic voice
-        knowledgeContext = `\n\n⚠️ NOTE: No specific positions retrieved for this query. Respond using your authentic philosophical voice and known positions, or acknowledge if this falls outside your documented work.\n`;
+        knowledgeContext = `\n\nNo author records were retrieved for this question. State that the documented material is insufficient; do not infer or invent the author's position.\n`;
       }
       
       // Append external Paradoxes app context (with conflict-reconciliation instruction)
       knowledgeContext += formatParadoxesContext(paradoxMatches);
+
+      let chatBindingAnswer = "";
+      if (hasEmbeddingContent || hasTextContent || structuredArgumentsContext) {
+        try {
+          const bindingResponse = await streamWithFallback({
+            res,
+            systemPrompt: `Determine the selected author's direct answer using only the supplied verbatim primary-source passages. Structured arguments are secondary aids. Return one plain sentence of no more than 45 words. Preserve polarity and quantifiers. If the source directly answers the intended question despite a spelling error, answer that intended question; do not call it malformed. Do not add commentary.`,
+            userPrompt: `USER QUESTION:
+${message}
+
+VERBATIM PRIMARY-SOURCE PASSAGES:
+${[
+  ...chatPrimaryNeighborhoods.slice(0, 35).map((chunk) => chunk.chunkText),
+  ...textChunks.slice(0, 20).map((chunk) => chunk.chunkText),
+  ...embeddingChunks.slice(0, 20).map((chunk) => chunk.content),
+].join("\n\n").slice(0, 30000)}
+
+DERIVED STRUCTURED ARGUMENTS:
+${structuredArgumentsContext.slice(0, 12000)}`,
+            maxTokens: 120,
+            temperature: 0,
+            startProvider: "deepseek",
+            onContent: () => {},
+            emitContent: false,
+          });
+          chatBindingAnswer = bindingResponse
+            .replace(/^```(?:text)?\s*/i, "")
+            .replace(/\s*```$/, "")
+            .trim()
+            .split(/\n+/)[0]
+            .trim();
+          console.log(
+            `[Chat] Binding primary-source answer: ${chatBindingAnswer}`,
+          );
+        } catch (bindingError) {
+          console.error(
+            "[Chat] Could not derive binding primary-source answer:",
+            bindingError,
+          );
+        }
+      }
       
       // Build response instructions - ENFORCE word count and quote minimums
       let responseInstructions = "";
@@ -1081,7 +1212,10 @@ STYLE: Crisp, direct, conversational. Like talking to a smart friend.
       const intensityGuidance = buildIntensityGuidance(personaSettings?.intensityLevel);
 
       // Use Kuczynski's system prompt + inject actual positions (MANDATORY) + response format
-      const systemPrompt = kuczynskiFigure.systemPrompt + knowledgeContext + responseInstructions + "\n\n" + intensityGuidance;
+      const bindingAnswerInstruction = chatBindingAnswer
+        ? `\n\nBINDING PRIMARY-SOURCE ANSWER:\n${chatBindingAnswer}\nEvery sentence in the response must remain logically consistent with this answer. State this answer directly at the beginning. Do not call the question malformed when the source answers its intended meaning.`
+        : "";
+      const systemPrompt = kuczynskiFigure.systemPrompt + knowledgeContext + bindingAnswerInstruction + responseInstructions + "\n\n" + intensityGuidance;
       
       // DEBUG: Log what settings we're actually using
       console.log(`[CHAT DEBUG] Persona settings: responseLength=${personaSettings?.responseLength}, quoteFrequency=${personaSettings?.quoteFrequency}, model=${personaSettings?.selectedModel}`);
@@ -1201,9 +1335,9 @@ START WITH THE ATTACK. No stage-setting, no pedagogical framing, no narration.
 ❌ BANNED HEDGING: "Perhaps...", "Might...", "Could be said...", "It seems..."
 ✅ DECISIVE: If it's wrong, say it's wrong. If it follows, say it follows.
 
-🎯 REFRAME CONFUSED QUESTIONS:
+🎯 SOURCE-GOVERNED QUESTION HANDLING:
 
-If the question accepts false premises, REJECT them and show why the question itself is confused. Don't politely answer a malformed question - fix it first, then answer the real question.
+If the retrieved primary text directly answers the intended question, answer it directly—even when the user made a spelling error. Never call such a question malformed. Reject a premise only when the retrieved primary text explicitly rejects it, and never contradict the binding primary-source answer.
 
 🧠 NAME SPECIFIC TARGETS:
 
@@ -2521,7 +2655,14 @@ CRITICAL RULES:
   app.post("/api/figures/:figureId/write-paper", async (req: any, res) => {
     try {
       const figureId = req.params.figureId;
-      const { topic, wordLength = 1500, numberOfQuotes = 0, customInstructions = "", hasDocument = false } = req.body;
+      const {
+        topic,
+        wordLength = 1500,
+        numberOfQuotes = 0,
+        customInstructions = "",
+        hasDocument = false,
+        regenerateDeNovo = false,
+      } = req.body;
 
       if (!topic || typeof topic !== "string") {
         return res.status(400).json({ error: "Topic is required" });
@@ -2532,8 +2673,6 @@ CRITICAL RULES:
       const truncatedTopic = topic.length > maxTopicLength 
         ? topic.slice(0, maxTopicLength) + "\n\n[Document truncated - showing first 15k characters]"
         : topic;
-      const searchQuery = topic.slice(0, 500); // Short query for vector search
-      
       // Determine if this is a document rewrite request
       const isDocumentRewrite = hasDocument && topic.length > 500;
       
@@ -2541,6 +2680,18 @@ CRITICAL RULES:
       const effectiveInstructions = customInstructions.trim() || (isDocumentRewrite 
         ? "Produce the best possible version of this document. Improve clarity, strengthen arguments, enhance flow, and elevate the writing while preserving the author's voice and core ideas."
         : "");
+      const deNovoRequirement = regenerateDeNovo
+        ? "DE NOVO REQUIREMENT: Generate a wholly new answer from the original request and selected thinker's relevant database material. Do not reuse, revise, continue, defend, or consider any previously generated answer."
+        : "";
+      const governingRequest = effectiveInstructions
+        ? `NON-NEGOTIABLE USER REQUIREMENTS:\n${effectiveInstructions}\n\nSUBJECT OR SOURCE MATERIAL:\n${truncatedTopic}`
+        : `PAPER TOPIC:\n${truncatedTopic}`;
+      const completeGoverningRequest = [deNovoRequirement, governingRequest]
+        .filter(Boolean)
+        .join("\n\n");
+      const searchQuery = (effectiveInstructions
+        ? `${effectiveInstructions}\n${truncatedTopic}`
+        : truncatedTopic).slice(0, 1500);
 
       const targetWords = Math.min(Math.max(parseInt(wordLength) || 1500, 500), 50000);
       const targetQuotes = Math.min(Math.max(parseInt(numberOfQuotes) || 0, 0), 50);
@@ -2581,28 +2732,17 @@ CRITICAL RULES:
       res.write(`data: ${JSON.stringify({ status: "Searching database for grounding material..." })}\n\n`);
       res.flush?.();
 
-      // Give the reader immediate prose while grounding retrieval and outline
-      // construction run. This preview is deliberately excluded from the final
-      // word count and is replaced before the grounded paper begins.
-      const openingPreviewPromise = streamWithFallback({
-        res,
-        systemPrompt: `Write as ${figure.name} in a clear, authoritative first-person voice. Produce only the opening paragraph of a serious paper. Do not use quotations, citations, headings, notes, or meta-commentary.`,
-        userPrompt: `Begin a concise opening paragraph on this topic now:\n\n${truncatedTopic}\n\nWrite approximately 100 words that frame the central issue and state a direct thesis.`,
-        maxTokens: 180,
-        temperature: 0.6,
-        startProvider: "anthropic",
-        emitContent: true,
-      }).catch((previewError) => {
-        console.warn("[Paper Writer] Immediate opening preview failed:", (previewError as Error).message);
-        return "";
-      });
+      // The opening preview is started only after structured author evidence is
+      // retrieved and synthesized. Immediate but ungrounded prose can reverse
+      // the author's documented position and must never be shown.
+      let openingPreviewPromise: Promise<string> = Promise.resolve("");
 
       // ======
       // STEP 1: QUERY DATABASE DIRECTLY FOR GROUNDING MATERIAL
       // ======
       
       // Extract keywords for position search
-      const topicKeywords = topic.toLowerCase()
+      const topicKeywords = searchQuery.toLowerCase()
         .replace(/[^\w\s]/g, '')
         .split(/\s+/)
         .filter((w: string) => w.length > 3);
@@ -2612,8 +2752,48 @@ CRITICAL RULES:
       console.log(`[Paper Writer] Found ${positionsResult.length} positions`);
 
       // 1B: Get semantic chunks from chunks table (use normalized name) - use truncated query for embeddings
-      const chunksResult = await searchPhilosophicalChunks(searchQuery, 15, "common", normalizedAuthor);
+      const chunksResult = await searchPhilosophicalChunks(truncatedTopic, 20, "common", normalizedAuthor);
       console.log(`[Paper Writer] Found ${chunksResult.length} semantic chunks`);
+      const primaryTextChunks = await searchTextChunks(
+        normalizedAuthor,
+        truncatedTopic,
+        30,
+      );
+      console.log(`[Paper Writer] Found ${primaryTextChunks.length} topic-matched primary-text chunks`);
+      const sourceAnchors = chunksResult
+        .map((chunk) => {
+          const content = chunk.content.toLowerCase();
+          const conceptMatches = [
+            "logic",
+            "logical",
+            "spatiotemporal",
+            "non-spatiotemporal",
+            "entities",
+            "properties",
+            "propositions",
+          ].filter((term) =>
+            truncatedTopic.toLowerCase().includes(term.replace("non-", ""))
+              ? content.includes(term)
+              : false
+          ).length;
+          return {
+            sourceFile: chunk.paperTitle,
+            chunkIndex: chunk.chunkIndex,
+            conceptMatches,
+          };
+        })
+        .filter((anchor) => anchor.conceptMatches >= 2)
+        .sort((a, b) => b.conceptMatches - a.conceptMatches)
+        .slice(0, 8);
+      const sourceNeighborhoodChunks = await getSourceChunkNeighborhoods(
+        normalizedAuthor,
+        sourceAnchors,
+        7,
+        100,
+      );
+      console.log(
+        `[Paper Writer] Found ${sourceNeighborhoodChunks.length} neighboring primary-text chunks`,
+      );
 
       // 1C: Build a topic-ranked pool of direct quotations. Curated quotations
       // and verbatim excerpts from the semantically retrieved source chunks are
@@ -2634,7 +2814,7 @@ CRITICAL RULES:
         "those", "through", "under", "which", "while", "with", "would",
       ]);
       const relevanceCorpus = [
-        topic,
+        searchQuery,
         ...positionsResult.flatMap((position: any) => [
           String(position.topic || ""),
           String(position.position || ""),
@@ -2787,12 +2967,11 @@ CRITICAL RULES:
           const selectionResponse = await streamWithFallback({
             res,
             systemPrompt: `You select primary-source quotations for a focused philosophy paper. Choose only quotations that directly advance the requested comparison. Reject material that is merely generally philosophical or tangential. Prefer a coherent, diverse set covering the concepts actually needed by the topic. Return only JSON.`,
-            userPrompt: `Paper topic: ${truncatedTopic}
+            userPrompt: `Governing request: ${completeGoverningRequest}
 Author whose primary-source quotations must be selected: ${figure.name}
 Required number: ${desiredQuotePoolSize}
 
-Choose exactly ${desiredQuotePoolSize} candidate IDs. For this topic, prioritize direct relevance to essence, substance, form, matter, definition, natural kinds, necessity, actuality and potentiality, teleology, and scientific knowledge where applicable. Do not select tangents merely because they come from the same author. Avoid redundant quotations.
-Do not choose generic remarks about truth, science, change, place, perception, or other broad philosophical topics unless their wording directly clarifies the specific account of essence under comparison.
+Choose exactly ${desiredQuotePoolSize} candidate IDs. Prioritize only material that directly supports the user's required thesis and requested lines of argument. Do not select tangents merely because they come from the same author. Avoid redundant quotations and reject any candidate whose main subject is absent from the governing request.
 
 Candidates:
 ${JSON.stringify(candidatePayload)}
@@ -2858,20 +3037,103 @@ Return exactly:
       const quotes = selectedQuoteCandidates.map((candidate) => candidate.text);
       console.log(`[Paper Writer] Selected ${quotes.length}/${targetQuotes || 15} topic-ranked verified quotations`);
 
-      // 1D: Get arguments from arguments table (use normalized name with case-insensitive match)
+      // 1D: Retrieve arguments by relevance to the governing request.
       let args: string[] = [];
+      let argumentResults: any[] = [];
       try {
-        const argumentsResult = await db.execute(
-          sql`SELECT premises, conclusion FROM arguments 
-              WHERE LOWER(thinker) = LOWER(${normalizedAuthor})
-              LIMIT 10`
+        argumentResults = await searchArgumentStatements(
+          normalizedAuthor,
+          searchQuery,
+          60,
         );
-        args = (argumentsResult.rows || []).map((r: any) => 
-          `Premises: ${JSON.stringify(r.premises)} → Conclusion: ${r.conclusion}`
+        args = argumentResults.map((argument) =>
+          `[${argument.sourceSection || "Relevant argument"}] Premises: ${JSON.stringify(argument.premises)} → Conclusion: ${argument.conclusion}`
         );
         console.log(`[Paper Writer] Found ${args.length} arguments`);
       } catch (e) {
         console.log(`[Paper Writer] Arguments query failed (table may not exist): ${e}`);
+      }
+
+      const argumentGuidedTextChunks = argumentResults.length > 0
+        ? await searchTextChunks(
+            normalizedAuthor,
+            argumentResults
+              .slice(0, 15)
+              .flatMap((argument) => [
+                String(argument.sourceSection || ""),
+                String(argument.conclusion || ""),
+                JSON.stringify(argument.premises || []),
+              ])
+              .join("\n")
+              .slice(0, 12000),
+            30,
+          )
+        : [];
+      const primarySourceChunks = Array.from(
+        new Map(
+          [
+            ...sourceNeighborhoodChunks,
+            ...chunksResult.map((chunk) => ({
+              sourceFile: chunk.paperTitle,
+              chunkIndex: chunk.chunkIndex,
+              chunkText: chunk.content,
+            })),
+            ...argumentGuidedTextChunks,
+            ...primaryTextChunks,
+          ].map((chunk) => [
+            `${chunk.sourceFile}:${chunk.chunkIndex}:${chunk.chunkText.slice(0, 120)}`,
+            chunk,
+          ]),
+        ).values(),
+      );
+      console.log(
+        `[Paper Writer] Built ${primarySourceChunks.length} unique primary-source chunks (${argumentGuidedTextChunks.length} argument-guided)`,
+      );
+
+      let authorEvidenceBrief = "";
+      let bindingDirectAnswer = "";
+      if (argumentResults.length > 0) {
+        const evidenceResponse = await streamWithFallback({
+          res,
+          systemPrompt: `You synthesize a selected author's documented position. Verbatim primary-source passages are authoritative and govern all derived structured arguments. Determine what the primary text directly supports, including the polarity of yes/no questions. Every clause in the direct answer must be supported by a verbatim sentence you copy from the supplied primary text. Preserve existential and universal quantifiers exactly. Do not conflate categories that the source distinguishes, substitute textbook knowledge, infer a nearby view, or resolve tensions by inventing a compromise. Return only JSON.`,
+          userPrompt: `QUESTION AND USER REQUIREMENTS:
+${completeGoverningRequest}
+
+VERBATIM PRIMARY-SOURCE PASSAGES:
+${primarySourceChunks.slice(0, 35).map((chunk) =>
+  `[Source ${chunk.sourceFile}, chunk ${chunk.chunkIndex}]\n${chunk.chunkText}`
+).join("\n\n")}
+
+RANKED STRUCTURED ARGUMENTS:
+${args.slice(0, 35).join("\n")}
+
+Return exactly:
+{"directAnswer":"one sentence of no more than 40 words stating only the direct answer and its immediate source-supported reason; do not add examples or secondary objections","verbatimSupport":["exact sentence copied from the primary text"],"supportingClaims":["claim grounded in a quoted primary-source sentence"],"unsupportedOrConflictingClaims":["claims the records do not support or explicitly reject"],"sufficient":true}
+
+Set sufficient=false if the records do not answer the question.`,
+          maxTokens: 1600,
+          temperature: 0.05,
+          startProvider: "deepseek",
+          onContent: () => {},
+          emitContent: false,
+        });
+        const firstBrace = evidenceResponse.indexOf("{");
+        const lastBrace = evidenceResponse.lastIndexOf("}");
+        if (firstBrace >= 0 && lastBrace > firstBrace) {
+          const evidence = JSON.parse(
+            evidenceResponse.slice(firstBrace, lastBrace + 1),
+          );
+          bindingDirectAnswer = String(evidence.directAnswer || "").trim();
+          authorEvidenceBrief = [
+            `Direct answer: ${bindingDirectAnswer}`,
+            `Supported claims: ${Array.isArray(evidence.supportingClaims) ? evidence.supportingClaims.join(" | ") : ""}`,
+            `Unsupported or conflicting claims: ${Array.isArray(evidence.unsupportedOrConflictingClaims) ? evidence.unsupportedOrConflictingClaims.join(" | ") : ""}`,
+            `Evidence sufficient: ${evidence.sufficient !== false}`,
+          ].join("\n");
+          console.log(
+            `[Paper Writer] Binding database answer: ${bindingDirectAnswer.slice(0, 300)}`,
+          );
+        }
       }
 
       if (targetQuotes > 0 && quotes.length < targetQuotes) {
@@ -2891,16 +3153,22 @@ Return exactly:
       // STEP 2: BUILD COHERENCE MATERIAL FROM DATABASE RESULTS
       // ======
       const coherenceMaterial = {
-        quotes: targetQuotes > 0 ? selectedQuotes : quotes,
-        positions: positionsResult.map(p => `[${p.topic}] ${p.position}`),
+        quotes: selectedQuotes,
+        positions: args.length > 0
+          ? []
+          : positionsResult.map(p => `[${p.topic}] ${p.position}`),
         arguments: args,
-        chunks: chunksResult.map(c => c.content),
+        chunks: Array.from(new Set([
+          ...primarySourceChunks.map((chunk) => chunk.chunkText),
+          ...chunksResult.map((chunk) => chunk.content),
+        ])),
         deductions: ""
       };
 
       // Verify we have grounding material
       const totalMaterial = coherenceMaterial.quotes.length + 
                            coherenceMaterial.positions.length + 
+                           coherenceMaterial.arguments.length +
                            coherenceMaterial.chunks.length;
       
       if (totalMaterial === 0) {
@@ -2915,6 +3183,17 @@ Return exactly:
 
       // Build grounding context from database material
       const groundingContext = [
+        "=== BINDING AUTHOR-EVIDENCE SUMMARY ===",
+        authorEvidenceBrief || "No structured evidence summary was available.",
+        "",
+        "=== VERBATIM PRIMARY-SOURCE PASSAGES ===",
+        ...primarySourceChunks.slice(0, 45).map((chunk) =>
+          `[Source ${chunk.sourceFile}, chunk ${chunk.chunkIndex}]\n${chunk.chunkText}`
+        ),
+        "",
+        "=== RELEVANT STRUCTURED ARGUMENTS FROM DATABASE ===",
+        ...coherenceMaterial.arguments.slice(0, 60),
+        "",
         "=== POSITIONS FROM DATABASE ===",
         ...coherenceMaterial.positions.slice(0, 15),
         "",
@@ -2924,6 +3203,23 @@ Return exactly:
         "=== TEXT CHUNKS FROM DATABASE ===",
         ...coherenceMaterial.chunks.slice(0, 8)
       ].join("\n");
+
+      openingPreviewPromise = streamWithFallback({
+        res,
+        systemPrompt: `Write as ${figure.name} in a clear, authoritative first-person voice. Produce only the opening paragraph of a serious paper. The binding author-evidence summary and structured database arguments govern every substantive claim. Never contradict their direct answer or polarity. Do not use outside model knowledge, quotations, citations, headings, notes, or meta-commentary.`,
+        userPrompt: `${completeGoverningRequest}
+
+${groundingContext.slice(0, 10000)}
+
+Write approximately 100 words that immediately state and frame the database-grounded answer.`,
+        maxTokens: 180,
+        temperature: 0.3,
+        startProvider: "anthropic",
+        emitContent: true,
+      }).catch((previewError) => {
+        console.warn("[Paper Writer] Grounded opening preview failed:", (previewError as Error).message);
+        return "";
+      });
 
       // ======
       // STEP 3: THREE-PASS SEMANTIC SKELETON ARCHITECTURE
@@ -2935,15 +3231,24 @@ Return exactly:
       
       let skeleton: GlobalSkeleton;
       try {
-        const skeletonInput = isDocumentRewrite 
-          ? truncatedTopic 
-          : `Topic: ${truncatedTopic}\n\nGrounding material:\n${groundingContext.slice(0, 10000)}`;
+        const skeletonInput = isDocumentRewrite
+          ? completeGoverningRequest
+          : `${completeGoverningRequest}\n\nPOTENTIALLY RELEVANT GROUNDING MATERIAL:\n${groundingContext.slice(0, 14000)}\n\nUse grounding only when it directly supports the governing request. Exclude every unrelated theme.`;
         
         skeleton = await extractGlobalSkeleton(
           skeletonInput,
           effectiveInstructions,
           anthropic ? 'claude' : 'gpt-4o'
         );
+        if (bindingDirectAnswer) {
+          skeleton.thesis = bindingDirectAnswer;
+          skeleton.commitmentLedger.asserts = [
+            bindingDirectAnswer,
+            ...skeleton.commitmentLedger.asserts.filter(
+              (claim) => claim !== bindingDirectAnswer,
+            ),
+          ];
+        }
         
         console.log(`[Paper Writer] Skeleton extracted: ${skeleton.outline.length} outline items, thesis: ${skeleton.thesis.slice(0, 100)}`);
         res.write(`data: ${JSON.stringify({ 
@@ -3080,7 +3385,7 @@ Return exactly:
             systemPrompt: `You are ${figure.name}, finishing a philosophical paper in first person. Write a natural conclusion that follows from the supplied preceding prose. Never refer to ${figure.name} by name or in the third person. Do not discuss writing, quotations, evidence mechanics, or word counts. Do not introduce direct quotations.
 
 Return only a JSON array of objects shaped {"word":"one-token","optional":boolean}. Each word must be exactly one whitespace-delimited token, including attached punctuation. Mark optional=true only for independently removable adjectives or adverbs whose deletion leaves the sentences fully grammatical. Never mark articles, prepositions, conjunctions, nouns, verbs, pronouns, negations, or punctuated words optional.`,
-            userPrompt: `Topic: ${truncatedTopic}
+            userPrompt: `${completeGoverningRequest}
 
 Immediately preceding prose:
 ${bestPrefix.slice(-1800)}
@@ -3304,9 +3609,11 @@ ${closingFeedback}`,
         : "";
       const quoteAppendixWords = countWords(quoteAppendix);
       const proseTargetWords = targetWords;
+      const minimumAcceptedWords = Math.floor(proseTargetWords * 0.85);
+      const maximumAcceptedWords = Math.ceil(proseTargetWords * 1.15);
       const minimumAnalyticalBodyWords =
         totalQuotedWords + targetQuotes * 12 + 100;
-      if (targetQuotes > 0 && proseTargetWords < minimumAnalyticalBodyWords) {
+      if (targetQuotes > 0 && maximumAcceptedWords < minimumAnalyticalBodyWords) {
         cleanup();
         res.write(`data: ${JSON.stringify({
           error: `${targetWords} words is too short to use and analyze ${targetQuotes} quotations. Increase the paper length or request fewer quotations.`,
@@ -3397,6 +3704,14 @@ QUOTATION RULES:
       // Build skeleton-constrained system prompt
       const skeletonSystemPrompt = `You are ${figure.name}. Write in first person as this philosopher.
 
+NON-NEGOTIABLE USER REQUIREMENTS — THESE OVERRIDE THE SKELETON AND ALL RETRIEVED MATERIAL:
+${effectiveInstructions || `Address exactly this topic: ${truncatedTopic}`}
+${deNovoRequirement}
+
+Relevance rule: every paragraph must directly serve those requirements. Never introduce a theme merely because it appears in retrieved material. If retrieved material conflicts with or wanders beyond the requirements, ignore it.
+Evidence rule: factual and empirical claims must be supported by the supplied grounding material. Do not add studies, interventions, measurements, or causal claims from general model memory.
+Instruction-fidelity rule: preserve the exact logical force and polarity of every user requirement. Do not strengthen "does not validate" into "refutes," "invalidates," or "falsifies"; do not weaken "proves" into "suggests"; and do not substitute a nearby philosophical thesis.
+
 GLOBAL SKELETON - YOU MUST FOLLOW THIS STRUCTURE:
 THESIS: ${skeleton.thesis}
 OUTLINE: ${skeleton.outline.map((o, i) => `${i + 1}. ${o}`).join('\n')}
@@ -3466,10 +3781,14 @@ ${assignedMarkers.map((marker) => `- Use ${marker} exactly once and interpret it
 - Do not use any quote marker not listed for this segment.
 - These markers must occur before the final third of this segment.`
             : "\nDo not use any quote marker in this segment.";
+          const thisChunkMaximum = thisChunkTarget + Math.max(
+            45,
+            Math.floor(thisChunkTarget * 0.15),
+          );
           
           let chunkPrompt = "";
           if (chunkIdx === 0) {
-            chunkPrompt = `Write AT LEAST ${thisChunkTarget} words for the FIRST part of the paper. Do not stop early.
+            chunkPrompt = `Write between ${thisChunkTarget} and ${thisChunkMaximum} words for the FIRST part of the paper.
 
 COVER THESE OUTLINE SECTIONS:
 ${relevantOutline.map((o, i) => `${startOutlineIdx + i + 1}. ${o}`).join('\n')}
@@ -3477,7 +3796,7 @@ ${relevantOutline.map((o, i) => `${startOutlineIdx + i + 1}. ${o}`).join('\n')}
 Begin NOW with the thesis. First person voice.
 ${assignedQuoteInstruction}`;
           } else {
-            chunkPrompt = `Continue the paper. Write AT LEAST ${thisChunkTarget} additional words. Do not stop early.
+            chunkPrompt = `Continue the paper with between ${thisChunkTarget} and ${thisChunkMaximum} additional words.
 
 COVER THESE OUTLINE SECTIONS:
 ${relevantOutline.map((o, i) => `${startOutlineIdx + i + 1}. ${o}`).join('\n')}
@@ -3498,7 +3817,7 @@ ${assignedQuoteInstruction}`;
             systemPrompt: skeletonSystemPrompt,
             userPrompt: chunkPrompt,
             maxTokens: Math.ceil(
-              thisChunkTarget * (isQuoteIntegrationSegment ? 2.2 : 3.5),
+              thisChunkMaximum * (isQuoteIntegrationSegment ? 2.0 : 1.7),
             ),
             temperature: 0.7,
             startProvider: "anthropic",
@@ -3977,7 +4296,7 @@ ${JSON.stringify(organicRevisionInput, null, 2)}
 Return only the JSON object.`,
               maxTokens: Math.max(6000, Math.ceil(targetWords * 6)),
               temperature: 0.35,
-              startProvider: "anthropic",
+              startProvider: "deepseek",
               onContent: () => {},
               emitContent: false,
             });
@@ -4168,16 +4487,280 @@ ${compressionFeedback}`,
           }
         }
 
-        const expandedBody = expandQuoteMarkers(markedBody);
-        if (countWords(expandedBody) < proseTargetWords) {
-          throw new Error(`Integrated paper body stopped at ${countWords(expandedBody)}/${proseTargetWords} required words`);
+        if (
+          quoteMarkers.length === 0
+          && countWords(markedBody) > maximumAcceptedWords
+        ) {
+          let compressedBody = "";
+          let compressionFeedback = "";
+          for (let attempt = 0; attempt < 3 && !compressedBody; attempt++) {
+            const response = await streamWithFallback({
+              res,
+              systemPrompt: `You are the final structural editor for a rigorous first-person paper written as ${figure.name}. Compress the complete draft without dropping any required line of argument. The user's explicit requirements are non-negotiable. Preserve their exact logical force and polarity: never strengthen "does not validate" into "refutes," "invalidates," or "falsifies," never weaken "proves" into "suggests," and never replace a stated thesis with a nearby claim. Preserve the thesis, every major outline commitment, objections and replies, and the conclusion. Remove repetition before removing substance. Use continuous prose with no headings, lists, labels, or meta-commentary. Use only factual material supported by the draft and supplied database grounding.`,
+              userPrompt: `${completeGoverningRequest}
+
+REQUIRED OUTLINE COMMITMENTS:
+${skeleton.outline.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+
+DATABASE GROUNDING:
+${groundingContext.slice(0, 14000)}
+
+DRAFT TO COMPRESS:
+${markedBody}
+
+Return between ${minimumAcceptedWords} and ${maximumAcceptedWords} words. Every explicit user requirement and every major line of argument must remain developed, not merely mentioned. Argumentative completeness takes priority over approaching the exact target.
+${compressionFeedback}`,
+              maxTokens: Math.ceil((maximumAcceptedWords + 80) * 1.8),
+              temperature: 0.2,
+              startProvider: attempt >= 2 ? "deepseek" : "anthropic",
+              onContent: () => {},
+              emitContent: false,
+            });
+            const cleaned = response
+              .replace(/^```(?:text|markdown)?\s*/i, "")
+              .replace(/\s*```$/, "")
+              .replace(/^#{1,6}\s+/gm, "")
+              .trim();
+            const compressedWords = countWords(cleaned);
+            if (
+              compressedWords >= minimumAcceptedWords
+              && compressedWords <= maximumAcceptedWords
+              && /[.!?]['”)\]]*$/.test(cleaned)
+            ) {
+              compressedBody = cleaned;
+            } else {
+              compressionFeedback = `The previous revision had ${compressedWords} words. Return a complete paper within the required range.`;
+            }
+          }
+          if (compressedBody) {
+            markedBody = compressedBody;
+          }
         }
 
-        const proseBody = await closeAtExactWordCount(
-          expandedBody,
-          proseTargetWords,
-          quoteExcerpts.map((quote) => `“${quote}”`),
-        );
+        let factualAuditIssues: string[] = [];
+        if (quoteMarkers.length === 0 && effectiveInstructions) {
+          try {
+            const auditResponse = await streamWithFallback({
+              res,
+              systemPrompt: `You are a strict but narrowly scoped factual and instruction-fidelity auditor. Compare a philosophical paper against the user's explicit requirements and the selected thinker's verbatim primary-source passages. Flag only: (1) a paper claim directly contradicted by the source, (2) a substantive claim that neither appears in nor validly follows from the source, (3) a reversal or quantifier change, or (4) an explicit user requirement that is missing. Do not demand verbatim wording. Do not flag valid deductive consequences. Do not require the paper to cover every argument found in the source; source material not explicitly requested may be omitted. “Some entities of kind X are required” does not mean “all entities of kind X are required.” Return only JSON.`,
+              userPrompt: `${completeGoverningRequest}
+
+SELECTED THINKER'S DATABASE GROUNDING:
+${groundingContext.slice(0, 16000)}
+
+PAPER TO AUDIT:
+${markedBody}
+
+Return exactly:
+{"issues":["specific conflict, including the exact paper claim and the source passage that contradicts it"],"missingRequirements":["explicit user requirement not substantively developed"]}
+
+Return empty arrays only if the complete paper is faithful and grounded.`,
+              maxTokens: 1400,
+              temperature: 0.1,
+              startProvider: "deepseek",
+              onContent: () => {},
+              emitContent: false,
+            });
+            const firstBrace = auditResponse.indexOf("{");
+            const lastBrace = auditResponse.lastIndexOf("}");
+            const audit = firstBrace >= 0 && lastBrace > firstBrace
+              ? JSON.parse(auditResponse.slice(firstBrace, lastBrace + 1))
+              : { issues: [], missingRequirements: [] };
+            const factualIssues = (Array.isArray(audit.issues)
+              ? audit.issues
+              : []).filter(
+                (problem) => typeof problem === "string" && problem.trim(),
+              );
+            factualAuditIssues = factualIssues;
+            const missingRequirements = (Array.isArray(
+              audit.missingRequirements,
+            )
+              ? audit.missingRequirements
+              : []).filter(
+                (problem) => typeof problem === "string" && problem.trim(),
+              );
+            const auditProblems = [...factualIssues, ...missingRequirements];
+
+            if (auditProblems.length > 0) {
+              console.warn(
+                `[Paper Writer] Content audit found ${auditProblems.length} issue(s):`,
+                auditProblems,
+              );
+            }
+            // Concrete factual sentences are handled below by the targeted
+            // primary-source checker. Full-paper repair is reserved for a
+            // genuinely missing explicit user requirement.
+            if (missingRequirements.length > 0) {
+              let repairedBody = "";
+              let repairFeedback = "";
+              for (let attempt = 0; attempt < 3 && !repairedBody; attempt++) {
+                const repairResponse = await streamWithFallback({
+                  res,
+                  systemPrompt: `You are the final factual editor for a rigorous first-person paper written as ${figure.name}. Correct every listed problem using only the user's governing requirements and the selected thinker's database grounding. Preserve the user's exact logical force and polarity. Do not add outside studies, facts, or doctrinal definitions. Develop every required argument. Return only the complete corrected paper in continuous prose.`,
+                  userPrompt: `${completeGoverningRequest}
+
+SELECTED THINKER'S DATABASE GROUNDING:
+${groundingContext.slice(0, 16000)}
+
+AUDIT PROBLEMS THAT MUST BE CORRECTED:
+${missingRequirements.map((problem, index) => `${index + 1}. ${problem}`).join("\n")}
+
+PAPER TO REPAIR:
+${markedBody}
+
+Return a complete corrected paper between ${minimumAcceptedWords} and ${maximumAcceptedWords} words. Do not include editorial notes or discuss the audit.
+${repairFeedback}`,
+                  maxTokens: Math.ceil(maximumAcceptedWords * 1.4),
+                  temperature: 0.12,
+                  startProvider: attempt >= 2 ? "anthropic" : "deepseek",
+                  onContent: () => {},
+                  emitContent: false,
+                });
+                const candidate = repairResponse
+                  .replace(/^```(?:text|markdown)?\s*/i, "")
+                  .replace(/\s*```$/, "")
+                  .trim();
+                const candidateWords = countWords(candidate);
+                if (
+                  candidateWords >= minimumAcceptedWords
+                  && candidateWords <= maximumAcceptedWords
+                  && /[.!?]['”)\]]*$/.test(candidate)
+                ) {
+                  repairedBody = candidate;
+                } else {
+                  repairFeedback = `The previous repair had ${candidateWords} words or lacked a complete ending. Return a complete corrected paper inside the required range.`;
+                }
+              }
+              if (!repairedBody) {
+                throw new Error(
+                  "Factual repair could not produce a complete paper inside the accepted length range",
+                );
+              }
+              markedBody = repairedBody;
+            }
+          } catch (auditError) {
+            throw new Error(
+              `Paper factual audit failed: ${(auditError as Error).message}`,
+            );
+          }
+        }
+
+        const expandedBody = expandQuoteMarkers(markedBody);
+        if (countWords(expandedBody) < minimumAcceptedWords) {
+          throw new Error(`Integrated paper body stopped at ${countWords(expandedBody)} words; minimum acceptable length is ${minimumAcceptedWords}`);
+        }
+
+        let proseBody = expandedBody.trim();
+        if (countWords(proseBody) > maximumAcceptedWords) {
+          proseBody = await closeAtExactWordCount(
+            proseBody,
+            maximumAcceptedWords,
+            quoteExcerpts.map((quote) => `“${quote}”`),
+          );
+        }
+        if (bindingDirectAnswer) {
+          const contradictionResponse = await streamWithFallback({
+            res,
+            systemPrompt: `You are a strict logical contradiction detector. Compare a binding answer with a paper. Identify only complete sentences in the paper that directly deny, reverse, or contradict the binding answer. Do not flag qualifications, objections that are explicitly rejected, or merely different supporting points. Copy every contradictory sentence verbatim. Return only JSON.`,
+            userPrompt: `BINDING DATABASE-DERIVED ANSWER:
+${bindingDirectAnswer}
+
+PAPER:
+${proseBody}
+
+Return exactly:
+{"contradictorySentences":["exact complete sentence copied from the paper"]}`,
+            maxTokens: 1000,
+            temperature: 0,
+            startProvider: "deepseek",
+            onContent: () => {},
+            emitContent: false,
+          });
+          const firstBrace = contradictionResponse.indexOf("{");
+          const lastBrace = contradictionResponse.lastIndexOf("}");
+          if (firstBrace >= 0 && lastBrace > firstBrace) {
+            const contradictionAudit = JSON.parse(
+              contradictionResponse.slice(firstBrace, lastBrace + 1),
+            );
+            const contradictorySentences = Array.isArray(
+              contradictionAudit.contradictorySentences,
+            )
+              ? contradictionAudit.contradictorySentences.filter(
+                  (sentence: unknown) =>
+                    typeof sentence === "string"
+                    && sentence.trim().length >= 20
+                    && proseBody.includes(sentence.trim()),
+                )
+              : [];
+            for (const sentence of contradictorySentences) {
+              proseBody = proseBody.replace(sentence.trim(), "").trim();
+            }
+            proseBody = proseBody
+              .replace(/[ \t]{2,}/g, " ")
+              .replace(/\n{3,}/g, "\n\n")
+              .trim();
+            if (
+              contradictorySentences.length > 0
+              && countWords(proseBody) < minimumAcceptedWords
+            ) {
+              throw new Error(
+                "Removing claims that contradicted the database-derived answer made the paper too short",
+              );
+            }
+          }
+        }
+        const sourceFaithfulnessResponse = factualAuditIssues.length > 0
+          ? await streamWithFallback({
+          res,
+          systemPrompt: `You locate exact paper sentences corresponding to already-identified factual audit issues. Act only on the supplied audit issues; do not independently scan for or invent additional problems. For each listed issue, copy the one complete offending paper sentence verbatim. Return only delimiter blocks, with no JSON and no commentary.`,
+          userPrompt: `VERBATIM PRIMARY SOURCE:
+${primarySourceChunks.slice(0, 45).map((chunk) => chunk.chunkText).join("\n\n").slice(0, 30000)}
+
+IDENTIFIED FACTUAL AUDIT ISSUES:
+${factualAuditIssues.map((issue, index) => `${index + 1}. ${issue}`).join("\n")}
+
+PAPER:
+${proseBody}
+
+For each correction return exactly:
+[[ORIGINAL]]
+exact complete sentence copied from the paper
+[[/ORIGINAL]]
+
+Return NONE if no correction is needed.`,
+          maxTokens: 1600,
+          temperature: 0,
+          startProvider: "deepseek",
+          onContent: () => {},
+          emitContent: false,
+        })
+          : "NONE";
+        const revisionPattern =
+          /\[\[ORIGINAL\]\]([\s\S]*?)\[\[\/ORIGINAL\]\]/g;
+        let revisionMatch: RegExpExecArray | null;
+        let appliedSourceRevisions = 0;
+        while ((revisionMatch = revisionPattern.exec(sourceFaithfulnessResponse))) {
+            const original = revisionMatch[1].trim();
+            if (
+              original.length >= 20
+              && proseBody.includes(original)
+            ) {
+              proseBody = proseBody.replace(original, "").trim();
+              appliedSourceRevisions++;
+            }
+        }
+        if (appliedSourceRevisions > 0) {
+          const sourceCheckedWords = countWords(proseBody);
+          if (
+            sourceCheckedWords < minimumAcceptedWords
+            || sourceCheckedWords > maximumAcceptedWords
+            || !/[.!?]['”)\]]*$/.test(proseBody)
+          ) {
+            throw new Error(
+              "Primary-source factual corrections produced an incomplete paper or moved it outside the accepted length range",
+            );
+          }
+        }
         const unusedQuotes = quoteExcerpts.filter((quote) => {
           return proseBody.split(`“${quote}”`).length - 1 !== 1;
         });
@@ -4216,9 +4799,13 @@ ${compressionFeedback}`,
         totalWordCount = countWords(proseBody);
         const totalDocumentWordCount = countWords(totalContent);
 
-        if (totalWordCount !== targetWords || formattedQuotes.length !== targetQuotes) {
+        if (
+          totalWordCount < minimumAcceptedWords
+          || totalWordCount > maximumAcceptedWords
+          || formattedQuotes.length !== targetQuotes
+        ) {
           throw new Error(
-            `Paper validation failed: ${totalWordCount}/${targetWords} words and ${formattedQuotes.length}/${targetQuotes} quotes`,
+            `Paper validation failed: ${totalWordCount} words outside the accepted ${minimumAcceptedWords}-${maximumAcceptedWords} range, or ${formattedQuotes.length}/${targetQuotes} quotes`,
           );
         }
 
@@ -4305,6 +4892,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
       } catch (streamError) {
         console.error("Error during paper generation:", streamError);
         cleanup();
+        res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
         res.write(`data: ${JSON.stringify({ error: (streamError as Error).message || "Failed to generate paper" })}\n\n`);
         res.write("data: [DONE]\n\n");
         res.end();
@@ -4666,6 +5254,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
 
   app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
   app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
+  app.get("/api/admin/thinker-probe-test/stream", streamDiagnostic("Thinker probe test", runThinkerProbeTest));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {
@@ -5521,6 +6110,11 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       // HYBRID RAG: same three sources as the main chat
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "kuczynski", "Kuczynski");
       const textChunksRes = await searchTextChunks("J.-M. Kuczynski", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker(
+        "Kuczynski",
+        message,
+        50,
+      );
       const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
 
       const queryWords = message.toLowerCase().split(/\s+/).filter(w => w.length > 3);
@@ -5540,11 +6134,14 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
           .limit(15);
       }
 
-      console.log(`[External API] RAG — embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`);
+      console.log(`[External API] RAG — arguments: ${structuredArgumentsContext ? "yes" : "no"}, embed: ${embeddingChunks.length}, text: ${textChunksRes.length}, positions: ${positionResults.length}`);
 
       let knowledgeContext = "";
-      if (embeddingChunks.length || textChunksRes.length || positionResults.length) {
+      if (structuredArgumentsContext || embeddingChunks.length || textChunksRes.length || positionResults.length) {
         knowledgeContext = `\n\n--- YOUR WRITINGS (for reference) ---\n\n`;
+        if (structuredArgumentsContext) {
+          knowledgeContext += `${structuredArgumentsContext}\n`;
+        }
         if (positionResults.length) {
           knowledgeContext += `=== YOUR CORE POSITIONS ===\n`;
           for (const pos of positionResults) knowledgeContext += `• ${pos.position}\n`;
@@ -5556,9 +6153,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         for (const chunk of textChunksRes) {
           knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ')}":\n${chunk.chunkText}\n\n`;
         }
-        knowledgeContext += `--- END ---\n\nINSTRUCTION: You have read your own writings above. Answer IN YOUR OWN VOICE — crisp, direct, no fluff. Ground your claims in this material.\n`;
+        knowledgeContext += `--- END ---\n\nINSTRUCTION: Answer from the structured premises, conclusions, positions, and source passages above. These records govern every substantive claim. Do not substitute generic model knowledge or a nearby position. If the records do not establish an answer, say that the documented material is insufficient.\n`;
       } else {
-        knowledgeContext = `\n\nNOTE: No specific positions retrieved for this query. Respond using your authentic philosophical voice and known positions, or acknowledge if this falls outside your documented work.\n`;
+        knowledgeContext = `\n\nNo author records were retrieved for this question. State that the documented material is insufficient; do not infer or invent the author's position.\n`;
       }
       knowledgeContext += formatParadoxesContext(paradoxMatches);
 
@@ -5663,6 +6260,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         "Aristotle",
       );
       const textChunksRes = await searchTextChunks("Aristotle", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Aristotle", message, 40);
       const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
 
       const queryWords = message
@@ -5720,7 +6318,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Aristotle: systematic, lucid, analytical, and attentive to causes, purposes, distinctions, and practical consequences.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = aristotleFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = aristotleFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
 
       let userPrompt = message;
       if (validHistory.length > 0) {
@@ -5811,6 +6409,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         "Darwin",
       );
       const textChunksRes = await searchTextChunks("Darwin", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Darwin", message, 40);
 
       const queryWords = message
         .toLowerCase()
@@ -5866,7 +6465,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Charles Darwin: careful, empirical, modest about uncertainty, attentive to variation, adaptation, natural selection, and accumulated evidence.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = darwinFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = darwinFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
 
       let userPrompt = message;
       if (validHistory.length > 0) {
@@ -5941,6 +6540,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "plato", "Plato");
       const textChunksRes = await searchTextChunks("Plato", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Plato", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -5990,7 +6590,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Plato: dialectical, probing, lucid, and attentive to definitions, forms, knowledge, virtue, justice, and the examined life.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = platoFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = platoFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6060,6 +6660,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "sartre", "Sartre");
       const textChunksRes = await searchTextChunks("Sartre", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Sartre", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6109,7 +6710,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Jean-Paul Sartre: direct, existential, rigorous, and attentive to freedom, responsibility, bad faith, consciousness, and concrete human situations.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = sartreFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = sartreFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6179,6 +6780,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "nietzsche", "Nietzsche");
       const textChunksRes = await searchTextChunks("Nietzsche", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Nietzsche", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6228,7 +6830,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Friedrich Nietzsche: incisive, psychologically perceptive, aphoristic where apt, and attentive to values, power, self-overcoming, ressentiment, and cultural critique.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = nietzscheFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = nietzscheFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6298,6 +6900,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "goldman", "Emma Goldman");
       const textChunksRes = await searchTextChunks("Emma Goldman", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Emma Goldman", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6347,7 +6950,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Emma Goldman: passionate, direct, humane, uncompromising about liberty, and attentive to anarchism, authority, labor, feminism, free expression, and individual dignity.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = goldmanFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = goldmanFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6417,6 +7020,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "smith", "Adam Smith");
       const textChunksRes = await searchTextChunks("Adam Smith", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Adam Smith", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6466,7 +7070,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Adam Smith: humane, observant, analytically precise, and attentive to sympathy, the impartial spectator, moral sentiments, division of labor, natural liberty, institutions, and commercial society.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = smithFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = smithFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6536,6 +7140,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "confucius", "Confucius");
       const textChunksRes = await searchTextChunks("Confucius", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Confucius", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6585,7 +7190,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Confucius: measured, practical, humane, and attentive to virtue, ritual, learning, filial conduct, exemplary leadership, social harmony, and self-cultivation.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = confuciusFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = confuciusFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6655,6 +7260,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "russell", "Bertrand Russell");
       const textChunksRes = await searchTextChunks("Bertrand Russell", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Bertrand Russell", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6704,7 +7310,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Bertrand Russell: lucid, precise, skeptical, humane, and attentive to logic, analysis, knowledge, science, ethics, freedom, and social criticism.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = russellFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = russellFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6774,6 +7380,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "marden", "Orison Swett Marden");
       const textChunksRes = await searchTextChunks("Orison Swett Marden", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Orison Swett Marden", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6823,7 +7430,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Orison Swett Marden: encouraging, practical, energetic, and attentive to character, courage, self-reliance, disciplined thought, perseverance, work, and human potential.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = mardenFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = mardenFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory
@@ -6893,6 +7500,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
 
       const embeddingChunks = await searchPhilosophicalChunks(message, 6, "gardner", "Martin Gardner");
       const textChunksRes = await searchTextChunks("Martin Gardner", message, 6);
+      const structuredArgumentsContext = await getArgumentsForThinker("Martin Gardner", message, 40);
       const queryWords = message.toLowerCase().split(/\s+/).filter((word: string) => word.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       if (queryWords.length > 0) {
@@ -6942,7 +7550,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       responseInstructions +=
         "\nSTYLE: Write as Martin Gardner: lucid, playful, precise, skeptical, and attentive to mathematics, puzzles, scientific reasoning, pseudoscience, magic, and the delight of ideas.\nFORMATTING: Plain text only (no markdown).\n";
 
-      const systemPrompt = gardnerFigure.systemPrompt + knowledgeContext + responseInstructions;
+      const systemPrompt = gardnerFigure.systemPrompt + structuredArgumentsContext + knowledgeContext + responseInstructions;
       let userPrompt = message;
       if (validHistory.length > 0) {
         const historyText = validHistory

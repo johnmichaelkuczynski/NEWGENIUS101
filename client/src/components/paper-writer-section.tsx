@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useQuery } from "@tanstack/react-query";
-import { FileText, Download, Loader2, ArrowRight, Copy, Trash2, Maximize2, RefreshCw } from "lucide-react";
+import { FileText, Download, Loader2, ArrowRight, Copy, Trash2, Maximize2, RefreshCw, Ban } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
 import type { Figure } from "@shared/schema";
@@ -43,8 +43,9 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
   const [uploadedFileName, setUploadedFileName] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const rejectedControllersRef = useRef(new WeakSet<AbortController>());
   const { toast } = useToast();
-  const { registerPopup, updatePopup } = usePopupManager();
+  const { registerPopup, updatePopup, closePopup } = usePopupManager();
 
   const handleFileAccepted = async (file: File) => {
     try {
@@ -123,7 +124,7 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
     }
   };
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (regenerateDeNovo = false) => {
     if (!topic.trim() || !selectedPhilosopher) {
       return;
     }
@@ -145,7 +146,7 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
     const popupId = `paper-writer-${Date.now()}`;
     registerPopup({
       id: popupId,
-      title: `Paper: ${philosopher?.name || "Philosopher"} - ${topic.slice(0, 30)}...`,
+      title: `${regenerateDeNovo ? "De novo paper" : "Paper"}: ${philosopher?.name || "Philosopher"} - ${topic.slice(0, 30)}...`,
       content: "",
       isGenerating: true,
       filename: `${philosopher?.name.replace(/\s+/g, '_')}_${topic.slice(0, 30).replace(/\s+/g, '_')}.txt`,
@@ -154,9 +155,12 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
           abortControllerRef.current.abort();
         }
       },
+      onReject: () => handleRejectAndRegenerate(popupId),
+      rejectLabel: "Reject and regenerate de novo",
     });
     
-    abortControllerRef.current = new AbortController();
+    const requestController = new AbortController();
+    abortControllerRef.current = requestController;
 
     try {
       const response = await fetch(`/api/figures/${selectedPhilosopher}/write-paper`, {
@@ -170,8 +174,9 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
           numberOfQuotes: parseInt(numberOfQuotes) || 0,
           customInstructions: customInstructions.trim(),
           hasDocument: !!uploadedFileName,
+          regenerateDeNovo,
         }),
-        signal: abortControllerRef.current.signal,
+        signal: requestController.signal,
       });
 
       if (!response.ok) {
@@ -230,10 +235,12 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
       updatePopup(popupId, { isGenerating: false });
     } catch (error) {
       if ((error as Error).name === 'AbortError') {
-        toast({
-          title: "Generation stopped",
-          description: "Paper generation was stopped.",
-        });
+        if (!rejectedControllersRef.current.has(requestController)) {
+          toast({
+            title: "Generation stopped",
+            description: "Paper generation was stopped.",
+          });
+        }
         updatePopup(popupId, { isGenerating: false });
       } else {
         console.error("Error generating paper:", error);
@@ -246,6 +253,26 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
       }
       setIsGenerating(false);
     }
+  };
+
+  const handleRejectAndRegenerate = (rejectedPopupId?: string) => {
+    if (abortControllerRef.current) {
+      rejectedControllersRef.current.add(abortControllerRef.current);
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
+    if (rejectedPopupId) {
+      closePopup(rejectedPopupId);
+    }
+    setShowRewritePanel(false);
+    setRewriteInstructions("");
+    setGeneratedPaper("");
+    setIsGenerating(false);
+    toast({
+      title: "Rejected",
+      description: "The previous paper will not be considered. Generating a new answer from the original request.",
+    });
+    window.setTimeout(() => void handleGenerate(true), 0);
   };
 
   const handleDownload = () => {
@@ -488,7 +515,7 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
               </div>
 
               <Button
-                onClick={handleGenerate}
+                onClick={() => void handleGenerate(false)}
                 disabled={isGenerating || !topic.trim() || !selectedPhilosopher}
                 className="w-full"
                 data-testid="button-generate-paper"
@@ -556,6 +583,16 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                     >
                       <Download className="h-3 w-3 mr-1" />
                       Download
+                    </Button>
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => handleRejectAndRegenerate()}
+                      className="h-7 px-2"
+                      data-testid="button-reject-regenerate-paper"
+                    >
+                      <Ban className="h-3 w-3 mr-1" />
+                      Reject and regenerate de novo
                     </Button>
                     <Button
                       variant="default"

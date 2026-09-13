@@ -9,6 +9,8 @@ export interface PopupState {
   filename?: string;
   isMinimized: boolean;
   onStop?: () => void;
+  onReject?: () => void;
+  rejectLabel?: string;
 }
 
 interface PopupManagerContextType {

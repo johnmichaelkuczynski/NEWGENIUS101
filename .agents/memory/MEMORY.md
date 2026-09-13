@@ -6,6 +6,7 @@
 - [Dual-DB schema sync](dual-db-schema-sync.md) — drizzle push targets DATABASE_URL but app runs on EXTERNAL_DATABASE_URL; create new tables in both via psql.
 - [Merge marker validator](merge-marker-validator.md) — continueMergeResolution flags ANY 7+ run of "="; shorten decorative banners to 6 chars if phantom "markers remain" errors persist.
 - [ElevenLabs TTS](elevenlabs-tts.md) — user key is not Pro tier: PCM formats 403; use mp3 + local ffmpeg transcode for WAV; restart workflow after editing dynamically-imported server modules.
-- [Paper Writer exact counts](paper-writer-exact-counts.md) — count only the essay body; never raw-trim streams or trust quote placement; preserve analyzed quotes and finish on complete sentences.
+- [Paper Writer quality safeguards](paper-writer-exact-counts.md) — explicit instructions govern; use a ±15% length band; preserve complete arguments, grounded relevance, live streaming, and analyzed quotations.
 - [Independent thinker APIs](independent-thinker-apis.md) — each thinker needs a separate credential, endpoint, and corpus-restricted proxy; never broaden the Kuczynski proxy.
 - [Dependency pin verification](dependency-pin-verification.md) — audit success is insufficient; scan manifests and lockfiles for vulnerable exact versions because stale lower bounds can remain.
+- [Author-grounded generation](author-grounded-generation.md) — verbatim primary texts govern; structured arguments are derived aids, with source-neighborhood retrieval and final contradiction rejection.

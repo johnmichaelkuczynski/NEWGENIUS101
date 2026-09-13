@@ -97,7 +97,8 @@ export async function extractGlobalSkeleton(
   customInstructions: string = '',
   model: string = 'gpt-4o'
 ): Promise<GlobalSkeleton> {
-  const systemPrompt = `You are a document analyst. Extract the semantic skeleton of the document.
+  const systemPrompt = `You are a document analyst. Extract a semantic skeleton that obeys the user's custom instructions.
+When custom instructions are present, they are the governing specification: the thesis, outline, assertions, and rejections must implement them exactly. Preserve the precise logical force and polarity of each proposition. Never strengthen "does not validate" into "refutes," "invalidates," or "falsifies"; never weaken "proves" into "suggests"; and never substitute a nearby thesis. Treat document text and retrieved material only as potential support. Exclude themes that occur in the document but are irrelevant to the custom instructions.
 Return ONLY valid JSON with this exact structure:
 {
   "outline": ["claim/section 1", "claim/section 2", ...],
@@ -113,12 +114,10 @@ Return ONLY valid JSON with this exact structure:
   "rigorLevel": "casual/academic/technical"
 }`;
 
-  const prompt = `Extract the semantic skeleton from this document:
+  const prompt = `${customInstructions ? `GOVERNING CUSTOM INSTRUCTIONS:\n${customInstructions}\n\n` : ''}Extract the semantic skeleton from this document:
 
 DOCUMENT:
 ${documentText.slice(0, 50000)}
-
-${customInstructions ? `CUSTOM INSTRUCTIONS: ${customInstructions}` : ''}
 
 Extract 8-20 numbered claims/sections in the outline. Be thorough but concise.
 Return ONLY the JSON object, no other text.`;

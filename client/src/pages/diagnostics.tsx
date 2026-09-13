@@ -65,6 +65,12 @@ const CHECKS: Check[] = [
     endpoint: "/api/admin/accuracy-test/stream",
     blurb: "Asks the app factual questions, then has Claude grade each answer 0–100 for accuracy.",
   },
+  {
+    key: "thinker-probes",
+    label: "Thinker probe test",
+    endpoint: "/api/admin/thinker-probe-test/stream",
+    blurb: "Tests every thinker once, using one randomly selected question from that thinker's three-question diagnostic bank and a shuffled run order.",
+  },
 ];
 
 const StatusIcon = ({ s }: { s: Status }) => {
@@ -280,7 +286,9 @@ export default function Diagnostics() {
             the plumbing (backend, database, AI providers, voice). The{" "}
             <strong>Synthetic-user test</strong> acts like a real person and drives every feature to
             confirm it produces real output and finishes cleanly. The <strong>Accuracy test</strong> grades the app's
-            answers against Claude. Each gives you a report you can copy and email to support.
+             answers against Claude. The <strong>Thinker probe test</strong> asks every thinker one
+             randomly selected question from the uploaded three-question bank. Each check gives you
+             a report you can copy or download.
           </p>
         </div>
 

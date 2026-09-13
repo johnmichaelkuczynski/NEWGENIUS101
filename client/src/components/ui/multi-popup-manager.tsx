@@ -1,7 +1,7 @@
 import { usePopupManager } from "@/contexts/popup-manager-context";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, Download, Maximize2, Minimize2, Loader2, X, ChevronUp, ChevronDown } from "lucide-react";
+import { Copy, Download, Maximize2, Minimize2, Loader2, X, ChevronUp, ChevronDown, Ban } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
@@ -160,6 +160,17 @@ export function MultiPopupManager() {
                 {activePopup.isGenerating ? "Content is being generated..." : "Generation complete"}
               </div>
               <div className="flex items-center gap-2">
+                {activePopup.onReject && (
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={activePopup.onReject}
+                    data-testid="button-popup-reject"
+                  >
+                    <Ban className="h-3 w-3 mr-1" />
+                    {activePopup.rejectLabel || "Reject and start over"}
+                  </Button>
+                )}
                 <Button variant="outline" size="sm" onClick={() => setAutoScroll(true)} disabled={autoScroll}>
                   Auto-scroll
                 </Button>

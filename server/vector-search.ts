@@ -103,6 +103,45 @@ export interface TextChunkResult {
   chunkIndex: number;
 }
 
+export async function getSourceChunkNeighborhoods(
+  thinker: string,
+  anchors: Array<{ sourceFile: string; chunkIndex: number }>,
+  radius: number = 6,
+  limit: number = 80,
+): Promise<TextChunkResult[]> {
+  if (anchors.length === 0) return [];
+  const canonicalThinker = normalizeAuthorName(thinker).toLowerCase();
+  const ordered: TextChunkResult[] = [];
+  const seen = new Set<string>();
+
+  for (const anchor of anchors.slice(0, 8)) {
+    const results = await db.execute(sql`
+      SELECT thinker, source_text_id, chunk_text, chunk_index
+      FROM chunks
+      WHERE LOWER(thinker::text) = ${canonicalThinker}
+        AND source_text_id = ${anchor.sourceFile}
+        AND chunk_index BETWEEN ${Math.max(0, anchor.chunkIndex - radius)}
+                            AND ${anchor.chunkIndex + radius}
+      ORDER BY ABS(chunk_index - ${anchor.chunkIndex}), chunk_index
+      LIMIT ${radius * 2 + 1}
+    `);
+    for (const row of results.rows || []) {
+      const typed = row as any;
+      const key = `${typed.source_text_id}:${typed.chunk_index}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      ordered.push({
+        thinker: typed.thinker,
+        sourceFile: typed.source_text_id,
+        chunkText: typed.chunk_text,
+        chunkIndex: typed.chunk_index,
+      });
+      if (ordered.length >= limit) return ordered;
+    }
+  }
+  return ordered;
+}
+
 /**
  * RAG TEXT SEARCH: Query text_chunks table by thinker and keywords
  * Returns the most relevant chunks from the thinker's source texts
@@ -140,10 +179,26 @@ export async function searchTextChunks(
     // STEP 2: Extract keywords - IMPROVED: keep words >= 3 chars, expanded stopword list
     const stopwords = ['what', 'when', 'where', 'which', 'that', 'this', 'have', 'does', 'would', 'could', 'should', 'about', 'think', 'your', 'with', 'from', 'they', 'their', 'there', 'been', 'being', 'were', 'will', 'show', 'shown', 'last', 'years', 'year', 'united', 'states', 'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can', 'had', 'her', 'was', 'one', 'our', 'out'];
     
-    const keywords = questionLower
+    const baseKeywords = questionLower
       .replace(/[^\w\s]/g, '')
       .split(/\s+/)
       .filter(w => w.length >= 3 && !stopwords.includes(w));
+    const expandedKeywords = baseKeywords.flatMap((word) =>
+      word.startsWith("non") && word.length >= 9
+        ? [word, word.slice(3)]
+        : [word]
+    );
+    const keywordFrequency = new Map<string, number>();
+    expandedKeywords.forEach((word) => {
+      keywordFrequency.set(word, (keywordFrequency.get(word) || 0) + 1);
+    });
+    const keywords = Array.from(keywordFrequency.keys())
+      .sort((a, b) =>
+        (keywordFrequency.get(b) || 0) - (keywordFrequency.get(a) || 0)
+        || b.length - a.length
+      )
+      .slice(0, 24);
+    const canonicalThinker = normalizeAuthorName(thinker).toLowerCase();
     
     console.log(`[TextChunk Search] Query: "${question.substring(0, 50)}..." | Keywords: ${keywords.join(', ')} | Domain: ${isLogicPhilosophyQuery ? 'LOGIC/PHILOSOPHY' : isFinanceQuery ? 'FINANCE' : isPsychologyQuery ? 'PSYCHOLOGY' : 'GENERAL'} | Exclude Psych: ${shouldExcludePsychology}`);
     
@@ -158,7 +213,7 @@ export async function searchTextChunks(
       const sourceFileResults = await db.execute(
         sql`SELECT DISTINCT source_text_id 
             FROM chunks 
-            WHERE thinker ILIKE ${'%' + thinker + '%'}
+            WHERE LOWER(thinker::text) = ${canonicalThinker}
               AND (${sql.join(sourceFileKeywordConditions.map(c => sql`source_text_id ILIKE ${'%' + c + '%'}`), sql` OR `)})
             LIMIT 10`
       );
@@ -183,7 +238,7 @@ export async function searchTextChunks(
       const results = await db.execute(
         sql`SELECT thinker, source_text_id, chunk_text, chunk_index
             FROM chunks 
-            WHERE thinker ILIKE ${'%' + thinker + '%'}
+            WHERE LOWER(thinker::text) = ${canonicalThinker}
               AND (${sql.join(sourceFileConditions, sql` OR `)})
             ORDER BY ${orderClause}
             LIMIT ${limit}`
@@ -223,7 +278,7 @@ export async function searchTextChunks(
         sql`SELECT thinker, source_text_id, chunk_text, chunk_index,
                    (${sql.join(matchCountExpr, sql` + `)}) as match_count
             FROM chunks 
-            WHERE thinker ILIKE ${'%' + thinker + '%'}
+            WHERE LOWER(thinker::text) = ${canonicalThinker}
               AND (${sql.join(keywordConditions, sql` OR `)})
               AND ${excludeCondition}
             ORDER BY match_count DESC
@@ -606,16 +661,43 @@ export async function searchArgumentStatements(
 ): Promise<StructuredArgument[]> {
   try {
     const questionLower = question.toLowerCase();
-    
-    // Extract keywords for fallback search
     const stopwords = ['what', 'when', 'where', 'which', 'that', 'this', 'have', 'does', 'would', 'could', 'should', 'about', 'think', 'your', 'with', 'from', 'they', 'their', 'there', 'been', 'being', 'were', 'will', 'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can', 'had', 'was', 'one'];
-    
-    const keywords = questionLower
+    const baseKeywords = questionLower
       .replace(/[^\w\s]/g, '')
       .split(/\s+/)
-      .filter(w => w.length >= 3 && !stopwords.includes(w));
-    
-    // First try: semantic search with embeddings (if available)
+      .filter(w => w.length >= 3 && !stopwords.includes(w))
+      .filter((word, index, words) => words.indexOf(word) === index)
+      .slice(0, 12);
+    const keywords = Array.from(
+      new Set(
+        baseKeywords.flatMap((word) =>
+          word.startsWith("non") && word.length >= 9
+            ? [word, word.slice(3)]
+            : [word],
+        ),
+      ),
+    ).slice(0, 16);
+    const queryConceptPhrases = baseKeywords.flatMap((_, start) =>
+      [2, 3, 4]
+        .map((size) => baseKeywords.slice(start, start + size))
+        .filter((parts) => parts.length >= 2)
+        .map((parts) => parts.join("")),
+    ).filter((phrase) => phrase.length >= 12);
+    const canonicalThinker = normalizeAuthorName(thinker).toLowerCase();
+    const candidates = new Map<string, { row: any; score: number }>();
+    const addCandidate = (row: any, score: number) => {
+      const key = `${String(row.conclusion || "").toLowerCase()}|${JSON.stringify(row.premises || [])}`;
+      const existing = candidates.get(key);
+      if (existing) {
+        existing.score += score;
+      } else {
+        candidates.set(key, { row, score });
+      }
+    };
+
+    // Semantic similarity and lexical/importance ranking are complementary.
+    // Never return early from one source and thereby discard strong structured
+    // evidence found by the other.
     try {
       const embeddingResponse = await getOpenAI().embeddings.create({
         model: "text-embedding-ada-002",
@@ -628,68 +710,89 @@ export async function searchArgumentStatements(
         sql`SELECT thinker, argument_type, premises, conclusion, topic, source_text_id, importance,
                    embedding <=> ${JSON.stringify(queryEmbedding)}::vector as distance
             FROM arguments 
-            WHERE thinker ILIKE ${'%' + thinker + '%'}
+             WHERE LOWER(thinker) = ${canonicalThinker}
               AND embedding IS NOT NULL
             ORDER BY distance
-            LIMIT ${limit}`
+             LIMIT ${Math.max(limit * 2, 40)}`
       );
-      
-      if (results.rows && results.rows.length > 0) {
-        console.log(`[Argument Search] Found ${results.rows.length} arguments via semantic search for "${thinker}"`);
-        return (results.rows || []).map((row: any) => ({
-          thinker: row.thinker,
-          argumentType: row.argument_type,
-          premises: row.premises || [],
-          conclusion: row.conclusion,
-          sourceSection: row.topic,
-          sourceDocument: row.source_text_id,
-          importance: row.importance,
-          counterarguments: null,
-        }));
-      }
+      (results.rows || []).forEach((row: any, index: number) => {
+        const semanticScore = Math.max(0, 140 - index * 2);
+        addCandidate(row, semanticScore + Number(row.importance || 0) * 4);
+      });
+      console.log(`[Argument Search] Found ${results.rows?.length || 0} semantic candidates for "${thinker}"`);
     } catch (embeddingError) {
-      console.log(`[Argument Search] Embedding search failed, falling back to keyword search`);
+      console.log(`[Argument Search] Embedding search failed; retaining lexical structured search`);
     }
-    
-    // Fallback: keyword-based search on conclusion/premises text
+
     if (keywords.length > 0) {
-      const keywordConditions = keywords.slice(0, 5).map(kw => 
-        sql`(conclusion ILIKE ${'%' + kw + '%'} OR premises::text ILIKE ${'%' + kw + '%'})`
+      const keywordConditions = keywords.map(kw =>
+        sql`(topic ILIKE ${'%' + kw + '%'} OR conclusion ILIKE ${'%' + kw + '%'} OR premises::text ILIKE ${'%' + kw + '%'})`
       );
-      
+      const keywordMatchCount = keywords.map(kw =>
+        sql`CASE WHEN topic ILIKE ${'%' + kw + '%'} OR conclusion ILIKE ${'%' + kw + '%'} OR premises::text ILIKE ${'%' + kw + '%'} THEN 1 ELSE 0 END`
+      );
       const results = await db.execute(
         sql`SELECT thinker, argument_type, premises, conclusion, topic, source_text_id, importance
             FROM arguments 
-            WHERE thinker ILIKE ${'%' + thinker + '%'}
+            WHERE LOWER(thinker) = ${canonicalThinker}
               AND (${sql.join(keywordConditions, sql` OR `)})
+            ORDER BY (${sql.join(keywordMatchCount, sql` + `)}) DESC, importance DESC
+            LIMIT ${Math.max(limit * 5, 100)}`
+      );
+      (results.rows || []).forEach((row: any) => {
+        const normalizeForMatch = (value: string) =>
+          value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+        const searchable = normalizeForMatch(
+          `${row.topic || ""} ${row.conclusion || ""} ${JSON.stringify(row.premises || [])}`,
+        );
+        const normalizedTopic = normalizeForMatch(String(row.topic || ""));
+        const lexicalMatches = keywords.filter((keyword) =>
+          searchable.includes(normalizeForMatch(keyword)),
+        ).length;
+        const topicMatches = keywords.filter((keyword) =>
+          normalizedTopic.includes(normalizeForMatch(keyword)),
+        ).length;
+        const distinctiveMatches = keywords.filter(
+          (keyword) =>
+            normalizeForMatch(keyword).length >= 10
+            && searchable.includes(normalizeForMatch(keyword)),
+        ).length;
+        const topicPhraseMatches = queryConceptPhrases.filter((phrase) =>
+          normalizedTopic.includes(phrase),
+        ).length;
+        const bodyPhraseMatches = queryConceptPhrases.filter((phrase) =>
+          searchable.includes(phrase),
+        ).length;
+        addCandidate(
+          row,
+          lexicalMatches * 32
+            + topicMatches * 28
+            + distinctiveMatches * 180
+            + topicPhraseMatches * 500
+            + bodyPhraseMatches * 120
+            + Number(row.importance || 0) * 5,
+        );
+      });
+      console.log(`[Argument Search] Found ${results.rows?.length || 0} lexical candidates for "${thinker}"`);
+    }
+
+    if (candidates.size === 0) {
+      const results = await db.execute(
+        sql`SELECT thinker, argument_type, premises, conclusion, topic, source_text_id, importance
+            FROM arguments
+            WHERE LOWER(thinker) = ${canonicalThinker}
             ORDER BY importance DESC
             LIMIT ${limit}`
       );
-      
-      console.log(`[Argument Search] Found ${results.rows?.length || 0} arguments via keyword search for "${thinker}"`);
-      return (results.rows || []).map((row: any) => ({
-        thinker: row.thinker,
-        argumentType: row.argument_type,
-        premises: row.premises || [],
-        conclusion: row.conclusion,
-        sourceSection: row.topic,
-        sourceDocument: row.source_text_id,
-        importance: row.importance,
-        counterarguments: null,
-      }));
+      (results.rows || []).forEach((row: any) =>
+        addCandidate(row, Number(row.importance || 0) * 5),
+      );
     }
-    
-    // Last resort: return top arguments by importance for this thinker
-    const results = await db.execute(
-      sql`SELECT thinker, argument_type, premises, conclusion, topic, source_text_id, importance
-          FROM arguments 
-          WHERE thinker ILIKE ${'%' + thinker + '%'}
-          ORDER BY importance DESC
-          LIMIT ${limit}`
-    );
-    
-    console.log(`[Argument Search] Returning top ${results.rows?.length || 0} arguments by importance for "${thinker}"`);
-    return (results.rows || []).map((row: any) => ({
+
+    return Array.from(candidates.values())
+      .sort((left, right) => right.score - left.score)
+      .slice(0, limit)
+      .map(({ row }) => ({
       thinker: row.thinker,
       argumentType: row.argument_type,
       premises: row.premises || [],
@@ -699,7 +802,6 @@ export async function searchArgumentStatements(
       importance: row.importance,
       counterarguments: null,
     }));
-    
   } catch (error) {
     console.error("Error searching argument statements:", error);
     return [];
@@ -741,6 +843,7 @@ export async function getArgumentsForThinker(
   }
   
   context += `=== END STRUCTURED ARGUMENTS ===\n`;
+  context += `AUTHOR-GROUNDING RULE: These structured premises and conclusions are the primary authority for the author's substantive position. Do not replace them with generic model knowledge, a conventional textbook answer, or a merely nearby view. If they do not support an answer, state that the documented evidence is insufficient.\n`;
   
   return context;
 }

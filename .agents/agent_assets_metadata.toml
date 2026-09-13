@@ -102,3 +102,45 @@ mtime_ms = 1789185147437
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/503a1c98-1b51-4c68-8583-2a2c98889a72/e1c3b89d-3f82-4a21-9f97-9dca30fe2351"
 storage_version_token = "1789185162312822"
 content_type = "video/mp4"
+
+[[outputs]]
+id = "r7vBW-sUSqquZ3VBDLtto"
+uri = "file://attached_assets/verified-kuczynski-structured-grounding.txt"
+type = "text"
+title = "Verified Kuczynski grounding result"
+description = "Exact 575-word Paper Writer output inspected after the structured-author grounding fixes."
+logical_id = "da762f48-e205-4a13-b17b-a522785eaa3f"
+content_hash = "sha256:cd3ffc96e0338ec76f8c87b8cc0f273ccec0ddb00a7a870d06d18284b0b82f1c"
+size = 4104
+mtime_ms = 1789275207836
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/da762f48-e205-4a13-b17b-a522785eaa3f/db9aa054-16c6-40cd-a5ae-b5ee98edd06e"
+storage_version_token = "1789275240109374"
+content_type = "text/plain"
+
+[[outputs]]
+id = "h1xL3C-7iQNOu5FEBQ0_a"
+uri = "file://attached_assets/verified-kuczynski-primary-source-answer.txt"
+type = "text"
+title = "Verified primary-source Kuczynski answer"
+description = "Exact 521-word Paper Writer output inspected against the attached Properties and Non-Spatiotemporal Existence chapter."
+logical_id = "d3be87b6-0ec3-41bd-a5ed-14831d550869"
+content_hash = "sha256:862f9d34a667021070a3f02a702e8f44a6b788fd0054b3e36ea2c7e487303840"
+size = 3232
+mtime_ms = 1789276754473
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/d3be87b6-0ec3-41bd-a5ed-14831d550869/e1a1e800-fe40-4b57-8950-9e73196839e9"
+storage_version_token = "1789276762401109"
+content_type = "text/plain"
+
+[[outputs]]
+id = "3WJg59d-2JSL8IbvhZISX"
+uri = "file://attached_assets/verified-main-chat-property-argument.txt"
+type = "text"
+title = "Verified corrected main-chat answer"
+description = "Exact response produced by the ordinary chat path for the misspelled question shown in the screenshot."
+logical_id = "72285dee-6432-4852-9e5a-5efc71e9792e"
+content_hash = "sha256:bf1d70f321009669cae9912f5a252e2b2e3952569fa35a8de85955ef019b5a29"
+size = 5654
+mtime_ms = 1789276983390
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/72285dee-6432-4852-9e5a-5efc71e9792e/e1007554-6f55-4eca-8b6b-ae18ca3615e4"
+storage_version_token = "1789276988951292"
+content_type = "text/plain"

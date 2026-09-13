@@ -1,6 +1,7 @@
 import { db } from "./db";
 import { sql } from "drizzle-orm";
 import OpenAI from "openai";
+import { searchArgumentStatements } from "./vector-search";
 
 // Lazy initialization to avoid crash if API key not set at startup
 let openai: OpenAI | null = null;
@@ -16,7 +17,7 @@ function getOpenAI(): OpenAI {
 
 export interface PassageCandidate {
   id: string;
-  source: 'positions' | 'quotes' | 'chunks';
+  source: 'arguments' | 'positions' | 'quotes' | 'chunks';
   text: string;
   topic?: string;
   sourceFile?: string;
@@ -129,6 +130,51 @@ export async function auditedCorpusSearch(
   const dbThinkerName = authorNameMap[authorId.toLowerCase()] || authorName || authorId;
 
   try {
+    // STEP 0: Search the structured premise/conclusion corpus first. These
+    // records encode the author's actual arguments and must outrank isolated
+    // quotations or randomly selected position summaries.
+    emit({ type: 'table_search', detail: 'Searching structured ARGUMENTS corpus...', data: { table: 'arguments' } });
+    const structuredArguments = await searchArgumentStatements(
+      dbThinkerName,
+      question,
+      40,
+    );
+    const argumentCandidates: PassageCandidate[] = structuredArguments.map(
+      (argument, index) => ({
+        id: `argument-${index + 1}`,
+        source: 'arguments',
+        topic: argument.sourceSection || undefined,
+        sourceFile: argument.sourceDocument || undefined,
+        text: `Premises: ${argument.premises.join(' | ')}\nConclusion: ${argument.conclusion}`,
+      }),
+    );
+    emit({
+      type: 'table_search',
+      detail: `Found ${argumentCandidates.length} ranked structured arguments`,
+      data: { count: argumentCandidates.length },
+    });
+    const argumentJudgments = await judgeBatch(question, argumentCandidates);
+    for (let i = 0; i < argumentCandidates.length; i++) {
+      const candidate = argumentCandidates[i];
+      const judgment = argumentJudgments[i];
+      emit({
+        type: 'passage_examined',
+        detail: `Examining structured argument: "${candidate.text.substring(0, 100)}..."`,
+        data: { id: candidate.id, topic: candidate.topic },
+      });
+      if (judgment.isDirectAnswer && judgment.relevanceScore >= 0.6) {
+        directAnswers.push({ passage: candidate, ...judgment });
+        emit({
+          type: 'direct_answer_found',
+          detail: `STRUCTURED DIRECT ANSWER #${directAnswers.length}: "${candidate.text.substring(0, 100)}..."`,
+          data: { answerNumber: directAnswers.length, reasoning: judgment.reasoning },
+        });
+        if (directAnswers.length >= 8) break;
+      } else {
+        adjacentMaterial.push(candidate);
+      }
+    }
+
     // STEP 1: Search POSITIONS table first
     emit({ type: 'table_search', detail: 'Searching POSITIONS table...', data: { table: 'positions' } });
     
