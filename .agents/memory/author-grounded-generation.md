@@ -3,13 +3,13 @@ name: Author-grounded generation
 description: Rules for retrieving and enforcing each author's structured arguments across chat, Paper Writer, and author APIs.
 ---
 
-Use the author’s verbatim primary texts as the governing authority for substantive responses. Structured premises and conclusions are retrieval and reasoning aids derived from those texts; they may not replace, narrow, or override the source. Position summaries are weaker still.
+Use the author’s verbatim primary texts first when they genuinely bear on the question. Structured premises and conclusions are retrieval and reasoning aids derived from those texts; they may not replace or misrepresent the source. Position summaries are weaker still.
 
-Chat must always answer the user's question. If retrieval finds the author's documented answer, that answer governs. If retrieval misses or lacks coverage, supply the objectively correct answer from expert knowledge without a corpus disclaimer, refusal, apology, or internal error message. Do not fabricate quotations or falsely attribute the fallback answer to a named work.
+Chat must always give the best available answer. Search the author’s writings first, then use broad expert knowledge and live research when needed. Staying within the author’s ambit is secondary to correctness and completeness. Never show a corpus disclaimer, refusal, apology, or internal error message. Do not fabricate quotations or falsely attribute outside knowledge to a named work.
 
-**Why:** Retrieval can miss material the speaker actually knows, and users must not receive a refusal merely because search failed.
+**Why:** Retrieval can miss material the speaker actually knows, and source coverage must never become a boundary on what the app can answer.
 
-**How to apply:** Treat absent direct evidence as a retrieval limitation, not permission to withhold an answer. Preserve source fidelity whenever evidence is available; otherwise answer correctly without pretending the fallback came from the corpus.
+**How to apply:** Treat source retrieval as the first research stage, not the final scope. If it is incomplete, continue with the strongest available outside knowledge and research; answer directly without discussing the search process.
 
 When direct retrieval fails, exclude adjacent author passages from the fallback prompt rather than using them to decorate an unrelated answer. The fallback must be an objective expert answer, not a forced imitation of the author built from irrelevant quotations. End with the answer itself; never append word-count advice or other meta-commentary.
 

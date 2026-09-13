@@ -1078,10 +1078,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         knowledgeContext += `--- END ---\n\n`;
-        knowledgeContext += `INSTRUCTION: Answer from the author's primary source passages above. They govern all derived arguments, positions, and summaries. Do not substitute generic model knowledge or a nearby position. If the primary text and derived records do not establish an answer, say that the documented material is insufficient.\n`;
+        knowledgeContext += `INSTRUCTION: Use the author's primary-source passages when they genuinely bear on the question, then use the strongest relevant expert knowledge needed for a complete and correct answer. Never discuss retrieval coverage or withhold an answer.\n`;
       } else {
         console.log(`[RAG] No relevant positions found for query: "${message.substring(0, 80)}..."`);
-        knowledgeContext = `\n\nNo author records were retrieved for this question. State that the documented material is insufficient; do not infer or invent the author's position.\n`;
+        knowledgeContext = `\n\nAnswer fully from the strongest relevant expert knowledge available. Never mention retrieval, database coverage, missing sources, or limitations.\n`;
       }
       
       // Append external Paradoxes app context (with conflict-reconciliation instruction)
@@ -1907,12 +1907,14 @@ Now ATTACK this problem directly using your full philosophical firepower:
       
       // Build context from audited search results
       const { systemPrompt: auditSystemPrompt, contextPrompt: auditContextPrompt } = buildPromptFromAuditResult(auditedResult);
+      const hasDirectCorpusAnswer =
+        auditedResult.answerType === "direct_aligned"
+        || auditedResult.answerType === "direct_conflicting";
       
       // Also include adjacent material for additional context
       let relevantPassages = auditContextPrompt;
       if (
-        auditedResult.answerType !== "indirect"
-        && auditedResult.answerType !== "none"
+        hasDirectCorpusAnswer
         && auditedResult.adjacentMaterial.length > 0
       ) {
         relevantPassages += "\n\nADDITIONAL CONTEXT (not direct answers):\n";
@@ -2283,9 +2285,19 @@ You are a living intellect attacking problems, NOT a textbook summarizing views.
 REMEMBER: FIRST PERSON ONLY. SHORT PARAGRAPHS. PUNCHY SENTENCES.
 `;
       
-      // Combine all prompt components: MANDATORY QUOTE RULE (highest priority) + philosopher identity + system rules + audited context + HARD CONSTRAINTS + attack mode
-      // Also incorporate auditSystemPrompt which contains grounding rules based on what was found
-      const enhancedSystemPrompt = mandatoryQuoteRule + "\n\n" + auditSystemPrompt + "\n\n" + figure.systemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + relevantPassages + hardConstraints + documentContext + attackModeInstructions;
+      const universalAnswerRules = `
+
+ABSOLUTE ANSWER PRIORITIES:
+1. Always answer the actual question and state the answer in the first sentence.
+2. Give the best, most accurate and complete answer available. Use relevant primary-source material first, then add established expert knowledge and sound reasoning whenever needed.
+3. The selected author's writings and intellectual framework are evidence and perspective, not a boundary on what may be answered. Remaining within the author's general ambit is secondary to correctness and completeness.
+4. Never mention retrieval, supplied passages, the database, the corpus, documentation coverage, missing sources, or what the selected author has or has not written.
+5. Never refuse, apologize, retreat into a limitation statement, or substitute a discussion of available evidence for the requested answer.
+6. Never fabricate quotations, sources, autobiographical claims, or an authorial position.
+7. Return only the substantive answer.`;
+      const enhancedSystemPrompt = hasDirectCorpusAnswer
+        ? mandatoryQuoteRule + "\n\n" + auditSystemPrompt + "\n\n" + figure.systemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + relevantPassages + hardConstraints + documentContext + attackModeInstructions + universalAnswerRules
+        : auditSystemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + documentContext + universalAnswerRules;
 
       let fullResponse = "";
       
@@ -2308,7 +2320,10 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
       const selectedModel = personaSettings?.selectedModel || "zhi1";
       
       // Get fallback order starting from selected model
-      const fallbackModels = getFallbackModels(selectedModel);
+      const configuredFallbackModels = getFallbackModels(selectedModel);
+      const fallbackModels = !hasDirectCorpusAnswer && isProviderAvailable("perplexity")
+        ? ["perplexity", ...configuredFallbackModels.filter((model) => model !== "perplexity")]
+        : configuredFallbackModels;
       let lastError: Error | null = null;
       let successfulModel: string | null = null;
 
@@ -2371,9 +2386,9 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
               ? personaSettings.responseLength 
               : 750;
           }
-          numQuotes = (personaSettings?.quoteFrequency && personaSettings.quoteFrequency > 0) 
+          numQuotes = hasDirectCorpusAnswer && personaSettings?.quoteFrequency && personaSettings.quoteFrequency > 0
             ? personaSettings.quoteFrequency 
-            : 7; // Default to 7 quotes for grounded responses
+            : hasDirectCorpusAnswer ? 7 : 0;
           
           // Quote override detection
           const quoteMatch = messageLower.match(/(?:give|list|provide|show|include|cite|quote|need|want|at\s+least)\s*(?:me\s*)?(\d+)\s*(?:quotes?|quotations?|examples?|passages?|excerpts?|citations?)/i) 
@@ -2405,7 +2420,7 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
         
         // 🚀 COHERENCE SERVICE: For long responses (>1000 words), use the chunked coherence system
         const COHERENCE_THRESHOLD = 1000;
-        if (targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode) {
+        if (hasDirectCorpusAnswer && targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode) {
           console.log(`[COHERENCE SERVICE] Activating for ${targetWords} word response`);
           
           try {
@@ -2496,7 +2511,11 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
         const lastMessage = history[history.length - 1];
         
         // Different instructions for dialogue mode vs standard mode
-        const enhancedUserMessage = effectiveDialogueMode 
+        const enhancedUserMessage = !hasDirectCorpusAnswer
+          ? lastMessage.content + `
+
+Answer directly using objective expert knowledge. Do not discuss retrieval, passages, corpus coverage, the database, documentation, or what the selected thinker has written. Do not refuse or apologize. Do not invent quotations or first-person claims.`
+          : effectiveDialogueMode
           ? lastMessage.content + `
 
 ══════════════════════════════════════════════════════════════
@@ -2528,10 +2547,10 @@ ${numQuotes > 0 ? `📚 QUOTE REQUIREMENT: Include AT LEAST ${numQuotes} verbati
 🚨 GROUNDING REQUIREMENT - YOUR RESPONSE MUST USE THE DATABASE CONTENT 🚨
 
 The passages above contain YOUR ACTUAL WRITINGS from the database. You MUST:
-1. BASE your response on the specific content from those passages
+1. Use the specific content from those passages wherever it bears on the question
 2. REFERENCE specific ideas, arguments, and concepts from the passages
 3. USE exact phrases and terminology from the passages
-4. DO NOT provide generic philosophical responses unconnected to the passages
+4. Add established expert knowledge and sound reasoning wherever needed for the most accurate and complete answer
 
 CRITICAL RULES:
 - Written in FIRST PERSON ("I argue...", "My view is...")
@@ -5294,7 +5313,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
   app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
   app.get("/api/admin/thinker-probe-test/stream", streamDiagnostic("Thinker probe test", runThinkerProbeTest));
-  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 349-question proof", runKuczynskiDiagnostic));
+  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 300-question proof", runKuczynskiDiagnostic));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {
@@ -6193,9 +6212,9 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         for (const chunk of textChunksRes) {
           knowledgeContext += `From "${chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ')}":\n${chunk.chunkText}\n\n`;
         }
-        knowledgeContext += `--- END ---\n\nINSTRUCTION: Answer from the structured premises, conclusions, positions, and source passages above. These records govern every substantive claim. Do not substitute generic model knowledge or a nearby position. If the records do not establish an answer, say that the documented material is insufficient.\n`;
+        knowledgeContext += `--- END ---\n\nINSTRUCTION: Use the structured records and source passages when they genuinely bear on the question, then use the strongest relevant expert knowledge needed for a complete and correct answer. Never discuss retrieval coverage or withhold an answer.\n`;
       } else {
-        knowledgeContext = `\n\nNo author records were retrieved for this question. State that the documented material is insufficient; do not infer or invent the author's position.\n`;
+        knowledgeContext = `\n\nAnswer the question fully from the strongest relevant expert knowledge available. Never mention retrieval, database coverage, missing sources, or limitations.\n`;
       }
       knowledgeContext += formatParadoxesContext(paradoxMatches);
 

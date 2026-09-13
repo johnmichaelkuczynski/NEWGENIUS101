@@ -73,9 +73,9 @@ const CHECKS: Check[] = [
   },
   {
     key: "kuczynski-50",
-    label: "Kuczynski 349-question proof",
+    label: "Kuczynski 300-question proof",
     endpoint: "/api/admin/kuczynski-diagnostic/stream",
-    blurb: "Runs 349 fixed questions through the real Kuczynski chat endpoint. Each question requires a substantive answer, direct aligned primary-source evidence, a named work, and at least five approved source-linked quotations.",
+    blurb: "Runs 300 questions derived from Kuczynski's actual writings through the real Kuczynski chat endpoint. Each question requires a substantive answer, direct aligned primary-source evidence, a named work, and at least five approved source-linked quotations.",
   },
 ];
 
@@ -330,7 +330,7 @@ export default function Diagnostics() {
             confirm it produces real output and finishes cleanly. The <strong>Accuracy test</strong> grades the app's
              answers against Claude. The <strong>Thinker probe test</strong> asks every thinker one
               randomly selected question from the uploaded three-question bank. The <strong>Kuczynski
-              349-question proof</strong> runs a separate fixed battery against the real Kuczynski chat
+              300-question proof</strong> runs a source-derived battery against the real Kuczynski chat
               endpoint and displays the answer and source evidence for every question. Each check gives you
              a report you can copy or download.
           </p>
