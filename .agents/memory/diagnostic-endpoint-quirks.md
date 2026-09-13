@@ -25,6 +25,9 @@ These bit me while building the synthetic-user and accuracy diagnostics that dri
 - **The fixed Kuczynski proof must release results individually**: maintain four in-flight questions, but emit each completed answer immediately and replace it with the next question.
   **Why:** batch-level `Promise.all` withheld already-generated answers whenever one question in the group was slow or stuck.
   **How to apply:** race pending requests, remove and emit the winner, then launch one replacement; never gate visible answers on the slowest member of a batch.
+- **Kuczynski diagnostics run as ten independent groups of thirty**: preserve the 300-question source-derived bank, but never expose it as one monolithic run.
+  **Why:** a single 300-question diagnostic is too large to operate and review conveniently.
+  **How to apply:** keep ten separately callable runners and streams; each owns one fixed consecutive 30-question slice and reports both local and global question numbers.
 - **Use native EventSource on the Diagnostics page**: do not hand-parse fetch response chunks for these GET-based SSE endpoints.
   **Why:** the manual decoder left the browser on “Waiting for first result” while the server was already generating answers; native SSE displayed starts and results correctly.
   **How to apply:** close EventSource on `[DONE]` or Stop, synthesize failures only for genuinely incomplete rows, and do not auto-reconnect a completed diagnostic.

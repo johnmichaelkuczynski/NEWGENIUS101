@@ -174,19 +174,25 @@ const probe: ThinkerProbe = {
   ],
 };
 
-export async function* runKuczynskiDiagnostic(
+async function* runKuczynskiDiagnosticGroup(
+  groupNumber: number,
   originBase: string,
   signal?: AbortSignal,
 ): AsyncGenerator<SelfTestEvent> {
+  if (!Number.isInteger(groupNumber) || groupNumber < 1 || groupNumber > 10) {
+    throw new Error(`Invalid Kuczynski diagnostic group: ${groupNumber}`);
+  }
+  const groupOffset = (groupNumber - 1) * 30;
+  const questions = KUCZYNSKI_DIAGNOSTIC_QUESTIONS.slice(groupOffset, groupOffset + 30);
   const startedAt = Date.now();
   const results: TestResult[] = [];
-  const category = "Kuczynski 300-question proof";
+  const category = `Kuczynski diagnostic ${groupNumber} of 10`;
   const concurrency = 4;
 
   yield {
     type: "log",
     data: {
-      message: "Running 300 source-derived questions through the real Kuczynski chat endpoint. No questions are randomized or skipped.",
+      message: `Running Kuczynski diagnostic ${groupNumber}: 30 fixed source-derived questions (${groupOffset + 1}–${groupOffset + 30} of 300).`,
     },
   };
 
@@ -194,26 +200,26 @@ export async function* runKuczynskiDiagnostic(
   let nextQuestionIndex = 0;
 
   while (
-    (nextQuestionIndex < KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length || pending.size > 0)
+    (nextQuestionIndex < questions.length || pending.size > 0)
     && !signal?.aborted
   ) {
     while (
-      nextQuestionIndex < KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length
+      nextQuestionIndex < questions.length
       && pending.size < concurrency
     ) {
       const questionIndex = nextQuestionIndex++;
       const questionNumber = questionIndex + 1;
-      const question = KUCZYNSKI_DIAGNOSTIC_QUESTIONS[questionIndex];
+      const question = questions[questionIndex];
       yield {
         type: "start",
         data: {
-          name: `Kuczynski ${String(questionNumber).padStart(3, "0")}`,
+          name: `Kuczynski ${groupNumber}.${String(questionNumber).padStart(2, "0")}`,
           category,
         },
       };
       yield {
         type: "log",
-        data: { message: `${questionNumber}/${KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length}: ${question}` },
+        data: { message: `${questionNumber}/${questions.length}: ${question}` },
       };
       pending.set(
         questionNumber,
@@ -221,11 +227,13 @@ export async function* runKuczynskiDiagnostic(
           questionNumber,
           result: {
             ...result,
-            name: `Kuczynski ${String(questionNumber).padStart(3, "0")}`,
+            name: `Kuczynski ${groupNumber}.${String(questionNumber).padStart(2, "0")}`,
             details: {
               ...result.details,
               questionNumber,
-              totalQuestions: KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length,
+              totalQuestions: questions.length,
+              diagnosticGroup: groupNumber,
+              globalQuestionNumber: groupOffset + questionNumber,
             },
           },
         })),
@@ -244,11 +252,11 @@ export async function* runKuczynskiDiagnostic(
   }
 
   const completed = results.length;
-  const missing = KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length - completed;
+  const missing = questions.length - completed;
   yield {
     type: "summary",
     data: {
-      totalTests: KUCZYNSKI_DIAGNOSTIC_QUESTIONS.length,
+      totalTests: questions.length,
       passed: results.filter((result) => result.status === "pass").length,
       failed: results.filter((result) => result.status === "fail").length + missing,
       skipped: 0,
@@ -260,3 +268,24 @@ export async function* runKuczynskiDiagnostic(
     },
   };
 }
+
+export const runKuczynskiDiagnostic1 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(1, originBase, signal);
+export const runKuczynskiDiagnostic2 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(2, originBase, signal);
+export const runKuczynskiDiagnostic3 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(3, originBase, signal);
+export const runKuczynskiDiagnostic4 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(4, originBase, signal);
+export const runKuczynskiDiagnostic5 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(5, originBase, signal);
+export const runKuczynskiDiagnostic6 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(6, originBase, signal);
+export const runKuczynskiDiagnostic7 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(7, originBase, signal);
+export const runKuczynskiDiagnostic8 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(8, originBase, signal);
+export const runKuczynskiDiagnostic9 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(9, originBase, signal);
+export const runKuczynskiDiagnostic10 = (originBase: string, signal?: AbortSignal) =>
+  runKuczynskiDiagnosticGroup(10, originBase, signal);

@@ -520,7 +520,18 @@ import { runSelfTest } from "./services/selfTest";
 import { runSyntheticUserTest } from "./services/syntheticUserTest";
 import { runAccuracyTest } from "./services/accuracyTest";
 import { runThinkerProbeTest } from "./services/thinkerProbeTest";
-import { runKuczynskiDiagnostic } from "./services/kuczynskiDiagnostic";
+import {
+  runKuczynskiDiagnostic1,
+  runKuczynskiDiagnostic2,
+  runKuczynskiDiagnostic3,
+  runKuczynskiDiagnostic4,
+  runKuczynskiDiagnostic5,
+  runKuczynskiDiagnostic6,
+  runKuczynskiDiagnostic7,
+  runKuczynskiDiagnostic8,
+  runKuczynskiDiagnostic9,
+  runKuczynskiDiagnostic10,
+} from "./services/kuczynskiDiagnostic";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Validate SESSION_SECRET is set
@@ -5313,7 +5324,25 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
   app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
   app.get("/api/admin/thinker-probe-test/stream", streamDiagnostic("Thinker probe test", runThinkerProbeTest));
-  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 300-question proof", runKuczynskiDiagnostic));
+  const kuczynskiDiagnosticRunners = [
+    runKuczynskiDiagnostic1,
+    runKuczynskiDiagnostic2,
+    runKuczynskiDiagnostic3,
+    runKuczynskiDiagnostic4,
+    runKuczynskiDiagnostic5,
+    runKuczynskiDiagnostic6,
+    runKuczynskiDiagnostic7,
+    runKuczynskiDiagnostic8,
+    runKuczynskiDiagnostic9,
+    runKuczynskiDiagnostic10,
+  ];
+  kuczynskiDiagnosticRunners.forEach((runner, index) => {
+    const groupNumber = index + 1;
+    app.get(
+      `/api/admin/kuczynski-diagnostic-${groupNumber}/stream`,
+      streamDiagnostic(`Kuczynski diagnostic ${groupNumber} of 10`, runner),
+    );
+  });
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {

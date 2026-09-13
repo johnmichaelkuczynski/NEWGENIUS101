@@ -71,12 +71,17 @@ const CHECKS: Check[] = [
     endpoint: "/api/admin/thinker-probe-test/stream",
     blurb: "Tests every thinker once, using one randomly selected question from that thinker's three-question diagnostic bank and a shuffled run order.",
   },
-  {
-    key: "kuczynski-50",
-    label: "Kuczynski 300-question proof",
-    endpoint: "/api/admin/kuczynski-diagnostic/stream",
-    blurb: "Runs 300 questions derived from Kuczynski's actual writings through the real Kuczynski chat endpoint. Each question requires a substantive answer, direct aligned primary-source evidence, a named work, and at least five approved source-linked quotations.",
-  },
+  ...Array.from({ length: 10 }, (_, index) => {
+    const groupNumber = index + 1;
+    const firstQuestion = index * 30 + 1;
+    const lastQuestion = firstQuestion + 29;
+    return {
+      key: `kuczynski-${groupNumber}`,
+      label: `Kuczynski diagnostic ${groupNumber}`,
+      endpoint: `/api/admin/kuczynski-diagnostic-${groupNumber}/stream`,
+      blurb: `Runs source-derived questions ${firstQuestion}–${lastQuestion} through the real Kuczynski chat endpoint. Each answer must be substantive and supported by direct primary-source evidence.`,
+    };
+  }),
 ];
 
 const StatusIcon = ({ s }: { s: Status }) => {
@@ -329,9 +334,9 @@ export default function Diagnostics() {
             <strong>Synthetic-user test</strong> acts like a real person and drives every feature to
             confirm it produces real output and finishes cleanly. The <strong>Accuracy test</strong> grades the app's
              answers against Claude. The <strong>Thinker probe test</strong> asks every thinker one
-              randomly selected question from the uploaded three-question bank. The <strong>Kuczynski
-              300-question proof</strong> runs a source-derived battery against the real Kuczynski chat
-              endpoint and displays the answer and source evidence for every question. Each check gives you
+              randomly selected question from the uploaded three-question bank. The <strong>ten Kuczynski
+              diagnostics</strong> each run 30 source-derived questions against the real Kuczynski chat
+              endpoint and display the answer and source evidence for every question. Each check gives you
              a report you can copy or download.
           </p>
         </div>
