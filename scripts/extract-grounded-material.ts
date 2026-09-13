@@ -86,6 +86,45 @@ function splitIntoWindows(content: string): string[] {
   return windows;
 }
 
+function completeShortWorkCandidates(title: string, content: string): QuoteCandidate[] {
+  if (content.length > 8_000) return [];
+
+  const candidates: QuoteCandidate[] = [];
+  const seen = new Set<string>();
+  const add = (text: string) => {
+    const clean = text.trim();
+    if (
+      clean.length < 80
+      || clean.length > 1_800
+      || !/^[A-Z0-9“"'([]/.test(clean)
+      || !/[.!?…”"')\]]$/.test(clean)
+    ) return;
+    const key = normalized(clean);
+    if (seen.has(key)) return;
+    seen.add(key);
+    candidates.push({ text: clean, topic: title });
+  };
+
+  const paragraphs = content
+    .split(/\n\s*\n|\n(?=[A-Z][^\n]{79,})/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  for (const paragraph of paragraphs) {
+    add(paragraph);
+    const sentences = paragraph.match(/[^.!?]+(?:[.!?]+[”"')\]]*|$)/g)
+      ?.map((sentence) => sentence.trim())
+      .filter(Boolean) || [];
+    for (let width = 1; width <= 3; width++) {
+      for (let start = 0; start + width <= sentences.length; start++) {
+        add(sentences.slice(start, start + width).join(" "));
+      }
+    }
+  }
+
+  return candidates;
+}
+
 async function extractWindow(
   title: string,
   window: string,
@@ -404,6 +443,17 @@ async function processSource(sourceId: string) {
           quotes.push({ text: verbatim, topic: candidate.topic || source.title });
         }
       }
+    }
+  }
+
+  if (source.content.length <= 8_000) {
+    for (const candidate of completeShortWorkCandidates(source.title, source.content)) {
+      const verbatim = recoverVerbatim(source.content, candidate.text);
+      if (!verbatim) continue;
+      const key = normalized(verbatim);
+      if (existingQuotes.has(key)) continue;
+      existingQuotes.add(key);
+      quotes.push({ text: verbatim, topic: candidate.topic });
     }
   }
 

@@ -18,3 +18,9 @@ Quotation-generator inclusion requires more than verbatim containment. Retain on
 **Why:** A corpus-wide review found that exact-substring validation had admitted many weak or fragmentary selections. The author explicitly requires every displayed quotation to be excellent and representative, with no random sentences or sentence fragments.
 
 **How to apply:** Use a separate severe editorial review after exact-source validation. Require clean boundaries, standalone intelligibility, philosophical substance, and memorability. Audit existing records under the same standard rather than applying the rule only to new uploads.
+
+Short works are often especially quotation-dense. Never use document length as evidence that a work cannot yield five excellent quotations. For compact works, broaden candidate recall with complete paragraphs and complete one-to-three-sentence argument units, then apply the same strict editorial standard.
+
+**Why:** Window-level AI extraction repeatedly found only three or four quotations in compact essays that plainly contained five or more distinct, strong theses, premises, and conclusions. The failure was low candidate recall, not low source quality.
+
+**How to apply:** When a compact source initially falls below the quotation minimum, inspect the complete work and evaluate its clean argument boundaries. Preserve exact source text and reject fragments, but do not collapse distinct premises or conclusions merely because they appear in one short essay.
