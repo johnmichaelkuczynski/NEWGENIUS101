@@ -402,17 +402,31 @@ interface IngestResult {
   note?: string;
 }
 
-async function ingestWorks(name: ParsedName, content: string, sourceFile: string): Promise<IngestResult> {
+interface WorksDependencies {
+  sqlClient?: any;
+  embedText?: (text: string) => Promise<number[]>;
+  dryRun?: boolean;
+}
+
+export async function ingestWorks(
+  name: ParsedName,
+  content: string,
+  sourceFile: string,
+  dependencies: WorksDependencies = {},
+): Promise<IngestResult> {
+  const sqlClient = dependencies.sqlClient || sql;
+  const embedText = dependencies.embedText || embed;
+  const dryRun = dependencies.dryRun ?? DRY_RUN;
   const title = name.title || `${titleCase(name.author)} Works${name.lot ? ` (Vol ${name.lot})` : ""}`;
   const chunks = chunkText(content);
-  if (DRY_RUN) {
+  if (dryRun) {
     return { parsed: chunks.length, inserted: chunks.length, errors: 0, note: `${chunks.length} chunks would be embedded` };
   }
 
   const normalizedContent = content
     .replace(/^\uFEFF/, "")
     .replace(/\s+/g, "");
-  const existing = await sql`
+  const existing = await sqlClient`
     SELECT id
     FROM texts
     WHERE source_file = ${sourceFile}
@@ -428,7 +442,7 @@ async function ingestWorks(name: ParsedName, content: string, sourceFile: string
     };
   }
 
-  const rows = await sql`
+  const rows = await sqlClient`
     INSERT INTO texts (id, thinker, title, source_file, content)
     VALUES (gen_random_uuid(), ${name.author}, ${title}, ${sourceFile}, ${content})
     RETURNING id
@@ -439,8 +453,8 @@ async function ingestWorks(name: ParsedName, content: string, sourceFile: string
   let errors = 0;
   for (let i = 0; i < chunks.length; i++) {
     try {
-      const vec = await embed(chunks[i]);
-      await sql`
+      const vec = await embedText(chunks[i]);
+      await sqlClient`
         INSERT INTO chunks (id, thinker, source_text_id, chunk_index, chunk_text, embedding)
         VALUES (gen_random_uuid(), ${name.author}, ${textId}, ${i}, ${chunks[i]}, ${JSON.stringify(vec)}::vector)
       `;
@@ -455,7 +469,7 @@ async function ingestWorks(name: ParsedName, content: string, sourceFile: string
 
   // If nothing embedded, remove the dangling text row so reruns start clean.
   if (inserted === 0) {
-    await sql`DELETE FROM texts WHERE id = ${textId}`;
+    await sqlClient`DELETE FROM texts WHERE id = ${textId}`;
     return { parsed: chunks.length, inserted: 0, errors, note: `embedding failed; rolled back text row` };
   }
   return { parsed: chunks.length, inserted, errors, note: `${inserted} chunks embedded (text id ${textId})` };
@@ -525,33 +539,50 @@ async function ingestArguments(name: ParsedName, content: string): Promise<Inges
 // main
 // ---------------------------------------------------------------------------
 
-async function main() {
+interface MainOptions {
+  sqlClient?: any;
+  embedText?: (text: string) => Promise<number[]>;
+  dropDir?: string;
+  allAuthorWorksDir?: string;
+  dryRun?: boolean;
+  onlyFile?: string | null;
+}
+
+export async function main(options: MainOptions = {}) {
+  const sqlClient = options.sqlClient || sql;
+  const embedText = options.embedText || embed;
+  const dropDir = options.dropDir || DROP_DIR;
+  const allAuthorWorksDir = options.allAuthorWorksDir || ALL_AUTHOR_WORKS_DIR;
+  const processedDir = path.join(dropDir, "_processed");
+  const failedDir = path.join(dropDir, "_failed");
+  const dryRun = options.dryRun ?? DRY_RUN;
+  const onlyFile = options.onlyFile === undefined ? ONLY_FILE : options.onlyFile;
   for (const d of [
-    DROP_DIR,
-    ALL_AUTHOR_WORKS_DIR,
-    PROCESSED_DIR,
-    FAILED_DIR,
+    dropDir,
+    allAuthorWorksDir,
+    processedDir,
+    failedDir,
   ]) {
     if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
   }
 
   const legacyFiles = fs
-    .readdirSync(DROP_DIR, { withFileTypes: true })
+    .readdirSync(dropDir, { withFileTypes: true })
     .filter((e) => e.isFile() && e.name.toLowerCase().endsWith(".txt"))
     .filter((e) => e.name.toLowerCase() !== "readme.md")
     .map((e) => ({
       file: e.name,
-      absolutePath: path.join(DROP_DIR, e.name),
+      absolutePath: path.join(dropDir, e.name),
       parsed: parseFilename(e.name),
       moveSubdirectory: "",
     }));
 
   const allAuthorFiles = fs
-    .readdirSync(ALL_AUTHOR_WORKS_DIR, { withFileTypes: true })
+    .readdirSync(allAuthorWorksDir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .flatMap((authorDirectory) => {
       const author = authorDirectory.name.toLowerCase();
-      const authorPath = path.join(ALL_AUTHOR_WORKS_DIR, authorDirectory.name);
+      const authorPath = path.join(allAuthorWorksDir, authorDirectory.name);
       return fs
         .readdirSync(authorPath, { withFileTypes: true })
         .filter(
@@ -574,7 +605,7 @@ async function main() {
     });
 
   const automaticallyAssignedFiles = fs
-    .readdirSync(ALL_AUTHOR_WORKS_DIR, { withFileTypes: true })
+    .readdirSync(allAuthorWorksDir, { withFileTypes: true })
     .filter(
       (entry) =>
         entry.isFile()
@@ -583,7 +614,7 @@ async function main() {
     .filter((entry) => !entry.name.toLowerCase().startsWith("readme"))
     .map((entry) => ({
       file: entry.name,
-      absolutePath: path.join(ALL_AUTHOR_WORKS_DIR, entry.name),
+      absolutePath: path.join(allAuthorWorksDir, entry.name),
       parsed: null as ParsedName | null,
       detectAuthor: true,
       moveSubdirectory: path.join("all-author-works", "automatically-assigned"),
@@ -593,10 +624,10 @@ async function main() {
     ...legacyFiles,
     ...allAuthorFiles,
     ...automaticallyAssignedFiles,
-  ].filter((input) => !ONLY_FILE || input.file === ONLY_FILE);
+  ].filter((input) => !onlyFile || input.file === onlyFile);
 
-  console.log(`\n=== DROP-FOLDER INGEST ${DRY_RUN ? "(DRY RUN)" : ""} ===`);
-  console.log(`Folder: ${DROP_DIR}`);
+  console.log(`\n=== DROP-FOLDER INGEST ${dryRun ? "(DRY RUN)" : ""} ===`);
+  console.log(`Folder: ${dropDir}`);
   console.log(`Found ${files.length} .txt file(s)\n`);
 
   if (files.length === 0) {
@@ -621,8 +652,8 @@ async function main() {
       } catch (error: any) {
         console.log(`FAIL  ${file}`);
         console.log(`      Author detection failed: ${error?.message || error}`);
-        if (!DRY_RUN) {
-          const destinationDirectory = path.join(FAILED_DIR, "author-unidentified");
+        if (!dryRun) {
+          const destinationDirectory = path.join(failedDir, "author-unidentified");
           fs.mkdirSync(destinationDirectory, { recursive: true });
           fs.renameSync(absolutePath, path.join(destinationDirectory, file));
         }
@@ -632,7 +663,7 @@ async function main() {
     if (!parsed) {
       console.log(`SKIP  ${file}`);
       console.log(`      Bad name. Use AUTHOR_CATEGORY[_N].txt with CATEGORY in ${CATEGORIES.join("|")}.`);
-      if (!DRY_RUN) fs.renameSync(absolutePath, path.join(FAILED_DIR, file));
+      if (!dryRun) fs.renameSync(absolutePath, path.join(failedDir, file));
       continue;
     }
 
@@ -641,7 +672,7 @@ async function main() {
     console.log(`FILE  ${file}  ->  ${author} / ${category}${lot ? ` (lot ${lot})` : ""}`);
 
     const move = (dir: string) => {
-      if (!DRY_RUN) {
+      if (!dryRun) {
         const destinationDirectory = path.join(dir, moveSubdirectory);
         fs.mkdirSync(destinationDirectory, { recursive: true });
         const destinationPath = path.join(destinationDirectory, file);
@@ -656,7 +687,7 @@ async function main() {
     // empty file => failure
     if (content.trim().length === 0) {
       console.error(`  FAIL  empty file`);
-      move(FAILED_DIR);
+      move(failedDir);
       continue;
     }
 
@@ -664,7 +695,7 @@ async function main() {
       let result: IngestResult;
       switch (category) {
         case "WORKS":
-          result = await ingestWorks(parsed, content, sourceFile);
+          result = await ingestWorks(parsed, content, sourceFile, { sqlClient, embedText, dryRun });
           break;
         case "QUOTES":
           result = await ingestQuotes(parsed, content);
@@ -680,35 +711,37 @@ async function main() {
       // parse failure: file had content but produced nothing usable
       if (result.parsed === 0) {
         console.error(`  FAIL  nothing parseable — check the file format (see drop/README.md)`);
-        move(FAILED_DIR);
+        move(failedDir);
         continue;
       }
       // total write failure
-      if (!DRY_RUN && result.inserted === 0) {
+      if (!dryRun && result.inserted === 0) {
         console.error(`  FAIL  parsed ${result.parsed} but inserted 0 (${result.errors} errors)${result.note ? ` — ${result.note}` : ""}`);
-        move(FAILED_DIR);
+        move(failedDir);
         continue;
       }
       // partial: keep processed but flag loudly so the user can review
       if (result.errors > 0) {
         console.warn(`  WARN  ${result.inserted}/${result.parsed} inserted, ${result.errors} FAILED. File kept in _processed; re-running would duplicate, so fix failures manually.`);
-        move(PROCESSED_DIR);
+        move(processedDir);
         continue;
       }
 
       console.log(`  OK  ${result.inserted}/${result.parsed} row(s)${result.note ? ` — ${result.note}` : ""}`);
-      move(PROCESSED_DIR);
+      move(processedDir);
     } catch (e: any) {
       console.error(`  FAIL ${file}: ${e.message}`);
-      move(FAILED_DIR);
+      move(failedDir);
     }
   }
 
   console.log(`\n=== DONE ===`);
-  if (!DRY_RUN) console.log(`Drop-folder files are moved to archive folders; ALL_AUTHOR_WORKS files remain visible and are copied to the matching archive.`);
+  if (!dryRun) console.log(`Drop-folder files are moved to archive folders; ALL_AUTHOR_WORKS files remain visible and are copied to the matching archive.`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
