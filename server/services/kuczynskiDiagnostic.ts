@@ -1,5 +1,6 @@
 import { SelfTestEvent, TestResult } from "./selfTest";
 import { askThinker, ThinkerProbe } from "./thinkerProbeTest";
+import { KUCZYNSKI_ADDITIONAL_200_QUESTIONS } from "./kuczynskiDiagnosticQuestions200";
 
 export const KUCZYNSKI_DIAGNOSTIC_QUESTIONS = [
   "Does logic require the existence of non-spatiotemporal entities? Give the property-based argument.",
@@ -151,6 +152,7 @@ export const KUCZYNSKI_DIAGNOSTIC_QUESTIONS = [
   "Is psychology reducible to physics?",
   "Did Berkeley anticipate Sellars on the myth of the given?",
   "Are emotions beliefs?",
+  ...KUCZYNSKI_ADDITIONAL_200_QUESTIONS,
 ] as const;
 
 const probe: ThinkerProbe = {
@@ -169,13 +171,13 @@ export async function* runKuczynskiDiagnostic(
 ): AsyncGenerator<SelfTestEvent> {
   const startedAt = Date.now();
   const results: TestResult[] = [];
-  const category = "Kuczynski 149-question proof";
+  const category = "Kuczynski 349-question proof";
   const concurrency = 4;
 
   yield {
     type: "log",
     data: {
-      message: "Running 149 fixed questions through the real Kuczynski chat endpoint. No questions are randomized or skipped.",
+      message: "Running 349 fixed questions through the real Kuczynski chat endpoint. No questions are randomized or skipped.",
     },
   };
 

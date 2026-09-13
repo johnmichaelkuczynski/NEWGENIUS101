@@ -5294,7 +5294,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
   app.get("/api/admin/synthetic-test/stream", streamDiagnostic("Synthetic-user test", runSyntheticUserTest));
   app.get("/api/admin/accuracy-test/stream", streamDiagnostic("Accuracy test", runAccuracyTest));
   app.get("/api/admin/thinker-probe-test/stream", streamDiagnostic("Thinker probe test", runThinkerProbeTest));
-  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 149-question proof", runKuczynskiDiagnostic));
+  app.get("/api/admin/kuczynski-diagnostic/stream", streamDiagnostic("Kuczynski 349-question proof", runKuczynskiDiagnostic));
 
   // Rewrite paper endpoint - rewrite an existing paper with user feedback
   app.post("/api/figures/:figureId/rewrite-paper", async (req: any, res) => {
