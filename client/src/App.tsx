@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Switch, Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -12,6 +13,24 @@ import Chat from "@/pages/chat";
 import ChatV2 from "@/pages/chat-v2";
 import Diagnostics from "@/pages/diagnostics";
 import Admin from "@/pages/admin";
+
+function VisitorCounter() {
+  const { data } = useQuery<{ total: number }>({
+    queryKey: ["/api/visitors/count"],
+    refetchInterval: 60_000,
+    staleTime: 30_000,
+  });
+
+  return (
+    <div
+      className="fixed bottom-3 left-3 z-50 rounded-full border bg-background/95 px-3 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur"
+      aria-label={`${data?.total ?? 0} visitors`}
+      data-testid="visitor-counter"
+    >
+      Visitors: {(data?.total ?? 0).toLocaleString()}
+    </div>
+  );
+}
 
 
 function Router() {
@@ -37,7 +56,9 @@ function Router() {
 function App() {
   // Anonymous unique-visitor tracking (admin-only analytics)
   useEffect(() => {
-    fetch("/api/track-visit", { method: "POST", credentials: "include" }).catch(() => {});
+    fetch("/api/track-visit", { method: "POST", credentials: "include" })
+      .then(() => queryClient.invalidateQueries({ queryKey: ["/api/visitors/count"] }))
+      .catch(() => {});
   }, []);
 
   return (
@@ -47,6 +68,7 @@ function App() {
           <PopupManagerProvider>
             <Toaster />
             <Router />
+            <VisitorCounter />
             <VoiceDictation />
             <MultiPopupManager />
           </PopupManagerProvider>

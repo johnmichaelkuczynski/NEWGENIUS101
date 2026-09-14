@@ -6201,6 +6201,18 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
     }
   });
 
+  app.get("/api/visitors/count", async (_req, res) => {
+    try {
+      const [totals] = await db
+        .select({ total: sql<number>`count(*)::int` })
+        .from(uniqueVisitors);
+      res.json({ total: totals?.total || 0 });
+    } catch (error) {
+      console.error("Error fetching public visitor count:", error);
+      res.status(200).json({ total: 0 });
+    }
+  });
+
   // Admin-only: unique visitor stats (johnmichaelkuczynski@gmail.com only)
   app.get("/api/admin/unique-visitors", isAdmin, async (_req, res) => {
     try {
