@@ -562,6 +562,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     /^\/api\/interview-creator$/,
     /^\/api\/debate\/generate$/,
     /^\/api\/generate-strict-outline$/,
+    /^\/api\/full-document-generator$/,
   ];
 
   const getUsageState = async (req: any) => {
@@ -622,6 +623,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
+
+  const instructionDocumentUpload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 20 * 1024 * 1024 },
+  });
+
+  app.post(
+    "/api/documents/extract-text",
+    instructionDocumentUpload.single("file"),
+    async (req: any, res) => {
+      try {
+        if (!req.file) return res.status(400).json({ error: "Choose a document to upload." });
+        const ext = req.file.originalname.split(".").pop()?.toLowerCase() || "";
+        let text = "";
+        if (ext === "txt" || ext === "md") {
+          text = req.file.buffer.toString("utf8");
+        } else if (ext === "pdf") {
+          text = (await pdfParse(req.file.buffer)).text;
+        } else if (ext === "doc" || ext === "docx") {
+          text = (await mammoth.extractRawText({ buffer: req.file.buffer })).value;
+        } else {
+          return res.status(400).json({ error: "Use a TXT, Markdown, PDF, DOC, or DOCX document." });
+        }
+        if (!text.trim()) return res.status(400).json({ error: "No readable text was found in that document." });
+        res.json({ text: text.trim(), filename: req.file.originalname });
+      } catch (error) {
+        console.error("[Instruction Upload] extraction failed:", error);
+        res.status(400).json({ error: "That document could not be read. Try another supported file." });
+      }
+    },
+  );
 
   app.use(async (req: any, res, next) => {
     if (

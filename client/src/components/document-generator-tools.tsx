@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FileText, Upload, RefreshCw, Loader2, CheckCircle, AlertCircle, ClipboardList, Layers, Copy, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
@@ -59,9 +60,13 @@ export function DocumentGeneratorTools({
   const [fullDocPhase, setFullDocPhase] = useState("");
   const [fullDocProgress, setFullDocProgress] = useState({ current: 0, total: 0 });
   const [fullDocError, setFullDocError] = useState("");
+  const [instructionsOpen, setInstructionsOpen] = useState(false);
+  const [resultsOpen, setResultsOpen] = useState(false);
+  const [instructionsUploading, setInstructionsUploading] = useState(false);
 
   const outlineFileRef = useRef<HTMLInputElement>(null);
   const fullDocFileRef = useRef<HTMLInputElement>(null);
+  const instructionsFileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     onRegisterFullDocumentInput?.((content: string) => setFullDocDocument(content));
@@ -188,6 +193,7 @@ export function DocumentGeneratorTools({
     setFullDocStatus("");
     setFullDocPhase("");
     setFullDocProgress({ current: 0, total: 0 });
+    setResultsOpen(true);
     
     try {
       const response = await fetch("/api/full-document-generator", {
@@ -200,18 +206,30 @@ export function DocumentGeneratorTools({
           model: fullDocModel
         })
       });
+
+      if (response.headers.get("content-type")?.includes("application/json")) {
+        const data = await response.json();
+        if (data?.accessRequired === "google_login" || data?.accessRequired === "payment") {
+          setResultsOpen(false);
+          window.dispatchEvent(new CustomEvent("usage-gate", { detail: data.accessRequired }));
+          return;
+        }
+        if (!response.ok) throw new Error(data?.error || "Generation could not start");
+      }
       
       const reader = response.body?.getReader();
       if (!reader) throw new Error("No response stream");
       
       const decoder = new TextDecoder();
+      let buffer = "";
       
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         
-        const text = decoder.decode(value);
-        const lines = text.split("\n");
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
         
         for (const line of lines) {
           if (line.startsWith("data: ")) {
@@ -247,6 +265,35 @@ export function DocumentGeneratorTools({
     }
   };
 
+  const uploadInstructionsDocument = async (file?: File) => {
+    if (!file) return;
+    setInstructionsUploading(true);
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      const response = await fetch("/api/documents/extract-text", {
+        method: "POST",
+        body,
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (!response.ok || !data.text) throw new Error(data.error || "Could not read document");
+      setFullDocInstructions((current) =>
+        current.trim() ? `${current.trim()}\n\n${data.text}` : data.text
+      );
+      toast({ title: `${file.name} added to the instructions` });
+    } catch (error) {
+      toast({
+        title: "Document could not be added",
+        description: error instanceof Error ? error.message : "Please try another document.",
+        variant: "destructive",
+      });
+    } finally {
+      setInstructionsUploading(false);
+      if (instructionsFileRef.current) instructionsFileRef.current.value = "";
+    }
+  };
+
   const clearOutline = () => {
     setOutlineDocument("");
     setOutlineInstructions("");
@@ -266,6 +313,95 @@ export function DocumentGeneratorTools({
 
   return (
     <div className="space-y-6">
+      <Dialog open={instructionsOpen} onOpenChange={setInstructionsOpen}>
+        <DialogContent className="w-[94vw] max-w-5xl h-[86vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Full Document Instructions</DialogTitle>
+            <DialogDescription>
+              Type or paste lengthy instructions, or upload a TXT, Markdown, PDF, DOC, or DOCX document.
+            </DialogDescription>
+          </DialogHeader>
+          <Textarea
+            value={fullDocInstructions}
+            onChange={(e) => setFullDocInstructions(e.target.value)}
+            placeholder="Enter or paste all instructions here..."
+            className="flex-1 min-h-[50vh] resize-none text-base leading-relaxed"
+            data-testid="textarea-fulldoc-instructions-dialog"
+          />
+          <input
+            ref={instructionsFileRef}
+            type="file"
+            accept=".txt,.md,.pdf,.doc,.docx"
+            className="hidden"
+            onChange={(e) => uploadInstructionsDocument(e.target.files?.[0])}
+          />
+          <div className="flex items-center justify-between gap-3">
+            <div className="text-sm text-muted-foreground">
+              {fullDocInstructions.trim().split(/\s+/).filter(Boolean).length.toLocaleString()} instruction words
+            </div>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => instructionsFileRef.current?.click()}
+                disabled={instructionsUploading}
+              >
+                {instructionsUploading ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Upload className="h-4 w-4 mr-2" />}
+                Upload instructions document
+              </Button>
+              <Button type="button" onClick={() => setInstructionsOpen(false)}>
+                Use These Instructions
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={resultsOpen} onOpenChange={(open) => !fullDocLoading && setResultsOpen(open)}>
+        <DialogContent className="w-[96vw] max-w-6xl h-[90vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Full Document Generation</DialogTitle>
+            <DialogDescription>
+              {fullDocLoading ? fullDocStatus || "Preparing your document..." : "Generation complete."}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-between gap-3 text-sm">
+            <span className="text-muted-foreground">{fullDocPhase || "Initializing"}</span>
+            <span className="font-medium">
+              {fullDocOutput.split(/\s+/).filter(Boolean).length.toLocaleString()} words generated
+            </span>
+          </div>
+          {fullDocProgress.total > 0 && (
+            <div className="w-full bg-muted rounded-full h-2">
+              <div
+                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${Math.min(100, (fullDocProgress.current / fullDocProgress.total) * 100)}%` }}
+              />
+            </div>
+          )}
+          <div className="flex-1 min-h-0 overflow-y-auto rounded-md border bg-muted/20 p-5">
+            {fullDocOutput ? (
+              <pre className="whitespace-pre-wrap text-sm font-serif leading-relaxed">{fullDocOutput}</pre>
+            ) : (
+              <div className="h-full flex items-center justify-center text-muted-foreground">
+                <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                {fullDocStatus || "Preparing the first words..."}
+              </div>
+            )}
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" disabled={!fullDocOutput} onClick={() => copyToClipboard(fullDocOutput, "Document")}>
+              <Copy className="h-4 w-4 mr-2" /> Copy
+            </Button>
+            <Button variant="outline" disabled={!fullDocOutput} onClick={() => downloadAsFile(fullDocOutput, "generated-document.txt")}>
+              <Download className="h-4 w-4 mr-2" /> Download
+            </Button>
+            <Button disabled={fullDocLoading} onClick={() => setResultsOpen(false)}>
+              Done
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       <Card className="border-amber-200 dark:border-amber-800">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between flex-wrap gap-2">
@@ -535,12 +671,20 @@ export function DocumentGeneratorTools({
               <label className="text-sm font-medium text-blue-700 block mb-1">
                 Optional Instructions
               </label>
-              <Input
-                value={fullDocInstructions}
-                onChange={(e) => setFullDocInstructions(e.target.value)}
-                placeholder="e.g., 'Turn this into a 7000 word essay'"
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setInstructionsOpen(true)}
+                className="w-full justify-start font-normal overflow-hidden"
                 data-testid="input-fulldoc-instructions"
-              />
+              >
+                <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="truncate">
+                  {fullDocInstructions.trim()
+                    ? `${fullDocInstructions.trim().split(/\s+/).length.toLocaleString()} instruction words added`
+                    : "Open large instruction editor"}
+                </span>
+              </Button>
             </div>
           </div>
           
@@ -589,45 +733,10 @@ export function DocumentGeneratorTools({
             </div>
           )}
           
-           {fullDocOutput.trim() && (
-            <div className="space-y-2">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <h4 className="font-medium text-sm">Generated Output:</h4>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge variant="secondary">
-                    {fullDocOutput.split(/\s+/).filter(w => w.length > 0).length} words
-                  </Badge>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => copyToClipboard(fullDocOutput, 'Document')}
-                    data-testid="button-copy-fulldoc"
-                  >
-                    <Copy className="h-4 w-4 mr-1" />
-                    Copy
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => downloadAsFile(fullDocOutput, 'generated-document.txt')}
-                    data-testid="button-download-fulldoc"
-                  >
-                    <Download className="h-4 w-4 mr-1" />
-                    Download
-                  </Button>
-                  {onTransferContent && fullDocOutput.trim() && !fullDocLoading && (
-                    <SendToDropdown
-                      content={fullDocOutput}
-                      onTransfer={onTransferContent}
-                      testId="button-transfer-fulldoc"
-                    />
-                  )}
-                </div>
-              </div>
-              <div className="max-h-[400px] overflow-y-auto p-4 bg-muted/50 rounded-md">
-                <pre className="whitespace-pre-wrap text-sm font-serif">{fullDocOutput}</pre>
-              </div>
-            </div>
+          {fullDocOutput.trim() && !fullDocLoading && (
+            <Button variant="outline" className="w-full" onClick={() => setResultsOpen(true)}>
+              View Generated Document ({fullDocOutput.split(/\s+/).filter(Boolean).length.toLocaleString()} words)
+            </Button>
           )}
         </CardContent>
       </Card>
