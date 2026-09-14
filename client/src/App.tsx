@@ -23,11 +23,11 @@ function VisitorCounter() {
 
   return (
     <div
-      className="fixed bottom-3 left-3 z-50 rounded-full border bg-background/95 px-3 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur"
+      className="fixed left-3 top-3 z-[100] rounded-full border border-primary/30 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg"
       aria-label={`${data?.total ?? 0} visitors`}
       data-testid="visitor-counter"
     >
-      Visitors: {(data?.total ?? 0).toLocaleString()}
+      {(data?.total ?? 0).toLocaleString()} total visitors
     </div>
   );
 }
