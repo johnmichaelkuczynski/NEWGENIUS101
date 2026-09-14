@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -272,21 +273,16 @@ export function DocumentReconstructorSection({ onRegisterInput, onTransferConten
         </div>
 
         {/* Instructions */}
-        <div className="space-y-2">
-          <Label htmlFor="recon-instructions">Transformation instructions</Label>
-          <Textarea
-            id="recon-instructions"
-            value={customInstructions}
-            onChange={(e) => setCustomInstructions(e.target.value)}
-            placeholder='e.g. "Rewrite in plain English, target 3000 words" or "Compress to half length" or "Expand each section with examples"'
-            rows={3}
-            disabled={isRunning}
-            data-testid="textarea-recon-instructions"
-          />
-          <div className="text-xs text-muted-foreground">
-            Include a target word count (e.g. "5000 words" or "2000-3000 words") or a verbal cue ("half", "double", "compress", "expand"). Defaults to preserve length.
-          </div>
-        </div>
+        <ExpandableInstructions
+          label="Transformation instructions"
+          value={customInstructions}
+          onChange={setCustomInstructions}
+          placeholder='e.g. "Rewrite in plain English, target 3000 words" or "Compress to half length" or "Expand each section with examples"'
+          rows={3}
+          disabled={isRunning}
+          description={'Include a target word count (e.g. "5000 words" or "2000-3000 words") or a verbal cue ("half", "double", "compress", "expand"). Defaults to preserve length.'}
+          dataTestId="textarea-recon-instructions"
+        />
 
         {/* Run / Stop */}
         <div className="flex gap-2">

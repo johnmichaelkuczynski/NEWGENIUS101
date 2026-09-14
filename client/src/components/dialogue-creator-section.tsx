@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -612,21 +613,15 @@ export function DialogueCreatorSection({
             Select up to four thinkers to dialogue with each other. Choose "Everyman" in any slot for a non-philosopher participant. Only the first thinker is required.
           </p>
 
-          <div>
-            <Label htmlFor="custom-instructions">Optional Customization</Label>
-            <Textarea
-              id="custom-instructions"
-              data-testid="textarea-customization"
-              placeholder="Optional: Specify tone, character types, focus areas, or any other instructions..."
-              value={customInstructions}
-              onChange={(e) => setCustomInstructions(e.target.value)}
-              rows={3}
-              className="mt-2"
-            />
-            <p className="text-sm text-muted-foreground mt-1">
-              e.g., "Make it more confrontational" or "Focus on the psychological aspects"
-            </p>
-          </div>
+          <ExpandableInstructions
+            label="Optional Customization"
+            value={customInstructions}
+            onChange={setCustomInstructions}
+            placeholder="Optional: Specify tone, character types, focus areas, or any other instructions..."
+            rows={3}
+            description={'e.g., "Make it more confrontational" or "Focus on the psychological aspects"'}
+            dataTestId="textarea-customization"
+          />
 
           <div>
             <Label htmlFor="quote-count-select">Quotes from Source Material</Label>

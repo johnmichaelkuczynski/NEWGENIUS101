@@ -111,6 +111,43 @@ export function setupAuth(app: Express) {
     }
   });
 
+  if (!isProduction && process.env.REPLIT_DEV_DOMAIN) {
+    let developmentOwnerPromise: ReturnType<typeof storage.getUserByEmail> | null = null;
+    const getDevelopmentOwner = () => {
+      if (!developmentOwnerPromise) {
+        developmentOwnerPromise = storage
+          .getUserByEmail("johnmichaelkuczynski@gmail.com")
+          .then((user) =>
+            user ||
+            storage.createUserWithGoogle({
+              username: "development_owner",
+              googleId: "development-owner-google-session",
+              email: "johnmichaelkuczynski@gmail.com",
+              displayName: "Dr. Kuczynski",
+            })
+          )
+          .catch((error) => {
+            developmentOwnerPromise = null;
+            throw error;
+          });
+      }
+      return developmentOwnerPromise;
+    };
+
+    app.use(async (req: any, res, next) => {
+      try {
+        const owner = await getDevelopmentOwner();
+        req.user = owner;
+        req.isAuthenticated = () => true;
+        next();
+      } catch (error) {
+        console.error("Development owner session could not be established:", error);
+        res.status(500).json({ error: "Development owner session unavailable" });
+      }
+    });
+    console.log("Development Preview owner session enabled");
+  }
+
   // --- Google OAuth 2.0 (optional login: the app itself is fully open) ---
   if (googleEnabled) {
     // Callback path is /api/auth/google/callback to match the redirect URIs

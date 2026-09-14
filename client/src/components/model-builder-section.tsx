@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -377,25 +378,22 @@ export function ModelBuilderSection({ onRegisterInput, onTransferContent }: Mode
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="custom-instructions">Custom Instructions (Optional)</Label>
-              <Textarea
-                id="custom-instructions"
-                placeholder="e.g., 'Find a model from finance that validates Spinoza's theory' or 'Translate to modern cognitive science terms'"
-                value={customInstructions}
-                onChange={(e) => setCustomInstructions(e.target.value)}
-                onKeyDown={(e) => {
+            <ExpandableInstructions
+              label="Custom Instructions (Optional)"
+              placeholder="e.g., 'Find a model from finance that validates Spinoza's theory' or 'Translate to modern cognitive science terms'"
+              value={customInstructions}
+              onChange={setCustomInstructions}
+              onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     if (originalText.trim() && !isGenerating) {
                       handleGenerate();
                     }
                   }
-                }}
-                rows={4}
-                data-testid="input-custom-instructions"
-              />
-            </div>
+              }}
+              rows={4}
+              dataTestId="input-custom-instructions"
+            />
 
             <div className="flex gap-2">
               <Button
@@ -512,14 +510,13 @@ export function ModelBuilderSection({ onRegisterInput, onTransferContent }: Mode
                   </Button>
                 ) : (
                   <div className="space-y-2 p-4 border rounded-lg bg-muted/20">
-                    <Label htmlFor="model-critique">Critique & Refinement Request</Label>
-                    <Textarea
-                      id="model-critique"
+                    <ExpandableInstructions
+                      label="Critique & Refinement Request"
                       placeholder="e.g., 'The domain swap is correct but the validation for claim 2 is weak' or 'This model works but I need a simpler version'"
                       value={critique}
-                      onChange={(e) => setCritique(e.target.value)}
+                      onChange={setCritique}
                       rows={3}
-                      data-testid="input-model-critique"
+                      dataTestId="input-model-critique"
                     />
                     <div className="flex gap-2">
                       <Button

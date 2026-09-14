@@ -4,6 +4,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -498,20 +499,16 @@ export function DebateCreatorSection({ onRegisterInput, onTransferContent }: Deb
               </div>
 
               {debateMode === "custom" && (
-                <div>
-                  <Label className="text-sm mb-2 block">Topic or Instructions</Label>
-                  <Textarea
-                    placeholder="Enter a topic (e.g., 'free will', 'the nature of consciousness', 'whether empiricism is self-refuting') or specific instructions..."
-                    value={customInstructions}
-                    onChange={(e) => setCustomInstructions(e.target.value)}
-                    rows={4}
-                    className="resize-none"
-                    data-testid="textarea-custom-instructions"
-                  />
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Just type a topic or question - no paper required
-                  </p>
-                </div>
+                <ExpandableInstructions
+                  label="Topic or Instructions"
+                  placeholder="Enter a topic (e.g., 'free will', 'the nature of consciousness', 'whether empiricism is self-refuting') or specific instructions..."
+                  value={customInstructions}
+                  onChange={setCustomInstructions}
+                  rows={4}
+                  className="resize-none"
+                  description="Just type a topic or question - no paper required"
+                  dataTestId="textarea-custom-instructions"
+                />
               )}
             </CardContent>
           </Card>

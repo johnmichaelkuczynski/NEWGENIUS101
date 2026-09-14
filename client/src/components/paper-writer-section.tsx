@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -494,17 +495,14 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="custom-instructions">Custom Instructions (optional)</Label>
-                <Textarea
-                  id="custom-instructions"
-                  placeholder="e.g., 'Focus on epistemology', 'Include critique of empiricism', 'Use formal logic notation'..."
-                  value={customInstructions}
-                  onChange={(e) => setCustomInstructions(e.target.value)}
-                  rows={2}
-                  data-testid="input-custom-instructions"
-                />
-              </div>
+              <ExpandableInstructions
+                label="Custom Instructions (optional)"
+                value={customInstructions}
+                onChange={setCustomInstructions}
+                placeholder="e.g., 'Focus on epistemology', 'Include critique of empiricism', 'Use formal logic notation'..."
+                rows={2}
+                dataTestId="input-custom-instructions"
+              />
 
               <Button
                 onClick={() => void handleGenerate(false)}
@@ -606,12 +604,13 @@ export function PaperWriterSection({ onRegisterInput, onTransferContent }: Paper
                     <RefreshCw className="h-4 w-4 text-primary" />
                     <Label className="font-medium">Rewrite Paper</Label>
                   </div>
-                  <Textarea
+                  <ExpandableInstructions
+                    label="Rewrite instructions"
                     placeholder="Enter your criticisms, corrections, or instructions for the rewrite... e.g., 'Too wordy - tighten the prose', 'Add more examples', 'Focus more on X, less on Y', 'Include quotes from specific works'..."
                     value={rewriteInstructions}
-                    onChange={(e) => setRewriteInstructions(e.target.value)}
+                    onChange={setRewriteInstructions}
                     rows={3}
-                    data-testid="input-rewrite-instructions"
+                    dataTestId="input-rewrite-instructions"
                   />
                   <div className="flex gap-2">
                     <Button

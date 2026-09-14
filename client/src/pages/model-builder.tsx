@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Label } from "@/components/ui/label";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ArrowLeft, Sparkles } from "lucide-react";
@@ -140,19 +141,14 @@ export default function ModelBuilder() {
                   />
                 </div>
 
-                <div>
-                  <Label htmlFor="custom-instructions">
-                    Custom Instructions (Optional)
-                  </Label>
-                  <Textarea
-                    id="custom-instructions"
-                    value={customInstructions}
-                    onChange={(e) => setCustomInstructions(e.target.value)}
-                    placeholder="e.g., 'Find a model from finance that validates Spinoza's theory' or 'Translate to modern cognitive science terms'"
-                    className="min-h-[120px] mt-2"
-                    data-testid="input-custom-instructions"
-                  />
-                </div>
+                <ExpandableInstructions
+                  label="Custom Instructions (Optional)"
+                  value={customInstructions}
+                  onChange={setCustomInstructions}
+                  placeholder="e.g., 'Find a model from finance that validates Spinoza's theory' or 'Translate to modern cognitive science terms'"
+                  rows={5}
+                  dataTestId="input-custom-instructions"
+                />
 
                 <Button
                   onClick={handleGenerate}

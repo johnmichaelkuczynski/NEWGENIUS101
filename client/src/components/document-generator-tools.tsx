@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { FileText, Upload, RefreshCw, Loader2, CheckCircle, AlertCircle, ClipboardList, Layers, Copy, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 
 interface GlobalSkeleton {
   outline: string[];
@@ -469,18 +470,14 @@ export function DocumentGeneratorTools({
             />
           </div>
           
-          <div>
-            <label className="text-sm font-medium text-amber-700 block mb-1">
-              Optional Instructions (leave empty for auto-summary with analysis)
-            </label>
-            <Textarea
-              value={outlineInstructions}
-              onChange={(e) => setOutlineInstructions(e.target.value)}
-              placeholder="Optional: e.g., 'Create a strict outline' - leave empty for automatic summary with analysis"
-              className="min-h-[60px] resize-y"
-              data-testid="textarea-outline-instructions"
-            />
-          </div>
+          <ExpandableInstructions
+            label="Optional Instructions (leave empty for auto-summary with analysis)"
+            value={outlineInstructions}
+            onChange={setOutlineInstructions}
+            placeholder="Optional: e.g., 'Create a strict outline' - leave empty for automatic summary with analysis"
+            rows={3}
+            dataTestId="textarea-outline-instructions"
+          />
           
           <Button
             onClick={generateStrictOutline}

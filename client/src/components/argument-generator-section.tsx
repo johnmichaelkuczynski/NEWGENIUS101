@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ExpandableInstructions } from "@/components/expandable-instructions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -204,18 +205,15 @@ export function ArgumentGeneratorSection({ onRegisterInput, onTransferContent }:
             </Select>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="argument-keywords">Keywords/Instructions (optional)</Label>
-            <Textarea
-              id="argument-keywords"
-              ref={keywordsInputRef}
-              value={keywords}
-              onChange={(e) => setKeywords(e.target.value)}
-              placeholder="Optional: ethics, causation, free will, deductive only..."
-              rows={2}
-              data-testid="input-argument-keywords"
-            />
-          </div>
+          <ExpandableInstructions
+            label="Keywords/Instructions (optional)"
+            value={keywords}
+            onChange={setKeywords}
+            placeholder="Optional: ethics, causation, free will, deductive only..."
+            rows={2}
+            inputRef={keywordsInputRef}
+            dataTestId="input-argument-keywords"
+          />
 
           <div className="space-y-2">
             <Label htmlFor="num-arguments">Number of Arguments (1-100)</Label>
