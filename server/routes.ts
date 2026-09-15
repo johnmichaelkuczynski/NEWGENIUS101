@@ -237,8 +237,8 @@ const MODEL_CONFIG: Record<string, { provider: string; model: string }> = {
   zhi6: { provider: "venice", model: "llama-3.3-70b" },
 };
 
-// Fallback order: if one fails, try next in sequence (DeepSeek first)
-const FALLBACK_ORDER = ["deepseek", "openai", "grok", "anthropic", "perplexity", "venice"];
+// Fallback order: Perplexity is the default, followed by the other configured providers.
+const FALLBACK_ORDER = ["perplexity", "deepseek", "openai", "grok", "anthropic", "venice"];
 
 // Get fallback models starting from a given model
 function getFallbackModels(startModel: string): string[] {
@@ -926,7 +926,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           responseLength: 750,
           writePaper: false,
           quoteFrequency: 0,
-          selectedModel: "deepseek",
+          selectedModel: "perplexity",
           enhancedMode: true,
           intensityLevel: 30,
           dialogueMode: false,
@@ -1058,7 +1058,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           responseLength: 750,
           writePaper: false,
           quoteFrequency: 0,
-          selectedModel: "deepseek",
+          selectedModel: "perplexity",
           enhancedMode: true,
           intensityLevel: 30,
           dialogueMode: false,
@@ -1994,7 +1994,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
         personaSettings = {
           responseLength: passedSettings.responseLength || 750,
           quoteFrequency: passedSettings.quoteFrequency || 0,
-          selectedModel: passedSettings.selectedModel || "zhi1",
+          selectedModel: passedSettings.selectedModel || "perplexity",
           enhancedMode: passedSettings.enhancedMode ?? true,
           intensityLevel: passedSettings.intensityLevel ?? 30,
           dialogueMode: passedSettings.dialogueMode ?? false,
@@ -2011,7 +2011,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
             responseLength: 750,
             writePaper: false,
             quoteFrequency: 0,
-            selectedModel: "deepseek",
+            selectedModel: "perplexity",
             enhancedMode: true,
             intensityLevel: 30,
             dialogueMode: false,

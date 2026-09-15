@@ -40,7 +40,7 @@ const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
   responseLength: 750,
   writePaper: false,
   quoteFrequency: 0,
-  selectedModel: "deepseek",
+  selectedModel: "perplexity",
   enhancedMode: true,
   intensityLevel: 30,
   dialogueMode: false,
@@ -579,7 +579,7 @@ export default function Chat() {
                   AI Model
                 </Label>
                 <Select
-                  value={personaSettings.selectedModel || "deepseek"}
+                  value={personaSettings.selectedModel || "perplexity"}
                   onValueChange={(value) => {
                     updatePersonaMutation.mutate({ selectedModel: value });
                   }}
@@ -589,7 +589,7 @@ export default function Chat() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="deepseek" data-testid="option-deepseek">
-                      DeepSeek (default)
+                      DeepSeek
                     </SelectItem>
                     <SelectItem value="openai" data-testid="option-openai">
                       OpenAI GPT-4o
@@ -598,7 +598,7 @@ export default function Chat() {
                       Claude
                     </SelectItem>
                     <SelectItem value="perplexity" data-testid="option-perplexity">
-                      Perplexity
+                      Perplexity (default)
                     </SelectItem>
                     <SelectItem value="grok" data-testid="option-grok">
                       Grok
