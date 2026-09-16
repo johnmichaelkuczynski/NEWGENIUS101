@@ -108,13 +108,15 @@ export function ChatInput({ onSend, disabled, externalContent, externalDocument 
             <Paperclip className="h-4 w-4 text-primary" />
             <span className="text-sm flex-1 truncate">{uploadedDocument.name}</span>
             <Button
+              type="button"
               variant="ghost"
               size="sm"
               onClick={() => setUploadedDocument(null)}
+              aria-label="Remove uploaded document"
               className="h-6 w-6 p-0"
               data-testid="button-remove-document"
             >
-              <X className="h-4 w-4" />
+              <X aria-hidden="true" className="h-4 w-4" />
             </Button>
           </div>
         )}
@@ -126,19 +128,22 @@ export function ChatInput({ onSend, disabled, externalContent, externalDocument 
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask and I shall answer"
+              aria-label="Ask a question"
               disabled={disabled}
               className="min-h-[165px] max-h-[400px] resize-none text-lg leading-relaxed p-4 pr-12 focus-visible:ring-sacred-gold bg-background/95 backdrop-blur-sm"
               data-testid="input-message"
             />
             <Button
+              type="button"
               variant="ghost"
               size="icon"
               onClick={() => fileInputRef.current?.click()}
+              aria-label="Upload document"
               disabled={disabled}
               className="absolute bottom-2 right-2 h-8 w-8"
               data-testid="button-upload"
             >
-              <Paperclip className="h-5 w-5" />
+              <Paperclip aria-hidden="true" className="h-5 w-5" />
             </Button>
             <input
               ref={fileInputRef}
@@ -150,13 +155,15 @@ export function ChatInput({ onSend, disabled, externalContent, externalDocument 
             />
           </div>
           <Button
+            type="button"
             onClick={handleSend}
+            aria-label="Send question"
             disabled={!message.trim() || disabled}
             size="icon"
             className="h-[165px] w-[100px] shrink-0"
             data-testid="button-send"
           >
-            <Send className="h-8 w-8" />
+            <Send aria-hidden="true" className="h-8 w-8" />
           </Button>
         </div>
         <p className="text-xs text-muted-foreground mt-2 text-center">

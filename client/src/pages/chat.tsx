@@ -454,6 +454,7 @@ export default function Chat() {
             <Input
               type="text"
               placeholder="Search..."
+              aria-label="Search thinkers"
               value={figureSearchQuery}
               onChange={(e) => setFigureSearchQuery(e.target.value)}
               className="h-7 text-xs pl-7 pr-2"
@@ -941,13 +942,13 @@ export default function Chat() {
                     </div>
                     <div className="text-left text-sm text-[#0f172a]/70 dark:text-slate-300/60 space-y-1 max-w-md mx-auto">
                       <p><span className="font-semibold text-[#3b82f6]">Dialogue</span> — Conversation in their authentic voice</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('paper-writer-section')?.scrollIntoView({ behavior: 'smooth' })}>Essay</span> — Up to 2,000 words on any topic</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('debate-creator-section')?.scrollIntoView({ behavior: 'smooth' })}>Debate</span> — Stage an argument between any two thinkers</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('interview-creator-section')?.scrollIntoView({ behavior: 'smooth' })}>Interview</span> — Generate a custom interview with any thinker</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('paper-writer-section')?.scrollIntoView({ behavior: 'smooth' })}>Paper</span> — Have any thinker write a full paper for you (up to 5,000 words)</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('quote-generator-section')?.scrollIntoView({ behavior: 'smooth' })}>Quotes</span> — Pull a thinker's actual quotes on any topic</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('position-generator-section')?.scrollIntoView({ behavior: 'smooth' })}>Positions</span> — Extract a thinker's positions on any subject</p>
-                      <p><span className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('model-builder-section')?.scrollIntoView({ behavior: 'smooth' })}>Model Builder</span> — Find a true interpretation of any theory (maps obscure concepts onto real structures)</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('paper-writer-section')?.scrollIntoView({ behavior: 'smooth' })}>Essay</button> — Up to 2,000 words on any topic</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('debate-creator-section')?.scrollIntoView({ behavior: 'smooth' })}>Debate</button> — Stage an argument between any two thinkers</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('interview-creator-section')?.scrollIntoView({ behavior: 'smooth' })}>Interview</button> — Generate a custom interview with any thinker</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('paper-writer-section')?.scrollIntoView({ behavior: 'smooth' })}>Paper</button> — Have any thinker write a full paper for you (up to 5,000 words)</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('quote-generator-section')?.scrollIntoView({ behavior: 'smooth' })}>Quotes</button> — Pull a thinker's actual quotes on any topic</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('position-generator-section')?.scrollIntoView({ behavior: 'smooth' })}>Positions</button> — Extract a thinker's positions on any subject</p>
+                      <p><button type="button" className="font-semibold text-[#3b82f6] cursor-pointer hover:underline" onClick={() => document.getElementById('model-builder-section')?.scrollIntoView({ behavior: 'smooth' })}>Model Builder</button> — Find a true interpretation of any theory (maps obscure concepts onto real structures)</p>
                     </div>
                   </CardContent>
                 </Card>
