@@ -39,6 +39,7 @@ import { verifyConfuciusApiKey } from "./confucius-api-key";
 import { verifyRussellApiKey } from "./russell-api-key";
 import { verifyMardenApiKey } from "./marden-api-key";
 import { verifyGardnerApiKey } from "./gardner-api-key";
+import { registerRemainingThinkerApiRoutes } from "./remaining-thinker-api";
 import multer from "multer";
 import { PDFParse } from "pdf-parse";
 import * as mammoth from "mammoth";
@@ -11604,6 +11605,8 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
       res.status(500).json({ error: "Delete failed" });
     }
   });
+
+  registerRemainingThinkerApiRoutes(app);
 
   const httpServer = createServer(app);
   return httpServer;
