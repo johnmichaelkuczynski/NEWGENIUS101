@@ -64,6 +64,7 @@ export default function Chat() {
   const [pendingUserMessage, setPendingUserMessage] = useState<string>("");
   const [messageCountBeforePending, setMessageCountBeforePending] = useState<number>(0);
   const [userMessageCountBeforePending, setUserMessageCountBeforePending] = useState<number>(0);
+  const [mainThinkerId, setMainThinkerId] = useState("kuczynski");
   const [selectedFigure, setSelectedFigure] = useState<Figure | null>(null);
   const [figureDialogOpen, setFigureDialogOpen] = useState(false);
   const [mobileFigurePickerOpen, setMobileFigurePickerOpen] = useState(false);
@@ -191,9 +192,14 @@ export default function Chat() {
   });
   
   const personaSettings = fetchedSettings || DEFAULT_PERSONA_SETTINGS as PersonaSettings;
+  const mainThinker = figures.find((figure) => figure.id === mainThinkerId);
+  const mainMessagesEndpoint = mainThinkerId === "kuczynski"
+    ? "/api/messages"
+    : `/api/figures/${mainThinkerId}/messages`;
+  const mainMessagesQueryKey = [mainMessagesEndpoint];
 
   const { data: messages = [], isLoading: messagesLoading } = useQuery<Message[]>({
-    queryKey: ["/api/messages"],
+    queryKey: mainMessagesQueryKey,
   });
 
   const updatePersonaMutation = useMutation({
@@ -231,6 +237,7 @@ export default function Chat() {
       setUserMessageCountBeforePending(0);
       setChatInputContent(prev => ({ text: "", version: prev.version + 1 }));
       setChatInputDocument(prev => ({ name: "", text: "", version: prev.version + 1 }));
+      setMainThinkerId("kuczynski");
       setSelectedFigure(null);
       setFigureDialogOpen(false);
       setComparisonModalOpen(false);
@@ -257,17 +264,38 @@ export default function Chat() {
     setPendingAssistantMessage("");
 
     // CRITICAL FIX: Track pending user message to keep it visible until persisted
-    const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
+    const currentMessages = queryClient.getQueryData<Message[]>(mainMessagesQueryKey) || [];
     setUserMessageCountBeforePending(currentMessages.length);
     setPendingUserMessage(content);
 
     try {
-      const response = await fetch("/api/chat/stream", {
+      const isKuczynski = mainThinkerId === "kuczynski";
+      const response = await fetch(
+        isKuczynski ? "/api/chat/stream" : `/api/figures/${mainThinkerId}/chat`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: content, documentText }),
+        credentials: "include",
+        body: JSON.stringify(
+          isKuczynski
+            ? { message: content, documentText }
+            : {
+                message: content,
+                uploadedDocument: documentText
+                  ? { name: "Uploaded document", content: documentText }
+                  : undefined,
+                settings: {
+                  responseLength: personaSettings.responseLength || 750,
+                  quoteFrequency: personaSettings.quoteFrequency || 0,
+                  selectedModel: personaSettings.selectedModel || "perplexity",
+                  enhancedMode: personaSettings.enhancedMode ?? true,
+                  intensityLevel: personaSettings.intensityLevel ?? 30,
+                  dialogueMode: personaSettings.dialogueMode ?? false,
+                },
+              },
+        ),
       });
 
       if (!response.ok) {
@@ -319,13 +347,13 @@ export default function Chat() {
                 // CRITICAL FIX v2: Don't clear streaming message yet
                 // Keep it visible as pendingAssistantMessage until refetch confirms persistence
                 // Track message count to ensure we wait for the NEW message, not just any matching text
-                const currentMessages = queryClient.getQueryData<Message[]>(["/api/messages"]) || [];
+                const currentMessages = queryClient.getQueryData<Message[]>(mainMessagesQueryKey) || [];
                 setMessageCountBeforePending(currentMessages.length);
                 setPendingAssistantMessage(accumulatedText);
                 setStreamingMessage("");
                 
                 // Refetch to get the real message from backend (with correct ID)
-                queryClient.refetchQueries({ queryKey: ["/api/messages"] });
+                queryClient.refetchQueries({ queryKey: mainMessagesQueryKey });
                 break;
               }
               try {
@@ -1015,6 +1043,50 @@ export default function Chat() {
 
           {/* Chat Input - Fixed at bottom of chat section */}
           <div className="sticky bottom-0 bg-background/95 backdrop-blur-md border-t relative z-10">
+            <div className="max-w-4xl mx-auto px-4 pt-3">
+              <div className="flex items-center gap-3">
+                <Label htmlFor="main-thinker-select" className="text-sm font-semibold whitespace-nowrap">
+                  Answer as
+                </Label>
+                <Select
+                  value={mainThinkerId}
+                  onValueChange={(value) => {
+                    setMainThinkerId(value);
+                    setStreamingMessage("");
+                    setPendingAssistantMessage("");
+                    setPendingUserMessage("");
+                    setMessageCountBeforePending(0);
+                    setUserMessageCountBeforePending(0);
+                  }}
+                  disabled={isStreaming || figuresLoading}
+                >
+                  <SelectTrigger
+                    id="main-thinker-select"
+                    className="w-full sm:w-72"
+                    data-testid="select-main-thinker"
+                  >
+                    <SelectValue placeholder="Choose a thinker" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[...figures]
+                      .sort((a, b) => {
+                        if (a.id === "kuczynski") return -1;
+                        if (b.id === "kuczynski") return 1;
+                        return a.name.localeCompare(b.name);
+                      })
+                      .map((figure) => (
+                        <SelectItem
+                          key={figure.id}
+                          value={figure.id}
+                          data-testid={`option-main-thinker-${figure.id}`}
+                        >
+                          {figure.id === "kuczynski" ? `${figure.name} (default)` : figure.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
             <ChatInput 
               onSend={handleSendMessage} 
               disabled={isStreaming}
@@ -1108,7 +1180,7 @@ export default function Chat() {
         
         {/* Thinking Panel - appears when AI is generating response */}
         <ThinkingPanel 
-          thinkerName="J.-M. Kuczynski"
+          thinkerName={mainThinker?.name || "J.-M. Kuczynski"}
           isActive={isStreaming}
         />
       </main>
