@@ -226,6 +226,7 @@ const MODEL_CONFIG: Record<string, { provider: string; model: string }> = {
   deepseek: { provider: "deepseek", model: "deepseek-chat" },
   openai: { provider: "openai", model: "gpt-4o" },
   anthropic: { provider: "anthropic", model: "claude-sonnet-4-5-20250929" },
+  gemini: { provider: "gemini", model: "gemini-3.6-flash" },
   perplexity: { provider: "perplexity", model: "sonar" },
   grok: { provider: "grok", model: "grok-3" },
   venice: { provider: "venice", model: "llama-3.3-70b" },
@@ -238,8 +239,8 @@ const MODEL_CONFIG: Record<string, { provider: string; model: string }> = {
   zhi6: { provider: "venice", model: "llama-3.3-70b" },
 };
 
-// Fallback order: Perplexity is the default, followed by the other configured providers.
-const FALLBACK_ORDER = ["perplexity", "deepseek", "openai", "grok", "anthropic", "venice"];
+// Fallback order: Gemini is the default, followed by the other configured providers.
+const FALLBACK_ORDER = ["gemini", "perplexity", "deepseek", "openai", "grok", "anthropic", "venice"];
 
 // Get fallback models starting from a given model
 function getFallbackModels(startModel: string): string[] {
@@ -260,6 +261,7 @@ function isProviderAvailable(provider: string): boolean {
     case "openai": return !!process.env.OPENAI_API_KEY;
     case "anthropic": return !!process.env.ANTHROPIC_API_KEY;
     case "deepseek": return !!process.env.DEEPSEEK_API_KEY;
+    case "gemini": return !!process.env.GEMINI_API_KEY;
     case "perplexity": return !!process.env.PERPLEXITY_API_KEY;
     case "grok": return !!process.env.GROK_API_KEY;
     case "venice": return !!process.env.VENICE_API_KEY;
@@ -276,6 +278,11 @@ function getOpenAIClient(provider: string): OpenAI | null {
       return process.env.DEEPSEEK_API_KEY ? new OpenAI({
         apiKey: process.env.DEEPSEEK_API_KEY,
         baseURL: "https://api.deepseek.com/v1",
+      }) : null;
+    case "gemini":
+      return process.env.GEMINI_API_KEY ? new OpenAI({
+        apiKey: process.env.GEMINI_API_KEY,
+        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
       }) : null;
     case "perplexity":
       return process.env.PERPLEXITY_API_KEY ? new OpenAI({
@@ -927,7 +934,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           responseLength: 750,
           writePaper: false,
           quoteFrequency: 0,
-          selectedModel: "perplexity",
+          selectedModel: "gemini",
           enhancedMode: true,
           intensityLevel: 30,
           dialogueMode: false,
@@ -1059,7 +1066,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           responseLength: 750,
           writePaper: false,
           quoteFrequency: 0,
-          selectedModel: "perplexity",
+          selectedModel: "gemini",
           enhancedMode: true,
           intensityLevel: 30,
           dialogueMode: false,
@@ -1437,7 +1444,7 @@ STYLE: Crisp, direct, conversational. Like talking to a smart friend.
       const maxTokens = isDialogueMode ? 500 : 16000;
 
       // Get selected model from persona settings (default: zhi1 = OpenAI)
-      const selectedModel = personaSettings?.selectedModel || "zhi1";
+      const selectedModel = personaSettings?.selectedModel || "gemini";
       
       // Get fallback order starting from selected model
       const fallbackModels = getFallbackModels(selectedModel);
@@ -1995,7 +2002,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
         personaSettings = {
           responseLength: passedSettings.responseLength || 750,
           quoteFrequency: passedSettings.quoteFrequency || 0,
-          selectedModel: passedSettings.selectedModel || "perplexity",
+          selectedModel: passedSettings.selectedModel || "gemini",
           enhancedMode: passedSettings.enhancedMode ?? true,
           intensityLevel: passedSettings.intensityLevel ?? 30,
           dialogueMode: passedSettings.dialogueMode ?? false,
@@ -2012,7 +2019,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
             responseLength: 750,
             writePaper: false,
             quoteFrequency: 0,
-            selectedModel: "perplexity",
+            selectedModel: "gemini",
             enhancedMode: true,
             intensityLevel: 30,
             dialogueMode: false,
@@ -2487,7 +2494,7 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
 `;
 
       // Get selected model from persona settings (default: zhi1 = OpenAI)
-      const selectedModel = personaSettings?.selectedModel || "zhi1";
+      const selectedModel = personaSettings?.selectedModel || "gemini";
       
       // Get fallback order starting from selected model
       const configuredFallbackModels = getFallbackModels(selectedModel);

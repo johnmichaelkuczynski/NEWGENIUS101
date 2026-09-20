@@ -92,6 +92,9 @@ function createThinkerKeyMiddleware(config: ThinkerApiConfig) {
 }
 
 function getCompletionClient(): { client: OpenAI; model: string } | null {
+  if (process.env.GEMINI_API_KEY) {
+    return { client: new OpenAI({ apiKey: process.env.GEMINI_API_KEY, baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/" }), model: "gemini-3.6-flash" };
+  }
   if (process.env.PERPLEXITY_API_KEY) {
     return { client: new OpenAI({ apiKey: process.env.PERPLEXITY_API_KEY, baseURL: "https://api.perplexity.ai" }), model: "sonar" };
   }

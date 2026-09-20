@@ -85,7 +85,7 @@ export function PersonaSettingsDialog({
               Select which intelligence powers your philosophical responses
             </p>
             <Select
-              value={localSettings.selectedModel || "perplexity"}
+              value={localSettings.selectedModel || "gemini"}
               onValueChange={(value) =>
                 setLocalSettings({ ...localSettings, selectedModel: value })
               }
@@ -97,7 +97,8 @@ export function PersonaSettingsDialog({
                 <SelectItem value="deepseek">DeepSeek - Economical, efficient</SelectItem>
                 <SelectItem value="openai">OpenAI GPT-4o - Fast, versatile, creative</SelectItem>
                 <SelectItem value="anthropic">Claude - Most sophisticated, nuanced reasoning</SelectItem>
-                <SelectItem value="perplexity">Perplexity - Research-augmented, fact-checked (default)</SelectItem>
+                <SelectItem value="gemini">Gemini - Fast, capable, multimodal (default)</SelectItem>
+                <SelectItem value="perplexity">Perplexity - Research-augmented, fact-checked</SelectItem>
                 <SelectItem value="grok">Grok - Real-time, witty, direct</SelectItem>
                 <SelectItem value="venice">Venice - Uncensored, private, Llama 3.3 70B</SelectItem>
               </SelectContent>

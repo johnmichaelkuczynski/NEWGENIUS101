@@ -40,7 +40,7 @@ const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
   responseLength: 750,
   writePaper: false,
   quoteFrequency: 0,
-  selectedModel: "perplexity",
+  selectedModel: "gemini",
   enhancedMode: true,
   intensityLevel: 30,
   dialogueMode: false,
@@ -524,7 +524,7 @@ export default function ChatV2() {
                   AI Model
                 </Label>
                 <Select
-                  value={personaSettings.selectedModel || "perplexity"}
+                  value={personaSettings.selectedModel || "gemini"}
                   onValueChange={(value) => {
                     updatePersonaMutation.mutate({ selectedModel: value });
                   }}
@@ -542,8 +542,11 @@ export default function ChatV2() {
                     <SelectItem value="anthropic" data-testid="option-anthropic">
                       Claude
                     </SelectItem>
+                    <SelectItem value="gemini" data-testid="option-gemini">
+                      Gemini (default)
+                    </SelectItem>
                     <SelectItem value="perplexity" data-testid="option-perplexity">
-                      Perplexity (default)
+                      Perplexity
                     </SelectItem>
                     <SelectItem value="grok" data-testid="option-grok">
                       Grok

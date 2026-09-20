@@ -59,7 +59,7 @@ export const personaSettings = pgTable("persona_settings", {
   responseLength: integer("response_length").notNull().default(1000),
   writePaper: boolean("write_paper").notNull().default(false),
   quoteFrequency: integer("quote_frequency").notNull().default(10),
-  selectedModel: text("selected_model").notNull().default("perplexity"),
+  selectedModel: text("selected_model").notNull().default("gemini"),
   enhancedMode: boolean("enhanced_mode").notNull().default(true),
   intensityLevel: integer("intensity_level").notNull().default(30),
   dialogueMode: boolean("dialogue_mode").notNull().default(false),

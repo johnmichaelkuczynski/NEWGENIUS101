@@ -256,6 +256,7 @@ export async function* runSelfTest(originBase: string, signal?: AbortSignal): As
     { name: "OpenAI (GPT-4o)", category: "AI Providers", run: testOpenAI },
     { name: "DeepSeek", category: "AI Providers", run: () => testOpenAICompatible("DeepSeek", "DEEPSEEK_API_KEY", "https://api.deepseek.com", "deepseek-chat") },
     { name: "Grok (xAI)", category: "AI Providers", run: () => testOpenAICompatible("Grok (xAI)", "GROK_API_KEY", "https://api.x.ai/v1", "grok-3") },
+    { name: "Gemini", category: "AI Providers", run: () => testOpenAICompatible("Gemini", "GEMINI_API_KEY", "https://generativelanguage.googleapis.com/v1beta/openai/", "gemini-3.6-flash") },
     { name: "Perplexity", category: "AI Providers", run: () => testOpenAICompatible("Perplexity", "PERPLEXITY_API_KEY", "https://api.perplexity.ai", "sonar") },
     { name: "Venice", category: "AI Providers", run: () => testOpenAICompatible("Venice", "VENICE_API_KEY", "https://api.venice.ai/api/v1", "llama-3.3-70b") },
     { name: "Embeddings (text-embedding-ada-002)", category: "AI Providers", run: testEmbedding },
