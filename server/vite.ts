@@ -7,6 +7,21 @@ import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();
+export const clientRoutes = [
+  "/",
+  "/v2",
+  "/diagnostics",
+  "/admin",
+  "/model-builder",
+  "/paper-writer",
+] as const;
+
+function sendNotFound(res: express.Response) {
+  res
+    .status(404)
+    .type("html")
+    .send("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex\"><title>Page not found | Genius 101</title></head><body><main><h1>Page not found</h1><p>The page you requested does not exist.</p><a href=\"/\">Return to Genius 101</a></main></body></html>");
+}
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -40,8 +55,7 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
-  app.use(vite.middlewares);
-  app.use("*", async (req, res, next) => {
+  app.get(clientRoutes, async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
@@ -65,6 +79,21 @@ export async function setupVite(app: Express, server: Server) {
       next(e);
     }
   });
+
+  app.get("*", (req, res, next) => {
+    if (
+      !path.extname(req.path) &&
+      !req.path.startsWith("/@") &&
+      !req.path.startsWith("/src/")
+    ) {
+      sendNotFound(res);
+      return;
+    }
+    next();
+  });
+
+  app.use(vite.middlewares);
+  app.get("*", (_req, res) => sendNotFound(res));
 }
 
 export function serveStatic(app: Express) {
@@ -72,8 +101,10 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(clientPath));
 
-  app.get("*", (_req, res) => {
+  app.get(clientRoutes, (_req, res) => {
     res.sendFile(path.join(clientPath, "index.html"));
   });
+
+  app.get("*", (_req, res) => sendNotFound(res));
 }
 

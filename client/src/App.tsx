@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Switch, Route, Redirect } from "wouter";
+import { Switch, Route, Redirect, Link } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -47,7 +47,15 @@ function Router() {
         <Redirect to="/" />
       </Route>
       <Route path="*">
-        <Redirect to="/" />
+        <main className="min-h-screen bg-background px-6 py-24 text-center">
+          <h1 className="font-display text-4xl">Page not found</h1>
+          <p className="mt-4 text-muted-foreground">
+            The page you requested does not exist.
+          </p>
+          <Link href="/" className="mt-6 inline-block text-primary underline">
+            Return to Genius 101
+          </Link>
+        </main>
       </Route>
     </Switch>
   );

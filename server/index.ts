@@ -1,6 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { clientRoutes, setupVite, serveStatic, log } from "./vite";
 import path from "path";
 import fs from "fs";
 import cors from "cors";
@@ -83,8 +83,15 @@ app.use((req, res, next) => {
       log(`Serving static files from: ${clientPath}`);
       app.use(express.static(clientPath));
 
-      app.get("*", (_req, res) => {
+      app.get(clientRoutes, (_req, res) => {
         res.sendFile(path.join(clientPath, "index.html"));
+      });
+
+      app.get("*", (_req, res) => {
+        res
+          .status(404)
+          .type("html")
+          .send("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex\"><title>Page not found | Genius 101</title></head><body><main><h1>Page not found</h1><p>The page you requested does not exist.</p><a href=\"/\">Return to Genius 101</a></main></body></html>");
       });
     } else {
       log(`Warning: ${clientPath} not found, falling back to default`);
