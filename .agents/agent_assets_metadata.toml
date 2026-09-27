@@ -116,6 +116,7 @@ mtime_ms = 1789275207836
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/da762f48-e205-4a13-b17b-a522785eaa3f/db9aa054-16c6-40cd-a5ae-b5ee98edd06e"
 storage_version_token = "1789275240109374"
 content_type = "text/plain"
+
 [[outputs]]
 id = "h1xL3C-7iQNOu5FEBQ0_a"
 uri = "file://attached_assets/verified-kuczynski-primary-source-answer.txt"
@@ -171,3 +172,17 @@ mtime_ms = 1789294115974
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/f8e00c3a-42f1-474f-b213-72fda76be655/b79a4006-3822-4a1c-be79-45eeda281237"
 storage_version_token = "1789294133388082"
 content_type = "text/plain"
+
+[[outputs]]
+id = "RnR4cKj4_QwwMzhL7W_Qn"
+uri = "file://docs/GENIUS_101_API.html"
+type = "html"
+title = "Genius 101 API guide"
+description = "Self-contained connection details, authentication, request and response examples, and citation-search limitations. No key included."
+logical_id = "9bdeb260-7b8d-4622-8fa0-52d7cdaf3850"
+content_hash = "sha256:8b7e8fbf93b36a0347eb9cc38e416a58e855cb9a08eecd273ffd4dcd3ef01a7c"
+size = 7427
+mtime_ms = 1790548059515
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/9bdeb260-7b8d-4622-8fa0-52d7cdaf3850/f3696d83-300a-4baa-b725-ff400c8132a8"
+storage_version_token = "1790548071475582"
+content_type = "text/html"
