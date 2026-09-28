@@ -64,4 +64,70 @@ const boxA = result.items.map(passage =&gt; passage.text).join("\n\n");</pre>
   <p><code>400</code> means an invalid request or query parameter; <code>401</code> means the key is absent or rejected; <code>404</code> means a source ID was not found in Kuczynski's works; <code>429</code> means the shared per-key rate limit was reached; <code>503</code> means the receiving server has no Kuczynski key configured; <code>500</code> means retrieval or generation failed. The current app code has not been restarted or published as part of writing this guide.</p>
 </main>
 </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kuczynski API — answers and source corpus</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #202b39; background: #f5f6f8; }
+    body { margin: 0; }
+    main { max-width: 850px; margin: auto; padding: 36px 24px 70px; background: white; min-height: 100vh; box-sizing: border-box; }
+    h1 { margin-bottom: 6px; } h2 { margin-top: 32px; } p, li { line-height: 1.6; }
+    .lead { color: #536074; } .notice { background: #fff5e8; border-left: 4px solid #ae6c28; padding: 10px 18px; }
+    pre { background: #172435; color: white; padding: 17px; border-radius: 7px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    code { font-family: ui-monospace, Consolas, monospace; }
+    @media print { :root { background: white; } main { padding: 0; } pre { background: #eee; color: black; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Kuczynski API</h1>
+  <p class="lead">One key for generated Kuczynski answers and read-only access to the Kuczynski source corpus.</p>
+  <div class="notice"><strong>Availability:</strong> The retrieval endpoints documented below were added to the project code. They will not be available at the published URL until the server changes are restarted and the project is published. Do not tell another app they are live before that happens. No key is included in this document.</div>
+
+  <h2>Connection and authentication</h2>
+  <p>Published base URL: <code>https://genius101.xyz</code><br>
+  Path prefix: <code>/api/external/kuczynski-standalone</code><br>
+  Header: <code>Authorization: Bearer YOUR_KUCZYNSKI_API_KEY</code> or <code>X-API-Key: YOUR_KUCZYNSKI_API_KEY</code>.</p>
+  <p>Use the already stored <code>KUCZYNSKI_API_KEY</code> in the calling application's server-side secrets. The same key must be configured on the receiving Genius 101 server. Never paste it in chat, put it in client-side code, or log it. This key is distinct from <code>GENIUS_API_KEY</code> and from keys for other thinkers. All endpoints below require this key. Generated answers are limited to 30 requests per 5 minutes; the read-only corpus endpoints share a separate 300-request-per-5-minute limit to allow paginated exports.</p>
+
+  <h2>Source records</h2>
+  <p>All list endpoints are GET requests with optional <code>q</code> (case-insensitive literal text search, up to 200 characters), <code>limit</code> (1–100, default 20), and <code>offset</code> (0–100000, default 0). The lists for passages, quotes, arguments, and positions also accept <code>sourceId</code> to filter by source. A successful list response has <code>category</code>, <code>items</code>, <code>limit</code>, <code>offset</code>, <code>hasMore</code>, and <code>nextOffset</code>. Continue requesting the next offset while <code>hasMore</code> is true. An empty result is an empty <code>items</code> array; do not substitute AI-generated text.</p>
+  <ul>
+    <li><code>GET /api/external/kuczynski-standalone/sources</code> — source catalog: <code>sourceId</code>, <code>title</code>, <code>sourceFile</code>, <code>passageCount</code>. The optional <code>q</code> searches titles and filenames.</li>
+    <li><code>GET /api/external/kuczynski-standalone/sources/:sourceId</code> — full original source record: <code>sourceId</code>, <code>title</code>, <code>sourceFile</code>, <code>content</code>. Returns 404 when the ID does not belong to Kuczynski.</li>
+    <li><code>GET /api/external/kuczynski-standalone/passages?q=belief&amp;limit=20</code> — verbatim stored source chunks: <code>id</code>, <code>text</code>, <code>chunkIndex</code>, <code>sourceId</code>, <code>sourceTitle</code>, <code>sourceFile</code>. This is the correct endpoint for authentic writing samples to load into Box A. Without <code>q</code>, it lists all passages in stable source and chunk order.</li>
+    <li><code>GET /api/external/kuczynski-standalone/quotes?q=belief</code> — stored quote records: <code>id</code>, <code>text</code>, <code>topic</code>, and source details when linked. Stored quote records should be checked against their source before being presented as verified verbatim quotations.</li>
+    <li><code>GET /api/external/kuczynski-standalone/arguments?q=belief</code> — structured, <em>derived</em> argument records: <code>id</code>, <code>argumentType</code>, <code>premises</code>, <code>conclusion</code>, <code>topic</code>, <code>importance</code>, and source details where linked. Premises and conclusions are not verbatim quotations.</li>
+    <li><code>GET /api/external/kuczynski-standalone/positions?q=belief</code> — derived position records: <code>id</code>, <code>text</code>, <code>topic</code>, and source details where linked. Not verbatim quotations.</li>
+  </ul>
+  <p><code>sourceId</code> identifies an underlying source text; <code>chunkIndex</code> identifies a passage's position within that source. These are source references, not printed page numbers. Missing source links are returned as null, not fabricated.</p>
+
+  <h2>Generated answer (existing endpoint)</h2>
+  <p><code>POST /api/external/kuczynski-standalone</code> with <code>Content-Type: application/json</code> and a body like:</p>
+  <pre>{"message":"What is your view of belief?","maxWords":750,"quotes":0,"stream":false}</pre>
+  <p>The JSON response contains <code>response</code>, <code>character</code>, and <code>words</code>. This is AI-generated output, not an authenticated source passage. <code>history</code> can supply up to 20 prior turns (each with <code>role</code> and <code>content</code>). <code>maxWords</code> ranges from 50 to 5000; <code>quotes</code> from 0 to 20. With <code>stream: true</code>, the endpoint emits server-sent <code>data</code> events with <code>content</code> followed by <code>done</code>.</p>
+
+  <h2>Server-side example: load authentic paragraphs into Box A</h2>
+  <pre>const key = process.env.KUCZYNSKI_API_KEY;
+if (!key) throw new Error("KUCZYNSKI_API_KEY is not configured");
+
+const url = new URL("https://genius101.xyz/api/external/kuczynski-standalone/passages");
+url.searchParams.set("q", "belief");
+url.searchParams.set("limit", "10");
+const response = await fetch(url, {
+  headers: { Authorization: `Bearer ${key}` }
+});
+if (!response.ok) throw new Error(`Kuczynski API returned HTTP ${response.status}`);
+const result = await response.json();
+// Store sourceId and chunkIndex alongside each original passage.
+const boxA = result.items.map(passage =&gt; passage.text).join("\n\n");</pre>
+  <p>For varied tests, page through results using <code>nextOffset</code> and retain each record's source metadata. Do not replace an empty result with generated prose. For the complete text of a work, request its <code>sourceId</code> from <code>/sources</code>, then fetch <code>/sources/:sourceId</code>.</p>
+
+  <h2>Error handling</h2>
+  <p><code>400</code> means an invalid request or query parameter; <code>401</code> means the key is absent or rejected; <code>404</code> means a source ID was not found in Kuczynski's works; <code>429</code> means the shared per-key rate limit was reached; <code>503</code> means the receiving server has no Kuczynski key configured; <code>500</code> means retrieval or generation failed. The current app code has not been restarted or published as part of writing this guide.</p>
+</main>
+</body>
 </html>
