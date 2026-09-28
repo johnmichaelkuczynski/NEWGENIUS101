@@ -4,6 +4,7 @@ import OpenAI from "openai";
 import { z } from "zod";
 import { storage } from "./storage";
 import { getArgumentsForThinker, searchPhilosophicalChunks, searchTextChunks } from "./vector-search";
+import { registerKuczynskiCorpusRoutes } from "./kuczynski-corpus-api";
 
 export const REMAINING_THINKER_API_REGISTRY = [
   ["kuczynski", "J.-M. Kuczynski", "KUCZYNSKI_API_KEY"],
@@ -68,7 +69,7 @@ function matchesSecret(provided: string, expected: string): boolean {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-function createThinkerKeyMiddleware(config: ThinkerApiConfig) {
+function createThinkerKeyMiddleware(config: ThinkerApiConfig, maxRequests = 30) {
   let requestTimes: number[] = [];
   return (req: Request, res: Response, next: NextFunction) => {
     const expected = process.env[config[2]]?.trim();
@@ -83,8 +84,8 @@ function createThinkerKeyMiddleware(config: ThinkerApiConfig) {
     }
     const now = Date.now();
     requestTimes = requestTimes.filter((time) => now - time < 5 * 60_000);
-    if (requestTimes.length >= 30) {
-      return res.status(429).json({ error: "Rate limit exceeded: max 30 requests per 5 minutes" });
+    if (requestTimes.length >= maxRequests) {
+      return res.status(429).json({ error: `Rate limit exceeded: max ${maxRequests} requests per 5 minutes` });
     }
     requestTimes.push(now);
     next();
@@ -153,11 +154,17 @@ export function registerRemainingThinkerApiRoutes(app: Express) {
     const pathSlug = id === "kuczynski" ? "kuczynski-standalone" : id;
     if (ids.has(id) || envs.has(config[2]) || paths.has(`/api/external/${pathSlug}`)) throw new Error(`Duplicate thinker API registry entry: ${id}`);
     ids.add(id); envs.add(config[2]); paths.add(`/api/external/${pathSlug}`);
-    app.post(`/api/external/${pathSlug}`, createThinkerKeyMiddleware(config), (req, res) => {
+    const authenticate = createThinkerKeyMiddleware(config);
+    app.post(`/api/external/${pathSlug}`, authenticate, (req, res) => {
       handleThinkerRequest(config, req, res).catch((error) => {
         console.error(`[${config[1]} API] Error:`, error);
         if (!res.headersSent) res.status(500).json({ error: "Failed to generate response" });
       });
     });
+    if (id === "kuczynski") {
+      // Read-only corpus access can require many pages; keep its budget separate
+      // from the more expensive generated-answer limit.
+      registerKuczynskiCorpusRoutes(app, createThinkerKeyMiddleware(config, 300));
+    }
   }
 }

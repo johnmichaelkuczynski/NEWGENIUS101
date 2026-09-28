@@ -186,3 +186,17 @@ mtime_ms = 1790548059515
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/9bdeb260-7b8d-4622-8fa0-52d7cdaf3850/f3696d83-300a-4baa-b725-ff400c8132a8"
 storage_version_token = "1790548071475582"
 content_type = "text/html"
+
+[[outputs]]
+id = "yw5pE3TE_U0knCAr_cGZD"
+uri = "file://docs/KUCZYNSKI_API.html"
+type = "html"
+title = "Kuczynski API guide"
+description = "Authenticated answer, full works, source passages, stored quotes, arguments, and positions. Includes client instructions and publication status."
+logical_id = "1761a56d-de34-4d7a-869c-2347cef654ff"
+content_hash = "sha256:9746720a3fbf981a42538dffc81caaf47266151bbffb83e3ac711b626b024c29"
+size = 7429
+mtime_ms = 1790624836608
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/1761a56d-de34-4d7a-869c-2347cef654ff/fdbb501a-b2e9-4853-851b-cbf9690c06fe"
+storage_version_token = "1790624906382656"
+content_type = "text/html"
