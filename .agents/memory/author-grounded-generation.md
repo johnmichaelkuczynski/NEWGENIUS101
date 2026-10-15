@@ -50,3 +50,15 @@ Verbatim containment in a thinker's corpus is necessary but not sufficient for q
 **Why:** An initial exact-source selection admitted Townsend's preface as Aesop and promotional prose about another book from an Aristotle volume. These were literal source matches but not quotations by the named author.
 
 **How to apply:** Limit extraction to the authored work, especially the fable body rather than Aesop's prefatory/biographical material. Apply a separate editorial/authorship review after source matching. Short, complete fable morals are valid; do not exclude them merely to satisfy a generic minimum sentence length.
+
+In Compare Two Thinkers, each answer must express that author's source-supported position, not a generic expert answer silently substituted when an automated relevance judge fails. This rule is scoped to comparisons; preserve other answer modes unless separately requested.
+
+**Why:** Dr. Kuczynski reported Freud and Dworkin both giving interchangeable denials of gender differences. Their relevant primary texts were present, but the comparison fallback explicitly discarded author perspective. Author display names can also differ from corpus identity, and a provider-dependent failed judgment is not evidence of absent sources.
+
+**How to apply:** Retrieve each author's primary writings independently with exact canonical identity, retain neighboring argumentative context, derive a source-supported thesis before generating, and check the final answer against that thesis and its evidence. Preserve streaming and existing controls. Distinguish psychosexual-development claims from social-construction claims; do not force either author toward a predetermined yes/no answer.
+
+Reject evasive answers that insert a stronger quantifier or qualifier into the user's question and deny that instead. Start with the author's substantive claim; give genuine qualifications afterward.
+
+**Why:** Even explicit prompt instructions and an LLM fidelity judge accepted an opening denying “entirely different” moral codes, despite the question not saying “entirely” and the selected source asserting differences. The same sources yielded an accurate explanation once the strengthened denial was caught deterministically.
+
+**How to apply:** Check both the source-derived synopsis and the final opening for invented stronger propositions. Do not rely solely on another LLM to notice this failure, and retain real source distinctions rather than removing all qualifications.

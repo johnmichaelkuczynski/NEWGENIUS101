@@ -47,6 +47,10 @@ import { authorAssetsCache } from "./author-assets-cache";
 import { auditedCorpusSearch, generateAuditReport, buildPromptFromAuditResult, type AuditEvent, type AuditedSearchResult } from "./audited-search";
 import { philosopherCoherenceService } from "./PhilosopherCoherenceService";
 import {
+  prepareComparisonGrounding, comparisonAnswerRules, checkComparisonFidelity,
+  type ComparisonGrounding, type GroundingGenerator,
+} from "./comparison-grounding";
+import {
   buildGroundedProviderMessages,
   createChatSentenceStream,
   CHAT_SOURCE_UNAVAILABLE,
@@ -1915,7 +1919,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
     try {
       const sessionId = await getSessionId(req);
       const figureId = req.params.figureId;
-      const { message, uploadedDocument, settings: passedSettings } = req.body;
+      const { message, uploadedDocument, settings: passedSettings, comparisonMode } = req.body;
 
       if (!message || typeof message !== "string") {
         return res.status(400).json({ error: "Message is required" });
@@ -1997,19 +2001,32 @@ Now ATTACK this problem directly using your full philosophical firepower:
       res.setHeader("Content-Type", "text/event-stream");
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
+      res.setHeader("X-Accel-Buffering", "no");
       res.flushHeaders();
 
       // AUDITED CORPUS SEARCH: Search positions → quotes → chunks with live streaming
       console.log(`[AUDITED SEARCH] Starting for ${figureId}: "${message.substring(0, 80)}..."`);
       
-      const auditedResult = await auditedCorpusSearch(
-        message,
-        figureId,
-        figure.name,
-        (event) => {
-          // Stream each audit event to client in real-time
-          res.write(`data: ${JSON.stringify({ auditEvent: event })}\n\n`);
-        }
+      const emitAudit = (event: AuditEvent) => {
+        res.write(`data: ${JSON.stringify({ auditEvent: event })}\n\n`);
+      };
+      const generateGrounding: GroundingGenerator = (systemPrompt, userPrompt, maxTokens) =>
+        streamWithFallback({ res, systemPrompt, userPrompt, maxTokens,
+          temperature: 0, startProvider: "deepseek", emitContent: false });
+      let comparisonGrounding: ComparisonGrounding | undefined;
+      if (comparisonMode === true) {
+        const retrievalQuestion = await resolveChatRetrievalQuery(
+          message, history.slice(0, -1),
+          (system, user) => generateGrounding(system, user, 500),
+          (error) => console.warn("[Compare] Using contextual query fallback:", error),
+        );
+        comparisonGrounding = await prepareComparisonGrounding(
+          retrievalQuestion, { id: figureId, name: figure.name }, generateGrounding, emitAudit,
+        );
+        console.log(`[Compare] ${figureId}: ${comparisonGrounding.sources.length} primary passages retained; binding answer established.`);
+      }
+      const auditedResult = comparisonGrounding?.audit ?? await auditedCorpusSearch(
+        message, figureId, figure.name, emitAudit,
       );
       
       console.log(`[AUDITED SEARCH] Complete: ${auditedResult.directAnswers.length} direct answers, type=${auditedResult.answerType}`);
@@ -2028,6 +2045,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
           directCount: auditedResult.directAnswers.length,
           works: Array.from(new Set(sourcedQuotations.map((item) => item.work))),
           quotations: sourcedQuotations,
+          ...(comparisonGrounding ? { sourceDerivedAnswer: comparisonGrounding.binding } : {}),
         },
       })}\n\n`);
       
@@ -2466,6 +2484,11 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
 
         try {
           console.log(`[FIGURE CHAT Fallback] Trying ${modelKey} (${currentLLM.provider})`);
+          if (comparisonGrounding && fullResponse) {
+            // Never concatenate a failed provider's draft with another answer.
+            res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+            fullResponse = "";
+          }
           
         // Get settings for response format
         console.log(`[FIGURE CHAT DEBUG] Raw personaSettings: responseLength=${personaSettings?.responseLength}, quoteFrequency=${personaSettings?.quoteFrequency}, dialogueMode=${personaSettings?.dialogueMode}`);
@@ -2546,7 +2569,9 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
         
         // 🚀 COHERENCE SERVICE: For long responses (>1000 words), use the chunked coherence system
         const COHERENCE_THRESHOLD = 1000;
-        if (hasDirectCorpusAnswer && targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode) {
+        // Compare needs live text in both columns; coherence only emits a final
+        // stitched answer. Keep ordinary figure chats on their existing path.
+        if (hasDirectCorpusAnswer && targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode && comparisonMode !== true) {
           console.log(`[COHERENCE SERVICE] Activating for ${targetWords} word response`);
           
           try {
@@ -2685,10 +2710,16 @@ CRITICAL RULES:
 
 ══════════════════════════════════════════════════════════════`;
 
-          const fullSystemPrompt = academicBypass + enhancedSystemPrompt;
+          const fullSystemPrompt = academicBypass + enhancedSystemPrompt
+            + (comparisonGrounding ? "\n\n" + comparisonAnswerRules(figure.name, comparisonGrounding) : "");
           
           // Token limit: much lower for dialogue mode to enforce short responses
           const figureMaxTokens = effectiveDialogueMode ? 500 : 16000;
+          let terminalReason: string | null = null;
+          const comparisonStream = comparisonGrounding ? createChatSentenceStream((content) => {
+            fullResponse += content;
+            res.write(`data: ${JSON.stringify({ content })}\n\n`);
+          }) : undefined;
 
           if (currentLLM.provider === "anthropic") {
             // Claude
@@ -2712,10 +2743,14 @@ CRITICAL RULES:
             });
 
             for await (const chunk of stream) {
+              if (chunk.type === "message_delta") terminalReason = chunk.delta.stop_reason ?? null;
               if (chunk.type === "content_block_delta" && chunk.delta.type === "text_delta") {
                 const content = chunk.delta.text;
-                fullResponse += content;
-                res.write(`data: ${JSON.stringify({ content })}\n\n`);
+                if (comparisonStream) comparisonStream.push(content);
+                else {
+                  fullResponse += content;
+                  res.write(`data: ${JSON.stringify({ content })}\n\n`);
+                }
               }
             }
           } else {
@@ -2747,14 +2782,19 @@ CRITICAL RULES:
             });
 
             for await (const chunk of stream) {
+              if (chunk.choices[0]?.finish_reason) terminalReason = chunk.choices[0].finish_reason;
               const content = chunk.choices[0]?.delta?.content || "";
               if (content) {
-                fullResponse += content;
-                res.write(`data: ${JSON.stringify({ content })}\n\n`);
+                if (comparisonStream) comparisonStream.push(content);
+                else {
+                  fullResponse += content;
+                  res.write(`data: ${JSON.stringify({ content })}\n\n`);
+                }
               }
             }
           }
           
+          comparisonStream?.finish(terminalReason);
           // If we got here, the call succeeded
           successfulModel = modelKey;
           console.log(`[FIGURE CHAT Fallback] Success with ${modelKey}`);
@@ -2774,6 +2814,36 @@ CRITICAL RULES:
         res.write(`data: ${JSON.stringify({ error: "All AI providers are currently unavailable. Please try again later." })}\n\n`);
         res.end();
         return;
+      }
+
+      if (comparisonGrounding) {
+        try {
+        let fidelity = await checkComparisonFidelity(
+          figure.name, message, fullResponse, comparisonGrounding, generateGrounding,
+        );
+        if (!fidelity.faithful) {
+          console.warn(`[Compare] ${figureId}: rejected author-position reversal: ${fidelity.correction}`);
+          res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+          fullResponse = await streamWithFallback({
+            res, systemPrompt: comparisonAnswerRules(figure.name, comparisonGrounding)
+              + "\nCorrect the rejected draft's specific fidelity error. Return only a complete substantive answer in the author's voice, using the governing passages.",
+            userPrompt: `QUESTION: ${message}\nMANDATORY CORRECTION (primary evidence governs any conflicting synopsis wording): ${fidelity.correction}\nUse approximately ${personaSettings.responseLength} words unless the user's explicit instructions specify otherwise.`,
+            maxTokens: 16000, temperature: 0.25, startProvider: successfulModel,
+          });
+          fidelity = await checkComparisonFidelity(
+            figure.name, message, fullResponse, comparisonGrounding, generateGrounding,
+          );
+        }
+        if (!fidelity.faithful) {
+          res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+          throw new Error("The comparison answer failed the author-fidelity check.");
+        }
+        console.log(`[Compare] ${figureId}: completed author-fidelity check.`);
+        } catch (error) {
+          // An unchecked/rejected draft must not remain attributed to the author.
+          res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+          throw error;
+        }
       }
 
       // Save assistant message
@@ -2816,6 +2886,9 @@ CRITICAL RULES:
       console.error("Error in figure chat:", error);
       if (!res.headersSent) {
         res.status(500).json({ error: "Failed to process message" });
+      } else {
+        res.write(`data: ${JSON.stringify({ error: "Failed to complete the response. Please retry." })}\n\n`);
+        res.end();
       }
     }
   });

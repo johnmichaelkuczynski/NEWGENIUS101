@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Figure, FigureMessage, PersonaSettings } from "@shared/schema";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
+import { readComparisonStream } from "@/lib/comparison-stream";
 
 interface ComparisonModalProps {
   open: boolean;
@@ -134,6 +135,7 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
 
   const streamResponse = async (
     figure: Figure, 
+    question: string,
     setStreaming: (msg: string) => void, 
     setIsStreaming: (val: boolean) => void,
     setPending: (msg: string) => void,
@@ -151,6 +153,7 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
     // DON'T clear pending here - let useEffect clear it once persisted
     // setPending(""); // REMOVED - this would wipe out previous response before persistence
 
+    let accumulatedText = "";
     try {
       // COMPARISON MODE: Use higher defaults for side-by-side comparison
       // - Longer responses (1500 words) to trigger coherence service
@@ -169,7 +172,8 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
         },
         credentials: 'include',
         body: JSON.stringify({ 
-          message: input.trim(),
+          message: question,
+          comparisonMode: true,
           // Pass settings directly - comparison mode uses higher defaults
           settings: {
             responseLength: comparisonResponseLength,
@@ -189,90 +193,23 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
         throw new Error(`Failed to send message: ${response.status} ${errorText}`);
       }
 
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder();
-
-      if (!reader) {
-        throw new Error("No response body");
-      }
-
-      let accumulatedText = "";
-      let receivedDone = false;
-      let buffer = ""; // Handle partial chunks across reads
-      
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-          console.log(`[${figure.name}] Stream ended, receivedDone=${receivedDone}, text length=${accumulatedText.length}`);
-          break;
-        }
-
-        const chunk = decoder.decode(value, { stream: true });
-        buffer += chunk;
-        
-        // Process complete lines from buffer
-        const lines = buffer.split("\n");
-        // Keep the last potentially incomplete line in buffer
-        buffer = lines.pop() || "";
-
-        for (const line of lines) {
-          if (line.startsWith("data: ")) {
-            const data = line.slice(6);
-            if (data === "[DONE]") {
-              console.log(`[${figure.name}] Received [DONE] signal`);
-              receivedDone = true;
-              setIsStreaming(false);
-              
-              // Keep streaming message visible as pending until persisted
-              const currentMessages = queryClient.getQueryData<FigureMessage[]>([messagesQueryKey]) || [];
-              setMessageCountBeforePending(currentMessages.length);
-              setPending(accumulatedText);
-              setStreaming("");
-              
-              // Refetch to get the real message from backend
-              await queryClient.invalidateQueries({
-                queryKey: [messagesQueryKey],
-              });
-              return;
-            }
-
-            try {
-              const parsed = JSON.parse(data);
-              // Handle content chunks (main response text)
-              if (parsed.content) {
-                accumulatedText += parsed.content;
-                setStreaming(accumulatedText);
-              }
-              // Ignore other event types (coherenceEvent, auditEvent, auditSummary)
-              // but don't throw errors for them
-            } catch (err) {
-              // Ignore parsing errors for incomplete chunks
-              console.log(`[${figure.name}] Parse error for:`, data.substring(0, 100));
-            }
-          }
-        }
-      }
-      
-      // If stream ended without [DONE], handle gracefully
-      if (!receivedDone && accumulatedText.length > 0) {
-        console.log(`[${figure.name}] Stream ended without [DONE], saving accumulated text`);
-        setIsStreaming(false);
-        const currentMessages = queryClient.getQueryData<FigureMessage[]>([messagesQueryKey]) || [];
-        setMessageCountBeforePending(currentMessages.length);
-        setPending(accumulatedText);
-        setStreaming("");
-        await queryClient.invalidateQueries({ queryKey: [messagesQueryKey] });
-      } else if (!receivedDone) {
-        console.error(`[${figure.name}] Stream ended with no content`);
-        setIsStreaming(false);
-        setStreaming("");
-      }
+      await readComparisonStream(response, (text) => {
+        accumulatedText = text;
+        setStreaming(text);
+      });
     } catch (error) {
       console.error(`Stream error for ${figure.name}:`, error instanceof Error ? error.message : error);
+      toast({
+        title: `${figure.name}'s response was interrupted`,
+        description: error instanceof Error ? error.message : "Please retry.",
+        variant: "destructive",
+      });
+    } finally {
+      const currentMessages = queryClient.getQueryData<FigureMessage[]>([messagesQueryKey]) || [];
+      setMessageCountBeforePending(currentMessages.length);
+      setPending(accumulatedText);
       setIsStreaming(false);
       setStreaming("");
-      // Don't clear pending - let user see any partial content
-      // Retry logic: refetch messages in case it was saved server-side
       await queryClient.invalidateQueries({ queryKey: [messagesQueryKey] });
     }
   };
@@ -290,11 +227,13 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
     }
     
     console.log("Starting comparison chat with:", selectedFigure1.name, "and", selectedFigure2.name);
+    const question = input.trim();
     
     // Send to both figures in parallel
     await Promise.all([
       streamResponse(
         selectedFigure1, 
+        question,
         setStreaming1, 
         setIsStreaming1,
         setPending1,
@@ -303,6 +242,7 @@ export function ComparisonModal({ open, onOpenChange, figures, onTransferContent
       ),
       streamResponse(
         selectedFigure2, 
+        question,
         setStreaming2, 
         setIsStreaming2,
         setPending2,

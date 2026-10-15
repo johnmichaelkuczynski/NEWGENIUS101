@@ -214,3 +214,17 @@ mtime_ms = 1792098355161
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/39f42d62-2e79-4abf-a7fa-8ce3752d14a8/6d3f5e5d-f034-4709-b41d-66ffbd49440f"
 storage_version_token = "1792098549207528"
 content_type = "text/plain"
+
+[[outputs]]
+id = "-JnUBmsg5wHbkRtsEX19f"
+uri = "file://test_outputs/freud-dworkin-comparison.txt"
+type = "text"
+title = "Exact Freud–Dworkin comparison and source excerpts"
+description = "The complete, unedited answers inspected after the correction, plus their source-derived theses and verified database excerpts."
+logical_id = "0d298b3c-44b0-40b5-aff4-077da5544f20"
+content_hash = "sha256:a7967479d15576a6165bf963931b91339bab15e131159aaceda70b6f46c812ea"
+size = 23510
+mtime_ms = 1792103352261
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/0d298b3c-44b0-40b5-aff4-077da5544f20/f7eb7c20-98ee-41f8-986f-7734119ea1a7"
+storage_version_token = "1792103415825524"
+content_type = "text/plain"
