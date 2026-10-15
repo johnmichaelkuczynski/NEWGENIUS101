@@ -123,12 +123,25 @@ export function registerKuczynskiCorpusRoutes(app: Express, authenticate: Reques
     const match = textFilter(q, [sql`r.quote_text`, sql`r.topic`]);
     const result = await db.execute(sql`
       SELECT r.id, r.quote_text AS "text", r.topic,
-             r.source_text_id AS "sourceId", t.title AS "sourceTitle",
-             t.source_file AS "sourceFile"
+             t.id AS "sourceId", t.title AS "sourceTitle",
+             t.source_file AS "sourceFile",
+             (verified_match.source_position > 0) AS "verified",
+             CASE
+               WHEN t.id IS NULL THEN 'unlinked_source'
+               WHEN t.content IS NULL OR t.content = '' THEN 'source_text_unavailable'
+               WHEN btrim(r.quote_text) = '' THEN 'empty_quote'
+               WHEN verified_match.source_position > 0 THEN 'verified'
+               ELSE 'not_found_in_source'
+             END AS "verificationStatus",
+             NULLIF(verified_match.source_position, 0) AS "sourcePosition"
       FROM quotes r
       LEFT JOIN texts t ON t.id = r.source_text_id AND LOWER(t.thinker::text) = ${thinker}
+      LEFT JOIN LATERAL (
+        SELECT CASE WHEN t.content IS NOT NULL AND btrim(r.quote_text) <> ''
+                    THEN strpos(t.content, r.quote_text) ELSE 0 END AS source_position
+      ) verified_match ON TRUE
       WHERE LOWER(r.thinker::text) = ${thinker}
-        AND (${sourceId || null}::text IS NULL OR r.source_text_id = ${sourceId || null})
+        AND (${sourceId || null}::text IS NULL OR t.id = ${sourceId || null})
         AND ${match}
       ORDER BY r.id
       LIMIT ${limit + 1} OFFSET ${offset}

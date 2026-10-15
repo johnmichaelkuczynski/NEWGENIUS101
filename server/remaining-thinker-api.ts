@@ -121,7 +121,7 @@ async function handleThinkerRequest(config: ThinkerApiConfig, req: Request, res:
   for (const chunk of embeddings) grounding += `${chunk.content}\n\n`;
   for (const chunk of textChunks) grounding += `${chunk.chunkText}\n\n`;
   grounding += `--- END ${config[1].toUpperCase()} WRITINGS ---\n`;
-  const quoteInstruction = targetQuotes ? ` Include at least ${targetQuotes} verbatim quotes from the supplied writings.` : "";
+  const quoteInstruction = targetQuotes ? ` Include at least ${targetQuotes} verbatim quotes copied exactly from the supplied writings. Do not invent quotations or source attributions.` : "";
   const system = `${figure.systemPrompt}${argumentsContext}${grounding}\nAnswer only as ${config[1]}, grounding claims in the supplied writings where relevant. Target approximately ${targetWords} words.${quoteInstruction} Plain text only.`;
   const historyText = history.map((item) => `${item.role === "user" ? "Interlocutor" : config[1]}: ${item.content}`).join("\n\n");
   const user = historyText ? `[Conversation so far]\n${historyText}\n\n[Current message]\n${message}` : message;
@@ -135,12 +135,12 @@ async function handleThinkerRequest(config: ThinkerApiConfig, req: Request, res:
       const content = chunk.choices[0]?.delta?.content;
       if (content) res.write(`data: ${JSON.stringify({ content })}\n\n`);
     }
-    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true, quoteVerification: "not_verified" })}\n\n`);
     return res.end();
   }
   const result = await completion.client.chat.completions.create(params);
   const response = result.choices[0]?.message?.content || "";
-  return res.json({ response, character: config[0], words: response.split(/\s+/).filter(Boolean).length });
+  return res.json({ response, character: config[0], words: response.split(/\s+/).filter(Boolean).length, quoteVerification: "not_verified" });
 }
 
 export function registerRemainingThinkerApiRoutes(app: Express) {
