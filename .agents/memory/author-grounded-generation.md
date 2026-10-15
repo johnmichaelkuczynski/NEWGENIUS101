@@ -39,6 +39,12 @@ The thinking sidebar is an author-quotation display, not simulated inner monolog
 
 **How to apply:** Keep this fix scoped to quotation sourcing and movement. Use exact source excerpts, retain their provenance, select authors by exact canonical identity, and display an explicit unavailable state rather than inventing replacements.
 
+The user confirmed the genuine-author-quotation sidebar as “MUCH BETTER,” showing Kuczynski excerpts extending through the top of the panel.
+
+**Why:** This confirms the requested direction; retain authentic source excerpts and continuous upward movement rather than simulated thinking phrases.
+
+**How to apply:** Preserve this behavior during subsequent scoped fixes; do not redesign the sidebar without a new request.
+
 Verbatim containment in a thinker's corpus is necessary but not sufficient for quotation attribution. Collected editions can include translator prefaces, biographies, editorial essays, publisher advertising, and other authors' works.
 
 **Why:** An initial exact-source selection admitted Townsend's preface as Aesop and promotional prose about another book from an Aristotle volume. These were literal source matches but not quotations by the named author.
