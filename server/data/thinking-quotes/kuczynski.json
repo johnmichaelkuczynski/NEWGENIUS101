@@ -1,0 +1,546 @@
+{
+  "thinkerId": "kuczynski",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "It is logically impossible to predict what one will come to know; and, to the not inconsiderable extent that one's actions affect the world, it is therefore logically impossible to predict the future state of the universe.",
+      "sourceId": "cf0c7400-f334-43b5-86fb-7d297848e959",
+      "sourceTitle": "Empiricism and the Foundations of Psychology   Volume 8",
+      "sourceFile": "kuczynski/empiricism and the foundations of psychology - volume 8",
+      "sourceKind": "database-text",
+      "startOffset": 44523,
+      "endOffset": 44745
+    },
+    {
+      "text": "How a person reacts to a given physical stimulus is a function, not just of the nature of that stimulus, but also of what is in that person's mind.",
+      "sourceId": "5146fa8f-c634-48ed-94f6-8b34da1fa295",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000025",
+      "sourceKind": "database-text",
+      "startOffset": 14819,
+      "endOffset": 14966
+    },
+    {
+      "text": "If semantic rules are just idealizations of speaker-behavior, then speaker-behavior must pre-exist the semantic rules embodied in it.",
+      "sourceId": "559af20a-3438-4a70-96f4-8dbcdb906111",
+      "sourceTitle": "Part II",
+      "sourceFile": "kuczynski_works_1000009",
+      "sourceKind": "database-text",
+      "startOffset": 41400,
+      "endOffset": 41533
+    },
+    {
+      "text": "An expression E’s having meaning M cannot possibly be constituted by its being used in such and such a manner, since E isn’t an expression and, therefore, isn’t an expression to be used until it has a meaning.",
+      "sourceId": "1c57449c-e8dc-4518-8977-9c1ea4a760b2",
+      "sourceTitle": "Part II",
+      "sourceFile": "kuczynski_works_1000008",
+      "sourceKind": "database-text",
+      "startOffset": 41107,
+      "endOffset": 41316
+    },
+    {
+      "text": "When a person rationalizes, it is in order to make himself believe that his values validate an act that they do not in fact validate but that he strongly wants to perform.",
+      "sourceId": "5de124ab-d0f9-452e-8d64-ea0e8a213101",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000027",
+      "sourceKind": "database-text",
+      "startOffset": 20659,
+      "endOffset": 20830
+    },
+    {
+      "text": "Respect for a person’s autonomy is therefore nothing other than respect for his agency and thus for his very existence, to the extent as he is, in the robust sense of the word, a subject.",
+      "sourceId": "5aa6ad09-84d2-42ba-a3f8-33b5d11a0110",
+      "sourceTitle": "Kant’s Ethics and His Attempt to Identify Morality with Self-Interest",
+      "sourceFile": "kuczynski_works_311",
+      "sourceKind": "database-text",
+      "startOffset": 34573,
+      "endOffset": 34760
+    },
+    {
+      "text": "The central tenet of any viable moral theory is that, ultimately, the one and only thing that is of value is flourishing.",
+      "sourceId": "6a3c488a-04a2-4cd2-9885-4c0b116f88b9",
+      "sourceTitle": "The Nature of Subjecthood and the Connection between Self-Interest and Morality",
+      "sourceFile": "kuczynski_works_312",
+      "sourceKind": "database-text",
+      "startOffset": 50758,
+      "endOffset": 50879
+    },
+    {
+      "text": "In any case, freedom is not about being outside the web of causal law; it is about one’s choices making a difference within that causal law.",
+      "sourceId": "73b706e7-b983-49fa-aecf-d83c99175733",
+      "sourceTitle": "DHolbach and Hume on Freedom and Determinism",
+      "sourceFile": "kuczynski/dholbach and hume on freedom and determinism",
+      "sourceKind": "database-text",
+      "startOffset": 2593,
+      "endOffset": 2733
+    },
+    {
+      "text": "Propositions are intensions (though not all intensions are propositions—e.g., the propositional function x is a human being is not a proposition, even though it is an intension).",
+      "sourceId": "01906ec3-ebc0-4f5a-8bd3-951b8857e2f3",
+      "sourceTitle": "What Are Propositions and What Is Truth?",
+      "sourceFile": "kuczynski_works_1000006",
+      "sourceKind": "database-text",
+      "startOffset": 43571,
+      "endOffset": 43749
+    },
+    {
+      "text": "A system of measurement must yield consistent results: if, relative to a given metrical standard, a given object (at a given time, relative to a given framework) both has, and does not have, a given length n, then that standard cannot coherently be used.",
+      "sourceId": "3bf354b9-74b0-48c7-84a4-ab87f85547d5",
+      "sourceTitle": "Measurement vs. enumeration",
+      "sourceFile": "kuczynski_works_300",
+      "sourceKind": "database-text",
+      "startOffset": 25074,
+      "endOffset": 25328
+    },
+    {
+      "text": "A plurality of objects has a given emergent property whenever it has some property that, given only what is already known about the individuals composing that plurality, it is either (a) not expected to have or (b) cannot be deduced to have, either because it doesn’t follow from what we know or because we are not smart enough to see that it follows.",
+      "sourceId": "7c4196e5-e2ff-492e-94a7-61d008881f40",
+      "sourceTitle": "Aggregative Properties and Emergent Properties",
+      "sourceFile": "kuczynski/aggregative properties and emergent properties",
+      "sourceKind": "database-text",
+      "startOffset": 2581,
+      "endOffset": 2933
+    },
+    {
+      "text": "An empirical statement is one that, if true, expresses a truth that must be known through observation and that, if false, is the negation of a true empirical statement.",
+      "sourceId": "2d543e2f-5e60-42c3-a2e5-6b4ccdc9ec90",
+      "sourceTitle": "PART I",
+      "sourceFile": "kuczynski_works_1000002",
+      "sourceKind": "database-text",
+      "startOffset": 90670,
+      "endOffset": 90838
+    },
+    {
+      "text": "The very purpose of rationalizing is to isolate bodies of information that, if allowed to commingle, will lead to an awareness of the very thing one doesn't want to know.",
+      "sourceId": "eb78f235-47ec-4b82-adf5-da0b4b717d0e",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000028",
+      "sourceKind": "database-text",
+      "startOffset": 60320,
+      "endOffset": 60490
+    },
+    {
+      "text": "What is the difference between enjoying a work of art, on the one hand, and being made to feel good by it, on the other?",
+      "sourceId": "3a51b1c5-c2bc-491a-89bc-3021d400cfd4",
+      "sourceTitle": "Emotivism",
+      "sourceFile": "kuczynski_works_315",
+      "sourceKind": "database-text",
+      "startOffset": 34261,
+      "endOffset": 34381
+    },
+    {
+      "text": "A life of self-denial—not of appropriate self-discipline, but of self-effacement—is, for that very reason, constructed around the premise that it itself is worthless and, for that reason, aspires to validate that premise through continual self-denigration.",
+      "sourceId": "13d322c7-cf63-432d-a0e7-dd21cf6f5a32",
+      "sourceTitle": "kuczynski_works_312",
+      "sourceFile": "kuczynski_works_312.txt",
+      "sourceKind": "database-text",
+      "startOffset": 50197,
+      "endOffset": 50453
+    },
+    {
+      "text": "In a non-market economy, the exhortation to ‘have the courage to use your own understanding’ is without operational meaning.",
+      "sourceId": "f7be4881-a127-4649-8e87-3a341f537a4a",
+      "sourceTitle": "Papers on Accounting, Business, Economics, Politics, and Psychology   College Papers Plus 2019 2019",
+      "sourceFile": "kuczynski/papers on accounting, business, economics, politics, and psychology - college papers plus 2019-2019",
+      "sourceKind": "database-text",
+      "startOffset": 319016,
+      "endOffset": 319142
+    },
+    {
+      "text": "What makes it pathological to retreat into fantasy is the self-deception involved: one must tell oneself that the fantasy in question is reality.",
+      "sourceId": "dde753d6-c818-4e9a-9e7d-1ece90106fe1",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000029",
+      "sourceKind": "database-text",
+      "startOffset": 21571,
+      "endOffset": 21716
+    },
+    {
+      "text": "Nobody denies that x’s being a belief is necessary for x’s being knowledge, and nobody denies that the necessity in question is analytic, and not empirical, in nature.",
+      "sourceId": "896d7472-aec2-4910-bd46-390016a82b30",
+      "sourceTitle": "Conceptual Atomism and the Computational Theory of Mind",
+      "sourceFile": "kuczynski/conceptual-atomism-and-the-computational-theory-of-mind",
+      "sourceKind": "database-text",
+      "startOffset": 734125,
+      "endOffset": 734292
+    },
+    {
+      "text": "Once we recognize the full breadth of rational capacity—including the non-recursive capacities that actually make science, language, thought, and intelligence work—we can stop forcing everything into recursive molds and make genuine progress.",
+      "sourceId": "9a6118db-9d59-4223-8534-41e3afba9853",
+      "sourceTitle": "The Incompleteness of",
+      "sourceFile": "kuczynski_works_505",
+      "sourceKind": "database-text",
+      "startOffset": 15238,
+      "endOffset": 15480
+    },
+    {
+      "text": "We can stop forcing everything into recursive molds and recognize the full breadth of rational human capacities—including the non-recursive ones that make science, language, thought, and intelligence actually work.",
+      "sourceId": "3eccdade-40c8-47df-8237-d5555eca84aa",
+      "sourceTitle": "The Incompleteness of",
+      "sourceFile": "kuczynski_works_329",
+      "sourceKind": "database-text",
+      "startOffset": 141719,
+      "endOffset": 141933
+    },
+    {
+      "text": "In identifying causation with correlation, Hume is therefore claiming that to explain an event is to show that it is an accident: to explain is to show that there is no explanation.",
+      "sourceId": "c49172ff-4f8d-409a-a8c4-50a35d0db869",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000026",
+      "sourceKind": "database-text",
+      "startOffset": 28144,
+      "endOffset": 28325
+    },
+    {
+      "text": "Being coordinated consists in one's mind being intelligent and effective in the way it governs one's body, and athletic ability is therefore a virtue of mind, not of body.",
+      "sourceId": "5de124ab-d0f9-452e-8d64-ea0e8a213101",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000027",
+      "sourceKind": "database-text",
+      "startOffset": 15060,
+      "endOffset": 15231
+    },
+    {
+      "text": "To be free is for one’s choices to make a difference; it is not for one’s choices not to be caused to come into existence.",
+      "sourceId": "73b706e7-b983-49fa-aecf-d83c99175733",
+      "sourceTitle": "DHolbach and Hume on Freedom and Determinism",
+      "sourceFile": "kuczynski/dholbach and hume on freedom and determinism",
+      "sourceKind": "database-text",
+      "startOffset": 2163,
+      "endOffset": 2285
+    },
+    {
+      "text": "It is only if good people have them that intelligence, self-control, wealth, and health are good things.",
+      "sourceId": "5aa6ad09-84d2-42ba-a3f8-33b5d11a0110",
+      "sourceTitle": "Kant’s Ethics and His Attempt to Identify Morality with Self-Interest",
+      "sourceFile": "kuczynski_works_311",
+      "sourceKind": "database-text",
+      "startOffset": 10736,
+      "endOffset": 10840
+    },
+    {
+      "text": "In fact, masochism is itself a form of repression: masochism is sadism that is turned against the subject’s self since, when it was directed towards others, the subject felt that it would endanger him by incurring the wrath of others.",
+      "sourceId": "1f0a5da5-2924-417c-8d87-077d88938f54",
+      "sourceTitle": "It is Aggression, not Sexuality, that is the Primary Object of Repression",
+      "sourceFile": "kuczynski/it is aggression, not sexuality, that is the primary object of repression",
+      "sourceKind": "database-text",
+      "startOffset": 1218,
+      "endOffset": 1452
+    },
+    {
+      "text": "To repress a conceit is not to bury one’s knowledge of it in the unconscious; it is rather to bury one’s knowledge of its emotional valence in the unconscious.",
+      "sourceId": "5ac5ee68-be1d-4774-94d1-a69ceedfcd8a",
+      "sourceTitle": "Neurosis vs. Psychosis",
+      "sourceFile": "kuczynski_works_326",
+      "sourceKind": "database-text",
+      "startOffset": 2440,
+      "endOffset": 2599
+    },
+    {
+      "text": "It is only when two conditions are met that I repress a given impulse: first, I believe that my acting on that impulsive would threaten me; second, I believe that my having that impulsive in consciousness would make me likely to act on it.",
+      "sourceId": "1f0a5da5-2924-417c-8d87-077d88938f54",
+      "sourceTitle": "It is Aggression, not Sexuality, that is the Primary Object of Repression",
+      "sourceFile": "kuczynski/it is aggression, not sexuality, that is the primary object of repression",
+      "sourceKind": "database-text",
+      "startOffset": 574,
+      "endOffset": 813
+    },
+    {
+      "text": "While it is a matter of intense debate what nomic relations are, it is pretty clear they hold only among occupants of the space-time manifold.",
+      "sourceId": "221ccb1c-b693-421b-8326-a6aec31f513f",
+      "sourceTitle": "Causality",
+      "sourceFile": "kuczynski/causality",
+      "sourceKind": "database-text",
+      "startOffset": 147299,
+      "endOffset": 147441
+    },
+    {
+      "text": "Meaning in the psychological sense is therefore parasitic on meaning in the linguistic sense.",
+      "sourceId": "19c94b92-0fdb-460b-8ab8-7d87c0876729",
+      "sourceTitle": "Part II",
+      "sourceFile": "kuczynski_works_330",
+      "sourceKind": "database-text",
+      "startOffset": 4952,
+      "endOffset": 5045
+    },
+    {
+      "text": "In fact, because distal intentions are of their nature relatively enduring psychological structures, as opposed to mental events, they cannot possibly be identical with the ephemera that populate consciousness.",
+      "sourceId": "983b9e99-7beb-41cc-8af2-4e15c5a6d49e",
+      "sourceTitle": "Libet’s Experiment   Why It Matters and What It Means",
+      "sourceFile": "kuczynski/libet’s experiment - why it matters and what it means",
+      "sourceKind": "database-text",
+      "startOffset": 45097,
+      "endOffset": 45315
+    },
+    {
+      "text": "If you say that ambition is more important to success than ability, you’re saying that the property of being ambitious has the property of comparing favorably with the property of having ability in respect to whether, in virtue of having it, its instances are likely to succeed.",
+      "sourceId": "aff337d4-e584-4601-a08e-e6ab72f4adf3",
+      "sourceTitle": "Properties and Non-Spatiotemporal Existence",
+      "sourceFile": "kuczynski_works_1000004",
+      "sourceKind": "database-text",
+      "startOffset": 43166,
+      "endOffset": 43444
+    },
+    {
+      "text": "In fact, dissociation diminishes the likelihood of such distortions, since it disarms those representations by robbing them of emotional force and therefore makes it unnecessary to disarm them by altering them.",
+      "sourceId": "7cd872da-c120-41ae-8664-b602d692ef96",
+      "sourceTitle": "Does",
+      "sourceFile": "kuczynski_works_328",
+      "sourceKind": "database-text",
+      "startOffset": 22277,
+      "endOffset": 22487
+    },
+    {
+      "text": "The semantic rule that assigns Socrates to ink deposits having certain shapes would exist even if the English language had never come into existence.",
+      "sourceId": "559af20a-3438-4a70-96f4-8dbcdb906111",
+      "sourceTitle": "Part II",
+      "sourceFile": "kuczynski_works_1000009",
+      "sourceKind": "database-text",
+      "startOffset": 34323,
+      "endOffset": 34472
+    },
+    {
+      "text": "System L's key innovation lies in its approach to competence-demanding inferences - those requiring genuine insight rather than mere computational power.",
+      "sourceId": "6223252a-e81a-4c39-8087-8e510f2d3ead",
+      "sourceTitle": "AI and Philosophy",
+      "sourceFile": "kuczynski/ai-and-philosophy",
+      "sourceKind": "database-text",
+      "startOffset": 6784,
+      "endOffset": 6937
+    },
+    {
+      "text": "As Freud emphasized in Civilization and its Discontents, society is possible only if the aspirations of individuals are abridged: a precondition for civilization is the abridgment of human freedoms and, consequently, of gratifications.",
+      "sourceId": "49f16f0a-573e-4c5b-92a5-1223b665bf9b",
+      "sourceTitle": "Are We Free to Choose Our Own Values?",
+      "sourceFile": "kuczynski_works_308",
+      "sourceKind": "database-text",
+      "startOffset": 4074,
+      "endOffset": 4309
+    },
+    {
+      "text": "Formally: FormallyTrue(S) ⇔ ∃L [L is truth-preserving ∧ L is recursive ∧ S ∈ L] This reframes formal truth not as an intrinsic property but as a relationship between a statement and a truth-preserving recursive system.",
+      "sourceId": "9a6118db-9d59-4223-8534-41e3afba9853",
+      "sourceTitle": "The Incompleteness of",
+      "sourceFile": "kuczynski_works_505",
+      "sourceKind": "database-text",
+      "startOffset": 21815,
+      "endOffset": 22033
+    },
+    {
+      "text": "Consequently, \"formal truth\" (understood relationally) is not a recursively enumerable predicate (Corollary 5.2)This establishes a recursion-theoretic boundary to formal knowledge that is more fundamental than Gödel's original result.",
+      "sourceId": "c882e487-c903-49d2-8d42-4f3462f3d730",
+      "sourceTitle": "kuczynski_works_329",
+      "sourceFile": "kuczynski_works_329.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25386,
+      "endOffset": 25620
+    },
+    {
+      "text": "Just as some delineations of the concept of temperature (“a body’s temperature is the sum of the velocities of its constituent molecules divided by the number of those particles”) are truer to pre-theoretic data than others (“heat is dephlogistinated matter”), so some interpretations of law are truer to existing law than others.",
+      "sourceId": "7971e814-2a01-4c53-85d2-bf196149bf31",
+      "sourceTitle": "kuczynski_works_309",
+      "sourceFile": "kuczynski_works_309.txt",
+      "sourceKind": "database-text",
+      "startOffset": 10728,
+      "endOffset": 11058
+    },
+    {
+      "text": "Chapter 27 The Ethical Basis of Law It’s widely held that laws are nothing other than mechanisms of coercion and, therefore, that law is primarily about power, and only secondarily, if at all, about morality.",
+      "sourceId": "cbc9b65a-b46a-4eb7-99e8-960823330f51",
+      "sourceTitle": "The Ethical Basis of Law",
+      "sourceFile": "kuczynski_works_309",
+      "sourceKind": "database-text",
+      "startOffset": 0,
+      "endOffset": 208
+    },
+    {
+      "text": "For this reason, the infant’s psychological condition is integrated and healthy, even though the infant’s understanding of reality is even more subjective, and therefore more projective, than that of the adult psychotic.",
+      "sourceId": "e91e67c0-2051-4687-a548-868b0ad8ce66",
+      "sourceTitle": "kuczynski_works_326",
+      "sourceFile": "kuczynski_works_326.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1593,
+      "endOffset": 1813
+    },
+    {
+      "text": "Nor is it necessary, given that many—indeed, most---expressions of English or Spanish or any other natural language are never used and a fortiori are never combined.",
+      "sourceId": "0b14d99f-3d64-4ffc-9d89-ef53450dd4f0",
+      "sourceTitle": "What is a Formal Language?",
+      "sourceFile": "kuczynski_works_331",
+      "sourceKind": "database-text",
+      "startOffset": 5850,
+      "endOffset": 6019
+    },
+    {
+      "text": "After all, full-blown, bidirectional interactionism (the doctrine that matter affects mind and vice versa) is incompatible with dualism because, if mind affects matter and mind does not itself fall within the scope of physical law, then the physical world is explanatorily open.",
+      "sourceId": "b9c73164-0c55-4378-9db5-7f4eea59f5b9",
+      "sourceTitle": "A partir dessas formula�es e frente ao insucesso do paradigma social, material, sem levar em conta todas as circunst�ncias relevantes, o paradigma liberal, formal, encontra razes epistemolgicas para abandonar a complexi�dade � sua prpria autoregulamenta��o. Frente aos dois, o paradigma procedi�mental pode tentar abarcar o �mbito da complexidade das questes relevantes para o tratamento da desigualdade, em que os prprios destinat�rios do direi�to, como seus autores, podem corrigir os rumos dos acontecimentos, num processo de aprendizagem fal�vel:",
+      "sourceFile": "kuczynski_works_320",
+      "sourceKind": "database-text",
+      "startOffset": 19469,
+      "endOffset": 19747
+    },
+    {
+      "text": "If a given language L autonomously has any real expressive power, it is because L is so intricate in respect of its semantic structure.",
+      "sourceId": "0b14d99f-3d64-4ffc-9d89-ef53450dd4f0",
+      "sourceTitle": "What is a Formal Language?",
+      "sourceFile": "kuczynski_works_331",
+      "sourceKind": "database-text",
+      "startOffset": 12492,
+      "endOffset": 12631
+    },
+    {
+      "text": "MAX: So even if there does exist some some statement that is neither true nor false, or that is both true and false, that statement has no place in any logic.",
+      "sourceId": "68773496-c57e-4314-b91c-77a237c7f814",
+      "sourceTitle": "What is a Law of Logic?",
+      "sourceFile": "kuczynski_works_304",
+      "sourceKind": "database-text",
+      "startOffset": 8676,
+      "endOffset": 8834
+    },
+    {
+      "text": "We are interested in regularities only in so far as they are hyper- continuity-conducive, only in so far as, unlike EG, they don't fracture reality, like EB, which means we're interested in continuities, ultimately, the regularities being of interest only in so far as they may help us find the continuities.",
+      "sourceId": "4c23416a-53b9-4823-a51e-40e9ab814cb4",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000024",
+      "sourceKind": "database-text",
+      "startOffset": 36803,
+      "endOffset": 37111
+    },
+    {
+      "text": "A scalar quantity is one that is given by a single number, as opposed to an ordered n-tuple.",
+      "sourceId": "3bf354b9-74b0-48c7-84a4-ab87f85547d5",
+      "sourceTitle": "Measurement vs. enumeration",
+      "sourceFile": "kuczynski_works_300",
+      "sourceKind": "database-text",
+      "startOffset": 5401,
+      "endOffset": 5493
+    },
+    {
+      "text": "A related consequence of Relativity Theory is that length is non-additive, meaning that the length of a straight object is not the arithmetical sum of the lengths of its segments.",
+      "sourceId": "7c4196e5-e2ff-492e-94a7-61d008881f40",
+      "sourceTitle": "Aggregative Properties and Emergent Properties",
+      "sourceFile": "kuczynski/aggregative properties and emergent properties",
+      "sourceKind": "database-text",
+      "startOffset": 1846,
+      "endOffset": 2025
+    },
+    {
+      "text": "Nothing can possibly be propertyless, since a propertyless thing wouldn't have a location in time or space and therefore wouldn't exist in the same realm as the property-instances it supposedly underlies.",
+      "sourceId": "c49172ff-4f8d-409a-a8c4-50a35d0db869",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000026",
+      "sourceKind": "database-text",
+      "startOffset": 52587,
+      "endOffset": 52791
+    },
+    {
+      "text": "Some explanations are causal (in other words, they posit or presuppose the existence of some kind of causal connection among events), but it is not possible to generate a correct theoretical explanation (i.e., an explanation that posit entities that are not directly perceived) without making at least one inference that goes beyond the information provided by one’s senses. j.",
+      "sourceId": "e6a7bc54-84dc-4a54-87a4-faf535a8fb23",
+      "sourceTitle": "Properties and Non-Spatiotemporal Existence",
+      "sourceFile": "kuczynski_works_1000003",
+      "sourceKind": "database-text",
+      "startOffset": 53284,
+      "endOffset": 53661
+    },
+    {
+      "text": "To a creature endowed with a self, its body's well-being is but an instrument for its well being, that is, for its self's well being.",
+      "sourceId": "eb78f235-47ec-4b82-adf5-da0b4b717d0e",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000028",
+      "sourceKind": "database-text",
+      "startOffset": 4707,
+      "endOffset": 4840
+    },
+    {
+      "text": "It’s always an abstract object of some kind, and it’s posited only because, were it not to exist, it would be impossible to account for the truth of obviously true statements.",
+      "sourceId": "f3e8342d-fcf4-4689-aa0d-09f37121cc95",
+      "sourceTitle": "PART I",
+      "sourceFile": "kuczynski_works_1000001",
+      "sourceKind": "database-text",
+      "startOffset": 23428,
+      "endOffset": 23603
+    },
+    {
+      "text": "Being happy consists, at least in part, in judging that one’s life conforms to some ideal that one has and, therefore, that it is in compliance with some value.",
+      "sourceId": "6a3c488a-04a2-4cd2-9885-4c0b116f88b9",
+      "sourceTitle": "The Nature of Subjecthood and the Connection between Self-Interest and Morality",
+      "sourceFile": "kuczynski_works_312",
+      "sourceKind": "database-text",
+      "startOffset": 8719,
+      "endOffset": 8879
+    },
+    {
+      "text": "In general our sensory experiences can provide only a relative justification for the judgments we make about this or that specific perception: relative to the assumption that those experiences are typically accurate, inferences can be made as to the degree of accuracy of this or that particular perception.",
+      "sourceId": "99e647f1-e5fd-4755-9411-3ba408cfc0eb",
+      "sourceTitle": "A Priori Knowledge and Other Philosophical Works",
+      "sourceFile": "kuczynski/a priori knowledge and other philosophical works",
+      "sourceKind": "database-text",
+      "startOffset": 131410,
+      "endOffset": 131717
+    },
+    {
+      "text": "The semantic and syntactic rules of English being what they are, SF would have its current meaning even if it had never been used.",
+      "sourceId": "19c94b92-0fdb-460b-8ab8-7d87c0876729",
+      "sourceTitle": "Part II",
+      "sourceFile": "kuczynski_works_330",
+      "sourceKind": "database-text",
+      "startOffset": 38160,
+      "endOffset": 38290
+    },
+    {
+      "text": "Whereas commonsense holds that one infers “an even number is less five” from “two is less than five” because the latter already has a given meaning, advocates of CRS say that, on the contrary, it’s because people infer “an even number is less than five” and other similar statements from “two is less than five” that the latter has the meaning it has.",
+      "sourceId": "b80a48f3-6990-43a4-b7f7-defc911b13e4",
+      "sourceTitle": "kuczynski_works_330",
+      "sourceFile": "kuczynski_works_330.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45036,
+      "endOffset": 45387
+    },
+    {
+      "text": "It's because, although their minds do mediate it, they don't do so at the right level: they do so at the subpersonal, not the personal level, the result being that, although your beloved Rover's mind is replete with intelligence, Rover per se - the lovable, dopy entity that wags its tail when it sees you - is not very intelligent at all.",
+      "sourceId": "eb78f235-47ec-4b82-adf5-da0b4b717d0e",
+      "sourceTitle": "Empiricism and the Foundations of Psychology",
+      "sourceFile": "kuczynski_works_1000028",
+      "sourceKind": "database-text",
+      "startOffset": 83,
+      "endOffset": 422
+    },
+    {
+      "text": "The philosopher is interested in these questions only to the extent that knowing the answers to them helps him understand the categories (cause, place, time, etc.) underlying such knowledge.",
+      "sourceId": "f3e8342d-fcf4-4689-aa0d-09f37121cc95",
+      "sourceTitle": "PART I",
+      "sourceFile": "kuczynski_works_1000001",
+      "sourceKind": "database-text",
+      "startOffset": 4657,
+      "endOffset": 4847
+    },
+    {
+      "text": "(So far as it’s moral to damage people, it’s only to the extent that doing so is necessary to prevent them from being damaged in some more significant way.)",
+      "sourceId": "3d5c3ee9-2465-4d50-8d85-e67ddef450a2",
+      "sourceTitle": "Moral Conventionalism and Moral Nihilism",
+      "sourceFile": "kuczynski_works_313",
+      "sourceKind": "database-text",
+      "startOffset": 2517,
+      "endOffset": 2673
+    },
+    {
+      "text": "Advocates of psychological egoism deal with such cases by saying that Mother Teresa did these things because they made her feel good and that in doing them she was therefore acting in a purely self-interested fashion.",
+      "sourceId": "c51ddfd6-638f-49f8-8735-1924fb106e0d",
+      "sourceTitle": "Hedonism, Egoism, Utilitarianism, and Deontology",
+      "sourceFile": "kuczynski_works_310",
+      "sourceKind": "database-text",
+      "startOffset": 9141,
+      "endOffset": 9358
+    },
+    {
+      "text": "If this is right, then reading a book or listening to a good piano sonata has value only to the extent that it helps others.",
+      "sourceId": "db0ff35c-0196-4fb9-8a84-c1aff31b3504",
+      "sourceTitle": "kuczynski_works_310",
+      "sourceFile": "kuczynski_works_310.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13614,
+      "endOffset": 13738
+    }
+  ]
+}

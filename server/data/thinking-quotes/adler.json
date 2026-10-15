@@ -1,0 +1,825 @@
+{
+  "thinkerId": "adler",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Because it is no more possible to conceive of an isolated man than it is possible to conceive of a shortnecked giraffe, it is obvious that every psychology, every science of human behavior, must be a social psychology.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 14059,
+      "endOffset": 14277
+    },
+    {
+      "text": "All that we demand of a human being, and the highest praise that we can give him, is that he should be a good fellow worker, a friend to all other men, and a true Partner in love and marriage.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 441766,
+      "endOffset": 441958
+    },
+    {
+      "text": "It is in his response to these three problems that every individual human being unfailingly reveals his own deep sense of the meaning of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11199,
+      "endOffset": 11341
+    },
+    {
+      "text": "Only the individual who understands that life means contribution will be able to meet his difficulties with courage and with a good chance of success.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39185,
+      "endOffset": 39335
+    },
+    {
+      "text": "Each human being is capable of elaborating his personal defects into a useful contribution to society, yet a superficial survey of our society indicates that only a small proportion of the human race has gained the courage to effect such compensations.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 19797,
+      "endOffset": 20049
+    },
+    {
+      "text": "It is impossible to avoid these failures unless we truly have the feeling that men and women are equal; and so long as one half of the human race has reason to be dissatisfied with the position accorded to it, we shall have a very great obstacle to the success of marriage.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 465572,
+      "endOffset": 465845
+    },
+    {
+      "text": "None who has not lived life fully and shared profoundly the woes and the ecstasy of living need expect to master the art, yet everyone who is a thinking human being has it in his power to become a good craftsman, capable of mastering and applying its fundamental principles.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 64897,
+      "endOffset": 65171
+    },
+    {
+      "text": "The man who meets the problems of human life successfully acts as if he recognized, fully and spontaneously, that the meaning of life is interest in others andcooperation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15449,
+      "endOffset": 15620
+    },
+    {
+      "text": "All human judgments of value and success are founded, in the end, upon cooperation; this is the great shared commonplace of the human race.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 116595,
+      "endOffset": 116734
+    },
+    {
+      "text": "Only that individual who has learned to understand completely the pattern of his own life, who can change his goal if necessary, who realizes the bad and the good in his own conduct, can be said to be the master of his own fate and the captain of his own soul.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 30158,
+      "endOffset": 30418
+    },
+    {
+      "text": "There have always been men who understood this fact; who knew that the meaning of life is to be interested in the whole of mankind and who tried to develop social interest and love.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 18729,
+      "endOffset": 18910
+    },
+    {
+      "text": "Something there is in every human being that recognizes the necessity of being human, of contributing and cooperating in human society.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39277,
+      "endOffset": 39412
+    },
+    {
+      "text": "All that we ask of conduct, of ideals, of goals, of actions and traits of character, is that they should serve towards our human cooperation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 116735,
+      "endOffset": 116876
+    },
+    {
+      "text": "Every human being strives for significance; but people always make mistakes if they do not see that their whole significance must consist in their contribution to the lives ofothers.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13646,
+      "endOffset": 13828
+    },
+    {
+      "text": "No human being can bear a feeling of inferiority for long; he will be thrown into a tension which necessitates some kind of action.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84591,
+      "endOffset": 84722
+    },
+    {
+      "text": "The human baby is the only living animal that experiences his own inadequacy because his mind develops faster than his body.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 18015,
+      "endOffset": 18139
+    },
+    {
+      "text": "The inferiority feeling to which every human being is heir because of his physical and biological constellation in the cosmos need not therefore be an individual liability.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 19021,
+      "endOffset": 19193
+    },
+    {
+      "text": "Children whose social feeling is not developed do not pay attention or concentrate because they refuse to cooperate, and a defective memory is the result of lack of interest in others.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 151633,
+      "endOffset": 151817
+    },
+    {
+      "text": "We must never treat a Symptom or a single expression: we must discover the mistake made in the whole style of life, in the way the mind has interpreted its experiences, in the meaning it has given to life, andinthe actionswith whichithas answeredthe impressionsreceived from the body and from the environment.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 79520,
+      "endOffset": 79829
+    },
+    {
+      "text": "Since every human being has at one time been the youngest and weakest of mankind, and sine mankind, without cooperation, would be completely at the mercy of its environment, we can understand how inescapably a child which has not trained itself in cooperation will be driven towards pessimism and a fixed inferiority complex.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 93772,
+      "endOffset": 94097
+    },
+    {
+      "text": "It is philosophically impossible to conceive of more than one soul in a body, just as it is impossible to believe that human conduct is solely the result of certain motivating and activating drives and instincts, since no one, can predict the relative potency of such drives and instincts.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 10995,
+      "endOffset": 11284
+    },
+    {
+      "text": "Just as in our structural growth we recapitulate the evolution of all living matter, from a single cell to an organized unity of interdependent tissues and organs, so the psychological growth of the individual is a recapitulationofthepsychological organizationof the race.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15508,
+      "endOffset": 15780
+    },
+    {
+      "text": "The problem of feeble-mindedness is extremely difficult and complicated, and we must be very careful in our diagnosis, because the patient's failure or success as a human being may depend entirely upon our decision.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 87765,
+      "endOffset": 87980
+    },
+    {
+      "text": "In all probability the mind does not only affect the choice of a particular bodily Symptom; it is governing and influencing the whole building-up of the body.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 66120,
+      "endOffset": 66278
+    },
+    {
+      "text": "If we examine more closely we shall find that every part of the body is involved in an emotional expression; and that these physical expressions are the consequences of the action of the mind and the body.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 71614,
+      "endOffset": 71819
+    },
+    {
+      "text": "For this reason we find that many children who lack the ability to cooperate show, in later life, that they have not developed their intelligence, their ability to understand.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 74080,
+      "endOffset": 74255
+    },
+    {
+      "text": "When a goal is made concrete, the individual's potentialities must be curtailed and limited to fit this goal; but the complete goal, the prototype, will always push and pull at these limits and find a way, under any conditions, to express the meaning given to life and the final ideal striving for superiority.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 99563,
+      "endOffset": 99873
+    },
+    {
+      "text": "I am not here discussing whether these ideas are right or wrong: they are interpretations of life, they are meanings; and to some degree we are all caught up in this meaning, God and god-likeness.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 102656,
+      "endOffset": 102852
+    },
+    {
+      "text": "If each human being were no more than the haphazard resultant of the blind interaction of imponderable energies, a systematic psychology would be as impossible as a science of chemistry in which the chemical elements changed their valence from day to day.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11285,
+      "endOffset": 11540
+    },
+    {
+      "text": "Far from being a handicap, the inferiority feeling has proved itself the most cogent stimulus for the development of the human race.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 18243,
+      "endOffset": 18375
+    },
+    {
+      "text": "If someone meets a difficulty and wishes not to face it by using his common sense, but to continue in his old style of life, then he will do everything he can to justify his style of life and make it seem sufficient.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 168498,
+      "endOffset": 168714
+    },
+    {
+      "text": "As the individual's goal is set long before he realizes that power and security come with growth and development, this goal is frequently beyond the reach of human aspiration and activity.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36678,
+      "endOffset": 36866
+    },
+    {
+      "text": "All pampered children suffer from fear: it is by means of their fears that they can attract attention and they build up this emotion into their style of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 216309,
+      "endOffset": 216467
+    },
+    {
+      "text": "It is not possible for a human being to bear, without disgust and irritation, the position of being put on a lower level than someone else.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 243252,
+      "endOffset": 243391
+    },
+    {
+      "text": "The only security of which a man can be sure is the security which originates in the good will of his fellow men.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54314,
+      "endOffset": 54427
+    },
+    {
+      "text": "If an educator really attributed the whole development of character and intelligence to heredity, I do not see how he could possibly hope to accomplish anything in his Profession.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 283245,
+      "endOffset": 283424
+    },
+    {
+      "text": "It is doubtless true that brain structure is in some degree inherited; but the brain is the instrument not the origin of the mind; and, if the deficiency is not too severe for us to repair in the present state of our knowledge, the brain can be trained to compensate for the deficiency.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 286356,
+      "endOffset": 286642
+    },
+    {
+      "text": "The book will have fulfilled its purpose if it succeeds in encouraging all who study its pages to view human beings not as static machines designated by labels, but as moving, living, purpose-fulfilling entitiesstrivingforsignificanceand securityin aperplexingworld.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9554,
+      "endOffset": 9820
+    },
+    {
+      "text": "If the child has been trained to feel himself an equal member of society and to understand his task of contribution, and especially if he has been trained to regard members of the other sex as comrades and equals, adolescence will give him only an opportunity to begin his creative and independent solution of the adult problems of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 330687,
+      "endOffset": 331024
+    },
+    {
+      "text": "Viewed objectively and dispassionately we see that every human organism strives for a measure of security and totality which makes continued existence tolerable.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13214,
+      "endOffset": 13375
+    },
+    {
+      "text": "To preserve human life would not be possible if each individual attempted to wrest a living from the earth by himself with no cooperation and no results of cooperation in the past.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 403096,
+      "endOffset": 403276
+    },
+    {
+      "text": "Perhaps a great majority of men and women are really interested in the direction in which they have trained themselves in the first four or five years and cannot forget these interests; but they have felt compelled by economic considerations or by the pressure of their parents to take a different direction and engage in an occupation which does not interest them.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 411120,
+      "endOffset": 411485
+    },
+    {
+      "text": "If the value of money is overstressed in family life, the children will be tempted to look at the problem of occupation only in the light of the money they can make.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 419066,
+      "endOffset": 419231
+    },
+    {
+      "text": "If \" to make money \" is his only goal and no social interest is bound up with it, there is no possible reason why he should not make money by robbing and swindling other people.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 419625,
+      "endOffset": 419802
+    },
+    {
+      "text": "The theory of the \"splitting of the personality\" so commonly used in other systems of psychology becomes only a fiction which describes certain psychic phenomena but does not explain them.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 31123,
+      "endOffset": 31311
+    },
+    {
+      "text": "Only in these conditions will he preserve his courage and meet the problems of life without tension, finding solutions for them which increase the welfare ofothers.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 440505,
+      "endOffset": 440669
+    },
+    {
+      "text": "Every human being is bound by definite ties; his development takes place within a definite framework and he must conform his decisions to this framework.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 444677,
+      "endOffset": 444830
+    },
+    {
+      "text": "Perhaps we shall improve; perhaps we shall find completer answers to the problem; but if we find better answers they will be better because they take fuller account of the fact that we are living in two sexes, on the crust of this earth, where association is necessary.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 447513,
+      "endOffset": 447782
+    },
+    {
+      "text": "Isolation is practically impossible in a world growing more and more interrelated and cooperative with every passing day.",
+      "sourceId": "868b0bf9-0d48-4e27-a97e-324aa4f1a302",
+      "sourceTitle": "adler_works_2",
+      "sourceFile": "adler_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 53879,
+      "endOffset": 54000
+    },
+    {
+      "text": "We know what characteristics are necessary for a love partnership to be faithful and true and trustworthy, not to be reserved, not to be self-seeking. . . .",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 460867,
+      "endOffset": 461024
+    },
+    {
+      "text": "We can understand that courage is one side of cooperation and if men and women choose their partners out of fear it is a sign that they do not wish for a real cooperation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 466508,
+      "endOffset": 466679
+    },
+    {
+      "text": "The sexual attraction towards the other partner is necessary but it should always be molded along the line of a desire for human welfare.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 470435,
+      "endOffset": 470572
+    },
+    {
+      "text": "Whatever we do, our actions are our own answer to the situation of human life: they reveal what we think necessary, and fitting, and possible, and desirable.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7907,
+      "endOffset": 8064
+    },
+    {
+      "text": "Suppose, on the other hand, we consider a man whose love-life is an intimate and many-sided cooperation, whose work results in useful achievements, whose friends are many and whose contacts with his fellows are wide and fruitful.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11841,
+      "endOffset": 12070
+    },
+    {
+      "text": "Perhaps science, by increasing the interest of human beings in their fellow human beings and in the welfare of humankind, will be able to approximate closer to the goal than other movements, political or religious.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 19447,
+      "endOffset": 19661
+    },
+    {
+      "text": "Some one mind and body is here to be treated; and if our treatment is wrongly based we shall fail to help him Our theory must definitely grow from experience; it must definitely stand the test of application.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40875,
+      "endOffset": 41085
+    },
+    {
+      "text": "The life of man is the life of a moving being, and it would not be sufficient for him to develop body alone.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41493,
+      "endOffset": 41601
+    },
+    {
+      "text": "We should expect, therefore, that the ability to foresee would be most highly developed in the human mind, and that men would give the clearest evidence of a purposive striving to improve their whole position withrespecttotheirwholesituation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43403,
+      "endOffset": 43645
+    },
+    {
+      "text": "We may reasonably conclude from such evidence that a style of life and a corresponding emotional disposition exert a continuous influence on the development of the body.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 72003,
+      "endOffset": 72172
+    },
+    {
+      "text": "In Individual Psychology, however, we are considering the psyche itself, the unified mind; we are examining the meaning which individuals give to the world and to themselves, their goals, the direction of their strivings, and the approaches they make to the problems of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 80634,
+      "endOffset": 80909
+    },
+    {
+      "text": "Children who are \" backward \" at school, men and women who have found no occupation by the age of thirty or more, or have shelved the problem of marriage, compulsion neurotics who must carry out the same action again and again, insomniacs who weary themselves for the tasks of the dayall of them reveal the inferiority complex which forbids them to make progress in solving the problems of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 91690,
+      "endOffset": 92085
+    },
+    {
+      "text": "It is for this reason that the children of famous men and women are sometimes a disappointment to their parents and to the rest of society.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 242642,
+      "endOffset": 242781
+    },
+    {
+      "text": "In education we should be occupied in increasing the courage and interest of a child and in removing the limits which, through his interpretation of life, he has set to his own powers.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 280152,
+      "endOffset": 280336
+    },
+    {
+      "text": "If a child suffers, therefore, from any organic disability, it is especially necessary that he should be given no reason to conclude that he is limited in intelligence or character.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 284105,
+      "endOffset": 284286
+    },
+    {
+      "text": "It will be natural to suppose, therefore, that this meaning is always more or less unfinished, incomplete; and even that it is never altogether right.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 4696,
+      "endOffset": 4846
+    },
+    {
+      "text": "No one possesses the absolute meaning of life, and we may say that any meaning which is at all serviceable cannot be called absolutely wrong.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 6223,
+      "endOffset": 6364
+    },
+    {
+      "text": "We must struggle always to find a better answer, and the answer must always be directly applicable to the fact that we are tied to the crust of this poor planet, earth, with all the advantages and disadvantages which ourpositionbrings.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 8787,
+      "endOffset": 9022
+    },
+    {
+      "text": "Every answer, therefore, to the problems of life must take account of this tie: it must be an answer in the light of the fact that we are living in association and that we would perish if we were alone.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9670,
+      "endOffset": 9872
+    },
+    {
+      "text": "All failures neurotics, psychotics, criminals, drunkards, problem children, suicides, perverts and prostitutes are failures because they are lacking in fellow-feeling and social interest.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12524,
+      "endOffset": 12713
+    },
+    {
+      "text": "Murderers have confessed to a feeling of power when they held a bottle of poison in their hands, but clearly they were confirming their importance only to themselves; to the rest of us the possession of a bottle of poison cannot seem to give them superior worth.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13125,
+      "endOffset": 13387
+    },
+    {
+      "text": "Even genius is to be defined as no more than supreme usefulness: it is only when-a man's life is recognized by others as having significance for them that we call him a genius.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15074,
+      "endOffset": 15250
+    },
+    {
+      "text": "What has happened to those who never cooperated, who gave life a different meaning, who asked only, \" What can I get out of life?",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 17909,
+      "endOffset": 18038
+    },
+    {
+      "text": "Mistakes in the meaning given to life can be corrected only by reconsidering the situation in which the faulty interpretation was made, recognizing the error and revising the scheme of apperception.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21109,
+      "endOffset": 21307
+    },
+    {
+      "text": "One man with unhappy experiences behind him will not dwell on them except as they show him something which can be remedied for the future.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 22060,
+      "endOffset": 22198
+    },
+    {
+      "text": "In the actions of all three men their interpretations will be evident; and they will never change their actions unless they change their interpretations.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 22718,
+      "endOffset": 22871
+    },
+    {
+      "text": "From the body we cannot judge whether the development of the mind will be bad or good.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25642,
+      "endOffset": 25728
+    },
+    {
+      "text": "In consequence, when hecomes intocircumstanceswhereheis notthecenterofattentionandwhere other people do not make it their chief aim to consider his feelings, he will be very much at a loss: he will feel that his world has failed him.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 26478,
+      "endOffset": 26711
+    },
+    {
+      "text": "We should not be surprised to find that the girl whose autobiography began in this way was pursued by a feeling of helplessness and overestimated the dangers and difficulties of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 33615,
+      "endOffset": 33798
+    },
+    {
+      "text": "It is sometimes stated that human character is unchangeable, but this position can be held only by those who have never found the right key to the situation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37248,
+      "endOffset": 37405
+    },
+    {
+      "text": "As we have already seen, however, no argument or treatment can be successful if it falls short of discovering the original error; and the only possibility of improvement lies in the training for a more cooperative and courageous approach to life. cooperation is also the only safeguard we have against the development of neurotic tendencies.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37406,
+      "endOffset": 37747
+    },
+    {
+      "text": "When they meet problems, they will not stop their efforts, look for an easy way out, try to escape or throw the burden on the shoulders of others, make Claims for tender treatment and especial sympathy, feel humiliated and seek to revenge themselves, or ask, \"What is the use of life?",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39673,
+      "endOffset": 39957
+    },
+    {
+      "text": "If something new must be done or something old replaced, no one need do it but ourselves\" If life is approached in this way, as a cooperation of independent human beings, we can see no limits to theprogress ofourhumanassociation.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40114,
+      "endOffset": 40343
+    },
+    {
+      "text": "All moving beings, however, can foresee and reckon up the direction in which to move; and this fact makes it necessary to postulate that they have minds orsouls.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 42076,
+      "endOffset": 42237
+    },
+    {
+      "text": "The mind can move the body only in accordance with the possibilities which the body possesses and those which it can be trained to develop.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 42868,
+      "endOffset": 43007
+    },
+    {
+      "text": "All our strivings are directed towards a position in which a feeling of security has been achieved, a feeling that all the difficulties of life have been overcome and that we have emerged finally, in relation to the whole situation around us, safe and victorious.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43771,
+      "endOffset": 44034
+    },
+    {
+      "text": "The mind is like a motor, dragging with it all the potentialities which it can discover in the body, helping to bring the body into a position of safety and superiority to all difficulties.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44894,
+      "endOffset": 45083
+    },
+    {
+      "text": "The direction which the mind chooses may be, in reality, disastrous; but it is chosen because the mind conceives it mistakenly as the most advantageous.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 46077,
+      "endOffset": 46229
+    },
+    {
+      "text": "To a great extent, though they rule his body, they do not depend on his body: they will always depend primarily on hisgoalandhisconsequent styleoflife.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 48732,
+      "endOffset": 48883
+    },
+    {
+      "text": "What is new in the outlook of Individual Psychology is our observation that the feelings are never in contradiction to the style of life.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49074,
+      "endOffset": 49211
+    },
+    {
+      "text": "Nobody will be able to prove his feeling of anxiety; but the cowardice of hischaracter is shown sufficiently bythe troublehe hastaken to protecthimself.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51637,
+      "endOffset": 51789
+    },
+    {
+      "text": "When he left the university, he planned to do technical work; but his compulsory feelings of guilt grew so poignant that he prayed through the whole day that God would forgive him.",
+      "sourceId": "b5485713-8c1f-4131-957c-e3a2ddfb62c8",
+      "sourceTitle": "adler_works_3",
+      "sourceFile": "adler_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54089,
+      "endOffset": 54269
+    }
+  ]
+}

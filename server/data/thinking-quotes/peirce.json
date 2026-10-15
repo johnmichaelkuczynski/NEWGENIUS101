@@ -1,0 +1,636 @@
+{
+  "thinkerId": "peirce",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "The feeling of believing is a more or less sure indication of there being established in our nature some habit which will determine our actions.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 70679,
+      "endOffset": 70823
+    },
+    {
+      "text": "A finite interval of time generally contains an innumerable series of feelings; and when these become welded together in association, the result is a general idea.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 409236,
+      "endOffset": 409399
+    },
+    {
+      "text": "In scientific procedure this means that integrity of belief in general is more important than, because it is the condition of, particular true beliefs.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25583,
+      "endOffset": 25734
+    },
+    {
+      "text": "Belief does not make us act at once, but puts us into such a condition that we shall behave in a certain way, when the occasion arises.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 71347,
+      "endOffset": 71482
+    },
+    {
+      "text": "In short, it would be to assume that Nature is a pure chaos, or chance combination of independent elements, in which reasoning from one fact to another would be impossible; and since, as we shall hereafter see, there is no judgment of pure observation without reasoning, it would be to suppose all human cognition illusory and no real knowledge possible.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 206633,
+      "endOffset": 206987
+    },
+    {
+      "text": "The principal law of mind is that ideas literally spread themselves continuously and become more and more general or inclusive, so that people who form communities of any sort develop general ideas in common.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 17906,
+      "endOffset": 18114
+    },
+    {
+      "text": "A clear idea is defined as one which is so apprehended that it will be recognized wherever it is met with, and so that no other will be mistaken for it.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 99366,
+      "endOffset": 99518
+    },
+    {
+      "text": "That a piece of mechanism could not do work perpetually without being fed with power in some form, was a thing perfectly apparent to him; yet he did not understand that the machinery of the mind can only transform knowledge, but never originate it, unless it be fed with facts of observation.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 103364,
+      "endOffset": 103656
+    },
+    {
+      "text": "Yet, when we consider that logic depends on a mere struggle to escape doubt, which, as it terminates in action, must begin in emotion, and that, furthermore, the only cause of our planting ourselves on reason is that other methods of escaping doubt fail on account of the social impulse, why should we wonder to find social sentiment presupposed in reasoning?",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 169072,
+      "endOffset": 169431
+    },
+    {
+      "text": "Whoever holds that every act of the will as well as every idea of the mind is under the rigid governance of a necessity co-ordinated with that of the physical world, will logically be carried to the proposition that minds are part of the physical world in such a sense that the laws of mechanics determine everything that happens according to immutable attractions and repulsions.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 337291,
+      "endOffset": 337671
+    },
+    {
+      "text": "The ordinary view has to admit the inexhaustible multitudinous variety of the world, has to admit that its mechanical law cannot account for this in the least, that variety can spring only from spontaneity, and yet denies without any evidence or reason the existence of this spontaneity, or else shoves it back to the beginning of time and supposes it dead ever since.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 362436,
+      "endOffset": 362804
+    },
+    {
+      "text": "The anancastic development of thought will consist of new ideas adopted without foreseeing whither they tend, but having a character determined by causes either external to the mind, such as changed circumstances of life, or internal to the mind as logical developments of ideas already accepted, such as generalizations.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 512644,
+      "endOffset": 512965
+    },
+    {
+      "text": "The movement of love is circular, at one and the same impulse projecting creations into independency and drawing them into harmony.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 482681,
+      "endOffset": 482812
+    },
+    {
+      "text": "To secure advance in a definite direction chance has to be seconded by some action that shall hinder the propagation of some varieties or stimulate that of others.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 495323,
+      "endOffset": 495486
+    },
+    {
+      "text": "It is terrible to see how a single unclear idea, a single formula without meaning, lurking in a young man’s head, will sometimes act like an obstruction of inert matter in an artery, hindering the nutrition of the brain, and condemning its victim to pine away in the fullness of his intellectual vigor and in the midst of intellectual plenty.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 107447,
+      "endOffset": 107789
+    },
+    {
+      "text": "Probability and chance undoubtedly belong primarily to consequences, and are relative to premises; but we may, nevertheless, speak of the chance of an event absolutely, meaning by that the chance of the combination of all arguments in reference to it which exist for us in the given state of our knowledge.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 189744,
+      "endOffset": 190050
+    },
+    {
+      "text": "The kernel of it is that the conjoint probability of all the arguments in our possession, with reference to any fact, must be intimately connected with the just degree of our belief in that fact; and this point is supplemented by various others showing the consistency of the theory with itself and with the rest of our knowledge.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 193237,
+      "endOffset": 193567
+    },
+    {
+      "text": "Though a synthetic inference cannot by any means be reduced to deduction, yet that the rule of induction will hold good in the long run may be deduced from the principle that reality is only the object of the final opinion to which sufficient investigation would lead.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 219260,
+      "endOffset": 219528
+    },
+    {
+      "text": "That is to say, having restricted his attention to a field where no influence other than mechanical constraint could possibly come before his notice, he straightway jumped to the conclusion that throughout the universe that was the sole principle of action,—a style of reasoning so usual in our day with men not unreflecting as to be more than excusable in the infancy of thought.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 333727,
+      "endOffset": 334107
+    },
+    {
+      "text": "I do not think a man who combines a willingness to be convinced with a power of appreciating an argument upon a difficult subject can resist the reasons which have been given to show that the principle of universal necessity cannot be defended as being a postulate of reasoning.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 348274,
+      "endOffset": 348552
+    },
+    {
+      "text": "It is universally admitted that this method makes the errors smaller than they really are; yet even according to that theory an error indefinitely small is indefinitely improbable; so that any statement to the effect that a certain continuous quantity has a certain exact value, if well-founded at all, must be founded on something other than observation.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 349649,
+      "endOffset": 350004
+    },
+    {
+      "text": "What I would recommend is that every person who wishes to form an opinion concerning fundamental problems, should first of all make a complete survey of human knowledge, should take note of all the valuable ideas in each branch of science, should observe in just what respect each has been successful and where it has failed, in order that in the light of the thorough acquaintance so attained of the available materials for a philosophical theory and of the nature and strength of each, he may proceed to the study of what the problem of philosophy consists in, and of the proper way of solving it.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 300476,
+      "endOffset": 301075
+    },
+    {
+      "text": "If hypotheses are to be tried haphazard, or simply because they will suit certain phenomena, it will occupy the mathematical physicists of the world say half a century on the average to bring each theory to the test, and since the number of possible theories may go up into the trillions, only one of which can be true, we have little prospect of making further solid additions to the subject in our time.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 305481,
+      "endOffset": 305886
+    },
+    {
+      "text": "The tychastic development of thought, then, will consist in slight departures from habitual ideas in different directions indifferently, quite purposeless and quite unconstrained whether by outward circumstances or by force of logic, these new departures being followed by unforeseen results which tend to fix some of them as habits more than others.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 512293,
+      "endOffset": 512643
+    },
+    {
+      "text": "The assumption of an inexplicability is a barrier on the road to science.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 24691,
+      "endOffset": 24764
+    },
+    {
+      "text": "Other important truths made clear by symbolic logic is the hypothetical character of universal propositions and the consequent insight that no particulars can be deduced from universals alone, since no number of hypotheses can without given data establish an existing fact.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 37134,
+      "endOffset": 37407
+    },
+    {
+      "text": "Its fundamental hypothesis, restated in more familiar language, is this: There are real things, whose characters are entirely independent of our opinions about them; whose realities affect our senses according to regular laws, and, though our sensations are as different as our relations to the objects, yet, by taking advantage of the laws of perception, we can ascertain by reasoning how things really are, and any man, if he have sufficient experience and reason enough about it, will be led to the one true conclusion.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 88635,
+      "endOffset": 89157
+    },
+    {
+      "text": "Thought in action has for its only possible motive the attainment of thought at rest; and whatever does not refer to belief is no part of the thought itself.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 114036,
+      "endOffset": 114193
+    },
+    {
+      "text": "The only effect which real things have is to cause belief, for all the sensations which they excite emerge into consciousness in the form of beliefs.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 134377,
+      "endOffset": 134526
+    },
+    {
+      "text": "Now, as the whole utility of probability is to insure us in the long run, and as that assurance depends, not merely on the value of the chance, but also on the accuracy of the evaluation, it follows that we ought not to have the same feeling of belief in reference to all events of which the chance is even.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 194912,
+      "endOffset": 195219
+    },
+    {
+      "text": "The demonstration of this theory of induction rests upon principles and follows methods which are accepted by all those who display in other matters the particular knowledge and force of mind which qualify them to judge of this.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 238808,
+      "endOffset": 239036
+    },
+    {
+      "text": "When we do know anything in regard to the general constancy or inconstancy of a character, the application of that general knowledge to the particular class to which any induction relates, though it serves to increase or diminish the force of the induction, is, like every application of general knowledge to particular cases, deductive in its nature and not inductive.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 242308,
+      "endOffset": 242677
+    },
+    {
+      "text": "The truth of this principle follows immediately from the theorem that there is a character peculiar to every possible group of objects.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 245482,
+      "endOffset": 245617
+    },
+    {
+      "text": "It seems incontestable, therefore, that the mind of man is strongly adapted to the comprehension of the world; at least, so far as this goes, that certain conceptions, highly important for such a comprehension, naturally arise in his mind; and, without such a tendency, the mind could never have had any development at all.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 249771,
+      "endOffset": 250094
+    },
+    {
+      "text": "That every belief is of the nature of a habit, in so far as it is of a general character, has been shown in the earlier papers of this series.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 294450,
+      "endOffset": 294592
+    },
+    {
+      "text": "To suppose universal laws of nature capable of being apprehended by the mind and yet having no reason for their special forms, but standing inexplicable and irrational, is hardly a justifiable position.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 306647,
+      "endOffset": 306849
+    },
+    {
+      "text": "First, because the principle of evolution requires no extraneous cause; since the tendency to growth can be supposed itself to have grown from an infinitesimal germ accidentally started.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 307925,
+      "endOffset": 308111
+    },
+    {
+      "text": "Or, a feeling is an element of consciousness which might conceivably override every other state until it monopolized the mind, although such a rudimentary state cannot actually be realized, and would not properly be consciousness.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 312767,
+      "endOffset": 312997
+    },
+    {
+      "text": "We are dealing only with the matter of possible experience,—experience in the full acceptation of the term as something not merely affecting the senses but also as the subject of thought.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 341184,
+      "endOffset": 341371
+    },
+    {
+      "text": "In view of all these considerations, I do not believe that anybody, not in a state of case-hardened ignorance respecting the logic of science, can maintain that the precise and universal conformity of facts to law is clearly proved, or even rendered particularly probable, by any observations hitherto made.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 353975,
+      "endOffset": 354282
+    },
+    {
+      "text": "To say that there is a universal law, and that it is a hard, ultimate, unintelligible fact, the why and wherefore of which can never be inquired into, at this a sound logic will revolt; and will pass over at once to a method of philosophizing which does not thus barricade the road of discovery.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 364127,
+      "endOffset": 364422
+    },
+    {
+      "text": "For, from the positions and velocities of the particles at any one instant, and the knowledge of the immutable forces, the positions at all other times are calculable; so that the universe of space, time, and matter is a rounded system uninterfered with from elsewhere.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 365123,
+      "endOffset": 365392
+    },
+    {
+      "text": "Let there be, not merely an indefinite succession, but a continuous flow of inference through a finite time; and the result will be a mediate objective consciousness of the whole time in the last moment.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 380587,
+      "endOffset": 380790
+    },
+    {
+      "text": "At any rate, it is clear that nothing but a principle of habit, itself due to the growth by habit of an infinitesimal chance tendency toward habit-taking, is the only bridge that can span the chasm between the chance-medley of chaos and the cosmos of order and law.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 466208,
+      "endOffset": 466473
+    },
+    {
+      "text": "It is true that when the generalization of feeling has been carried so far as to include all within a person, a stopping-place, in a certain sense, has been attained; and further generalization will have a less lively character.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 475094,
+      "endOffset": 475322
+    },
+    {
+      "text": "The consequence was that the idea that fortuitous events may result in a physical law, and further that this is the way in which those laws which appear to conflict with the principle of the conservation of energy are to be explained, had taken a strong hold upon the minds of all who were abreast of the leaders of thought.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 497073,
+      "endOffset": 497397
+    },
+    {
+      "text": "Diametrically opposed to evolution by chance, are those theories which attribute all progress to an inward necessary principle, or other form of necessity.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 499777,
+      "endOffset": 499932
+    },
+    {
+      "text": "One can understand that the early Christians were like men trying with all their might to climb a steep declivity of smooth wet clay; the deepest and truest element of their life, animating both heart and head, was universal love; but they were continually, and against their wills, slipping into a party spirit, every slip serving as a precedent, in a fashion but too familiar to every man.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 520132,
+      "endOffset": 520523
+    },
+    {
+      "text": "On its logical side the doctrine of love (agapism) also recognized the important fact that general ideas have a certain attraction which makes us divine their nature even though we cannot clearly determine their precise meaning before developing their possible consequences.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 23782,
+      "endOffset": 24056
+    },
+    {
+      "text": "Logicality in regard to practical matters is the most useful quality an animal can possess, and might, therefore, result from the action of natural selection; but outside of these it is probably of more advantage to the animal to have his mind filled with pleasing and encouraging visions, independently of their truth; and thus, upon unpractical subjects, natural selection might occasion a fallacious tendency of thought.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 65059,
+      "endOffset": 65482
+    },
+    {
+      "text": "The force of habit will sometimes cause a man to hold on to old beliefs, after he is in a condition to see that they have no sound basis.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 96125,
+      "endOffset": 96262
+    },
+    {
+      "text": "It is entirely in harmony with this law that the feeling of belief should be as the logarithm of the chance, this latter being the expression of the state of facts which produces the belief.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 192449,
+      "endOffset": 192639
+    },
+    {
+      "text": "On the other hand, by supposing the rigid exactitude of causation to yield, I care not how little,—be it but by a strictly infinitesimal amount,—we gain room to insert mind into our scheme, and to put it into the place where it is needed, into the position which, as the sole self-intelligible thing, it is entitled to occupy, that of the fountain of existence; and in so doing we resolve the problem of the connection of soul and body.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 365883,
+      "endOffset": 366319
+    },
+    {
+      "text": "In whatever manner the mind has reacted under a given sensation, in that manner it is the more likely to react again; were this, however, an absolute necessity, habits would become wooden and ineradicable, and no room being left for the formation of new habits, intellectual life would come to a speedy close.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 418339,
+      "endOffset": 418648
+    },
+    {
+      "text": "The truth is, the mind is not subject to “law,” in the same rigid sense that matter is.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 418753,
+      "endOffset": 418840
+    },
+    {
+      "text": "Yet when we consider that, according to the principle which we are tracing out, a connection between ideas is itself a general idea, and that a general idea is a living feeling, it is plain that we have at least taken an appreciable step toward the understanding of personality.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 423262,
+      "endOffset": 423540
+    },
+    {
+      "text": "It is that a genuine evolutionary philosophy, that is, one that makes the principle of growth a primordial element of the universe, is so far from being antagonistic to the idea of a personal creator, that it is really inseparable from that idea; while a necessitarian religion is in an altogether false position and is destined to become disintegrated.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 424692,
+      "endOffset": 425045
+    },
+    {
+      "text": "Now, this breaking up of habit and renewed fortuitous spontaneity will, according to the law of mind, be accompanied by an intensification of feeling.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 469355,
+      "endOffset": 469505
+    },
+    {
+      "text": "Men who seek to reconcile the Darwinian idea with Christianity will remark that tychastic evolution, like the agapastic, depends upon a reproductive creation, the forms preserved being those that use the spontaneity conferred upon them in such wise as to be drawn into harmony with their original, quite after the Christian scheme.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 508461,
+      "endOffset": 508792
+    },
+    {
+      "text": "Let the logic in question be of whatever kind it may, a logic of necessary inference or a logic of probable inference (the theory might perhaps be shaped to fit either), in any case it supposes that logic is sufficient of itself to determine what conclusion follows from given premises; for unless it will do so much, it will not suffice to explain why an individual train of reasoning should take just the course it does take, to say nothing of other kinds of development.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 525558,
+      "endOffset": 526031
+    },
+    {
+      "text": "The agapastic development of thought should, if it exists, be distinguished by its purposive character, this purpose being the development of an idea.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 528600,
+      "endOffset": 528750
+    },
+    {
+      "text": "I believe that all the greatest achievements of mind have been beyond the powers of unaided individuals; and I find, apart from the support this opinion receives from synechistic considerations, and from the purposive character of many great movements, direct reason for so thinking in the sublimity of the ideas and in their occurring simultaneously and independently to a number of individuals of no extraordinary general powers.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 529814,
+      "endOffset": 530245
+    },
+    {
+      "text": "As a rigorous logician familiar with the actual procedures by which our knowledge of the various laws of nature is obtained, he could not admit that experience could prove their claim to absoluteness.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15185,
+      "endOffset": 15385
+    },
+    {
+      "text": "Authority has its roots in the force of habit, but it cannot prevent new and unorthodox ideas from arising; and in the effort to defend authoritative social views men are apt to be far more ruthless than in defending their own personal convictions.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 42698,
+      "endOffset": 42946
+    },
+    {
+      "text": "Its fundamental principle, according to them, was, that all knowledge rests on either authority or reason; but that whatever is deduced by reason depends ultimately on a premise derived from authority.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 58655,
+      "endOffset": 58856
+    },
+    {
+      "text": "To satisfy our doubts, therefore, it is necessary that a method should be found by which our beliefs may be caused by nothing human, but by some external permanency—by something upon which our thinking has no effect.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 87815,
+      "endOffset": 88031
+    },
+    {
+      "text": "The method of authority will always govern the mass of mankind; and those who wield the various forms of organized force in the state will never be convinced that dangerous reasoning ought not to be suppressed in some way.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 93413,
+      "endOffset": 93635
+    },
+    {
+      "text": "Thought is only one such system; for its sole motive, idea, and function is to produce belief, and whatever does not concern that purpose belongs to some other system of relations.",
+      "sourceId": "b62faad1-b614-43c8-9413-e760cdccd431",
+      "sourceTitle": "PEIRCE",
+      "sourceFile": "peirce_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 113132,
+      "endOffset": 113312
+    },
+    {
+      "text": "I only desire to point out how impossible it is that we should have an idea in our minds which relates to anything but conceived sensible effects of things.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 120349,
+      "endOffset": 120505
+    },
+    {
+      "text": "The truth is, there is some vague notion afloat that a question may mean something which the mind cannot conceive; and when some hair-splitting philosophers have been confronted with the absurdity of such a view, they have invented an empty distinction between positive and negative conceptions, in the attempt to give their non-idea a form not obviously nonsensical.",
+      "sourceId": "1ba4725a-185f-4bdb-94f3-b8ac0fc55ca5",
+      "sourceTitle": "peirce_works_1",
+      "sourceFile": "peirce_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 131858,
+      "endOffset": 132225
+    }
+  ]
+}

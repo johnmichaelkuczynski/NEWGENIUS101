@@ -1,0 +1,771 @@
+{
+  "thinkerId": "darwin",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "As many more individuals of each species are born than can possibly survive; and as, consequently, there is a frequently recurring struggle for existence, it follows that any being, if it vary however slightly in any manner profitable to itself, under the complex and sometimes varying conditions of life, will have a better chance of surviving, and thus be NATURALLY SELECTED.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 15500,
+      "endOffset": 15877
+    },
+    {
+      "text": "Owing to this struggle for life, any variation, however slight and from whatever cause proceeding, if it be in any degree profitable to an individual of any species, in its infinitely complex relations to other organic beings and to external nature, will tend to the preservation of that individual, and will generally be inherited by its offspring.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 120357,
+      "endOffset": 120706
+    },
+    {
+      "text": "Authors sometimes argue in a circle when they state that important organs never vary; for these same authors practically rank that character as important (as some few naturalists have honestly confessed) which does not vary; and, under this point of view, no instance of an important part varying will ever be found: but under any other point of view many instances assuredly can be given.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 92378,
+      "endOffset": 92767
+    },
+    {
+      "text": "Yet unless it be thoroughly engrained in the mind, I am convinced that the whole economy of nature, with every fact on distribution, rarity, abundance, extinction, and variation, will be dimly seen or quite misunderstood.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 122121,
+      "endOffset": 122342
+    },
+    {
+      "text": "Certainly no clear line of demarcation has as yet been drawn between species and sub-species--that is, the forms which in the opinion of some naturalists come very near to, but do not quite arrive at the rank of species; or, again, between sub-species and well-marked varieties, or between lesser varieties and individual differences.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 102358,
+      "endOffset": 102692
+    },
+    {
+      "text": "From these remarks it will be seen that I look at the term species, as one arbitrarily given for the sake of convenience to a set of individuals closely resembling each other, and that it does not essentially differ from the term variety, which is given to less distinct and more fluctuating forms.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 104669,
+      "endOffset": 104967
+    },
+    {
+      "text": "When we bear in mind that Britain has now hardly one peculiar mammal, and France but few distinct from those of Germany and conversely, and so with Hungary, Spain, etc., but that each of these kingdoms possesses several peculiar breeds of cattle, sheep, etc., we must admit that many domestic breeds have originated in Europe; for whence could they have been derived, as these several countries do not possess a number of peculiar species as distinct parent-stocks?",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 41821,
+      "endOffset": 42286
+    },
+    {
+      "text": "When, on the one hand, we see domesticated animals and plants, though often weak and sickly, yet breeding quite freely under confinement; and when, on the other hand, we see individuals, though taken young from a state of nature, perfectly tamed, long-lived, and healthy (of which I could give numerous instances), yet having their reproductive system so seriously affected by unperceived causes as to fail in acting, we need not be surprised at this system, when it does act under confinement, acting not quite regularly, and producing offspring not perfectly like their parents or variable.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 22755,
+      "endOffset": 23347
+    },
+    {
+      "text": "In looking at Nature, it is most necessary to keep the foregoing considerations always in mind--never to forget that every single organic being around us may be said to be striving to the utmost to increase in numbers; that each lives by a struggle at some period of its life; that heavy destruction inevitably falls either on the young or old, during each generation or at recurrent intervals.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 130450,
+      "endOffset": 130844
+    },
+    {
+      "text": "Perhaps the correct way of viewing the whole subject, would be, to look at the inheritance of every character whatever as the rule, and non-inheritance as the anomaly.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 30559,
+      "endOffset": 30726
+    },
+    {
+      "text": "We shall thus see that a large amount of hereditary modification is at least possible, and, what is equally or more important, we shall see how great is the power of man in accumulating by his Selection successive slight variations.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 14676,
+      "endOffset": 14908
+    },
+    {
+      "text": "No man would ever try to make a fantail, till he saw a pigeon with a tail developed in some slight degree in an unusual manner, or a pouter till he saw a pigeon with a crop of somewhat unusual size; and the more abnormal or unusual any character was when it first appeared, the more likely it would be to catch his attention.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 79012,
+      "endOffset": 79337
+    },
+    {
+      "text": "Again, all recent experience shows that it is most difficult to get any wild animal to breed freely under domestication; yet on the hypothesis of the multiple origin of our pigeons, it must be assumed that at least seven or eight species were so thoroughly domesticated in ancient times by half-civilized man, as to be quite prolific under confinement.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 51086,
+      "endOffset": 51438
+    },
+    {
+      "text": "I have discussed the probable origin of domestic pigeons at some, yet quite insufficient, length; because when I first kept pigeons and watched the several kinds, knowing well how true they bred, I felt fully as much difficulty in believing that they could ever have descended from a common parent, as any naturalist could in coming to a similar conclusion in regard to the many species of finches, or other large groups of birds, in nature.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 59208,
+      "endOffset": 59649
+    },
+    {
+      "text": "If selection consisted merely in separating some very distinct variety, and breeding from it, the principle would be so obvious as hardly to be worth notice; but its importance consists in the great effect produced by the accumulation in one direction, during successive generations, of differences absolutely inappreciable by an uneducated eye--differences which I for one have vainly attempted to appreciate.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 65829,
+      "endOffset": 66239
+    },
+    {
+      "text": "Sterility has been said to be the bane of horticulture; but on this view we owe variability to the same cause which produces sterility; and variability is the source of all the choicest productions of the garden.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 23349,
+      "endOffset": 23561
+    },
+    {
+      "text": "Having alluded to the subject of reversion, I may here refer to a statement often made by naturalists--namely, that our domestic varieties, when run wild, gradually but certainly revert in character to their aboriginal stocks.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 32624,
+      "endOffset": 32850
+    },
+    {
+      "text": "I cannot doubt that if other animals and plants, equal in number to our domesticated productions, and belonging to equally diverse classes and countries, were taken from a state of nature, and could be made to breed for an equal number of generations under domestication, they would vary on an average as largely as the parent species of our existing domesticated productions have varied.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 38567,
+      "endOffset": 38955
+    },
+    {
+      "text": "If there exist savages so barbarous as never to think of the inherited character of the offspring of their domestic animals, yet any one animal particularly useful to them, for any special purpose, would be carefully preserved during famines and other accidents, to which savages are so liable, and such choice animals would thus generally leave more offspring than the inferior ones; so that in this case there would be a kind of unconscious selection going on.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 74289,
+      "endOffset": 74751
+    },
+    {
+      "text": "Nothing is easier than to admit in words the truth of the universal struggle for life, or more difficult--at least I have found it so--than constantly to bear this conclusion in mind.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 121937,
+      "endOffset": 122120
+    },
+    {
+      "text": "It is not that all large genera are now varying much, and are thus increasing in the number of their species, or that no small genera are now varying and increasing; for if this had been so, it would have been fatal to my theory; inasmuch as geology plainly tells us that small genera have in the lapse of time often increased greatly in size; and that large genera have often come to their maxima, declined, and disappeared.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 111443,
+      "endOffset": 111868
+    },
+    {
+      "text": "In a breed which has been crossed only once with some distinct breed, the tendency to reversion to any character derived from such cross will naturally become less and less, as in each succeeding generation there will be less of the foreign blood; but when there has been no cross with a distinct breed, and there is a tendency in both parents to revert to a character, which has been lost during some former generation, this tendency, for all that we can see to the contrary, may be transmitted undiminished for an indefinite number of generations.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 54602,
+      "endOffset": 55151
+    },
+    {
+      "text": "Lighten any check, mitigate the destruction ever so little, and the number of the species will almost instantaneously increase to any amount.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 130845,
+      "endOffset": 130986
+    },
+    {
+      "text": "Even slow-breeding man has doubled in twenty-five years, and at this rate, in a few thousand years, there would literally not be standing room for his progeny.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 125521,
+      "endOffset": 125680
+    },
+    {
+      "text": "It would suffice to keep up the full number of a tree, which lived on an average for a thousand years, if a single seed were produced once in a thousand years, supposing that this seed were never destroyed, and could be ensured to germinate in a fitting place.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 130064,
+      "endOffset": 130324
+    },
+    {
+      "text": "To judge how much, in the case of any variation, we should attribute to the direct action of heat, moisture, light, food, etc., is most difficult: my impression is, that with animals such agencies have produced very little direct effect, though apparently more in the case of plants.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25427,
+      "endOffset": 25710
+    },
+    {
+      "text": "I think this must be admitted, when we find that there are hardly any domestic races, either amongst animals or plants, which have not been ranked by some competent judges as mere varieties, and by other competent judges as the descendants of aboriginally distinct species.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 36145,
+      "endOffset": 36418
+    },
+    {
+      "text": "May not those naturalists who, knowing far less of the laws of inheritance than does the breeder, and knowing no more than he does of the intermediate links in the long lines of descent, yet admit that many of our domestic races have descended from the same parents--may they not learn a lesson of caution, when they deride the idea of species in a state of nature being lineal descendants of other species?",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 60942,
+      "endOffset": 61349
+    },
+    {
+      "text": "Domestic races of the same species, also, often have a somewhat monstrous character; by which I mean, that, although differing from each other, and from the other species of the same genus, in several trifling respects, they often differ in an extreme degree in some one part, both when compared one with another, and more especially when compared with all the species in nature to which they are nearest allied.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 35413,
+      "endOffset": 35825
+    },
+    {
+      "text": "The face of Nature may be compared to a yielding surface, with ten thousand sharp wedges packed close together and driven inwards by incessant blows, sometimes one wedge being struck, and then another with greater force.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 130987,
+      "endOffset": 131207
+    },
+    {
+      "text": "In the next chapter the Struggle for Existence amongst all organic beings throughout the world, which inevitably follows from their high geometrical powers of increase, will be treated of.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 15226,
+      "endOffset": 15414
+    },
+    {
+      "text": "A high degree of variability is obviously favourable, as freely giving the materials for selection to work on; not that mere individual differences are not amply sufficient, with extreme care, to allow of the accumulation of a large amount of modification in almost any desired direction.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 82595,
+      "endOffset": 82883
+    },
+    {
+      "text": "A wide distance between the homes of two doubtful forms leads many naturalists to rank both as distinct species; but what distance, it has been well asked, will suffice?",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 97981,
+      "endOffset": 98150
+    },
+    {
+      "text": "I think it could be shown that this statement is hardly correct; but naturalists differ most widely in determining what characters are of generic value; all such valuations being at present empirical.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 36649,
+      "endOffset": 36849
+    },
+    {
+      "text": "Although some species may be now increasing, more or less rapidly, in numbers, all cannot do so, for the world would not hold them.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 125202,
+      "endOffset": 125333
+    },
+    {
+      "text": "A large amount of change in our cultivated plants, thus slowly and unconsciously accumulated, explains, as I believe, the well-known fact, that in a vast number of cases we cannot recognise, and therefore do not know, the wild parent-stocks of the plants which have been longest cultivated in our flower and kitchen gardens.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 76621,
+      "endOffset": 76945
+    },
+    {
+      "text": "Every one must have heard of cases of albinism, prickly skin, hairy bodies, etc., appearing in several members of the same family.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 30284,
+      "endOffset": 30414
+    },
+    {
+      "text": "As soon as the points of value of the new sub-breed are once fully acknowledged, the principle, as I have called it, of unconscious selection will always tend,--perhaps more at one period than at another, as the breed rises or falls in fashion,--perhaps more in one district than in another, according to the state of civilisation of the inhabitants--slowly to add to the characteristic features of the breed, whatever they may be.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 81933,
+      "endOffset": 82364
+    },
+    {
+      "text": "Look at the common oak, how closely it has been studied; yet a German author makes more than a dozen species out of forms, which are very generally considered as varieties; and in this country the highest botanical authorities and practical men can be quoted to show that the sessile and pedunculated oaks are either good and distinct species or mere varieties.",
+      "sourceId": "8268818a-60fd-4d74-98f3-28304546748e",
+      "sourceTitle": "Produced by Sue Asscher asschers@bigpond.com This Etext is based on the First Edition.",
+      "sourceFile": "darwin_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 100413,
+      "endOffset": 100774
+    },
+    {
+      "text": "It has often and confidently been asserted, that man's origin can never be known: but ignorance more frequently begets confidence than does knowledge: it is those who know little, and not those who know much, who so positively assert that this or that problem will never be solved by science.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 23674,
+      "endOffset": 24015
+    },
+    {
+      "text": "In man, as in the lower animals, many structures are so intimately related, that when one part varies so does another, without our being able, in most cases, to assign any reason.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 150104,
+      "endOffset": 150314
+    },
+    {
+      "text": "It is a well-known law that widely-ranging species are much more variable than species with restricted ranges; and the variability of man may with more truth be compared with that of widely-ranging species, than with that of domesticated animals.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 102976,
+      "endOffset": 103260
+    },
+    {
+      "text": "It cannot be denied that changed conditions produce some, and occasionally a considerable effect, on organisms of all kinds; and it seems at first probable that if sufficient time were allowed this would be the invariable result.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 105922,
+      "endOffset": 106187
+    },
+    {
+      "text": "Secondary sexual characters—Sexual selection—Manner of action— Excess of males—Polygamy—The male alone generally modified through sexual selection—Eagerness of the male—Variability of the male—Choice exerted by the female—Sexual compared with natural selection—Inheritance at corresponding periods of life, at corresponding seasons of the year, and as limited by sex—Relations between the several forms of inheritance—Causes why one sex and the young are not modified through sexual selection— Supplement on the proportional numbers of the two sexes throughout the animal kingdom— The proportion of the sexes in relation to natural selection.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 11365,
+      "endOffset": 12093
+    },
+    {
+      "text": "As this view is obviously opposed to the belief that man is descended from some other and lower form, it was necessary for me to consider it.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 27701,
+      "endOffset": 27868
+    },
+    {
+      "text": "With respect to development, we can clearly understand, on the principle of variations supervening at a rather late embryonic period, and being inherited at a corresponding period, how it is that the embryos of wonderfully different forms should still retain, more or less perfectly, the structure of their common progenitor.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 88760,
+      "endOffset": 89134
+    },
+    {
+      "text": "No other explanation has ever been given of the marvellous fact that the embryos of a man, dog, seal, bat, reptile, etc., can at first hardly be distinguished from each other.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 89136,
+      "endOffset": 89341
+    },
+    {
+      "text": "Consequently we may infer that when at a remote epoch the progenitors of man were in a transitional state, and were changing from quadrupeds into bipeds, natural selection would probably have been greatly aided by the inherited effects of the increased or diminished use of the different parts of the body.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 122049,
+      "endOffset": 122405
+    },
+    {
+      "text": "Not one of the higher animals can be named which does not bear some part in a rudimentary condition; and man forms no exception to the rule.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 46695,
+      "endOffset": 46861
+    },
+    {
+      "text": "Nascent organs, on the other hand, though not fully developed, are of high service to their possessors, and are capable of further development.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 47470,
+      "endOffset": 47635
+    },
+    {
+      "text": "Every one must have noticed the power which many animals, especially horses, possess of moving or twitching their skin; and this is effected by the panniculus carnosus.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 50886,
+      "endOffset": 51080
+    },
+    {
+      "text": "Some savage races, such as the Australians, are not exposed to more diversified conditions than are many species which have a wide range.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 100023,
+      "endOffset": 100182
+    },
+    {
+      "text": "In man the frontal bone consists of a single piece, but in the embryo, and in children, and in almost all the lower mammals, it consists of two pieces separated by a distinct suture.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 136101,
+      "endOffset": 136316
+    },
+    {
+      "text": "The law of battle—Special weapons, confined to the males—Cause of absence of weapons in the female—Weapons common to both sexes, yet primarily acquired by the male—Other uses of such weapons—Their high importance— Greater size of the male—Means of defence—On the preference shewn by either sex in the pairing of quadrupeds.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 16589,
+      "endOffset": 16961
+    },
+    {
+      "text": "The greater number accept the agency of natural selection; though some urge, whether with justice the future must decide, that I have greatly overrated its importance.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 20426,
+      "endOffset": 20618
+    },
+    {
+      "text": "Man differs from woman in size, bodily strength, hairiness, etc., as well as in mind, in the same manner as do the two sexes of many mammals.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 40190,
+      "endOffset": 40357
+    },
+    {
+      "text": "After the foregoing statements made by such high authorities, it would be superfluous on my part to give a number of borrowed details, shewing that the embryo of man closely resembles that of other mammals.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 43447,
+      "endOffset": 43687
+    },
+    {
+      "text": "In some cases, organs have been reduced by means of natural selection, from having become injurious to the species under changed habits of life.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 48856,
+      "endOffset": 49023
+    },
+    {
+      "text": "It appears as if the posterior molar or wisdom-teeth were tending to become rudimentary in the more civilised races of man.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 72285,
+      "endOffset": 72428
+    },
+    {
+      "text": "Now in the humerus of man, there is generally a trace of this passage, which is sometimes fairly well developed, being formed by a depending hook-like process of bone, completed by a band of ligament.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 77054,
+      "endOffset": 77292
+    },
+    {
+      "text": "It is well known that in the males of all mammals, including man, rudimentary mammae exist.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 84796,
+      "endOffset": 84902
+    },
+    {
+      "text": "There is an equally great amount of diversity in the proportions and dimensions of the various parts of the body; the length of the legs being one of the most variable points.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 92146,
+      "endOffset": 92352
+    },
+    {
+      "text": "A greater number of facts have been collected with respect to the transmission of the most trifling, as well as of the most important characters in man, than in any of the lower animals; though the facts are copious enough with respect to the latter.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 97149,
+      "endOffset": 97443
+    },
+    {
+      "text": "Domesticated animals vary more than those in a state of nature; and this is apparently due to the diversified and changing nature of the conditions to which they have been subjected.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 98476,
+      "endOffset": 98688
+    },
+    {
+      "text": "No race or body of men has been so completely subjugated by other men, as that certain individuals should be preserved, and thus unconsciously selected, from somehow excelling in utility to their masters.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 100411,
+      "endOffset": 100647
+    },
+    {
+      "text": "Hoare), that it was a well recognised principle with the Greeks, that men ought to select their wives with a view to the health and vigour of their children.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 101504,
+      "endOffset": 101689
+    },
+    {
+      "text": "On the other hand, it is certain that with sailors, their life delays growth, as shewn \"by the great difference between the statures of soldiers and sailors at the ages of seventeen and eighteen years.\"",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 107515,
+      "endOffset": 107751
+    },
+    {
+      "text": "Whether external conditions produce any other direct effect on man is not known.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 109874,
+      "endOffset": 109966
+    },
+    {
+      "text": "Blumenbach has also remarked on the large size of the nasal cavities in the skulls of the American aborigines, and connects this fact with their remarkably acute power of smell.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 117490,
+      "endOffset": 117698
+    },
+    {
+      "text": "It will suffice for our purpose to refer to the arrested brain-development of microcephalous idiots, as described in Vogt's memoir.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 122759,
+      "endOffset": 122909
+    },
+    {
+      "text": "Bartels, a man bore five mammae, one being medial and placed above the navel; Meckel von Hemsbach thinks that this latter case is illustrated by a medial mamma occurring in certain Cheiroptera.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 127773,
+      "endOffset": 127997
+    },
+    {
+      "text": "Farre, \"by the coalescence of the two cornua at their lower extremities that the body of the uterus is formed in man; while in those animals in which no middle portion or body exists, the cornua remain ununited.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 131547,
+      "endOffset": 131795
+    },
+    {
+      "text": "As the development of the uterus proceeds, the two cornua become gradually shorter, until at length they are lost, or, as it were, absorbed into the body of the uterus.\"",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 131797,
+      "endOffset": 131995
+    },
+    {
+      "text": "Here perhaps we have an instance of a simple arrest of embryonic development, with subsequent growth and perfect functional development; for either side of the partially double uterus is capable of performing the proper office of gestation.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 132454,
+      "endOffset": 132730
+    },
+    {
+      "text": "No such stage is passed through during the ordinary development of the embryo; and it is difficult to believe, though perhaps not impossible, that the two simple, minute, primitive tubes should know how (if such an expression may be used) to grow into two distinct uteri, each with a well-constructed orifice and passage, and each furnished with numerous muscles, nerves, glands and vessels, if they had not formerly passed through a similar course of development, as in the case of existing marsupials.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 133134,
+      "endOffset": 133722
+    },
+    {
+      "text": "In this, and other instances presently to be given, the cause of ancient races approaching the lower animals in certain characters more frequently than do the modern races, appears to be, that the latter stand at a somewhat greater distance in the long line of descent from their early semi-human progenitors.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 136713,
+      "endOffset": 137072
+    },
+    {
+      "text": "For though he no longer intends, nor has the power, to use these teeth as weapons, he will unconsciously retract his \"snarling muscles\" (thus named by Sir C.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 141323,
+      "endOffset": 141507
+    },
+    {
+      "text": "Gradations, also, in the muscles leading to structures found in animals still lower in the scale, are numerous in the Lemuroidea.), has minutely described a vast number of muscular variations in man, which resemble normal structures in the lower animals.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 143511,
+      "endOffset": 143804
+    },
+    {
+      "text": "Professor Schaaffhausen first drew attention to the relation apparently existing between a muscular frame and the strongly-pronounced supra-orbital ridges, which are so characteristic of the lower races of man.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 151271,
+      "endOffset": 151509
+    },
+    {
+      "text": "Origin of Species by means of Natural Selection; or, The Preservation of Favoured Races in the Struggle for Life.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 645,
+      "endOffset": 776
+    },
+    {
+      "text": "The nature of the following work will be best understood by a brief account of how it came to be written.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 19076,
+      "endOffset": 19201
+    },
+    {
+      "text": "Although in some quarters of the world an elongated skull, and in other quarters a short skull prevails, yet there is great diversity of shape even within the limits of the same race, as with the aborigines of America and South Australia—the latter a race \"probably as pure and homogeneous in blood, customs, and language as any in existence\"—and even with the inhabitants of so confined an area as the Sandwich Islands.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 92486,
+      "endOffset": 92981
+    },
+    {
+      "text": "Besides special tastes and habits, general intelligence, courage, bad and good temper, etc., are certainly transmitted.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 97577,
+      "endOffset": 97711
+    },
+    {
+      "text": "Discussion as to why the males alone of some species, and both sexes of others are brightly coloured—On sexually-limited inheritance, as applied to various structures and to brightly-coloured plumage—Nidification in relation to colour—Loss of nuptial plumage during the winter.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 15617,
+      "endOffset": 15932
+    },
+    {
+      "text": "I will not attempt to give references to all the authors who have taken the same side of the question.",
+      "sourceId": "f9eeac25-56bc-4493-8b85-75f157e3e867",
+      "sourceTitle": "This",
+      "sourceFile": "darwin_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 24892,
+      "endOffset": 25013
+    }
+  ]
+}

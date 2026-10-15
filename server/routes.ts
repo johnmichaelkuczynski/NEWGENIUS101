@@ -46,6 +46,13 @@ import * as mammoth from "mammoth";
 import { authorAssetsCache } from "./author-assets-cache";
 import { auditedCorpusSearch, generateAuditReport, buildPromptFromAuditResult, type AuditEvent, type AuditedSearchResult } from "./audited-search";
 import { philosopherCoherenceService } from "./PhilosopherCoherenceService";
+import {
+  buildGroundedProviderMessages,
+  createChatSentenceStream,
+  CHAT_SOURCE_UNAVAILABLE,
+  hasChatPrimarySources,
+  resolveChatRetrievalQuery,
+} from "./chat-grounding";
 import { processDocumentCoherently, rewriteForCoherence, readCoherenceState } from './services/coherence';
 import { v4 as uuidv4 } from 'uuid';
 import { 
@@ -70,6 +77,7 @@ import {
   resumeReconstruction,
 } from './services/reconstructionEngine';
 import { prepareSourceQuotation } from "./services/paperQuotation";
+import { getThinkingQuoteBank } from "./thinking-quotes/bank";
 
 // Get __dirname equivalent for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -1086,28 +1094,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // HYBRID SEARCH: Combine embedding search (paper_chunks) with keyword search (text_chunks)
       // This ensures we get both semantically similar AND topic-matched content from Kuczynski's full corpus
-      let retrievalQuery = message;
-      try {
-        const normalizedQueryResponse = await streamWithFallback({
+      const retrievalQuery = await resolveChatRetrievalQuery(
+        message,
+        previousMessages,
+        (systemPrompt, userPrompt) => streamWithFallback({
           res,
-          systemPrompt: `Correct only obvious spelling and character-order errors in the user's question so it can be used for document retrieval. Preserve every concept, logical operator, polarity, and quantifier. Do not answer, explain, reframe, or add words. Return only the corrected question.`,
-          userPrompt: message,
-          maxTokens: 100,
+          systemPrompt,
+          userPrompt,
+          maxTokens: 384,
           temperature: 0,
           startProvider: "deepseek",
           onContent: () => {},
           emitContent: false,
-        });
-        const candidate = normalizedQueryResponse
-          .replace(/^```(?:text)?\s*/i, "")
-          .replace(/\s*```$/, "")
-          .trim()
-          .split(/\n+/)[0]
-          .trim();
-        if (candidate) retrievalQuery = candidate;
-      } catch (normalizationError) {
-        console.warn("[Chat] Retrieval-query spelling normalization failed:", normalizationError);
-      }
+        }),
+        (error) => console.warn("[Chat] Contextual query resolution failed; retaining the conversation topic:", error),
+      );
       console.log(`[Chat] Retrieval query: ${retrievalQuery}`);
       
       // 1. Embedding-based search from paper_chunks (120 chunks with vectors)
@@ -1163,6 +1164,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(
         `[Chat] Retrieved ${chatPrimaryNeighborhoods.length} neighboring primary-source chunks`,
       );
+      if (!hasChatPrimarySources([...textChunks, ...embeddingChunks, ...chatPrimaryNeighborhoods])) {
+        console.warn("[Chat] No primary passages retrieved; refusing an ungrounded substitute.");
+        res.status(503).json({ error: CHAT_SOURCE_UNAVAILABLE });
+        return;
+      }
       // 3. Structured arguments are the primary source of the author's actual
       // premises and conclusions. Retrieve enough candidates to cover the
       // question rather than relying on a handful of prose chunks.
@@ -1173,14 +1179,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       );
       
       // 2b. If the question is about a paradox, also consult the external Paradoxes app
-      const paradoxMatches = isParadoxQuery(message) ? await searchParadoxes(message) : [];
+      const paradoxMatches = isParadoxQuery(retrievalQuery) ? await searchParadoxes(retrievalQuery) : [];
       if (paradoxMatches.length) {
         console.log(`[Paradoxes] ${paradoxMatches.length} matches: ${paradoxMatches.map(p => p.name).join("; ")}`);
       }
       
       // 3. CRITICAL: Search positions table for verified philosophical positions
       // This is where the actual space/time, causation, and other core positions are stored
-      const queryWords = message.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+      const queryWords = retrievalQuery.toLowerCase().split(/\s+/).filter(w => w.length > 3);
       let positionResults: Array<{ position: string; topic: string | null }> = [];
       
       if (queryWords.length > 0) {
@@ -1255,10 +1261,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         knowledgeContext += `--- END ---\n\n`;
-        knowledgeContext += `INSTRUCTION: Use the author's primary-source passages when they genuinely bear on the question, then use the strongest relevant expert knowledge needed for a complete and correct answer. Never discuss retrieval coverage or withhold an answer.\n`;
+        knowledgeContext += `INSTRUCTION: Ground the substance of this answer in the author's relevant primary-source passages, including on follow-up questions. Resolve conversational references using the current standalone question and the conversation. Supporting expert knowledge may clarify, but must not replace or contradict the author's actual arguments. Never invent a position or substitute a generic model opinion for the author's view.\n`;
       } else {
         console.log(`[RAG] No relevant positions found for query: "${message.substring(0, 80)}..."`);
-        knowledgeContext = `\n\nAnswer fully from the strongest relevant expert knowledge available. Never mention retrieval, database coverage, missing sources, or limitations.\n`;
+        throw new Error(CHAT_SOURCE_UNAVAILABLE);
       }
       
       // Append external Paradoxes app context (with conflict-reconciliation instruction)
@@ -1272,6 +1278,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
             systemPrompt: `Determine the selected author's direct answer using only the supplied verbatim primary-source passages. Structured arguments are secondary aids. Return one plain sentence of no more than 45 words. Preserve polarity and quantifiers. If the source directly answers the intended question despite a spelling error, answer that intended question; do not call it malformed. Do not add commentary.`,
             userPrompt: `USER QUESTION:
 ${message}
+
+CURRENT QUESTION WITH CONVERSATIONAL REFERENCES RESOLVED:
+${retrievalQuery}
 
 VERBATIM PRIMARY-SOURCE PASSAGES:
 ${[
@@ -1535,48 +1544,49 @@ Plain text only (no markdown: no #, ##, **, *, etc.)
 Now ATTACK this problem directly using your full philosophical firepower:
 `;
 
+          if (accumulatedContent && !/\s$/.test(accumulatedContent)) {
+            accumulatedContent += "\n\n";
+            res.write(`data: ${JSON.stringify({ content: "\n\n" })}\n\n`);
+          }
+          const continuationInstruction = accumulatedContent
+            ? `\n\nCONTINUATION: The assistant draft below has already been shown to the user. Continue it exactly where it ends, without repeating the opening or restarting the answer. The target is approximately ${targetWords} words for the COMPLETE answer, not another ${targetWords} words. About ${Math.max(30, targetWords - accumulatedContent.trim().split(/\s+/).length)} words remain; finish the required arguments concisely. The same database passages and binding primary-source position still govern. End with a complete sentence.`
+            : "";
+          const groundedMessages = buildGroundedProviderMessages(
+            `${systemPrompt}${finalInstructions}${continuationInstruction}`,
+            accumulatedContent ? [
+              ...conversationHistory,
+              { role: "assistant", content: accumulatedContent },
+              { role: "user", content: "Continue the preceding answer without repeating any text. Complete the original response using the supplied source material." },
+            ] : conversationHistory,
+          );
+          const answerStream = createChatSentenceStream((content) => {
+            accumulatedContent += content;
+            res.write(`data: ${JSON.stringify({ content })}\n\n`);
+            if (res.socket) res.socket.uncork();
+            streamedLength += content.length;
+          });
+          let finishReason: string | null = null;
+
           if (currentLLM.provider === "anthropic") {
             // ANTHROPIC CLAUDE
             if (!anthropic) {
               throw new Error("Anthropic API key not configured");
             }
             
-            const anthropicMessages: Array<{ role: "user" | "assistant"; content: string }> = [];
-            
-            if (conversationHistory.length === 1) {
-              anthropicMessages.push({
-                role: "user",
-                content: `${systemPrompt}${finalInstructions}${conversationHistory[0].content}`,
-              });
-            } else {
-              anthropicMessages.push({
-                role: conversationHistory[0].role,
-                content: conversationHistory[0].role === "user" 
-                  ? `${systemPrompt}${finalInstructions}${conversationHistory[0].content}`
-                  : conversationHistory[0].content,
-              });
-              for (let i = 1; i < conversationHistory.length; i++) {
-                anthropicMessages.push(conversationHistory[i]);
-              }
-            }
-            
             const stream = await anthropic.messages.stream({
               model: currentLLM.model,
               max_tokens: maxTokens,
               temperature: intensityTemperature,
-              messages: anthropicMessages,
+              ...groundedMessages.anthropic,
             });
 
             for await (const chunk of stream) {
+              if (chunk.type === "message_delta" && chunk.delta.stop_reason) {
+                finishReason = chunk.delta.stop_reason;
+              }
               if (chunk.type === 'content_block_delta' && chunk.delta.type === 'text_delta') {
                 const content = chunk.delta.text;
-                if (content) {
-                  accumulatedContent += content;
-                  res.write(`data: ${JSON.stringify({ content })}\n\n`);
-                  // @ts-ignore
-                  if (res.socket) res.socket.uncork();
-                  streamedLength += content.length;
-                }
+                if (content) answerStream.push(content);
               }
             }
           } else {
@@ -1587,33 +1597,22 @@ Now ATTACK this problem directly using your full philosophical firepower:
               throw new Error(`${currentLLM.provider} API key not configured`);
             }
             
-            const messages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
-              { role: "system", content: `${systemPrompt}${finalInstructions}` }
-            ];
-            
-            for (const msg of conversationHistory) {
-              messages.push(msg);
-            }
-            
             const stream = await apiClient.chat.completions.create({
               model: currentLLM.model,
-              messages,
+              messages: groundedMessages.openAI,
               max_tokens: maxTokens,
               temperature: intensityTemperature,
               stream: true,
             });
 
             for await (const chunk of stream) {
+              if (chunk.choices[0]?.finish_reason) finishReason = chunk.choices[0].finish_reason;
               const content = chunk.choices[0]?.delta?.content || "";
-              if (content) {
-                accumulatedContent += content;
-                res.write(`data: ${JSON.stringify({ content })}\n\n`);
-                // @ts-ignore
-                if (res.socket) res.socket.uncork();
-                streamedLength += content.length;
-              }
+              if (content) answerStream.push(content);
             }
           }
+          answerStream.finish(finishReason);
+          console.log(`[Chat] Completed answer stream with ${modelKey}; terminal reason: ${finishReason || "not supplied"}`);
           
           // If we got here, the call succeeded
           successfulModel = modelKey;
@@ -1724,65 +1723,15 @@ Now ATTACK this problem directly using your full philosophical firepower:
     }
   });
 
-  // Get quotes for a specific thinker (for thinking panel)
+  // Preassembled verbatim source quotations, never positions or generated filler.
   app.get("/api/figures/:figureId/thinking-quotes", async (req: any, res) => {
     try {
-      const figureId = req.params.figureId;
-      
-      // Fetch actual quotes from the database (ILIKE is case-insensitive)
-      const quoteResult = await db.execute(
-        sql`SELECT quote_text FROM quotes WHERE thinker ILIKE ${`%${figureId}%`} LIMIT 30`
-      );
-      const quotes = quoteResult.rows as Array<{quote_text: string}>;
-      
-      if (quotes.length > 0) {
-        // Return actual quotes from the database
-        const quoteTexts = quotes.map(q => q.quote_text).filter(q => q && q.length > 10 && q.length < 200);
-        if (quoteTexts.length >= 5) {
-          return res.json({ quotes: quoteTexts });
-        }
-      }
-      
-      // If not enough quotes, also fetch positions as fallback content
-      const posResult = await db.execute(
-        sql`SELECT position_text FROM positions WHERE thinker ILIKE ${`%${figureId}%`} LIMIT 20`
-      );
-      const positions = posResult.rows as Array<{position_text: string}>;
-      
-      const positionTexts = positions
-        .map(p => p.position_text)
-        .filter(p => p && p.length > 10 && p.length < 200);
-      
-      // Also search chunks for philosophers with full works in DB
-      const chunksResult = await db.execute(
-        sql`SELECT chunk_text FROM chunks WHERE thinker ILIKE ${`%${figureId}%`} ORDER BY RANDOM() LIMIT 30`
-      );
-      const chunks = chunksResult.rows as Array<{chunk_text: string}>;
-      
-      // Extract meaningful sentences from chunks
-      const chunkExcerpts = chunks
-        .flatMap(c => {
-          // Split into sentences and take the first meaningful one
-          const sentences = c.chunk_text.split(/[.!?]+/).filter(s => s.trim().length > 20 && s.trim().length < 200);
-          return sentences.slice(0, 2);
-        })
-        .map(s => s.trim());
-      
-      const allQuotes = [
-        ...quotes.map(q => q.quote_text).filter(q => q && q.length > 10 && q.length < 200),
-        ...positionTexts,
-        ...chunkExcerpts.slice(0, 15)
-      ];
-      
-      if (allQuotes.length >= 3) {
-        return res.json({ quotes: allQuotes });
-      }
-      
-      // Return empty if no real quotes found - frontend will handle fallback
-      res.json({ quotes: [] });
+      const bank = await getThinkingQuoteBank(req.params.figureId);
+      res.setHeader("Cache-Control", "public, max-age=3600");
+      res.json({ ...bank, quotes: bank.items.map(item => item.text) });
     } catch (error) {
       console.error("Error fetching thinking quotes:", error);
-      res.json({ quotes: [] });
+      res.status(503).json({ error: "Source quotations are unavailable for this thinker", quotes: [], items: [] });
     }
   });
 

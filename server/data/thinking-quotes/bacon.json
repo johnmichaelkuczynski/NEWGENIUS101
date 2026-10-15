@@ -1,0 +1,492 @@
+{
+  "thinkerId": "bacon",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Aphorisms [Book One] I Man, being the servant and interpreter of Nature, can do and understand so much and so much only as he has observed in fact or in thought of the course of nature.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 647235,
+      "endOffset": 647461
+    },
+    {
+      "text": "For man is but the servant and interpreter of nature: what he does and what he knows is only what he has observed of nature's order in fact or in thought; beyond this he knows nothing and can do nothing.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 74174,
+      "endOffset": 74455
+    },
+    {
+      "text": "For though in nature nothing really exists besides individual bodies, performing pure individual acts according to a fixed law, yet in philosophy this very law, and the investigation, discovery, and explanation of it, is the foundation as well of knowledge as of operation.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 781933,
+      "endOffset": 782252
+    },
+    {
+      "text": "For men believe that their reason governs words; but it is also true that words react on the understanding; and this it is that has rendered philosophy and the sciences sophistical and inactive.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 780868,
+      "endOffset": 781126
+    },
+    {
+      "text": "XLIX The human understanding is no dry light, but receives an infusion from the will and affections; whence proceed sciences which may be called \"sciences as one would.\"",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 670425,
+      "endOffset": 670623
+    },
+    {
+      "text": "L But by far the greatest hindrance and aberration of the human understanding proceeds from the dullness, incompetency, and deceptions of the senses; in that things which strike the sense outweigh things which do not immediately strike it, though they be more important.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 772070,
+      "endOffset": 772428
+    },
+    {
+      "text": "XXX Though all the wits of all the ages should meet together and combine and transmit their labors, yet will no great progress ever be made in science by means of anticipations; because radical errors in the first concoction of the mind are not to be cured by the excellence of functions and subsequent remedies.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 657412,
+      "endOffset": 657780
+    },
+    {
+      "text": "LXIX But vicious demonstrations are as the strongholds and defenses of idols; and those we have in logic do little else than make the world the bondslave of human thought, and human thought the bondslave of words.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 809012,
+      "endOffset": 809301
+    },
+    {
+      "text": "XLVI The human understanding when it has once adopted an opinion (either as being the received opinion or as being agreeable to itself) draws all things else to support and agree with it.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 666005,
+      "endOffset": 666226
+    },
+    {
+      "text": "For in this way, and in this way only, can the foundations of a true and active philosophy be established; and then will men wake as from deep sleep, and at once perceive what a difference there is between the dogmas and figments of the wit and a true and active philosophy, and what it is in questions of nature to consult nature herself.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 925631,
+      "endOffset": 926033
+    },
+    {
+      "text": "Let men therefore cease to wonder that the course of science is not yet wholly run, seeing that they have gone altogether astray, either leaving and abandoning experience entirely, or losing their way in it and wandering round and round as in a labyrinth.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 734821,
+      "endOffset": 735119
+    },
+    {
+      "text": "Wherefore seeing that knowledge is of the number of those things which are to be accepted of with caution and distinction; being now to open a fountain, such as it is not easy to discern where the issues and streams thereof will take and fall; I thought it good and necessary in the first place to make a strong and sound head or bank to rule and guide the course of the waters; by setting down this position or firmament, namely, THAT ALL KNOWLEDGE IS TO BE LIMITED BY RELIGION, AND TO BE REFERRED TO USE AND ACTION.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1443645,
+      "endOffset": 1444259
+    },
+    {
+      "text": "It destroys likewise magnanimity, and the raising of human nature; for take an example of a dog, and mark what a generosity and courage he will put on, when he finds himself maintained by a man; who to him is instead of a God, or melior natura; which courage is manifestly such, as that creature, without that confidence of a better nature than his own, could never attain.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1223241,
+      "endOffset": 1223748
+    },
+    {
+      "text": "Lastly, I would address one general admonition to all â€” that they consider what are the true ends of knowledge, and that they seek it not either for pleasure of the mind, or for contention, or for superiority to others, or for profit, or fame, or power, or any of these inferior things, but for the benefit and use of life, and that they perfect and govern it in charity.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 36035,
+      "endOffset": 36546
+    },
+    {
+      "text": "The desire of power in excess, caused the angels to fall; the desire of knowledge in excess, caused man to fall: but in charity there is no excess; neither can angel, nor man, come in danger by it.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1034191,
+      "endOffset": 1034425
+    },
+    {
+      "text": "For if men judge that learning should be referred to action, they judge well; but in this they fall into the error described in the ancient fable, in which the other parts of the body did suppose the stomach had been idle, because it neither performed the office of motion, as the limbs do, nor of sense, as the head doth; but yet notwithstanding it is the stomach that digesteth and distributeth to all the rest.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 273163,
+      "endOffset": 273726
+    },
+    {
+      "text": "It is yet a higher speech of his, than the other (much too high for a heathen), It is true greatness, to have in one the frailty of a man, and the security of a God.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1139809,
+      "endOffset": 1140044
+    },
+    {
+      "text": "XXV (1) The prerogative of God extendeth as well to the reason as to the will of man: so that as we are to obey His law, though we find a reluctation in our will, so we are to believe His word, though we find a reluctation in our reason.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 692079,
+      "endOffset": 692418
+    },
+    {
+      "text": "It is a strange desire, to seek power and to lose liberty: or to seek power over others, and to lose power over a man’s self.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1022251,
+      "endOffset": 1022401
+    },
+    {
+      "text": "Surely every medicine is an innovation; and he that will not apply new remedies, must expect new evils; for time is the greatest innovator; and if time of course alter things to the worse, and wisdom and counsel shall not alter them to the better, what shall be the end?",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1275049,
+      "endOffset": 1275417
+    },
+    {
+      "text": "For he that will reduce a knowledge into an art will make it round and uniform; but in divinity many things must be left abrupt, and concluded with this: O altitudo sapientiae et scientiae Dei!",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 617987,
+      "endOffset": 618214
+    },
+    {
+      "text": "It is true, that a little philosophy inclineth man’s mind to atheism; but depth in philosophy bringeth men’s minds about to religion.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1057972,
+      "endOffset": 1058126
+    },
+    {
+      "text": "It was great blasphemy, when the devil said, I will ascend, and be like the highest; but it is greater blasphemy, to personate God, and bring him in saying, I will descend, and be like the prince of darkness; and what is it better, to make the cause of religion to descend, to the cruel and execrable actions of murthering princes, butchery of people, and subversion of states and governments?",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1134327,
+      "endOffset": 1134865
+    },
+    {
+      "text": "Atheism leaves a man to sense, to philosophy, to natural piety, to laws, to reputation all which may be guides to an outward moral virtue, though religion were not; but superstition dismounts all these, and erecteth an absolute monarchy, in the minds of men.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1064601,
+      "endOffset": 1064902
+    },
+    {
+      "text": "For it was from lust of power that the angels fell, from lust of knowledge that man fell; but of charity there can be no excess, neither did angel or man ever come in danger by it.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 36549,
+      "endOffset": 36801
+    },
+    {
+      "text": "It was the ambitious and proud desire of moral knowledge to judge of good and evil, to the end that man may revolt from God and give laws to himself, which was the form and manner of the temptation.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 35204,
+      "endOffset": 35478
+    },
+    {
+      "text": "For being in his creation invested with sovereignty of all inferior creatures, he was not needy of power or dominion; but again, being a spirit newly inclosed in a body of earth, he was fittest to be allured with appetite of light and liberty of knowledge; therefore this approaching and intruding into God’s secrets and mysteries was rewarded with a further removing and estranging from God’s presence.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1661827,
+      "endOffset": 1662362
+    },
+    {
+      "text": "Doth any man doubt, that if there were taken out of men’s minds, vain opinions, flattering hopes, false valuations, imaginations as one would, and the like, but it would leave the minds, of a number of men, poor shrunken things, full of melancholy and indisposition, and unpleasing to themselves?",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1115486,
+      "endOffset": 1115878
+    },
+    {
+      "text": "LXVIII So much concerning the several classes of Idols and their equipage; all of which must be renounced and put away with a fixed and solemn determination, and the understanding thoroughly freed and cleansed; the entrance into the kingdom of man, founded on the sciences, being not much other than the entrance into the kingdom of heaven, whereinto none may enter except as a little child.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 702909,
+      "endOffset": 703367
+    },
+    {
+      "text": "For in the entrance of philosophy, when the second causes, which are next unto the senses, do offer themselves to the mind of man, if it dwell and stay there it may induce some oblivion of the highest cause; but when a man passeth on further and seeth the dependence of causes and the works of Providence; then, according to the allegory of the poets, he will easily believe that the highest link of Nature’s chain must needs he tied to the foot of Jupiter’s chair.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 110393,
+      "endOffset": 111028
+    },
+    {
+      "text": "It were good, therefore, that men in their innovations would follow the example of time itself; which indeed innovateth greatly, but quietly, by degrees scarce to be perceived.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1108407,
+      "endOffset": 1108610
+    },
+    {
+      "text": "It is good also, not to try experiments in states, except the necessity be urgent, or the utility evident; and well to beware, that it be the reformation, that draweth on the change, and not the desire of change, that pretendeth the reformation.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1276770,
+      "endOffset": 1277099
+    },
+    {
+      "text": "For men’s minds, will either feed upon their own good, or upon others’ evil; and who wanteth the one, will prey upon the other; and whoso is out of hope, to attain to another’s virtue, will seek to come at even hand, by depressing another’s fortune.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1160705,
+      "endOffset": 1161044
+    },
+    {
+      "text": "There is also great use of ambitious men, in being screens to princes in matters of danger and envy; for no man will take that part, except he be like a seeled dove, that mounts and mounts, because he cannot see about him.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1189711,
+      "endOffset": 1189975
+    },
+    {
+      "text": "Besides, he that clears at once will relapse; for finding himself out of straits, he will revert to his custom: but he that cleareth by degrees, induceth a habit of frugality, and gaineth as well upon his mind, as upon his estate.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1307139,
+      "endOffset": 1307451
+    },
+    {
+      "text": "OF DISCOURSE Some in their discourse, desire rather commendation of wit, in being able to hold all arguments, than of judgment, in discerning what is true; as if it were a praise, to know what might be said, and not, what should be thought.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1339937,
+      "endOffset": 1340267
+    },
+    {
+      "text": "I knew one, was wont to say in scorn, He must needs be a wise man, he speaks so much of himself: and there is but one case, wherein a man may commend himself with good grace; and that is in commending virtue in another; especially if it be such a virtue, whereunto himself pretendeth.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1343032,
+      "endOffset": 1343424
+    },
+    {
+      "text": "It is a shameful and unblessed thing, to take the scum of people, and wicked condemned men, to be the people with whom you plant; and not only so, but it spoileth the plantation; for they will ever live like rogues, and not fall to work, but be lazy, and do mischief, and spend victuals, and be quickly weary, and then certify over to their country, to the discredit of the plantation.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1168872,
+      "endOffset": 1169328
+    },
+    {
+      "text": "In studies, whatsoever a man commandeth upon himself, let him set hours for it; but whatsoever is agreeable to his nature, let him take no care for any set times; for his thoughts will fly to it, of themselves; so as the spaces of other business, or studies, will suffice.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1381603,
+      "endOffset": 1381973
+    },
+    {
+      "text": "OF CUSTOM AND EDUCATION Men’s thoughts, are much according to their inclination; their discourse and speeches, according to their learning and infused opinions; but their deeds, are after as they have been accustomed.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1200170,
+      "endOffset": 1200421
+    },
+    {
+      "text": "OF BEAUTY Virtue is like a rich stone, best plain set; and surely virtue is best, in a body that is comely, though not of delicate features; and that hath rather dignity of presence, than beauty of aspect.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1405667,
+      "endOffset": 1405950
+    },
+    {
+      "text": "Neither is it almost seen, that very beautiful persons are otherwise of great virtue; as if nature were rather busy, not to err, than in labor to produce excellency.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1220823,
+      "endOffset": 1221016
+    },
+    {
+      "text": "Use also such persons as affect the business, wherein they are employed; for that quickeneth much; and such, as are fit for the matter; as bold men for expostulation, fair-spoken men for persuasion, crafty for inquiry and observation, froward, and absurd men, for business that doth not well bear out itself.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1251782,
+      "endOffset": 1252140
+    },
+    {
+      "text": "It is true that in government, it is good to use men of one rank equally: for to countenance some extraordinarily, is to make them insolent, and the rest discontent; because they may claim a due.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1446531,
+      "endOffset": 1446796
+    },
+    {
+      "text": "To be governed (as we call it) by one is not safe; for it shows softness, and gives a freedom, to scandal and disreputation; for those, that would not censure or speak in of a man immediately, will talk more boldly of those that are so great with them, and thereby wound their honor.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1256559,
+      "endOffset": 1256899
+    },
+    {
+      "text": "Some embrace suits, which never mean to deal effectually in them; but if they see there may be life in the matter, by some other mean, they will be content to win a thank, or take a second reward, or at least to make use, in the meantime, of the suitor’s hopes.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1448545,
+      "endOffset": 1448908
+    },
+    {
+      "text": "Iniquum petas ut aequum feras is a good rule, where a man hath strength of favor: but otherwise, a man were better rise in his suit; for he, that would have ventured at first to have lost the suitor, will not in the conclusion lose both the suitor, and his own former favor.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1260885,
+      "endOffset": 1261211
+    },
+    {
+      "text": "Nothing is thought so easy a request to a great person, as his letter; and yet, if it be not in a good cause, it is so much out of his reputation.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1452601,
+      "endOffset": 1452809
+    },
+    {
+      "text": "Crafty men contemn studies, simple men admire them, and wise men use them; for they teach not their own use; but that is a wisdom without them, and above them, won by observation.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1262514,
+      "endOffset": 1262725
+    },
+    {
+      "text": "Some men’s behavior is like a verse, wherein every syllable is measured; how can a man comprehend great matters, that breaketh his mind too much, to small observations?",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1462520,
+      "endOffset": 1462742
+    },
+    {
+      "text": "To apply one’s self to others, is good; so it be with demonstration, that a man doth it upon regard, and not upon facility.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1270951,
+      "endOffset": 1271097
+    },
+    {
+      "text": "To praise a man’s self, cannot be decent, except it be in rare cases; but to praise a man’s office or profession, he may do it with good grace, and with a kind of magnanimity.",
+      "sourceId": "8ea0c756-1c39-4638-94fe-7743fe76a02c",
+      "sourceTitle": "FRANCIS",
+      "sourceFile": "bacon_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1468361,
+      "endOffset": 1468611
+    },
+    {
+      "text": "In causes of life and death, judges ought (as far as the law permitteth) in justice to remember mercy; and to cast a severe eye upon the example, but a merciful eye upon the person.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1286903,
+      "endOffset": 1287118
+    },
+    {
+      "text": "For martyrdoms, I reckon them amongst miracles; because they seem to exceed the strength of human nature: and I may do the like, of superlative and admirable holiness of life.",
+      "sourceId": "152fa0f9-7a17-426b-8dde-8daee345b324",
+      "sourceTitle": "bacon_works_1",
+      "sourceFile": "bacon_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1303539,
+      "endOffset": 1303743
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "thinkerId": "descartes",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "PART I Good sense is, of all things among men, the most equally distributed; for every one thinks himself so abundantly provided with it, that those even who are the most difficult to satisfy in everything else, do not usually desire a larger measure of this quality than they already possess.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 2131,
+      "endOffset": 2474
+    },
+    {
+      "text": "For by them I perceived it to be possible to arrive at knowledge highly useful in life; and in room of the speculative philosophy usually taught in the schools, to discover a practical, by means of which, knowing the force and action of fire, water, air the stars, the heavens, and all the other bodies that surround us, as distinctly as we know the various crafts of our artisans, we might also apply them in the same way to all the uses to which they are adapted, and thus render ourselves the lords and possessors of nature.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 118761,
+      "endOffset": 119384
+    },
+    {
+      "text": "I call that clear which is present and manifest to the mind giving attention to it, just as we are said clearly to see objects when, being present to the eye looking on, they stimulate it with sufficient force. and it is disposed to regard them; but the distinct is that which is so precise and different from all other objects as to comprehend in itself only what is clear.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 243502,
+      "endOffset": 243945
+    },
+    {
+      "text": "It will be sufficient to remark that the perceptions of the senses are merely to be referred to this intimate union of the human body and mind, and that they usually make us aware of what, in external objects, may be useful or adverse to this union, but do not present to us these objects as they are in themselves, unless occasionally and by accident.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 289553,
+      "endOffset": 289969
+    },
+    {
+      "text": "Besides, our mind cannot attend to any object without at length experiencing some pain and fatigue; and of all objects it has the greatest difficulty in attending to those which are present neither to the senses nor to the imagination: whether for the reason that this is natural to it from its union with the body, or because in our early years, being occupied merely with perceptions and imaginations, it has become more familiar with, and acquired greater facility in thinking in those modes than in any other.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 280374,
+      "endOffset": 280978
+    },
+    {
+      "text": "For all the modes of thinking of which we are conscious may be referred to two general classes, the one of which is the perception or operation of the understanding, and the other the volition or operation of the will.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 232314,
+      "endOffset": 232571
+    },
+    {
+      "text": "I do not, however, recognise more than two highest kinds (SUMMA GENERA) of things; the first of intellectual things, or such as have the power of thinking, including mind or thinking substance and its properties; the second, of material things, embracing extended substance, or body and its properties.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 246439,
+      "endOffset": 246788
+    },
+    {
+      "text": "Thought and extension may be regarded as constituting the natures of intelligent and corporeal substance; and then they must not be otherwise conceived than as the thinking and extended substances themselves, that is, as mind and body, which in this way are conceived with the greatest clearness and distinctness.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 265665,
+      "endOffset": 266026
+    },
+    {
+      "text": "Then as to the analysis of the ancients and the algebra of the moderns, besides that they embrace only matters highly abstract, and, to appearance, of no use, the former is so exclusively restricted to the consideration of figures, that it can exercise the understanding only on condition of greatly fatiguing the imagination; and, in the latter, there is so complete a subjection to certain rules and formulas, that there results an art full of confusion and obscurity calculated to embarrass, instead of a science fitted to cultivate the mind.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 33051,
+      "endOffset": 33685
+    },
+    {
+      "text": "Nor does this inability arise from want of organs: for we observe that magpies and parrots can utter words like ourselves, and are yet unable to speak as we do, that is, so as to show that they understand what they say; in place of which men born deaf and dumb, and thus not less, but rather more than the brutes, destitute of the organs which others use in speaking, are in the habit of spontaneously inventing certain signs by which they discover their thoughts to those who, being usually in their company, have leisure to learn their language.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 110931,
+      "endOffset": 111580
+    },
+    {
+      "text": "For self-acting machines are not commended because they perform with exactness all the movements for which they were adapted, seeing their motions are carried on necessarily; but the maker of them is praised on account of the exactness with which they were framed, because he did not act of necessity, but freely; and, on the same principle, we must attribute to ourselves something more on this account, that when we embrace truth, we do so not of necessity, but freely.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 235650,
+      "endOffset": 236200
+    },
+    {
+      "text": "In the same way we will best apprehend the diverse modes of thought, as intellection, imagination, recollection, volition, etc., and also the diverse modes of extension, or those that belong to extension, as all figures, the situation of parts and their motions, provided we consider them simply as modes of the things in which they are; and motion as far as it is concerned, provided we think merely of locomotion, without seeking to know the force that produces it, and which nevertheless I will essay to explain in its own place.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 267842,
+      "endOffset": 268464
+    },
+    {
+      "text": "We ought also to conclude that a certain body is more closely united to our mind than any other, because we clearly observe that pain and other sensations affect us without our foreseeing them; and these, the mind is conscious, do not arise from itself alone, nor pertain to it, in so far as it is a thing which thinks, but only in so far as it is united to another thing extended and movable, which is called the human body.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 288774,
+      "endOffset": 289283
+    },
+    {
+      "text": "For it is highly deserving of remark, that there are no men so dull and stupid, not even idiots, as to be incapable of joining together different words, and thereby constructing a declaration by which to make their thoughts understood; and that on the other hand, there is no other animal, however perfect or happily circumstanced, which can do the like.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 110515,
+      "endOffset": 110929
+    },
+    {
+      "text": "By the word thought, I understand all that which so takes place in us that we of ourselves are immediately conscious of it; and, accordingly, not only to understand (INTELLIGERE, ENTENDRE), to will (VELLE), to imagine (IMAGINARI), but even to perceive (SENTIRE, SENTIR), are here the same as to think (COGITARE, PENSER).",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 205654,
+      "endOffset": 206025
+    },
+    {
+      "text": "When we apprehend anything we are in no danger of error, if we refrain from judging of it in any way; and even when we have formed a judgment regarding it, we would never fall into error, provided we gave our assent only to what we clearly and distinctly perceived; but the reason why we are usually deceived, is that we judge without possessing an exact knowledge of that of which we judge.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 232983,
+      "endOffset": 233446
+    },
+    {
+      "text": "Accordingly, since God must be conceived as superior to change, it is not proper to say that there are modes or qualities in him, but simply attributes; and even in created things that which is found in them always in the same mode, as existence and duration in the thing which exists and endures, ought to be called attribute and not mode or quality.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 255229,
+      "endOffset": 255647
+    },
+    {
+      "text": "Finally, the distinction of reason is that between a substance and some one of its attributes, without which it is impossible, however, we can have a distinct conception of the substance itself; or between two such attributes of a common substance, the one of which we essay to think without the other.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 263624,
+      "endOffset": 263981
+    },
+    {
+      "text": "There remain our sensations, affections, and appetites, of which we may also have a clear knowledge, if we take care to comprehend in the judgments we form of them only that which is precisely contained in our perception of them, and of which we are immediately conscious.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 268629,
+      "endOffset": 268947
+    },
+    {
+      "text": "For although, when less attentively examining his thoughts, a person may easily persuade himself that he has some knowledge of it, since he supposes that there is something resembling that sensation of colour or of pain of which he is conscious; yet, if he reflects on what the sensation of colour or pain represents to him as existing in a coloured body or in a wounded member, he will find that of such he has absolutely no knowledge.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 271653,
+      "endOffset": 272166
+    },
+    {
+      "text": "Space or internal place, and the corporeal substance which is comprised in it, are not different in reality, but merely in the mode in which they are wont to be conceived by us.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 298492,
+      "endOffset": 298701
+    },
+    {
+      "text": "Whereas returning to examine the Ideawhich I had of a perfect Being, I found its existence comprised in it, in the same manner as it was comprised in that of a Triangle, where the three angles are equall to two right ones; or in that of a sphere, where all the parts are equally distant from the center.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 368330,
+      "endOffset": 368690
+    },
+    {
+      "text": "For in fine, whether we sleep or wake, we ought never to suffer our selves to be perswaded but by the evidence of our Reason; I say, (which is observable) Of our Reason, and not of our imagination, or of our senses.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 373900,
+      "endOffset": 374156
+    },
+    {
+      "text": "As although we see the Sun most clearly, we are not therefore to judge him to be of the bigness we see him of; and we may well distinctly imagine the head of a Lion, set on the body of a Goat, but therefore we ought not to conclude that there is a Chimera in the world.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 374158,
+      "endOffset": 374483
+    },
+    {
+      "text": "The first was to obey the laws and customs of my country, adhering firmly to the faith in which, by the grace of God, I had been educated from my childhood and regulating my conduct in every other matter according to the most moderate opinions, and the farthest removed from extremes, which should happen to be adopted in practice with general consent of the most judicious of those among whom I might be living.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 43094,
+      "endOffset": 43579
+    },
+    {
+      "text": "For, in the first place even the principle which I have already taken as a rule, viz., that all the things which we clearly and distinctly conceive are true, is certain only because God is or exists and because he is a Perfect Being, and because all that we possess is derived from him: whence it follows that our ideas or notions, which to the extent of their clearness and distinctness are real, and proceed from God, must to that extent be true.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 73673,
+      "endOffset": 74207
+    },
+    {
+      "text": "By the science of Morals, I understand the highest and most perfect which, presupposing an entire knowledge of the other sciences, is the last degree of wisdom.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 180110,
+      "endOffset": 180296
+    },
+    {
+      "text": "The second fruit is, that in studying these principles we will become accustomed by degrees to judge better of all the things we come in contact with, and thus be made wiser, in which respect the effect will be quite the opposite of the common philosophy, for we may easily remark in those we call pedants that it renders them less capable of rightly exercising their reason than they would have been if they had never known it.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 186058,
+      "endOffset": 186563
+    },
+    {
+      "text": "For, in the first place, your desire of self- instruction is manifest, from the circumstance that neither the amusements of the court, nor the accustomed mode of educating ladies, which ordinarily condemns them to ignorance, have been sufficient to prevent you from studying with much care all that is best in the arts and sciences; and the incomparable perspicacity of your intellect is evinced by this, that you penetrated the secrets of the sciences and acquired an accurate knowledge of them in a very short period.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 196735,
+      "endOffset": 197338
+    },
+    {
+      "text": "That the chief perfection of man is his being able to act freely or by will, and that it is this which renders him worthy of praise or blame.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 235175,
+      "endOffset": 235344
+    },
+    {
+      "text": "That the will should be the more extensive is in harmony with its nature: and it is a high perfection in man to be able to act by means of it, that is, freely; and thus in a peculiar way to be the master of his own actions, and merit praise or blame.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 235346,
+      "endOffset": 235648
+    },
+    {
+      "text": "As for the distinction according to which the mode of one substance is different from another substance, or from the mode of another substance, as the motion of one body is different from another body or from the mind, or as motion is different from doubt, it seems to me that it should be called real rather than modal, because these modes cannot be clearly conceived apart from the really distinct substances of which they are the modes.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 263038,
+      "endOffset": 263554
+    },
+    {
+      "text": "Although perhaps some express themselves otherwise on this matter, I am nevertheless convinced that they do not think differently from what I have now said: for when they distinguish (corporeal) substance from extension or quantity, they either mean nothing by the word (corporeal) substance, or they form in their minds merely a confused idea of incorporeal substance, which they falsely attribute to corporeal, and leave to extension the true idea of this corporeal substance; which extension they call an accident, but with such impropriety as to make it easy to discover that their words are not in harmony with their thoughts.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 297714,
+      "endOffset": 298445
+    },
+    {
+      "text": "For we see there needs not much to learn to speak: and forasmuch as we observe inequality amongst Beasts of the same kind, aswell as amongst men, and that some are more easily managed then others; ’tis not to be believed, but that an Ape or a Parrot which were the most perfect of its kinde, should therein equall the most stupid child, or at least a child of a distracted brain, if their souls were not of a nature wholly different from ours.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 407433,
+      "endOffset": 407959
+    },
+    {
+      "text": "Not but that there may be divers wits in the world incomparably better then mine; but because men cannot so well conceive a thing and make it their own, when they learn it of another, as when they invent it themselves: which is so true in this Subject, that although I have often explain’d some of my opinions to very understanding men, and who, whilest I spake to them, seem’d very distinctly to conceive them; yet when they repeated them, I observ’d, that they chang’d them almost always in such a manner, that I could no longer own them for mine.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 427967,
+      "endOffset": 428616
+    },
+    {
+      "text": "The first was never to accept anything for true which I did not clearly know to be such; that is to say, carefully to avoid precipitancy and prejudice, and to comprise nothing more in my judgement than what was presented to my mind so clearly and distinctly as to exclude all ground of doubt.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 34337,
+      "endOffset": 34682
+    },
+    {
+      "text": "Accordingly, whereas we not infrequently have ideas or notions in which some falsity is contained, this can only be the case with such as are to some extent confused and obscure, and in this proceed from nothing (participate of negation), that is, exist in us thus confused because we are not wholly perfect.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 74209,
+      "endOffset": 74569
+    },
+    {
+      "text": "As for myself, if I have succeeded in discovering any truths in the sciences (and I trust that what is contained in this volume I will show that I have found some), I can declare that they are but the consequences and results of five or six principal difficulties which I have surmounted, and my encounters with which I reckoned as battles in which victory declared for me.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 129794,
+      "endOffset": 130234
+    },
+    {
+      "text": "Now these principles must possess TWO CONDITIONS: in the first place, they must be so clear and evident that the human mind, when it attentively considers them, cannot doubt of their truth; in the second place, the knowledge of other things must be so dependent on them as that though the principles themselves may indeed be known apart from what depends on them, the latter cannot nevertheless be known apart from the former.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 156295,
+      "endOffset": 156793
+    },
+    {
+      "text": "There have been, indeed, in all ages great minds who endeavoured to find a fifth road to wisdom, incomparably more sure and elevated than the other four.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 162111,
+      "endOffset": 162290
+    },
+    {
+      "text": "The path they essayed was the search of first causes and true principles, from which might be deduced the reasons of all that can be known by man; and it is to them the appellation of philosophers has been more especially accorded.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 162292,
+      "endOffset": 162564
+    },
+    {
+      "text": "That the notions which are simplest and self-evident, are obscured by logical definitions; and that such are not to be reckoned among the cognitions acquired by study, [but as born with us].",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 206875,
+      "endOffset": 207096
+    },
+    {
+      "text": "That we uniformly judge improperly when we assent to what we do not clearly perceive, although our judgment may chance to be true; and that it is frequently our memory which deceives us by leading us to believe that certain things were formerly sufficiently understood by us.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 242031,
+      "endOffset": 242352
+    },
+    {
+      "text": "That all the objects of our knowledge are to be regarded either (1) as things or the affections of things: or (2) as eternal truths; with the enumeration of things.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 245634,
+      "endOffset": 245827
+    },
+    {
+      "text": "Of the first class the most general are substance, duration, order, number, and perhaps also some others, which notions apply to all the kinds of things.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 246259,
+      "endOffset": 246437
+    },
+    {
+      "text": "By substance we can conceive nothing else than a thing which exists in such a way as to stand in need of nothing beyond itself in order to its existence.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 250070,
+      "endOffset": 250252
+    },
+    {
+      "text": "We easily, however, discover substance itself from any attribute of it, by this common notion, that of nothing there are no attributes, properties, or qualities: for, from perceiving that some attribute is present, we infer that some existing thing or substance to which it may be attributed is also of necessity present.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 251294,
+      "endOffset": 251666
+    },
+    {
+      "text": "In the same way number, when it is not considered as in created things, but merely in the abstract or in general, is only a mode of thinking; and the same is true of all those general ideas we call universals.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 257113,
+      "endOffset": 257362
+    },
+    {
+      "text": "Universals arise merely from our making use of one and the same idea in thinking of all individual objects between which there subsists a certain likeness; and when we comprehend all the objects represented by this idea under one name, this term likewise becomes universal.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 257504,
+      "endOffset": 257821
+    },
+    {
+      "text": "In the same way, since every one is conscious that he thinks, and that he in thought can exclude from himself every other substance, whether thinking or extended, it is certain that each of us thus considered is really distinct from every other thinking and corporeal substance.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 260742,
+      "endOffset": 261066
+    },
+    {
+      "text": "There is, however, very great diversity in the manner of judging: for so long as we simply judge that there is an unknown something in objects (that is, in things such as they are, from which the sensation reached us), so far are we from falling into error that, on the contrary, we thus rather provide against it, for we are less apt to judge rashly of a thing which we observe we do not know.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 273792,
+      "endOffset": 274261
+    },
+    {
+      "text": "On this account the majority attend to words rather than to things; and thus very frequently assent to terms without attaching to them any meaning, either because they think they once understood them, or imagine they received them from others by whom they were correctly understood.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 282424,
+      "endOffset": 282751
+    },
+    {
+      "text": "We must, in the next place, make an orderly review of the notions we have in our minds, and hold as true all and only those which we will clearly and distinctly apprehend.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 283668,
+      "endOffset": 283871
+    },
+    {
+      "text": "Its good to know something of the manners of severall Nations, that we may not think that all things against our Mode are ridiculous or unreasonable, as those are wont to do, who have seen Nothing.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 315508,
+      "endOffset": 315740
+    },
+    {
+      "text": "For I was not only carefull to direct all my thoughts in generall according to its rules, but I from time to time reserv’d some houres, which I particularly employd to practice it in difficulties belonging to the Mathematicks, loosening from all the principles of other Sciences, which I found not stable enough, as you may see I have done in divers explain’d in my other following discourses.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 356030,
+      "endOffset": 356490
+    },
+    {
+      "text": "I knew then that I was a substance, whose whole essence or nature is, but to think, and who to be, hath need of no place, nor depends on any materiall thing.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 361885,
+      "endOffset": 362073
+    },
+    {
+      "text": "I saw that doubtfulness, inconstancy, sorrow and the like, could not be in him, seeing I could my self have wish’d to have been exempted from them.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 366104,
+      "endOffset": 366277
+    },
+    {
+      "text": "The which happens, not because they want organs; for we know, that Pyes and Parrots can utter words even as we can, and yet cannot speak like us; that is to say, with evidence that they think what they say.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 406754,
+      "endOffset": 406999
+    },
+    {
+      "text": "For to endeavour to overcome all the difficulties and errours which hinder us to come to the knowledg of the Truth, is truly to fight battails.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 424009,
+      "endOffset": 424177
+    },
+    {
+      "text": "On the other hand, I compared the disquisitions of the ancient moralists to very towering and magnificent palaces with no better foundation than sand and mud: they laud the virtues very highly, and exhibit them as estimable far above anything on earth; but they give us no adequate criterion of virtue, and frequently that which they designate with so fine a name is but apathy, or pride, or despair, or parricide.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 13853,
+      "endOffset": 14337
+    },
+    {
+      "text": "The second, to divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 34686,
+      "endOffset": 34859
+    },
+    {
+      "text": "For though it be true that every one is bound to promote to the extent of his ability the good of others, and that to be useful to no one is really to be worthless, yet it is likewise true that our cares ought to extend beyond the present, and it is good to omit doing what might perhaps bring some profit to the living, when we have in view the accomplishment of other ends that will be of much greater advantage to posterity.",
+      "sourceId": "6df34456-1208-4ac1-9241-cb88f2ce152a",
+      "sourceTitle": "Table",
+      "sourceFile": "descartes_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 127920,
+      "endOffset": 128430
+    }
+  ]
+}

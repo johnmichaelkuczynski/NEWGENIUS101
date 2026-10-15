@@ -32,3 +32,15 @@ Short works are often especially quotation-dense. Never use document length as e
 **Why:** Window-level AI extraction repeatedly found only three or four quotations in compact essays that plainly contained five or more distinct, strong theses, premises, and conclusions. The failure was low candidate recall, not low source quality.
 
 **How to apply:** When a compact source initially falls below the quotation minimum, inspect the complete work and evaluate its clean argument boundaries. Preserve exact source text and reject fragments, but do not collapse distinct premises or conclusions merely because they appear in one short essay.
+
+The thinking sidebar is an author-quotation display, not simulated inner monologue. Dr. Kuczynski requires real quotations from the selected thinker, continuously moving through the top of the panel. Preassembled banks are acceptable; generated filler, derived positions, and borrowing another author's quotations are not. Quality takes precedence over filling a bank to 100.
+
+**Why:** The displayed “quotes” were generic phrases such as “Consider the implications of this position...” rather than the selected author’s words. The user explicitly requested genuine quotations for every thinker without changing the otherwise working app.
+
+**How to apply:** Keep this fix scoped to quotation sourcing and movement. Use exact source excerpts, retain their provenance, select authors by exact canonical identity, and display an explicit unavailable state rather than inventing replacements.
+
+Verbatim containment in a thinker's corpus is necessary but not sufficient for quotation attribution. Collected editions can include translator prefaces, biographies, editorial essays, publisher advertising, and other authors' works.
+
+**Why:** An initial exact-source selection admitted Townsend's preface as Aesop and promotional prose about another book from an Aristotle volume. These were literal source matches but not quotations by the named author.
+
+**How to apply:** Limit extraction to the authored work, especially the fable body rather than Aesop's prefatory/biographical material. Apply a separate editorial/authorship review after source matching. Short, complete fable morals are valid; do not exclude them merely to satisfy a generic minimum sentence length.

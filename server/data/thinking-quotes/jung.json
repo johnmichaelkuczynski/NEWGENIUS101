@@ -1,0 +1,798 @@
+{
+  "thinkerId": "jung",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "The ontological argument is neither argument nor proof, but merely the psychological demonstration of the fact that there is a class of men for whom a definite idea has efficacy and reality—a reality that even rivals the world of perception.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 102516,
+      "endOffset": 102760
+    },
+    {
+      "text": "Without a human psyche to receive divine inspirations and utter them in words or shape them in art, no religious symbol has ever come into the reality of our human life.",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 501908,
+      "endOffset": 502079
+    },
+    {
+      "text": "The study of psychoanalysis produces something of the effect of a war in the psyche; indeed, we need to make conscious this war in the inner things of the mind and soul if we would be delivered in the future from war in the external world.",
+      "sourceId": "a4f0a5ac-d9f3-48c7-9fc9-3de05956925a",
+      "sourceTitle": "jung_works_29",
+      "sourceFile": "jung_works_29.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5438,
+      "endOffset": 5677
+    },
+    {
+      "text": "As is easily understood, that which is valuable in the God-creating idea is not the form but the power, the libido.",
+      "sourceId": "37a3aaf6-00d8-4464-ad26-7c8d282f674a",
+      "sourceTitle": "jung_works_10",
+      "sourceFile": "jung_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 200401,
+      "endOffset": 200516
+    },
+    {
+      "text": "The best result for a person who passes through analysis, is that he becomes at the end what he really is, in harmony with himself, neither bad nor good, but an ordinary human being.",
+      "sourceId": "549f1f83-5dcf-4b14-9922-a54de1f279db",
+      "sourceTitle": "jung_works_13",
+      "sourceFile": "jung_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 259699,
+      "endOffset": 259883
+    },
+    {
+      "text": "It proves that the self-regulating action of the psyche (when not disturbed by too much rational explanation or dissection) can support the developmental process of the soul.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 708356,
+      "endOffset": 708541
+    },
+    {
+      "text": "For it is utterly impossible to consider the soul from the causal view-point only; we are obliged to consider it also from the final point of view.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11668,
+      "endOffset": 11815
+    },
+    {
+      "text": "The scientific mind, thinking causally, is incapable of understanding what is ahead; it only understands what is past, that is, retrospective.",
+      "sourceId": "7f716698-5890-4b93-9011-81744ede9a26",
+      "sourceTitle": "jung_works_7",
+      "sourceFile": "jung_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 339367,
+      "endOffset": 339529
+    },
+    {
+      "text": "In my view the answer to the above question should be that such a man has no real character at all: he is not individual (q.v.) but collective (q.v.), the plaything of circumstance and general expectations.",
+      "sourceId": "4f5150fb-a16e-42f7-8315-6d96b851a9e0",
+      "sourceTitle": "jung_works_4",
+      "sourceFile": "jung_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36024,
+      "endOffset": 36233
+    },
+    {
+      "text": "The shadow usually contains values that are needed by consciousness, but that exist in a form that makes it difficult to integrate them into one’s life.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 370132,
+      "endOffset": 370305
+    },
+    {
+      "text": "Because active fantasy is the chief mark of the artistic mentality, the artist is not just a reproducer of appearances but a creator and educator, for his works have the value of symbols that adumbrate lines of future development.",
+      "sourceId": "88028398-bc14-4dab-a9d5-64c452bd0b4b",
+      "sourceTitle": "jung_works_3",
+      "sourceFile": "jung_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 319155,
+      "endOffset": 319388
+    },
+    {
+      "text": "For while the consciously disposable libido gets gradually used up in the differentiated function and is replenished more and more slowly and with increasing difficulty, the symptoms of inner disunity multiply and there is a growing danger of inundation and destruction by the unconscious contents, but all the time the symbol is developing that is destined to resolve the conflict.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 266837,
+      "endOffset": 267225
+    },
+    {
+      "text": "The irrationality of the great process is shown by its so-called accidentalness, which perforce we ought to deny, since, obviously, we cannot think of a process not being causally and necessarily conditioned.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 95684,
+      "endOffset": 95901
+    },
+    {
+      "text": "If he understands this aright he will not pose as a psychoanalytical prophet nor as a public reformer, but truly understanding the common weal, he will first himself reap the benefit of the self-knowledge acquired in his treatment, and then he will let the example of his life work what good it can, rather than indulge in aggressive talk and missionary propaganda.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 257489,
+      "endOffset": 257880
+    },
+    {
+      "text": "Rightly understood and used, psychoanalysis may be compared to surgery, for psychoanalysis stands in the same relation to the personality as surgery does to the body, and they aim at parallel results.",
+      "sourceId": "f36d3494-abcc-43e7-86ba-3a28bb35a35b",
+      "sourceTitle": "jung_works_32",
+      "sourceFile": "jung_works_32.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9476,
+      "endOffset": 9686
+    },
+    {
+      "text": "Meantime, however, little thought was given to the possibility of any scientific method being available to help man overcome the wounds and conflicts taking place in his soul, hurts which retarded his development and progress as a personality, and which frequently in the struggle resulted in physical pains and symptoms of the most varied character.",
+      "sourceId": "64ad28cc-10d9-408a-80c9-2c02f6db5209",
+      "sourceTitle": "jung_works_30",
+      "sourceFile": "jung_works_30.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11225,
+      "endOffset": 11575
+    },
+    {
+      "text": "If one had the smallest vestige of superstition left in one, it would hardly be possible to set aside the idea that one is the mere incarnation, mouthpiece, or medium of an almighty power.",
+      "sourceId": "e107b2db-c641-40ff-95e4-ead0e6a08978",
+      "sourceTitle": "jung_works_5",
+      "sourceFile": "jung_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 94545,
+      "endOffset": 94748
+    },
+    {
+      "text": "The present fearful catastrophic world-war has tremendously upset the most optimistic upholder of rationalism and culture.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 96921,
+      "endOffset": 97054
+    },
+    {
+      "text": "From the standpoint of sensation and feeling this matters little, and indeed rightly so, for the idea, the principle, is just as little concerned with the sensation of the object.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 161722,
+      "endOffset": 161903
+    },
+    {
+      "text": "The psychoanalyst must never forget that the final aim of psychoanalysis is the personal freedom and moral independence of the patient.",
+      "sourceId": "549f1f83-5dcf-4b14-9922-a54de1f279db",
+      "sourceTitle": "jung_works_13",
+      "sourceFile": "jung_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 263026,
+      "endOffset": 263161
+    },
+    {
+      "text": "We too believe in the welfare state, in universal peace, in the equality of man, in his eternal human rights, in justice, truth, and (do not say it too loudly) in the Kingdom of God on Earth.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 175466,
+      "endOffset": 175659
+    },
+    {
+      "text": "The survival or unconscious revivification of the vessel symbol is indicative of a strengthening of the feminine principle in the masculine psychology of that time.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 206620,
+      "endOffset": 206787
+    },
+    {
+      "text": "There are those who do not outwardly live a decent life at all and do not place the slightest constraint upon their sexuality, but in reality this is a sinful pose assumed for goodness knows what reasons, for down below they have a decorous soul which has somehow gone astray in their unconscious, just as has the real immoral nature in the case of apparently moral people.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 38390,
+      "endOffset": 38768
+    },
+    {
+      "text": "The unconscious possesses possibilities of wisdom that are completely closed to consciousness, for the unconscious has at its disposal not only all the psychic contents that are under the threshold because they had been forgotten or overlooked, but also the wisdom of the experience of untold ages, deposited in the course of time and lying potential in the human brain.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 194676,
+      "endOffset": 195051
+    },
+    {
+      "text": "The way is difficult, and in the end all man ever attains to is relative truth.",
+      "sourceId": "7a3d6039-4638-4956-8f16-09dee9c24d13",
+      "sourceTitle": "jung_works_27",
+      "sourceFile": "jung_works_27.txt",
+      "sourceKind": "database-text",
+      "startOffset": 152331,
+      "endOffset": 152410
+    },
+    {
+      "text": "The assumption that only one psychology exists or only one fundamental psychological principle is an intolerable tyranny, a pseudo-scientific prejudice of the common man.",
+      "sourceId": "1f11646b-a3e3-4c6b-aa60-4929576a9fff",
+      "sourceTitle": "jung_works_21",
+      "sourceFile": "jung_works_21.txt",
+      "sourceKind": "database-text",
+      "startOffset": 101773,
+      "endOffset": 101947
+    },
+    {
+      "text": "The strength and inner clarity needed by the ego in order to make such a decision stem secretly from the Great Man, who apparently does not want to reveal himself too clearly.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 383756,
+      "endOffset": 383933
+    },
+    {
+      "text": "All that is easy-going, unforced, temperate, harmless, and superficial in life would disappear if there were no differentiated affects.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36697,
+      "endOffset": 36834
+    },
+    {
+      "text": "Inasmuch as the collective psyche is the \"partie inférieure\" of the mental function, and therefore is the fundamental structure underlying every personality, it weighs heavily upon and depreciates the personality; a fact that is expressed in the afore-mentioned stifling of self- confidence, and in the unconscious increase of the ego-emphasis up to the point of a morbid will to power.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 215317,
+      "endOffset": 215717
+    },
+    {
+      "text": "The value of self-consciousness lies in the fact that man is enabled to reflect upon himself and learn to understand the true origin and significance of his actions and opinions, that he may adequately value the real level of his development and avoid being self-deceived and there- fore inhibited from finding his biological adaptation.",
+      "sourceId": "73d72cee-3a30-4682-8add-a0befff6854d",
+      "sourceTitle": "jung_works_12",
+      "sourceFile": "jung_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 63337,
+      "endOffset": 63680
+    },
+    {
+      "text": "Living reality is the product neither of the actual, objective behaviour of things nor of the formulated idea exclusively, but rather of the combination of both in the living psychological process, through esse in anima.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 127155,
+      "endOffset": 127377
+    },
+    {
+      "text": "Disagreement functions as a vehicle of mental life in society, but it is not a goal; agreement is equally important.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 109869,
+      "endOffset": 109993
+    },
+    {
+      "text": "As a matter of fact, modern physics has necessarily been converted from the idea of pure mechanism to the final concept of the conservation of energy, because the mechanistic explanation only recognises reversible processes, whereas the actual truth is that the process of nature is irreversible.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12829,
+      "endOffset": 13125
+    },
+    {
+      "text": "A further possibility would be to declare the unconscious to be the archaic collective psychology of primitive man, an explanation that would not only cover the sexualistic symbolism and the \"God-Almighty\" aiming for power of the unconscious content, but would also apparently do justice to the religious, philosophical, and mythological aspects and tendencies of the unconscious content.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 232343,
+      "endOffset": 232752
+    },
+    {
+      "text": "The omnipotence of God is the manifest omnipotence of the libido, the only actual doer of wonders which we know.",
+      "sourceId": "f36d3494-abcc-43e7-86ba-3a28bb35a35b",
+      "sourceTitle": "jung_works_32",
+      "sourceFile": "jung_works_32.txt",
+      "sourceKind": "database-text",
+      "startOffset": 953301,
+      "endOffset": 953414
+    },
+    {
+      "text": "I have found from experience that the basic psychological functions, that is, functions which are genuinely as well as essentially different from other functions, prove to be thinking, feeling, sensation, and intuition.",
+      "sourceId": "1f11646b-a3e3-4c6b-aa60-4929576a9fff",
+      "sourceTitle": "jung_works_21",
+      "sourceFile": "jung_works_21.txt",
+      "sourceKind": "database-text",
+      "startOffset": 23242,
+      "endOffset": 23464
+    },
+    {
+      "text": "Morality is not a misconception invented by some vaunting Moses on Sinai, but something inherent in the laws of life and fashioned like a house or a ship or any other cultural instrument.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 153923,
+      "endOffset": 154112
+    },
+    {
+      "text": "Reason must always seek the solution in some rational, consistent, logical way, which is certainly justifiable enough in all normal situations but is entirely inadequate when it comes to the really great and decisive questions.",
+      "sourceId": "d4acb6cf-adb3-4f53-a347-7c55604bbfb8",
+      "sourceTitle": "jung_works_2",
+      "sourceFile": "jung_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 259405,
+      "endOffset": 259636
+    },
+    {
+      "text": "The shifting of the accent of value from one side to the other is a matter of individual attitude and the psychology of the time.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84620,
+      "endOffset": 84750
+    },
+    {
+      "text": "For while the human being is as different as possible from a stone, yet man’s innermost center is in a strange and special way akin to it (perhaps because the stone symbolizes mere existence at the farthest remove from the emotions, feelings, fantasies, and discursive thinking of ego-consciousness).",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 447641,
+      "endOffset": 447953
+    },
+    {
+      "text": "The work of genius is very different; it fetches up these distant fragments in order to build them into a new and meaningful structure.",
+      "sourceId": "e107b2db-c641-40ff-95e4-ead0e6a08978",
+      "sourceTitle": "jung_works_5",
+      "sourceFile": "jung_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 96124,
+      "endOffset": 96261
+    },
+    {
+      "text": "The unconscious is continually active, creating combinations of its materials; these serve to indicate the future path of the individual.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 195052,
+      "endOffset": 195201
+    },
+    {
+      "text": "When a psychological fact has to be explained, it must be remembered that psychological data necessitate a twofold point of view, namely, that of causality and that of finality.",
+      "sourceId": "7a3d6039-4638-4956-8f16-09dee9c24d13",
+      "sourceTitle": "jung_works_27",
+      "sourceFile": "jung_works_27.txt",
+      "sourceKind": "database-text",
+      "startOffset": 258478,
+      "endOffset": 258666
+    },
+    {
+      "text": "I am first and foremost a doctor and practising psychotherapist, and all my psychological formulations are based on the experiences gained in the hard course of my daily professional work.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9335,
+      "endOffset": 9525
+    },
+    {
+      "text": "The appeal to the subject therefore has the same validity as the appeal to the so-called objective world, for it is grounded on psychic reality itself.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 229518,
+      "endOffset": 229672
+    },
+    {
+      "text": "In fact, whenever a human being genuinely turns to the inner world and tries to know himself—not by ruminating about his subjective thoughts and feelings, but by following the expressions of his own objective nature such as dreams and genuine fantasies—then sooner or later the Self emerges.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 464495,
+      "endOffset": 464790
+    },
+    {
+      "text": "Obviously, I consider both these points of view necessary, the causal as well as the final, but would at the same time lay stress upon the fact that since Kant's time we have come to know that the two view-points are not antagonistic if they are regarded as regulative principles of thought, and not as constituent principles of the process of nature itself.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13258,
+      "endOffset": 13616
+    },
+    {
+      "text": "It would be very unjust to wish to maintain that this reductive theory is wrong in a given case, but when exalted into a general explanation of the nature of the soul— whether sick or healthy—a reductive theory becomes impossible.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 87930,
+      "endOffset": 88182
+    },
+    {
+      "text": "Against such a stifling conception there rises ever anew the feeling of man’s freedom and moral value—a feeling that will not long endure suppression whether by insight however searching, or logic however keen.",
+      "sourceId": "1f11646b-a3e3-4c6b-aa60-4929576a9fff",
+      "sourceTitle": "jung_works_21",
+      "sourceFile": "jung_works_21.txt",
+      "sourceKind": "database-text",
+      "startOffset": 58313,
+      "endOffset": 58526
+    },
+    {
+      "text": "On the other hand, we also have to bear in mind the great disadvantage which identification with the directed function entails, namely, the degeneration of the individual.",
+      "sourceId": "93645273-7f92-4aff-855b-c35f6fb8d6ce",
+      "sourceTitle": "jung_works_23",
+      "sourceFile": "jung_works_23.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3292,
+      "endOffset": 3472
+    },
+    {
+      "text": "Every reduction, every digression from the course that has been laid down for the development of civilisation does nothing more than turn the human being into a crippled animal; it never makes a so-called natural man of him.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 526028,
+      "endOffset": 526252
+    },
+    {
+      "text": "The compensatory function of the unconscious becomes more obvious the more one-sided the conscious attitude (q.v.) is; pathology furnishes numerous examples of this.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84783,
+      "endOffset": 84950
+    },
+    {
+      "text": "Only if he can use his freedom to create something meaningful is it relevant that he should be free.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 486353,
+      "endOffset": 486464
+    },
+    {
+      "text": "Reverence for the great mysteries of Nature, which the language of religion seeks to express in symbols hallowed by their antiquity, profound significance, and beauty, will not suffer from the extension of psychology to this domain, to which science has hitherto found no access.",
+      "sourceId": "d4acb6cf-adb3-4f53-a347-7c55604bbfb8",
+      "sourceTitle": "jung_works_2",
+      "sourceFile": "jung_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 244815,
+      "endOffset": 245098
+    },
+    {
+      "text": "The introvert is characterised by the thought standpoint; the extrovert by the feeling standpoint.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 187445,
+      "endOffset": 187554
+    },
+    {
+      "text": "In so far as our actual present life is for us something essentially new and not a repetition of all that has gone before, the great value of such a work is to be seen, not in its causal development, but in its living reality for our own lives.",
+      "sourceId": "7a3d6039-4638-4956-8f16-09dee9c24d13",
+      "sourceTitle": "jung_works_27",
+      "sourceFile": "jung_works_27.txt",
+      "sourceKind": "database-text",
+      "startOffset": 340936,
+      "endOffset": 341183
+    },
+    {
+      "text": "As far as our knowledge reaches, the individual act of thought is dependent wholly or in greatest part on the existence of a highly differentiated brain, whereas the function of reality (adaptation to reality) is something which occurs in all living nature as wholly independent from the act of thought.",
+      "sourceId": "73d72cee-3a30-4682-8add-a0befff6854d",
+      "sourceTitle": "jung_works_12",
+      "sourceFile": "jung_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 843059,
+      "endOffset": 843387
+    },
+    {
+      "text": "For what would never have been possible to the personal power of the will or to courage is made possible by the force of collective instinct; it carries a man over obstacles which his ownpersonal energy could never overcome.",
+      "sourceId": "1f11646b-a3e3-4c6b-aa60-4929576a9fff",
+      "sourceTitle": "jung_works_21",
+      "sourceFile": "jung_works_21.txt",
+      "sourceKind": "database-text",
+      "startOffset": 197212,
+      "endOffset": 197440
+    },
+    {
+      "text": "In each conquest he wins again the smiling love and life-giving mother—images which belong to the intuitive depths of human feeling, the features of which have become mutilated and irrecognizable through the progressive development of the surface of the human mind.",
+      "sourceId": "37a3aaf6-00d8-4464-ad26-7c8d282f674a",
+      "sourceTitle": "jung_works_10",
+      "sourceFile": "jung_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 760913,
+      "endOffset": 761178
+    },
+    {
+      "text": "What in fact artists now have at heart is a conscious reunion oftheir own inward reality with the reality of the world or of nature; or, in the last resort, a new union of body and soul, matter and spirit.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 610875,
+      "endOffset": 611081
+    },
+    {
+      "text": "It is, after all, a person's moral qualities that make him assimilate his unconscious self and retain it in consciousness, whether he be forced to it by a recognition of its necessity, or by a painful neurosis.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1002008,
+      "endOffset": 1002218
+    },
+    {
+      "text": "The saviour is always a figure endowed with magical power who makes the impossible possible.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 262846,
+      "endOffset": 262940
+    },
+    {
+      "text": "For most men the reason of this cleavage is the fact that their conscious self desires to hold to its moral ideal, whilst the unconscious strives after the amoral ideal, steadfastly rejected by the conscious self.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 38026,
+      "endOffset": 38252
+    },
+    {
+      "text": "A psychology that is grounded on experience always touches upon personal and intimate matters and thus arouses everything that is contradictory and unclarified in the human psyche.",
+      "sourceId": "1066c1cc-0a20-463e-8b34-b9cf093981b7",
+      "sourceTitle": "jung_works_1",
+      "sourceFile": "jung_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 10869,
+      "endOffset": 11052
+    },
+    {
+      "text": "The more a man’s life is shaped by the collective norm, the greater is his individual immorality.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1782,
+      "endOffset": 1882
+    },
+    {
+      "text": "Naturally, if you identify the psyche with consciousness, you can easily fall into the erroneous idea that man comes into the world with a psyche that is empty, and that in later years it contains nothing more than what it has learned by individual experience.",
+      "sourceId": "4cc50712-2f51-4f1c-87f0-9e1449c184b7",
+      "sourceTitle": "jung_works_31",
+      "sourceFile": "jung_works_31.txt",
+      "sourceKind": "database-text",
+      "startOffset": 153253,
+      "endOffset": 153524
+    },
+    {
+      "text": "From one point of view this process takes place in man (as well as in every other living being) by itself and in the unconscious; it is a process by which man lives out his innate human nature.",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 345762,
+      "endOffset": 345966
+    },
+    {
+      "text": "The irrational introverted types are certainly no teachers of a more perfect humanity; they lack reason and the ethics of reason.",
+      "sourceId": "88028398-bc14-4dab-a9d5-64c452bd0b4b",
+      "sourceTitle": "jung_works_3",
+      "sourceFile": "jung_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 257119,
+      "endOffset": 257249
+    },
+    {
+      "text": "The more one-sided the conscious attitude, the more antagonistic are the contents arising from the unconscious, so that we may speak of a real opposition between the two.",
+      "sourceId": "93645273-7f92-4aff-855b-c35f6fb8d6ce",
+      "sourceTitle": "jung_works_23",
+      "sourceFile": "jung_works_23.txt",
+      "sourceKind": "database-text",
+      "startOffset": 290484,
+      "endOffset": 290660
+    },
+    {
+      "text": "The individual unconscious produces such symbols, and they are of the greatest possible value in the moral development of the personality.",
+      "sourceId": "3663af47-19c7-4978-a461-52e63ee979bb",
+      "sourceTitle": "jung_works_9",
+      "sourceFile": "jung_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21595,
+      "endOffset": 21733
+    },
+    {
+      "text": "Being identified with the collective psyche he will inevitably try to force the claims of his unconscious upon others, for identification with the collective psyche is accompanied by a feeling of universal validity (\"God-Almightiness\"), which disregards the different psychology of his fellows.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 219911,
+      "endOffset": 220243
+    },
+    {
+      "text": "Every reduction, every digression from the course that has been laid down for the developmentof civilisation does nothing more than turn the human being into a crippled animal; it never makes a so-called natural man of him.",
+      "sourceId": "7f716698-5890-4b93-9011-81744ede9a26",
+      "sourceTitle": "jung_works_7",
+      "sourceFile": "jung_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 93285,
+      "endOffset": 93520
+    },
+    {
+      "text": "For anyone who is psychologically so constituted as to perceive chiefly the similarity of things, the inclusive concept is, as it were, given from the start; it forcibly obtrudes itself with the undeniable actuality of a sense-perception.",
+      "sourceId": "1f11646b-a3e3-4c6b-aa60-4929576a9fff",
+      "sourceTitle": "jung_works_21",
+      "sourceFile": "jung_works_21.txt",
+      "sourceKind": "database-text",
+      "startOffset": 117904,
+      "endOffset": 118146
+    },
+    {
+      "text": "A very feminine woman has a masculine soul, and a very masculine man has a feminine soul.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44367,
+      "endOffset": 44458
+    },
+    {
+      "text": "To the extent, however, that a symbol is merely a symptom, it also lacks a redeeming effect, since it fails to express the full right of all parts of the psyche to exist, being a constant reminder of the suppressed antithesis even though consciousness may not take this fact into account.",
+      "sourceId": "4f5150fb-a16e-42f7-8315-6d96b851a9e0",
+      "sourceTitle": "jung_works_4",
+      "sourceFile": "jung_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 68987,
+      "endOffset": 69281
+    },
+    {
+      "text": "The anima is a personification of all feminine psychological tendencies in a man’s psyche, such as vague feelings and moods, prophetic hunches, receptiveness to the irrational, capacity for personal love, feeling for nature, and—last but not least—his relation to the unconscious.",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 385861,
+      "endOffset": 386172
+    },
+    {
+      "text": "The law of fantasy as a psychological phenomenon can only be a psychological law.",
+      "sourceId": "93645273-7f92-4aff-855b-c35f6fb8d6ce",
+      "sourceTitle": "jung_works_23",
+      "sourceFile": "jung_works_23.txt",
+      "sourceKind": "database-text",
+      "startOffset": 320861,
+      "endOffset": 320943
+    },
+    {
+      "text": "Libido as an energy concept is a quantitative formula for the phenomena of life, which are naturally of varying intensity.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 152166,
+      "endOffset": 152291
+    },
+    {
+      "text": "I am often asked why it is just the erotic conflict rather than any other which is the cause of the neurosis.",
+      "sourceId": "a830057f-5a34-46ff-bb78-29391a05c1f8",
+      "sourceTitle": "jung_works_8",
+      "sourceFile": "jung_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25198,
+      "endOffset": 25308
+    },
+    {
+      "text": "The will is a psychological phenomenon that owes its existence to culture and moral education, but is largely lacking in the primitive mentality.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 85280,
+      "endOffset": 85427
+    },
+    {
+      "text": "Although it is certainly a fine thing that every man should stand equal before the law, that every man should have his political vote, and that no man, through hereditary social position and privilege, should have unjust advantage over his brother, it is distinctly less fine when the idea of equality is extended to other walks of life.",
+      "sourceId": "4f5150fb-a16e-42f7-8315-6d96b851a9e0",
+      "sourceTitle": "jung_works_4",
+      "sourceFile": "jung_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 85930,
+      "endOffset": 86271
+    },
+    {
+      "text": "In practical terms this means that the existence of human beings will never be satisfactorily explained in terms of isolated instincts or purposive mechanism such as hunger, power, sex, survival, perpetuation of the species, and so on.",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 432704,
+      "endOffset": 432949
+    },
+    {
+      "text": "We recognise that the course of civilisation consists in the progressive mastering of the animal element in man; it is a process of domestication which cannot be carried through without rebellion on the part of the animal nature still thirsting for its liberty.",
+      "sourceId": "fa427b23-850f-4804-830b-8c03911c0e7c",
+      "sourceTitle": "jung_works_28",
+      "sourceFile": "jung_works_28.txt",
+      "sourceKind": "database-text",
+      "startOffset": 28999,
+      "endOffset": 29278
+    },
+    {
+      "text": "Certainly strife and misunderstanding will always be among the props of the tragicomedy of human existence, but it is none the less undeniable that the advance of civilization has led from the law of the jungle to the establishment of courts of justice and standards of right and wrong which are above the contending parties.",
+      "sourceId": "4f39d82e-bd16-4672-b98e-b9db666f97f4",
+      "sourceTitle": "jung_works_24",
+      "sourceFile": "jung_works_24.txt",
+      "sourceKind": "database-text",
+      "startOffset": 90847,
+      "endOffset": 91176
+    },
+    {
+      "text": "Man is the only creature with the power to control instinct by his own will, but he is also able to suppress, distort, and wound it—and an animal, to speak metaphorically, is never so wild and dangerous as when it is wounded.",
+      "sourceId": "78bde66a-bac1-4a90-8fa0-f76dc923cd22",
+      "sourceTitle": "jung_works_11",
+      "sourceFile": "jung_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 524270,
+      "endOffset": 524498
+    },
+    {
+      "text": "Because this formula seems to embody the entire meaning of life, it is made into a universal law which must be put into effect everywhere all the time, both individually and collectively.",
+      "sourceId": "93645273-7f92-4aff-855b-c35f6fb8d6ce",
+      "sourceTitle": "jung_works_23",
+      "sourceFile": "jung_works_23.txt",
+      "sourceKind": "database-text",
+      "startOffset": 115965,
+      "endOffset": 116156
+    },
+    {
+      "text": "Just as the man who has surrendered entirely to the outside world encounters it in the form of some intimate and beloved being through whom, should his destiny lie in extreme devotion to a personal object, he will experience the whole ambivalence of the world and of his own nature, so the other, who has surrendered to the soul, will encounter her as a daemonic personification of the unconscious, embodying the totality, the utter polarity and ambivalence of the world of images.",
+      "sourceId": "684dbc0d-204a-4a44-a6f6-a6af886cbba7",
+      "sourceTitle": "jung_works_22",
+      "sourceFile": "jung_works_22.txt",
+      "sourceKind": "database-text",
+      "startOffset": 62430,
+      "endOffset": 62920
+    },
+    {
+      "text": "Even the man who has succeeded in freeing himself from the dogma of the identity of the conscious self and the psyche, thus admitting the possible existence of psychic processes outside the conscious, is not justified in disputing or maintaining psychic possibilities in the unconscious.",
+      "sourceId": "c50f89ca-356f-4d20-8d78-01041aa7b8bc",
+      "sourceTitle": "jung_works_33",
+      "sourceFile": "jung_works_33.txt",
+      "sourceKind": "database-text",
+      "startOffset": 138005,
+      "endOffset": 138305
+    }
+  ]
+}

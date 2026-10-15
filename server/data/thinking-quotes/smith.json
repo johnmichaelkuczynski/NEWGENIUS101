@@ -1,0 +1,780 @@
+{
+  "thinkerId": "smith",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "From a certain spirit of system, however, from a certain love of art and contrivance, we sometimes seem to value the means more than the end, and to be eager to promote the happiness of our fellow-creatures, rather from a view to perfect and improve a certain beautiful and orderly system, than from any immediate sense or feeling of what they either suffer or enjoy.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 469119,
+      "endOffset": 469486
+    },
+    {
+      "text": "In ease of body and peace of mind, all the different ranks of life are nearly upon a level, and the beggar, who suns himself by the side of the highway, possesses that security which kings are fighting for.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 467393,
+      "endOffset": 467599
+    },
+    {
+      "text": "The number of useful and productive labourers, it will hereafter appear, is everywhere in proportion to the quantity of capital stock which is employed in setting them to work, and to the particular way in which it is so employed.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7117,
+      "endOffset": 7365
+    },
+    {
+      "text": "In a militia, the character of the labourer, artificer, or tradesman, predominates over that of the soldier; in a standing army, that of the soldier predominates over every other character; and in this distinction seems to consist the essential difference between those two different species of military force.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1739379,
+      "endOffset": 1739713
+    },
+    {
+      "text": "Were it possible that a human creature could grow up to manhood in some solitary place, without any communication with his own species, he could no more think of his own character, of the propriety or demerit of his own sentiments and conduct, of the beauty or deformity of his own mind, than of the beauty or deformity of his own face.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 275290,
+      "endOffset": 275627
+    },
+    {
+      "text": "Civil government, so far as it is instituted for the security of property, is, in reality, instituted for the defence of the rich against the poor, or of those who have some property against those who have none at all.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1780055,
+      "endOffset": 1780291
+    },
+    {
+      "text": "The rules of justice are accurate in the highest degree, and admit of no exceptions or modifications, but such as may be ascertained as accurately as the rules themselves, and which generally, indeed, flow from the very same principles with them.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 441078,
+      "endOffset": 441324
+    },
+    {
+      "text": "When the judicial is united to the executive power, it is scarce possible that justice should not frequently be sacrificed to what is vulgarly called politics.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1798768,
+      "endOffset": 1798939
+    },
+    {
+      "text": "The principles of the imagination, upon which our sense of beauty depends, are of a very nice and delicate nature, and may easily be altered by habit and education: but the sentiments of moral approbation and disapprobation, are founded on the strongest and most vigorous passions of human nature; and though they may be somewhat warpt, cannot be entirely perverted.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 507920,
+      "endOffset": 508286
+    },
+    {
+      "text": "In order to make every individual feel himself perfectly secure in the possession of every right which belongs to him, it is not only necessary that the judicial should be separated from the executive power, but that it should be rendered as much as possible independent of that power.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1799286,
+      "endOffset": 1799595
+    },
+    {
+      "text": "That wisdom which contrived the system of human affections, as well as that of every other part of nature, seems to have judged that the interest of the great society of mankind would be best promoted by directing the principal attention of each individual to that particular portion of it, which was most within the sphere both of his abilities and of his understanding.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 588747,
+      "endOffset": 589118
+    },
+    {
+      "text": "Power and riches appear then to be what they are, enormous and operose machines contrived to produce a few trifling conveniencies to the body, consisting of springs the most nice and delicate, which must be kept in order with the most anxious attention, and which in spite of all our care are ready every moment to burst into pieces, and to crush in their ruins their unfortunate possessor.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2826823,
+      "endOffset": 2827213
+    },
+    {
+      "text": "The annual labour of every nation is the fund which originally supplies it with all the necessaries and conveniencies of life which it annually consumes, and which consist always either in the immediate produce of that labour, or in what is purchased with that produce from other nations.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3812,
+      "endOffset": 4118
+    },
+    {
+      "text": "Nothing tends so much to promote public spirit as the study of politics, of the several systems of civil government, their advantages and disadvantages, of the constitution of our own country, its situation, and interest with regard to foreign nations, its commerce, its defence, the disadvantages it labours under, the dangers to which it may be exposed, how to remove the one, and how to guard against the other.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 472361,
+      "endOffset": 472775
+    },
+    {
+      "text": "That consolation may be drawn, not only from the complete approbation of the man within the breast, but, if possible, from a still nobler and more generous principle, from a firm reliance upon, and a reverential submission to, that benevolent wisdom which directs all the events of human life, and which, we may be assured, would never have suffered those misfortunes to happen, had they not been indispensably necessary for the good of the whole.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 753291,
+      "endOffset": 753738
+    },
+    {
+      "text": "In every country it always is, and must be, the interest of the great body of the people, to buy whatever they want of those who sell it cheapest.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1198833,
+      "endOffset": 1198991
+    },
+    {
+      "text": "The effect of bounties, like that of all the other expedients of the mercantile system, can only be to force the trade of a country into a channel much less advantageous than that in which it would naturally run of its own accord.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1227757,
+      "endOffset": 1228005
+    },
+    {
+      "text": "Society may subsist among different men, as among different merchants, from a sense of its utility, without any mutual love or affection; and though no man in it should owe any obligation, or be bound in gratitude to any other, it may still be upheld by a mercenary exchange of good offices according to an agreed valuation.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 212836,
+      "endOffset": 213160
+    },
+    {
+      "text": "The causes of this improvement in the productive powers of labour, and the order according to which its produce is naturally distributed among the different ranks and conditions of men in the society, make the subject of the first book of this Inquiry.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 6468,
+      "endOffset": 6738
+    },
+    {
+      "text": "If the exchangeable value of the annual produce, it has already been observed, exceeds that of the annual consumption, the capital of the society must annually increase in proportion to this excess.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1208662,
+      "endOffset": 1208872
+    },
+    {
+      "text": "Some splenetic philosophers, in judging of human nature, have done as peevish individuals are apt to do in judging of the conduct of one another, and have imputed to the love of praise, or to what they call vanity , every action which ought to be ascribed to that of praise-worthiness.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 317142,
+      "endOffset": 317427
+    },
+    {
+      "text": "The great change introduced into the art of war by the invention of fire-arms, has enhanced still further both the expense of exercising and disciplining any particular number of soldiers in time of peace, and that of employing them in time of war.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1763425,
+      "endOffset": 1763691
+    },
+    {
+      "text": "Great labour, either of mind or body, continued for several days together is, in most men, naturally followed by a great desire of relaxation, which, if not restrained by force, or by some strong necessity, is almost irresistible.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 203188,
+      "endOffset": 203436
+    },
+    {
+      "text": "When the capital of any country is not sufficient for all those three purposes, in proportion as a greater share of it is employed in agriculture, the greater will be the quantity of productive labour which it puts into motion within the country; as will likewise be the value which its employment adds to the annual produce of the land and labour of the society.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 896514,
+      "endOffset": 896907
+    },
+    {
+      "text": "The idea of that divine Being, whose benevolence and wisdom have, from all eternity, contrived and conducted the immense machine of the universe, so as at all times to produce the greatest possible quantity of happiness, is certainly of all the objects of human contemplation by far the most sublime.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 607091,
+      "endOffset": 607391
+    },
+    {
+      "text": "The modern maxims of foreign commerce, by aiming at the impoverishment of all our neighbours, so far as they are capable of producing their intended effect, tend to render that very commerce insignificant and contemptible.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1203041,
+      "endOffset": 1203275
+    },
+    {
+      "text": "When men by their practice, and perhaps too by their maxims, manifestly show that the natural beauty of virtue is not like to have much effect upon them, how is it possible to move them but by representing the folly of their conduct, and how much they themselves are in the end likely to suffer by it?",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 772440,
+      "endOffset": 772741
+    },
+    {
+      "text": "The money price of labour, and of every thing that is the produce, either of land or labour, must necessarily either rise or fall in proportion to the money price of corn.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1238095,
+      "endOffset": 1238278
+    },
+    {
+      "text": "It became at this time, therefore, the popular doctrine, that the essence of virtue and vice did not consist in the conformity or disagreement of human actions with the law of a superior, but in their conformity or disagreement with reason, which was thus considered as the original source and principle of approbation and disapprobation.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 826984,
+      "endOffset": 827322
+    },
+    {
+      "text": "No trade deserves more the full protection of the law, and no trade requires it so much; because no trade is so much exposed to popular odium.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1283760,
+      "endOffset": 1283914
+    },
+    {
+      "text": "Pleasure and pain are the great objects of desire and aversion: but these are distinguished not by reason, but by immediate sense and feeling.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 830558,
+      "endOffset": 830700
+    },
+    {
+      "text": "Though the same capital never will maintain the same quantity of productive labour in a distant as in a near employment, yet a distant employment maybe as necessary for the welfare of the society as a near one; the goods which the distant employment deals in being necessary, perhaps, for carrying on many of the nearer employments.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1557600,
+      "endOffset": 1557956
+    },
+    {
+      "text": "As the violation of justice is what men will never submit to from one another, the public magistrate is under a necessity of employing the power of the commonwealth to enforce the practice of this virtue.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 887364,
+      "endOffset": 887568
+    },
+    {
+      "text": "The fall of the Greek republics, and of the Persian empire was the effect of the irresistible superiority which a standing arm has over every other sort of militia.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1748358,
+      "endOffset": 1748534
+    },
+    {
+      "text": "It is only by means of a standing army, therefore, that the civilization of any country can be perpetuated, or even preserved, for any considerable time.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1759473,
+      "endOffset": 1759638
+    },
+    {
+      "text": "Though it may be awkward and pedantic, therefore, to affect too strict an adherence to the common rules of prudence or generosity, there is no pedantry in sticking fast by the rules of justice.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 441669,
+      "endOffset": 441862
+    },
+    {
+      "text": "If the state has recourse to the first of those two expedients, its military force is said to consist in a militia; if to the second, it is said to consist in a standing army.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1738739,
+      "endOffset": 1738926
+    },
+    {
+      "text": "Since the invention of fire-arms, strength and agility of body, or even extraordinary dexterity and skill in the use of arms, though they are far from being of no consequence, are, however, of less consequence.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1741477,
+      "endOffset": 1741705
+    },
+    {
+      "text": "When all those three different parts of our nature were in perfect concord with one another, when neither the irascible nor concupiscible passions ever aimed at any gratification which reason did not approve of, and when reason never commanded any thing, but what these of their own accord were willing to perform: this happy composure, this perfect and complete harmony of soul, constituted that virtue which in their language is expressed by a word which we commonly translate temperance, but which might more properly be translated good temper, or sobriety and moderation of mind.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 694437,
+      "endOffset": 695021
+    },
+    {
+      "text": "The causes or circumstances which naturally introduce subordination, or which naturally and antecedent to any civil institution, give some men some superiority over the greater part of their brethren, seem to be four in number.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1769189,
+      "endOffset": 1769434
+    },
+    {
+      "text": "That whatever agony we suffered from the dread of its continuance, was the effect of an opinion of the mind, which might be corrected by juster sentiments; by considering that, if our pains were violent, they would probably be of short duration; and that if they were of long continuance, they would probably be moderate, and admit of many intervals of ease; and that, at any rate, death was always at hand and within call to deliver us, which as, according to him, it put an end to all sensation, either of pain or pleasure, could not be regarded as an evil.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 763847,
+      "endOffset": 764407
+    },
+    {
+      "text": "In other cases, the state of the society does not place the greater part of individuals in such situations; and some attention of government is necessary, in order to prevent the almost entire corruption and degeneracy of the great body of the people.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1948177,
+      "endOffset": 1948446
+    },
+    {
+      "text": "II Of those Systems which make Reason the Principle of Approbation It is well known to have been the doctrine of Mr Hobbes, that a state of nature is a state of war; and that antecedent to the institution of civil government there could be no safe or peaceable society among men.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 823098,
+      "endOffset": 823378
+    },
+    {
+      "text": "I of Sympathy How selfish soever man may be supposed, there are evidently some principles in his nature, which interest him in the fortune of others, and render their happiness necessary to him, though he derives nothing from it except the pleasure of seeing it.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3008,
+      "endOffset": 3271
+    },
+    {
+      "text": "Whatever, therefore, we may imagine the real wealth and revenue of a country to consist in, whether in the value of the annual produce of its land and labour, as plain reason seems to dictate, or in the quantity of the precious metals which circulate within it, as vulgar prejudices suppose; in either view of the matter, every prodigal appears to be a public enemy, and every frugal man a public benefactor.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 834845,
+      "endOffset": 835283
+    },
+    {
+      "text": "It is miserable, we think, to be deprived of the light of the sun; to be shut out from life and conversation; to be laid in the cold grave, a prey to corruption and the reptiles of the earth; to be no more thought of in this world, but to be obliterated, in a little time, from the affections, and almost from the memory, of their dearest friends and relations.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13803,
+      "endOffset": 14164
+    },
+    {
+      "text": "The beauty of the country, besides, the pleasure of a country life, the tranquillity of mind which it promises, and, wherever the injustice of human laws does not disturb it, the independency which it really affords, have charms that, more or less, attract everybody; and as to cultivate the ground was the original destination of man, so, in every stage of his existence, he seems to retain a predilection for this primitive employment.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 927621,
+      "endOffset": 928094
+    },
+    {
+      "text": "There are some situations which bear so hard upon human nature, that the greatest degree of self-government, which can belong to so imperfect a creature as man, is not able to stifle, altogether, the voice of human weakness, or reduce the violence of the passions to that pitch of moderation, in which the impartial spectator can entirely enter into them.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49805,
+      "endOffset": 50160
+    },
+    {
+      "text": "The prejudices established by the commercial system have taught us to believe, that national wealth arises more immediately from exportation than from production.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1255788,
+      "endOffset": 1255968
+    },
+    {
+      "text": "When a critic examines the work of any of the great masters in poetry or painting, he may sometimes examine it by an idea of perfection, in his own mind, which neither that nor any other human work will ever come up to; and as long as he compares it with this standard, he can see nothing in it but faults and imperfections.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51526,
+      "endOffset": 51850
+    },
+    {
+      "text": "For as to be the object of hatred and indignation gives more pain than all the evil which a brave man can fear from his enemies; so there is a satisfaction in the consciousness of being beloved, which, to a person of delicacy and sensibility, is of more importance to happiness, than all the advantage which he can expect to derive from it.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 86939,
+      "endOffset": 87279
+    },
+    {
+      "text": "First, the improvement of the dexterity of the workmen, necessarily increases the quantity of the work he can perform; and the division of labour, by reducing every man’s business to some one simple operation, and by making this operation the sole employment of his life, necessarily increases very much the dexterity of the workman.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 20500,
+      "endOffset": 20857
+    },
+    {
+      "text": "Men of the most ordinary good-breeding dissemble the pain which any little incident may give them; and those who are more thoroughly formed to society, turn, of their own accord, all such incidents into raillery, as they know their companions will do for them.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 97967,
+      "endOffset": 98227
+    },
+    {
+      "text": "The difference of natural talents in different men, is, in reality, much less than we are aware of; and the very different genius which appears to distinguish men of different professions, when grown up to maturity, is not upon many occasions so much the cause, as the effect of the division of labour.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39128,
+      "endOffset": 39454
+    },
+    {
+      "text": "It was not by gold or by silver, but by labour, that all the wealth of the world was originally purchased; and its value, to those who possess it, and who want to exchange it for some new productions, is precisely equal to the quantity of labour which it can enable them to purchase or command.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 72301,
+      "endOffset": 72619
+    },
+    {
+      "text": "Wages, therefore, being highest when this expense is lowest, it seems evident that they are not regulated by what is necessary for this expense, but by the quantity and supposed value of the work.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 180578,
+      "endOffset": 180792
+    },
+    {
+      "text": "Though man, therefore, be naturally endowed with a desire of the welfare and preservation of society, yet the Author of nature has not entrusted it to his reason to find out that a certain application of punishments is the proper means of attaining this end; but has endowed him with an immediate and instinctive approbation of that very application which is most proper to attain it.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 187819,
+      "endOffset": 188203
+    },
+    {
+      "text": "The government of towns-corporate was altogether in the hands of traders and artificers, and it was the manifest interest of every particular class of them, to prevent the market from being overstocked, as they commonly express it, with their own particular species of industry; which is in reality to keep it always understocked.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 311014,
+      "endOffset": 311368
+    },
+    {
+      "text": "If he would act so as that the impartial spectator may enter into the principles of his conduct, which is what of all things he has the greatest desire to do, he must, upon this, as upon all other occasions, humble the arrogance of his self-love, and bring it down to something which other men can go along with.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 205581,
+      "endOffset": 205894
+    },
+    {
+      "text": "As society cannot subsist unless the laws of justice are tolerably observed, as no social intercourse can take place among men who do not generally abstain from injuring one another; the consideration of this necessity, it has been thought, was the ground upon which we approved of the enforcement of the laws of justice by the punishment of those who violated them.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 217909,
+      "endOffset": 218275
+    },
+    {
+      "text": "In that rude state of society, in which there is no division of labour, in which exchanges are seldom made, and in which every man provides every thing for himself, it is not necessary that any stock should be accumulated, or stored up before-hand, in order to carry on the business of the society.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 657301,
+      "endOffset": 657623
+    },
+    {
+      "text": "The proportion between the value of gold and silver and that of goods of any other kind, depends in all cases, not upon the nature and quantity of any particular paper money, which may be current in any particular country, but upon the richness or poverty of the mines, which happen at any particular time to supply the great market of the commercial world with those metals.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 804181,
+      "endOffset": 804592
+    },
+    {
+      "text": "Unless a capital was employed in manufacturing that part of the rude produce which requires a good deal of preparation before it can be fit for use and consumption, it either would never be produced, because there could be no demand for it; or if it was produced spontaneously, it would be of no value in exchange, and could add nothing to the wealth of the society.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 881605,
+      "endOffset": 882001
+    },
+    {
+      "text": "That necessary rule of justice, therefore, that men in this life are liable to punishment for their actions only, not for their designs and intentions, is founded upon this salutary and useful irregularity in human sentiments concerning merit or demerit, which at first sight appears so absurd and unaccountable.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 266093,
+      "endOffset": 266405
+    },
+    {
+      "text": "It is not the soft power of humanity, it is not that feeble spark of benevolence which Nature has lighted up in the human heart, that is thus capable of counteracting the strongest impulses of self-love.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 335611,
+      "endOffset": 335814
+    },
+    {
+      "text": "V Of the Influence and Authority of the general Rules of Morality, and that they are justly regarded as the Laws of the Deity The regard to those general rules of conduct, is what is properly called a sense of duty, a principle of the greatest consequence in human life, and the only principle by which the bulk of mankind are capable of directing their actions.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 402451,
+      "endOffset": 402815
+    },
+    {
+      "text": "Nay, such are the inequalities of humour to which all men are subject, that without this principle, the man who, in all his cool hours, had the most delicate sensibility to the propriety of conduct, might often be led to act absurdly upon the most frivolous occasions, and when it was scarce possible to assign any serious motive for his behaving in this manner.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 406531,
+      "endOffset": 406893
+    },
+    {
+      "text": "Without any intervention of law, therefore, the private interests and passions of men naturally lead them to divide and distribute the stock of every society among all the different employments carried on in it; as nearly as possible in the proportion which is most agreeable to the interest of the whole society.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1559551,
+      "endOffset": 1559894
+    },
+    {
+      "text": "There exists in the mind of every man, an idea of this kind, gradually formed from his observations upon the character and conduct both of himself and of other people.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 637134,
+      "endOffset": 637301
+    },
+    {
+      "text": "Though by restraining, in some trades, the number of apprentices which can be employed at one time, and by imposing the necessity of a long apprenticeship in all trades, they endeavour, all of them, to confine the knowledge of their respective employments to as small a number as possible; they are unwilling, however, that any part of this small number should go abroad to instruct foreigners.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1639398,
+      "endOffset": 1639828
+    },
+    {
+      "text": "If a single action was sufficient to stamp the character of any virtue upon the person who performed it, the most worthless of mankind. might lay claim to all the virtues; since there is no man who has not, upon some occasions, acted with prudence, justice, temperance, and fortitude.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 702056,
+      "endOffset": 702340
+    },
+    {
+      "text": "Experience, however, would seem to shew, that the human body frequently preserves, to all appearance at least, the most perfect state of health under a vast variety of different regimens; even under some which are generally believed to be very far from being perfectly wholesome.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1675561,
+      "endOffset": 1675864
+    },
+    {
+      "text": "Aristotle, on the contrary, was of opinion, that no conviction of the understanding was capable of getting the better of inveterate habits, and that good morals arose not from knowledge but from action.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 703439,
+      "endOffset": 703641
+    },
+    {
+      "text": "Every man, as long as he does not violate the laws of justice, is left perfectly free to pursue his own interest his own way, and to bring both his industry and capital into competition with those of any other man, or order of men.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1711401,
+      "endOffset": 1711650
+    },
+    {
+      "text": "The self-love of man embraced, if I may say so, his body and all its different members, his mind and all its different faculties and powers, and desired the preservation and maintenance of them all in their best and most perfect condition.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 703977,
+      "endOffset": 704216
+    },
+    {
+      "text": "In a civilized society, as the soldiers are maintained altogether by the labour of those who are not soldiers, the number of the former can never exceed what the latter can maintain, over and above maintaining, in a manner suitable to their respective stations, both themselves and the other officers of government and law, whom they are obliged to maintain.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1731757,
+      "endOffset": 1732145
+    },
+    {
+      "text": "It is the wisdom of the state only, which can render it for his interest to give up the greater part of his time to this peculiar occupation; and states have not always had this wisdom, even when their circumstances had become such, that the preservation of their existence required that they should have it.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1736226,
+      "endOffset": 1736558
+    },
+    {
+      "text": "Wise, prudent, and good conduct was, in the first place, the conduct most likely to ensure success in every species of undertaking; and secondly, though it should fail of success, yet the mind was not left without consolation.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 729672,
+      "endOffset": 729898
+    },
+    {
+      "text": "Where there is no property, or at least none that exceeds the value of two or three days labour, civil government is not so necessary.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1768723,
+      "endOffset": 1768869
+    },
+    {
+      "text": "When the body was free from pain and the mind from fear and anxiety, the superadded sensation of bodily pleasure could be of very little importance; and though it might diversify could not properly be said to increase the happiness of the situation.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 764856,
+      "endOffset": 765105
+    },
+    {
+      "text": "Fortitude enabled us to do all this cheerfully, as the best which, in our present situation, could possibly be done, and was in reality no more than prudence, good judgment, and presence of mind in properly appreciating pain, labour, and danger, always choosing the less in order to avoid the greater.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 766959,
+      "endOffset": 767260
+    },
+    {
+      "text": "Force and restraint may, no doubt, be in some degree requisite, in order to oblige children, or very young boys, to attend to those parts of education, which it is thought necessary for them to acquire during that early period of life; but after twelve or thirteen years of age, provided the master does his duty, force or restraint can scarce ever be necessary to carry on any part of education.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1909079,
+      "endOffset": 1909505
+    },
+    {
+      "text": "In every age and country of the world, men must have attended to the characters, designs, and actions of one another; and many reputable rules and maxims for the conduct of human life must have been laid down and approved of by common consent.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1918327,
+      "endOffset": 1918588
+    },
+    {
+      "text": "The great patron of the atomical philosophy, who took so much pleasure in deducing all the powers and qualities of bodies from the most obvious and familiar, the figure, motion, and arrangement of the small parts of matter, felt no doubt a similar satisfaction, when he accounted, in the same manner, for all the sentiments and passions of the mind from those which are most obvious and familiar.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 773268,
+      "endOffset": 773664
+    },
+    {
+      "text": "Speculative systems, have, in all ages of the world, been adopted for reasons too frivolous to have determined the judgment of any man of common sense, in a matter of the smallest pecuniary interest.",
+      "sourceId": "1da8726f-000c-4033-a58e-4a35851be689",
+      "sourceTitle": "smith_works_1",
+      "sourceFile": "smith_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1920585,
+      "endOffset": 1920796
+    },
+    {
+      "text": "In directing all our actions to promote the greatest possible good, in submitting all inferior affections to the desire of the general happiness of mankind, in regarding one's self but as one of the many, whose prosperity was to be pursued no further than it was consistent with, or conducive to that of the whole, consisted the perfection of virtue.",
+      "sourceId": "6b9d3de7-0e27-44df-92cc-0b08bd59caaa",
+      "sourceTitle": "smith_works_2",
+      "sourceFile": "smith_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 782652,
+      "endOffset": 783002
+    }
+  ]
+}

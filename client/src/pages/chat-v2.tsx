@@ -1010,6 +1010,7 @@ export default function ChatV2() {
         {/* Thinking Panel - appears when AI is generating response */}
         <ThinkingPanel 
           thinkerName="J.-M. Kuczynski"
+          figureId="kuczynski"
           isActive={isStreaming}
         />
       </main>

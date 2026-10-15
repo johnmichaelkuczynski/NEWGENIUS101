@@ -1,0 +1,816 @@
+{
+  "thinkerId": "dewey",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Society not only continues to exist by transmission, by communication, but it may fairly be said to exist in transmission, in communication.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 26629,
+      "endOffset": 26790
+    },
+    {
+      "text": "When the identity of the moral process with the processes of specific growth is realized, the more conscious and formal education of childhood will be seen to be the most economical and efficient means of social advance and reorganization, and it will also be evident that the test of all the institutions of adult life is their effect in furthering continued education.",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 335739,
+      "endOffset": 336170
+    },
+    {
+      "text": "Since education is not a means to living, but is identical with the operation of living a life which is fruitful and inherently significant, the only ultimate value which can be set up is just the process of living itself.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 661190,
+      "endOffset": 661451
+    },
+    {
+      "text": "The moral is to develop conscientiousness, ability to judge the significance of what we are doing and to use that judgment in directing what we do, not by means of direct cultivation of something called conscience, or reason, or a faculty of moral knowledge, but by fostering those impulses and habits which experience has shown to make us sensitive, generous, imaginative, impartial in perceiving the tendency of our inchoate dawning activities.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 319464,
+      "endOffset": 319980
+    },
+    {
+      "text": "The criterion of the value of school education is the extent in which it creates a desire for continued growth and supplies means for making the desire effective in fact.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 159001,
+      "endOffset": 159200
+    },
+    {
+      "text": "Is not the belief in the single, final and ultimate (whether conceived as good or as authoritative law) an intellectual product of that feudal organization which is disappearing historically and of that belief in a bounded, ordered cosmos, wherein rest is higher than motion, which has disappeared from natural science?",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 296356,
+      "endOffset": 296724
+    },
+    {
+      "text": "Education, in its broadest sense, is the means of this social continuity of life.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21686,
+      "endOffset": 21780
+    },
+    {
+      "text": "Where there is thought, things present act as signs or tokens of things not yet experienced.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 312640,
+      "endOffset": 312747
+    },
+    {
+      "text": "Freedom means essentially the part played by thinking—which is personal—in learning:—it means intellectual initiative, independence in observation, judicious invention, foresight of consequences, and ingenuity of adaptation to them.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 129989,
+      "endOffset": 130248
+    },
+    {
+      "text": "Natural intelligence is no barrier to the propagation of error, nor large but untrained experience to the accumulation of fixed false beliefs.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 325959,
+      "endOffset": 326122
+    },
+    {
+      "text": "If the living, experiencing being is an intimate participant in the activities of the world to which it belongs, then knowledge is a mode of participation, valuable in the degree in which it is effective.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 918848,
+      "endOffset": 919086
+    },
+    {
+      "text": "All of these separations culminate in one between knowing and doing, theory and practice, between mind as the end and spirit of action and the body as its organ and means.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 216326,
+      "endOffset": 216527
+    },
+    {
+      "text": "Until there is secured to and imposed upon all members of society the right and the duty of work in socially serviceable occupations, with due return in social goods, rights to life and free movement will hardly advance much beyond their present largely nominal state.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 170448,
+      "endOffset": 170760
+    },
+    {
+      "text": "Morals must be a growing science if it is to be a science at all, not merely because all truth has not yet been appropriated by the mind of man, but because life is a moving affair in which old moral truth ceases to apply.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 374239,
+      "endOffset": 374505
+    },
+    {
+      "text": "To a theorist an idea is adequate and self-contained just because it engages and rewards thought; to a medical practitioner, an engineer, an artist, a merchant, a politician, it is complete only when employed in the furthering of some interest in life—health, wealth, beauty, goodness, success, or what you will.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1257122,
+      "endOffset": 1257483
+    },
+    {
+      "text": "Completely equal education, likewise, cannot be given; not in kind, for not all children have like interests and society does not want to train all for the same task; nor in quantity, for some will have neither the ability nor the disposition to do the more advanced work.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 411876,
+      "endOffset": 412199
+    },
+    {
+      "text": "Society exists through a process of transmission quite as much as biological life.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 23740,
+      "endOffset": 23834
+    },
+    {
+      "text": "The identity of individual and general happiness is a moral matter; it depends, that is, upon the reflective and intentional development of that type of character which identifies itself with common ends, and which is happy in these ends just because it has made them its own.",
+      "sourceId": "a5622944-cdc7-42f6-88ee-c94881e1c27f",
+      "sourceTitle": "dewey_works_8",
+      "sourceFile": "dewey_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 529530,
+      "endOffset": 529852
+    },
+    {
+      "text": "Viewed from the standpoint of results, the fact which constitutes selfishness in the moral sense is not that certain impulses and habits secure the wellbeing of the self, but that the well-being secured is a narrow and exclusive one.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25389,
+      "endOffset": 25660
+    },
+    {
+      "text": "Every relationship in life, is, as it were, a tacit or expressed contract with others, committing one, by the simple fact that he occupies that relationship, to a corresponding mode of action.",
+      "sourceId": "a5622944-cdc7-42f6-88ee-c94881e1c27f",
+      "sourceTitle": "dewey_works_8",
+      "sourceFile": "dewey_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 629832,
+      "endOffset": 630055
+    },
+    {
+      "text": "Thinking which is not connected with increase of efficiency in action, and with learning more about ourselves and the world in which we live, has something the matter with it just as thought (See ante, p.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 427161,
+      "endOffset": 427400
+    },
+    {
+      "text": "The intelligent acknowledgment of the continuity of nature, man and society will alone secure a growth of morals which will be serious without being fanatical, aspiring without sentimentality, adapted to reality without conventionality, sensible without taking the form of calculation of profits, idealistic without being romantic. [pg 014]PART ONE THE PLACE OF HABIT IN CONDUCT I Habits may be profitably compared to physiological functions, like breathing, digesting.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 2064881,
+      "endOffset": 2065424
+    },
+    {
+      "text": "Democracy has many meanings, but if it has a moral meaning, it is found in resolving that the supreme test of all political institutions and industrial arrangements shall be the contribution they make to the all-around growth of every member of society.",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 336615,
+      "endOffset": 336909
+    },
+    {
+      "text": "The division of the world into two kinds of Being, one superior, accessible only to reason and ideal in nature, the other inferior, material, changeable, empirical, accessible to sense-observation, turns inevitably into the idea that knowledge is contemplative in nature.",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 230131,
+      "endOffset": 230445
+    },
+    {
+      "text": "Human nature is too rich and varied in its capacities and demands; the world of nature and society is too fruitful in sources of stimulus and interest for man to remain indefinitely content with the idea of power for power's sake, command of means for the mere sake of the means.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9890,
+      "endOffset": 10219
+    },
+    {
+      "text": "Three ideas which have been criticized, namely, the merely privative nature of immaturity, static adjustment to a fixed environment, and rigidity of habit, are all connected with a false idea of growth or development,—that it is a movement toward a fixed goal.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 151922,
+      "endOffset": 152223
+    },
+    {
+      "text": "Man without friendship, love, pity, sympathy, communication, coöperation, justice, rights, or duties, would be deprived of nearly all that gives life its value.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 279445,
+      "endOffset": 279627
+    },
+    {
+      "text": "The fact that an instinct secures self-preservation or self-development does not, however, make it \"egoistic\" or \"selfish\" in the moral sense; nor does it throw any light upon the moral status of the instinct.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 22273,
+      "endOffset": 22515
+    },
+    {
+      "text": "The social environment of the young is constituted by the presence and action of the habits of thinking and feeling of civilized men.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 212855,
+      "endOffset": 213010
+    },
+    {
+      "text": "The result is a system in which both \"cultural\" and \"utilitarian\" subjects exist in an inorganic composite where the former are not by dominant purpose socially serviceable and the latter not liberative of imagination or thinking power.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11852,
+      "endOffset": 12124
+    },
+    {
+      "text": "It accounts for the tendency to isolate intellectual matters till knowledge is scholastic, academic, and professionally technical, and for the widespread conviction that liberal education is opposed to the requirements of an education which shall count in the vocations of life.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 385967,
+      "endOffset": 386285
+    },
+    {
+      "text": "The point at issue in a theory of educational value is then the unity or integrity of experience.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 685194,
+      "endOffset": 685308
+    },
+    {
+      "text": "The mind of man is taken captive by the spoils of its prior victories; the spoils, not the weapons and the acts of waging the battle against the unknown, are used to fix the meaning of knowledge, of fact, and truth.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 522517,
+      "endOffset": 522772
+    },
+    {
+      "text": "Our net conclusion is that life is development, and that developing, growing, is life.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150104,
+      "endOffset": 150203
+    },
+    {
+      "text": "Of course a completer vision may find that a division of labor, a difference of function, may carry with it a difference in standards of value; the mastery of nature and the maintenance of the family may be neither an absolute good in itself, but each a necessity to life and progress.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 498603,
+      "endOffset": 498939
+    },
+    {
+      "text": "When by the better organization of the courts the poor man has real, and not merely formal equality before the law, and thereby justice itself is made more accessible to all, another long step will be taken toward a juster order.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 413726,
+      "endOffset": 413995
+    },
+    {
+      "text": "Is there no alternative possible for society except an equality which is external only, and therefore unequal, or an inequality which charges a man with all the accrued benefits or evils of his ancestry?",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 409253,
+      "endOffset": 409489
+    },
+    {
+      "text": "It is but a name for the fact that human nature is developed only when its elements take part in directing things which are common, things for the sake of which men and women form groups— families, industrial companies, governments, churches, scientific associations and so on.",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 374408,
+      "endOffset": 374730
+    },
+    {
+      "text": "Interest in community welfare, an interest that is intellectual and practical, as well as emotional—an interest, that is to say, in perceiving whatever makes for social order and progress, and in carrying these principles into execution—is the moral habit to which all the special school habits must be related if they are to be animated by the breath of life.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1457938,
+      "endOffset": 1458361
+    },
+    {
+      "text": "The development therefore of a more adequate science of human nature is a matter of first-rate importance.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 2577727,
+      "endOffset": 2577849
+    },
+    {
+      "text": "By the exercise of freedom of thought, and by its publication and the education which should make its results permeate the whole state, the habits of a nation will finally become elevated to rationality, and the spread of reason will make it possible for the government to treat men, not as cogs in a machine, but in accord with the dignity of rational creatures.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 6578444,
+      "endOffset": 6578870
+    },
+    {
+      "text": "The nature of experience can be understood only by noting that it includes an active and a passive element peculiarly combined.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 390573,
+      "endOffset": 390720
+    },
+    {
+      "text": "Not the thing done but the quality of mind that goes into the doing settles what is utilitarian and what is unconstrained and educative.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 1315973,
+      "endOffset": 1316132
+    },
+    {
+      "text": "Ultimately, the question of values and a standard of values is the moral question of the organization of the interests of life.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 685468,
+      "endOffset": 685616
+    },
+    {
+      "text": "The express object of a valuation-judgment is to release factors which being new, cannot be measured on the basis of the past alone.",
+      "sourceId": "161039a6-46e2-4e70-b9b3-5d9e9ac84438",
+      "sourceTitle": "dewey_works_12",
+      "sourceFile": "dewey_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 291139,
+      "endOffset": 291293
+    },
+    {
+      "text": "Within the Greek community, the intense social spirit was limited by the fact that higher culture was based on a substratum of slavery and economic serfdom—classes necessary to the existence of the state, as Aristotle declared, and yet not genuine parts of it.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 94987,
+      "endOffset": 95289
+    },
+    {
+      "text": "Genuine moral uncertainty is then impossible; where it seems to exist, it is only a name for a moral unwillingness, due to inherent viciousness, to recognize and apply the rules already made and provided, or else for a moral corruption which has enfeebled man's power of moral apprehension.",
+      "sourceId": "161039a6-46e2-4e70-b9b3-5d9e9ac84438",
+      "sourceTitle": "dewey_works_12",
+      "sourceFile": "dewey_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 284943,
+      "endOffset": 285280
+    },
+    {
+      "text": "It is not the business of moral theory to demonstrate the existence of mathematical equations, in this life or another one, between goodness and virtue.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 59192,
+      "endOffset": 59368
+    },
+    {
+      "text": "Pg 559] The society of the future will find a part of its justice in so adjusting its economic system that all may enter as fully as possible into this more social world.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 433456,
+      "endOffset": 433658
+    },
+    {
+      "text": "Consequently, it is equally possible to state its animating principle with equal truth either in the classic terms of \"harmonious development of all the powers of personality\" or in the more recent terminology of \"social efficiency.\"",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 275909,
+      "endOffset": 276177
+    },
+    {
+      "text": "It involves an intelligent and persistent endeavor to revise current beliefs so as to weed out what is erroneous, to add to their accuracy, and, above all, to give them such shape that the dependencies of the various facts upon one another may be as obvious as possible.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 604674,
+      "endOffset": 604991
+    },
+    {
+      "text": "While he affirmed with emphasis that the place of the individual in society should not be determined by birth or wealth or any conventional status, but by his own nature as discovered in the process of education, he had no perception of the uniqueness of individuals.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 256305,
+      "endOffset": 256617
+    },
+    {
+      "text": "Whether called culture or complete development of personality, the outcome is identical with the true meaning of social efficiency whenever attention is given to what is unique in an individual—and he would not be an individual if there were not something incommensurable about him.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 343688,
+      "endOffset": 344013
+    },
+    {
+      "text": "The Moral Value of the State.—If then we take modern social life in its broadest extent, as including not only what has become institutionalized and more or less fossilized, but also what is still growing (forming and reforming), we may justly say that it is as true of progressive as of stationary society, that the moral and the social are one.",
+      "sourceId": "728ffef3-199d-4c28-bd6a-ea622c29f27d",
+      "sourceTitle": "dewey_works_9",
+      "sourceFile": "dewey_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 146890,
+      "endOffset": 147296
+    },
+    {
+      "text": "As a society becomes more enlightened, it realizes that it is responsible not to transmit and conserve the whole of its existing achievements, but only such as make for a better future society.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 71722,
+      "endOffset": 71947
+    },
+    {
+      "text": "Scientific inquiry, artistic production, social companionship possess this trait to a marked degree; some amount of it is a normal accompaniment of all successfully coordinated action.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 207481,
+      "endOffset": 207690
+    },
+    {
+      "text": "The notion that an abstract ready-made conscience exists in individuals and that it is only necessary to make an occasional appeal to it and to indulge in occasional crude rebukes and punishments, is associated with the causes of lack of definitive and orderly moral advance.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 489472,
+      "endOffset": 489791
+    },
+    {
+      "text": "Kant, who went the limit in excluding consequences from moral value, was sane enough to maintain that a society of men of good will would be a society which in fact would maintain social peace, freedom and cooperation.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34633,
+      "endOffset": 34888
+    },
+    {
+      "text": "Consider what happens to thought when habit is merely power to repeat acts without thought.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 74393,
+      "endOffset": 74498
+    },
+    {
+      "text": "Now admitting that the device of money accounting makes possible more exact estimates of the consequences of many acts than is otherwise possible, and that accordingly the use of money and accounting may work a triumph for the application of intelligence in daily affairs, yet there exists a difference in kind between business calculation of profit and loss and deliberation upon what purposes to form.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 330486,
+      "endOffset": 330953
+    },
+    {
+      "text": "The moral correlate of liberated impulse is not immediate activity, but reflection upon the way in which to use impulse to renew disposition and reorganize habit.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 254951,
+      "endOffset": 255138
+    },
+    {
+      "text": "When Bentham says that \"Motives are the causes of intentions,\" he states the fact, and also reveals motive as the proper final object of moral judgment.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 3194142,
+      "endOffset": 3194323
+    },
+    {
+      "text": "After distinguishing more carefully what is meant by moral action, and noting some typical ways in which the moral life has been viewed by ethical theory, it will examine the meaning of right and good, of duty and virtue, and seek to discover the principles underlying moral judgments and moral conduct.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 2652847,
+      "endOffset": 2653200
+    },
+    {
+      "text": "Thinking comes between observations at the beginning and at the end Observation exists at the beginning and again at the end of the process: at the beginning, to determine more definitely and precisely the nature of the difficulty to be dealt with; at the end, to test the value of some hypothetically entertained conclusion.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 436406,
+      "endOffset": 436786
+    },
+    {
+      "text": "Practical activities may be intellectually narrow and trivial; they will be so in so far as they are routine, carried on under the dictates of authority, and having in view merely some external result.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54237,
+      "endOffset": 54471
+    },
+    {
+      "text": "Failure to bear in mind the difference in subject matter from the respective standpoints of teacher and student is responsible for most of the mistakes made in the use of texts and other expressions of preexistent knowledge.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 510055,
+      "endOffset": 510315
+    },
+    {
+      "text": "A consideration of some evils in education that flow from the isolation of method from subject matter will make the point more definite.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 470087,
+      "endOffset": 470245
+    },
+    {
+      "text": "Ordinary experience does not receive the enrichment which it should; it is not fertilized by school learning.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 453288,
+      "endOffset": 453413
+    },
+    {
+      "text": "When human beings were regarded as capable of direct relationship with God, without the intermediary of any organization like the Church, and the drama of sin, redemption and salvation was something enacted within the innermost soul of individuals rather than in the species of which the individual was a subordinate part, a fatal blow was struck at all doctrines which taught the subordination of personality—a blow which had many political reverberations in promoting democracy.",
+      "sourceId": "01dd5c1a-e417-4991-9982-1c188cda6307",
+      "sourceTitle": "dewey_works_11",
+      "sourceFile": "dewey_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 111076,
+      "endOffset": 111629
+    },
+    {
+      "text": "The chief importance of this foregoing statement of the educative process which goes on willy-nilly is to lead us to note that the only way in which adults consciously control the kind of education which the immature get is by controlling the environment in which they act, and hence think and feel.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 66528,
+      "endOffset": 66878
+    },
+    {
+      "text": "The relationships of our present social life are so numerous and so interwoven that a child placed in the most favorable position could not readily share in many of the most important of them.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 69926,
+      "endOffset": 70151
+    },
+    {
+      "text": "Inside the modern city, in spite of its nominal political unity, there are probably more communities, more differing customs, traditions, aspirations, and forms of government or control, than existed in an entire continent at an earlier epoch.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73071,
+      "endOffset": 73350
+    },
+    {
+      "text": "The assimilative force of the American public school is eloquent testimony to the efficacy of the common and balanced appeal.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 75501,
+      "endOffset": 75645
+    },
+    {
+      "text": "The business of education is rather to liberate the young from reviving and retraversing the past than to lead them to a recapitulation of it.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 212687,
+      "endOffset": 212853
+    },
+    {
+      "text": "The need of such general points of view is the greater because of a tendency to segregate educational values due to the isolation from one another of the various pursuits of life.",
+      "sourceId": "a3309a4c-2e23-4b0a-8297-e3bf8ebf84ff",
+      "sourceTitle": "Table",
+      "sourceFile": "dewey_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 673295,
+      "endOffset": 673505
+    },
+    {
+      "text": "The separation and mutual contempt of the \"practical\" man and the man of theory or culture, the divorce of fine and industrial arts, are indications of this situation.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 384084,
+      "endOffset": 384278
+    },
+    {
+      "text": "Infancy, youth, adult life,—all stand on the same educative level in the sense that what is really learned at any and every stage of experience constitutes the value of that experience, and in the sense that it is the chief business of life at every point to make living thus contribute to an enrichment of its own perceptible meaning.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 222452,
+      "endOffset": 222847
+    },
+    {
+      "text": "The alleged biological truth that the individual in his growth from the simple embryo to maturity repeats the history of the evolution of animal life in the progress of forms from the simplest to the most complex (or expressed technically, that ontogenesis parallels phylogenesis) does not concern us, save as it is supposed to afford scientific foundation for cultural recapitulation of the past.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 209927,
+      "endOffset": 210388
+    },
+    {
+      "text": "We conclude, accordingly, that the use of language to convey and acquire ideas is an extension and refinement of the principle that things gain meaning by being used in a shared experience or joint action; in no sense does it contravene that principle.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 59127,
+      "endOffset": 59421
+    },
+    {
+      "text": "While history makes human implications explicit and geography natural connections, these subjects are two phases of the same living whole, since the life of men in association goes on in nature, not as an accidental setting, but as the material and medium of development.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 604016,
+      "endOffset": 604330
+    },
+    {
+      "text": "The guarantee for the same manner of use is found in the fact that the thing and the sound are first employed in a joint activity, as a means of setting up an active connection between the child and a grownup.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 57155,
+      "endOffset": 57408
+    },
+    {
+      "text": "When it is said that education is development, everything depends upon how development is conceived.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 149988,
+      "endOffset": 150102
+    },
+    {
+      "text": "Development when it is interpreted in comparative terms, that is, with respect to the special traits of child and adult life, means the direction of power into special channels: the formation of habits involving executive skill, definiteness of interest, and specific objects of observation and thought.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150480,
+      "endOffset": 150830
+    },
+    {
+      "text": "The assistance which may be given by history to a more intelligent sympathetic understanding of the social situations of the present in which individuals share is a permanent and constructive moral asset.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 602097,
+      "endOffset": 602332
+    },
+    {
+      "text": "The complaints of educators that learning does not enter into character and affect conduct; the protests against memoriter work, against cramming, against gradgrind preoccupation with \"facts,\" against devotion to wire-drawn distinctions and ill-understood rules and principles, all follow from this state of affairs.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 523910,
+      "endOffset": 524272
+    },
+    {
+      "text": "The formation of mind is wholly a matter of the presentation of the proper educational materials.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 204585,
+      "endOffset": 204697
+    },
+    {
+      "text": "For industrial life is now so dependent upon science and so intimately affects all forms of social intercourse, that there is an opportunity to utilize it for development of mind and character.",
+      "sourceId": "3bd2d180-9423-4475-964c-f6483be7cace",
+      "sourceTitle": "dewey_works_5",
+      "sourceFile": "dewey_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179191,
+      "endOffset": 179415
+    },
+    {
+      "text": "Interest means that one is identified with the objects which define the activity and which furnish the means and obstacles to its realization.",
+      "sourceId": "55ddeff2-baba-4ada-bc87-5a7a90bfe7cd",
+      "sourceTitle": "dewey_works_4",
+      "sourceFile": "dewey_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 388432,
+      "endOffset": 388596
+    },
+    {
+      "text": "War is thus seen to be a function of social institutions, not of what is natively fixed in human constitution.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 156371,
+      "endOffset": 156500
+    },
+    {
+      "text": "Social conditions rather than an old and unchangeable Adam have generated wars; the ineradicable impulses that are utilized in them are capable of being drafted into many other channels.",
+      "sourceId": "e4fbc8c8-b6aa-4a81-9bf4-f5917f259fd9",
+      "sourceTitle": "dewey_works_7",
+      "sourceFile": "dewey_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 153358,
+      "endOffset": 153572
+    }
+  ]
+}

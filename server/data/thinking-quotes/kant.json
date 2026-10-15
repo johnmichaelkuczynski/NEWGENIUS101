@@ -1,0 +1,690 @@
+{
+  "thinkerId": "kant",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "It is clear then that it is owing to the subjective constitution of our practical faculty that the moral laws must be represented as commands, and the actions conforming to them as duties; and that Reason expresses this necessity not by an “is ” (happens), but by an “ought to be.”",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2622088,
+      "endOffset": 2622373
+    },
+    {
+      "text": "All facts belong either to the natural concept which proves its reality in the objects of sense, given (or which may possibly be given) before all natural concepts; or to the concept of freedom, which sufficiently establishes its reality through the causality of Reason in regard of certain effects in the world of sense, possible through it, which it incontrovertibly postulates in the moral law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2799323,
+      "endOffset": 2799725
+    },
+    {
+      "text": "Since every practical law represents a possible action as good and, on this account, for a subject who is practically determinable by reason, necessary, all imperatives are formulae determining an action which is necessary according to the principle of a will good in some respects.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2948589,
+      "endOffset": 2948874
+    },
+    {
+      "text": "Ethical virtue must not be estimated by the power we attribute to man of fulfilling the law; but, conversely, the moral power must be estimated by the law, which commands categorically; not, therefore, by the empirical knowledge that we have of men as they are, but by the rational knowledge how, according to the ideas of humanity, they ought to be.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3130329,
+      "endOffset": 3130683
+    },
+    {
+      "text": "It can be nothing less than a power which elevates man above himself (as a part of the world of sense), a power which connects him with an order of things that only the understanding can conceive, with a world which at the same time commands the whole sensible world, and with it the empirically determinable existence of man in time, as well as the sum total of all ends (which totality alone suits such unconditional practical laws as the moral).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1506716,
+      "endOffset": 1507170
+    },
+    {
+      "text": "For since it is pure reason that is here considered in its practical use, and consequently as proceeding from a priori principles, and not from empirical principles of determination, hence the division of the analytic of pure practical reason must resemble that of a syllogism; namely, proceeding from the universal in the major premiss (the moral principle), through a minor premiss containing a subsumption of possible actions (as good or evil) under the former, to the conclusion, namely, the subjective determination of the will (an interest in the possible practical good, and in the maxim founded on it).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1515708,
+      "endOffset": 1516326
+    },
+    {
+      "text": "That is, it includes a consciousness- not indeed immediately perceived, but rightly concluded, from the moral categorical imperative- of the power to become master of one's inclinations which resist the law; so that human morality in its highest stage can yet be nothing more than virtue; even if it were quite pure (perfectly free from the influence of a spring foreign to duty), a state which is poetically personified under the name of the wise man (as an ideal to which one should continually approximate).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3085820,
+      "endOffset": 3086337
+    },
+    {
+      "text": "Since it is so far only a negative effect which, arising from the influence of pure practical reason, checks the activity of the subject, so far as it is determined by inclinations, and hence checks the opinion of his personal worth (which, in the absence of agreement with the moral law, is reduced to nothing); hence, the effect of this law on feeling is merely humiliation.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1487439,
+      "endOffset": 1487820
+    },
+    {
+      "text": "The moral law is in fact for the will of a perfect being a law of holiness, but for the will of every finite rational being a law of duty, of moral constraint, and of the determination of its actions by respect for this law and reverence for its duty.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1495718,
+      "endOffset": 1495972
+    },
+    {
+      "text": "Virtue then is the moral strength of a man's will in his obedience to duty; and this is a moral necessitation by his own law giving reason, inasmuch as this constitutes itself a power executing the law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3131366,
+      "endOffset": 3131571
+    },
+    {
+      "text": "I assume that there are pure moral laws which determine, entirely a priori (without regard to empirical motives, that is, to happiness), the conduct of a rational being, or in other words, to use which it makes of its freedom, and that these laws are absolutely imperative (not merely hypothetically, on the supposition of other empirical ends), and therefore in all respects necessary.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1239767,
+      "endOffset": 1240158
+    },
+    {
+      "text": "We may call the consciousness of this fundamental law a fact of reason, because we cannot reason it out from antecedent data of reason, e.g., the consciousness of freedom (for this is not antecedently given), but it forces itself on us as a synthetic a priori proposition, which is not based on any intuition, either pure or empirical.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1375134,
+      "endOffset": 1375473
+    },
+    {
+      "text": "The moral law is in fact a law of the causality of free agents and, therefore, of the possibility of a supersensible system of nature, just as the metaphysical law of events in the world of sense was a law of causality of the sensible system of nature; and it therefore determines what speculative philosophy was compelled to leave undetermined, namely, the law for a causality, the concept of which in the latter was only negative; and therefore for the first time gives this concept objective reality.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1413789,
+      "endOffset": 1414298
+    },
+    {
+      "text": "Instead, however, of the deduction of the supreme principle of pure practical reason, that is, the explanation of the possibility of such a knowledge a priori, the utmost we were able to do was to show that if we saw the possibility of the freedom of an efficient cause, we should also see not merely the possibility, but even the necessity, of the moral law as the supreme practical law of rational beings, to whom we attribute freedom of causality of their will; because both concepts are so inseparably united that we might define practical freedom as independence of the will on anything but the moral law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1523021,
+      "endOffset": 1523639
+    },
+    {
+      "text": "Consequently, if we would still save it, no other way remains but to consider that the existence of a thing, so far as it is determinable in time, and therefore its causality, according to the law of physical necessity, belong to appearance, and to attribute freedom to the same being as a thing in itself.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1527034,
+      "endOffset": 1527344
+    },
+    {
+      "text": "We look here only to the necessity of the connection of events in a time-series as it is developed according to the physical law, whether the subject in which this developmenttakes place is called automaton materiale when the mechanical being is moved by matter, or with Leibnitz spirituale when it is impelled by ideas; and if the freedom of our will were no other than the latter (say the psychological and comparative, not also transcendental, that is, absolute), then it would at bottom be nothing better than the freedom of a turnspit, which, when once it is wound up, accomplishes its motions of itself.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1531204,
+      "endOffset": 1531820
+    },
+    {
+      "text": "Virtue therefore cannot be defined as a habit of free law-abiding actions, unless indeed we add \"determining itself in its action by the idea of the law\"; and then this habit is not a property of the elective will, but of the rational will, which is a faculty that in adopting a rule also declares it to be a universal law, and it is only such a habit that can be reckoned as virtue.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3135273,
+      "endOffset": 3135661
+    },
+    {
+      "text": "Even supposing, however, that all finite rational beings were thoroughly agreed as to what were the objects of their feelings of pleasure and pain, and also as to the means which they must employ to attain the one and avoid the other; still, they could by no means set up the principle of self- love as a practical law, for this unanimity itself would be only contingent.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1361447,
+      "endOffset": 1361822
+    },
+    {
+      "text": "All material principles, then, which place the determining ground of the will in the pleasure or pain to be received from the existence of any object are all of the same kind, inasmuch as they all belong to the principle of self-love or private happiness.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1351170,
+      "endOffset": 1351429
+    },
+    {
+      "text": "As a rational being, and consequently belonging to the intelligible world, man can never conceive the causality of his own will otherwise than on condition of the idea of freedom, for independence of the determinate causes of the sensible world (an independence which reason must always ascribe to itself) is freedom.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3038068,
+      "endOffset": 3038389
+    },
+    {
+      "text": "If therefore I were only a member of the world of understanding, then all my actions would perfectly conform to the principle of autonomy of the pure will; if I were only a part of the world of sense, theywould necessarily be assumed to conform wholly to the natural law of desires and inclinations, in other words, to the heteronomy of nature.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3040286,
+      "endOffset": 3040633
+    },
+    {
+      "text": "For this reason a rational being must regard himself qua intelligence (not from the side of his lower faculties) as belonging not to the world of sense, but to that of understanding; hence he has two points of view from which he can regard himself, and recognise laws of the exercise of his faculties, and consequently of all his actions: first, so far as he belongs to the world of sense, he finds himself subject to laws of nature (heteronomy); secondly, as belonging to the intelligible world, under laws which beingindependent of nature have their foundation not in experience but in reason alone.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3037444,
+      "endOffset": 3038052
+    },
+    {
+      "text": "The causality of such actions lies in him as an intelligence and in the laws of effects and actions [which depend] on the principles of an intelligible world, of which indeed he knows nothing more than that in it pure reason alone independent of sensibility gives the law; moreover since it is only in that world, as an intelligence, that he is his proper self (being as man only the appearance of himself), those laws apply to him directly and categorically, so that the incitements of inclinations and appetites (in other words the whole nature of the world of sense) cannot impair the laws of his volition as an intelligence.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3050524,
+      "endOffset": 3051160
+    },
+    {
+      "text": "The question then, \"How a categorical imperative is possible,\" can be answered to this extent, that we can assign the only hypothesis on which it is possible, namely, the idea of freedom; and we can also discern the necessity of this hypothesis, and this is sufficient for the practical exercise of reason, that is, for the conviction of the validity of this imperative, and henceof the moral law; but how this hypothesis itself is possible can never be discerned by any human reason.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3058974,
+      "endOffset": 3059463
+    },
+    {
+      "text": "For in order that an action should be morally good, it is not enough that it conform to the moral law, but it must also be done for the sake of the law, otherwise that conformity is only very contingent and uncertain; since a principle which is not moral, although it may now and then produce actions conformable to the law, will also often produce actions which contradict it.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2891083,
+      "endOffset": 2891464
+    },
+    {
+      "text": "If now the action is good only as a means to something else, then the imperative is hypothetical; if it is conceived as good in itself and consequently as being necessarily the principle of a will which of itself conforms to reason, then it is categorical.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2948875,
+      "endOffset": 2949135
+    },
+    {
+      "text": "Reason then refers every maxim of the will, regarding it as legislating universally, to every other will and also to every action towards oneself; and this not on account of any other practical motive or any future advantage, but from the idea of the dignity of a rational being, obeying no law but that which he himself also gives.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2996930,
+      "endOffset": 2997266
+    },
+    {
+      "text": "Every rational being reckons himself qua intelligence as belonging to the world of understanding, and it is simply as an efficient cause belonging to that world that he calls his causality a will.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3039659,
+      "endOffset": 3039857
+    },
+    {
+      "text": "For in this case the question is not only to know what it is a duty to do (a thing which on account of the ends that all men naturally have can be easily decided), but the chief point is the inner principle of the will namely that the consciousness of this duty be also the spring of action, in order that we may be able to say of the man who joins to his knowledge this principle of wisdom that he is a practical philosopher.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3068373,
+      "endOffset": 3068804
+    },
+    {
+      "text": "With them therefore, virtue was a sort of heroism in the wise man raising himself above the animal nature of man, is sufficient for Himself, and, while he prescribes duties to others, is himself raised above them, and is not subject to any temptation to transgress the moral law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1606462,
+      "endOffset": 1606745
+    },
+    {
+      "text": "The concept of happiness is not one that man derives by abstraction from his instincts and so deduces from his animal nature; but it is a mere Idea of a state, that he wishes to make adequate to the Idea under merely empirical conditions (which is impossible).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2685141,
+      "endOffset": 2685404
+    },
+    {
+      "text": "On the contrary, whatever is deduced from the particular natural characteristics of humanity, from certain feelings and propensions, nay, even, if possible, from any particular tendency proper to human reason, and which need not necessarily hold for the will of every rational being; this may indeed supply us with a maxim, but not with a law; with a subjective principle on which we may have a propension and inclination to act, but not with an objective principle on which we should be enjoined to act, even though all our propensions, inclinations, and natural dispositions were opposed to it.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2975183,
+      "endOffset": 2975787
+    },
+    {
+      "text": "For there is not the smallest contradiction in saying that a thing in appearance (belonging to the world of sense) is subject to certain laws, of which the very same as a thing or being in itself is independent, and that he must conceive and think of himself in this twofold way, rests as to the first on the consciousness of himself as an object affected through the senses, and as to the second on the consciousness of himself as an intelligence, i.e., as independent on sensible impressions in the employment of his reason (in other words as belonging to the world of understanding).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3049597,
+      "endOffset": 3050190
+    },
+    {
+      "text": "The latter is he who makes the rational end the principle of his actions, while at the same time he joins with this the necessary knowledge which, as it aims at action, must not be spun out into the most subtile threads of metaphysic, unless a legal duty is in question; in which case meum and tuum must be accurately determined in the balance of justice, on the principle of equality of action and action, which requires something like mathematical proportion, but not in the case of a mere ethical duty.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3067860,
+      "endOffset": 3068372
+    },
+    {
+      "text": "Its application to an object, and the transcendental ground of this unity of subjective and objective, lie too deeply concealed for us, who cognize ourselves only through the internal sense, consequently as phenomena, to be able to discover in our existence anything but phenomena, the non-sensuous cause of which we at the same time earnestly desire to penetrate to.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 542770,
+      "endOffset": 543142
+    },
+    {
+      "text": "For if the smallest empirical element of thought, if any particular perception of my internal state, were to be introduced among the grounds of cognition of this science, it would not be a rational, but an empirical doctrine of the soul.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 634228,
+      "endOffset": 634468
+    },
+    {
+      "text": "I consequently confound the possible abstraction of my empirically determined existence with the supposed consciousness of a possible separate existence of my thinking self; and I believe that I cognize what is substantial in myself as a transcendental subject, when I have nothing more in thought than the unity of consciousness, which lies at the basis of all determination of cognition.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 670986,
+      "endOffset": 671380
+    },
+    {
+      "text": "Thought, per se, is merely the purely spontaneous logical function which operates to connect the manifold of a possible intuition; and it does not represent the subject of consciousness as a phenomenon — for this reason alone, that it pays no attention to the question whether the mode of intuiting it is sensuous or intellectual.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 673332,
+      "endOffset": 673666
+    },
+    {
+      "text": "The possibility of sensuous objects is a relation of these objects to thought, in which something (the empirical form) may be cogitated a priori; while that which constitutes the matter — the reality of the phenomenon (that element which corresponds to sensation)— must be given from without, as otherwise it could not even be cogitated by, nor could its possibility be presentable to the mind.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 920106,
+      "endOffset": 920505
+    },
+    {
+      "text": "Holiness of life is prescribed to them as a rule even in this life, while the welfare proportioned to it, namely, bliss, is represented as attainable only in an eternity; because the former must always be the pattern of their conduct in every state, and progress towards it is already possible and necessary in this life; while the latter, under the name of happiness, cannot be attained at all in this world (so far as our own power is concerned), and therefore is made simply an object of hope.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1604794,
+      "endOffset": 1605296
+    },
+    {
+      "text": "Inasmuch as the reality of the concept of freedom is proved by an apodeictic law of practical reason, it is the keystone of the whole system of pure reason, even the speculative, and all other concepts (those of God and immortality) which, as being mere ideas, remain in it unsupported, now attach themselves to this concept, and by it obtain consistence and objective reality; that is to say, their possibility is proved by the fact that freedom actually exists, for this idea is revealed by the moral law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1312609,
+      "endOffset": 1313122
+    },
+    {
+      "text": "Instruction in the laws of morality is not drawn from observation of oneself or of our animal nature, nor from perception of the course of the world in regard to what happens, or how men act.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2850944,
+      "endOffset": 2851137
+    },
+    {
+      "text": "It is only those that would gladly deny to pure reason the power of determining the will, without the presupposition of any feeling, who could deviate so far from their own exposition as to describe as quite heterogeneous what they have themselves previously brought under one and the same principle.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1354676,
+      "endOffset": 1354980
+    },
+    {
+      "text": "For the a priori thought of a possible universal legislation which is therefore merely problematical, is unconditionally commanded as a law without borrowing anything from experience or from any external will.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1374459,
+      "endOffset": 1374671
+    },
+    {
+      "text": "No doubt these laws require a judgement sharpened by experience, in order on the one hand to distinguish in what cases they are applicable, and on the other to procure for them access to the will of the man and effectual influence on conduct; since man is acted on by so many inclinations that, though capable of the idea of a practical pure reason, he is not so easily able to make it effective in concreto in his life.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2890265,
+      "endOffset": 2890690
+    },
+    {
+      "text": "Now, the law of this autonomy is the moral law, which, therefore, is the fundamental law of a supersensible nature, and of a pure world of understanding, whose counterpart must exist in the world of sense, but without interfering with its laws.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1403497,
+      "endOffset": 1403744
+    },
+    {
+      "text": "Reason, with its practical law, determines the will immediately, not by means of an intervening feeling of pleasure or pain, not even of pleasure in the law itself, and it is only because it can, as pure reason, be practical, that it is possible for it to be legislative.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1358204,
+      "endOffset": 1358478
+    },
+    {
+      "text": "It holds good only as a necessary hypothesis of reason in a being that believes itself conscious of a will, that is, of a faculty distinct from mere desire (namely, a faculty of determining itself to action as an intelligence, in other words, by laws of reason independently on natural instincts).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3054214,
+      "endOffset": 3054515
+    },
+    {
+      "text": "The idea of transcendental freedom, on the contrary, requires that reason — in relation to its causal power of commencing a series of phenomena — should be independent of all sensuous determining causes; and thus it seems to be in opposition to the law of nature and to all possible experience.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1235076,
+      "endOffset": 1235373
+    },
+    {
+      "text": "It is plain that, if all causality in the world of sense were natural — and natural only — every event would be determined by another according to necessary laws, and that, consequently, phenomena, in so far as they determine the will, must necessitate every action as a natural effect from themselves; and thus all practical freedom would fall to the ground with the transcendental idea.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 854505,
+      "endOffset": 854898
+    },
+    {
+      "text": "Empirical concepts have, therefore, their territory, doubtless, in nature as the complex of all sensible objects, but they have no realm (only a dwelling-place, domicilium), for, although they are formed according to law, they are not themselves legislative, but the rules founded on them are empirical and, consequently, contingent.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1707557,
+      "endOffset": 1707894
+    },
+    {
+      "text": "All that is represented as possible (or necessary) by means of a will is called practically possible (or necessary); as distinguished from the physical possibility or necessity of an effect, whose cause is not determined to causality by concepts (but in lifeless matter by mechanism and in animalsby instinct).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2081958,
+      "endOffset": 2082271
+    },
+    {
+      "text": "It is distinguished from a practical law in that such a law, while likewise representing the action as necessary, does not consider whether it is internally necessary as involved in the nature of the agent — say as a holy being — or is contingent to him, as in the case of man as we find him; for where the first condition holds good, there is in fact no imperative.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2866893,
+      "endOffset": 2867264
+    },
+    {
+      "text": "Of pure reason which frames this ideal, there remains after the abstraction of all matter, i.e., knowledge of objects, nothing but the form, namely, the practical law of the universality of the maxims, and in conformity with this conception of reason in reference to a pure world of understanding as a possible efficient cause, that is a cause determining the will.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3061675,
+      "endOffset": 3062045
+    },
+    {
+      "text": "Reason prescribes laws a priori for freedom and its peculiar causality as the supersensible in the subject, so that we may have a purely practical knowledge.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1760169,
+      "endOffset": 1760328
+    },
+    {
+      "text": "“Everything that happens is hypothetically necessary,” is a principle which subjects the changes that take place in the world to a law, that is, to a rule of necessary existence, without which nature herself could not possibly exist.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 467677,
+      "endOffset": 467913
+    },
+    {
+      "text": "For the faculty of cognition understanding alone is legislative, if (as must be the case where it is considered on its own account free of confusion with the faculty of desire) this faculty, as that of theoretical cognition, is referred to nature, in respect of which alone (as phenomenon) it is possible for us to prescribe laws by means of a priori concepts of nature, which are properly pure concepts of understanding.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1715413,
+      "endOffset": 1715840
+    },
+    {
+      "text": "The pre-eminent good which we call moral can therefore consist in nothing else than the conception of law in itself, which certainly is only possible in a rational being, in so far as this conception, and not the expected effect, determines the will.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2916888,
+      "endOffset": 2917141
+    },
+    {
+      "text": "Finally, there is an imperative which commands a certain conduct immediately, without having as its condition any other purpose to be attained by it.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2952955,
+      "endOffset": 2953106
+    },
+    {
+      "text": "Now, it is true that I cannot, by means of speculative reason, and still less by empirical observation, cognize my soul as a thing in itself and consequently, cannot cognize liberty as the property of a being to which I ascribe effects in the world of sense.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51739,
+      "endOffset": 52000
+    },
+    {
+      "text": "In fact, in the question about the freedom which must be the foundation of all moral laws and the consequent responsibility, it does not matter whether the principles which necessarily determine causality by a physical law reside within the subject or without him, or in the former case whether these principles are instinctive or are conceived by reason, if, as is admitted by these men themselves, these determining ideas have the ground of their existence in time and in the antecedent state, and this again in an antecedent, etc.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1529399,
+      "endOffset": 1529939
+    },
+    {
+      "text": "For on the one band the restriction annexed would suit the Greek expression (which signifies the love of wisdom), and yet at the same time would be sufficient to embrace under the name of philosophy the love of science: that is to say, of all speculative rational knowledge, so far as it is serviceable to reason, both for that conception and also for the practical principle determining our conduct, without letting out of sight the main end, on account of which alone it can be called a doctrine of practical wisdom.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1558171,
+      "endOffset": 1558695
+    },
+    {
+      "text": "There is not the least ground, therefore, in the moral law for a necessary connection between morality and proportionate happiness in a being that belongs to the world as part of it, and therefore dependent on it, and which for that reason cannot by his will be a cause of this nature, nor by his own power make it thoroughly harmonize, as far as his happiness is concerned, with his practical principles.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1596572,
+      "endOffset": 1596982
+    },
+    {
+      "text": "It leads to that of which speculative reason contained nothing but antinomy, the solution of which it could only found on a notion Problematically conceivable indeed, but whose objective reality it could not prove or determine, namely, the cosmological idea of an intelligible world and the consciousness of our existence in it, by means of the postulate of freedom (the reality of which it lays down by virtue of the moral law), and with it likewise the law of an intelligible world, to which speculative reason could only point, but could not define its conception.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1617316,
+      "endOffset": 1617891
+    },
+    {
+      "text": "What speculative reason was able to think, but was obliged to leave undetermined as a mere transcendental ideal, viz., the theological conception of the first Being, to this it gives significance (in a practical view, that is, as a condition of the possibility of the object of a will determined by that law), namely, as the supreme principle of the summum bonum in an intelligible world, by means of moral legislation in it invested with sovereign power.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1617895,
+      "endOffset": 1618356
+    },
+    {
+      "text": "When these ideas of God, of an intelligible world (the kingdom of God), and of immortality are further determined by predicates taken from our own nature, we must not regard this determination as a sensualizing of those pure rational ideas (anthropomorphism), nor as a transcendent knowledge of supersensible objects; for these predicates are no others than understanding and will, considered too in the relation to each other in which they must be conceived in the moral law, and therefore, only so far as a pure practical use is made of them.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1626635,
+      "endOffset": 1627186
+    },
+    {
+      "text": "As to all the rest that belongs to these conceptions psychologically, that is, so far as we observe these faculties of oursempirically in their exercise (e.g., that the understanding of man is discursive, and its notions therefore not intuitions but thoughts, that these follow one another in time, that his will has its satisfaction always dependent on the existence of its object, etc., which cannot be the case in the Supreme Being), from all this we abstract in that case, and then there remains of the notions by which we conceive a pure intelligence nothing more than just what is required for the possibility of conceiving a moral law.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1627187,
+      "endOffset": 1627836
+    },
+    {
+      "text": "Then its inevitable problem, namely, the necessary direction of the will to the summum bonum, discovers to us not only the necessity of assuming such aFirst Being in reference to the possibility of this good in the world, but, what is most remarkable, something which reason in its progress on the path of physical nature altogether failed to find, namely, an accurately defined conception of this First Being.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1632733,
+      "endOffset": 1633148
+    },
+    {
+      "text": "Let the preceding analysis, however, be remembered of what is required to be supposed in the conception of the summum bonum, and it will be seen that it cannot be commanded to assume this possibility, and no practical disposition of mind is required to admit it; but that speculative reason must concede it without being asked, for no one can affirm that it is impossible in itself that rational beings in the world should at the same time be worthy of happiness in conformity with the moral law and also possess this happiness proportionately.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1645458,
+      "endOffset": 1646010
+    },
+    {
+      "text": "By this the pupil’s attention is fixed upon the consciousness of his freedom, and although this renunciation at first excites a feeling of pain, nevertheless, by its withdrawing the pupil from the constraint of even real wants, there is proclaimed to him at the same time a deliverance from the manifold dissatisfaction in which all these wants entangle him, and the mind is made capable of receiving the sensation of satisfaction from other sources.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1677217,
+      "endOffset": 1677673
+    },
+    {
+      "text": "The will-for this is what is said-is the faculty of desire and, as such, is just one of the many natural causes in the world, the one, namely, which acts by concepts; and whatever is represented as possible (or necessary) through the efficacy of will is called practically possible (or necessary): the intention being to distinguish its possibility (or necessity) from the physical possibility or necessity of an effect the causality of whose cause is not determined to its production by concepts (but rather, as with lifeless matter, by mechanism, and, as with the lower animals, by instinct).",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1701281,
+      "endOffset": 1701882
+    },
+    {
+      "text": "For the faculty of desire there is reason, which is practical without mediation of any pleasure of whatsoever origin, and which determines for it, as a higher faculty, the final end that is attended at the same time with pure intellectual delight in the object. judgement’s concept of a finality of nature falls, besides, under the head of natural concepts, but only as a regulative principle of the cognitive faculties- although the aesthetic judgement on certain objects (of nature or of art) which occasions that concept, is a constitutive principle in respect of the feeling of pleasure or displeasure.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1765268,
+      "endOffset": 1765882
+    },
+    {
+      "text": "The visible expression of moral ideas that govern men inwardly can, of course, only be drawn from experience; but their combination with all that our reason connects with the morally good in the idea of the highest finality- benevolence, purity, strength, or equanimity, etc.-may be made, as it were, visible in bodily manifestation (as effect of what is internal), and this embodiment involves a union of pure ideas of reason and great imaginative power, in one who would even form an estimate of it, not to speak of being the author of its presentation.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1846419,
+      "endOffset": 1846982
+    },
+    {
+      "text": "Of the peculiar character of things as natural purposes In order to see that a thing is only possible as a purpose, that is, to be forced to seek the causality of its origin not in the mechanism of nature but in a cause whose faculty of action is determined through concepts, it is requisite that its form be not possible according to mere natural laws, i.e. laws which can be cognised by us through the Understanding alone when applied to objects of Sense; but that even the empirical knowledge of it as regards its cause and effect presupposes concepts of Reason.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2541977,
+      "endOffset": 2542569
+    },
+    {
+      "text": "The concept of an objective purposiveness of nature is a critical principle of Reason for the reflective Judgement It is then one thing to say, “the production of certain things of nature or that of collective nature is only possible through a cause which determines itself to action according to design”; and quite another to say, “I can according to the peculiar constitution of my cognitive faculties judge concerning the possibility of these things and their production, in no other fashion than by conceiving for this a cause working according to design, i.e. a Being which is productive in a way analogous to the causality of an intelligence.”",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2607150,
+      "endOffset": 2607842
+    },
+    {
+      "text": "Though, therefore, an intelligible world in which everything would be actual merely because (as something good) it is possible, together with freedom as its formal condition, is for us a transcendent concept, not available as a constitutive principle to determine an Object and its objective reality; yet, because of the constitution of our (in part sensuous) nature and faculty it is, so far as we can represent it in accordance with the constitution of our Reason, for us and for all rational beings that have a connexion with the world of sense, a universal regulative principle.",
+      "sourceId": "4ac85f0a-5003-4c64-9468-a95295818e99",
+      "sourceTitle": "kant_works_1",
+      "sourceFile": "kant_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2622837,
+      "endOffset": 2623426
+    }
+  ]
+}

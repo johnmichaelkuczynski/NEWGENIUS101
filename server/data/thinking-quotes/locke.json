@@ -1,0 +1,681 @@
+{
+  "thinkerId": "locke",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "TO UNDERSTAND POLITICAL POWER RIGHT, AND DERIVE IT FROM ITS original, we must consider, what state all men are naturally in, and that is, a state of perfect freedom to order their actions, and dispose of their possessions and persons, as they think fit, within the bounds of the law of nature, without asking leave, or depending upon the will of any other man.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 275936,
+      "endOffset": 276305
+    },
+    {
+      "text": "Man being born, as has been proved, with a title to perfect freedom, and an uncontrouled enjoyment of all the rights and privileges of the law of nature, equally with any other man, or number of men in the world, hath by nature a power, not only to preserve his property, that is, his life, liberty and estate, against the injuries and attempts of other men; but to judge of, and punish the breaches of that law in others, as he is persuaded the offence deserves, even with death itself, in crimes where the heinousness of the fact, in his opinion, requires it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 376520,
+      "endOffset": 377085
+    },
+    {
+      "text": "Whosoever uses force without right, as every one does in society, who does it without law, puts himself into a state of war with those against whom he so uses it; and in that state all former ties are cancelled, all other rights cease, and every one has a right to defend himself, and to resist the aggressor.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 560865,
+      "endOffset": 561174
+    },
+    {
+      "text": "Political power, then, I take to be a right of making laws with penalties of death, and consequently all less penalties, for the regulating and preserving of property, and of employing the force of the community, in the execution of such laws, and in the defence of the common-wealth from foreign injury; and all this only for the public good.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 275528,
+      "endOffset": 275871
+    },
+    {
+      "text": "Absolute arbitrary power, or governing without settled standing laws, can neither of them consist with the ends of society and government, which men would not quit the freedom of the state of nature for, and tie themselves up under, were it not to preserve their lives, liberties and fortunes, and by stated rules of right and property to secure their peace and quiet.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 444836,
+      "endOffset": 445204
+    },
+    {
+      "text": "THE GREAT END OF MEN'S ENTERING INTO SOCIETY, BEING THE enjoyment of their properties in peace and safety, and the great instrument and means of that being the laws established in that society; the first and fundamental positive law of all commonwealths is the establishing of the legislative power; as the first and fundamental natural law, which is to govern even the legislative itself, is the preservation of the society, and (as far as will consist with the public good) of every person in it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 436952,
+      "endOffset": 437450
+    },
+    {
+      "text": "Thirdly, The supreme power cannot take from any man any part of his property without his own consent: for the preservation of property being the end of government, and that for which men enter into society, it necessarily supposes and requires, that the people should have property, without which they must be supposed to lose that, by entering into society, which was the end for which they entered into it; too gross an absurdity for any man to own.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 447333,
+      "endOffset": 447784
+    },
+    {
+      "text": "THE NATURAL LIBERTY OF MAN IS TO BE FREE FROM ANY SUPERIOR POWER on earth, and not to be under the will or legislative authority of man, but to have only the law of nature for his rule.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 298983,
+      "endOffset": 299168
+    },
+    {
+      "text": "To avoid this state of war (wherein there is no appeal but to heaven, and wherein every the least difference is apt to end, where there is no authority to decide between the contenders) is one great reason of men's putting themselves into society, and quitting the state of nature: for where there is an authority, a power on earth, from which relief can be had by appeal, there the continuance of the state of war is excluded, and the controversy is decided by that power.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 297464,
+      "endOffset": 297937
+    },
+    {
+      "text": "Where-ever therefore any number of men are so united into one society, as to quit every one his executive power of the law of nature, and to resign it to the public, there and there only is a political, or civil society.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 380094,
+      "endOffset": 380314
+    },
+    {
+      "text": "Whosoever therefore out of a state of nature unite into a community, must be understood to give up all the power, necessary to the ends for which they unite into society, to the majority of the community, unless they expresly agreed in any number greater than the majority.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 395293,
+      "endOffset": 395566
+    },
+    {
+      "text": "Want of a common judge with authority, puts all men in a state of nature: force without right, upon a man's person, makes a state of war, both where there is, and is not, a common judge.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 295795,
+      "endOffset": 295985
+    },
+    {
+      "text": "The end of government is the good of mankind; and which is best for mankind, that the people should be always exposed to the boundless will of tyranny, or that the rulers should be sometimes liable to be opposed, when they grow exorbitant in the use of their power, and employ it for the destruction, and not the preservation of the properties of their people?",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 557556,
+      "endOffset": 557916
+    },
+    {
+      "text": "It is the unjust use of force then, that puts a man into the state of war with another; and thereby he that is guilty of it makes a forfeiture of his life: for quitting reason, which is the rule given between man and man, and using force, the way of beasts, he becomes liable to be destroyed by him he uses force against, as any savage ravenous beast, that is dangerous to his being.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 502127,
+      "endOffset": 502510
+    },
+    {
+      "text": "From all which it is evident, that though the things of nature are given in common, yet man, by being master of himself, and proprietor of his own person, and the actions or labour of it, had still in himself the great foundation of property; and that, which made up the great part of what he applied to the support or comfort of his being, when invention and arts had improved the conveniencies of life, was perfectly his own, and did not belong in common to others.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 326149,
+      "endOffset": 326616
+    },
+    {
+      "text": "First then, in the beginning of things, the father's government of the childhood of those sprung from him, having accustomed them to the rule of one man, and taught them that where it was exercised with care and skill, with affection and love to those under it, it was sufficient to procure and preserve to men all the political happiness they sought for in society.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 404541,
+      "endOffset": 404907
+    },
+    {
+      "text": "The freedom then of man, and liberty of acting according to his own will, is grounded on his having reason, which is able to instruct him in that law he is to govern himself by, and make him know how far he is left to the freedom of his own will.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 346694,
+      "endOffset": 346944
+    },
+    {
+      "text": "To ask how you may be guarded from harm, or injury, on that side where the strongest hand is to do it, is presently the voice of faction and rebellion: as if when men quitting the state of nature entered into society, they agreed that all of them but one, should be under the restraint of laws, but that he should still retain all the liberty of the state of nature, increased with power, and made licentious by impunity.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 387404,
+      "endOffset": 387829
+    },
+    {
+      "text": "For if you burden him with many rules, one of these two things must necessarily follow; that either he must be very often punish'd, which will be of ill consequence, by making punishment too frequent and familiar; or else you must let the transgressions of some of your rules go unpunish'd, whereby they will of course grow contemptible, and your authority become cheap to him.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 833756,
+      "endOffset": 834133
+    },
+    {
+      "text": "By which I think it is evident, that substances afford matter of very little general knowledge; and the bare contemplation of their abstract ideas will carry us but a very little way in the search of truth and certainty.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2868674,
+      "endOffset": 2868894
+    },
+    {
+      "text": "SLAVERY IS SO VILE AND MISERABLE AN ESTATE OF MAN, AND SO DIRECTLY opposite to the generous temper and courage of our nation; that it is hardly to be conceived, that an Englishman, much less a gentleman, should plead for it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5580,
+      "endOffset": 5804
+    },
+    {
+      "text": "If the innocent honest man must quietly quit all he has, for peace sake, to him who will lay violent hands upon it, I desire it may be considered, what a kind of peace there will be in the world, which consists only in violence and rapine; and which is to be maintained only for the benefit of robbers and oppressors.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 556574,
+      "endOffset": 556891
+    },
+    {
+      "text": "In the same manner, the truth and certainty of moral discourses abstracts from the lives of men, and the existence of those virtues in the world whereof they treat: nor are Tullys Offices less true, because there is nobody in the world that exactly practises his rules, and lives up to that pattern of a virtuous man which he has given us, and which existed nowhere when he writ but in idea.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2685524,
+      "endOffset": 2685915
+    },
+    {
+      "text": "To this end it is that men give up all their natural power to the society which they enter into, and the community put the legislative power into such hands as they think fit, with this trust, that they shall be governed by declared laws, or else their peace, quiet, and property will still be at the same uncertainty, as it was in the state of nature.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 443961,
+      "endOffset": 444317
+    },
+    {
+      "text": "I grant the existence of God is so many ways manifest, and the obedience we owe him so congruous to the light of reason, that a great part of mankind give testimony to the law of nature: but yet I think it must be allowed that several moral rules may receive from mankind a very general approbation, without either knowing or admitting the true ground of morality; which can only be the will and law of a God, who sees men in the dark, has in his hand rewards and punishments and power enough to call to account the proudest offender.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1513229,
+      "endOffset": 1513763
+    },
+    {
+      "text": "In the second place, the care of souls cannot belong to the civil magistrate, because his power consists only in outward force; but true and saving religion consists in the inward persuasion of the mind, without which nothing can be acceptable to God.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 641525,
+      "endOffset": 641776
+    },
+    {
+      "text": "Every man has an immortal soul, capable of eternal happiness or misery; whose happiness depending upon his believing and doing those things in this life which are necessary to the obtaining of God's favour, and are prescribed by God to that end.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 705778,
+      "endOffset": 706023
+    },
+    {
+      "text": "GOD, HAVING DESIGNED MAN for a sociable creature, made him not only with an inclination, and under a necessity to have fellowship with those of his own kind, but furnished him also with language, which was to be the great instrument and common tie of society.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2272975,
+      "endOffset": 2273234
+    },
+    {
+      "text": "All the great ends of morality and religion are well enough secured, without philosophical proofs of the souls immateriality; since it is evident, that he who made us at the beginning to subsist here, sensible intelligent beings, and for several years continued us in such a state, can and will restore us to the like state of sensibility in another world, and make us capable there to receive the retribution he has designed to men, according to their doings in this life.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2628787,
+      "endOffset": 2629260
+    },
+    {
+      "text": "A mind free, and master of itself and all its actions, not low and narrow, not haughty and insolent, not blemish'd with any great defect, is what every one is taken with.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 838442,
+      "endOffset": 838612
+    },
+    {
+      "text": "Delight or uneasiness, one or other of them, join themselves to almost all our ideas both of sensation and reflection: and there is scarce any affection of our senses from without, any retired thought of our mind within, which is not able to produce in us pleasure or pain.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1649438,
+      "endOffset": 1649711
+    },
+    {
+      "text": "That, in this state of ignorance, we short-sighted creatures might not mistake true felicity, we are endowed with a power to suspend any particular desire, and keep it from determining the will, and engaging us in action.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1959967,
+      "endOffset": 1960188
+    },
+    {
+      "text": "For, though his will be always determined by that which is judged good by his understanding, yet it excuses him not; because, by a too hasty choice of his own making, he has imposed on himself wrong measures of good and evil; which, however false and fallacious, have the same influence on all his future conduct, as if they were true and right.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1970799,
+      "endOffset": 1971144
+    },
+    {
+      "text": "The rewards and punishments of another life, which the Almighty has established, as the enforcements of his law, are of weight enough to determine the choice, against whatever pleasure or pain this life can show, when the eternal state is considered but in its bare possibility, which nobody can make any doubt of.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1994728,
+      "endOffset": 1995042
+    },
+    {
+      "text": "I have forborne to mention anything of the certainty or probability of a future state, designing here to show the wrong judgment that any one must allow he makes, upon his own principles, laid how he pleases, who prefers the short pleasures of a vicious life upon any consideration, whilst he knows, and cannot but be certain, that a future life is at least possible.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1996772,
+      "endOffset": 1997139
+    },
+    {
+      "text": "For action being the great business of mankind, and the whole matter about which all laws are conversant, it is no wonder that the several modes of thinking and motion should be taken notice of, the ideas of them observed, and laid up in the memory, and have names assigned to them; without which laws could be but ill made, or vice and disorders repressed.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2020670,
+      "endOffset": 2021027
+    },
+    {
+      "text": "Custom settles habits of thinking in the understanding, as well as of determining in the will, and of motions in the body: all which seems to be but trains of motions in the animal spirits, which, once set a going, continue in the same steps they have used to; which, by often treading, are worn into a smooth path, and the motion in it becomes easy, and as it were natural.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2259153,
+      "endOffset": 2259527
+    },
+    {
+      "text": "To impose such things, therefore, upon any people, contrary to their own judgment, is in effect to command them to offend God, which, considering that the end of all religion is to please Him, and that liberty is essentially necessary to that end, appears to be absurd beyond expression.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 681639,
+      "endOffset": 681926
+    },
+    {
+      "text": "A good life, in which consist not the least part of religion and true piety, concerns also the civil government; and in it lies the safety both of men's souls and of the commonwealth.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 705078,
+      "endOffset": 705261
+    },
+    {
+      "text": "I cannot but wonder at the extravagant arrogance of those men who think that they themselves can explain things necessary to salvation more clearly than the Holy Ghost, the eternal and infinite wisdom of God.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 741032,
+      "endOffset": 741241
+    },
+    {
+      "text": "Fear and awe ought to give you the first power over their minds, and love and friendship in riper years to hold it: for the time must come, when they will be past the rod and correction; and then, if the love of you make them not obedient and dutiful, if the love of virtue and reputation keep them not in laudable courses, I ask, what hold will you have upon them to turn them to it?",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 809273,
+      "endOffset": 809657
+    },
+    {
+      "text": "For when all is done, this, as the highest and most important faculty of our minds, deserves the greatest care and attention in cultivating it: the right improvement, and exercise of our reason being the highest perfection that a man can attain to in this life.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 989065,
+      "endOffset": 989326
+    },
+    {
+      "text": "Use your skill to make his will supple and pliant to reason: teach him to love credit and commendation; to abhor being thought ill or meanly of, especially by you and his mother, and then the rest will come all easily.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1048685,
+      "endOffset": 1048903
+    },
+    {
+      "text": "To this purpose, I think Aesop's Fables the best, which being stories apt to delight and entertain a child, may yet afford useful reflections to a grown man; and if his memory retain them all his life after, he will not repent to find them there, amongst his manly thoughts and serious business.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1049491,
+      "endOffset": 1049786
+    },
+    {
+      "text": "To this perhaps it will be said, that the people being ignorant, and always discontented, to lay the foundation of government in the unsteady opinion and uncertain humour of the people, is to expose it to certain ruin; and no government will be able long to subsist, if the people may set up a new legislative, whenever they take offence at the old one.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 549887,
+      "endOffset": 550240
+    },
+    {
+      "text": "To prepare such an assembly as this, and endeavour to set up the declared abettors of his own will, for the true representatives of the people, and the law-makers of the society, is certainly as great a breach of trust, and as perfect a declaration of a design to subvert the government, as is possible to be met with.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 548985,
+      "endOffset": 549303
+    },
+    {
+      "text": "What power they ought to have in the society, who thus employ it contrary to the trust went along with it in its first institution, is easy to determine; and one cannot but see, that he, who has once attempted any such thing as this, cannot any longer be trusted.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 549615,
+      "endOffset": 549878
+    },
+    {
+      "text": "What I have said here, concerning the legislative in general, holds true also concerning the supreme executor, who having a double trust put in him, both to have a part in the legislative, and the supreme execution of the law, acts against both, when he goes about to set up his own arbitrary will as the law of the society.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 547561,
+      "endOffset": 547889
+    },
+    {
+      "text": "The usual, and almost only way whereby this union is dissolved, is the inroad of foreign force making a conquest upon them: for in that case, (not being able to maintain and support themselves, as one intire and independent body) the union belonging to that body which consisted therein, must necessarily cease, and so every one return to the state he was in before, with a liberty to shift for himself, and provide for his own safety, as he thinks fit, in some other society.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 535345,
+      "endOffset": 535821
+    },
+    {
+      "text": "Then immediately all compacts are to be broken, all civil rights to be violated, that idolatry may be extirpated; and unless these innocent Pagans, strict observers of the rules of equity and the law of Nature and no ways offending against the laws of the society, I say, unless they will forsake their ancient religion and embrace a new and strange one, they are to be turned out of the lands and possessions of their forefathers and perhaps deprived of life itself.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 694767,
+      "endOffset": 695235
+    },
+    {
+      "text": "For it may as rationally be concluded, that the dead body of a man, wherein there is to be found no more appearance or action of life than there is in a statue, has yet nevertheless a living soul in it, because of its shape; as that there is a rational soul in a changeling, because he has the outside of a rational creature, when his actions carry far less marks of reason with them, in the whole course of his life, than what are to be found in many a beast.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2698446,
+      "endOffset": 2698906
+    },
+    {
+      "text": "Perception then being the first step and degree towards knowledge, and the inlet of all the materials of it; the fewer senses any man, as well as any other creature, hath; and the fewer and duller the impressions are that are made by them, and the duller the faculties are that are employed about them, the more remote are they from that knowledge which is to be found in some men.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1697295,
+      "endOffset": 1697676
+    },
+    {
+      "text": "The dominion of man, in this little world of his own understanding being muchwhat the same as it is in the great world of visible things; wherein his power, however managed by art and skill, reaches no farther than to compound and divide the materials that are made to his hand; but can do nothing towards the making the least particle of new matter, or destroying one atom of what is already in being.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1631346,
+      "endOffset": 1631748
+    },
+    {
+      "text": "CONCERNING THE SIMPLE IDEAS of Sensation, it is to be considered, that whatsoever is so constituted in nature as to be able, by affecting our senses, to cause any perception in the mind, doth thereby produce in the understanding a simple idea; which, whatever be the external cause of it, when it comes to be taken notice of by our discerning faculty, it is by the mind looked on and considered there to be a real positive idea in the understanding, as much as any other whatsoever; though, perhaps, the cause of it be but a privation of the subject.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1658195,
+      "endOffset": 1658745
+    },
+    {
+      "text": "It seems as easy to me to have the idea of space empty of body, as to think of the capacity of a bushel without corn, or the hollow of a nut-shell without a kernel in it: it being no more necessary that there should be existing a solid body, infinitely extended, because we have an idea of the infinity of space, than it is necessary that the world should be eternal, because we have an idea of infinite duration.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1863943,
+      "endOffset": 1864356
+    },
+    {
+      "text": "What more useful or necessary things are there to the Being or Well-being of Men, than Air and Water, and yet these have generally no Price at all, nor yield any Money: Because their quantity is immensly greater than their vent in most places of the World.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1254627,
+      "endOffset": 1254883
+    },
+    {
+      "text": "It being that term which, I think, serves best to stand for whatsoever is the object of the understanding when a man thinks, I have used it to express whatever is meant by phantasm, notion, species, or whatever it is which the mind can be employed about in thinking; and I could not avoid frequently using it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1461917,
+      "endOffset": 1462226
+    },
+    {
+      "text": "I deny not that there are natural tendencies imprinted on the minds of men; and that from the very first instances of sense and perception, there are some things that are grateful and others unwelcome to them; some things that they incline to and others that they fly: but this makes nothing for innate characters on the mind, which are to be the principles of knowledge regulating our practice.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1509574,
+      "endOffset": 1509969
+    },
+    {
+      "text": "Secondly, the other fountain from which experience furnisheth the understanding with ideas is, the perception of the operations of our own mind within us, as it is employed about the ideas it has got; which operations, when the soul comes to reflect on and consider, do furnish the understanding with another set of ideas, which could not be had from things without.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1597694,
+      "endOffset": 1598060
+    },
+    {
+      "text": "For, the narrow mind of man not being capable of having many ideas under view and consideration at once, it was necessary to have a repository, to lay up those ideas which, at another time, it might have use of.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1699086,
+      "endOffset": 1699297
+    },
+    {
+      "text": "Though our idea of infinity arise from the contemplation of quantity, and the endless increase the mind is able to make in quantity, by the repeated additions of what portions thereof it pleases; yet I guess we cause great confusion in our thoughts, when we join infinity to any supposed idea of quantity the mind can be thought to have, and so discourse or reason about an infinite quantity, as an infinite space, or an infinite duration.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1844034,
+      "endOffset": 1844473
+    },
+    {
+      "text": "All the actions that we have any idea of reducing themselves, as has been said, to these two, viz. thinking and motion; so far as a man has power to think or not to think, to move or not to move, according to the preference or direction of his own mind, so far is a man free.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1899312,
+      "endOffset": 1899587
+    },
+    {
+      "text": "For if I mistake not, it follows from what I have said, that the question itself is altogether improper; and it is as insignificant to ask whether mans will be free, as to ask whether his sleep be swift, or his virtue square: liberty being as little applicable to the will, as swiftness of motion is to sleep, or squareness to virtue.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1905977,
+      "endOffset": 1906311
+    },
+    {
+      "text": "For desire being nothing but an uneasiness in the want of an absent good, in reference to any pain felt, ease is that absent good; and till that ease be attained, we may call it desire; nobody feeling pain that he wishes not to be eased of, with a desire equal to that pain, and inseparable from it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1929108,
+      "endOffset": 1929407
+    },
+    {
+      "text": "To him, I say, who hath a prospect of the different state of perfect happiness or misery that attends all men after this life, depending on their behaviour here, the measures of good and evil that govern his choice are mightily changed.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1977363,
+      "endOffset": 1977599
+    },
+    {
+      "text": "For should the soul of a prince, carrying with it the consciousness of the princes past life, enter and inform the body of a cobbler, as soon as deserted by his own soul, every one sees he would be the same person with the prince, accountable only for the princes actions: but who would say it was the same man?",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2130815,
+      "endOffset": 2131126
+    },
+    {
+      "text": "By the second and third, Socrates, in this life and after it, cannot be the same man any way, but by the same consciousness; and so making human identity to consist in the same thing wherein we place personal identity, there will be no difficulty to allow the same man to be the same person.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2138787,
+      "endOffset": 2139078
+    },
+    {
+      "text": "For, let any idea be as it will, it can be no other but such as the mind perceives it to be; and that very perception sufficiently distinguishes it from all other ideas, which cannot be other, i.e. different, without being perceived to be so.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2183215,
+      "endOffset": 2183457
+    },
+    {
+      "text": "The first particularity I shall observe in them, is, that the abstract ideas, or, if you please, the essences, of the several species of mixed modes, are made by the understanding, wherein they differ from those of simple ideas: in which sort the mind has no power to make any one, but only receives such as are presented to it by the real existence of things operating upon it.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2364305,
+      "endOffset": 2364683
+    },
+    {
+      "text": "Because they being the workmanship of the understanding, pursuing only its own ends, and the conveniency of expressing in short those ideas it would make known to another, it does with great liberty unite often into one abstract idea things that, in their nature, have no coherence; and so under one term bundle together a great variety of compounded and decompounded ideas.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2381725,
+      "endOffset": 2382103
+    },
+    {
+      "text": "For by this tacit reference to the real essence of that species of bodies, the word gold (which, by standing for a more or less perfect collection of simple ideas, serves to design that sort of body well enough in civil discourse) comes to have no signification at all, being put for somewhat whereof we have no idea at all, and so can signify nothing at all, when the body itself is away.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2536225,
+      "endOffset": 2536618
+    },
+    {
+      "text": "Since in this way of speaking, nothing is gold but what partakes of an essence, which we, not knowing, cannot know where it is or is not, and so cannot be sure that any parcel of matter in the world is or is not in this sense gold; being incurably ignorant whether it has or has not that which makes anything to be called gold; i.e. that real essence of gold whereof we have no idea at all.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2721505,
+      "endOffset": 2721895
+    },
+    {
+      "text": "The faculty which God has given man to supply the want of clear and certain knowledge, in cases where that cannot be had, is judgment: whereby the mind takes its ideas to agree or disagree; or, which is the same, any proposition to be true or false, without perceiving a demonstrative evidence in the proofs.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2888845,
+      "endOffset": 2889153
+    },
+    {
+      "text": "Since a man can never have so certain a knowledge that a proposition which contradicts the clear principles and evidence of his own knowledge was divinely revealed, or that he understands the words rightly wherein it is delivered, as he has that the contrary is true, and so is bound to consider and judge of it as a matter of reason, and not swallow it, without examination, as a matter of faith.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2987067,
+      "endOffset": 2987464
+    },
+    {
+      "text": "In any truth that gets not possession of our minds by the irresistible light of self-evidence, or by the force of demonstration, the arguments that gain it assent are the vouchers and gage of its probability to us; and we can receive it for no other than such as they deliver it to our understandings.",
+      "sourceId": "2b00f3eb-58cc-45cc-9b76-13ec72e79439",
+      "sourceTitle": "locke_works_1",
+      "sourceFile": "locke_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2993546,
+      "endOffset": 2993848
+    }
+  ]
+}

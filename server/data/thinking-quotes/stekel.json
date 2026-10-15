@@ -1,0 +1,807 @@
+{
+  "thinkerId": "stekel",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "That many people suffer from weakness of will, because life has never given them the opportunity to prove their capabilities and to do some work, to have means to turn to account all their energies, to develop all their capabilities, to work and to struggle.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 254995,
+      "endOffset": 255254
+    },
+    {
+      "text": "The nervous individual becomes useless as far as life is concerned because his experience becomes a source of doubt for him and intensifies his wanting will-power.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 267381,
+      "endOffset": 267544
+    },
+    {
+      "text": "Dreams are usually wish fulfillments, but in their lowest levels we find the wishes of the second world which are only rarely altered by unconscious thought processes.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 10226,
+      "endOffset": 10393
+    },
+    {
+      "text": "That is the deepest secret of the art of life: to sever the strings which tie us to the world of displeasure, and to enjoy every minute as if it offered to us what it had never offered before.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 196848,
+      "endOffset": 197041
+    },
+    {
+      "text": "Ripe fruits fall into the hands of him who can wait, but many a failure in the life of the impatient man arises from the eagerness with which he hunts for success.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 218199,
+      "endOffset": 218362
+    },
+    {
+      "text": "There is no human being without vanity, and he who is least vain still prides himself on the fact that he is not vain.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 32777,
+      "endOffset": 32895
+    },
+    {
+      "text": "Were we in possession of all truth and all knowledge, life would lose its value and its charm.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 61304,
+      "endOffset": 61398
+    },
+    {
+      "text": "Children should, therefore, be educated more for reality; they should be taught to see life as it is, to be prepared for the struggle of existence.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 125490,
+      "endOffset": 125637
+    },
+    {
+      "text": "The consciousness of happiness is such a fugitive moment that the poorest wage-slave in his second world can be happier than the truly happy who does not happen to be thinking of his happiness.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7087,
+      "endOffset": 7280
+    },
+    {
+      "text": "If my thoughts are inconsistent, if today I maintain the contrary to that which I believed yesterday, it only proves my courage to give expression to the universal human.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 6380,
+      "endOffset": 6550
+    },
+    {
+      "text": "Many observers have been struck by the fact that marriages of love are not the most happy ones, or only in the rarest cases.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34828,
+      "endOffset": 34952
+    },
+    {
+      "text": "One might almost say that jealousy is a cultural disease which results from the restrictions on our love-life imposed by law and morality.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 97645,
+      "endOffset": 97783
+    },
+    {
+      "text": "The second world need not necessarily always be the better world even though to its possessor it may appear to be the more beautiful and the more desirable.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9660,
+      "endOffset": 9817
+    },
+    {
+      "text": "One day it occurs to some one to examine carefully the real value of the truth, and the supposed truth vanishes and becomes nothing but a well-masked lie.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 242863,
+      "endOffset": 243017
+    },
+    {
+      "text": "Women especially, whose disposition is much more primitive than that of men, yield more easily to their emotions and limit their horizon by all sorts of affects, till finally they cannot see any further than their own limited domain; namely, their housekeeping, their children, and their servants; and all conflicts are staged in this narrow sphere.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 265245,
+      "endOffset": 265594
+    },
+    {
+      "text": "Just because I have come to recognize how deep his primal instincts reach down into the savage, the animal, the uncontrolled, boundless and terrible—just because of this fact I see a better future.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 290523,
+      "endOffset": 290720
+    },
+    {
+      "text": "Only he who knows how to combine the pleasure-principle and the reality-principle can be happy.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 128475,
+      "endOffset": 128570
+    },
+    {
+      "text": "Only the knowledge of the psychology of the individual can give us an understanding of the psychology of the crowd.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 144019,
+      "endOffset": 144134
+    },
+    {
+      "text": "We all know that coddled children very often become helpless, dependent persons, that they cannot find their place in life, and do not seem to be armed against adversity.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 221712,
+      "endOffset": 221882
+    },
+    {
+      "text": "It is characteristic of the education of the cultured person that, with the necessary moral conscience, he is also inoculated with the fear of joy.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150719,
+      "endOffset": 150866
+    },
+    {
+      "text": "The sexual life of the child does not begin with puberty, the old books to the contrary notwithstanding, but with the day of its birth.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 225073,
+      "endOffset": 225208
+    },
+    {
+      "text": "A man suffering from a compulsion neurosis is the slave of his symptoms and a psychic anarchist, vacillating between the will to power and the will to subjection.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 288430,
+      "endOffset": 288592
+    },
+    {
+      "text": "The brain of a child is like a photographic plate that greedily catches impressions, independently of whether they are intelligible or not, impressions whose influence may be operative throughout its life.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 225696,
+      "endOffset": 225901
+    },
+    {
+      "text": "No human being has any perception of the immense power of self-love, nor can he have it, because his judgement is clouded by the affect; and yet just because this quality hides itself so modestly from the world and from the Ego, we all love ourselves more than we guess: yes, even more!—‘We are all in love with ourselves.’",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21874,
+      "endOffset": 22197
+    },
+    {
+      "text": "We often meet wives of men of importance who never recognize the greatness of their husbands, and who are their most severe critics.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44676,
+      "endOffset": 44808
+    },
+    {
+      "text": "To the true believer, feeling and understanding have become identical; and the one thing which keeps him strong and helps him over all obstacles in life is what- he calls his belief—belief in every form, it may be religion, science, politics or love.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 103917,
+      "endOffset": 104167
+    },
+    {
+      "text": "One who does not fear death no longer loves life, or, at any rate, no longer loves it to such an extent as not to be willing to gamble with it.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 252090,
+      "endOffset": 252233
+    },
+    {
+      "text": "We do not go to sleep because we are tired, but because the unconscious is weary of enduring reality.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 68040,
+      "endOffset": 68141
+    },
+    {
+      "text": "There are those unfortunates who are afraid of every joy, because they maintain that in their experience bad times invariably follow.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 144515,
+      "endOffset": 144648
+    },
+    {
+      "text": "There is nothing more painful for parents than to see that a child that has been surrounded with love, and brought up with every care, has fallen into wrong ways, and has begun to be accounted a failure.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 226992,
+      "endOffset": 227195
+    },
+    {
+      "text": "Happiness is the greatest of all life's lies and one who has had least of it may be the happiest in his second world.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7622,
+      "endOffset": 7739
+    },
+    {
+      "text": "Certain thoughts lose their significance as soon as they are put into words: such value as they have is due to the momentary emotion.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5845,
+      "endOffset": 5978
+    },
+    {
+      "text": "The opposite of love is not hate, but indifference; the opposite of feeling can only be the absence of feeling.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37505,
+      "endOffset": 37616
+    },
+    {
+      "text": "Every impression in our life affects our soul as if it were made of wax and not one such impression can be lost.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12048,
+      "endOffset": 12160
+    },
+    {
+      "text": "Really every one is an anarchist in the depths of his nature; every being is to himself the ‘unique.’",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43202,
+      "endOffset": 43303
+    },
+    {
+      "text": "Repression is a protective device but at the same time a cause for many serious nervous disorders.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12269,
+      "endOffset": 12367
+    },
+    {
+      "text": "At present, humanity is so constituted that it can always swallow lies more easily than truth, and probably this will always be the case.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 258178,
+      "endOffset": 258315
+    },
+    {
+      "text": "The strongest tendency of man is, as Nietzsche so very aptly expressed it, his ‘will to power.’",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 38473,
+      "endOffset": 38568
+    },
+    {
+      "text": "There is a will to pain, just as there is a will to freedom from pain.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 154923,
+      "endOffset": 154993
+    },
+    {
+      "text": "Broadly speaking, the whole evil of our time may be described by the term ‘Half-Men.’",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 85876,
+      "endOffset": 85962
+    },
+    {
+      "text": "Freedom of thought and courage towards oneself shall teach us to do good, not from fear of punishment, either earthly or heavenly, but from love of the good, from one’s own free choice—without being forced or commanded.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 99599,
+      "endOffset": 99818
+    },
+    {
+      "text": "All our life our shadow, our other self, walks by our side and has its say in everything we do.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 252328,
+      "endOffset": 252423
+    },
+    {
+      "text": "Life consists of work, duty, renunciation, and those very rare moments of pleasure.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 116399,
+      "endOffset": 116482
+    },
+    {
+      "text": "In reality all that life is capable of depends upon this ability to forget the past.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 266683,
+      "endOffset": 266767
+    },
+    {
+      "text": "Time should not be money, or not only money for them; but Time should be love, nature, art, rest, happiness, enjoyment, useful work cheerfully accomplished, good deeds, comfort, relaxation and . . . only then, money.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 169914,
+      "endOffset": 170130
+    },
+    {
+      "text": "Genuine friendship is born in the second world and affects the first world only retroactively.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9564,
+      "endOffset": 9658
+    },
+    {
+      "text": "It is not without right that Freud has called dream interpretation the via regia into the realm of the unconscious.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44796,
+      "endOffset": 44911
+    },
+    {
+      "text": "We want to go through life merrily; we want to be ‘dancers’ in the sense suggested by the great world-wise Nietzsche.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 213879,
+      "endOffset": 213996
+    },
+    {
+      "text": "A correct dream analysis must in fact resolve a dream into many dreams and break up this combination of different dreams.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 47108,
+      "endOffset": 47229
+    },
+    {
+      "text": "The strongest motive power in man is his craving for freedom and independence.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 287996,
+      "endOffset": 288074
+    },
+    {
+      "text": "If the psychotherapeutist is to fulfill his difficult task he must acquaint himself with the patient's second world even more thoroughly than with the first.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12977,
+      "endOffset": 13134
+    },
+    {
+      "text": "The counterpoint is often too obtrusive, so that hate manifests itself with love, scorn with appreciation, defiance with submission.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51026,
+      "endOffset": 51158
+    },
+    {
+      "text": "The Negro stands as a representative of that which is evil in the American; in the Negro the American hates and despises himself.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 31991,
+      "endOffset": 32120
+    },
+    {
+      "text": "All life is a continual game between hope and fulfilment, between expectation and disappointment.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 61141,
+      "endOffset": 61238
+    },
+    {
+      "text": "Without a scapegoat we cannot live; one needs magnanimity of soul to be one’s own scapegoat.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 32503,
+      "endOffset": 32595
+    },
+    {
+      "text": "The original hatred toward the mother has become a hatred toward all women.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 313893,
+      "endOffset": 313968
+    },
+    {
+      "text": "The fight of the sexes has assumed grotesque proportions since it has been carried over from the love region into the social region.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45371,
+      "endOffset": 45503
+    },
+    {
+      "text": "Nothing is more difficult than to go one’s own way and to be an independent personality.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73615,
+      "endOffset": 73703
+    },
+    {
+      "text": "Love is a linking of the first worlds and if it is to be permanent it must journey forth into the second world.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9452,
+      "endOffset": 9563
+    },
+    {
+      "text": "Happiness should not make us reckless; but should our happiness be poisoned by the thought of its inevitable end?",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 141794,
+      "endOffset": 141907
+    },
+    {
+      "text": "It is my belief that we adults cannot love with the love we were capable of in childhood.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 100511,
+      "endOffset": 100600
+    },
+    {
+      "text": "The study of the dream thus makes possible for us the study of the entire thought process.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 48279,
+      "endOffset": 48369
+    },
+    {
+      "text": "The so-called ‘Weltschmerz’ may arise because we have banned nearly all ‘Joy in Life’ from our lives.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 141940,
+      "endOffset": 142041
+    },
+    {
+      "text": "The way to freedom of thought, the way to independence, the way to individuality is opened.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 103874,
+      "endOffset": 103965
+    },
+    {
+      "text": "One would believe that love constitutes the central force of existence, did not a deeper insight into life teach us that hate is the really great motive power of all that happens.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73345,
+      "endOffset": 73524
+    },
+    {
+      "text": "To the modern civilized human being his home seems to be an extremely disagreeable place.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 136135,
+      "endOffset": 136224
+    },
+    {
+      "text": "In other words: they have a ‘bad conscience,’ and think that they do not deserve the joys of life.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 146565,
+      "endOffset": 146663
+    },
+    {
+      "text": "If one thinks how often children, small and big, are reminded of their wickedness, one cannot wonder that there are people who grow up to think themselves evil and contemptible.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150867,
+      "endOffset": 151044
+    },
+    {
+      "text": "Arguing with one who is in love about common sense, religion, education, station, or politics will not affect him in the least.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 209109,
+      "endOffset": 209236
+    },
+    {
+      "text": "Not our children only but all people should be educated up to the joy of life.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 152266,
+      "endOffset": 152344
+    },
+    {
+      "text": "Religion, culture, and society demand that we shall be good; that means, that we shall love our neighbor as ourselves (an impossible task).",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73599,
+      "endOffset": 73738
+    },
+    {
+      "text": "Luck means to adapt oneself to reality, and to make the most of all the possibilities the day brings.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 214852,
+      "endOffset": 214953
+    },
+    {
+      "text": "There is a wide gulf between happiness and the consciousness of happiness.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7012,
+      "endOffset": 7086
+    },
+    {
+      "text": "The impatient person’s world differs from the world of the patient one, in so far as he who is impatient cannot wait for the fruit of his activities.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 217488,
+      "endOffset": 217637
+    },
+    {
+      "text": "Persons who in the ordinary way are incapable of making an independent decision, and who have to ask the opinion of three people before buying a new hat—when suddenly confronted with a difficult task, develop an energy and vigour which astonishes none more than themselves.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 251205,
+      "endOffset": 251478
+    },
+    {
+      "text": "The fact is that all the little ones want to become drivers of some vehicle, that they can play driver, rider, chauffeur, car, train, etc., for hours at a time, that in the first years of their lives their fantasies are fixed only on objects possessing the power of motion, beginning with the baby-carriage and ending with the aeroplane.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 72524,
+      "endOffset": 72861
+    },
+    {
+      "text": "Who, knowing the soul of the neurotic, would have the courage to speak of a murderous guilt?",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9688,
+      "endOffset": 9780
+    },
+    {
+      "text": "Of course we have to consider one thing, this hate will never show itself openly; its existence will work underground, accumulate, pour forth in dreams, until it openly breaks out at the first opportunity, immense and overpowering, and we face the phenomenon overwhelmed and helpless, owing to the elemental and irresistible power of the emotion.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37962,
+      "endOffset": 38308
+    },
+    {
+      "text": "If we find a woman who is all her life torturing her husband with her jealousy, complaining now that he has been looking at some woman too long, now that he stayed out too long, now that he was too friendly with one of her friends, etc., then it is the woman who has seen the weakness of her own character and who, in thought, is guilty of every infidelity which she will not admit even to herself.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 94949,
+      "endOffset": 95347
+    },
+    {
+      "text": "All those who watch with seeing eyes this bitter struggle for the smallest step, the smallest rising step, will mark the power of human ambition.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 60254,
+      "endOffset": 60399
+    },
+    {
+      "text": "The wagon of life rolls with greater tempo over the endless lonely roads when it is harnessed to the passions.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 98337,
+      "endOffset": 98447
+    },
+    {
+      "text": "Joy in beautiful and good things is one of the most uplifting joys in this world.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 152572,
+      "endOffset": 152653
+    },
+    {
+      "text": "We cannot hate so, cannot be so resentful, and cannot be so self-sacrificing.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 100601,
+      "endOffset": 100678
+    },
+    {
+      "text": "Men are unhappy because they have lost the capacity for permanent pleasure, or, better expressed, the happy feeling of the rhythmic alternation between pleasure and pain.",
+      "sourceId": "cfcd0810-0840-4642-ab6f-dd03b64b42fc",
+      "sourceTitle": "stekel_works_3",
+      "sourceFile": "stekel_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 76992,
+      "endOffset": 77162
+    },
+    {
+      "text": "It is only when we win through to the knowledge that all beings (with very few exceptions) are alike, and that good and evil dwell in every breast, that we can recognize in the faults of others, our own, and can attain that all-knowing and all-understanding humility which distinguishes the wise man from the fool.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 170805,
+      "endOffset": 171119
+    },
+    {
+      "text": "An inner restlessness, a discontent that cannot be quenched, a nervous stress permeates the people of our time.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 136319,
+      "endOffset": 136430
+    },
+    {
+      "text": "Man must always carry with him this magic Water of Forgetfulness in order to be able to enjoy life.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 195106,
+      "endOffset": 195205
+    },
+    {
+      "text": "One who is in love has completely identified himself with the beloved.",
+      "sourceId": "6b270f2e-80de-4dda-82b8-366dbec6416a",
+      "sourceTitle": "stekel_works_2",
+      "sourceFile": "stekel_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 166432,
+      "endOffset": 166502
+    },
+    {
+      "text": "The idea of redemption through suffering is deeply engraved in the race consciousness.",
+      "sourceId": "5c2b11a9-4699-4e6b-a6e4-003681b1416a",
+      "sourceTitle": "stekel_works_1",
+      "sourceFile": "stekel_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 209553,
+      "endOffset": 209639
+    }
+  ]
+}

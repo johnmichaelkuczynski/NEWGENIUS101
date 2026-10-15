@@ -1,0 +1,717 @@
+{
+  "thinkerId": "confucius",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "If a man can for the space of one day subdue his selfishness and revert to natural laws, the whole world will call him good.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 259758,
+      "endOffset": 259882
+    },
+    {
+      "text": "The Master said, 'The man of virtue makes the difficulty to be overcome his first business, and success only a subsequent consideration;-- this may be called perfect virtue.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 40089,
+      "endOffset": 40263
+    },
+    {
+      "text": "I have seen men die from treading on water and fire, but I have never seen a man die from treading the course of virtue.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 128730,
+      "endOffset": 128851
+    },
+    {
+      "text": "The Master said, 'He who exercises government by means of his virtue may be compared to the north polar star, which keeps its place and all the stars turn towards it.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 7010,
+      "endOffset": 7177
+    },
+    {
+      "text": "The Master said, 'If the people be led by laws, and uniformity sought to be given them by punishments, they will try to avoid the punishment, but have no sense of shame.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 7377,
+      "endOffset": 7546
+    },
+    {
+      "text": "The Master said, 'They who know the truth are not equal to those who love it, and they who love it are not equal to those who delight in it.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 39496,
+      "endOffset": 39637
+    },
+    {
+      "text": "The Master said, 'The superior man seeks to perfect the admirable qualities of men, and does not seek to perfect their bad qualities.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 91498,
+      "endOffset": 91631
+    },
+    {
+      "text": "The Master said, 'When a prince's personal conduct is correct, his government is effective without the issuing of orders.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 98518,
+      "endOffset": 98639
+    },
+    {
+      "text": "The man, who in the view of gain, thinks of righteousness; who in the view of danger is prepared to give up his life; and who does not forget an old agreement however far back it extends:-- such a man may be reckoned a COMPLETE man.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 109864,
+      "endOffset": 110098
+    },
+    {
+      "text": "The Master said, 'The superior man does not promote a man simply on account of his words, nor does he put aside good words because of the man.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 125783,
+      "endOffset": 125926
+    },
+    {
+      "text": "The Master said, 'Learning without thought is labour lost; thought without learning is perilous.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 10469,
+      "endOffset": 10566
+    },
+    {
+      "text": "The Master said, 'To give one's self earnestly to the duties due to men, and, while respecting spiritual beings, to keep aloof from them, may be called wisdom.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 39897,
+      "endOffset": 40057
+    },
+    {
+      "text": "The Master said, '\"If good men were to govern a country in succession for a hundred years, they would be able to transform the violently bad, and dispense with capital punishments.\"",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 99742,
+      "endOffset": 99923
+    },
+    {
+      "text": "The Master said, 'Suppose a man with the knowledge of Tsang Wu-chung, the freedom from covetousness of Kung-ch'o, the bravery of Chwang of Pien, and the varied talents of Zan Ch'iu; add to these the accomplishments of the rules of propriety and music:-- such a one might be reckoned a COMPLETE man.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 109447,
+      "endOffset": 109746
+    },
+    {
+      "text": "The Master said: I do not see how a man without sincerity can be good for anything.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 311024,
+      "endOffset": 311107
+    },
+    {
+      "text": "The Master said: I have not met one whose love of virtue was equal to his love of sensual beauty.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 316106,
+      "endOffset": 316203
+    },
+    {
+      "text": "When you know a thing, to hold that you know it; and when you do not know a thing, to allow that you do not know it;-- this is knowledge.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 10737,
+      "endOffset": 10875
+    },
+    {
+      "text": "The Master said, 'A man should say, I am not concerned that I have no place, I am concerned how I may fit myself for one.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 23807,
+      "endOffset": 23928
+    },
+    {
+      "text": "The Master said, 'The reason why the ancients did not readily give utterance to their words, was that they feared lest their actions should not come up to them.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25512,
+      "endOffset": 25673
+    },
+    {
+      "text": "The Master said, 'The superior man may indeed have to endure want, but the mean man, when he is in want, gives way to unbridled license.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 120904,
+      "endOffset": 121041
+    },
+    {
+      "text": "The Master said, 'If a man keeps cherishing his old knowledge, so as continually to be acquiring new, he may be a teacher of others.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 9944,
+      "endOffset": 10077
+    },
+    {
+      "text": "The Master said, 'The mind of the superior man is conversant with righteousness; the mind of the mean man is conversant with gain.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 24407,
+      "endOffset": 24538
+    },
+    {
+      "text": "The Master said, 'When we see men of worth, we should think of equalling them; when we see men of a contrary character, we should turn inwards and examine ourselves.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 24559,
+      "endOffset": 24725
+    },
+    {
+      "text": "While Heaven does not let the cause of truth perish, what can the people of K'wang do to me?'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 59042,
+      "endOffset": 59135
+    },
+    {
+      "text": "If his personal conduct is not correct, he may issue orders, but they will not be followed.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 98640,
+      "endOffset": 98732
+    },
+    {
+      "text": "Men of principle are sure to be bold, but those who are bold may not always be men of principle.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 107436,
+      "endOffset": 107533
+    },
+    {
+      "text": "The Master said, 'He who speaks without modesty will find it difficult to make his words good.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 113013,
+      "endOffset": 113108
+    },
+    {
+      "text": "The Master said, 'I will not be concerned at men's not knowing me; I will be concerned at my own want of ability.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 115473,
+      "endOffset": 115587
+    },
+    {
+      "text": "The Master said, 'He who requires much from himself and little from others, will keep himself from being the object of resentment.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 124430,
+      "endOffset": 124561
+    },
+    {
+      "text": "The superior man is anxious lest he should not get truth; he is not anxious lest poverty should come upon him.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 127705,
+      "endOffset": 127816
+    },
+    {
+      "text": "The Master said, 'Without recognising the ordinances of Heaven, it is impossible to be a superior man.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 169146,
+      "endOffset": 169248
+    },
+    {
+      "text": "In matters which he does not understand, the wise man will always reserve his judgment.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 237906,
+      "endOffset": 237993
+    },
+    {
+      "text": "In the matter of food and lodging, the nobler type of man does not seek mere repletion and comfort.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 251677,
+      "endOffset": 251776
+    },
+    {
+      "text": "The nobler sort of man is proficient in the knowledge of his duty; the inferior man is proficient only in money-making.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 254855,
+      "endOffset": 254974
+    },
+    {
+      "text": "The man of wisdom does not vacillate; the man of natural goodness does not fret; the man of valour does not fear.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 259475,
+      "endOffset": 259588
+    },
+    {
+      "text": "The Master said: The nobler sort of man emphasises the good qualities in others, and does not accentuate the bad.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 261593,
+      "endOffset": 261706
+    },
+    {
+      "text": "The Master said: In private life, show self-respect; in the management of affairs, be attentive and thorough; in your dealings with others, be honest and conscientious.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 263174,
+      "endOffset": 263342
+    },
+    {
+      "text": "The failure to cultivate virtue, the failure to examine and analyse what I have learnt, the inability to move towards righteousness after being shown the way, the inability to correct my faults--these are the causes of my grief.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 296657,
+      "endOffset": 296885
+    },
+    {
+      "text": "The Master said, 'If a minister make his own conduct correct, what difficulty will he have in assisting in government?",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 100118,
+      "endOffset": 100236
+    },
+    {
+      "text": "The Master said, 'If a man take no thought about what is distant, he will find sorrow near at hand.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 123983,
+      "endOffset": 124083
+    },
+    {
+      "text": "The Master said, 'I do not know how a man without truthfulness is to get on.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 12608,
+      "endOffset": 12684
+    },
+    {
+      "text": "The Master said, 'If a man be without the virtues proper to humanity, what has he to do with the rites of propriety?",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 13986,
+      "endOffset": 14102
+    },
+    {
+      "text": "If a man be without the virtues proper to humanity, what has he to do with music?'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 14103,
+      "endOffset": 14185
+    },
+    {
+      "text": "The Master said, 'If a man in the morning hear the right way, he may die in the evening without regret.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 22770,
+      "endOffset": 22874
+    },
+    {
+      "text": "A superior man may be made to go to the well, but he cannot be made to go down into it.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 40959,
+      "endOffset": 41047
+    },
+    {
+      "text": "The Master said, 'While you are not able to serve men, how can you serve their spirits?'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 77350,
+      "endOffset": 77438
+    },
+    {
+      "text": "Confucius replied, 'There is government, when the prince is prince, and the minister is minister; when the father is father, and the son is son.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 90434,
+      "endOffset": 90579
+    },
+    {
+      "text": "If you lead on the people with correctness, who will dare not to be correct?'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 91785,
+      "endOffset": 91862
+    },
+    {
+      "text": "The Master said, 'If a truly royal ruler were to arise, it would still require a generation, and then virtue would prevail.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 99972,
+      "endOffset": 100096
+    },
+    {
+      "text": "The Master said, 'Since I cannot get men pursuing the due medium, to whom I might communicate my instructions, I must find the ardent and the cautiously-decided.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 103973,
+      "endOffset": 104134
+    },
+    {
+      "text": "The Master said, 'The superior man is affable, but not adulatory; the mean man is adulatory, but not affable.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 104586,
+      "endOffset": 104696
+    },
+    {
+      "text": "The Master said, 'Can there be love which does not lead to strictness with its object?",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 108159,
+      "endOffset": 108245
+    },
+    {
+      "text": "The Master said, 'The superior man is modest in his speech, but exceeds in his actions.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 114907,
+      "endOffset": 114995
+    },
+    {
+      "text": "The Master said, 'The superior man is dignified, but does not wrangle.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 125655,
+      "endOffset": 125725
+    },
+    {
+      "text": "The Master said, 'The superior man cannot be known in little matters; but he may be intrusted with great concerns.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 128431,
+      "endOffset": 128545
+    },
+    {
+      "text": "The small man may not be intrusted with great concerns, but he may be known in little matters.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 128546,
+      "endOffset": 128641
+    },
+    {
+      "text": "The Master said, 'The superior man is correctly firm, and not firm merely.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 129032,
+      "endOffset": 129107
+    },
+    {
+      "text": "If terms are not correctly defined, words will not harmonise with things.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 237994,
+      "endOffset": 238067
+    },
+    {
+      "text": "If words do not harmonise with things, public business will remain undone.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 238068,
+      "endOffset": 238142
+    },
+    {
+      "text": "The Master replied: The higher type of man is one who acts before he speaks, and professes only what he practises.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 253314,
+      "endOffset": 253428
+    },
+    {
+      "text": "The Master said: The higher type of man is catholic in his sympathy and free from party bias; the lower type of man is biassed and un-sympathetic.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 253430,
+      "endOffset": 253576
+    },
+    {
+      "text": "A man without charity in his heart--what has he to do with ceremonies?",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 253578,
+      "endOffset": 253648
+    },
+    {
+      "text": "Only he who has the spirit of goodness within him is really able either to love or to hate.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 254473,
+      "endOffset": 254564
+    },
+    {
+      "text": "In a state governed on right principles, poverty and low station are things to be ashamed of; in an ill-governed state, riches and rank are things to be ashamed of.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 259309,
+      "endOffset": 259473
+    },
+    {
+      "text": "The nobler sort of man is dignified but not proud; the inferior man is proud but not dignified.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 263940,
+      "endOffset": 264035
+    },
+    {
+      "text": "The princely type of man is modest in his speech, but liberal in his performance.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 264757,
+      "endOffset": 264838
+    },
+    {
+      "text": "The higher type of man is firm but not quarrelsome; sociable, but not clannish.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 266657,
+      "endOffset": 266736
+    },
+    {
+      "text": "When you know, to know that you know, and when you do not know, to know that you do not know--that is true knowledge.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 310359,
+      "endOffset": 310476
+    },
+    {
+      "text": "Instead of being concerned that you are not known, seek to be worthy of being known.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 312625,
+      "endOffset": 312709
+    },
+    {
+      "text": "I have never met a man who could see his own faults and arraign himself at the bar of his own conscience.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 313204,
+      "endOffset": 313309
+    },
+    {
+      "text": "The Master said: He whose mind is proof against the slow-soaking poison of slander and the sharp stings of calumny, may be called clear-sighted, and far-seeing as well.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 318529,
+      "endOffset": 318697
+    },
+    {
+      "text": "The Master said, 'If the will be set on virtue, there will be no practice of wickedness.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 21407,
+      "endOffset": 21496
+    },
+    {
+      "text": "The superior man thinks of the sanctions of law; the small man thinks of favours which he may receive.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 23299,
+      "endOffset": 23402
+    },
+    {
+      "text": "The Master said, 'The superior man wishes to be slow in his speech and earnest in his conduct.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25760,
+      "endOffset": 25855
+    },
+    {
+      "text": "The Master said, 'At first, my way with men was to hear their words, and give them credit for their conduct.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 29102,
+      "endOffset": 29210
+    },
+    {
+      "text": "When the accomplishments and solid qualities are equally blended, we then have the man of virtue.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 39204,
+      "endOffset": 39302
+    },
+    {
+      "text": "The Master said, 'The man who is fond of daring and is dissatisfied with poverty, will proceed to insubordination.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 54395,
+      "endOffset": 54509
+    },
+    {
+      "text": "The Master said, 'To subdue one's self and return to propriety, is perfect virtue.",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 85241,
+      "endOffset": 85323
+    },
+    {
+      "text": "The Master said, 'The man of perfect virtue is cautious and slow in his speech.'",
+      "sourceId": "71fcaae2-eae5-4e5a-8049-a40f7c17d523",
+      "sourceTitle": "CONFUCIUS",
+      "sourceFile": "confucius_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 86472,
+      "endOffset": 86552
+    }
+  ]
+}

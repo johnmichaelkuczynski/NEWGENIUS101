@@ -1,0 +1,78 @@
+{
+  "thinkerId": "galileo",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Inasmuch as the Bible constantly requires interpretation to explain how very different the true sense of the words is from their apparent signification, it appears to me that it should be quoted in scientific discussions only as the last resort.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 245617,
+      "endOffset": 245869
+    },
+    {
+      "text": "In truth, Holy Scripture and Nature both come from the Divine Word, the one being the dictation of the Holy Ghost, while the other is the executor of God’s decrees; but it was fitting that, in the Scriptures, the language should be adapted to the people’s understanding in many things where the appearance differs widely from the reality.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 245870,
+      "endOffset": 246213
+    },
+    {
+      "text": "The fact then that fish are able to remain motionless under water is a conclusive reason for thinking that the material of their bodies has the same specific gravity as that of water; accordingly, if in their make-up there are certain parts which are heavier than water there must be others which are lighter, for otherwise they would not produce equilibrium.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 69701,
+      "endOffset": 70064
+    },
+    {
+      "text": "Finally, in the investigation of naturally accelerated motion we were led, by hand as it were, in following the habit and custom of nature herself, in all her various other processes, to employ only those means which are most common, simple and easy.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 120493,
+      "endOffset": 120751
+    },
+    {
+      "text": "Concerning motions and their velocities or momenta [movimenti e lor velocità o impeti] whether uniform or naturally accelerated, one cannot speak definitely until he has established a measure for such velocities and also for time.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 49547,
+      "endOffset": 49789
+    },
+    {
+      "text": "Place a heavy body upon a yielding material, and leave it there without any pressure except that owing to its own weight; it is clear that if one lifts this body a cubit or two and allows it to fall upon the same material, it will, with this impulse, exert a new and greater pressure than that caused by its mere weight; and this effect is brought about by the [weight of the] falling body together with the velocity acquired during the fall, an effect which will be greater and greater according to the height of the fall, that is according as the velocity of the falling body becomes greater.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 126083,
+      "endOffset": 126684
+    },
+    {
+      "text": "Since, as it seems to me, the force [virtù] impressed by the agent projecting the body upwards diminishes continuously, this force, so long as it was greater than the contrary force of gravitation, impelled the body upwards; when the two are in equilibrium the body ceases to rise and passes through the state of rest in which the impressed impetus [impeto] is not destroyed, but only its excessover the weight of the body has been consumed — the excess which caused the body to rise.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 130594,
+      "endOffset": 131108
+    },
+    {
+      "text": "Nature, on the other hand, is inexorable and immutable; she is not at all concerned whether the hidden reasons and means through which she works are or are not intelligible to man, because she never oversteps the limit of the laws imposed upon her.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 246214,
+      "endOffset": 246475
+    }
+  ]
+}

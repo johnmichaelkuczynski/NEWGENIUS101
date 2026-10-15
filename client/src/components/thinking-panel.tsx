@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Brain, Sparkles, Minimize2, Maximize2, ChevronDown } from "lucide-react";
-import { getQuotesForThinker, DEFAULT_QUOTES } from "@/data/thinker-quotes";
 import { Button } from "@/components/ui/button";
+import type { ThinkingQuoteResponse } from "@shared/thinking-quotes";
 
 interface ThinkingPanelProps {
   thinkerName: string;
@@ -12,98 +13,56 @@ interface ThinkingPanelProps {
 type PanelSize = 'full' | 'compact' | 'minimized';
 
 export function ThinkingPanel({ thinkerName, isActive, figureId }: ThinkingPanelProps) {
-  const [thoughts, setThoughts] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [panelSize, setPanelSize] = useState<PanelSize>('full');
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  
-  const stripMarkdown = (text: string): string => {
-    return text
-      .replace(/^#{1,6}\s+/gm, '')
-      .replace(/\*\*([^*]+)\*\*/g, '$1')
-      .replace(/\*([^*]+)\*/g, '$1')
-      .replace(/`([^`]+)`/g, '$1')
-      .replace(/^\s*[-*]\s+/gm, '')
-      .trim();
-  };
+  const groupRef = useRef<HTMLDivElement>(null);
+  const [flowDuration, setFlowDuration] = useState(1200);
+  // Prefetch on author selection, before generation starts, and reuse the bank.
+  const { data, isError, isLoading } = useQuery<ThinkingQuoteResponse>({
+    queryKey: ["/api/figures", figureId, "thinking-quotes"],
+    enabled: !!figureId,
+    staleTime: Infinity,
+    queryFn: async ({ signal }) => {
+      const response = await fetch(`/api/figures/${encodeURIComponent(figureId!)}/thinking-quotes`, { signal });
+      if (!response.ok) throw new Error("Source quotations are unavailable");
+      const bank = await response.json() as ThinkingQuoteResponse;
+      if (bank.thinkerId !== figureId || !Array.isArray(bank.items) || !bank.items.length) {
+        throw new Error("Source quotations are unavailable");
+      }
+      return bank;
+    },
+  });
+  const thoughts = useMemo(() => {
+    if (!isActive || !data || data.thinkerId !== figureId) return [];
+    const items = [...data.items];
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    return items;
+  }, [data, figureId, isActive]);
 
   useEffect(() => {
-    if (isActive && figureId) {
-      // Fetch real quotes from the database API
-      fetch(`/api/figures/${figureId}/thinking-quotes`)
-        .then(res => res.json())
-        .then(data => {
-          let quotesToUse: string[];
-          if (data.quotes && data.quotes.length >= 3) {
-            // Use real quotes from database
-            quotesToUse = data.quotes;
-          } else {
-            // Fall back to hardcoded quotes if available, then DEFAULT_QUOTES
-            const hardcodedQuotes = getQuotesForThinker(thinkerName, figureId);
-            quotesToUse = hardcodedQuotes !== DEFAULT_QUOTES ? hardcodedQuotes : DEFAULT_QUOTES;
-          }
-          const shuffled = [...quotesToUse].sort(() => Math.random() - 0.5);
-          setThoughts(shuffled);
-          setCurrentIndex(0);
-          
-          intervalRef.current = setInterval(() => {
-            setCurrentIndex(prev => (prev + 1) % shuffled.length);
-          }, 2000);
-        })
-        .catch(() => {
-          // On error, use hardcoded quotes
-          const thinkerQuotes = getQuotesForThinker(thinkerName, figureId);
-          const shuffled = [...thinkerQuotes].sort(() => Math.random() - 0.5);
-          setThoughts(shuffled);
-          setCurrentIndex(0);
-          
-          intervalRef.current = setInterval(() => {
-            setCurrentIndex(prev => (prev + 1) % shuffled.length);
-          }, 2000);
-        });
-    } else if (isActive) {
-      // No figureId, use hardcoded quotes
-      const thinkerQuotes = getQuotesForThinker(thinkerName, figureId);
-      const shuffled = [...thinkerQuotes].sort(() => Math.random() - 0.5);
-      setThoughts(shuffled);
-      setCurrentIndex(0);
-      
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % shuffled.length);
-      }, 2000);
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-      setThoughts([]);
-      setCurrentIndex(0);
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isActive, thinkerName, figureId]);
+    setCurrentIndex(0);
+    if (!isActive || !thoughts.length) return;
+    const timer = setInterval(() => setCurrentIndex(prev => (prev + 1) % thoughts.length), 8000);
+    return () => clearInterval(timer);
+  }, [thoughts, isActive]);
 
   useEffect(() => {
-    if (scrollRef.current && isActive) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [currentIndex, isActive]);
+    const group = groupRef.current;
+    if (!group) return;
+    const measure = () => setFlowDuration(Math.max(group.getBoundingClientRect().height / 18, 30));
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(group);
+    return () => observer.disconnect();
+  }, [thoughts, panelSize, isActive]);
 
   if (!isActive) return null;
-
-  // Show more quotes to fill the panel - up to 12 visible at once
-  const visibleThoughts = thoughts.slice(0, currentIndex + 1).slice(-12);
-  
-  const cycleSize = () => {
-    if (panelSize === 'full') setPanelSize('compact');
-    else if (panelSize === 'compact') setPanelSize('minimized');
-    else setPanelSize('full');
-  };
+  const statusText = !figureId ? "Select a thinker to view source quotations."
+    : isLoading ? "Loading source quotations…"
+    : isError || !thoughts.length ? "Source quotations are unavailable for this thinker." : null;
 
   // Minimized view - just a small bar
   if (panelSize === 'minimized') {
@@ -124,7 +83,7 @@ export function ThinkingPanel({ thinkerName, isActive, figureId }: ThinkingPanel
 
   // Compact view - header + current thought only
   if (panelSize === 'compact') {
-    const currentThought = visibleThoughts[visibleThoughts.length - 1];
+    const currentThought = thoughts.length ? thoughts[currentIndex % thoughts.length] : undefined;
     return (
       <div className="w-56 bg-[#0f172a] border-l border-[#3b82f6]/30 flex flex-col shadow-inner">
         <div className="p-2 border-b border-[#3b82f6]/30 bg-[#0f172a] shrink-0 flex items-center justify-between">
@@ -142,10 +101,11 @@ export function ThinkingPanel({ thinkerName, isActive, figureId }: ThinkingPanel
           </div>
         </div>
         {currentThought && (
-          <div className="p-2 text-xs text-[#f8fafc] italic font-serif line-clamp-2">
-            "{stripMarkdown(currentThought)}"
+          <div className="p-2 text-xs text-[#f8fafc] italic font-serif line-clamp-2" title={`${currentThought.text} — ${currentThought.sourceTitle}`}>
+            “{currentThought.text}”
           </div>
         )}
+        {statusText && <p className="p-2 text-xs text-[#94a3b8]" role="status">{statusText}</p>}
         <div className="h-1 bg-[#1e293b]">
           <div className="h-full bg-[#3b82f6] animate-pulse" style={{ width: '100%' }} />
         </div>
@@ -167,7 +127,7 @@ export function ThinkingPanel({ thinkerName, isActive, figureId }: ThinkingPanel
                 {thinkerName} is thinking...
               </p>
               <p className="text-xs text-[#94a3b8] italic">
-                Consulting the archives
+                From the author's writings
               </p>
             </div>
           </div>
@@ -182,31 +142,33 @@ export function ThinkingPanel({ thinkerName, isActive, figureId }: ThinkingPanel
         </div>
       </div>
       
-      <div 
-        ref={scrollRef}
-        className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col justify-end"
-      >
-        <div className="space-y-3">
-          {visibleThoughts.map((thought, idx) => (
-            <div
-              key={`${currentIndex}-${idx}`}
-              className={`text-xs leading-relaxed text-[#f8fafc] italic font-serif transition-all duration-700 ${
-                idx === visibleThoughts.length - 1 
-                  ? 'opacity-100' 
-                  : idx === visibleThoughts.length - 2
-                    ? 'opacity-80'
-                    : idx === visibleThoughts.length - 3
-                      ? 'opacity-65'
-                      : 'opacity-50'
-              }`}
-              style={{
-                animation: idx === visibleThoughts.length - 1 ? 'fadeSlideIn 0.7s ease-out' : undefined
-              }}
-            >
-              <span className="text-[#3b82f6]">"</span>{stripMarkdown(thought)}<span className="text-[#3b82f6]">"</span>
-            </div>
-          ))}
-        </div>
+      <div className="flex-1 min-h-0 overflow-hidden motion-reduce:overflow-y-auto relative" data-testid="thinking-quotes-viewport">
+        {statusText && <p className="p-4 text-xs text-[#94a3b8]" role="status">{statusText}</p>}
+        {thoughts.length > 0 && (
+          <div
+            key={figureId}
+            className="thinking-quote-flow absolute top-0 inset-x-0 px-4"
+            style={{ animationDuration: `${flowDuration}s` }}
+            data-testid="thinking-quotes-flow"
+          >
+            {[0, 1].map(copy => (
+              <div key={copy} ref={copy === 0 ? groupRef : undefined} aria-hidden={copy === 1 ? true : undefined} className={`space-y-4 pt-4 pb-4${copy === 1 ? " motion-reduce:hidden" : ""}`}>
+                {thoughts.map((thought, idx) => (
+                  <blockquote
+                    key={`${thought.sourceId}-${thought.startOffset}-${idx}`}
+                    className="text-xs leading-relaxed text-[#f8fafc] font-serif"
+                    title={`${thought.sourceTitle}${thought.sourceFile ? ` · ${thought.sourceFile}` : ""}`}
+                    data-source-id={thought.sourceId}
+                    data-source-start={thought.startOffset}
+                  >
+                    <p className="italic"><span className="text-[#3b82f6]">“</span>{thought.text}<span className="text-[#3b82f6]">”</span></p>
+                    <cite className="mt-1 block text-[10px] leading-snug text-[#94a3b8] not-italic">— {thinkerName}</cite>
+                  </blockquote>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       
       <div className="p-2 border-t border-[#3b82f6]/30 bg-[#0f172a] shrink-0">

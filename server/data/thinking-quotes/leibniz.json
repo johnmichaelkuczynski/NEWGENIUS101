@@ -1,0 +1,600 @@
+{
+  "thinkerId": "leibniz",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "In God is Power, which is the source of all; then Knowledge, which contains the detail of ideas; and finally Will, which effects changes or products according to the principle of the best.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2200761,
+      "endOffset": 2200981
+    },
+    {
+      "text": "Now, as there is an infinity of possible universes in the idea of God, and as only one of them can exist, there must he a sufficient reason for the choiceof God,whichdetermineshimforone ratherthan for another.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2203047,
+      "endOffset": 2203290
+    },
+    {
+      "text": "God is the first reason of things: for such things as are bounded, as all that which we see and experience, are contingent and have nothing in them to render their existence necessary, it being plain that time, space and matter, united and uniform in themselves and indifferent to everything, might have received entirely other motions and shapes, and in another order.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1028430,
+      "endOffset": 1028860
+    },
+    {
+      "text": "The understanding furnishes the principle of evil, without being sullied by it, without being evil; it represents natures as they exist in the eternal verities; it contains within it the reason wherefore evil is permitted: but the will tends only towards good.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1243256,
+      "endOffset": 1243557
+    },
+    {
+      "text": "It is enough to state that the author believes that space can be annihilated by the divine power, but in entirety and not in portions, and that we could exist alone with God even if there were neither space nor matter, since we do not contain within ourselves the notion of the existence of external things.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1482769,
+      "endOffset": 1483131
+    },
+    {
+      "text": "In like manner, to admit a vacuum in nature, is ascribing to God a very imperfect work: ’tis violating the grand principle of the necessity of a sufficient reason; which many have talked of, without understanding its true meaning; as I have lately shown, in proving, by that principle, that space is only an order of things, as time also is, and not at all an absolute being.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2274225,
+      "endOffset": 2274669
+    },
+    {
+      "text": "In this I still only attribute to souls and to bodies for all time and everywhere what we experience in them every time that the experience is distinct, that is to say, mechanical laws in bodies and internal actions in the soul: the whole consisting only in the present state joined with the tendency to changes, which take place in the body according to the moving forces and in the soul according to the perceptions of good and evil.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2036467,
+      "endOffset": 2036984
+    },
+    {
+      "text": "God was led infallibly by his wisdom and by his goodness to create the world through his power, and to give it the best possible form; but he was not led thereto of necessity, and the whole took place without any diminution of hisperfect and supreme wisdom.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1507434,
+      "endOffset": 1507737
+    },
+    {
+      "text": "Far from being true that this conduct is contrary to goodness, it is supreme goodness which led him to it.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2145088,
+      "endOffset": 2145213
+    },
+    {
+      "text": "I deny the major of this argument; it is rather true liberty and the most perfect, to be able to use one’s free will for the best, and to always exercise this power without ever being turned from it either by external force or by internal passions, the first of which causes slavery of the body, the second, slavery of the soul.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2145532,
+      "endOffset": 2145921
+    },
+    {
+      "text": "There is nothing less servile than to be always led toward the good, and always by one’s own inclination, without any constraint and without any displeasure.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2145923,
+      "endOffset": 2146105
+    },
+    {
+      "text": "After all, if God does not intend the good of intelligent creatures, if he has no other principles of justice than his power alone, which makes him produce either arbitrarily that which chance presents to him, or by necessity all that which is possible, without the intervention of choice founded on good, how can he make himself worthy of love?",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1462760,
+      "endOffset": 1463164
+    },
+    {
+      "text": "We can even say that it is because he is a spirit that God is the originator of existences, for if he had lacked the power of will to choose what is best, there would have been no reason why one possible being should exist rather than any other.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 382409,
+      "endOffset": 382702
+    },
+    {
+      "text": "Now, by that single principle, vis: that there ought, to le a sufficient reason why things should le so, and not otherwise, one may demonstrate the being of a God, and all the other parts of metaphysics or natural theology; and even, in some measure, those principles of natural philosophy, that are independent upon mathematics: I mean, the dynamic principles,orthe principles of force.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2237557,
+      "endOffset": 2238006
+    },
+    {
+      "text": "As everything that really exists is of the nature of spiritual or metaphysical points (), it follows that space and matter in the ordinary sense can only have a phenomenal existence (), being dependent not on the nature of the monads themselves but on the way in which they are perceived.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2773046,
+      "endOffset": 2773384
+    },
+    {
+      "text": "It must be stipulated, however, that she shall not be required to abjure her former religion, and that no wide range of controversies or disputes shall be proposed to her as articles of faith; but that she shall be instructed with all possible brevity and simplicity, and most especially in those principles which are of indispensable necessity and connected with salvation — viz. renunciation of self, daily repentance, humility towards God, condescension and tenderness for the poor, imitation of the example of Christ, and the love of God and of her neighbour.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 247709,
+      "endOffset": 248367
+    },
+    {
+      "text": "The supreme goodness of God causes his antecedent will to repel all evil, but moral evil more than any other: it only admits evil at all for irresistible superior reasons, and with great correctives which repair its ill effects to good advantage.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1152480,
+      "endOffset": 1152769
+    },
+    {
+      "text": "Whence it may not inaptly be said that the gift of penance and of pardon (not to speak of the other favours, by which God assists and prevents us, even before the work of regeneration is complete,) is a “grace given gratuitously whereas the infusion of the new habit is a grace given to penitents in virtue of an institution congruous to the Divine wisdom— “a grace which renders us grateful and pleasing” to God, which really operates a conversion of our mind, and crowns the whole work of our regeneration.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 46492,
+      "endOffset": 47090
+    },
+    {
+      "text": "There was therefore in him a reason anterior to the resolution; and, as I have said so many times, it was neither by chance nor without cause, nor even by necessity, that God created this world, but rather as a result of his inclination, which always prompts him to the best.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1536982,
+      "endOffset": 1537307
+    },
+    {
+      "text": "Being then obliged to admit that it is not possible for the soul or any true substancetoreceive any influencefrom without, if it benot bythe divine omnipotence I wasledinsensiblytoan opinion whichsurprised me butwhich appears inevitable and which has in truth great advantages and many beauties.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1821432,
+      "endOffset": 1821770
+    },
+    {
+      "text": "IN ADDITION IT seems that the thoughts which we have just explained and particularly the great principle of the perfection of God’s operations and the concept of substance which includes all its changes with all its accompanying circumstances, far from injuring, serve rather to confirm religion, serve to dissipate great difficulties, to inflame souls with a divine love and to raise the mind to a knowledge of incorporeal substances much more than the present- day hypotheses.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 369431,
+      "endOffset": 369983
+    },
+    {
+      "text": "If the will of God did not have for a rule the principle of the best, it would either tend toward evil, which wouldbetheworst;oritwould beinsomeway indifferentto goodand to evil, and would be guided by chance: but a will which would allow itself always to act by chance, would not be worth more for the government of the universe than the fortuitous concourse of atoms, without there being any divinity therein.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2148890,
+      "endOffset": 2149370
+    },
+    {
+      "text": "Philosophers have been greatly puzzled over the origin of forms, entelechies, or souls; but to-day, when we know by exact investigations of plants, insects and animals, that organic bodies in nature are never produced from chaos or from putrefaction, but always from seeds, in which there was undoubtedly some pre-formation, it has been thought that not only the organic body was already there before conception, but also a soul in this body, and, in a word, the animal itself; and that by means of conception this animal has merely been disposed to a greater transformation, in order to become an animal of another kind.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2211997,
+      "endOffset": 2212721
+    },
+    {
+      "text": "The primitive truths of fact are, as Descartes held, those of internal experience, and the derivative truths are inferred from them in accordance with the principle of sufficient reason, by their agreement with our perception of the world as a whole.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2784112,
+      "endOffset": 2784402
+    },
+    {
+      "text": "At the same time,if therebe areality intheessences orpossibilities,or in the eternal truths, this reality must be founded in something existing and actual, consequently in the existence of the necessary Being, in whom essence includes existence, or with whom it is sufficient to be possible in ordertobe actual.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1595825,
+      "endOffset": 1596182
+    },
+    {
+      "text": "Plato, on the contrary, has very well shown that God being the author of things and provided he acts according to wisdom, true physics is to know the ends and the uses of things, for science is the knowledge of reasons, and the reasons of what has been made by an understanding are the final causes or the designs of him who made them, and these appear from the use and the function which they have.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1641356,
+      "endOffset": 1641830
+    },
+    {
+      "text": "For I think that it is because of reasons determined by wisdom and order that God has been led to make the laws which we observe in nature; and hence it is evident, according to the remark which I formerly made on the occasion of an optical law and which the celebrated Molineux later highly approved in his Dioptrics, that final cause is not only useful to virtue andto piety inethicsandinnatural theology, butthateven in physicsit serves to find and to discover hidden truths.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1914670,
+      "endOffset": 1915230
+    },
+    {
+      "text": "In the end, however, all these reasons resolve into that which is its own reason, i.e. self-subsistent existence, or God.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 403320,
+      "endOffset": 403460
+    },
+    {
+      "text": "The privilege of free will consists of standing at the crossroads of life and only doing what we desire; and we can only desire what we consider good.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 439546,
+      "endOffset": 439723
+    },
+    {
+      "text": "For he will recognize that everything is for the best, not only overall but also for him specifically; so everything turns to good for those who love God.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 464198,
+      "endOffset": 464379
+    },
+    {
+      "text": "You know that I had gone a little too far formerly, and that I began to incline to the side of the Spinozists, who leave only infinite power to God, without recognizing either perfection or wisdom as respects him, and, scorning the search after final causes, derive everything frombrutenecessity.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 554588,
+      "endOffset": 554932
+    },
+    {
+      "text": "In the first sense the Stoics said that the wise man only is free; and in fact the spirit is not free when it is occupied with a great passion, for one cannot then will as he ought to, that is to say, with the deliberation which is requisite.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 630575,
+      "endOffset": 630865
+    },
+    {
+      "text": "When we reason about the liberty of the will, or about the free will, we do not ask if the man can do what he wishes, but if there is enough independence in his will itself.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 635256,
+      "endOffset": 635464
+    },
+    {
+      "text": "Moral truth is called veracity by some, and metaphysical truth is taken commonly by metaphysicians for an attribute of being, but it is a very useless attribute and one almost void of meaning.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 675002,
+      "endOffset": 675230
+    },
+    {
+      "text": "Power relates to being, wisdom or understanding to truth, and will to good.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1029883,
+      "endOffset": 1029970
+    },
+    {
+      "text": "The apostle, they say (Rom. iii. 8), is right to disapprove of the doing of evil that good may come, but one cannot disapprove that God, through his exceeding power, derive from the permitting of sins greater goods than such as occurred before the sins.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1035327,
+      "endOffset": 1035626
+    },
+    {
+      "text": "In this sense it may be said that God tends to all good, as good, ad perfectionem simpliciter simplicem,to speak like the Schoolmen, and that by an antecedent will.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1054788,
+      "endOffset": 1054980
+    },
+    {
+      "text": "Concerning sin or moral evil, although it happens very often that it may serve as a means of obtaining good or of preventing another evil, it is not this that renders it a sufficient object of the divine will or a legitimate object of a created will.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1057549,
+      "endOffset": 1057845
+    },
+    {
+      "text": "The current is the cause of the boat’s movement, but not of its retardation; God is the cause of perfection in the nature and the actions of the creature, but the limitation of the receptivity of the creature is the cause of the defects there are in its action.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1068210,
+      "endOffset": 1068523
+    },
+    {
+      "text": "For the case of the siege of Keilah forms part of a possible world, which differs from ours only in all that is connected with this hypothesis, and the idea of this possible world represents that whichwouldhappeninthiscase.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1084019,
+      "endOffset": 1084278
+    },
+    {
+      "text": "Were it not for this great principle we could never prove the existence of God, and we should lose an infinitude of very just and very profitable arguments whereof it is the foundation; moreover, it suffers no exception, for otherwise its force would be weakened.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1088024,
+      "endOffset": 1088331
+    },
+    {
+      "text": "God knows when a sinner will be so hardened that thereafter nothing can be done for him: not indeed that it would be impossible for him to do penance or that sufficient grace needs must be refused to him after a certain term, a grace that never fails; but because there will be a time whereafter he will no more approach the ways of salvation.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1107003,
+      "endOffset": 1107410
+    },
+    {
+      "text": "For apart from the fact that the physical influence of one of these substances on the other is inexplicable, I recognized that without a complete derangement of the laws of Nature the soul could not act physically upon the body.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1113520,
+      "endOffset": 1113787
+    },
+    {
+      "text": "There is good reason to believe, following the parallelism of the two realms, that of final causes and that of efficient causes, that God has established in the universe a connexion between punishment or reward and bad or good action, in accordance wherewith the first should always be attracted by the second, and virtue and vice obtain their reward and their punishment in consequence of the natural sequence of things, which contains still another kind of pre-established harmony than that which appears in the communication between the soul and the body.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1130581,
+      "endOffset": 1131229
+    },
+    {
+      "text": "Perhaps then this principle of the fitness of things would no longer apply to beings acting without true freedom or exemption from absolute necessity; and in that case corrective justice alone would be administered, and not punitive justice.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1131336,
+      "endOffset": 1131614
+    },
+    {
+      "text": "I have shown also that each point has its own difficulty; but the greatest of these lies in maintaining that God co-operates morally in moral evil, that is, in sin, without being the originator of the sin, and even without beingaccessarythereto.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1142097,
+      "endOffset": 1142382
+    },
+    {
+      "text": "All is connected in Nature; and if a skilled artisan, an engineer, an architect, a wise politician often makes one and the same thing serve several ends, if he makes a double hit with a single throw, when that can be done conveniently, one may say that God, whose wisdom and power are perfect, does so always.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1161622,
+      "endOffset": 1161987
+    },
+    {
+      "text": "Wisdom only shows God the best possible exercise of his goodness: after that, the evil that occurs is aninevitable resultofthe best.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1178315,
+      "endOffset": 1178467
+    },
+    {
+      "text": "All these objections depend almost on the same sophism; they change and mutilate the fact, they only half record things: God has care for men, he loves the human race, he wishes it well, nothing so true.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1181076,
+      "endOffset": 1181317
+    },
+    {
+      "text": "There are innumerable others which attract the inclination of God: from all these inclinations there results the most possible good, and it turns out that if there were only virtue, if there were only rational creatures, there would be less good.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1187490,
+      "endOffset": 1187776
+    },
+    {
+      "text": "It is true that God makes of matter and of spirits whatever he wills; but he is like a good sculptor, who will make from his block of marble only that which hejudgestobethebest, andwhojudgeswell.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1197940,
+      "endOffset": 1198168
+    },
+    {
+      "text": "If there are any who think otherwise, so much the worse for them, they are malcontents in the State of the greatest and the best of all monarchs; and they are wrong not to take advantage of the examples he has given them of his wisdom and his infinite goodness, whereby he reveals himself as being not only wonderful,butalso worthyoflove beyond allthings.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1214483,
+      "endOffset": 1214899
+    },
+    {
+      "text": "It is therefore not God who is the cause of moral evil: but he is the cause of physical evil, that is, of the punishment of moral evil.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1251902,
+      "endOffset": 1252064
+    },
+    {
+      "text": "Jacquelot, with other able men, does not differ in opinion from me,whenforexamplehesays, ofhistreatiseonthe Conformity of Faith with Reason: ‘Those who are puzzled by these difficulties seem to be too limited in their outlook, and to wish to reduce all God’s designs to their own interests.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1259218,
+      "endOffset": 1259552
+    },
+    {
+      "text": "One cannot reasonably doubt the existence of pain among animals; but it seems as if their pleasures and their pains are not so keen as they are in man: for animals, since they do not reflect, are susceptible neither to the grief that accompanies pain, nor to the joy that accompanies pleasure.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1277801,
+      "endOffset": 1278145
+    },
+    {
+      "text": "That being the case, all the sensations not unpleasing to us, all the exercises of our powers that do not incommode us, and whose prevention would incommode us, are physical goods, even when they cause us no pleasure; for privation of them is a physical evil.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1279451,
+      "endOffset": 1279755
+    },
+    {
+      "text": "Even so we must believe that our souls (by virtue of the laws of spiritual nature) can only be moved by some reason of good or evil: and this even when no distinct knowledge can be extracted from our mental state, on account of a concourse of innumerable little perceptions which make us now joyful and now sad, or again of some other humour, and cause us to like one thing more than another without its being possible to say why.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1471344,
+      "endOffset": 1471854
+    },
+    {
+      "text": "Finally, under this perfect government, there will be no good action without reward, no bad action without punishment, and everything must result for the well-being of the good, that is, of those who are not discontented in this great State, who, after having done their duty, trust in providence, and who love and imitate as they ought the author of all good, pleasing themselves with the contemplation of his perfections, — according to the nature of truly pure love, which takes pleasure in the happiness of the loved one.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2218804,
+      "endOffset": 2219417
+    },
+    {
+      "text": "Whereafter there will be no cause for surprise that God has so made the body that by virtue of its own laws it can carry out the intentions of the reasoning soul: for all that the reasoning soul can demand of the body is less difficult than the organization which God has demanded of the seeds.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 872258,
+      "endOffset": 872611
+    },
+    {
+      "text": "It is in this sense that God permits sin: for he would fail in what he owes to himself, in what he owes to his wisdom, his goodness, his perfection, if he followed not the grand result of all his tendencies to good, and if he chose not that which is absolutely the best, notwithstanding the evil of guilt, which is involved therein by the supreme necessity of the eternal verities.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1059332,
+      "endOffset": 1059783
+    },
+    {
+      "text": "All is therefore certain and determined beforehand in man, as everywhere else, and the human soul is a kind of spiritual automaton, although contingent actions in general and free action in particular are not on that account necessary with an absolute necessity, which would be truly incompatible with contingency.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1097702,
+      "endOffset": 1098064
+    },
+    {
+      "text": "Rather is it true freedom, and the most perfect, to be able to make the best use of one’s free will, and always to exercise this power, without being turned aside either by outward force or by inward passions, whereof the one enslaves our bodies and the other our souls.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1419685,
+      "endOffset": 1420004
+    },
+    {
+      "text": "God therefore determines himself by himself; his will acts by virtue of his goodness, but it is particularized and directed in action by understanding filled with wisdom.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1534150,
+      "endOffset": 1534346
+    },
+    {
+      "text": "For if truth itself depends only on the will of God and not on the nature of things, and the understanding being necessarily BEFORE the will (I speak de prioritate naturae, non temp oris), the understanding of God will be before the truth of things and consequently will not have truth for its object.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1628920,
+      "endOffset": 1629274
+    },
+    {
+      "text": "It is as if it were said in other words that body, if it consist in extension, ought to be indifferent to motion, but that in reality not being indifferent to it, since it resists that which ought to give it motion, it is necessary to employ, in addition to the notion of extension, that of force.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1734166,
+      "endOffset": 1734519
+    },
+    {
+      "text": "We will admit that God, that greatartisan of theuniverse, can adjust all the organic parts of the body of a man so well that they shall be capable of producing all the movements which the soul joined to this body mightwish to produce in the course of itslife, without its havingthe power to change these movements or to modify them in any way.",
+      "sourceId": "f5e3a101-fab7-4d61-8374-78d0d5e13536",
+      "sourceTitle": "leibniz_works_1",
+      "sourceFile": "leibniz_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1833996,
+      "endOffset": 1834401
+    }
+  ]
+}

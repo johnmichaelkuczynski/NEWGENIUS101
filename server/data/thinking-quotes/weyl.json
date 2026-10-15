@@ -1,0 +1,744 @@
+{
+  "thinkerId": "weyl",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Just as anyone who wishes to give expressions to his thoughts with ease must spend laborious hours learning language and writing, so here too the only way that we can lessen the burden of formulæ is to master the technique of tensor analysis to such a degree that we can turn to the real problems that concern us without feeling any encumbrance, our object being to get an insight into the nature of space, time, and matter so far as they participate in the structure of the external world.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 27890,
+      "endOffset": 28388
+    },
+    {
+      "text": "To grasp the true meaning of the principle of relativity, one must get accustomed to thinking not in “space,” nor in “time,” but “in the world,” that is in space-time.",
+      "sourceId": "c57965df-28e5-462d-8576-cabdc916a5c0",
+      "sourceTitle": "CHAPTER II188",
+      "sourceFile": "weyl_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 71966,
+      "endOffset": 72135
+    },
+    {
+      "text": "Change, motion, elapse of time, becoming and ceasing to be, exist in time itself; just as my will acts on the external world through and beyond my body as a motive power, so the external world is in its turn active (as the German word “Wirklichkeit,” reality, derived from “wirken” = to act, indicates).",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 29733,
+      "endOffset": 30040
+    },
+    {
+      "text": "Since the human mind rst wakened from slumber, and was allowed to give itself free rein, it has never ceased to feel the profoundly mysteri- ous nature of time-consciousness, of the progression of the world in time,—of Becoming.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15211,
+      "endOffset": 15444
+    },
+    {
+      "text": "The great advance in our knowledge described in this chap- ter consists in recognising that the scene of action of reality is not a three-dimensional Euclidean space but rather a four- dimensional world, in which space and time are linked together indissolubly.",
+      "sourceId": "d6afd536-3b34-4c26-bc31-76f46bd1584a",
+      "sourceTitle": "CHAPTER III288",
+      "sourceFile": "weyl_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 56655,
+      "endOffset": 56920
+    },
+    {
+      "text": "Only now the theory of relativity has succeeded in enabling our knowledge of physical nature to get a full grasp of the fact of motion, of change in the world.",
+      "sourceId": "f561cab7-dcf2-49cf-9a99-839a0cf8e28a",
+      "sourceTitle": "weyl_works_7",
+      "sourceFile": "weyl_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 58652,
+      "endOffset": 58813
+    },
+    {
+      "text": "From this we see that the charge is not, as in the theory of electrons, an invariant determined by the portion of matter, but is dependent on the way the world has been split up into space and time.",
+      "sourceId": "abdf83a3-938f-493c-b8d2-3c625281d636",
+      "sourceTitle": "weyl_works_6",
+      "sourceFile": "weyl_works_6.txt",
+      "sourceKind": "database-text",
+      "startOffset": 4347,
+      "endOffset": 4548
+    },
+    {
+      "text": "What is done by Einstein’sTHE GENERAL THEORY OF RELATIVITY441 theory of gravitation with respect to the equality of inertial and gravitational matter, namely, that it recognises their identity as necessary but not as a consequence of an undiscovered law of phys- ical nature, is accomplished by the present theory with respect to the facts that nd expression in the structure of Maxwell’s equa- tions and the laws of conservation.",
+      "sourceId": "b7973aa1-af64-4906-b06e-01f7bb102718",
+      "sourceTitle": "CHAPTER IV438",
+      "sourceFile": "weyl_works_11",
+      "sourceKind": "database-text",
+      "startOffset": 5587,
+      "endOffset": 6025
+    },
+    {
+      "text": "CHAPTER II144 “A decisive answer to these questions can be obtained only by starting from the conception of phenomena which has hitherto been justi ed by experience, to which Newton laid the founda- tion, and then making in this conception the successive changes required by facts which admit of no explanation on the old the- ory; researches of this kind, which commence with general notions, cannot be other than useful in preventing the work from being hampered by too narrow views, and in keeping progress in the knowledge of the inter-connections of things from being checked by traditional prejudices.",
+      "sourceId": "e286716c-bca8-459d-b572-c0fae1e02a82",
+      "sourceTitle": "CHAPTER II138",
+      "sourceFile": "weyl_works_4",
+      "sourceKind": "database-text",
+      "startOffset": 10537,
+      "endOffset": 11155
+    },
+    {
+      "text": "In the Theory of Relativity the time co-ordinate is added as a fully equivalent term to the three-space co-ordinates, and the measure-relation which holds in this four-dimensional man- ifold is not based on a de nite form but on an inde nite one (Chapter III).",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40329,
+      "endOffset": 40593
+    },
+    {
+      "text": "The chief support of the theory is to be found less in that lent by observation hitherto than in its inherent logical consistency, in which it far transcends that of classical me- chanics, and also in the fact that it solves the perplexing problem of gravitation and of the relativity of motion at one stroke in a manner highly satisfying to our reason.",
+      "sourceId": "0e17aa5f-da50-49c9-ab16-49fb426d101b",
+      "sourceTitle": "CHAPTER IV338",
+      "sourceFile": "weyl_works_8",
+      "sourceKind": "database-text",
+      "startOffset": 50427,
+      "endOffset": 50785
+    },
+    {
+      "text": "Only physical phase-quantities can be measured, that is, read o from the behaviour of matter in motion; but we cannot measure the four world-co-ordinates that we assign a priori arbitrarily to the world-points so as to be able to represent the phase-quantities extending throughout the world by means of mathematical functions (of four independent variables).",
+      "sourceId": "58fa31b6-ee7d-4e30-bcbc-d4793ab50b1f",
+      "sourceTitle": "weyl_works_8",
+      "sourceFile": "weyl_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 2450,
+      "endOffset": 2815
+    },
+    {
+      "text": "In particular, the a ne relation- ship of the world is nothing more than the gravitational eld, but its metrical character is an expression of the state of the “æther” that lls the world; even matter itself is reduced to this kind of geometry and loses its character as a permanent substance.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 6251,
+      "endOffset": 6549
+    },
+    {
+      "text": "The fact that Time is a form of our stream of experience is expressed in the idea of equality: the empirical content which lls the length of Time AB can in itself be put into any other time without being in any way di erent from what it is.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 32557,
+      "endOffset": 32802
+    },
+    {
+      "text": "We as mathemati- cians have reason to be proud of the wonderful insight into the knowledge of space which we gain, but, at the same time, we must recognise with humility that our conceptual theories enable us to grasp only one aspect of the nature of space, that which, moreover, is most formal and super cial.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 79520,
+      "endOffset": 79835
+    },
+    {
+      "text": "The fact that all elementary particles of matter have the same charge and the same mass seems to be due to the circumstance that they are all embedded in the same world (of the same radius r0); this agrees with the idea developed in § 32, according to which the charge and the mass are determined from in nity.",
+      "sourceId": "b7973aa1-af64-4906-b06e-01f7bb102718",
+      "sourceTitle": "CHAPTER IV438",
+      "sourceFile": "weyl_works_11",
+      "sourceKind": "database-text",
+      "startOffset": 19543,
+      "endOffset": 19893
+    },
+    {
+      "text": "The princi- ple of gaining knowledge of the external world from the behaviour of its in nitesimal parts is the mainspring of the theory of knowledge in in nitesimal physics as in Riemann’s ge- ometry, and, indeed, the mainspring of all the eminent work of Riemann, in particular, that dealing with the theory of complex functions.",
+      "sourceId": "bd31655e-d312-4db6-b713-bfae1deef365",
+      "sourceTitle": "weyl_works_3",
+      "sourceFile": "weyl_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 81544,
+      "endOffset": 81880
+    },
+    {
+      "text": "If we discard the rst possibility, “that the reality which under- lies space forms a discrete manifold”—although we do not by this in any way mean to deny nally, particularly nowadays in view of the results of the quantum-theory, that the ultimate solution of the problem of space may after all be found in just this possibility— we see that Riemann rejects the opinion that had prevailed up to his own time, namely, that the metrical structure of space is xed and inherently independent of the physical phenomena for which it serves as a background, and that the real content takes possession of it as of residential ats.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11340,
+      "endOffset": 11975
+    },
+    {
+      "text": "Since, according to our view, force is primarily a co-variant vector, this fundamental law is possible only in a metrical space, but not in a purely a ne one.",
+      "sourceId": "51bbaf9b-fc82-474b-b20a-a1a8338c4ea1",
+      "sourceTitle": "CHAPTER I38",
+      "sourceFile": "weyl_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 43941,
+      "endOffset": 44101
+    },
+    {
+      "text": "As was shown in the examples of force and metrical space it often happens that the representation of geometrical or physical quantities by a tensor becomes possible only after a unit measure has been chosen: this choice can only be made by specifying it in each particular case.",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34385,
+      "endOffset": 34667
+    },
+    {
+      "text": "Only the coincidence (or the immediate succession) of two events in space-time has a mean- ing that is directly evident, it is just the fact that in these cases space and time cannot be dissociated from one another absolutely that is asserted by the principle of relativity.",
+      "sourceId": "c57965df-28e5-462d-8576-cabdc916a5c0",
+      "sourceTitle": "CHAPTER II188",
+      "sourceFile": "weyl_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 72136,
+      "endOffset": 72414
+    },
+    {
+      "text": "On the other hand, a philosophic examination of the thesis of truth must and will lead to the conclusion that none of these acts of perception, memory, etc., which present experiences from which I seize reality, gives us a conclusive right to ascribe to the perceived object an INTRODUCTION7 existence and a constitution as perceived.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25991,
+      "endOffset": 26340
+    },
+    {
+      "text": "Matter was imagined to be a substance involved in every change, and it was thought that every piece of matter could be measured as a 1 INTRODUCTION2 quantity, and that its characteristic expression as a “substance” was the Law of Conservation of Matter which asserts that mat- ter remains constant in amount throughout every change.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 16260,
+      "endOffset": 16625
+    },
+    {
+      "text": "After all, from the physical point of view, Maxwell’s theory in its later form bears uninterrupted testimony to the stu- pendous fruitfulness which has resulted through passing from the old idea of action at a distance to the modern one of in nitely near action.",
+      "sourceId": "bd31655e-d312-4db6-b713-bfae1deef365",
+      "sourceTitle": "weyl_works_3",
+      "sourceFile": "weyl_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 14325,
+      "endOffset": 14591
+    },
+    {
+      "text": "We shall illustrate in greater detail this bold idea of Riemann concerning the metrical eld produced by matter, and we shall show that if his opinion is correct, any two portions of space which can be transformed into one another by a continuous deformation, must be recognised as being congruent in the sense we have adopted, and that the same material content can ll one portion of space just as well as the other.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13140,
+      "endOffset": 13564
+    },
+    {
+      "text": "Looking back from the stage to which Einstein has brought us, we now recognise that these ideas could give rise to a valid theory only after time had been added as a fourth dimension to the three-space dimensions in the manner set forth in the so-called special theory of relativity.",
+      "sourceId": "e286716c-bca8-459d-b572-c0fae1e02a82",
+      "sourceTitle": "CHAPTER II138",
+      "sourceFile": "weyl_works_4",
+      "sourceKind": "database-text",
+      "startOffset": 21655,
+      "endOffset": 21942
+    },
+    {
+      "text": "Stresses Quantities which describe how the state of a spatially extended physical system varies from point to point have not a distinct value EUCLIDEAN SPACE85 but only one “for each point”: in mathematical language they are “functions of the place or point”.",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 76771,
+      "endOffset": 77044
+    },
+    {
+      "text": "In the same way the princi- ple of relativity determines exactly the sense in which the world (= space-time as the “form” of phenomena, not its “accidental” CHAPTER III230 non-homogeneous material content) is homogeneous.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73667,
+      "endOffset": 73903
+    },
+    {
+      "text": "In the realm of physics it is perhaps only the theory of relativity which has made it quite clear that the two essences, space and time, entering into our intuition have no place in the world constructed by mathematical physics.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21955,
+      "endOffset": 22186
+    },
+    {
+      "text": "We must never lose sight of this totality when we en- quire whether these sciences interpret rationally the reality which proclaims itself in all subjective experiences of consciousness, and which itself transcends consciousness: that is, truth forms a sys- tem.",
+      "sourceId": "705a894b-68dc-47b2-8f06-f0ab44d11865",
+      "sourceTitle": "CHAPTER I88",
+      "sourceFile": "weyl_works_3",
+      "sourceKind": "database-text",
+      "startOffset": 18374,
+      "endOffset": 18640
+    },
+    {
+      "text": "In op- position, however, to this representation there is another which, we nowadays consider, does more justice to the physical nature of force, inasmuch as it is based on the conception of work.",
+      "sourceId": "51bbaf9b-fc82-474b-b20a-a1a8338c4ea1",
+      "sourceTitle": "CHAPTER I38",
+      "sourceFile": "weyl_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 28372,
+      "endOffset": 28571
+    },
+    {
+      "text": "We shall here develop the Theory of Invariance as a “Tensor Calculus” along lines which will enable us to express in a conve- EUCLIDEAN SPACE49 nient mathematical form, not only geometrical laws, but also all physical laws.",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 17177,
+      "endOffset": 17413
+    },
+    {
+      "text": "The group of rotations that does not vary with position exhibits a property that belongs to space as a form of phenomena; it char- acterises the metrical nature of space.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37365,
+      "endOffset": 37589
+    },
+    {
+      "text": "We treated a ne relationship in § 15 only provisionally as a rudimen- tary characteristic of space; the truth is, however, that parallel THE METRICAL CONTINUUM211 displacements, in virtue of their inherent properties, must be ex- cluded from congruent transferences, and that the conception of parallel displacement is determined by the metrical relationship.",
+      "sourceId": "c57965df-28e5-462d-8576-cabdc916a5c0",
+      "sourceTitle": "CHAPTER II188",
+      "sourceFile": "weyl_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 39741,
+      "endOffset": 40107
+    },
+    {
+      "text": "It is evident from these arguments that the whole of a ne geometry merely teaches us that space is a region of three di- mensions in linear quantities (the meaning of this statement EUCLIDEAN SPACE37 will be su ciently clear without further explanation).",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 78329,
+      "endOffset": 78596
+    },
+    {
+      "text": "Only the consciousness that passes on in one portion of this world experiences the detached piece which comes to meet it and passes behind it, as history, that is, as a process that is going forward in time and takes place in space.",
+      "sourceId": "f561cab7-dcf2-49cf-9a99-839a0cf8e28a",
+      "sourceTitle": "weyl_works_7",
+      "sourceFile": "weyl_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 57287,
+      "endOffset": 57522
+    },
+    {
+      "text": "Whereas in the special theory of relativity these two portions are separated by an intervening region, it is certainly possible in the present case for the cone of the active future to overlap with that of the passive past; so that, in principle, it is possible to experience events now that will in part be an e ect of my future resolves and actions.",
+      "sourceId": "44ee8d71-fab6-484e-b754-14c1771c5fda",
+      "sourceTitle": "CHAPTER IV388",
+      "sourceFile": "weyl_works_10",
+      "sourceKind": "database-text",
+      "startOffset": 35346,
+      "endOffset": 35702
+    },
+    {
+      "text": "We have accordingly a good right to claim that the whole fund of experience which is crystallised in Maxwell’s Theory weighs in favour of the world-metrical nature of electric- ity.",
+      "sourceId": "9bea817c-fe48-4fbc-a59a-5e4ab8ea863c",
+      "sourceTitle": "weyl_works_10",
+      "sourceFile": "weyl_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 61822,
+      "endOffset": 62006
+    },
+    {
+      "text": "It is in the nature of metrical space to be furnished with this a ne relationship; in virtue of it the whole analysis of tensors and tensor-densities with all the conceptions worked out above, such as geodetic line, curvature, etc., may be applied to metrical space.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 83436,
+      "endOffset": 83706
+    },
+    {
+      "text": "The fact that a tensor which has been derived from them by mathematical operations and is an invariant (i.e. dependent upon them alone and not upon the choice of the co-ordinate system) is equal to zero is what, in general, the expression of a physical law amounts to.",
+      "sourceId": "51bbaf9b-fc82-474b-b20a-a1a8338c4ea1",
+      "sourceTitle": "CHAPTER I38",
+      "sourceFile": "weyl_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 42577,
+      "endOffset": 42849
+    },
+    {
+      "text": "Accordingly the character of a quantity is not in gen- eral described fully, if it is stated to be a tensor of such and such an order, but symmetrical characteristics have to be added.",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 67048,
+      "endOffset": 67234
+    },
+    {
+      "text": "It may also be asserted that their point of view is the rst to give due importance to the circumstance that space and time, in contrast with the material content of the world, are forms of phenomena.",
+      "sourceId": "cabd8696-a915-458e-a48c-6bbe3ea6201e",
+      "sourceTitle": "CHAPTER IV338",
+      "sourceFile": "weyl_works_9",
+      "sourceKind": "database-text",
+      "startOffset": 2233,
+      "endOffset": 2436
+    },
+    {
+      "text": "Every space-time event that is strictly localised, such as the ash of a spark that is instantaneously ex- tinguished, occurs at a de nite space-time-point or world-point, “here-now”.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 57440,
+      "endOffset": 57626
+    },
+    {
+      "text": "I do not by this in any way wish to imply that the view that the events of the world are a mere play of the consciousness produced by the ego, contains a higher degree of truth than naïve realism; on the contrary, we are only concerned in seeing clearly that the datum of consciousness is the starting-point at which we must place ourselves if we are to understand the absolute meaning as well as the right to the supposition of reality.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25075,
+      "endOffset": 25518
+    },
+    {
+      "text": "The revolutions which are brought about in our notions of Space and Time will of necessity a ect the conception of matter too.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 31671,
+      "endOffset": 31799
+    },
+    {
+      "text": "It merely assumes that the neighbourhood of every world- point admits of a singly reversible continuous representation in a region of the four-dimensional “number-space” (whereby “point of the four-dimensional number-space” is to signify any number- quadruple); it makes no assumptions at the outset about the inter-connection of the world.",
+      "sourceId": "9bea817c-fe48-4fbc-a59a-5e4ab8ea863c",
+      "sourceTitle": "weyl_works_10",
+      "sourceFile": "weyl_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 32217,
+      "endOffset": 32562
+    },
+    {
+      "text": "Its direction is determined at every moment, independently of the state of the system at other moments, by the fact that the system, in virtue of its constitution, adjusts itself to the eld in which it is embedded.",
+      "sourceId": "b3631ac7-410b-43f1-99b4-bb4ac9f96da5",
+      "sourceTitle": "weyl_works_11",
+      "sourceFile": "weyl_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41602,
+      "endOffset": 41820
+    },
+    {
+      "text": "The fundamen- tal law of mechanics is a blank form which acquires a concrete content only when the conception of force occurring in it is lled CHAPTER I98 in by physics.",
+      "sourceId": "bd31655e-d312-4db6-b713-bfae1deef365",
+      "sourceTitle": "weyl_works_3",
+      "sourceFile": "weyl_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 15678,
+      "endOffset": 15863
+    },
+    {
+      "text": "Once this has been done there is no reason why experience should not decide whether the special view of Euclidean geometry or the more general one of Riemann geometry is to be upheld.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1521,
+      "endOffset": 1706
+    },
+    {
+      "text": "THE METRICAL CONTINUUM139 An n-dimensional Riemann space is an n-dimensional mani- fold, not of an arbitrary nature, but one which derives its measure- relations from a de nitely positive quadratic di erential form.",
+      "sourceId": "e286716c-bca8-459d-b572-c0fae1e02a82",
+      "sourceTitle": "CHAPTER II138",
+      "sourceFile": "weyl_works_4",
+      "sourceKind": "database-text",
+      "startOffset": 1976,
+      "endOffset": 2195
+    },
+    {
+      "text": "In an extended sense a quantity in geometry and physics will be called a tensor if it de nes uniquely a Linear algebraic form depending on the co-ordinate system in the manner described above; and conversely the tensor is fully characterised if this form is given.",
+      "sourceId": "51bbaf9b-fc82-474b-b20a-a1a8338c4ea1",
+      "sourceTitle": "CHAPTER I38",
+      "sourceFile": "weyl_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 26303,
+      "endOffset": 26571
+    },
+    {
+      "text": "Only the motions of bodies (point-masses) rel- ative to one another have an objective meaning, that is, the distances and angles that are determined from simultaneous positions of the point-masses and their functional relation to the time-co-ordinate.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 63744,
+      "endOffset": 63999
+    },
+    {
+      "text": "To gaze up from the ruins of the oppressive present towards the stars is to recognise the indestructible world of laws, to strengthen faith in reason, to realise the “harmonia mundi” that transfuses all phenomena, and that never has been, nor will be, disturbed.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 3899,
+      "endOffset": 4164
+    },
+    {
+      "text": "The ideas to be worked out in this book are not the result of some speculative inquiry into the foundations of physical knowledge, but have been developed in the ordinary course of the handling of concrete physical problems— problems arising in the rapid development of science which has, as it were, burst its old shell, now become too narrow.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 18505,
+      "endOffset": 18854
+    },
+    {
+      "text": "The theory of elds has to explain why the eld is granular in structure and why these energy-knots preserve themselves permanently from en- ergy and momentum in their passage to and fro (although they do not remain fully unchanged, they retain their identity to an extraordinary degree of accuracy); therein lies the problem of Even Kant in his Metaphysischen Anfangsgründen der Naturwis- senschaft, teaches the doctrine that matter lls space not by its mere existence but in virtue of the repulsive forces of all its parts.",
+      "sourceId": "d6afd536-3b34-4c26-bc31-76f46bd1584a",
+      "sourceTitle": "CHAPTER III288",
+      "sourceFile": "weyl_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 22187,
+      "endOffset": 22721
+    },
+    {
+      "text": "There is no cause for surprise at the fact that even before the advent of the theory of relativity this interpretation of electronic inertia was possible; for, in treating electrodynamics after the manner of Maxwell, one was already unconsciously treading in the steps of the principle of relativity as far as this branch of phenomena is concerned.",
+      "sourceId": "f561cab7-dcf2-49cf-9a99-839a0cf8e28a",
+      "sourceTitle": "weyl_works_7",
+      "sourceFile": "weyl_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 27666,
+      "endOffset": 28019
+    },
+    {
+      "text": "Whenever a force p can be retraced by (47) to stresses S, which form a symmetrical tensor of the second order only dependent on the values of the phase-quantities describing the physical state at the point in question, we shall have to regard these stresses as the primary factors and the actions of the forces as their consequent.",
+      "sourceId": "705a894b-68dc-47b2-8f06-f0ab44d11865",
+      "sourceTitle": "CHAPTER I88",
+      "sourceFile": "weyl_works_3",
+      "sourceKind": "database-text",
+      "startOffset": 20901,
+      "endOffset": 21237
+    },
+    {
+      "text": "It would appear from this that out of the rich abundance of possible geometries included in Riemann’s concep- THE METRICAL CONTINUUM143 tion only the three special cases mentioned come into consider- ation from the outset, and that all the others must be rejected without further examination as being of no account: parturiunt montes, nascetur ridiculus mus!",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 8526,
+      "endOffset": 8891
+    },
+    {
+      "text": "In metrical space it is clear, from what has been said, that the di erence between a co-variant and a contra-variant vector disappears: in this case we can represent a force, which, according to our view, is by nature a co-variant vector, as a contra-variant vector, too, i.e. by a displacement.",
+      "sourceId": "51bbaf9b-fc82-474b-b20a-a1a8338c4ea1",
+      "sourceTitle": "CHAPTER I38",
+      "sourceFile": "weyl_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 38603,
+      "endOffset": 38902
+    },
+    {
+      "text": "In the eld of philos- ophy Kant was the rst to take the next decisive step towards the point of view that not only the qualities revealed by the senses, but also space and spatial characteristics have no objective signif- icance in the absolute sense; in other words, that space, too, is only a form of our perception.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 21628,
+      "endOffset": 21953
+    },
+    {
+      "text": "Expressed as a general principle, this means that the real world, and every one of its constituents with their accompanying characteristics, are, and can only be given as, intentional objects of acts of consciousness.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 22437,
+      "endOffset": 22657
+    },
+    {
+      "text": "Newtonian mechanics, as also the special theory of relativity, assumed that uniform translation is a unique state of motion of a set of vector axes, and hence that the position of the axes at one moment determines their position in all other moments.",
+      "sourceId": "9bea817c-fe48-4fbc-a59a-5e4ab8ea863c",
+      "sourceTitle": "weyl_works_10",
+      "sourceFile": "weyl_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 56056,
+      "endOffset": 56310
+    },
+    {
+      "text": "Since laws of matter such as (58), which only take the in uence of massed matter into account, certainly fail for events in which the ne structure of matter cannot be neglected, the range of validity of the phenomenological theory must be fur- nished by an atomistic theory of this kind, as must also those laws which have to be substituted in its place for the region beyond this range.",
+      "sourceId": "bd31655e-d312-4db6-b713-bfae1deef365",
+      "sourceTitle": "weyl_works_3",
+      "sourceFile": "weyl_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 31628,
+      "endOffset": 32022
+    },
+    {
+      "text": "The essential point is that a piece of space has no visual form at all, but that this form depends on the material content occupying the world, and, indeed, occupying it in such a way that by means of an appropriate rearrangement of the mode of occupation I can give it any visual form.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21120,
+      "endOffset": 21410
+    },
+    {
+      "text": "Riemann assumes that it is possible to compare the lengths of two line elements at di erent points THE METRICAL CONTINUUM151 of space, too; it is not permissible to use comparisons at a distance in an “in nitely near” geometry.",
+      "sourceId": "e286716c-bca8-459d-b572-c0fae1e02a82",
+      "sourceTitle": "CHAPTER II138",
+      "sourceFile": "weyl_works_4",
+      "sourceKind": "database-text",
+      "startOffset": 24017,
+      "endOffset": 24249
+    },
+    {
+      "text": "It may be justi able on the ground of economy of expression to replace skew-symmetrical tensors by vectors in ordinary vector analysis, but in some ways it hides the essential feature; it gives rise to the well-known “swimming-rules” in electrodynamics, which in no wise signify that there is a unique direction of twist in the space in which electrodynamics events occur; they become necessary only because the magnetic inten- sity of eld is regarded as a vector, whereas it is, in reality, a skew-symmetrical tensor (like the so-called vectorial product of two vectors).",
+      "sourceId": "fb03dd60-f9c0-4118-84fe-8a38f38124d6",
+      "sourceTitle": "weyl_works_2",
+      "sourceFile": "weyl_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 48388,
+      "endOffset": 48970
+    },
+    {
+      "text": "Metrical Space from the Point of View of the Theory of Groups Whereas the character of a ne relationship presents no further di culties—the postulate on page 184 to which we subjected the conception of parallel displacement, and which characterises it as a kind of unaltered transference, de nes its character uniquely— we have not yet gained a view of metrical structure that takes us beyond experience.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 28873,
+      "endOffset": 29292
+    },
+    {
+      "text": "It is this view, the truth of which can scarcely be doubted after the success that has attended Einstein’s Theory of Gravitation (Chapter IV), that opens up the road leading to the discovery of the “Rationality of Space”.",
+      "sourceId": "c57965df-28e5-462d-8576-cabdc916a5c0",
+      "sourceTitle": "CHAPTER II188",
+      "sourceFile": "weyl_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 53689,
+      "endOffset": 53914
+    },
+    {
+      "text": "In mechanics we ascribe to every material body an invariable mass m which, in consequence of the manner in which it occurs in the fundamental law of mechanics, represents the inertia of matter, that is, its resistance to the ac- celerating forces.",
+      "sourceId": "d6afd536-3b34-4c26-bc31-76f46bd1584a",
+      "sourceTitle": "CHAPTER III288",
+      "sourceFile": "weyl_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 20285,
+      "endOffset": 20536
+    },
+    {
+      "text": "In the linear groundform idxithere is an arbitrary factor in the form of an additive total di erential, but there is not a factor of proportion- ality; the quantity Action is a pure number.",
+      "sourceId": "44ee8d71-fab6-484e-b754-14c1771c5fda",
+      "sourceTitle": "CHAPTER IV388",
+      "sourceFile": "weyl_works_10",
+      "sourceKind": "database-text",
+      "startOffset": 62378,
+      "endOffset": 62571
+    },
+    {
+      "text": "Statistical physics, through the quantum theory, hasTHE GENERAL THEORY OF RELATIVITY467 already reached a deeper stratum of reality than is accessible to eld physics; but the problem of matter is still wrapt in deepest gloom.",
+      "sourceId": "b3631ac7-410b-43f1-99b4-bb4ac9f96da5",
+      "sourceTitle": "weyl_works_11",
+      "sourceFile": "weyl_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51263,
+      "endOffset": 51493
+    },
+    {
+      "text": "Consequently we may only speak of the in nitesimal displacement of a point and not, as in Chapter I, of the whole of space; hence we cannot talk of a vector or tensor simply, but must talk of a vector or tensor as being at a point P.",
+      "sourceId": "cb7e3506-b21a-4430-b3e2-958b4dd830d1",
+      "sourceTitle": "weyl_works_4",
+      "sourceFile": "weyl_works_4.txt",
+      "sourceKind": "database-text",
+      "startOffset": 27852,
+      "endOffset": 28088
+    },
+    {
+      "text": "The historical development of the problem of space teaches how di cult it is for us human beings entangled in external reality to reach a de nite conclusion.",
+      "sourceId": "a838d4df-0500-4d1c-8fa2-c7091b6eee68",
+      "sourceTitle": "weyl_works_5",
+      "sourceFile": "weyl_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54266,
+      "endOffset": 54425
+    },
+    {
+      "text": "A prolonged phase of mathematical development, the great expansion of geom- etry dating from Euclid to Riemann, the discovery of the physical facts of nature and their underlying laws from the time of Galilei, together with the incessant impulses imparted by new empiri- cal data, nally the genius of individual great minds—Newton, Gauss, Riemann, Einstein—all these factors were necessary to set us free from the external, accidental, non-essential characteris- tics which would otherwise have held us captive.",
+      "sourceId": "c57965df-28e5-462d-8576-cabdc916a5c0",
+      "sourceTitle": "CHAPTER II188",
+      "sourceFile": "weyl_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 54413,
+      "endOffset": 54933
+    },
+    {
+      "text": "It is a fact, however obscure and perplexing to our minds, that the contents of consciousness do not present themselves simply as be- ing (such as conceptions, numbers, etc.), but as being now lling the form of the enduring present with a varying content.",
+      "sourceId": "daf3889e-4220-41f9-8fd5-4d0aa4a74db5",
+      "sourceTitle": "The Project Gutenberg EBook of Space--Time--Matter, by Hermann Weyl",
+      "sourceFile": "weyl_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 26949,
+      "endOffset": 27209
+    },
+    {
+      "text": "All characteristics of material things as they are presented to us in the acts of external perception (e.g. colour) are endowed with the separateness of spatial extension, but it is only when we build up a single connected real world out of all our experiences that the spatial extension, which is a constituent of every percep- tion, becomes a part of one and the same all-inclusive space.",
+      "sourceId": "ec3374d6-2347-4a0f-8875-9ba396b89a32",
+      "sourceTitle": "weyl_works_1",
+      "sourceFile": "weyl_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 27655,
+      "endOffset": 28050
+    },
+    {
+      "text": "We know of it only through inertial e ects as we have hitherto—owing to a merciful Later we shall once again modify our views of matter; the idea of the existence of substance has, however, been nally quashed.",
+      "sourceId": "d6afd536-3b34-4c26-bc31-76f46bd1584a",
+      "sourceTitle": "CHAPTER III288",
+      "sourceFile": "weyl_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 26423,
+      "endOffset": 26637
+    },
+    {
+      "text": "Above all, the ominous clouds of those phenomena that we are with varying success seeking to explain by means of the quantum of action, are throwing their shadows over the sphere of physical knowledge, threatening no one knows what new revolution.",
+      "sourceId": "f561cab7-dcf2-49cf-9a99-839a0cf8e28a",
+      "sourceTitle": "weyl_works_7",
+      "sourceFile": "weyl_works_7.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45461,
+      "endOffset": 45711
+    },
+    {
+      "text": "In the general theory of relativity, however, space is no longer assumed to be Euclidean, and hence we are not compelled to ascribe to it the relationships of Euclidean space.",
+      "sourceId": "44ee8d71-fab6-484e-b754-14c1771c5fda",
+      "sourceTitle": "CHAPTER IV388",
+      "sourceFile": "weyl_works_10",
+      "sourceKind": "database-text",
+      "startOffset": 5818,
+      "endOffset": 5996
+    },
+    {
+      "text": "We must here state in unmistakable language that physics at its present stage can in no wise be regarded as lending support to the belief that there is a causality of physical nature which is founded on rigorously exact laws.",
+      "sourceId": "b3631ac7-410b-43f1-99b4-bb4ac9f96da5",
+      "sourceTitle": "weyl_works_11",
+      "sourceFile": "weyl_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49823,
+      "endOffset": 50051
+    },
+    {
+      "text": "Whoever looks back over the ground that has been traversed, leading from the Euclidean metrical structure to the mobile met- rical eld which depends on matter, and which includes the eld phenomena of gravitation and electromagnetism; whoever endeav- ours to get a complete survey of what could be represented only successively and tted into an articulate manifold, must be over- whelmed by a feeling of freedom won—the mind has cast o the fetters which have held it captive.",
+      "sourceId": "b7973aa1-af64-4906-b06e-01f7bb102718",
+      "sourceTitle": "CHAPTER IV438",
+      "sourceFile": "weyl_works_11",
+      "sourceKind": "database-text",
+      "startOffset": 51613,
+      "endOffset": 52098
+    },
+    {
+      "text": "Since an in nitesimal element of surface is only a part (or more correctly, the limiting value of the part) of an arbitrarily small but nitely extended surface, the argument will run as follows.",
+      "sourceId": "e286716c-bca8-459d-b572-c0fae1e02a82",
+      "sourceTitle": "CHAPTER II138",
+      "sourceFile": "weyl_works_4",
+      "sourceKind": "database-text",
+      "startOffset": 37132,
+      "endOffset": 37330
+    }
+  ]
+}

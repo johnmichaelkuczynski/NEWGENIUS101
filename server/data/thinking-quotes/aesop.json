@@ -1,0 +1,717 @@
+{
+  "thinkerId": "aesop",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "It is wise to turn circumstances to good account.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 30942,
+      "endOffset": 30991
+    },
+    {
+      "text": "Self-help is the best help.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36697,
+      "endOffset": 36724
+    },
+    {
+      "text": "No arguments will give courage to the coward.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 42139,
+      "endOffset": 42184
+    },
+    {
+      "text": "One story is good, till another is told.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45624,
+      "endOffset": 45664
+    },
+    {
+      "text": "Misfortune tests the sincerity of friends.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 48640,
+      "endOffset": 48682
+    },
+    {
+      "text": "No one truly forgets injuries in the presence of him who caused the injury.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 57793,
+      "endOffset": 57868
+    },
+    {
+      "text": "Better poverty without care, than riches with.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 81483,
+      "endOffset": 81529
+    },
+    {
+      "text": "We must make friends in prosperity if we would have their help in adversity.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 91193,
+      "endOffset": 91269
+    },
+    {
+      "text": "Our mere anticipations of life outrun its realities.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 103593,
+      "endOffset": 103645
+    },
+    {
+      "text": "Misfortunes springing from ourselves are the hardest to bear.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 125388,
+      "endOffset": 125449
+    },
+    {
+      "text": "Men often bear little grievances with less courage than they do large misfortunes.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 126329,
+      "endOffset": 126412
+    },
+    {
+      "text": "No one can be a friend if you know not whether to trust or distrust him.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 132226,
+      "endOffset": 132298
+    },
+    {
+      "text": "It is easy to kick a man that is down.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 164905,
+      "endOffset": 164943
+    },
+    {
+      "text": "Men of evil reputation, when they perform a good deed, fail to get credit for it.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 166346,
+      "endOffset": 166427
+    },
+    {
+      "text": "A man is known by the company he keeps.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 184863,
+      "endOffset": 184902
+    },
+    {
+      "text": "It is absurd to ape our betters.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 189971,
+      "endOffset": 190003
+    },
+    {
+      "text": "Self-interest alone moves some men.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 190697,
+      "endOffset": 190732
+    },
+    {
+      "text": "We had better bear our troubles bravely than try to escape them.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 199682,
+      "endOffset": 199746
+    },
+    {
+      "text": "The tyrant will always find a pretext for his tyranny.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 30336,
+      "endOffset": 30390
+    },
+    {
+      "text": "I would rather have one barleycorn than all the jewels in the world.\"",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34251,
+      "endOffset": 34320
+    },
+    {
+      "text": "In serving the wicked, expect no reward, and be thankful if you escape injury for your pains.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 35484,
+      "endOffset": 35577
+    },
+    {
+      "text": "The loiterer often blames delay on his more active friend.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37613,
+      "endOffset": 37671
+    },
+    {
+      "text": "Slow but steady wins the race.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40106,
+      "endOffset": 40136
+    },
+    {
+      "text": "Birds of a feather flock together.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41209,
+      "endOffset": 41243
+    },
+    {
+      "text": "The greatest kindness will not bind the ungrateful.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41636,
+      "endOffset": 41687
+    },
+    {
+      "text": "Fair weather friends are not worth much.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 42807,
+      "endOffset": 42847
+    },
+    {
+      "text": "Don't make much ado about nothing.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43114,
+      "endOffset": 43148
+    },
+    {
+      "text": "If men had all they wished, they would be often ruined.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44511,
+      "endOffset": 44566
+    },
+    {
+      "text": "Pleasure bought with pains, hurts.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45027,
+      "endOffset": 45061
+    },
+    {
+      "text": "If words suffice not, blows must follow.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 46297,
+      "endOffset": 46337
+    },
+    {
+      "text": "\"Never travel with a friend who deserts you at the approach of danger.\"",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 48567,
+      "endOffset": 48638
+    },
+    {
+      "text": "Zeal should not outrun discretion.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49407,
+      "endOffset": 49441
+    },
+    {
+      "text": "Change of habit cannot alter Nature.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49955,
+      "endOffset": 49991
+    },
+    {
+      "text": "Do not attempt to hide things which cannot be hid.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 50361,
+      "endOffset": 50411
+    },
+    {
+      "text": "The value is in the worth, not in the number.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54262,
+      "endOffset": 54307
+    },
+    {
+      "text": "Do not attempt too much at once.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 56397,
+      "endOffset": 56429
+    },
+    {
+      "text": "Evil companions bring more hurt than profit.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 60994,
+      "endOffset": 61038
+    },
+    {
+      "text": "Do not be in a hurry to change one evil for another.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 62632,
+      "endOffset": 62684
+    },
+    {
+      "text": "Little liberties are great offenses.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 63135,
+      "endOffset": 63171
+    },
+    {
+      "text": "Old friends cannot with impunity be sacrificed for new ones.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 65080,
+      "endOffset": 65140
+    },
+    {
+      "text": "Notoriety is often mistaken for fame.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 65741,
+      "endOffset": 65778
+    },
+    {
+      "text": "Whatever you do, do with all your might.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 66795,
+      "endOffset": 66835
+    },
+    {
+      "text": "Pride goes before destruction.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 70283,
+      "endOffset": 70313
+    },
+    {
+      "text": "There is no believing a liar, even when he speaks the truth.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 75104,
+      "endOffset": 75164
+    },
+    {
+      "text": "Time and place often give the advantage to the weak over the strong.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 75950,
+      "endOffset": 76018
+    },
+    {
+      "text": "Example is more powerful than precept.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 78650,
+      "endOffset": 78688
+    },
+    {
+      "text": "Benefits bestowed upon the evil-disposed increase their means of injuring you.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 82987,
+      "endOffset": 83065
+    },
+    {
+      "text": "Equals make the best friends.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 83387,
+      "endOffset": 83416
+    },
+    {
+      "text": "Hypocritical speeches are easily seen through.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 83863,
+      "endOffset": 83909
+    },
+    {
+      "text": "What's bred in the bone will stick to the flesh.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84262,
+      "endOffset": 84310
+    },
+    {
+      "text": "The memory of a good deed lives.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 85752,
+      "endOffset": 85784
+    },
+    {
+      "text": "Children are not to be blamed for the faults of their parents.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 87066,
+      "endOffset": 87128
+    },
+    {
+      "text": "Avoid a remedy that is worse than the disease.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89021,
+      "endOffset": 89067
+    },
+    {
+      "text": "The least outlay is not always the greatest gain.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89597,
+      "endOffset": 89646
+    },
+    {
+      "text": "False confidence often leads into danger.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 94535,
+      "endOffset": 94576
+    },
+    {
+      "text": "The more honor the more danger.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 95707,
+      "endOffset": 95738
+    },
+    {
+      "text": "Evil wishes, like chickens, come home to roost.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 102123,
+      "endOffset": 102170
+    },
+    {
+      "text": "In quarreling about the shadow we often lose the substance.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 105043,
+      "endOffset": 105102
+    },
+    {
+      "text": "The hero is brave in deeds as well as words.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 107608,
+      "endOffset": 107652
+    },
+    {
+      "text": "Do nothing without a regard to the consequences.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 113777,
+      "endOffset": 113825
+    },
+    {
+      "text": "It sometimes happens that one man has all the toil, and another all the profit.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 115043,
+      "endOffset": 115122
+    },
+    {
+      "text": "In avoiding one evil, care must be taken not to fall into another.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 115471,
+      "endOffset": 115537
+    },
+    {
+      "text": "Every man should be content to mind his own business.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 116245,
+      "endOffset": 116298
+    },
+    {
+      "text": "There are times when the small and lowly are the strongest to do mischief.\"",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 117597,
+      "endOffset": 117672
+    },
+    {
+      "text": "It shows an evil disposition to take advantage of a friend in distress.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 119801,
+      "endOffset": 119872
+    },
+    {
+      "text": "The best intentions will not always ensure success.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 121334,
+      "endOffset": 121385
+    },
+    {
+      "text": "Everyone is more or less master of his own fate.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 122748,
+      "endOffset": 122796
+    },
+    {
+      "text": "Happy is the man who learns from the misfortunes of others.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 124607,
+      "endOffset": 124666
+    },
+    {
+      "text": "Contentment with our lot is an element of happiness.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 128029,
+      "endOffset": 128081
+    },
+    {
+      "text": "In a change of government the poor change nothing beyond the name of their master.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 128874,
+      "endOffset": 128956
+    },
+    {
+      "text": "The desire for imaginary benefits often involves the loss of present blessings.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 129225,
+      "endOffset": 129304
+    },
+    {
+      "text": "Count the cost before you commit yourselves.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130259,
+      "endOffset": 130303
+    },
+    {
+      "text": "Be on guard against men who can strike from a distance.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130942,
+      "endOffset": 130997
+    },
+    {
+      "text": "Use serves to overcome dread.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 131391,
+      "endOffset": 131420
+    },
+    {
+      "text": "Two blacks do not make one white.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 133027,
+      "endOffset": 133060
+    },
+    {
+      "text": "Fine feathers don't make fine birds.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 133514,
+      "endOffset": 133550
+    },
+    {
+      "text": "Every tale is not to be believed.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 137265,
+      "endOffset": 137298
+    },
+    {
+      "text": "Necessity is the mother of invention.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 139322,
+      "endOffset": 139359
+    },
+    {
+      "text": "A willful man will have his way to his own hurt.",
+      "sourceId": "887979e7-7954-4b54-8f46-04a727e4d569",
+      "sourceTitle": "Aesop’s Fables",
+      "sourceFile": "aesop_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 139958,
+      "endOffset": 140006
+    }
+  ]
+}

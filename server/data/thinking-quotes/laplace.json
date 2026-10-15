@@ -1,0 +1,654 @@
+{
+  "thinkerId": "laplace",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "It is seen in this essay that the theory of probabilities is at bottom only common sense reduced to calculus; it makes us appreciate with exactitude that which exact minds feel by a sort of instinct without being able ofttimes to give a reason for it.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 306694,
+      "endOffset": 306945
+    },
+    {
+      "text": "Strictly speaking it may even be said that nearly all our knowledge is problematical; and in the small number of things which we are able to know with certainty, even in the mathematical sciences themselves, the principal means for ascertaining truth—induction and analogy—are based on probabilities; so that the entire system of human knowledge is connected with the theory set forth in this essay.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5449,
+      "endOffset": 5848
+    },
+    {
+      "text": "We ought then to regard the present state of the universe as the effect of its anterior state and as the cause of the one which is to follow.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7921,
+      "endOffset": 8062
+    },
+    {
+      "text": "Indeed even that one who possesses nothing always gives to the product of his labor and to his hopes a value at least equal to that which is absolutely necessary to sustain him.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37020,
+      "endOffset": 37197
+    },
+    {
+      "text": "It is moreover more necessary to render ourselves independent of the law, since the most simple laws themselves are always infinitely less probable, seeing the infinite number of those which may exist in nature.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 125900,
+      "endOffset": 126111
+    },
+    {
+      "text": "The transcendent results of calculus are, like all the abstractions of the understanding, general signs whose true meaning may be ascertained only by repassing by metaphysical analysis to the elementary ideas which have led to them; this often presents great difficulties, for the human mind tries still less to transport itself into the future than to retire within itself.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 71199,
+      "endOffset": 71573
+    },
+    {
+      "text": "In spite of the infinite advantages which it procures the physical and moral revolutions by which the surface of this globe will always be agitated will end, in conjunction with the inevitable effect of time, by rendering doubtful after thousands of years the historical facts regarded to-day as the most certain.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 197696,
+      "endOffset": 198009
+    },
+    {
+      "text": "All these efforts in the search for truth tend to lead it back continually to the vast intelligence which we have just mentioned, but from which it will always remain infinitely removed.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 9027,
+      "endOffset": 9213
+    },
+    {
+      "text": "It is important then to the stability as well as to the happiness of empires not to extend them beyond those limits into which they are led again without cessation by the action of the causes; just as the waters of the seas raised by violent tempests fall again into their basins by the force of gravity.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 97992,
+      "endOffset": 98296
+    },
+    {
+      "text": "The probability that the ratio of the number of white balls drawn to the total number of balls drawn does not deviate beyond a given interval from the ratio of the number of white balls to the total number of balls contained in the urn, approaches indefinitely to certainty by the indefinite multiplication of events, however small this interval.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 94349,
+      "endOffset": 94695
+    },
+    {
+      "text": "The phenomena which seem the most dependent upon hazard present, then, when multiplied a tendency to approach without ceasing fixed ratios, in such a manner that if we conceive on all sides of each of these ratios an interval as small as desired, the probability that the mean result of the observations falls within this interval will end by differing from certainty only by a quantity greater than an assignable magnitude.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 112345,
+      "endOffset": 112769
+    },
+    {
+      "text": "Laws are the ratios which connect particular phenomena together: when they have shown the general principle of the forces from which they are derived, one verifies it either by direct experiences, when this is possible, or by examination if it agrees with known phenomena; and if by a rigorous analysis we see them proceed from this principle, even in their small details, and if, moreover, they are quite varied and very numerous, then science acquires the highest degree of certainty and of perfection that it is able to attain.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 285718,
+      "endOffset": 286248
+    },
+    {
+      "text": "In ignorance of the ties which unite such events to the entire system of the universe, they have been made to depend upon final causes or upon hazard, according as they occur and are repeated with regularity, or appear without regard to order; but these imaginary causes have gradually receded with the widening bounds of knowledge and disappear entirely before sound philosophy, which sees in them only the expression of our ignorance of the true causes.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 6649,
+      "endOffset": 7104
+    },
+    {
+      "text": "Things it is true often become impossible by the difficulty of appreciating the veracity of witnesses and by the great number of circumstances which accompany the deeds they attest; but one is able in several cases to resolve the problems which have much analogy with the questions which are proposed and whose solutions may be regarded as suitable approximations to guide and to defend us against the errors and the dangers of false reasoning to which we are exposed.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 171754,
+      "endOffset": 172222
+    },
+    {
+      "text": "The theory of chance consists in reducing all the events of the same kind to a certain number of cases equally possible, that is to say, to such as we may be equally undecided about in regard to their existence, and in determining the number of cases favorable to the event whose probability is sought.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12335,
+      "endOffset": 12637
+    },
+    {
+      "text": "The ratio of this number to that of all the cases possible is the measure of this probability, which is thus simply a fraction whose numerator is the number of favorable cases and whose denominator is the number of all the cases possible.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 12638,
+      "endOffset": 12876
+    },
+    {
+      "text": "As we estimate the value of hope by making a sum of the products of each benefit hoped for, by the probability of obtaining it, so we can equally evaluate the mean duration of life by adding the products of each year by half the sum of the probabilities of attaining the commencement and the end of it, which leads to the result found above.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 222622,
+      "endOffset": 222963
+    },
+    {
+      "text": "Indeed it is apparent, since the witness has then more inclination towards a falsehood than towards the truth, that his testimony ought to decrease the probability of the fact attested every time that this probability equals or surpasses ½.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 176460,
+      "endOffset": 176700
+    },
+    {
+      "text": "We see by this that if the number of black balls in the urn is very great, which renders the drawing of the white ball extraordinary, the probability that the fact attested is not true approaches most nearly to certainty.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179592,
+      "endOffset": 179813
+    },
+    {
+      "text": "If that were not the case the decision of the tribunal would be as insignificant as chance; it has value only in so far as the opinion of the judge has a greater tendency to truth than to error.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 213679,
+      "endOffset": 213873
+    },
+    {
+      "text": "By the repetition of an advantageous event, simple or compound, the real benefit becomes more and more probable and increases without ceasing; it becomes certain in the hypothesis of an infinite number of repetitions; and dividing it by this number the quotient or the mean benefit of each event is the mathematical hope itself or the advantage relative to the event.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 233664,
+      "endOffset": 234031
+    },
+    {
+      "text": "Doubtless it will be seen here with interest that in considering, even in the eternal principles of reason, justice, and humanity, only the favorable chances which are constantly attached to them, there is a great advantage in following these principles and serious inconvenience in departing from them: their chances, like those favorable to lotteries, always end by prevailing in the midst of the vacillations of hazard.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5849,
+      "endOffset": 6271
+    },
+    {
+      "text": "Upon this condition, certainty and probability are comparable, although there may be an essential difference between the two states of the mind when a truth is rigorously demonstrated to it, or when it still perceives a small source of error.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 14246,
+      "endOffset": 14488
+    },
+    {
+      "text": "Generally the probability that a simple event in the same circumstances will occur consecutively a given number of times is equal to the probability of this simple event raised to the power indicated by this number.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21124,
+      "endOffset": 21339
+    },
+    {
+      "text": "Now what is the probability that the decision of a tribunal which can condemn only by a given majority will be just, that is to say, conform to the true solution of the question proposed above?",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 211713,
+      "endOffset": 211906
+    },
+    {
+      "text": "The frequency of one of these events seems to indicate a cause slightly favoring it, which increases the probability of its next return, and its repetition prolonged for a long time, such as a long series of rainy days, may develop unknown causes for its change; so that at each expected event we are not, as at each drawing of a lottery, led back to the same state of indecision in regard to what ought to happen.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 254347,
+      "endOffset": 254761
+    },
+    {
+      "text": "Present events are connected with preceding ones by a tie based upon the evident principle that a thing cannot occur without a cause which produces it.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 7106,
+      "endOffset": 7257
+    },
+    {
+      "text": "When all the cases are favorable to an event the probability changes to certainty and its expression becomes equal to unity.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 14121,
+      "endOffset": 14245
+    },
+    {
+      "text": "The disadvantage of games of chance, the advantage of not exposing to the same danger the whole benefit that is expected, and all the similar results indicated by common sense, subsist, whatever may be the function of the physical fortune which for each individual expresses his moral fortune.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39600,
+      "endOffset": 39893
+    },
+    {
+      "text": "The probability of throwing tails tails is similarly 101/400, but the probability of throwing heads tails or tails heads is each 99/400; for the sum of these four probabilities ought to equal certainty or unity.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89923,
+      "endOffset": 90134
+    },
+    {
+      "text": "We see by that which precedes that the theory of probabilities leaves nothing arbitrary in the manner of distributing the errors of the observations; it gives for this distribution the most advantageous formulæ which diminishes as much as possible the errors to be feared in the results.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130914,
+      "endOffset": 131201
+    },
+    {
+      "text": "Applying this conclusion to all extraordinary deeds it results from it that the probability of the error or of the falsehood of the witness becomes as much greater as the fact attested is more extraordinary.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179815,
+      "endOffset": 180022
+    },
+    {
+      "text": "Each testimony taken alone is not improbable; and it is easy to see that the probability of the fact attested is the veracity itself of the witness.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 182002,
+      "endOffset": 182150
+    },
+    {
+      "text": "We ought to conclude from it that the probability of the constancy of the laws of nature is for us greater than this, that the event in question has not taken place at all—a probability greater than that of the majority of historical facts which we regard as incontestable.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 187111,
+      "endOffset": 187384
+    },
+    {
+      "text": "In all kinds of animals and vegetables, nature tends without ceasing to augment the number of individuals until they are on a level of the means of subsistence.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 230500,
+      "endOffset": 230660
+    },
+    {
+      "text": "The probability that the animals which resemble us have sensations analogous to ours, although a little inferior to that which is relative to individuals of our species, is still exceedingly great; and it has required all the influence of religious prejudices to make us think with some philosophers that animals are mere automatons.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 281641,
+      "endOffset": 281974
+    },
+    {
+      "text": "Consequently we ought always in the conduct of life to make the product of the benefit hoped for, by its probability, at least equal to the similar product relative to the loss.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34677,
+      "endOffset": 34854
+    },
+    {
+      "text": "One may draw from the preceding theorem this consequence which ought to be regarded as a general law, namely, that the ratios of the acts of nature are very nearly constant when these acts are considered in great number.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 95218,
+      "endOffset": 95438
+    },
+    {
+      "text": "If the fact has no probability itself, such as the drawing of a number from an urn which contains an infinity of them, that which it acquires by the testimonies decreases according to the continued product of the veracity of the witnesses.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 196328,
+      "endOffset": 196567
+    },
+    {
+      "text": "When the events are in great number, analysis gives another very simple expression of the probability that the benefit will be comprised within determined limits.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 234484,
+      "endOffset": 234646
+    },
+    {
+      "text": "The opinion that man has long been placed in the centre of the universe, considering himself the special object of the cares of nature, leads each individual to make himself the centre of a more or less extended sphere and to believe that hazard has preference for him.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 256283,
+      "endOffset": 256552
+    },
+    {
+      "text": "It is remarkable that a science, which commenced with the consideration of games of chance, should be elevated to the rank of the most important subjects of human knowledge.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 306209,
+      "endOffset": 306382
+    },
+    {
+      "text": "In things which are only probable the difference of the data, which each man has in regard to them, is one of the principal causes of the diversity of opinions which prevail in regard to the same objects.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 14490,
+      "endOffset": 14694
+    },
+    {
+      "text": "The theory of probabilities holds to considerations so delicate that it is not surprising that with the same data two persons arrive at different results, especially in very complicated questions.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 17756,
+      "endOffset": 17952
+    },
+    {
+      "text": "We soon recognize that it amounts to this: that the moral advantage which a benefit procures for us is not proportional to this benefit and that it depends upon a thousand circumstances, often very difficult to define, but of which the most general and most important is that of fortune.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36008,
+      "endOffset": 36295
+    },
+    {
+      "text": "Indeed it is apparent that one franc has much greater value for him who possesses only a hundred than for a millionaire.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36297,
+      "endOffset": 36417
+    },
+    {
+      "text": "Leibnitz was the first to indicate the transcendents by variable exponents, and thereby he has completed the system of elements of which a finite function can be composed; for every finite explicit function of a variable may be reduced in the last analysis to simple magnitudes, combined by the method of addition, subtraction, multiplication, and division and raised to constant or variable powers.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 82408,
+      "endOffset": 82807
+    },
+    {
+      "text": "We may arrive at them only by multiplying the observations or the experiences, so that the strange effects finally destroy reciprocally each other, the mean results putting in evidence those phenomena and their divers elements.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 114173,
+      "endOffset": 114400
+    },
+    {
+      "text": "Finally it is necessary that the observations should be precise; this condition, the first of all, increases greatly the weight of the result the expression of which has for a divisor the sum of the squares of the deviations of the observations from this result.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 121192,
+      "endOffset": 121454
+    },
+    {
+      "text": "I have given in the work cited general formulæ in order to obtain the probability of the values of one or of several linear functions of a great number of partial errors of which we know the law of probability; we may then by means of these formulæ determine the probability that the error of a geodetic result is contained within the assigned limits, whatever may be the law of the probability of partial errors.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 125486,
+      "endOffset": 125899
+    },
+    {
+      "text": "When they have been warned of this influence by the observations, they have recurred to their analysis; in rectifying it they have always found the cause of the anomalies observed; they have determined the laws and often they have anticipated the observations in discovering the inequalities which it had not yet indicated.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 139691,
+      "endOffset": 140014
+    },
+    {
+      "text": "Of all the instruments that we are able to employ in order to recognize the imperceptible agents of nature the most sensitive are the nerves, especially when particular causes increase their sensibility.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 167130,
+      "endOffset": 167333
+    },
+    {
+      "text": "We should know well by the experience of the past the difficulties which they present; but we are ignorant of the extent of the evils which their change can produce.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 171005,
+      "endOffset": 171170
+    },
+    {
+      "text": "The reservation of the individual is a result of their combination; but the testimonies do not bring us at all directly to this result, although the credence which is due these testimonies ought not to be decreased by the fact that the result of their combination is extraordinary.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 180795,
+      "endOffset": 181076
+    },
+    {
+      "text": "It is important then, in public affairs, that assemblies should have to pass upon subjects within reach of the greatest number; it is important for them that information be generally diffused and that good works founded upon reason and experience should enlighten those who are called to decide the lot of their fellows or to govern them, and should forewarn them against false ideas and the prejudices of ignorance.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 199268,
+      "endOffset": 199684
+    },
+    {
+      "text": "Scholars have had frequent occasion to remark that first conceptions often deceive and that the truth is not always probable.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 199685,
+      "endOffset": 199810
+    },
+    {
+      "text": "In order to condemn an accused it is necessary without doubt that the judges should have the strongest proofs of his offence.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 208308,
+      "endOffset": 208433
+    },
+    {
+      "text": "The unanimity of the judges would give very strong probability of a just decision; but in abstaining from it too many guilty ones would be acquitted.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 212237,
+      "endOffset": 212386
+    },
+    {
+      "text": "Then its decisions depending upon the temperament, the character, the habits of the jurors, and the circumstances in which they are placed, they are sometimes contrary to the decisions which the majority of the jury would have made if they had listened only to the proofs; this seems to me to be a great fault of this manner of judging.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 218698,
+      "endOffset": 219034
+    },
+    {
+      "text": "A sinking fund is at bottom only a means of converting into annuities a perpetual rent with the sole difference that in the case of a loan by annuities the interest is supposed constant, while the interest of funds acquired by the sinking fund is variable.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 245164,
+      "endOffset": 245420
+    },
+    {
+      "text": "The irregular events of nature are not exactly comparable to the drawing of the numbers of a lottery in which all the numbers are mixed at each drawing in such a manner as to render the chances of their drawing perfectly equal.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 254119,
+      "endOffset": 254346
+    },
+    {
+      "text": "In a long series of events of the same kind the single chances of hazard ought sometimes to offer the singular veins of good luck or bad luck which the majority of players do not fail to attribute to a kind of fatality.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 255574,
+      "endOffset": 255793
+    },
+    {
+      "text": "Liebnitz, always led by a singular and very loose metaphysics, considered that the series plus one, minus one, plus one, etc., becomes unity or zero according as one stops at a number of terms odd or even; and as in infinity there is no reason to prefer the even number to the odd, one ought following the rules of probability, to take the half of the results relative to these two kinds of numbers, and which are zero and unity, which gives ½ for the value of the series.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 265583,
+      "endOffset": 266055
+    },
+    {
+      "text": "We are led naturally to believe that the order according to which we see things renewed upon the earth has existed from all times and will continue always.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 267888,
+      "endOffset": 268043
+    },
+    {
+      "text": "All these prejudices and the terrors which they inspire are connected with physiological causes which continue sometimes to operate strongly after reason has disabused us of them.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 274493,
+      "endOffset": 274672
+    },
+    {
+      "text": "Bacon ought to have been struck by the inconceivable swiftness which the stars require in order to accomplish their diurnal revolution, if the earth is immovable, and by the extreme simplicity with which its rotation explains how bodies so distant, the ones from the others, as the stars, the sun, the planets, and the moon, all seem subjected to this revolution.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 279877,
+      "endOffset": 280240
+    },
+    {
+      "text": "It is singular that Bacon, carried to great prospects by his genius, was not won over by the majestic idea which the Copernican system of the universe offers.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 280503,
+      "endOffset": 280661
+    },
+    {
+      "text": "Man, made for the temperature which he enjoys, and for the element which he breathes, would not be able, according to all appearance, to live upon the other planets.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 283586,
+      "endOffset": 283751
+    },
+    {
+      "text": "If we should try all the hypotheses which can be formed in regard to the cause of phenomena we should arrive, by a process of exclusion, at the true one.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 287003,
+      "endOffset": 287156
+    },
+    {
+      "text": "The regular causes of phenomena are most frequently either unknown, or too complicated to be submitted to calculus; again, their action is often disturbed by accidental and irregular causes; but its impression always remains in the events produced by all these causes, and it leads to modifications which only a long series of observations can determine.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 305035,
+      "endOffset": 305389
+    },
+    {
+      "text": "Probability is relative, in part to this ignorance, in part to our knowledge.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11799,
+      "endOffset": 11876
+    },
+    {
+      "text": "When the probability of a single event is unknown we may suppose it equal to any value from zero to unity.",
+      "sourceId": "9d9baae0-a9f6-4d3c-b55e-a784ea3b150f",
+      "sourceTitle": "laplace_works_1",
+      "sourceFile": "laplace_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 30248,
+      "endOffset": 30354
+    }
+  ]
+}

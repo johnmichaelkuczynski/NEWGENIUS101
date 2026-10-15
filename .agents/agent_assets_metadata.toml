@@ -200,3 +200,17 @@ mtime_ms = 1790624836608
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/1761a56d-de34-4d7a-869c-2347cef654ff/fdbb501a-b2e9-4853-851b-cbf9690c06fe"
 storage_version_token = "1790624906382656"
 content_type = "text/html"
+
+[[outputs]]
+id = "T93C1mXuSuvtO0mFnscXJ"
+uri = "file://test_outputs/kuczynski-follow-up-verification.txt"
+type = "text"
+title = "Exact Kuczynski two-turn test responses"
+description = "The original deductive-nomological-model question and “Do you personally agree with this view?”, with both complete, unedited responses from the real Preview check."
+logical_id = "39f42d62-2e79-4abf-a7fa-8ce3752d14a8"
+content_hash = "sha256:b5d963988b264bcac6b7830ac1359c3ccf237306d98f4733c4c193c3e4d06f97"
+size = 14660
+mtime_ms = 1792098355161
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/39f42d62-2e79-4abf-a7fa-8ce3752d14a8/6d3f5e5d-f034-4709-b41d-66ffbd49440f"
+storage_version_token = "1792098549207528"
+content_type = "text/plain"

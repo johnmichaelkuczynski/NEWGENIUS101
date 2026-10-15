@@ -1,0 +1,789 @@
+{
+  "thinkerId": "aristotle",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Virtue, then, is a state of character concerned with choice, lying in a mean, i.e. the mean relative to us, this being determined by a rational principle, and by that principle by which the man of practical wisdom would determine it.",
+      "sourceId": "64e779eb-3825-4142-96da-b2798b2fa843",
+      "sourceTitle": "Book IX",
+      "sourceFile": "aristotle_works_13",
+      "sourceKind": "database-text",
+      "startOffset": 349431,
+      "endOffset": 349666
+    },
+    {
+      "text": "Absence of haphazard and conduciveness of everything to an end are to be found in Nature’s works in the highest degree, and the resultant end of her generations and combinations is a form of the beautiful.",
+      "sourceId": "f7b53725-cf63-4540-81e6-73c6efa978ba",
+      "sourceTitle": "fire, for instance, to have a hot nature, earth a cold one; the former to be light,",
+      "sourceFile": "aristotle_works_10",
+      "sourceKind": "database-text",
+      "startOffset": 30364,
+      "endOffset": 30571
+    },
+    {
+      "text": "For the state of mind may exist without producing any good result, as in a man who is asleep or in some other way quite inactive, but the activity cannot; for one who has the activity will of necessity be acting, and acting well.",
+      "sourceId": "64e779eb-3825-4142-96da-b2798b2fa843",
+      "sourceTitle": "Book IX",
+      "sourceFile": "aristotle_works_13",
+      "sourceKind": "database-text",
+      "startOffset": 309216,
+      "endOffset": 309448
+    },
+    {
+      "text": "The object of knowledge would appear to exist before knowledge itself, for it is usually the case that we acquire knowledge of objects already existing; it would be difficult, if not impossible, to find a branch of knowledge the beginning of the existence of which was contemporaneous with that of its object.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 44841,
+      "endOffset": 45171
+    },
+    {
+      "text": "A city can be virtuous only when the citizens who have a share in the government are virtuous, and in our state all the citizens share in the government; let us then inquire how a man becomes virtuous.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 72152,
+      "endOffset": 72370
+    },
+    {
+      "text": "Justice is the virtue through which everybody enjoys his own possessions in accordance with the law; its opposite is injustice, through which men enjoy the possessions of others in defiance of the law.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 355184,
+      "endOffset": 355397
+    },
+    {
+      "text": "Nature would like to distinguish between the bodies of freemen and slaves, making the one strong for servile labor, the other upright, and although useless for such services, useful for political life in the arts both of war and peace.",
+      "sourceId": "382b08e0-1df7-4aa1-9910-a89fb10b6de4",
+      "sourceTitle": "the soul of the student must first have been cultivated by means of habits for",
+      "sourceFile": "aristotle_works_15",
+      "sourceKind": "database-text",
+      "startOffset": 25750,
+      "endOffset": 25988
+    },
+    {
+      "text": "The master is not called a master because he has science, but because he is of a certain character, and the same remark applies to the slave and the freeman.",
+      "sourceId": "382b08e0-1df7-4aa1-9910-a89fb10b6de4",
+      "sourceTitle": "the soul of the student must first have been cultivated by means of habits for",
+      "sourceFile": "aristotle_works_15",
+      "sourceKind": "database-text",
+      "startOffset": 30831,
+      "endOffset": 30990
+    },
+    {
+      "text": "For surely it would not be right to kill, or ostracize, or exile such a person, or require that he should take his turn in being governed.",
+      "sourceId": "382b08e0-1df7-4aa1-9910-a89fb10b6de4",
+      "sourceTitle": "the soul of the student must first have been cultivated by means of habits for",
+      "sourceFile": "aristotle_works_15",
+      "sourceKind": "database-text",
+      "startOffset": 217635,
+      "endOffset": 217775
+    },
+    {
+      "text": "Courage is the virtue that disposes men to do noble deeds in situations of danger, in accordance with the law and in obedience to its commands; cowardice is the opposite.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 355398,
+      "endOffset": 355581
+    },
+    {
+      "text": "It is clear, then, from what has been said, that it is not possible to be good in the strict sense without practical wisdom, nor practically wise without moral virtue.",
+      "sourceId": "f2a3a6ed-3dfa-4478-a434-5dd2a6df9888",
+      "sourceTitle": "others to aid us in deliberation on important questions, distrusting ourselves",
+      "sourceFile": "aristotle_works_14",
+      "sourceKind": "database-text",
+      "startOffset": 179455,
+      "endOffset": 179634
+    },
+    {
+      "text": "Now fine and just actions, which political science investigates, admit of much variety and fluctuation of opinion, so that they may be thought to exist only by convention, and not by nature.",
+      "sourceId": "64e779eb-3825-4142-96da-b2798b2fa843",
+      "sourceTitle": "Book IX",
+      "sourceFile": "aristotle_works_13",
+      "sourceKind": "database-text",
+      "startOffset": 286421,
+      "endOffset": 286614
+    },
+    {
+      "text": "The general rule is this: a thing whose essence resides in a substratum of matter can never come into being in the absence of all matter.",
+      "sourceId": "cdbbde89-faed-4bbb-acd6-9b77cfe36208",
+      "sourceTitle": "thing in respect of the same thing may be at the same time both hot and not",
+      "sourceFile": "aristotle_works_5",
+      "sourceKind": "database-text",
+      "startOffset": 119177,
+      "endOffset": 119316
+    },
+    {
+      "text": "Equality consists in the same treatment of similar persons, and no government can stand which is not founded upon justice.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 74558,
+      "endOffset": 74699
+    },
+    {
+      "text": "The end of democracy is freedom; of oligarchy, wealth; of aristocracy, the maintenance of education and national institutions; of tyranny, the protection of the tyrant.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 351838,
+      "endOffset": 352014
+    },
+    {
+      "text": "Practical wisdom only is characteristic of the ruler: it would seem that all other virtues must equally belong to ruler and subject.",
+      "sourceId": "382b08e0-1df7-4aa1-9910-a89fb10b6de4",
+      "sourceTitle": "the soul of the student must first have been cultivated by means of habits for",
+      "sourceFile": "aristotle_works_15",
+      "sourceKind": "database-text",
+      "startOffset": 157715,
+      "endOffset": 157859
+    },
+    {
+      "text": "We have said in the Ethics what the difference is between art and science and the other kindred faculties; but the point of our present discussion is this, that all men suppose what is called Wisdom to deal with the first causes and the principles of things; so that, as has been said before, the man of experience is thought to be wiser than the possessors of any sense-perception whatever, the artist wiser than the men of experience, the masterworker than the mechanic, and the theoretical kinds of knowledge to be more of the nature of Wisdom than the productive.",
+      "sourceId": "1226433c-595c-4243-a092-c2ffe85456b8",
+      "sourceTitle": "has the same colour, as a bull is white as a whole or dark as a whole); others",
+      "sourceFile": "aristotle_works_12",
+      "sourceKind": "database-text",
+      "startOffset": 23657,
+      "endOffset": 24244
+    },
+    {
+      "text": "All the sciences, indeed, are more necessary than this, but none is better.",
+      "sourceId": "1226433c-595c-4243-a092-c2ffe85456b8",
+      "sourceTitle": "has the same colour, as a bull is white as a whole or dark as a whole); others",
+      "sourceFile": "aristotle_works_12",
+      "sourceKind": "database-text",
+      "startOffset": 29578,
+      "endOffset": 29654
+    },
+    {
+      "text": "To attain any assured knowledge about the soul is one of the most difficult things in the world.",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 309062,
+      "endOffset": 309159
+    },
+    {
+      "text": "The case of mind is different; it seems to be an independent substance implanted within the soul and to be incapable of being destroyed.",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 344841,
+      "endOffset": 344978
+    },
+    {
+      "text": "All, both those who assert that the soul, because of its knowledge or perception of what is compounded out of the elements, and is those who assert that it is of all things the most originative of movement, fail to take into consideration all kinds of soul.",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 355448,
+      "endOffset": 355720
+    },
+    {
+      "text": "The homogeneous bodies are made up of the elements, and all the works of nature in turn of the homogeneous bodies as matter.",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 304090,
+      "endOffset": 304216
+    },
+    {
+      "text": "Further, does soul belong to the class of potential existents, or is it not rather an actuality?",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 310429,
+      "endOffset": 310526
+    },
+    {
+      "text": "What Anaxagoras says about them is more obscure; in many places he tells us that the cause of beauty and order is mind, elsewhere that it is soul; it is found, he says, in all animals, great and small, high and low, but mind (in the sense of intelligence) appearsnot to belong alike to all animals, and indeed not even to all human beings.",
+      "sourceId": "86d4c572-0f22-4d88-a8f0-9c56ba79dffa",
+      "sourceTitle": "the bronze. The same phenomenon occurs in other instances too.",
+      "sourceFile": "aristotle_works_6",
+      "sourceKind": "database-text",
+      "startOffset": 321030,
+      "endOffset": 321372
+    },
+    {
+      "text": "For imagination is different from either perceiving or discursive thinking, though it is not found without sensation, or judgement without it.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 67940,
+      "endOffset": 68083
+    },
+    {
+      "text": "That imagination is not sense is clear from the following considerations: Sense is either a faculty or an activity, e.g. sight or seeing: imagination takes place in the absence of both, as e.g. in dreams.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 69437,
+      "endOffset": 69652
+    },
+    {
+      "text": "The organ for the perception of these is that of touch-that part of the body in which primarily the sense of touch resides.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 46524,
+      "endOffset": 46655
+    },
+    {
+      "text": "Without touch there can be no other sense, and the organ of touch cannot consist of earth or of any other single element.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 109034,
+      "endOffset": 109157
+    },
+    {
+      "text": "All the other senses are necessary to animals, as we have said, not for their being, but for their well-being.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 110541,
+      "endOffset": 110652
+    },
+    {
+      "text": "Now to remember the future is not possible, but this is an object of opinion or expectation (and indeed there might be actually a science of expectation, like that of divination, in which some believe); nor is there memory of the present, but only sense-perception.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 191845,
+      "endOffset": 192119
+    },
+    {
+      "text": "No animal yet has been seen to possess both lungs and gills, and the reason for this is that the lung is designed for the purpose of refrigeration by means of the air (it seems to have derived its name (pneumon) from its function as a receptacle of the breath (pneuma)), while gills are relevant to refrigeration by water.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 339889,
+      "endOffset": 340215
+    },
+    {
+      "text": "Man’s eyes have in the eyelids a kind of shelter or envelope, which must be shifted or drawn back in order that we may see, while hardeyed animals have nothing of the kind, but at once see whatever presents itself in the transparent medium.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 34964,
+      "endOffset": 35207
+    },
+    {
+      "text": "As sight is the most highly developed sense, the name Phantasia (imagination) has been formed from Phaos (light) because it is not possible to see without light.",
+      "sourceId": "1e982dd3-e581-478e-b778-d1635013c599",
+      "sourceTitle": "things  what  they  are  for  the  whole  Cosmos:  if  we  are  to  distinguish  and",
+      "sourceFile": "aristotle_works_7",
+      "sourceKind": "database-text",
+      "startOffset": 74219,
+      "endOffset": 74392
+    },
+    {
+      "text": "From experience again-i.e. from the universal now stabilized in its entirety within the soul, the one beside the many which is a single identity within them all-originate the skill of the craftsman and the knowledge of the man of science, skill in the sphere of coming to be and science in the sphere of being.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 235359,
+      "endOffset": 235679
+    },
+    {
+      "text": "The commensurate universal is precious because it makes clear the cause; so that in the case of facts like these which have a cause other than themselves universal knowledge is more precious than sense-perceptions and than intuition.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 154232,
+      "endOffset": 154483
+    },
+    {
+      "text": "We conclude that these states of knowledge are neither innate in a determinate form, nor developed from other higher states of knowledge, but from sense-perception.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 235681,
+      "endOffset": 235858
+    },
+    {
+      "text": "A fresh stand is made among these rudimentary universals, and the process does not cease until the indivisible concepts, the true universals, are established: e.g. such and such a species of animal is a step towards the genus animal, which by the same process is a step towards a further generalization.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 236432,
+      "endOffset": 236745
+    },
+    {
+      "text": "The truth perhaps is that if a man grasp truths that cannot be other than they are, in the way in which he grasps the definitions through which demonstrations take place, he will have not opinion but knowledge: if on the other hand he apprehends these attributes as inhering in their subjects, but not in virtue of the subjects’ substance and essential nature possesses opinion and not genuine knowledge; and his opinion, if obtained through immediate premisses, will be both of the fact and of the reasoned fact; if not so obtained, of the fact alone.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 161592,
+      "endOffset": 162172
+    },
+    {
+      "text": "The premisses must be the causes of the conclusion, better known than it, and prior to it; its causes, since we possess scientific knowledge of a thing only when we know its cause; prior, in order to be causes; antecedently known, this antecedent knowledge being not our mere understanding of the meaning, but knowledge of the fact as well.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 43936,
+      "endOffset": 44280
+    },
+    {
+      "text": "One science differs from another when their basic truths have neither a common source nor are derived those of the one science from those the other.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 150656,
+      "endOffset": 150805
+    },
+    {
+      "text": "If, then, all causes and reasons are alike in this respect, and if this is the means to full knowledge in the case of final causes such as we have exemplified, it follows that in the case of the other causes also full knowledge is attained when an attribute no longer inheres because of something else.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 140180,
+      "endOffset": 140498
+    },
+    {
+      "text": "Sometimes, too, people make the bad mistake of putting an affection into that which is affected, as its genus, e.g. those who say that immortality is everlasting life: for immortality seems to be a certain affection or accidental feature of life.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 361235,
+      "endOffset": 361484
+    },
+    {
+      "text": "Consequently, if the cause is distinct from the thing’s essential nature and demonstration is possible, the cause must be the middle term, and, the conclusion proved being universal and affirmative, the proof is in the first figure.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 188537,
+      "endOffset": 188783
+    },
+    {
+      "text": "On the other hand, there is nothing to prevent both premisses being partially false; e.g. if actually some A is C and some B is C, then if it is premised that all A is C and no B is C, both premisses are false, yet partially, not wholly, false.",
+      "sourceId": "18e469ea-74f9-46b2-aa08-b71b09595f35",
+      "sourceTitle": "or we must argue from two syllogisms. In no other way than this, as was said",
+      "sourceFile": "aristotle_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 103636,
+      "endOffset": 103883
+    },
+    {
+      "text": "You are not to avoid uttering maxims that contradict such sayings as have become public property (I mean such sayings as ‘know thyself’ and ‘nothing in excess’) if doing so will raise your hearers’ opinion of your character, or convey an effect of strong emotion—e.g. an angry speaker might well say, ‘It is not true that we ought to know ourselves: anyhow, if this man had known himself, he would never have thought himself fit for an army command.’",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 139386,
+      "endOffset": 139841
+    },
+    {
+      "text": "Men either form a false opinion through want of good sense; or they form a true opinion, but because of their moral badness do not say what they really think; or finally, they are both sensible and upright, but not well disposed to their hearers, and may fail in consequence to recommend what they know to be the best course.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 42154,
+      "endOffset": 42484
+    },
+    {
+      "text": "Equity bids us be merciful to the weakness of human nature; to think less about the laws than about the man who framed them, and less about what he said than about what he meant; not to consider the actions of the accused so much as his intentions, nor this or that detail so much as the whole story; to ask not what a man is now but what he has always or usually been.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 22104,
+      "endOffset": 22477
+    },
+    {
+      "text": "Pity may be defined as a feeling of pain caused by the sight of some evil, destructive or painful, which befalls one who does not deserve it, and which we might expect to befall ourselves or some friend of ours, and moreover to befall us soon.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 87772,
+      "endOffset": 88018
+    },
+    {
+      "text": "Emulation is pain caused by seeing the presence, in persons whose nature is like our own, of good things that are highly valued and are possible for ourselves to acquire; but it is felt not because others have these goods, but because we have not got them ourselves.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 103212,
+      "endOffset": 103494
+    },
+    {
+      "text": "Envy is pain at the sight of such good fortune as consists of the good things already mentioned; we feel it towards our equals; not with the idea of getting something for ourselves, but because the other people have it.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 99763,
+      "endOffset": 99985
+    },
+    {
+      "text": "Righteous indignation is a mean between envy and spite, and these states are concerned with the pain and pleasure that are felt at the fortunes of our neighbours; the man who is characterized by righteous indignation is pained at undeserved good fortune, the envious man, going beyond him, is pained at all good fortune, and the spiteful man falls so far short of being pained that he even rejoices.",
+      "sourceId": "64e779eb-3825-4142-96da-b2798b2fa843",
+      "sourceTitle": "Book IX",
+      "sourceFile": "aristotle_works_13",
+      "sourceKind": "database-text",
+      "startOffset": 357008,
+      "endOffset": 357424
+    },
+    {
+      "text": "As, therefore, in the case of animate bodies and organisms a certain magnitude is necessary, and a magnitude which may be easily embraced in one view; so in the plot, a certain length is necessary, and a length which can be easily embraced by the memory.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 308283,
+      "endOffset": 308554
+    },
+    {
+      "text": "Homer, admirable in all respects, has the special merit of being the only poet who rightly appreciates the part he should take himself.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 358061,
+      "endOffset": 358197
+    },
+    {
+      "text": "A beginning is that which does not itself follow anything by causal necessity, but after which something naturally is or comes to be.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 307215,
+      "endOffset": 307349
+    },
+    {
+      "text": "Or if a law is ambiguous, we shall turn it about and consider which construction best fits the interests of justice or utility, and then follow that way of looking at it.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 28037,
+      "endOffset": 28209
+    },
+    {
+      "text": "Three points must be studied in making a speech; and we have now completed the account of (1) Examples, Maxims, Enthymemes, and in general the thought-element the way to invent and refute arguments.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 187900,
+      "endOffset": 188121
+    },
+    {
+      "text": "Further, the worse deed is that which involves the doer in special shame; that whereby a man wrongs his benefactors-for he does more than one wrong, by not merely doing them harm but failing to do them good; that which breaks the unwritten laws of justice-the better sort of man will be just without being forced to be so, and the written laws depend on force while the unwritten ones do not.",
+      "sourceId": "9705c5e6-f58a-4cd2-954f-1d0da4309afc",
+      "sourceTitle": "especially when he is credited with it by people whom he thinks good judges.",
+      "sourceFile": "aristotle_works_17",
+      "sourceKind": "database-text",
+      "startOffset": 25384,
+      "endOffset": 25792
+    },
+    {
+      "text": "If, then, tragedy is superior to epic poetry in all these respects, and, moreover, fulfills its specific function better as an art—for each art ought to produce, not any chance pleasure, but the pleasure proper to it, as already stated—it plainly follows that tragedy is the higher art, as attaining its end more perfectly.",
+      "sourceId": "19306967-6b48-4ea6-9290-9238edc6732b",
+      "sourceTitle": "aristotle_works_18",
+      "sourceFile": "aristotle_works_18.txt",
+      "sourceKind": "database-text",
+      "startOffset": 847,
+      "endOffset": 1186
+    },
+    {
+      "text": "Yet these poems are as perfect as possible in structure; each is, in the highest degree attainable, an imitation of a single action.",
+      "sourceId": "19306967-6b48-4ea6-9290-9238edc6732b",
+      "sourceTitle": "aristotle_works_18",
+      "sourceFile": "aristotle_works_18.txt",
+      "sourceKind": "database-text",
+      "startOffset": 712,
+      "endOffset": 845
+    },
+    {
+      "text": "Once more, the Epic imitation has less unity; as is shown by this, that any Epic poem will furnish subjects for several tragedies.",
+      "sourceId": "19306967-6b48-4ea6-9290-9238edc6732b",
+      "sourceTitle": "aristotle_works_18",
+      "sourceFile": "aristotle_works_18.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179,
+      "endOffset": 310
+    },
+    {
+      "text": "The truth or falsity of a statement depends on facts, and not on any power on the part of the statement itself of admitting contrary qualities.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25838,
+      "endOffset": 25989
+    },
+    {
+      "text": "The statement ‘he is sitting’ remains unaltered, but it is at one time true, at another false, according to circumstances.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 25067,
+      "endOffset": 25191
+    },
+    {
+      "text": "One thing is like another only with reference to that in virtue of which it is such and such; thus this forms the peculiar mark of quality.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 64351,
+      "endOffset": 64492
+    },
+    {
+      "text": "It is therefore plain that it is not necessary that of an affirmation and a denial one should be true and the other false.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 114619,
+      "endOffset": 114742
+    },
+    {
+      "text": "Since the particular affirmative is convertible, C will belong to some B: but A belonged to all B: so that the third figure is formed.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 302874,
+      "endOffset": 303014
+    },
+    {
+      "text": "If then every single statement may truly be said to be either an affirmation or a negation, if it is not a negation clearly it must in a sense be an affirmation.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 307984,
+      "endOffset": 308159
+    },
+    {
+      "text": "If then it is assumed that B belongs to some C, and the statement AB stands, the conclusion will be that A does not belong to some C.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 356249,
+      "endOffset": 356383
+    },
+    {
+      "text": "The same individual person is at one time white, at another black, at one time warm, at another cold, at one time good, at another bad.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 23752,
+      "endOffset": 23888
+    },
+    {
+      "text": "A line, on the other hand, is a continuous quantity, for it is possible to find a common boundary at which its parts join.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 27988,
+      "endOffset": 28118
+    },
+    {
+      "text": "Again, in the case of contraries, it is possible that there should be changes from either into the other, while the subject retains its identity, unless indeed one of the contraries is a constitutive property of that subject, as heat is of fire.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 76842,
+      "endOffset": 77090
+    },
+    {
+      "text": "Yet it cannot be said without qualification that all existence and non-existence is the outcome of necessity.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 113125,
+      "endOffset": 113242
+    },
+    {
+      "text": "For ‘like’ and ‘unlike’, ‘equal’ and ‘unequal’, have the modifications ‘more’ and ‘less’ applied to them, and each of these is relative in character: for the terms ‘like’ and ‘unequal’ bear ‘unequal’ bear a reference to something external.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 38418,
+      "endOffset": 38669
+    },
+    {
+      "text": "Yet it does not appear to be true in all cases that correlatives come into existence simultaneously.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 44723,
+      "endOffset": 44839
+    },
+    {
+      "text": "It may be questioned whether the proposition ‘it may be’ follows from the proposition ‘it is necessary that it should be’.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 138865,
+      "endOffset": 138988
+    },
+    {
+      "text": "It is evident that it will make no difference if we universalize the positive judgement, for the universal negative judgement will form the contrary.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 148125,
+      "endOffset": 148275
+    },
+    {
+      "text": "There is hardly any difference between syllogisms from necessary premisses and syllogisms from premisses which merely assert.",
+      "sourceId": "c87cb610-d3ab-40fb-bcb4-8fcde1dcd5dd",
+      "sourceTitle": "The Complete Aristotle",
+      "sourceFile": "aristotle_works_1",
+      "sourceKind": "database-text",
+      "startOffset": 181321,
+      "endOffset": 181462
+    },
+    {
+      "text": "There is a similar law attributed to Oxylus, which is to the effect that there should be a certain portion of every man’s land on which he could not borrow money.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 275,
+      "endOffset": 439
+    },
+    {
+      "text": "On the merits of Theramenes opinion is divided, because it so happened that in his time public affairs were in a very stormy state.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 189826,
+      "endOffset": 189958
+    },
+    {
+      "text": "A useful corrective to the evil of which I am speaking would be the law of the Aphytaeans, who, although they are numerous, and do not possess much land, are all of them husbandmen.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 440,
+      "endOffset": 623
+    },
+    {
+      "text": "The last form of democracy, that in which all share alike, is one which cannot be borne by all states, and will not last long unless well regulated by laws and customs.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 2062,
+      "endOffset": 2232
+    },
+    {
+      "text": "For some renounce political power, and think that the life of the freeman is different from the life of the statesman and the best of all; but others think the life of the statesman best.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 33364,
+      "endOffset": 33554
+    },
+    {
+      "text": "The populousness of democracies generally preserves them (for e state need not be much increased,since there is no necessity tha number is to democracy in the place of justice based on proportion); whereas the preservation of an oligarchy clearly depends on an opposite principle, viz., good order.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 10043,
+      "endOffset": 10356
+    },
+    {
+      "text": "For most of these military states are safe only while they are at war, but fall when they have acquired their empire; like unused iron they lose their temper in time of peace.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 81459,
+      "endOffset": 81636
+    },
+    {
+      "text": "Let the young practice even such music as we have prescribed, only until they are able to feel delight in noble melodies and rhythms, and not merely in that common part of music in which every slave or child and even some animals find pleasure.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 119944,
+      "endOffset": 120191
+    },
+    {
+      "text": "Of these, reading and writing and drawing are regarded as useful for the purposes of life in a variety of ways, and gymnastic exercises are thought to infuse courage. concerning music a doubt may be raised—in our own day most men cultivate it for the sake of pleasure, but originally it was included in education, because nature herself, as has been often said, requires that we should be able, not only to work well, but to use leisure well; for, as I must repeat once again, the first principle of all action is leisure.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 101454,
+      "endOffset": 101983
+    },
+    {
+      "text": "Pericles was also the first to institute pay for service in the law-courts, as a bid for popular favour to counterbalance the wealth of Cimon.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 185650,
+      "endOffset": 185793
+    },
+    {
+      "text": "Some critics accuse him of thereby causing a deterioration in the character of the juries, since it was always the common people who put themselves forward for selection as jurors, rather than the men of better position.",
+      "sourceId": "e9f6597b-7f31-4d0a-9a6a-b955632b4b7b",
+      "sourceTitle": "either that no one should possess more than a certain quantity of land, or that,",
+      "sourceFile": "aristotle_works_16",
+      "sourceKind": "database-text",
+      "startOffset": 186682,
+      "endOffset": 186912
+    }
+  ]
+}

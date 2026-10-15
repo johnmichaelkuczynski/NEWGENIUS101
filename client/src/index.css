@@ -342,6 +342,24 @@
     }
   }
 
+  @keyframes thinkingQuoteFlow {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  .thinking-quote-flow {
+    animation: thinkingQuoteFlow linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thinking-quote-flow {
+      animation: none;
+      position: static;
+      will-change: auto;
+    }
+  }
+
   @keyframes shimmer {
     0%, 100% {
       opacity: 0.6;

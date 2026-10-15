@@ -1184,6 +1184,7 @@ export default function Chat() {
         {/* Thinking Panel - appears when AI is generating response */}
         <ThinkingPanel 
           thinkerName={mainThinker?.name || "J.-M. Kuczynski"}
+          figureId={mainThinkerId}
           isActive={isStreaming}
         />
       </main>

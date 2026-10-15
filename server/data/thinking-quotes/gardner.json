@@ -1,0 +1,726 @@
+{
+  "thinkerId": "gardner",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "It is not so easy to invent one theory to explain hundreds of different facts which were previously mysterious.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 42821,
+      "endOffset": 42932
+    },
+    {
+      "text": "When such a theory is invented, and it fits all these facts, it is probably correct for a reason that is curiously similar to the reason why a solution to a long cryptogram is probably correct if it fits all the symbols.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 42933,
+      "endOffset": 43153
+    },
+    {
+      "text": "Scientists are the cryptographers engaged in the slow, progressive cracking of nature’s many, perhaps infinitely many, secret ciphers.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43902,
+      "endOffset": 44036
+    },
+    {
+      "text": "In a metaphoric sense, the laws of science can be regarded as the “pattern words” of the universe.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43727,
+      "endOffset": 43825
+    },
+    {
+      "text": "The famous German philosopher and mathematician Gottfried Wilhelm Leibnitz once observed that solving a cryptogram is very much like solving a problem in science.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 42315,
+      "endOffset": 42477
+    },
+    {
+      "text": "Edgar Allan Poe, in “The Gold Bug” and also in an essay on cryptography, said that any cipher which “human ingenuity” could construct could also be broken by human ingenuity.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44446,
+      "endOffset": 44620
+    },
+    {
+      "text": "You will discover that, when you are working on a long cryptogram and trying out various hunches, you eventually reach a point at which you suddenly are absolutely sure that you are right and that it is only a matter of time until you complete the solution.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41893,
+      "endOffset": 42150
+    },
+    {
+      "text": "The technique of solving a cryptogram consists of making the best guesses you can about certain words, then substituting the letters throughout the cipher text to see if your guesses make sense or if they lead to an impossible combination of letters.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 38227,
+      "endOffset": 38477
+    },
+    {
+      "text": "It is certainly possible, however, to create unbreakable ciphers that are impractical except in special instances.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 45195,
+      "endOffset": 45309
+    },
+    {
+      "text": "Not only are they used for military and diplomatic intelligence, but large privately owned corporations now use computers for their own top-secret communications between officials of the same firm.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 58373,
+      "endOffset": 58570
+    },
+    {
+      "text": "If we received from outer space a series of radio-wave beeps, how would we know that it came from intelligent creatures; that it was not just radio “noise,” which had some natural cause?",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 107340,
+      "endOffset": 107526
+    },
+    {
+      "text": "In other words, if we tried to reach life on another planet by radio-code beeps, how could we best attract the attention of our listeners so they would know at once that someone was trying to talk to them?",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 107527,
+      "endOffset": 107732
+    },
+    {
+      "text": "Not long ago someone asked the famous Chinese physicist Chen Ning Yang what we should do if we ever received an unmistakable radio message from outer space.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 114928,
+      "endOffset": 115084
+    },
+    {
+      "text": "In days when the existence of Martians seemed a real possibility, many scientists pondered the question: How could we send a message to Mars that would let the Martians know we exist?",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 105668,
+      "endOffset": 105851
+    },
+    {
+      "text": "It is necessary in this crazy world of ours for governments and spies to send special information in secret ciphers.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 2396,
+      "endOffset": 2512
+    },
+    {
+      "text": "The numbers will be meaningless to anyone who does not know what book or magazine is being used.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 26733,
+      "endOffset": 26829
+    },
+    {
+      "text": "Surely that is one reason why so many young people like to send and receive coded messages even when there is no special reason for them to be secret.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5105,
+      "endOffset": 5255
+    },
+    {
+      "text": "Try to think of words that will make the page read like a letter saying something that has no relation to the secret message.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 102108,
+      "endOffset": 102233
+    },
+    {
+      "text": "There is a small chance, of course, that another line might make sense, but the probability of this happening is extremely low.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 68851,
+      "endOffset": 68978
+    },
+    {
+      "text": "The planets are numbered down the left-hand edge in a binary code which increases in place value from left to right and starts with a decimal (or rather a binary) point to mark the beginning.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 113170,
+      "endOffset": 113361
+    },
+    {
+      "text": "The wavy line commencing at the third planet indicates that it is covered with water and the fishlike form shows there is marine life there.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 113362,
+      "endOffset": 113502
+    },
+    {
+      "text": "A key number, known only to you and your friends (and which can be varied from time to time), tells you how far to shift a second alphabet when it is written underneath the first one.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21189,
+      "endOffset": 21372
+    },
+    {
+      "text": "With a little thought you can invent all sorts of ways of varying the procedure to make polyalphabetic codes that are almost impossible to crack.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 65927,
+      "endOffset": 66072
+    },
+    {
+      "text": "Contrary to what you may have read elsewhere, solutions of flour, cooking starch, baking soda, or aspirin will not work—at least not with the kind of blacklight you will be using.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 87080,
+      "endOffset": 87259
+    },
+    {
+      "text": "The tide did not turn until American and British cryptanalysts solved the cipher that was being used by German submarines.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 3954,
+      "endOffset": 4076
+    },
+    {
+      "text": "A one-word message, such as COME, would be impossible to solve in cipher form because it could be any word of four different letters.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 41317,
+      "endOffset": 41450
+    },
+    {
+      "text": "On the other hand, they must not be too complicated because then it takes too much time to encode and decode them accurately.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 47670,
+      "endOffset": 47795
+    },
+    {
+      "text": "It is named for Baron Lyon Playfair, a nineteenth-century Englishman, but actually was devised by the Baron’s good friend Charles Wheatstone.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 50401,
+      "endOffset": 50542
+    },
+    {
+      "text": "As with the letter grille, it doesn’t matter if the message is shorter because blank spaces won’t affect the scrambling.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 77802,
+      "endOffset": 77922
+    },
+    {
+      "text": "It is better to write with a tiny paint brush than with a pen because pressure from the pen’s point will make marks on the paper that often can be seen in slanted light.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84091,
+      "endOffset": 84260
+    },
+    {
+      "text": "Is it possible to write on typewriter paper with a substance that does not glow, causing the writing to appear dark under blacklight?",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 88806,
+      "endOffset": 88939
+    },
+    {
+      "text": "In addition, the cryptanalyst must have a sufficient amount of cipher text to work on, and sufficient time to work on it.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44781,
+      "endOffset": 44902
+    },
+    {
+      "text": "The more disks you use, the lower the probability of such a coincidence and the easier it will be to recognize the correct line.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 68979,
+      "endOffset": 69107
+    },
+    {
+      "text": "If the message happens to be a palindrome—a sentence that reads the same in both directions—the letters will be in exactly the same order when reversed.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 7802,
+      "endOffset": 7954
+    },
+    {
+      "text": "If you wish to vary the size and shape of the matrix with each message, you can put one number at the beginning of the cipher to indicate the height of the matrix, and another number at the end to indicate its width.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13819,
+      "endOffset": 14035
+    },
+    {
+      "text": "To do this, we could simply number the columns from 1 to 5, but mix up the digits.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 15698,
+      "endOffset": 15780
+    },
+    {
+      "text": "Sometimes they cause a lot of trouble for cryptanalysts because they are taken as clues.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 20247,
+      "endOffset": 20335
+    },
+    {
+      "text": "Another simple method is to number the letters of the alphabet forward (A = 1, B = 2, C = 3, and so on) or number them backward (A = 26, B = 25, C = 24, and so on).",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 20398,
+      "endOffset": 20562
+    },
+    {
+      "text": "If you use a key word that contains Y, it will change all the letters except Z.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25730,
+      "endOffset": 25809
+    },
+    {
+      "text": "It is also known as the Masons’ cipher because the Society of Freemasons used it more than a hundred years ago.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 27106,
+      "endOffset": 27217
+    },
+    {
+      "text": "A skilled solver of cryptograms will quickly recognize pattern words such as TOMORROW, PEOPLE, BANANA, BEGINNING, COMMITTEE, and many, many others.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 36240,
+      "endOffset": 36387
+    },
+    {
+      "text": "If Poe considered all these factors, his theory has not yet been proved right or wrong.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 44903,
+      "endOffset": 44990
+    },
+    {
+      "text": "When Playfair and Wheatstone tried to interest the British Foreign Office in the cipher, the Under Secretary complained that it was too difficult to learn.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54061,
+      "endOffset": 54216
+    },
+    {
+      "text": "It is impossible, Carroll wrote, “for anyone, ignorant of the key word, to decipher the message, even with the help of the table.”",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 56825,
+      "endOffset": 56955
+    },
+    {
+      "text": "If the letter is the nearest to the front of the alphabet, among the three letters in the triplet, indicate this by drawing above the number a small line leaning to the left.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 61459,
+      "endOffset": 61633
+    },
+    {
+      "text": "It is possible to use ordinary pencils for scytales, but they are too thin to be convenient.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 62428,
+      "endOffset": 62520
+    },
+    {
+      "text": "If everyone knows this key word, ciphers can be encoded by first rotating the wheel two letters, then five, then one, and so on, repeating the series given by the key number.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 65752,
+      "endOffset": 65926
+    },
+    {
+      "text": "Cut out any one cell with the number 1, another cell with 2, any other cell with 3, and so on, until the square has nine cells missing.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 71481,
+      "endOffset": 71616
+    },
+    {
+      "text": "It is best to copy the letters on another sheet of paper, writing them in a row of quadruplets, so that there will be no clue about what kind of cipher system you used.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73287,
+      "endOffset": 73455
+    },
+    {
+      "text": "The next step is to copy the letters in a row, this time taking the letters in each column from bottom to top, starting with the right-hand column and moving leftward for each new column (or following whatever procedure was agreed upon for putting the letters into the grille’s windows).",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 73974,
+      "endOffset": 74261
+    },
+    {
+      "text": "Verne tells his readers that such a cipher is unbreakable unless you have the grille, a statement which shows how little Verne understood the art of cryptanalysis.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 76537,
+      "endOffset": 76700
+    },
+    {
+      "text": "The word grille pictured here will show six words in each position, or 24 words in all.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 77714,
+      "endOffset": 77801
+    },
+    {
+      "text": "If the enemy suspects an invisible message and succeeds in developing it, he still will be unable to read it unless he knows or is able to crack the code.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 83837,
+      "endOffset": 83991
+    },
+    {
+      "text": "Be careful not to rub the writing with the cotton because that will smear the letters.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 86109,
+      "endOffset": 86195
+    },
+    {
+      "text": "The writing on the other sheet is best seen by taking it into a dark room and shining a small, fountain-pen-size flashlight on the page at the steepest possible angle.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 91686,
+      "endOffset": 91853
+    },
+    {
+      "text": "Sometimes when a message is written on the top sheet of a pad, and the sheet is removed, an impression will be left on the next page, or even on the next several pages, that can be read by raking the page with a narrow beam of light.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 92327,
+      "endOffset": 92560
+    },
+    {
+      "text": "By keeping the ends of a bundle of glass fibers fixed and twisting the center, it is possible to scramble the fibers in the same way on both halves of the resulting tube.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 95583,
+      "endOffset": 95753
+    },
+    {
+      "text": "Astronomers now believe it is extremely unlikely that there is intelligent life on any other planet in our own solar system.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 105121,
+      "endOffset": 105245
+    },
+    {
+      "text": "Earlier in this century, long before our space probes began taking close-up photographs of Mars, many astronomers were convinced that Mars was inhabited by intelligent creatures.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 105246,
+      "endOffset": 105424
+    },
+    {
+      "text": "Once we had attracted the attention of the Zetans by a series of counting numbers, we could start teaching them the beep signals we were using for addition, subtraction, multiplication, division, and equal.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 108582,
+      "endOffset": 108788
+    },
+    {
+      "text": "True, they might not see the world the same way we do, and what we call “black” may not apply to their senses.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 110168,
+      "endOffset": 110278
+    },
+    {
+      "text": "It is a good idea to mark in some way the surface of a grille that is intended to be face up.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 75594,
+      "endOffset": 75687
+    },
+    {
+      "text": "Testing will be necessary to determine which detergent works best and how much water to add.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 88022,
+      "endOffset": 88114
+    },
+    {
+      "text": "The impressions made by the keys on the second sheet will be impossible to see.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 92876,
+      "endOffset": 92955
+    },
+    {
+      "text": "How can one send a message that is as easy to read as possible, and by someone who doesn’t know our language?",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 104690,
+      "endOffset": 104799
+    },
+    {
+      "text": "The story of the famous German cablegram of World War I and how its code was broken by British intelligence.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 115804,
+      "endOffset": 115912
+    },
+    {
+      "text": "The cable was intercepted and the code broken by British intelligence, then passed on to President Woodrow Wilson.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 4557,
+      "endOffset": 4671
+    },
+    {
+      "text": "The decoding procedure, which you can easily work out for yourself, has to be changed accordingly.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 10302,
+      "endOffset": 10400
+    },
+    {
+      "text": "It uses a rectangular grid, or “matrix” as we will call it, which is simply a checkerboard of empty squares, or cells.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 11383,
+      "endOffset": 11501
+    },
+    {
+      "text": "We will explain how it works by using the same message as before and the same 4–by–5 matrix.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 15402,
+      "endOffset": 15494
+    },
+    {
+      "text": "It is still used today in many of the elaborate cipher systems employed by nations throughout the world.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 17674,
+      "endOffset": 17778
+    },
+    {
+      "text": "Of course, the longer a word the less likely that a letter shift will produce another word.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 22593,
+      "endOffset": 22684
+    },
+    {
+      "text": "You don’t have to use the date to provide the key number for a variable shift cipher.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 24663,
+      "endOffset": 24748
+    },
+    {
+      "text": "PRACTICE RIDDLE 10 If two is company and three is a crowd, what are four, five, and six?",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 32768,
+      "endOffset": 32857
+    },
+    {
+      "text": "If the latter happens, you have made an incorrect guess and will have to try something else.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 38478,
+      "endOffset": 38570
+    },
+    {
+      "text": "There were no false hunches that made it necessary to erase letters and try different possibilities.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 40210,
+      "endOffset": 40310
+    },
+    {
+      "text": "Cracking cryptograms is great fun, and the more ciphers, you solve, the better you will get.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40416,
+      "endOffset": 40508
+    },
+    {
+      "text": "The art of breaking other kinds of ciphers is much too complicated to discuss in this introductory book.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 44190,
+      "endOffset": 44294
+    },
+    {
+      "text": "The number at this intersection is 502, so that is the first symbol of the cipher text.",
+      "sourceId": "9f476f2b-11db-40bb-b3b0-a6842e7ae544",
+      "sourceTitle": "gardner_works_2",
+      "sourceFile": "gardner_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49004,
+      "endOffset": 49091
+    },
+    {
+      "text": "In other words, the letter to the “right” of the last letter in a row will be the first letter of that same row.",
+      "sourceId": "a56eee45-c625-4fd6-b55c-e35ed091ad2a",
+      "sourceTitle": "Title : Codes, Ciphers and Secret Writing (Dover Children's Activity Books)",
+      "sourceFile": "gardner_works_2",
+      "sourceKind": "database-text",
+      "startOffset": 51876,
+      "endOffset": 51988
+    }
+  ]
+}

@@ -1,0 +1,744 @@
+{
+  "thinkerId": "poincare",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Sometimes a whole series of questions will appear forgotten, and will live only with a languishing existence; and then some accidental circumstance suddenly brings them new life, and they become the object of manifold labours, engross public attention, and invade nearly the whole domain of science.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 26128,
+      "endOffset": 26427
+    },
+    {
+      "text": "If all the parts of the universe are interchained in a certain measure, any one phenomenon will not be the effect of a single cause, but the resultant of causes infinitely numerous; it is, one often says, the consequence of the state of the universe a moment before.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 483178,
+      "endOffset": 483444
+    },
+    {
+      "text": "It is therefore by cause that we define time; but most often, when two facts appear to us bound by a constant relation, how do we recognize which is the cause and which the effect?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 480514,
+      "endOffset": 480694
+    },
+    {
+      "text": "Science is in some sort a living organism, which gives birth to an indefinite series of new beings taking the places of the old, and which evolves according to the nature of its environment, adapting itself to external conditions, and healing at every step the wounds which contact with reality may have occasioned.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25029,
+      "endOffset": 25344
+    },
+    {
+      "text": "If we now disentangle ourselves from contingencies, it will be understood that in reality physical science progresses by evolution rather than by revolution.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 24462,
+      "endOffset": 24619
+    },
+    {
+      "text": "To reach this, an infinity of syllogisms would be necessary; it would be necessary to overleap an abyss that the patience of the analyst, restricted to the resources of formal logic alone, never could fill up.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89312,
+      "endOffset": 89521
+    },
+    {
+      "text": "We are, therefore, forced to conclude that this notion has been created entirely by the mind, but that experience has given the occasion.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 105906,
+      "endOffset": 106043
+    },
+    {
+      "text": "Thermodynamics, however, has made it plain that we can set up a thermometric scale without relying upon any determined property of a real body.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 67850,
+      "endOffset": 67993
+    },
+    {
+      "text": "Without this belief, the problem of which we speak would have no meaning; interpolation would be impossible; no law could be deduced from a finite number of observations; science would not exist.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 366665,
+      "endOffset": 366860
+    },
+    {
+      "text": "I hear thunder, and I conclude there has been an electric discharge; I do not hesitate to consider the physical phenomenon as anterior to the auditory image perceived in my consciousness, because I believe it is its cause.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 480143,
+      "endOffset": 480365
+    },
+    {
+      "text": "The men most disdainful of theory get from it, without suspecting it, their daily bread; deprived of this food, progress would quickly cease, and we should soon congeal into the immobility of old China.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 589536,
+      "endOffset": 589738
+    },
+    {
+      "text": "To formulate Mayer's principle in an absolute sense, it is therefore necessary to extend it to the whole universe, and then we find ourselves face to face with the very difficulty we sought to avoid.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 263831,
+      "endOffset": 264030
+    },
+    {
+      "text": "In a word, to get the law from experiment, it is necessary to generalize; this is a necessity imposed upon the most circumspect observer.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 593824,
+      "endOffset": 593961
+    },
+    {
+      "text": "Behold then the rule we follow, and the only one we can follow: when a phenomenon appears to us as the cause of another, we regard it as anterior.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 480367,
+      "endOffset": 480513
+    },
+    {
+      "text": "All laws are therefore deduced from experiment; but to enunciate them, a special language is needful; ordinary language is too poor, it is besides too vague, to express relations so delicate, so rich, and so precise.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 592217,
+      "endOffset": 592433
+    },
+    {
+      "text": "If these beings were afterward suddenly transported into our world, they would observe the same laws as we, but they would enunciate them in an entirely different way.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 712344,
+      "endOffset": 712511
+    },
+    {
+      "text": "The idea of absolute length is derived from the principle of causality; and our choice is forced upon us by the necessity of obeying this principle, which we cannot reject without declaring by that very act all science to be impossible.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 46557,
+      "endOffset": 46793
+    },
+    {
+      "text": "In the end, therefore, there will be neither chemical phenomena nor manifestation of life; the world will still exist, but without motion, and, so to speak, dead.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 127681,
+      "endOffset": 127843
+    },
+    {
+      "text": "Like Newton's laws, and, for an analogous reason, the principle of the conservation of energy, founded on experiment, could no longer be invalidated by it.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 254523,
+      "endOffset": 254678
+    },
+    {
+      "text": "If finally the science of number were purely analytic, or could be analytically derived from a small number of synthetic judgments, it seems that a mind sufficiently powerful could at a glance perceive all its truths; nay more, we might even hope that some day one would invent to express them a language sufficiently simple to have them appear self-evident to an ordinary intelligence.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 77892,
+      "endOffset": 78278
+    },
+    {
+      "text": "The very statement of the principle of least action has something about it repugnant to the mind.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 255196,
+      "endOffset": 255293
+    },
+    {
+      "text": "It is impossible to represent to oneself absolute space; when I try to represent to myself simultaneously objects and myself in motion in absolute space, in reality I represent to myself my own self motionless and seeing move around me different objects and a man that is exterior to me, but that I convene to call me.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 515808,
+      "endOffset": 516126
+    },
+    {
+      "text": "It would be necessary to have completely forgotten the history of science not to remember that the desire to understand nature has had on the development of mathematics the most constant and happiest influence.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 599556,
+      "endOffset": 599766
+    },
+    {
+      "text": "In such a world there would be no science; perhaps thought and even life would be impossible, since evolution could not there develop the preservational instincts.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 761150,
+      "endOffset": 761313
+    },
+    {
+      "text": "One cannot, in fact, according to the principle of Carnot, transform it integrally into mechanical energy, since the heat possessed by a body can only yield work on condition that a part of it falls on a body with a lower temperature.",
+      "sourceId": "412cbf4b-c70a-451f-a9d7-ebd47f090296",
+      "sourceTitle": "poincare_works_2",
+      "sourceFile": "poincare_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130207,
+      "endOffset": 130441
+    },
+    {
+      "text": "If we devote ourselves solely to those truths whence we expect an immediate result, the intermediary links are wanting and there will no longer be a chain.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 589379,
+      "endOffset": 589534
+    },
+    {
+      "text": "We understand, then, how the analyst, who pursues a purely esthetic aim, helps create, just by that, a language more fit to satisfy the physicist.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 593292,
+      "endOffset": 593438
+    },
+    {
+      "text": "It is the mathematical spirit, which disdains matter to cling only to pure form.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 594517,
+      "endOffset": 594597
+    },
+    {
+      "text": "For us a law is something quite different; it is a constant relation between the phenomenon of to-day and that of to-morrow; in a word, it is a differential equation.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 630091,
+      "endOffset": 630257
+    },
+    {
+      "text": "When men are brought together they no longer decide at random and independently one of another; they influence one another.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 867231,
+      "endOffset": 867354
+    },
+    {
+      "text": "Whatever be the progress of automobilism, our vehicles will never attain speeds where it is not true.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 1097931,
+      "endOffset": 1098032
+    },
+    {
+      "text": "The organization of science, so far as this organization is due to hypotheses of the kind here in question, thus resembles that of a constitutional government--neither absolutely necessary, nor yet determined apart from the will of the subjects, nor yet accidental--a free, yet not a capricious establishment of good order, in conformity with empirical needs.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 49157,
+      "endOffset": 49516
+    },
+    {
+      "text": "The origin of the races of men, of man himself, of life, of species, of the planet; the hypotheses of anthropologists, of archeologists, of students of 'higher criticism'--all these are matters which the men of the laboratory often regard with a general incredulity as belonging not at all to the domain of true science.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 55155,
+      "endOffset": 55475
+    },
+    {
+      "text": "The mathematical continuum would be, in this view, a pure creation of the mind, where experience would have no part.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 101519,
+      "endOffset": 101635
+    },
+    {
+      "text": "If the hypothesis of central forces is rejected, this principle should evidently be enunciated thus: the geometric resultant of all the forces applied to the various bodies of a system isolated from all external action will be null.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 219409,
+      "endOffset": 219641
+    },
+    {
+      "text": "One thing is certain; if this power were denied us, science could not exist or, at least, reduced to a sort of inventory, to the ascertaining of isolated facts, it would have no value for us, since it could give no satisfaction to our craving for order and harmony and since it would be at the same time incapable of foreseeing.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 257302,
+      "endOffset": 257630
+    },
+    {
+      "text": "It is this harmony then which is the sole objective reality, the only truth we can attain; and when I add that the universal harmony of the world is the source of all beauty, it will be understood what price we should attach to the slow and difficult progress which little by little enables us to know it better.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 437978,
+      "endOffset": 438290
+    },
+    {
+      "text": "Doubtless that may be maintained, and it would then be inferred that the law in question, which may serve as a rule of action to us who inhabit the earth, has yet no general value from the point of view of knowledge, and owes its interest only to the chance which has placed us on this globe.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 703561,
+      "endOffset": 703853
+    },
+    {
+      "text": "Now most men do not love to think, and this is perhaps fortunate when instinct guides them, for most often, when they pursue an aim which is immediate and ever the same, instinct guides them better than reason would guide a pure intelligence.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 759712,
+      "endOffset": 759954
+    },
+    {
+      "text": "It is the activity in which the human mind seems to take least from the outside world, in which it acts or seems to act only of itself and on itself, so that in studying the procedure of geometric thought we may hope to reach what is most essential in man's mind.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 803103,
+      "endOffset": 803366
+    },
+    {
+      "text": "If mathematics invokes only the rules of logic, such as are accepted by all normal minds; if its evidence is based on principles common to all men, and that none could deny without being mad, how does it come about that so many persons are here refractory?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 804077,
+      "endOffset": 804333
+    },
+    {
+      "text": "If this is indeed the lesson, then the decline of theoretical orthodoxy in science is--like the eclipse of dogma in religion--merely a further lesson in pure positivism, another proof that man does best when he limits himself to thinking about what can be found in human experience, and in trying to plan what can be done to make human life more controllable and more reasonable.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 37982,
+      "endOffset": 38361
+    },
+    {
+      "text": "The hypothesis of central forces contained all the principles; it involved them as necessary consequences; it involved both the conservation of energy and that of masses, and the equality of action and reaction, and the law of least action, which appeared, it is true, not as experimental truths, but as theorems; the enunciation of which had at the same time something more precise and less general than under their present form.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 635074,
+      "endOffset": 635504
+    },
+    {
+      "text": "The ordinary inventors of the perpetual motion machines still stand in conflict with accepted generalizations; but nobody knows as yet what the final form of the theory of energy will be, nor can any one say precisely what place the phenomena of the radioactive bodies will occupy in that theory.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 35345,
+      "endOffset": 35641
+    },
+    {
+      "text": "If it were, the raw data of experience, which are our sensations, would be susceptible of measurement.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 104773,
+      "endOffset": 104875
+    },
+    {
+      "text": "We have the faculty of conceiving that a unit can be added to a collection of units; thanks to experience, we have occasion to exercise this faculty and we become conscious of it; but from this moment we feel that our power has no limit and that we can count indefinitely, though we have never had to count more than a finite number of objects.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 108558,
+      "endOffset": 108902
+    },
+    {
+      "text": "Its power is limited only by the necessity of avoiding all contradiction; but the mind only makes use of this faculty if experience furnishes it a stimulus thereto.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 112387,
+      "endOffset": 112551
+    },
+    {
+      "text": "In fact this definition defines nothing; it would have no meaning for a being living in a world where there were only fluids.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 136166,
+      "endOffset": 136291
+    },
+    {
+      "text": "It may first be asked whether this reduction is possible, whether the number of necessary axioms and that of imaginable geometries are not infinite.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 138953,
+      "endOffset": 139101
+    },
+    {
+      "text": "Nothing prevents our supposing that a being with a mind like ours, having the same sense organs that we have, may be placed in a world where light would only reach him after having traversed reflecting media of complicated form.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150308,
+      "endOffset": 150536
+    },
+    {
+      "text": "To my mind it is precisely equivalent to the following, whose absurdity is patent to all eyes: are there lengths expressible in meters and centimeters, but which can not be measured in fathoms, feet and inches, so that experience, in ascertaining the existence of these lengths, would directly contradict the hypothesis that there are fathoms divided into six feet?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 176818,
+      "endOffset": 177183
+    },
+    {
+      "text": "Might it not happen that it can accord with experience only by violating the principle of sufficient reason or that of the relativity of space?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179714,
+      "endOffset": 179857
+    },
+    {
+      "text": "The laws of the phenomena which will happen in this system will depend on the state of these bodies and their mutual distances; but, because of the relativity and passivity of space, they will not depend on the absolute position and orientation of the system.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 180396,
+      "endOffset": 180655
+    },
+    {
+      "text": "We now interpret them on the non-Euclidean hypothesis: this is always possible; only the non-Euclidean distances of our different bodies in this new interpretation will not generally be the same as the Euclidean distances in the primitive interpretation.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 181441,
+      "endOffset": 181695
+    },
+    {
+      "text": "To complete it, it is necessary to go back anew to Newton's third law (equality of action and reaction), regarded again, not as an experimental law, but as a definition.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 216229,
+      "endOffset": 216398
+    },
+    {
+      "text": "There can be nothing paradoxical in the relative motion of two bodies being disturbed when the motion of one or the other is modified by an external cause.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 234816,
+      "endOffset": 234971
+    },
+    {
+      "text": "If these bodies are in motion, they will act one upon another electrodynamically and the electrodynamic energy will depend not only upon their state and their position, but upon their velocities.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 253191,
+      "endOffset": 253386
+    },
+    {
+      "text": "In formulating a general, simple and precise law on the basis of experiments relatively few and presenting certain divergences, we have therefore only obeyed a necessity from which the human mind can not free itself.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 258441,
+      "endOffset": 258657
+    },
+    {
+      "text": "If, on the other hand, the principle of Clausius reduces to an inequality, this is not caused by the imperfection of our means of observation, but by the very nature of the question.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 265680,
+      "endOffset": 265862
+    },
+    {
+      "text": "A pupil has read a certain number on his thermometer; he has taken no precaution; no matter, he has read it, and if it is only the fact that counts, here is a reality of the same rank as the peregrinations of King John Lackland.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 273440,
+      "endOffset": 273668
+    },
+    {
+      "text": "Of this few that we can directly attain, we must make the best use; it is very necessary to get from every experiment the greatest possible number of predictions, and with the highest possible degree of probability.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 277084,
+      "endOffset": 277299
+    },
+    {
+      "text": "There was a time when the simplicity of Mariotte's law was an argument invoked in favor of its accuracy; when Fresnel himself, after having said in a conversation with Laplace that nature was not concerned about analytical difficulties, felt himself obliged to make explanations, in order not to strike too hard at prevailing opinion.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 278940,
+      "endOffset": 279274
+    },
+    {
+      "text": "It is admitted that the actual state of the world depends only on the immediate past, without being directly influenced, so to speak, by the memory of a distant past.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 291460,
+      "endOffset": 291626
+    },
+    {
+      "text": "It would be necessary then, if we did not wish to change all mechanics, to introduce the ether, in order that this action which matter appeared to experience should be counterbalanced by the reaction of matter on something.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 314717,
+      "endOffset": 314940
+    },
+    {
+      "text": "The conclusion which seems to follow from all this is that the calculus of probabilities is a useless science, and that the obscure instinct which we may call good sense, and to which we are wont to appeal to legitimatize our conventions, must be distrusted.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 335886,
+      "endOffset": 336144
+    },
+    {
+      "text": "I shall likewise mention: the celebrated theory of errors of observation, to which I shall return later; the kinetic theory of gases, a well-known hypothesis, wherein each gaseous molecule is supposed to describe an extremely complicated trajectory, but in which, through the effect of great numbers, the mean phenomena, alone observable, obey the simple laws of Mariotte and Gay-Lussac.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 337511,
+      "endOffset": 337898
+    },
+    {
+      "text": "What is the probability that one or more representative points may be found in a certain portion of the plane?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 352565,
+      "endOffset": 352675
+    },
+    {
+      "text": "We have eliminated all the systematic errors we could suspect; we know well there are still others, but we can not detect them; yet it is necessary to make up our mind and adopt a definitive value which will be regarded as the probable value; and for that it is evident the best thing to do is to apply Gauss's method.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 370464,
+      "endOffset": 370782
+    },
+    {
+      "text": "For the definition of magnetic force to have any meaning, it would be necessary that the action exercised by an open current on an indefinite solenoid should depend only on the position of the extremity of this solenoid, that is to say, that the action on a closed solenoid should be null.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 412192,
+      "endOffset": 412481
+    },
+    {
+      "text": "In 'Science and Hypothesis' I have already shown how relative their value is; it is not nature which imposes them upon us, it is we who impose them upon nature because we find them convenient.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 433707,
+      "endOffset": 433899
+    },
+    {
+      "text": "To-day in analysis only whole numbers are left or systems, finite or infinite, of whole numbers bound together by a net of equality or inequality relations.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 447979,
+      "endOffset": 448135
+    },
+    {
+      "text": "We can not admit at the same time that it is impossible to imagine space of four dimensions and that experience proves to us that space has three dimensions.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 500711,
+      "endOffset": 500868
+    },
+    {
+      "text": "I knew, in fact, before all experience, that space satisfied this condition or that it would not be; nor have I any right to say that experience told me that geometry is possible; I very well see that geometry is possible, since it does not imply contradiction; experience only tells me that geometry is useful.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 528853,
+      "endOffset": 529164
+    },
+    {
+      "text": "It shows us how small is man's body, how great his mind, since his intelligence can embrace the whole of this dazzling immensity, where his body is only an obscure point, and enjoy its silent harmony.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 609963,
+      "endOffset": 610163
+    },
+    {
+      "text": "How much time should we have needed to comprehend that fact, if we had known only the terrestrial world, where each elemental force would always seem to us in conflict with other forces?",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 614779,
+      "endOffset": 614965
+    },
+    {
+      "text": "Even the simplicity of this law is a lesson for us; how many complicated phenomena are contained in the two lines of its enunciation; persons who do not understand celestial mechanics may form some idea of it at least from the size of the treatises devoted to this science; and then it may be hoped that the complication of physical phenomena likewise hides from us some simple cause still unknown.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 616105,
+      "endOffset": 616503
+    },
+    {
+      "text": "Newton has shown us that a law is only a necessary relation between the present state of the world and its immediately subsequent state.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 617201,
+      "endOffset": 617337
+    },
+    {
+      "text": "Now, it is not so in nature, and this is precisely what the principle of Carnot teaches us; heat can pass from the warm body to the cold body; it is impossible afterward to make it take the inverse route and to reestablish differences of temperature which have been effaced.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 638023,
+      "endOffset": 638297
+    },
+    {
+      "text": "Unhappily, that does not suffice, and complementary hypotheses are necessary; it is necessary to admit that bodies in motion undergo a uniform contraction in the sense of the motion.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 646563,
+      "endOffset": 646745
+    },
+    {
+      "text": "There is no escape from this dilemma; either science does not enable us to foresee, and then it is valueless as rule of action; or else it enables us to foresee, in a fashion more or less imperfect, and then it is not without value as means of knowledge.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 682267,
+      "endOffset": 682521
+    },
+    {
+      "text": "It is clear that if laws were reduced to that, they could not serve in prediction; then they would be good for nothing, either as means of knowledge or as principle of action.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 701839,
+      "endOffset": 702014
+    },
+    {
+      "text": "Some have wondered at the formula: science for its own sake; and yet it is as good as life for its own sake, if life is only misery; and even as happiness for its own sake, if we do not believe that all pleasures are of the same quality, if we do not wish to admit that the goal of civilization is to furnish alcohol to people who love to drink.",
+      "sourceId": "4e4aec86-b43b-43f1-a887-43cf2ea6d30b",
+      "sourceTitle": "poincare_works_1",
+      "sourceFile": "poincare_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 750619,
+      "endOffset": 750964
+    }
+  ]
+}

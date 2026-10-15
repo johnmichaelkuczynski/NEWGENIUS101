@@ -29,7 +29,10 @@ maimonides-texts/
 gibbon-texts/
 dewey-texts/
 bacon-texts/
-server/data/
+server/data/*
+# Small, preassembled source quotation banks are application content, not corpora.
+!server/data/thinking-quotes/
+!server/data/thinking-quotes/*.json
 logs/
 test_outputs/
 test-results.json

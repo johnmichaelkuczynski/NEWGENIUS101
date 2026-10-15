@@ -1,0 +1,789 @@
+{
+  "thinkerId": "mill",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "A person of good natural endowments, in a rude state of society, can do a great number of things tolerably well, has a greater power of adapting means to ends, is more capable of extricating himself and others from an unforeseen embarrassment, than ninety.nine in a hundred of those who have known only what is called the civilized form of life.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 178126,
+      "endOffset": 178476
+    },
+    {
+      "text": "Whatever has been said or written, from the time of Herodotus to the present, of the ennobling influence of free government — the nerve and spring which it gives to all the faculties, the larger and higher objects which it presents to the intellect and feelings, the more unselfish public spirit, and calmer and broader views of duty, that it engenders, and the generally loftier platform on which it elevates the individual as a moral, spiritual, and social being — is every particle as true of women as of men.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 63864,
+      "endOffset": 64382
+    },
+    {
+      "text": "Complete liberty of contradicting and disproving our opinion, is the very condition which justifies us in assuming its truth for purposes of action; and on no other terms can a being with human faculties have any rational assurance of being right.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 370701,
+      "endOffset": 370951
+    },
+    {
+      "text": "Of the features which characterize this progressive economical movement of civilized nations, that which first excites attention, through its intimate connexion with the phenomena of Production, is the perpetual, and so far as human foresight can extend, the unlimited, growth of man’s power over nature.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 173583,
+      "endOffset": 173891
+    },
+    {
+      "text": "The natural tendency of representative government, as of modern civilisation, is towards collective mediocrity: and this tendency is increased by all reductions and extensions of the franchise, their effect being to place the principal power in the hands of classes more and more below the highest level of instruction in the community.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 338365,
+      "endOffset": 338705
+    },
+    {
+      "text": "The moral regeneration of mankind will only really commence, when the mostfundamental of the social relations is placed under the rule of equal justice, and when human beings learn to cultivate their strongest sympathy with an equal in nights and in cultivation.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 60160,
+      "endOffset": 60425
+    },
+    {
+      "text": "The desire of power over others can only cease to be a depraving agency among mankind, when each of them individually is able to do without it: which can only be where respect for liberty in the personal concerns of each is an established principle.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 66639,
+      "endOffset": 66891
+    },
+    {
+      "text": "The power of compelling others into it, is not only inconsistent with the freedom and development of all the rest, but corrupting to the strong man himself.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 489870,
+      "endOffset": 490028
+    },
+    {
+      "text": "Language is the depository of the accumulated body of experience to which all former ages have contributed their part, and which is the inheritance of all yet to come.",
+      "sourceId": "5d5079f1-3fd3-4228-a6bc-55b00e990732",
+      "sourceTitle": "mill_works_5",
+      "sourceFile": "mill_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89931,
+      "endOffset": 90100
+    },
+    {
+      "text": "The character which improves human life is that which struggles with natural powers and tendencies, not that which gives way to them.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 193468,
+      "endOffset": 193602
+    },
+    {
+      "text": "What, in unenlightened societies, colour, race, religion, or in the case of a conquered country, nationality, are to some men, sex is to all women; a peremptory exclusion from almost all honourable occupations, but either such as cannot be fulfilled by others, or such as those others do not think worthy of their acceptance.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 73076,
+      "endOffset": 73405
+    },
+    {
+      "text": "The practical principle which guides them to their opinions on the regulation of human conduct, is the feeling in each person's mind that everybody should be required to act as he, and those with whom he sympathizes, would like them to act.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 339849,
+      "endOffset": 340092
+    },
+    {
+      "text": "Cases are not unfrequent in which a circumstance, at first casually incorporated into the connotation of a word which originally had no reference to it, in time wholly supersedes the original meaning, and becomes not merely a part of the connotation, but the whole of it.",
+      "sourceId": "5d5079f1-3fd3-4228-a6bc-55b00e990732",
+      "sourceTitle": "mill_works_5",
+      "sourceFile": "mill_works_5.txt",
+      "sourceKind": "database-text",
+      "startOffset": 96763,
+      "endOffset": 97037
+    },
+    {
+      "text": "That there should be, in every polity, a centre of resistance to the predominant power in the Constitution — and in a democratic constitution, therefore, a nucleus of resistance to the democracy — I have already maintained; and I regard it as a fundamental maxim of government.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 505955,
+      "endOffset": 506235
+    },
+    {
+      "text": "Production not being the sole end of human existence, the term unproductive does not necessarily imply any stigma; nor was ever intended to do so in the present case.",
+      "sourceId": "651dcff4-5749-46fe-b83f-04f8b4cfd9d6",
+      "sourceTitle": "mill_works_11",
+      "sourceFile": "mill_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 62728,
+      "endOffset": 62896
+    },
+    {
+      "text": "Liberty, as a principle, has no application to any state of things anterior to the time when mankind have become capable of being improved by free and equal discussion.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 351285,
+      "endOffset": 351455
+    },
+    {
+      "text": "There is confessedly a strong tendency in the modern world towards a democratic constitution of society, accompanied or not by popular political institutions.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 18955,
+      "endOffset": 19115
+    },
+    {
+      "text": "Human and social facts, from their more complicated nature, are not less, but more, modifiable than mechanical and chemical facts; human agency, therefore, has still greater power over them.",
+      "sourceId": "ebc4fa03-2ae9-4b44-8638-bec782cbc973",
+      "sourceTitle": "mill_works_9",
+      "sourceFile": "mill_works_9.txt",
+      "sourceKind": "database-text",
+      "startOffset": 200274,
+      "endOffset": 200467
+    },
+    {
+      "text": "Whatever, if left to spontaneous agency, can only be done by joint-stock associations, will often be as well, and sometimes better done, as far as the actual work is concerned, by the state.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 273777,
+      "endOffset": 273969
+    },
+    {
+      "text": "The force of this motive in deterring from any act or omission positively reproved by the community, no one is likely to deny; but the power also of emulation, in exciting to the most strenuous exertions for the sake of the approbation and admiration of others, is borne witness to by experience in every situation in which human beings publicly compete with one another, even if it be in things frivolous, or from which the public derive no benefit.",
+      "sourceId": "651dcff4-5749-46fe-b83f-04f8b4cfd9d6",
+      "sourceTitle": "mill_works_11",
+      "sourceFile": "mill_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 484387,
+      "endOffset": 484842
+    },
+    {
+      "text": "When people who are tolerably fortunate in their outward lot do not find in life sufficient enjoyment to make it valuable to them, the cause generally is, caring for nobody but themselves.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 201247,
+      "endOffset": 201437
+    },
+    {
+      "text": "Any one who supposes that this state of opinion would not have a great effect on conduct, must be profoundly ignorant of human nature; can never have considered how large a portion of the motives which induce the generality of men to take care even of their own interest, is derived from regard for opinion — from the expectation of being disliked or despised for not doing it.",
+      "sourceId": "83ae4a1f-051b-42f3-a844-99a2eb538ba2",
+      "sourceTitle": "mill_works_6",
+      "sourceFile": "mill_works_6.txt",
+      "sourceKind": "database-text",
+      "startOffset": 403041,
+      "endOffset": 403423
+    },
+    {
+      "text": "The ideally best form of government, it is scarcely necessary to say, does not mean one which is practicable or eligible in all states of civilisation, but the one which, in the circumstances in which it is practicable and eligible, is attended with the greatest amount of beneficial consequences, immediate and prospective.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 182768,
+      "endOffset": 183096
+    },
+    {
+      "text": "No society in which these liberties are not, on the whole, respected, is free, whatever may be its form of government; and none is completely free in which they do not exist absolute and unqualified.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 356729,
+      "endOffset": 356930
+    },
+    {
+      "text": "If resistance waits till life is reduced nearly to one uniform type, all deviations from that type will come to be considered impious, immoral, even monstrous and contrary to nature.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 507638,
+      "endOffset": 507823
+    },
+    {
+      "text": "In every government there is some power stronger than all the rest; and the power which is strongest tends perpetually to become the sole power.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 343348,
+      "endOffset": 343494
+    },
+    {
+      "text": "Eccentricity has always abounded when and where strength of character has abounded; and the amount of eccentricity in a society has generally been proportional to the amount of genius, mental vigor, and moral courage which it contained.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 490888,
+      "endOffset": 491127
+    },
+    {
+      "text": "The utilitarian morality does recognise in human beings the power of sacrificing their own greatest good for the good of others.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 209181,
+      "endOffset": 209311
+    },
+    {
+      "text": "Accordingly there is no more certain incident of the progressive change taking place in society, than the continual growth of the principle and practice of cooperation.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 179834,
+      "endOffset": 180004
+    },
+    {
+      "text": "We have a warning example in China — a nation of much talent, and, in some respects, even wisdom, owing to the rare good fortune of having been provided at an early period with a particularly good set of customs, the work, in some measure, of men to whom even the most enlightened European must accord, under certain limitations, the title of sages and philosophers.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 501317,
+      "endOffset": 501688
+    },
+    {
+      "text": "Of all officers of government, those in whose appointment any participation of popular suffrage is the most objectionable are judicial officers.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 20696,
+      "endOffset": 20842
+    },
+    {
+      "text": "Every theory of social improvement, the worth of which is capable of being brought to an experimental test, should be permitted, and even encouraged, to submit itself to that test.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 135660,
+      "endOffset": 135842
+    },
+    {
+      "text": "A tax on any one commodity, whether laid on its production, its importation, its carriage from place to place, or its sale, and whether the tax be a fixed sum of money for a given quantity of the commodity, or an ad valorem duty, will, as a general rule, raise the value and price of the commodity by at least the amount of the tax.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 481245,
+      "endOffset": 481581
+    },
+    {
+      "text": "If grown persons are to be punished for not taking proper care of themselves, I would rather it were for their own sake, than under pretence of preventing them from impairing their capacity of rendering to society benefits which society does not pretend it has a right to exact.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 5807,
+      "endOffset": 6088
+    },
+    {
+      "text": "A person may cause evil to others not only by his actions but by his inaction, and in neither case he is justly accountable to them for the injury.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 353308,
+      "endOffset": 353457
+    },
+    {
+      "text": "It needs, not their simple acquiescence, but their active participation; and must be adjusted to the capacities and qualities of such men as are available.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 100787,
+      "endOffset": 100944
+    },
+    {
+      "text": "It arose simply from the fact that from the very earliest twilight of human society, every woman owing to the value attached to her by men, combined with her inferiority in muscular strength) was found in a state of bondage to some man.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 340745,
+      "endOffset": 340984
+    },
+    {
+      "text": "The first is, that the rights and interests of every or any person are only secure from being disregarded when the person interested is himself able, and habitually disposed, to stand up for them.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 183672,
+      "endOffset": 183871
+    },
+    {
+      "text": "The despotism of custom is everywhere the standing hindrance to human advancement, being in unceasing antagonism to that disposition to aim at something better than customary, which is called, according to circumstances, the spirit of liberty, or that of progress or improvement.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 497682,
+      "endOffset": 497964
+    },
+    {
+      "text": "No remedies for low wages have the smallest chance of being efficacious, which do not operate on and through the minds and habits of the people.",
+      "sourceId": "83ae4a1f-051b-42f3-a844-99a2eb538ba2",
+      "sourceTitle": "mill_works_6",
+      "sourceFile": "mill_works_6.txt",
+      "sourceKind": "database-text",
+      "startOffset": 390451,
+      "endOffset": 390597
+    },
+    {
+      "text": "The striving, go-ahead character of England and the United States is only a fit subject of disapproving criticism on account of the very secondary objects on which it commonly expends its strength.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 200069,
+      "endOffset": 200268
+    },
+    {
+      "text": "Philosophy and religion, instead of keeping it in check, are generally suborned to defend it; and nothing controls it but that practical feeling of the equality of human beings, which is the theory of Christianity, but which Christianity will never practically teach, while it sanctions institutions grounded on an arbitrary preference of one human being over another.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 436026,
+      "endOffset": 436399
+    },
+    {
+      "text": "The very existence of some governments, and all that renders others endurable, rests on the practical observance of doctrines of constitutional morality; traditional notions in the minds of the several constituted authorities, which modify the use that might otherwise be made of their powers.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 478354,
+      "endOffset": 478651
+    },
+    {
+      "text": "As for charity, it is a matter in which the immediate effect on the persons directly concerned, and the ultimate consequence to the general good, are apt to be at complete war with one another: while the education given to women — an education of the sentiments rather than of the understanding — and the habit inculcated by their whole life, of looking to immediate effects on persons, and not to remote effects on classes of persons — make them both unable to see, and unwilling to admit, the ultimate evil tendency of any form of charity or philanthropy which commends itself to their sympathetic feelings.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 39691,
+      "endOffset": 40308
+    },
+    {
+      "text": "Yet mere excess of taxation, even when not aggravated by uncertainty, is, independently of its injustice, a serious economical evil.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 80823,
+      "endOffset": 80956
+    },
+    {
+      "text": "To the principle which condemns the appointment of executive officers by popular suffrage, ought the chief of the executive, in a republican government, to be an exception?",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 13878,
+      "endOffset": 14052
+    },
+    {
+      "text": "The object of logic, as defined in the Introductory Chapter, is to ascertain how we come by that portion of our knowledge (much the greatest portion) which is not intuitive: and by what criterion we can, in matters not self-evident, distinguish between things proved and things not proved, between what is worthy and what is unworthy of belief.",
+      "sourceId": "866164a7-a458-40d9-908c-87dbe529774a",
+      "sourceTitle": "mill_works_1",
+      "sourceFile": "mill_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 46496,
+      "endOffset": 46844
+    },
+    {
+      "text": "If such persons, honestly sought, are not to be found, then indeed the electors are justified in taking other precautions; for they cannot be expected to postpone their particular opinions, unless in order that they may be served by a person of superior knowledge to their own.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 491169,
+      "endOffset": 491449
+    },
+    {
+      "text": "When a number of persons, whether few or many, freely desire to unite their funds for a common undertaking, not asking any peculiar privilege, nor the power to dispossess any one of property, the law can have no good reason for throwing difficulties in the way of the realization of the project.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 118955,
+      "endOffset": 119254
+    },
+    {
+      "text": "The practice introduced by some of the new or revised State Constitutions in America, of submitting judicial officers to periodical popular re-election, will be found, I apprehend, to be one of the most dangerous errors ever yet committed by democracy: and, were it not that the practical good sense which never totally deserts the people of the United States is said to be producing a reaction, likely in no long time to lead to the retraction of the error, it might with reason be regarded as the first great downward step in the degeneration of modern 12 democratic government.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 25616,
+      "endOffset": 26229
+    },
+    {
+      "text": "It still remains unrecognized, that to bring a child into existence without a fair prospect of being able, not only to provide food for its body, but instruction and training for its mind, is a moral crime, both against the unfortunate offspring and against society; and that if the parent does not fulfil this obligation, the State ought to see it fulfilled, at the charge, as far as possible, of the parent.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 65595,
+      "endOffset": 66009
+    },
+    {
+      "text": "Accordingly aristocratic rule, the government of the Few in any of its shapes, being in his eyes the only thing which stood between mankind and an administration of their affairs by the best wisdom to be found among them, was the object of his sternest disapprobation, and a democratic suffrage the principal article of his political creed, not on the ground of liberty, Rights of Man, or any of the phrases, more or less significant, by which, up to that time, democracy had usually been defended, but as the most essential of \"securities for good government.\"",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 224566,
+      "endOffset": 225134
+    },
+    {
+      "text": "The other kind of limited partnership which demands our attention, is that in which the managing partner or partners are responsible with their whole fortunes for the engagements of the concern, but have others associated with them who contribute only definite sums, and are not liable for anything beyond, though they participate in the profits according to any rule which may be agreed on.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130039,
+      "endOffset": 130435
+    },
+    {
+      "text": "The Supreme Court of the Federation dispenses international law, and is the first great example of what is now one of the most prominent wants of civilised society, a real International Tribunal.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 109330,
+      "endOffset": 109528
+    },
+    {
+      "text": "One cannot wonder that silence on this great department of human duty should produce unconsciousness of moral obligations, when it produces oblivion of physical facts.",
+      "sourceId": "83ae4a1f-051b-42f3-a844-99a2eb538ba2",
+      "sourceTitle": "mill_works_6",
+      "sourceFile": "mill_works_6.txt",
+      "sourceKind": "database-text",
+      "startOffset": 396400,
+      "endOffset": 396569
+    },
+    {
+      "text": "To determine the point at which evils, so formidable to human freedom and advancement begin, or rather at which they begin to predominate over the benefits attending the collective application of the force of society, under its recognized chiefs, for the removal of the obstacles which stand in the way of its well-being, to secure as much of the advantages of centralized power and intelligence, as can be had without turning into governmental channels too great a proportion of the general activity, is one of the most difficult and complicated questions in the art of government.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 86323,
+      "endOffset": 86912
+    },
+    {
+      "text": "In every stage of their existence they are made what they are by human voluntary agency.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 99820,
+      "endOffset": 99910
+    },
+    {
+      "text": "The managers are enabled to obtain the aid of a much greater amount of capital than they could borrow on their own security; and persons are induced to aid useful undertakings, by embarking limited portions of capital in them, when they would not, and often could not prudently, have risked their whole fortunes on the chances of the enterprise.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 131916,
+      "endOffset": 132265
+    },
+    {
+      "text": "One person with a belief is a social power equal to ninety-nine who have only interests.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 117254,
+      "endOffset": 117343
+    },
+    {
+      "text": "When the philosophic minds of the world can no longer believe its religion, or can only believe it with modifications amounting to an essential change of its character, a transitional period commences, of weak convictions, paralysed intellects, and growing laxity of principle, which cannot terminate until a renovation has been effected in the basis of their belief leading to the elevation of some faith, whether religious or merely human, which they can really believe: and when things are in this state, all thinking or writing which does not tend to promote such a renovation, is of very little value beyond the moment.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 414401,
+      "endOffset": 415033
+    },
+    {
+      "text": "Putting these two propositions into a shape more special to their present application; human beings are only secure from evil at the hands of others in proportion as they have the power of being, and are, self-protecting; and they only achieve a high degree of success in their struggle with Nature in proportion as they are self-dependent, relying on what they themselves can do, either separately or in concert, rather than on what others do for them.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 184078,
+      "endOffset": 184536
+    },
+    {
+      "text": "The \"Liberty\" is likely to survive longer than anything else that I have written (with the possible exception of the \"Logic\"), because the conjunction of her mind with mine has rendered it a kind of philosophic text- book of a single truth, which the changes progressively taking place in modern society tend to bring out into ever stronger relief: the importance, to man and society of a large variety in types of character, and of giving full freedom to human nature to expand itself in innumerable and conflicting directions.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 432133,
+      "endOffset": 432668
+    },
+    {
+      "text": "Yet the inconveniences are not small, which arise indirectly from provisions of law by which every one who shares in the profits of a concern is subject to the full liabilities of an unlimited partnership.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 134342,
+      "endOffset": 134549
+    },
+    {
+      "text": "Unless a man is fit for the gallows, he is thought to be about as fit as other people for almost anything for which he can offer himself as a candidate.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 253249,
+      "endOffset": 253403
+    },
+    {
+      "text": "During the early part of the present century the doctrine of the rights of individuality, and the claim of the moral nature to develop itself in its own way, was pushed by a whole school of German authors even to exaggeration; and the writings of Goethe, the most celebrated of all German authors, though not belonging to that or to any other school, are penetrated throughout by views of morals and of conduct in life, often in my opinion not defensible, but which are incessantly seeking whatever defence they admit of in the theory of the right and duty of self- development.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 435312,
+      "endOffset": 435898
+    },
+    {
+      "text": "The restraints of Communism would be freedom in comparison with the present condition of the majority of the human race.",
+      "sourceId": "651dcff4-5749-46fe-b83f-04f8b4cfd9d6",
+      "sourceTitle": "mill_works_11",
+      "sourceFile": "mill_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 495078,
+      "endOffset": 495200
+    },
+    {
+      "text": "The defects, therefore, of government management, do not seem to be necessarily much greater, if necessarily greater at all, than those of management by joint-stock.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 275296,
+      "endOffset": 275463
+    },
+    {
+      "text": "That which is the result of habit affords no presumption of being intrinsically good; and there would be no reason for wishing that the purpose of virtue should become independent of pleasure and pain, were it not that the influence of thepleasurable and painful associations which prompt to virtue is not sufficiently to be depended on for unerring constancy of action until it has acquired the support of habit.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 268966,
+      "endOffset": 269384
+    },
+    {
+      "text": "Truth gains more even by the errors of one who, with due study and preparation, thinks for himself, than by the true opinions of those who only hold them because they do not suffer themselves to think.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 404319,
+      "endOffset": 404522
+    },
+    {
+      "text": "If people are mostly so little aware how completely, during the greater part of the duration of our species, the law of force was the avowed rule of general conduct, any other being only a special and exceptional consequence of peculiar ties — and from how very recent a date it is that the affairs of society in general have been even pretended to be regulated according to any moral law; as little do people remember or consider, how institutions and customs which never had any ground but the law of force, last on into ages and states of general opinion which never would have permitted their first establishment.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 351442,
+      "endOffset": 352067
+    },
+    {
+      "text": "I do not recognize as either just or salutary, a state of society in which there is any ‘class’ which is not labouring; any human beings, exempt from bearing their share of the necessary labours of human life, except those unable to labour, or who have fairly earned rest by previous toil.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 312663,
+      "endOffset": 312956
+    },
+    {
+      "text": "It is useful that there should be a periodical general muster of opposing forces, to gauge the state of the national mind, and ascertain, beyond dispute, the relative strength of different parties and opinions.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 473648,
+      "endOffset": 473860
+    },
+    {
+      "text": "If it were possible that all this number of little practical interests (which are made great to them) should leave them either much leisure, or much energy and freedom of mind, to be devoted to art or speculation, they must have a much greater original supply of active faculty than the vast majority of men.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 4760,
+      "endOffset": 5072
+    },
+    {
+      "text": "Never when controversy avoided the subjects which are large and important enough to kindle enthusiasm, was the mind of a people stirred up from its foundations, and the impulse given which raised even persons of the most ordinary intellect to something of the dignity of thinking beings.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 405429,
+      "endOffset": 405719
+    },
+    {
+      "text": "When we put together three things — first, the natural attraction between opposite sexes; secondly, the wife's entire dependence on the husband, every privilege or pleasure she has being either his gift, or depending entirely on his will; and lastly, that the principal object of human pursuit, consideration, and all objects of social ambition, can in general be sought or obtained by her only through him, it would be a miracle if the object of being attractive to men had not become the polar star of feminine education and formation of character.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 367399,
+      "endOffset": 367956
+    },
+    {
+      "text": "As a step out of the merely animal state into the human, out of reckless abandonment to brute instincts into prudential foresight and self-government, this moral condition may be seen without displeasure.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 336099,
+      "endOffset": 336306
+    },
+    {
+      "text": "If one House represents popular feeling, the other should represent personal merit, tested and guaranteed by actual public service, and fortified by practical experience.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 509894,
+      "endOffset": 510066
+    },
+    {
+      "text": "Whoever is in the least capable of estimating the influence on the mind of the entire domestic and social position and the whole habit of a life, must easily recognise in that influence a complete explanation of nearly all the apparent differences between women and men, including the whole of those which imply any inferiority.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 10182,
+      "endOffset": 10514
+    },
+    {
+      "text": "To one holding this theory of life, crushing out any of the human faculties, capacities, and susceptibilities, is no evil: man needs no capacity, but that of surrendering himself to the will of God: and if he uses any of his faculties for any other purpose but to do that supposed will more effectually,he is better without them.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 477200,
+      "endOffset": 477532
+    },
+    {
+      "text": "Instead of looking upon competition as the baneful and anti-social principle which it is held to be by the generality of Socialists, I conceive that, even in the present state of society and industry, every restriction of it is an evil, and every extension of it, even if for the time injuriously affecting some class of labourers, is always an ultimate good.",
+      "sourceId": "0392eb8a-8c8d-48d5-b9b9-12a50d7de127",
+      "sourceTitle": "mill_works_8",
+      "sourceFile": "mill_works_8.txt",
+      "sourceKind": "database-text",
+      "startOffset": 368404,
+      "endOffset": 368767
+    },
+    {
+      "text": "The preventive function of government, however, is far more liable to be abused, to the prejudice of liberty, than the punitory function; for there is hardly any part of the legitimate freedom of action of a human being which would not admit of being represented, and fairly too, as increasing the facilities for some form or other of delinquency.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 40516,
+      "endOffset": 40867
+    },
+    {
+      "text": "Women are not found less efficient than men for the uniformity of factory work, or they would not so generally be employed for it; and a man who has cultivated the habit of turning his hand to many things, far from being the slothful and lazy person described by Adam Smith, is usually remarkably lively and active.",
+      "sourceId": "651dcff4-5749-46fe-b83f-04f8b4cfd9d6",
+      "sourceTitle": "mill_works_11",
+      "sourceFile": "mill_works_11.txt",
+      "sourceKind": "database-text",
+      "startOffset": 281264,
+      "endOffset": 281583
+    },
+    {
+      "text": "Why then should tolerance, as far as the public sentiment is concerned, extend only to tastes and modes of life which extort acquiescence by the multitude of their adherents?",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 493550,
+      "endOffset": 493726
+    },
+    {
+      "text": "Not to speak of indirect effects, the direct meddling of the public authorities has no necessary limits but those of human existence; and the influence of government on the well-being of society can be considered or estimated in reference to nothing less than the whole of the interests of humanity.",
+      "sourceId": "996bfdb7-bd9e-426a-92fd-1982c16d91bf",
+      "sourceTitle": "mill_works_12",
+      "sourceFile": "mill_works_12.txt",
+      "sourceKind": "database-text",
+      "startOffset": 122295,
+      "endOffset": 122598
+    },
+    {
+      "text": "Besides the addition to the amount of individual talent available for the conduct of human affairs, which certainly are not at present so abundantly provided in that respect that they can afford to dispense with one-half of what nature proffers; the opinion of women would then possess a more beneficial, rather than a greater, influence upon the general mass of human belief and sentiment.",
+      "sourceId": "1c7f62c9-b26c-48c0-b9e8-cef711d5a79c",
+      "sourceTitle": "mill_works_14",
+      "sourceFile": "mill_works_14.txt",
+      "sourceKind": "database-text",
+      "startOffset": 29805,
+      "endOffset": 30200
+    },
+    {
+      "text": "In an economical point of view, the best system of landed property is that in which land is most completely an object of commerce; passing readily from hand to hand when a buyer can be found to whom it is worth while to offer a greater sum for the land, than the value of the income drawn from it by its existing possessor.",
+      "sourceId": "d754eaa8-47c9-418a-8283-a8bc9a7a8f3e",
+      "sourceTitle": "mill_works_10",
+      "sourceFile": "mill_works_10.txt",
+      "sourceKind": "database-text",
+      "startOffset": 111258,
+      "endOffset": 111585
+    },
+    {
+      "text": "I believe that equality of rights would abate the exaggerated self-abnegation which is the present artificial ideal of feminine character, and that a good woman would not be more self-sacrificing than the best man: but on the other hand, men would be much more unselfish and self-sacrificing than at present,because they would no longer be taught to worship their own will as such a grand thing that it is actually the law for another rational being.",
+      "sourceId": "50d4eced-e214-4049-be1a-56bda1bffd9d",
+      "sourceTitle": "mill_works_13",
+      "sourceFile": "mill_works_13.txt",
+      "sourceKind": "database-text",
+      "startOffset": 435136,
+      "endOffset": 435591
+    }
+  ]
+}
