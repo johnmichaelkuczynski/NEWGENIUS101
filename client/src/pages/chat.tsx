@@ -31,6 +31,7 @@ import { InterviewCreatorSection } from "@/components/interview-creator-section"
 import { DebateCreatorSection } from "@/components/sections/debate-creator-section";
 import { DocumentReconstructorSection } from "@/components/sections/document-reconstructor-section";
 import { ThinkingPanel } from "@/components/thinking-panel";
+import { MainAnswerPopup, type MainAnswerStatus } from "@/components/main-answer-popup";
 import { DocumentGeneratorTools } from "@/components/document-generator-tools";
 import { SelfTestButton } from "@/components/self-test-dialog";
 import UserDocuments from "@/components/user-documents";
@@ -61,6 +62,11 @@ export default function Chat() {
   const [streamingMessage, setStreamingMessage] = useState<string>("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [pendingAssistantMessage, setPendingAssistantMessage] = useState<string>("");
+  const [answerPopupOpen, setAnswerPopupOpen] = useState(false);
+  const [answerPopupText, setAnswerPopupText] = useState("");
+  const [answerPopupStatus, setAnswerPopupStatus] = useState<MainAnswerStatus>("waiting");
+  const [answerPopupError, setAnswerPopupError] = useState<string | null>(null);
+  const [answerPopupThinker, setAnswerPopupThinker] = useState("J.-M. Kuczynski");
   const [pendingUserMessage, setPendingUserMessage] = useState<string>("");
   const [messageCountBeforePending, setMessageCountBeforePending] = useState<number>(0);
   const [userMessageCountBeforePending, setUserMessageCountBeforePending] = useState<number>(0);
@@ -160,7 +166,10 @@ export default function Chat() {
   useEffect(() => {
     const showGate = (event: Event) => {
       const detail = (event as CustomEvent).detail;
-      if (detail === "google_login" || detail === "payment") setAccessGate(detail);
+      if (detail === "google_login" || detail === "payment") {
+        setAccessGate(detail);
+        setAnswerPopupOpen(false);
+      }
     };
     window.addEventListener("usage-gate", showGate);
     return () => window.removeEventListener("usage-gate", showGate);
@@ -232,6 +241,10 @@ export default function Chat() {
       queryClient.invalidateQueries({ queryKey: ["/api/persona-settings"] });
       setStreamingMessage("");
       setPendingAssistantMessage("");
+      setAnswerPopupOpen(false);
+      setAnswerPopupText("");
+      setAnswerPopupError(null);
+      setAnswerPopupStatus("waiting");
       setPendingUserMessage("");
       setMessageCountBeforePending(0);
       setUserMessageCountBeforePending(0);
@@ -262,6 +275,11 @@ export default function Chat() {
     setIsStreaming(true);
     setStreamingMessage("");
     setPendingAssistantMessage("");
+    setAnswerPopupThinker(mainThinker?.name || "J.-M. Kuczynski");
+    setAnswerPopupText("");
+    setAnswerPopupError(null);
+    setAnswerPopupStatus("waiting");
+    setAnswerPopupOpen(true);
 
     // CRITICAL FIX: Track pending user message to keep it visible until persisted
     const currentMessages = queryClient.getQueryData<Message[]>(mainMessagesQueryKey) || [];
@@ -316,20 +334,51 @@ export default function Chat() {
           setStreamingMessage("");
           setPendingAssistantMessage("");
           setPendingUserMessage("");
+          setAnswerPopupOpen(false);
           return;
         }
       }
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
+      let accumulatedText = "";
+      let streamError: string | null = null;
+      let receivedDone = false;
 
       if (reader) {
-        let accumulatedText = "";
         let buffer = "";
         
-        while (true) {
+        streamLoop: while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
+          if (done) {
+            buffer += decoder.decode();
+            if (buffer.startsWith("data: ")) {
+              const finalData = buffer.slice(6).trim();
+              if (finalData === "[DONE]") {
+                receivedDone = true;
+              } else if (finalData) {
+                try {
+                  const parsed = JSON.parse(finalData);
+                  if (parsed.reset_content) {
+                    accumulatedText = typeof parsed.content === "string" ? parsed.content : "";
+                    setStreamingMessage(accumulatedText);
+                    setAnswerPopupText(accumulatedText);
+                    setAnswerPopupStatus(accumulatedText ? "streaming" : "waiting");
+                  } else if (parsed.error) {
+                    streamError = String(parsed.error);
+                  } else if (typeof parsed.content === "string") {
+                    accumulatedText += parsed.content;
+                    setStreamingMessage(accumulatedText);
+                    setAnswerPopupText(accumulatedText);
+                    setAnswerPopupStatus("streaming");
+                  }
+                } catch {
+                  // Ignore an incomplete final SSE frame.
+                }
+              }
+            }
+            break;
+          }
 
           // Decode without streaming flag to get complete chunks
           buffer += decoder.decode(value, { stream: true });
@@ -342,25 +391,24 @@ export default function Chat() {
             if (line.startsWith("data: ")) {
               const data = line.slice(6);
               if (data === "[DONE]") {
-                setIsStreaming(false);
-                
-                // CRITICAL FIX v2: Don't clear streaming message yet
-                // Keep it visible as pendingAssistantMessage until refetch confirms persistence
-                // Track message count to ensure we wait for the NEW message, not just any matching text
-                const currentMessages = queryClient.getQueryData<Message[]>(mainMessagesQueryKey) || [];
-                setMessageCountBeforePending(currentMessages.length);
-                setPendingAssistantMessage(accumulatedText);
-                setStreamingMessage("");
-                
-                // Refetch to get the real message from backend (with correct ID)
-                queryClient.refetchQueries({ queryKey: mainMessagesQueryKey });
-                break;
+                receivedDone = true;
+                break streamLoop;
               }
               try {
                 const parsed = JSON.parse(data);
-                if (parsed.content) {
+                if (parsed.reset_content) {
+                  accumulatedText = typeof parsed.content === "string" ? parsed.content : "";
+                  setStreamingMessage(accumulatedText);
+                  setAnswerPopupText(accumulatedText);
+                  setAnswerPopupStatus(accumulatedText ? "streaming" : "waiting");
+                } else if (parsed.error) {
+                  streamError = String(parsed.error);
+                  break streamLoop;
+                } else if (typeof parsed.content === "string" && parsed.content) {
                   accumulatedText += parsed.content;
                   setStreamingMessage(accumulatedText);
+                  setAnswerPopupText(accumulatedText);
+                  setAnswerPopupStatus("streaming");
                 }
               } catch (e) {
                 console.error("Parse error:", e);
@@ -369,11 +417,47 @@ export default function Chat() {
           }
         }
       }
+      if (streamError) {
+        setIsStreaming(false);
+        setStreamingMessage("");
+        setPendingAssistantMessage("");
+        setPendingUserMessage("");
+        setMessageCountBeforePending(0);
+        setUserMessageCountBeforePending(0);
+        setAnswerPopupStatus("error");
+        setAnswerPopupError(streamError);
+        toast({
+          title: "Response interrupted",
+          description: streamError,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (!receivedDone) {
+        throw new Error("The response stream was interrupted before completion. Any text received is preserved in this window.");
+      }
+      if (!accumulatedText.trim()) {
+        throw new Error("The response completed without returning answer text.");
+      }
+      setIsStreaming(false);
+      setAnswerPopupStatus("complete");
+      if (accumulatedText) {
+        // Preserve the existing inline pending-message and persistence flow.
+        const currentMessages = queryClient.getQueryData<Message[]>(mainMessagesQueryKey) || [];
+        setMessageCountBeforePending(currentMessages.length);
+        setPendingAssistantMessage(accumulatedText);
+        setStreamingMessage("");
+        queryClient.refetchQueries({ queryKey: mainMessagesQueryKey });
+      }
     } catch (error) {
       console.error("Error sending message:", error);
+      const message = (error as Error)?.message || "Failed to send message. Please try again.";
+      setAnswerPopupStatus("error");
+      setAnswerPopupError(message);
       toast({
-        title: (error as Error)?.message?.includes("Sign in") ? "Sign in to continue" : "Error",
-        description: (error as Error)?.message || "Failed to send message. Please try again.",
+        title: message.includes("Sign in") ? "Sign in to continue" : "Error",
+        description: message,
         variant: "destructive",
       });
       setIsStreaming(false);
@@ -471,6 +555,14 @@ export default function Chat() {
           )}
         </DialogContent>
       </Dialog>
+      <MainAnswerPopup
+        open={answerPopupOpen}
+        onOpenChange={setAnswerPopupOpen}
+        thinkerName={answerPopupThinker}
+        content={answerPopupText}
+        status={answerPopupStatus}
+        error={answerPopupError}
+      />
       {/* Far Left Column: Philosopher Figures - ALWAYS VISIBLE */}
       <aside className="w-40 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/50 via-orange-50/30 to-amber-50/50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 hidden lg:block">
         <div className="p-2 border-b border-amber-200/30 dark:border-slate-700 sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10 space-y-2">
