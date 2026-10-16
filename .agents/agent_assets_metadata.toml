@@ -228,3 +228,17 @@ mtime_ms = 1792103352261
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/0d298b3c-44b0-40b5-aff4-077da5544f20/f7eb7c20-98ee-41f8-986f-7734119ea1a7"
 storage_version_token = "1792103415825524"
 content_type = "text/plain"
+
+[[outputs]]
+id = "DY0Orf_XjQlXk1nWzUkbv"
+uri = "file://test_outputs/top-function-source-verified-responses.txt"
+type = "text"
+title = "Exact top-function answers and source evidence"
+description = "Complete inspected Kuczynski answer and follow-up, plus the Spencer answer and its exact database excerpts. Responses are unedited."
+logical_id = "33320572-cbab-489f-80a7-fe655cb588a5"
+content_hash = "sha256:ee8cadb71e63633353b9bf7211ad61ec05f1365dae01e0417845629995420266"
+size = 87978
+mtime_ms = 1792158544120
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/33320572-cbab-489f-80a7-fe655cb588a5/6ede21b7-aea1-4e10-b708-77871c7a008c"
+storage_version_token = "1792158563935248"
+content_type = "text/plain"

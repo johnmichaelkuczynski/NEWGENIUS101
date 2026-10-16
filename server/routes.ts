@@ -53,8 +53,6 @@ import {
 import {
   buildGroundedProviderMessages,
   createChatSentenceStream,
-  CHAT_SOURCE_UNAVAILABLE,
-  hasChatPrimarySources,
   resolveChatRetrievalQuery,
 } from "./chat-grounding";
 import { processDocumentCoherently, rewriteForCoherence, readCoherenceState } from './services/coherence';
@@ -1168,11 +1166,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(
         `[Chat] Retrieved ${chatPrimaryNeighborhoods.length} neighboring primary-source chunks`,
       );
-      if (!hasChatPrimarySources([...textChunks, ...embeddingChunks, ...chatPrimaryNeighborhoods])) {
-        console.warn("[Chat] No primary passages retrieved; refusing an ungrounded substitute.");
-        res.status(503).json({ error: CHAT_SOURCE_UNAVAILABLE });
-        return;
-      }
+      // The strict source search below also reads saved but unindexed works;
+      // an empty legacy search must not prevent that recovery.
       // 3. Structured arguments are the primary source of the author's actual
       // premises and conclusions. Retrieve enough candidates to cover the
       // question rather than relying on a handful of prose chunks.
@@ -1268,55 +1263,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
         knowledgeContext += `INSTRUCTION: Ground the substance of this answer in the author's relevant primary-source passages, including on follow-up questions. Resolve conversational references using the current standalone question and the conversation. Supporting expert knowledge may clarify, but must not replace or contradict the author's actual arguments. Never invent a position or substitute a generic model opinion for the author's view.\n`;
       } else {
         console.log(`[RAG] No relevant positions found for query: "${message.substring(0, 80)}..."`);
-        throw new Error(CHAT_SOURCE_UNAVAILABLE);
       }
       
       // Append external Paradoxes app context (with conflict-reconciliation instruction)
       knowledgeContext += formatParadoxesContext(paradoxMatches);
 
-      let chatBindingAnswer = "";
-      if (hasEmbeddingContent || hasTextContent || structuredArgumentsContext) {
-        try {
-          const bindingResponse = await streamWithFallback({
-            res,
-            systemPrompt: `Determine the selected author's direct answer using only the supplied verbatim primary-source passages. Structured arguments are secondary aids. Return one plain sentence of no more than 45 words. Preserve polarity and quantifiers. If the source directly answers the intended question despite a spelling error, answer that intended question; do not call it malformed. Do not add commentary.`,
-            userPrompt: `USER QUESTION:
-${message}
-
-CURRENT QUESTION WITH CONVERSATIONAL REFERENCES RESOLVED:
-${retrievalQuery}
-
-VERBATIM PRIMARY-SOURCE PASSAGES:
-${[
-  ...chatPrimaryNeighborhoods.slice(0, 35).map((chunk) => chunk.chunkText),
-  ...textChunks.slice(0, 20).map((chunk) => chunk.chunkText),
-  ...embeddingChunks.slice(0, 20).map((chunk) => chunk.content),
-].join("\n\n").slice(0, 30000)}
-
-DERIVED STRUCTURED ARGUMENTS:
-${structuredArgumentsContext.slice(0, 12000)}`,
-            maxTokens: 120,
-            temperature: 0,
-            startProvider: "deepseek",
-            onContent: () => {},
-            emitContent: false,
-          });
-          chatBindingAnswer = bindingResponse
-            .replace(/^```(?:text)?\s*/i, "")
-            .replace(/\s*```$/, "")
-            .trim()
-            .split(/\n+/)[0]
-            .trim();
-          console.log(
-            `[Chat] Binding primary-source answer: ${chatBindingAnswer}`,
-          );
-        } catch (bindingError) {
-          console.error(
-            "[Chat] Could not derive binding primary-source answer:",
-            bindingError,
-          );
-        }
-      }
+      const generateGrounding: GroundingGenerator = (systemPrompt, userPrompt, maxTokens) =>
+        streamWithFallback({ res, systemPrompt, userPrompt, maxTokens,
+          temperature: 0, startProvider: "deepseek", emitContent: false });
+      const chatGrounding = await prepareComparisonGrounding(
+        retrievalQuery, { id: "kuczynski", name: kuczynskiFigure.name },
+        generateGrounding, () => {}, {
+          anchors: [
+            ...textChunks.map((chunk) => ({ sourceFile: chunk.sourceFile, chunkIndex: chunk.chunkIndex })),
+            ...embeddingChunks.map((chunk) => ({ sourceFile: chunk.paperTitle, chunkIndex: chunk.chunkIndex })),
+          ],
+          argumentHints: structuredArgumentsContext,
+        },
+      );
+      const chatBindingAnswer = chatGrounding.binding;
+      // Do not dilute verified evidence with the earlier unfiltered retrieval
+      // dump or let an unrelated derived summary override primary text.
+      knowledgeContext = comparisonAnswerRules(kuczynskiFigure.name, chatGrounding);
+      console.log(`[Chat] Bound answer to ${chatGrounding.sources.length} verified primary passages.`);
       
       // Build response instructions - ENFORCE word count and quote minimums
       let responseInstructions = "";
@@ -1556,7 +1525,7 @@ Now ATTACK this problem directly using your full philosophical firepower:
             ? `\n\nCONTINUATION: The assistant draft below has already been shown to the user. Continue it exactly where it ends, without repeating the opening or restarting the answer. The target is approximately ${targetWords} words for the COMPLETE answer, not another ${targetWords} words. About ${Math.max(30, targetWords - accumulatedContent.trim().split(/\s+/).length)} words remain; finish the required arguments concisely. The same database passages and binding primary-source position still govern. End with a complete sentence.`
             : "";
           const groundedMessages = buildGroundedProviderMessages(
-            `${systemPrompt}${finalInstructions}${continuationInstruction}`,
+            `${systemPrompt}${finalInstructions}${continuationInstruction}\n\n${comparisonAnswerRules(kuczynskiFigure.name, chatGrounding)}`,
             accumulatedContent ? [
               ...conversationHistory,
               { role: "assistant", content: accumulatedContent },
@@ -1641,6 +1610,35 @@ Now ATTACK this problem directly using your full philosophical firepower:
         return;
       }
 
+      let fidelity = await checkComparisonFidelity(
+        kuczynskiFigure.name, retrievalQuery, accumulatedContent, chatGrounding, generateGrounding,
+      );
+      if (!fidelity.faithful) {
+        console.warn(`[Chat] Rejected source-inconsistent draft: ${fidelity.correction}`);
+        res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+        accumulatedContent = await streamWithFallback({
+          res, systemPrompt: comparisonAnswerRules(kuczynskiFigure.name, chatGrounding)
+            + "\nCorrect the rejected draft using the primary evidence. Return a complete answer, with the author's actual argument, in plain text.",
+          userPrompt: `QUESTION: ${finalMessage}\nRESOLVED SUBJECT: ${retrievalQuery}\nCORRECTION: ${fidelity.correction}\n${responseInstructions}`,
+          maxTokens, temperature: 0.25, startProvider: successfulModel,
+        });
+        fidelity = await checkComparisonFidelity(
+          kuczynskiFigure.name, retrievalQuery, accumulatedContent, chatGrounding, generateGrounding,
+        );
+      }
+      if (!fidelity.faithful) {
+        res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
+        throw new Error("The answer did not preserve the author's source argument.");
+      }
+      res.write(`data: ${JSON.stringify({ auditEvidence: {
+        author: kuczynskiFigure.name, sourceDerivedAnswer: chatGrounding.binding,
+        passages: chatGrounding.sources.map((source) => ({
+          id: source.id, work: source.title, chunkIndex: source.index, text: source.text,
+        })),
+        sourcedQuotations: chatGrounding.audit.representativeQuotes,
+        fidelityChecked: true,
+      } })}\n\n`);
+      console.log("[Chat] Primary-source fidelity check passed.");
       // Remove verse marker from accumulated content (not used in Kuczynski app but keep for compatibility)
       const finalContent = accumulatedContent.split("---VERSE---")[0].trim();
 
@@ -1661,6 +1659,11 @@ Now ATTACK this problem directly using your full philosophical firepower:
       res.end();
     } catch (error) {
       console.error("Error in chat stream:", error);
+      if (!res.headersSent) {
+        res.status(503).json({ error: "The author's source passages could not be verified for this answer. No generic substitute was generated." });
+        return;
+      }
+      res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);
       res.write(
         `data: ${JSON.stringify({ error: "Failed to generate response" })}\n\n`
       );
@@ -1919,7 +1922,8 @@ Now ATTACK this problem directly using your full philosophical firepower:
     try {
       const sessionId = await getSessionId(req);
       const figureId = req.params.figureId;
-      const { message, uploadedDocument, settings: passedSettings, comparisonMode } = req.body;
+      const { message, uploadedDocument, settings: passedSettings, comparisonMode, mainChatMode } = req.body;
+      const sourceGroundedMode = comparisonMode === true || mainChatMode === true;
 
       if (!message || typeof message !== "string") {
         return res.status(400).json({ error: "Message is required" });
@@ -2014,14 +2018,17 @@ Now ATTACK this problem directly using your full philosophical firepower:
         streamWithFallback({ res, systemPrompt, userPrompt, maxTokens,
           temperature: 0, startProvider: "deepseek", emitContent: false });
       let comparisonGrounding: ComparisonGrounding | undefined;
-      if (comparisonMode === true) {
+      if (sourceGroundedMode) {
         const retrievalQuestion = await resolveChatRetrievalQuery(
           message, history.slice(0, -1),
           (system, user) => generateGrounding(system, user, 500),
           (error) => console.warn("[Compare] Using contextual query fallback:", error),
         );
+        const argumentHints = mainChatMode === true
+          ? await getArgumentsForThinker(figureId, retrievalQuestion, 15) : "";
         comparisonGrounding = await prepareComparisonGrounding(
           retrievalQuestion, { id: figureId, name: figure.name }, generateGrounding, emitAudit,
+          { argumentHints },
         );
         console.log(`[Compare] ${figureId}: ${comparisonGrounding.sources.length} primary passages retained; binding answer established.`);
       }
@@ -2571,7 +2578,7 @@ NEVER refuse to answer. NEVER apologize for the topic. Engage as the scholar you
         const COHERENCE_THRESHOLD = 1000;
         // Compare needs live text in both columns; coherence only emits a final
         // stitched answer. Keep ordinary figure chats on their existing path.
-        if (hasDirectCorpusAnswer && targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode && comparisonMode !== true) {
+        if (hasDirectCorpusAnswer && targetWords > COHERENCE_THRESHOLD && !effectiveDialogueMode && !sourceGroundedMode) {
           console.log(`[COHERENCE SERVICE] Activating for ${targetWords} word response`);
           
           try {
@@ -2839,6 +2846,14 @@ CRITICAL RULES:
           throw new Error("The comparison answer failed the author-fidelity check.");
         }
         console.log(`[Compare] ${figureId}: completed author-fidelity check.`);
+        res.write(`data: ${JSON.stringify({ auditEvidence: {
+          author: figure.name, sourceDerivedAnswer: comparisonGrounding.binding,
+          passages: comparisonGrounding.sources.map((source) => ({
+            id: source.id, work: source.title, chunkIndex: source.index, text: source.text,
+          })),
+          sourcedQuotations: comparisonGrounding.audit.representativeQuotes,
+          fidelityChecked: true,
+        } })}\n\n`);
         } catch (error) {
           // An unchecked/rejected draft must not remain attributed to the author.
           res.write(`data: ${JSON.stringify({ reset_content: true })}\n\n`);

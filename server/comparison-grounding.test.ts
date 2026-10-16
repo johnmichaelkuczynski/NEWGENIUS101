@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   comparisonAuthorNames, comparisonTerms, validateComparisonBinding,
-  comparisonAnswerRules, checkComparisonFidelity, hasStrengthenedDenial, type ComparisonGrounding, type ComparisonSource,
+  comparisonAnswerRules, checkComparisonFidelity, hasStrengthenedDenial, selectUnindexedPassages, type ComparisonGrounding, type ComparisonSource,
 } from "./comparison-grounding";
 
 const source: ComparisonSource = {
@@ -25,6 +25,30 @@ test("original subject terms survive author-vocabulary expansion", () => {
   const terms = comparisonTerms("DO WOMEN INHERENTLY HAVE DIFFERENT MORAL CODES FROM MEN?", "superego feminine conscience");
   for (const term of ["women", "moral", "codes", "men", "superego", "conscience"]) assert.ok(terms.includes(term));
   assert.ok(comparisonTerms("What is mathematical knowledge?", "a priori proof").includes("mathematical"));
+});
+test("saved works without chunk records yield exact, ranked passages with stable provenance", () => {
+  const content = "Table of contents. ".repeat(400)
+    + "The universal postulate is the ultimate test of a belief. ".repeat(160);
+  const passages = selectUnindexedPassages([{ id: "spencer-work", thinker: "spencer", title: "Psychology", content }],
+    ["universal", "postulate", "belief"]);
+  assert.ok(passages.length > 0);
+  assert.ok(passages[0].chunk_text.includes("universal postulate"));
+  for (const passage of passages) {
+    assert.equal(passage.thinker, "spencer");
+    assert.equal(passage.source_text_id, "spencer-work");
+    assert.equal(passage.chunk_text, content.slice(passage.chunk_index * 5000, passage.chunk_index * 5000 + 6500));
+    assert.ok(passage.id.startsWith("text:spencer-work:"));
+  }
+  assert.equal(selectUnindexedPassages([{ id: "w", thinker: "a", title: "W", content: "Unrelated." }], ["postulate"]).length, 0);
+});
+test("a generic answer that omits the primary argument is a fidelity failure, even if its polarity agrees", async () => {
+  const verdict = await checkComparisonFidelity("Kuczynski", "Are all contexts extensional?",
+    "Yes, by ordinary logical convention.", grounding, async (system) => {
+      assert.match(system, /omits the source's substantive argument/);
+      assert.match(system, /verbatim passages outrank the synopsis/);
+      return '{"faithful":false,"correction":"Explain the source distinction instead of replacing it with convention."}';
+    });
+  assert.equal(verdict.faithful, false);
 });
 test("source binding requires a real passage and exact substantive quotation", () => {
   const result = validateComparisonBinding({

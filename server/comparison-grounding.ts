@@ -18,7 +18,32 @@ export interface ComparisonGrounding {
   context: string;
   sources: ComparisonSource[];
 }
-const stopwords = new Set("the and for are not but with from that this what which would could should have does your their there they them explain evaluate question answer author personally agree view inherently different difference differences give state own about".split(" "));
+export interface PrimaryRetrievalOptions {
+  anchors?: Array<{ sourceFile: string; chunkIndex: number }>;
+  argumentHints?: string;
+}
+export interface UnindexedWork {
+  id: string;
+  thinker: string;
+  title: string;
+  content: string;
+}
+export function selectUnindexedPassages(works: UnindexedWork[], terms: string[], limit = 24): any[] {
+  const candidates: Array<{ score: number; row: any }> = [];
+  for (const work of works) {
+    const lower = work.content.toLowerCase();
+    for (let offset = 0; offset < work.content.length; offset += 5000) {
+      const body = lower.slice(offset, offset + 6500);
+      const score = terms.reduce((sum, term, index) => sum + (body.includes(term) ? (index < 6 ? 3 : 1) : 0), 0);
+      if (score) candidates.push({ score, row: {
+        id: `text:${work.id}:${offset}`, thinker: work.thinker, source_text_id: work.id,
+        chunk_index: offset / 5000, chunk_text: work.content.slice(offset, offset + 6500), title: work.title,
+      } });
+    }
+  }
+  return candidates.sort((a, b) => b.score - a.score).slice(0, limit).map((candidate) => candidate.row);
+}
+const stopwords = new Set("the and for are not but with from that this what which would could should have does your their there they them explain evaluate question answer author personally agree view inherently different difference differences give state own about correctly capture mean said says did can has his her how why when".split(" "));
 export function comparisonTerms(question: string, expansion = ""): string[] {
   return Array.from(new Set(`${question} ${expansion}`.toLowerCase().match(new RegExp("[\\p{L}\\p{N}]+", "gu")) || []))
     .filter((word) => word.length >= 3 && !stopwords.has(word)).slice(0, 32);
@@ -59,6 +84,7 @@ export function validateComparisonBinding(value: unknown, sources: ComparisonSou
 /** Exact author-filtered retrieval without a dependency on one embedding/judging provider. */
 export async function prepareComparisonGrounding(
   question: string, author: { id: string; name: string }, generate: GroundingGenerator, onEvent: AuditEventCallback,
+  options: PrimaryRetrievalOptions = {},
 ): Promise<ComparisonGrounding> {
   const events: AuditedSearchResult["events"] = [];
   const emit = (detail: string, type: "table_search" | "search_complete" = "table_search") => {
@@ -70,14 +96,18 @@ export async function prepareComparisonGrounding(
   try {
     expansion = await generate(
       "Produce at most 16 search keywords or short phrases for finding the named author's OWN writings relevant to the question. Translate modern vocabulary to the author's characteristic terminology where useful. Include nearby concepts and alternative spellings, not conclusions or proposed answers. Do not assume the author agrees with modern consensus. Return only the search terms.",
-      `AUTHOR: ${author.name}\nQUESTION: ${question}`, 220,
+      `AUTHOR: ${author.name}\nQUESTION: ${question}${options.argumentHints ? `\nDERIVED RETRIEVAL HINTS (not primary evidence; use only to locate the original argument):\n${options.argumentHints.slice(0, 8000)}` : ""}`, 300,
     );
   } catch { /* Original lexical retrieval remains available if expansion fails. */ }
   const terms = comparisonTerms(question, expansion);
   if (!terms.length) throw new Error(`State the subject explicitly so ${author.name}'s writings can be searched.`);
   const names = comparisonAuthorNames(author.id, author.name);
   const namesSql = sql.join(names.map((name) => sql`${name}`), sql`, `);
-  const authorFilter = sql`LOWER(c.thinker::text) IN (${namesSql}) AND LOWER(t.thinker::text) IN (${namesSql})`;
+  // Some imported "works" are plainly AI extraction output, not authored text.
+  // Keep derived records out even when they were put into the texts table.
+  const primaryWork = sql`COALESCE(t.title, '') !~* '(corpus[_ -]?analysis|let me continue reading|comprehensive extraction|extracted positions|extracted arguments)'
+    AND LEFT(COALESCE(t.content, ''), 800) !~* '(let me continue reading the full document|now i have thoroughly read|# EXTRACTED POSITIONS|# EXTRACTED ARGUMENTS)'`;
+  const authorFilter = sql`LOWER(c.thinker::text) IN (${namesSql}) AND LOWER(t.thinker::text) IN (${namesSql}) AND ${primaryWork}`;
   const matches = terms.map((term) => sql`c.chunk_text ILIKE ${`%${term}%`}`);
   const score = terms.map((term, index) => sql`CASE WHEN c.chunk_text ILIKE ${`%${term}%`} THEN ${index < 6 ? 3 : 1} ELSE 0 END`);
   emit(`Searching ${author.name}'s primary writings using ${terms.join(", ")}`);
@@ -89,15 +119,45 @@ export async function prepareComparisonGrounding(
     ORDER BY (${sql.join(score, sql` + `)}) DESC, c.source_text_id, c.chunk_index LIMIT 36
   `);
   const anchors = (result.rows || []) as any[];
+  // A saved work need not have completed its old embedding/chunking job.
+  // Search its actual text rather than treating absent chunks as absent writing.
+  const unindexed = await db.execute(sql`
+    SELECT t.id::text, t.thinker, t.content, COALESCE(t.title, t.source_file, t.id::text) AS title
+    FROM texts t
+    WHERE LOWER(t.thinker::text) IN (${namesSql}) AND ${primaryWork}
+      AND NOT EXISTS (SELECT 1 FROM chunks indexed WHERE indexed.source_text_id = t.id)
+      AND (${sql.join(terms.map((term) => sql`t.content ILIKE ${`%${term}%`}`), sql` OR `)})
+    ORDER BY t.id LIMIT 8
+  `);
+  // Read each large text once. Repeated SQL substrings of compressed multi-MB
+  // works cause repeated decompression and can turn one lookup into minutes.
+  anchors.push(...selectUnindexedPassages((unindexed.rows || []) as unknown as UnindexedWork[], terms));
+  // Recover semantic/compound-term hits too, but re-read them through the exact
+  // author + work join. Supplied summaries and unverified text never become evidence.
+  if (options.anchors?.length) {
+    const seeded = await db.execute(sql`
+      SELECT c.id::text, c.thinker, c.source_text_id, c.chunk_index, c.chunk_text,
+             COALESCE(t.title, t.source_file, c.source_text_id::text) AS title
+      FROM chunks c JOIN texts t ON t.id = c.source_text_id
+      WHERE ${authorFilter} AND (${sql.join(options.anchors.slice(0, 40).map((anchor) =>
+        sql`(c.source_text_id = ${anchor.sourceFile} AND c.chunk_index = ${anchor.chunkIndex})`), sql` OR `)})
+      ORDER BY c.source_text_id, c.chunk_index
+    `);
+    const known = new Set(anchors.map((row) => row.id));
+    for (const row of (seeded.rows || []) as any[]) {
+      if (!known.has(row.id)) { anchors.push(row); known.add(row.id); }
+    }
+  }
   if (!anchors.length) throw new Error(`No relevant source passages were found for ${author.name}; no generic answer has been substituted.`);
-  const neighborhoods = await db.execute(sql`
+  const indexedAnchors = anchors.filter((anchor) => !String(anchor.id).startsWith("text:")).slice(0, 14);
+  const neighborhoods = indexedAnchors.length ? await db.execute(sql`
     SELECT DISTINCT c.id::text, c.thinker, c.source_text_id, c.chunk_index, c.chunk_text,
            COALESCE(t.title, t.source_file, c.source_text_id::text) AS title
     FROM chunks c JOIN texts t ON t.id = c.source_text_id
-    WHERE ${authorFilter} AND (${sql.join(anchors.slice(0, 14).map((anchor) =>
+    WHERE ${authorFilter} AND (${sql.join(indexedAnchors.map((anchor) =>
       sql`(c.source_text_id = ${anchor.source_text_id} AND c.chunk_index BETWEEN ${Math.max(0, anchor.chunk_index - 1)} AND ${anchor.chunk_index + 1})`), sql` OR `)})
     ORDER BY c.source_text_id, c.chunk_index
-  `);
+  `) : { rows: [] };
   const sources: ComparisonSource[] = [];
   const seen = new Set<string>();
   for (const row of [...anchors, ...(neighborhoods.rows || []) as any[]]) {
@@ -108,10 +168,36 @@ export async function prepareComparisonGrounding(
   }
   const sourcePrompt = sources.map((source) => `[${source.id}] ${source.title}, chunk ${source.index}\n${source.text}`).join("\n\n").slice(0, 110000);
   const raw = await generate(
-    `Determine ${author.name}'s OWN position from primary passages, not today's general consensus. Distinguish what this author endorses from opponents' statements, fictional characters, editorial introductions, biographers, and hypotheses the author rejects. Do not attribute a prefatory writer's opinion to the author. Preserve polarity, quantifiers, and whether an account is biological, psychological, social, historical, or normative. A denial of innate differences is NOT a denial of all differences; equality is NOT sameness. Lead with the author's actual substantive thesis, including any differences the author explicitly posits, then give qualifications. Do not invent a stronger proposition by adding "wholly", "entirely", "purely", "every" or "universally" to the user's question and deny that instead. Do not force a yes/no conclusion beyond the sources. If passages disagree, describe the disagreement. Derive the answer from evidence, not stereotypes. Return ONLY JSON {"answer":"a detailed source-derived answer and supporting reasoning, or an honest statement of what cannot be established","quotes":[{"passageId":"exact supplied ID","text":"exact continuous text from that passage"}]}. Select at least 2 substantive quotations where available, retaining crucial qualifications. No invented or paraphrased quotations.`,
+    `Determine ${author.name}'s OWN position from primary passages, not today's general consensus. Distinguish what this author endorses from opponents' statements, fictional characters, editorial introductions, biographers, and hypotheses the author rejects. Do not attribute a prefatory writer's opinion to the author. Preserve polarity, quantifiers, and whether an account is biological, psychological, social, historical, or normative. A denial of innate differences is NOT a denial of all differences; equality is NOT sameness. Lead with the author's actual substantive thesis, including any differences the author explicitly posits, then give qualifications. Do not invent a stronger proposition by adding "wholly", "entirely", "purely", "every" or "universally" to the user's question and deny that instead. Do not force a yes/no conclusion beyond the sources. If passages disagree, describe the disagreement. Reconstruct the actual premises, distinctions, and inferential steps in the relevant passage, not merely a topical yes/no assertion. Do not accept an isolated occurrence of a keyword as evidence for a thesis. If a passage rejects an inference, preserve that rejection rather than repeating the inference as the author's view. Derive the answer from evidence, not stereotypes. Return ONLY JSON {"answer":"a detailed source-derived answer and supporting reasoning, or an honest statement of what cannot be established","quotes":[{"passageId":"exact supplied ID","text":"exact continuous text from that passage"}]}. Select at least 2 substantive quotations where available, retaining crucial qualifications. No invented or paraphrased quotations.`,
     `QUESTION: ${question}\n\nPRIMARY PASSAGES:\n${sourcePrompt}`, 2400,
   );
-  const binding = validateComparisonBinding(parseJson(raw), sources);
+  let binding: ReturnType<typeof validateComparisonBinding>;
+  try {
+    binding = validateComparisonBinding(parseJson(raw), sources);
+  } catch {
+    // Repair selection by asking for IDs, not by weakening exact-text checks.
+    // Models sometimes alter punctuation or paraphrase even when asked to copy.
+    const candidates = sources.flatMap((source) => {
+      const units = source.text.split(/\n\s*\n/).flatMap((paragraph) =>
+        paragraph.length <= 1800 ? [paragraph.trim()]
+          : paragraph.split(/(?<=[.!?])\s+/).map((sentence) => sentence.trim()));
+      return units.filter((text) => text.length >= 45 && text.length <= 1800)
+        .map((text) => ({ passageId: source.id, text,
+          score: terms.filter((term) => text.toLowerCase().includes(term)).length }))
+        .sort((a, b) => b.score - a.score).slice(0, 3);
+    }).sort((a, b) => b.score - a.score).slice(0, 60)
+      .map((candidate, index) => ({ ...candidate, quoteId: `Q${index}` }));
+    if (!candidates.length) throw new Error("No verifiable primary excerpts were available.");
+    const repair = parseJson(await generate(
+      `Derive ${author.name}'s actual answer and supporting argument ONLY from the supplied literal source excerpts. Distinguish the author's conclusions from positions they reject. Do not substitute generic knowledge. Return ONLY JSON {"answer":"source-supported thesis and reasoning, or what the evidence cannot establish","quoteIds":["Q0","Q1"]}. Select the IDs of at least two relevant excerpts where available. Do NOT copy or paraphrase excerpts: select their exact IDs.`,
+      `QUESTION: ${question}\nEXCERPTS:\n${candidates.map((candidate) => `[${candidate.quoteId}] ${candidate.text}`).join("\n\n")}`, 2400,
+    ));
+    const selected = candidates.filter((candidate) =>
+      Array.isArray(repair.quoteIds) && repair.quoteIds.includes(candidate.quoteId));
+    binding = validateComparisonBinding({
+      answer: repair.answer, quotes: selected.map(({ passageId, text }) => ({ passageId, text })),
+    }, sources);
+  }
   if (hasStrengthenedDenial(question, binding.answer)) {
     // A source-derived synopsis can itself contain the same evasive opening.
     // Rebuild only that synopsis, retaining independently verified quotations.
@@ -144,7 +230,7 @@ export async function prepareComparisonGrounding(
 }
 
 export function comparisonAnswerRules(name: string, grounding: ComparisonGrounding): string {
-  return `COMPARISON AUTHOR-FIDELITY RULES — THESE GOVERN THE ANSWER:
+  return `AUTHOR-FIDELITY RULES — THESE OVERRIDE ANY CONFLICTING STYLE OR PERSONA INSTRUCTION:
 Answer as ${name}, NOT as a generic contemporary adviser. The user asks for this author's position.
 The source-derived answer fixes your thesis, distinctions, and reasoning. Expand and apply it, but do not reverse or sanitize it, import another thinker's views, or replace it with modern consensus.
 Preserve distinctions between innate, psychological, social, historical, normative and observed claims. Do not collapse equality into sameness. Present controversial views honestly; attribution is not endorsement of their truth.
@@ -167,7 +253,7 @@ export async function checkComparisonFidelity(
     return { faithful: false, correction: "The opening evades the actual question by adding a stronger qualifier absent from it. Start with the author's substantive positive claim and supporting mechanism from the primary passages. Do NOT start with No followed by denial of a wholly/entirely/completely different or universal claim. State the author's asserted differences or other substantive position first, then qualify its causes and scope accurately." };
   }
   const result = parseJson(await generate(
-    `Check ONLY author fidelity. Compare the answer attributed to ${name} against the binding answer and primary passages. Reject explicit contradictions, reversed theses/quantifiers, treating opponents' views as the author's, replacing historical author views with modern consensus, collapsing biological/social/normative distinctions, or evading the actual question by denying an invented stronger proposition (e.g. adding "wholly" or "entirely" absent from the question). The opening must not conceal differences or other controversial claims the author explicitly posits. Do not reject reasonable examples, accurate explanations or stylistic differences. Do not judge whether you agree with this author. Return ONLY JSON {"faithful":true/false,"correction":"specific contradiction and required correction, or empty string"}.`,
+    `Check ONLY author fidelity. Compare the answer attributed to ${name} against the binding answer and primary passages. The verbatim passages outrank the synopsis: reject an unsupported or contradicted synopsis too. Reject explicit contradictions, reversed theses/quantifiers, treating opponents' views as the author's, replacing historical author views with modern consensus, collapsing biological/social/normative distinctions, or evading the actual question by denying an invented stronger proposition (e.g. adding "wholly" or "entirely" absent from the question). Reject a generic answer that mentions the author or topic but omits the source's substantive argument or substitutes a standard textbook argument for it. Quotations must be literal excerpts, not invented paraphrases in quotation marks. The opening must not conceal differences or other controversial claims the author explicitly posits. Do not reject reasonable examples, accurate explanations or stylistic differences. Do not judge whether you agree with this author. Return ONLY JSON {"faithful":true/false,"correction":"specific contradiction and required correction, or empty string"}.`,
     `QUESTION: ${question}\nBINDING ANSWER: ${grounding.binding}\nPRIMARY PASSAGES:\n${grounding.context}\n\nANSWER TO CHECK:\n${answer}`, 850,
   ));
   if (typeof result.faithful !== "boolean") throw new Error("The author-fidelity check could not be completed.");

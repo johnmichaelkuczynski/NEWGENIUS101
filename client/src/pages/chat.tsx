@@ -301,6 +301,7 @@ export default function Chat() {
             ? { message: content, documentText }
             : {
                 message: content,
+                mainChatMode: true,
                 uploadedDocument: documentText
                   ? { name: "Uploaded document", content: documentText }
                   : undefined,

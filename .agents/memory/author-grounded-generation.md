@@ -5,13 +5,13 @@ description: Rules for retrieving and enforcing each author's structured argumen
 
 Use the author’s verbatim primary texts first when they genuinely bear on the question. Structured premises and conclusions are retrieval and reasoning aids derived from those texts; they may not replace or misrepresent the source. Position summaries are weaker still.
 
-Chat must always give the best available answer. Search the author’s writings first, then use broad expert knowledge and live research when needed. Staying within the author’s ambit is secondary to correctness and completeness. Never show a corpus disclaimer, refusal, apology, or internal error message. Do not fabricate quotations or falsely attribute outside knowledge to a named work.
+The top function and Compare Two Thinkers must answer from the selected author's actual works. Broad expert knowledge can clarify an argument but must not silently replace the author's position. When the evidence cannot establish a claim, distinguish that limitation rather than inventing an author-specific answer.
 
-**Why:** Retrieval can miss material the speaker actually knows, and source coverage must never become a boundary on what the app can answer.
+**Why:** Dr. Kuczynski explicitly reported that the top function was giving generic answers instead of drawing on the corresponding thinker's works. This supersedes the earlier policy allowing a generic expert fallback in these author-response paths.
 
-**How to apply:** Treat source retrieval as the first research stage, not the final scope. If it is incomplete, continue with the strongest available outside knowledge and research; answer directly without discussing the search process.
+**How to apply:** Bind the thesis and reasoning to verified primary evidence for the currently selected author on every turn, including short follow-ups. Do not interpret an automated relevance judge's failure as permission to discard author grounding.
 
-When direct retrieval fails, exclude adjacent author passages from the fallback prompt rather than using them to decorate an unrelated answer. The fallback must be an objective expert answer, not a forced imitation of the author built from irrelevant quotations. End with the answer itself; never append word-count advice or other meta-commentary.
+Do not decorate an unrelated answer with adjacent author quotations. End with the answer itself; never append word-count advice or other meta-commentary. Preserve unrelated generators and answer modes unless the user requests changes to them.
 
 Search the user’s topic independently from generic custom-instruction language. Combine semantic and lexical source retrieval, normalize punctuation and compound forms consistently, and retrieve neighboring chunks from the same document so a relevant passage brings its supporting argument with it. Author identity filters must be exact after alias normalization.
 
@@ -51,7 +51,7 @@ Verbatim containment in a thinker's corpus is necessary but not sufficient for q
 
 **How to apply:** Limit extraction to the authored work, especially the fable body rather than Aesop's prefatory/biographical material. Apply a separate editorial/authorship review after source matching. Short, complete fable morals are valid; do not exclude them merely to satisfy a generic minimum sentence length.
 
-In Compare Two Thinkers, each answer must express that author's source-supported position, not a generic expert answer silently substituted when an automated relevance judge fails. This rule is scoped to comparisons; preserve other answer modes unless separately requested.
+In Compare Two Thinkers, each answer must express that author's source-supported position, not a generic expert answer silently substituted when an automated relevance judge fails. The user separately extended this requirement to the top function; preserve other answer modes unless separately requested.
 
 **Why:** Dr. Kuczynski reported Freud and Dworkin both giving interchangeable denials of gender differences. Their relevant primary texts were present, but the comparison fallback explicitly discarded author perspective. Author display names can also differ from corpus identity, and a provider-dependent failed judgment is not evidence of absent sources.
 
@@ -62,3 +62,15 @@ Reject evasive answers that insert a stronger quantifier or qualifier into the u
 **Why:** Even explicit prompt instructions and an LLM fidelity judge accepted an opening denying “entirely different” moral codes, despite the question not saying “entirely” and the selected source asserting differences. The same sources yielded an accurate explanation once the strengthened denial was caught deterministically.
 
 **How to apply:** Check both the source-derived synopsis and the final opening for invented stronger propositions. Do not rely solely on another LLM to notice this failure, and retain real source distinctions rather than removing all qualifications.
+
+A record stored as an author's "work" can itself be AI extraction output. Author identity and literal substring matching do not make that output primary evidence.
+
+**Why:** A Kuczynski source collection included a document beginning "Let me continue reading the full document" and labeled "EXTRACTED POSITIONS"; its assertions competed with the actual paper and contributed to a reversed conclusion.
+
+**How to apply:** Exclude clearly identified generated extraction records from primary evidence, preserve genuine works, and use structured summaries only to locate the original argument.
+
+Missing passage records do not prove a saved work is missing. Search original stored text when indexing is incomplete, without fabricating passages or claiming a database repair was performed.
+
+**Why:** A complete Spencer work was saved but had no passage records, so passage-only retrieval silently fell back to generic AI. Repeated SQL substring searches over its compressed multi-megabyte text also proved prohibitively slow.
+
+**How to apply:** Keep direct-text recovery bounded, read each large text once before selecting excerpts, and retain exact offsets and work provenance. Do not weaken quotation verification when a model miscopies text; use selection of literal excerpt IDs instead.
