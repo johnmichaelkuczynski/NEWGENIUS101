@@ -5,7 +5,11 @@ description: How author content is ingested and which DB tables are actually liv
 
 # Drop-folder ingestion
 
-Single drop folder `drop/`. Files named `AUTHOR_CATEGORY[_N].txt` (CATEGORY ∈ WORKS|QUOTES|POSITIONS|ARGUMENTS, N = lot number). Run `npx tsx scripts/ingest-drop-folder.ts` (`--dry-run` to preview). Filename routes to the table; success → `drop/_processed/`, failure → `drop/_failed/`. Partial inserts stay in `_processed` with a WARN (re-running would duplicate — there is no row-level dedup; the file-move is the only idempotency guard).
+Check the current ingester and author-folder instructions before giving upload steps; the old single-drop-folder-only instructions and claim that works lack duplicate detection are stale.
+
+**Why:** The ingestion workflow has evolved, so old filename and retry assumptions can mislead the user.
+
+**How to apply:** Read the current folder scanning, supported formats, author routing, and duplicate handling rather than treating this note as an operational command reference.
 
 # Live DB tables (the ones that actually exist)
 
