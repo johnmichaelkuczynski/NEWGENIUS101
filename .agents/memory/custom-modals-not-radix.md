@@ -38,3 +38,15 @@ columns behave differently even though both requests started together.
 **How to apply:** Preserve source retrieval and existing controls, keep answer
 delivery incremental for each column, retain partial output on failure, and verify
 multiple text updates before completion for each thinker separately.
+
+The top function's answer window must allow multitasking: no dimmed backdrop,
+background interaction lock, or focus trap. Users must be able to move and resize
+it while the answer continues, read the quotation sidebar, and use other tools.
+Closing the window must not cancel generation.
+
+**Why:** Dr. Kuczynski explicitly objected that the original modal greyed out the
+streaming quotations and trapped the user in the answer popup.
+
+**How to apply:** Keep this answer viewer non-modal during future UI changes.
+Do not restore a blocking dialog merely to reuse its styling or accessibility
+helpers; verify background interaction as well as dragging, resizing, and streaming.
