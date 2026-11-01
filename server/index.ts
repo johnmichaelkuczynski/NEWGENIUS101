@@ -1,12 +1,23 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
 import { clientRoutes, setupVite, serveStatic, log } from "./vite";
+import { createServer } from "node:http";
+import { registerStartupHealth, logEnvironmentPresence } from "./startup-health";
 import path from "path";
 import fs from "fs";
 import cors from "cors";
-import { authorAssetsCache } from "./author-assets-cache";
 
 const app = express();          // create the app first
+const production = process.env.NODE_ENV === "production";
+registerStartupHealth(app, production);
+logEnvironmentPresence();
+const server = createServer(app);
+let ready = false;
+if (production) {
+  app.use((_req, res, next) => {
+    if (ready) return next();
+    res.status(503).json({ error: "Application services are starting or unavailable" });
+  });
+}
 app.use(cors());                // then enable CORS middleware
 
 declare module "http" {
@@ -58,17 +69,20 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  const { registerRoutes } = await import("./routes");
   const { ensureApiKeysTable } = await import("./db");
-  await ensureApiKeysTable();
-
-  const server = await registerRoutes(app);
+  // Database bootstrap must not delay the homepage or prevent the server listening.
+  void ensureApiKeysTable().catch((error) => {
+    console.error("[startup] API-key table initialization failed", { code: error?.code || "DATABASE_UNAVAILABLE" });
+  });
+  await registerRoutes(app, server);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
     res.status(status).json({ message });
-    throw err;
+    console.error("[request] Request failed", { path: _req.path, status, code: err.code || "REQUEST_ERROR" });
   });
 
   // importantly only setup vite in development and after
@@ -98,14 +112,19 @@ app.use((req, res, next) => {
       serveStatic(app);
     }
   }
-    79
-    80  // ALWAYS serve the app on the port specified in the environment variable PORT
+  ready = true;
+  if (!production) listen();
+})().catch((error) => {
+  console.error("[startup] Application services failed to initialize", { code: error?.code || "INITIALIZATION_FAILED", name: error?.name });
+  if (!production) process.exitCode = 1;
+});
 
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
+function listen() {
   const port = parseInt(process.env.PORT || '5000', 10);
   server.listen({
     port,
@@ -114,4 +133,5 @@ app.use((req, res, next) => {
   }, () => {
     log(`serving on port ${port}`);
   });
-})();
+}
+if (production) listen();

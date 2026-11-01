@@ -19,6 +19,14 @@ declare global {
 }
 
 export function setupAuth(app: Express) {
+  const unavailable: RequestHandler = (_req, res) => {
+    res.status(503).json({ error: "Session service unavailable; please try again later" });
+  };
+  if (!process.env.SESSION_SECRET) {
+    console.error("[startup] SESSION_SECRET missing; refusing insecure sessions");
+    app.use(unavailable);
+    return;
+  }
   // Strip invisible characters (non-breaking spaces, zero-width chars, BOM) and
   // surrounding whitespace that often sneak in when secrets are copy-pasted.
   const sanitizeSecret = (v?: string) =>
@@ -48,7 +56,9 @@ export function setupAuth(app: Express) {
 
   // Trust proxy for production (behind Replit's proxy)
   app.set('trust proxy', 1);
+  const isProduction = process.env.NODE_ENV === 'production';
 
+  try {
   // Database-backed session store
   const PgSession = connectPgSimple(session);
   const pool = new pg.Pool({
@@ -72,14 +82,11 @@ export function setupAuth(app: Express) {
     errorLog: console.error.bind(console, 'Session store error:'),
   });
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
   if (isProduction && !process.env.SESSION_SECRET) {
     throw new Error("SESSION_SECRET environment variable is required in production");
   }
 
-  app.use(
-    session({
+  const sessionMiddleware = session({
       store: pgStore,
       secret: process.env.SESSION_SECRET || "text-intelligence-studio-secret-key",
       resave: false,
@@ -90,10 +97,26 @@ export function setupAuth(app: Express) {
         sameSite: 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000,
       },
-    })
-  );
+    });
+  app.use((req, res, next) => {
+    try {
+      sessionMiddleware(req, res, (error?: any) => {
+        if (!error) return next();
+        console.error("[session] Session store request failed", { code: error.code || "SESSION_STORE_UNAVAILABLE" });
+        unavailable(req, res, next);
+      });
+    } catch (error: any) {
+      console.error("[session] Session middleware failed", { code: error?.code || "SESSION_STORE_UNAVAILABLE" });
+      unavailable(req, res, next);
+    }
+  });
 
   console.log(`Session configured. Secure cookies: ${isProduction || !!process.env.REPLIT_DEV_DOMAIN}`);
+  } catch (error: any) {
+    console.error("[startup] Session store initialization failed", { code: error?.code || "SESSION_STORE_UNAVAILABLE" });
+    app.use(unavailable);
+    return;
+  }
 
   app.use(passport.initialize());
   app.use(passport.session());

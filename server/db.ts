@@ -24,7 +24,7 @@ export const db = drizzle({ client: pool, schema });
  * Keep this definition in sync with `apiKeys` in shared/schema.ts.
  */
 export async function ensureApiKeysTable(): Promise<void> {
-  await pool.query(`
+  await pool.query({ query_timeout: 5000, text: `
     CREATE TABLE IF NOT EXISTS api_keys (
       id SERIAL PRIMARY KEY,
       key_hash VARCHAR(64) NOT NULL UNIQUE,
@@ -35,5 +35,5 @@ export async function ensureApiKeysTable(): Promise<void> {
       last_used_at TIMESTAMP,
       created_at TIMESTAMP NOT NULL DEFAULT now()
     )
-  `);
+  ` });
 }

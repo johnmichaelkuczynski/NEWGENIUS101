@@ -552,10 +552,10 @@ import {
   runKuczynskiDiagnostic10,
 } from "./services/kuczynskiDiagnostic";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express, existingServer?: Server): Promise<Server> {
   // Validate SESSION_SECRET is set
   if (!process.env.SESSION_SECRET) {
-    throw new Error("SESSION_SECRET environment variable is required for secure session management");
+    console.error("[startup] SESSION_SECRET missing; session-dependent services disabled");
   }
 
   // Serve attached_assets folder for avatar images
@@ -11652,6 +11652,6 @@ ${totalContent.slice(-500)}${elevenLabsDirective}`;
 
   registerRemainingThinkerApiRoutes(app);
 
-  const httpServer = createServer(app);
+  const httpServer = existingServer || createServer(app);
   return httpServer;
 }
