@@ -57,6 +57,7 @@ function intensityLabel(n: number): string {
 
 export default function Chat() {
   const { toast } = useToast();
+  const [mobileSettingsOpen, setMobileSettingsOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const workspaceScrollRef = useRef<HTMLDivElement>(null);
   const [streamingMessage, setStreamingMessage] = useState<string>("");
@@ -532,7 +533,7 @@ export default function Chat() {
   );
 
   return (
-    <div className="h-screen min-w-0 max-w-full overflow-x-hidden flex flex-col lg:flex-row">
+    <div className="h-screen min-w-0 max-w-full overflow-hidden flex flex-col lg:flex-row">
       <Dialog open={accessGate !== null} onOpenChange={(open) => !open && setAccessGate(null)}>
         <DialogContent>
           <DialogHeader>
@@ -625,7 +626,24 @@ export default function Chat() {
       </aside>
 
       {/* Middle Sidebar: Settings */}
-      <aside className="min-w-0 max-w-full lg:w-64 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/40 via-orange-50/20 to-amber-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
+      <div className="lg:hidden shrink-0 flex items-center justify-end gap-2 px-4 py-2 border-b bg-background">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setMobileSettingsOpen((open) => !open)}
+          aria-expanded={mobileSettingsOpen}
+          aria-controls="chat-settings"
+          data-testid="button-toggle-settings"
+        >
+          <Sparkles className="w-4 h-4 mr-2" />
+          {mobileSettingsOpen ? "Close Settings" : "Settings"}
+        </Button>
+        <ThemeToggle />
+      </div>
+      <aside
+        id="chat-settings"
+        className={`${mobileSettingsOpen ? "block" : "hidden"} lg:block min-w-0 max-w-full max-h-[40dvh] lg:max-h-none lg:w-64 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/40 via-orange-50/20 to-amber-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800`}
+      >
         <div className="p-4 border-b border-amber-200/30 dark:border-slate-700 flex items-center justify-between sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-primary" />
