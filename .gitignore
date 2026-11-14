@@ -33,6 +33,9 @@ server/data/*
 # Small, preassembled source quotation banks are application content, not corpora.
 !server/data/thinking-quotes/
 !server/data/thinking-quotes/*.json
+!server/data/representative-quotes/
+!server/data/representative-quotes/*.json
+/generated-artifacts/
 logs/
 test_outputs/
 test-results.json

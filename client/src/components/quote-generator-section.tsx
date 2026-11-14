@@ -124,8 +124,7 @@ export function QuoteGeneratorSection({ onRegisterInput, onTransferContent }: Qu
             .map((q: any) => q.text)
             .join('\n\n');
         } else {
-          // This should rarely happen with the new fallback system, but handle gracefully
-          formattedQuotes = `Searching ${selectedAuthor}'s works for related content...\n\nThe database is being queried. If no results appear, try a broader topic or different phrasing.`;
+          formattedQuotes = data.meta?.fallbackNote || `No complete quotations were found. Try a broader topic or different phrasing.`;
         }
 
         setGeneratedQuotes(formattedQuotes);

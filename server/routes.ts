@@ -8133,7 +8133,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         });
       }
 
-      const quotesLimit = Math.min(Math.max(parseInt(numQuotes) || 10, 1), 50);
+      const quotesLimit = Math.min(Math.max(parseInt(numQuotes) || 10, 1), 100);
       const searchQuery = query?.trim() || "";
 
       // Map author names to thinker_id in thinker_quotes database
@@ -8237,27 +8237,64 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
       };
       
       // Normalize author name: strip diacritics then remove non-alpha characters
-      const thinkerId = thinkerIdMap[author] || author
+      const requestedThinkerId = thinkerIdMap[author] || author
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')  // Remove diacritics (accents)
         .toLowerCase()
         .replace(/[^a-z]/g, '');
+      const { corpusThinkerId } = await import("./thinking-quotes/selection");
+      const { selectRepresentativeQuotes } = await import("./representative-quotes");
+      const { getThinkingQuoteBank } = await import("./thinking-quotes/bank");
+      const figures = await storage.getAllThinkers();
+      const figure = figures.find(item => item.id === author || item.name.toLowerCase() === author.toLowerCase());
+      const bankId = figure?.id || ({
+        williamjames: "james", larochefoucauld: "la_rochefoucauld", lebon: "le_bon", jamesallen: "allen",
+      } as Record<string, string>)[requestedThinkerId] || requestedThinkerId;
+      const thinkerId = corpusThinkerId(bankId);
+
+      if (!searchQuery) {
+        // No-topic requests are a file/cache lookup, never a database search or
+        // model call. Keep this collection independent of the scrolling sidebar.
+        const { getPreparedRepresentativeBank, pickPreparedQuotations } = await import("./prepared-representative-quotes");
+        try {
+          const bank = await getPreparedRepresentativeBank(bankId);
+          const prepared = pickPreparedQuotations(bank, quotesLimit);
+          return res.json({
+            success: true,
+            quotes: prepared.map((item, index) => ({
+              text: item.text, source: item.sourceTitle, sourceId: item.sourceId,
+              sourceFile: item.sourceFile, chunkIndex: index, author,
+            })),
+            meta: {
+              query: "", author, quotesFound: prepared.length, usedFallback: false,
+              qualityFiltered: true, preassembled: true, preparedCount: bank.items.length,
+            },
+          });
+        } catch (error) {
+          console.error(`[Quote Generator] Prepared collection unavailable for ${bankId}`);
+          return res.status(503).json({
+            success: false,
+            error: `The prepared quotation collection for ${author} is unavailable. No quotations were generated or substituted.`,
+          });
+        }
+      }
 
       console.log(`[Quote Generator] Querying quotes for ${author} (id: ${thinkerId}), query: "${searchQuery}", limit: ${quotesLimit}`);
 
       let quotes: any[] = [];
+      const candidateLimit = Math.min(1500, Math.max(200, quotesLimit * 15));
       
       // If query provided, search by topic/quote content
       if (searchQuery) {
         const searchWords = searchQuery.toLowerCase().split(/\s+/).filter((w: string) => w.length > 3);
         if (searchWords.length > 0) {
-          const topicConditions = searchWords.slice(0, 5).map((word: string) => `quote_text ILIKE '%${word}%' OR topic ILIKE '%${word}%'`).join(' OR ');
+          const topicConditions = sql.join(searchWords.slice(0, 5).map((word: string) => sql`quote_text ILIKE ${`%${word}%`} OR topic ILIKE ${`%${word}%`}`), sql` OR `);
           const searchResult = await db.execute(
             sql`SELECT quote_text as quote, topic FROM quotes 
                 WHERE LOWER(thinker) = ${thinkerId} 
-                AND (${sql.raw(topicConditions)})
+                AND (${topicConditions})
                 ORDER BY RANDOM() 
-                LIMIT ${quotesLimit}`
+                LIMIT ${candidateLimit}`
           );
           quotes = searchResult.rows || [];
           console.log(`[Quote Generator] Topic search found ${quotes.length} quotes`);
@@ -8270,113 +8307,26 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
           sql`SELECT quote_text as quote, topic FROM quotes 
               WHERE LOWER(thinker) = ${thinkerId} 
               ORDER BY RANDOM() 
-              LIMIT ${quotesLimit}`
+              LIMIT ${candidateLimit}`
         );
         quotes = randomResult.rows || [];
         console.log(`[Quote Generator] Random selection found ${quotes.length} quotes`);
       }
 
-      // LLM FALLBACK: If still no quotes, use RAG + LLM to generate them
-      let usedFallback = false;
-      if (quotes.length === 0) {
-        console.log(`[Quote Generator] No curated quotes found, using LLM fallback for ${author}`);
-        usedFallback = true;
-        
-        try {
-          // Get relevant chunks from the thinker's works via RAG
-          const normalizedAuthor = normalizeAuthorName(author);
-          const ragQuery = searchQuery || author + " philosophy ideas";
-          const chunks = await searchPhilosophicalChunks(ragQuery, 8, "common", normalizedAuthor);
-          
-          if (chunks.length > 0) {
-            console.log(`[Quote Generator] Found ${chunks.length} RAG chunks for ${author}`);
-            
-            // Build context from chunks
-            const context = chunks.map((c, i) => 
-              `[Source ${i+1}: ${c.paperTitle}]\n${c.content}`
-            ).join('\n\n---\n\n');
-            
-            // Use LLM to extract quotes
-            const prompt = `You are extracting memorable quotes from ${author}'s writings.
-
-CONTEXT FROM ${author.toUpperCase()}'S WORKS:
-${context}
-
-TASK: Extract ${quotesLimit} distinct, quotable passages from the above text. Each quote should be:
-- A complete, standalone thought (1-3 sentences)
-- Philosophically significant or memorable
-- Directly from the source material (do NOT paraphrase or invent)
-
-Format each quote as:
-QUOTE: [exact quote text]
-SOURCE: [source title]
-
-Extract ${quotesLimit} quotes now:`;
-
-            const response = await anthropic!.messages.create({
-              model: "claude-sonnet-4-5-20250929",
-              max_tokens: 2000,
-              temperature: 0.3,
-              messages: [{ role: "user", content: prompt }]
-            });
-            
-            const responseText = response.content[0].type === 'text' ? response.content[0].text : '';
-            
-            // Parse quotes from response
-            const quoteMatches = responseText.matchAll(/QUOTE:\s*(.+?)(?:\nSOURCE:\s*(.+?))?(?=\n\nQUOTE:|\n*$)/gs);
-            for (const match of quoteMatches) {
-              if (quotes.length >= quotesLimit) break;
-              const quoteText = match[1]?.trim().replace(/^["']|["']$/g, '');
-              const source = match[2]?.trim() || chunks[0]?.paperTitle || 'Works';
-              if (quoteText && quoteText.length > 20) {
-                quotes.push({ quote: quoteText, source, topic: 'Generated' });
-              }
-            }
-            console.log(`[Quote Generator] LLM extracted ${quotes.length} quotes`);
-          } else {
-            console.log(`[Quote Generator] No RAG chunks found for ${author}, using general knowledge`);
-            
-            // Fallback to general knowledge
-            const prompt = `Generate ${quotesLimit} authentic-sounding quotes that capture ${author}'s philosophical views and writing style.
-
-REQUIREMENTS:
-- Each quote should reflect ${author}'s known philosophical positions
-- Use their characteristic terminology and style
-- 1-3 sentences each
-- Do NOT invent views they never held
-
-Format each as:
-QUOTE: [quote text]
-SOURCE: [likely source work]
-
-Generate ${quotesLimit} quotes:`;
-
-            const response = await anthropic!.messages.create({
-              model: "claude-sonnet-4-5-20250929",
-              max_tokens: 2000,
-              temperature: 0.5,
-              messages: [{ role: "user", content: prompt }]
-            });
-            
-            const responseText = response.content[0].type === 'text' ? response.content[0].text : '';
-            
-            const quoteMatches = responseText.matchAll(/QUOTE:\s*(.+?)(?:\nSOURCE:\s*(.+?))?(?=\n\nQUOTE:|\n*$)/gs);
-            for (const match of quoteMatches) {
-              if (quotes.length >= quotesLimit) break;
-              const quoteText = match[1]?.trim().replace(/^["']|["']$/g, '');
-              const source = match[2]?.trim() || 'Works';
-              if (quoteText && quoteText.length > 20) {
-                quotes.push({ quote: quoteText, source, topic: 'Generated' });
-              }
-            }
-            console.log(`[Quote Generator] LLM generated ${quotes.length} quotes from general knowledge`);
-          }
-        } catch (llmError) {
-          console.error(`[Quote Generator] LLM fallback failed:`, llmError);
-        }
+      // Favor the existing, editorially reviewed source bank. Database excerpts
+      // can supplement it, but neither path may invent or repair quotation text.
+      try {
+        const bank = await getThinkingQuoteBank(bankId);
+        const verified = bank.items.map(item => ({
+          quote: item.text, source: item.sourceTitle, topic: "", reviewed: true,
+        }));
+        quotes = [...verified, ...quotes];
+      } catch (error) {
+        console.warn(`[Quote Generator] Source quotation bank unavailable for ${bankId}`);
       }
-
-      console.log(`[Quote Generator] Returning ${quotes.length} quotes from ${author}${usedFallback ? ' (LLM fallback)' : ''}`);
+      quotes = selectRepresentativeQuotes(quotes, quotesLimit, searchQuery);
+      const usedFallback = false;
+      console.log(`[Quote Generator] Returning ${quotes.length} complete source quotations from ${author}`);
 
       res.json({
         success: true,
@@ -8390,7 +8340,13 @@ Generate ${quotesLimit} quotes:`;
           query: searchQuery,
           author,
           quotesFound: quotes.length,
-          usedFallback
+          usedFallback,
+          qualityFiltered: true,
+          fallbackNote: quotes.length < quotesLimit
+            ? quotes.length
+              ? `Found ${quotes.length} complete quotations${searchQuery ? " matching this topic" : ""}. Incomplete excerpts and editorial references were excluded.`
+              : `No complete quotations${searchQuery ? " matching this topic" : ""} were found. No quotations were invented.`
+            : undefined,
         }
       });
 
@@ -8823,7 +8779,7 @@ Begin:`;
       }
 
       const { query = 'all', numQuotes = '10' } = req.body;
-      const quotesLimit = Math.min(Math.max(parseInt(numQuotes) || 10, 1), 50);
+      const quotesLimit = Math.min(Math.max(parseInt(numQuotes) || 10, 1), 100);
 
       let textContent = '';
 
@@ -8865,58 +8821,12 @@ Begin:`;
 
       console.log(`[Quote Extraction] Processing ${req.file.originalname} (${textContent.length} chars)`);
 
-      // Extract quotes from the document text
-      const quotes: string[] = [];
-      
-      // First, try to find explicit quotes (text in quotation marks)
-      const explicitQuotePattern = /"([^"]{50,500})"/g;
-      const explicitMatches = Array.from(textContent.matchAll(explicitQuotePattern));
-      for (const match of explicitMatches) {
-        if (match[1] && match[1].trim().length >= 50) {
-          quotes.push(match[1].trim());
-        }
-      }
-
-      // Then extract substantial sentences as quotes
-      const sentences = textContent.split(/[.!?]\s+/);
-      for (const sentence of sentences) {
-        const trimmed = sentence.trim();
-        
-        // Filter by query if provided
-        if (query && query !== 'all') {
-          const queryLower = query.toLowerCase();
-          const sentenceLower = trimmed.toLowerCase();
-          if (!sentenceLower.includes(queryLower)) {
-            continue;
-          }
-        }
-
-        // Accept sentences between 50-500 chars
-        if (trimmed.length >= 50 && trimmed.length <= 500) {
-          const wordCount = trimmed.split(/\s+/).length;
-          
-          // Quality filters
-          const hasFormattingArtifacts = 
-            trimmed.includes('(<< back)') ||
-            trimmed.includes('(<<back)') ||
-            trimmed.includes('[<< back]') ||
-            trimmed.includes('*_') ||
-            trimmed.includes('_*') ||
-            /\(\d+\)\s*$/.test(trimmed) ||
-            /\[\d+\]\s*$/.test(trimmed);
-          
-          const specialCharCount = (trimmed.match(/[<>{}|\\]/g) || []).length;
-          const hasExcessiveSpecialChars = specialCharCount > 5;
-          
-          if (wordCount >= 5 && !hasFormattingArtifacts && !hasExcessiveSpecialChars) {
-            quotes.push(trimmed);
-          }
-        }
-      }
-
-      // Deduplicate and limit
-      const uniqueQuotes = Array.from(new Set(quotes));
-      const finalQuotes = uniqueQuotes.slice(0, quotesLimit);
+      // Sentence segmentation preserves punctuation instead of splitting it off.
+      // Both author and uploaded-document modes use the same quality checks.
+      const { extractRepresentativeQuotes } = await import("./representative-quotes");
+      const finalQuotes = extractRepresentativeQuotes(
+        textContent, quotesLimit, query === "all" ? "" : query,
+      ).map(row => row.quote);
 
       console.log(`[Quote Extraction] Found ${finalQuotes.length} quotes from ${req.file.originalname}`);
 
@@ -8925,7 +8835,7 @@ Begin:`;
         quotes: finalQuotes,
         meta: {
           filename: req.file.originalname,
-          totalQuotesFound: uniqueQuotes.length,
+          totalQuotesFound: finalQuotes.length,
           quotesReturned: finalQuotes.length,
           documentLength: textContent.length
         }

@@ -1,0 +1,906 @@
+{
+  "thinkerId": "galileo",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "Inasmuch as the Bible constantly requires interpretation to explain how very different the true sense of the words is from their apparent signification, it appears to me that it should be quoted in scientific discussions only as the last resort.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 245617,
+      "endOffset": 245869
+    },
+    {
+      "text": "In truth, Holy Scripture and Nature both come from the Divine Word, the one being the dictation of the Holy Ghost, while the other is the executor of God’s decrees; but it was fitting that, in the Scriptures, the language should be adapted to the people’s understanding in many things where the appearance differs widely from the reality.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 245870,
+      "endOffset": 246213
+    },
+    {
+      "text": "The fact then that fish are able to remain motionless under water is a conclusive reason for thinking that the material of their bodies has the same specific gravity as that of water; accordingly, if in their make-up there are certain parts which are heavier than water there must be others which are lighter, for otherwise they would not produce equilibrium.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 69701,
+      "endOffset": 70064
+    },
+    {
+      "text": "Finally, in the investigation of naturally accelerated motion we were led, by hand as it were, in following the habit and custom of nature herself, in all her various other processes, to employ only those means which are most common, simple and easy.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 120493,
+      "endOffset": 120751
+    },
+    {
+      "text": "Concerning motions and their velocities or momenta [movimenti e lor velocità o impeti] whether uniform or naturally accelerated, one cannot speak definitely until he has established a measure for such velocities and also for time.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 49547,
+      "endOffset": 49789
+    },
+    {
+      "text": "Place a heavy body upon a yielding material, and leave it there without any pressure except that owing to its own weight; it is clear that if one lifts this body a cubit or two and allows it to fall upon the same material, it will, with this impulse, exert a new and greater pressure than that caused by its mere weight; and this effect is brought about by the [weight of the] falling body together with the velocity acquired during the fall, an effect which will be greater and greater according to the height of the fall, that is according as the velocity of the falling body becomes greater.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 126083,
+      "endOffset": 126684
+    },
+    {
+      "text": "Since, as it seems to me, the force [virtù] impressed by the agent projecting the body upwards diminishes continuously, this force, so long as it was greater than the contrary force of gravitation, impelled the body upwards; when the two are in equilibrium the body ceases to rise and passes through the state of rest in which the impressed impetus [impeto] is not destroyed, but only its excessover the weight of the body has been consumed — the excess which caused the body to rise.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 130594,
+      "endOffset": 131108
+    },
+    {
+      "text": "Nature, on the other hand, is inexorable and immutable; she is not at all concerned whether the hidden reasons and means through which she works are or are not intelligible to man, because she never oversteps the limit of the laws imposed upon her.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Dialogues Concerning Two New Sciences",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 246214,
+      "endOffset": 246475
+    },
+    {
+      "text": "Then, I say, this prism is unique among all similar prisms — infinite in number — in occupying that boundary line between breaking and not breaking; so that every larger one will break under its own weight, and every smaller one will not break, but will be able to withstand some force in addition to its own weight.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 57347,
+      "endOffset": 57690
+    },
+    {
+      "text": "Of these properties [accidenti] of weight, of velocity, and also of form [figura], infinite in number, it is not possible to give any exact description; hence, in order to handle this matter in a scientific way, it is necessary to cut loose from these difficulties; and having discovered and demonstrated the theorems, in the case of no resistance, to use them and apply them with such limitations as experience will teach.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 25393,
+      "endOffset": 25845
+    },
+    {
+      "text": "Now since velocity can be increased and diminished without limit, what reason is there to believe that such a moving body starting with infinite slowness, that is, from rest, immediately acquires a speed of ten degrees rather than one of four, or oftwo, or of one, or of a half, or of a hundredth; or, indeed, of any of the infinite number of small values [of speed]?",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 128225,
+      "endOffset": 128611
+    },
+    {
+      "text": "Caution We must add to the old definition (which defined steady motion simply as one in which equal distances are traversed in equal times) the word “any,” meaning by this, all equal intervals of time; for it may happen that the moving body will traverse equal distances during some equal intervals of time and yet the distances traversed during some small portion of these time- intervals may not be equal, even though the time-intervals be equal.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 108428,
+      "endOffset": 108896
+    },
+    {
+      "text": "The idea is clever, yet more subtle than sound; for even if the argument were conclusive, it would explain only the case in which a natural motion is preceded by a violent motion, in which there still remains active a portion of the external force [virtù esterna]; but where there is no such remaining portion and the body starts from an antecedent state of rest, the cogency of the whole argument fails.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 131528,
+      "endOffset": 131948
+    },
+    {
+      "text": "The knowledge of a single fact acquired through a discovery of its causes prepares the mind to understand and ascertain other facts without need of recourse to experiment, precisely as in the present case, where by argumentation alone the Author proves with certainty that the maximum range occurs when the elevation is 45°.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 70286,
+      "endOffset": 70635
+    },
+    {
+      "text": "For if we consider a single striking body the difference of momentum in its blows can depend only upon difference of velocity; for if the striking body falling from a double height were to deliver a blow of double momentum, it would be necessary for this body to strike with a doubled velocity; but with this doubled speed it would traverse a doubled space in the same time- interval; observation however shows that the time required for fall from the greater height is longer.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 137566,
+      "endOffset": 138061
+    },
+    {
+      "text": "First of all one must observe that each pendulum has its own time of vibration so definite and determinate that it is not possible to make it move with any other period [altro periodo] than that which nature has given it.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 3739,
+      "endOffset": 3962
+    },
+    {
+      "text": "Even as a boy, I observed that one man alone by giving these impulses at the right instant was able to ring a bell so large that when four, or even six, men seized the rope and tried to stop it they were lifted from the ground, all of them together being unable to counterbalance the momentum which a single man, by properly-timed pulls, had given it.Salv.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 5057,
+      "endOffset": 5427
+    },
+    {
+      "text": "A string which has been struck begins to vibrate and continues the motion as long as one hears the sound [risonanza]; these vibrations cause the immediately surrounding air to vibrate and quiver; then these ripples in the air expand far into space and strike not only all the strings of the same instrument but even those of neighboring instruments.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 5833,
+      "endOffset": 6200
+    },
+    {
+      "text": "Agreeable consonances are pairs of tones which strike the ear with a certain regularity; this regularity consists in the fact that the pulses delivered by the two tones, in the same interval of time, shall be commensurable in number, so as not to keep the ear drum in perpetual torment, bending in two different directions in order to yield to the ever-discordant impulses.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 18304,
+      "endOffset": 18692
+    },
+    {
+      "text": "Indeed, I think we may concede to our Academician, without flattery, his claim that in the principle [principio, i. e., accelerated motion] laid downin this treatise he has established a new science dealing with a very old subject.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 5128,
+      "endOffset": 5374
+    },
+    {
+      "text": "For a while, Simplicio, I used to think, as you do, that the resistances of similar solids were similar; but a certain casual observation showed me that similar solids do not exhibit a strength which is proportional to their size, the larger ones being less fitted to undergo rough usage just as tall men are more apt than small children to be injured by a fall.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 54787,
+      "endOffset": 55153
+    },
+    {
+      "text": "Observing with what ease and clearness he deduces from a single principle the proofs of so many theorems, I wonder not a little how such a question escaped the attention of Archimedes, Apollonius, Euclid and so many other mathematicians and illustrious philosophers, especially since so many ponderous tomes have been devoted to the subject of motion.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 5375,
+      "endOffset": 5739
+    },
+    {
+      "text": "I am one of those who accept the proposition, and believe that a falling body acquires force [vires] in its descent, its velocity increasing in proportion to the space, and that the momentum [momento] of the falling body is doubled when it falls from a doubled height; these propositions, it appears to me, ought to be conceded without hesitation or controversy.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 136153,
+      "endOffset": 136531
+    },
+    {
+      "text": "I hope therefore it will not appear to be a waste of time if we discuss at considerable length this first and most fundamental question upon which hinge numerous consequences of which we have in this book only a small number, placed there by the Author, who has done so much to open a pathway hitherto closed to minds of speculative turn.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 155265,
+      "endOffset": 155607
+    },
+    {
+      "text": "If, then, as is often done for the sake of brevity, we take the same limited straight line as the measure of the speed, and of the time, and also of the space traversed during that time, it follows that the duration of fall and the speed acquired by the same body in passing over any other distance, is not represented by this second distance, but by a mean proportional between the two distances.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 52620,
+      "endOffset": 53022
+    },
+    {
+      "text": "As a starting point for this science, we assumed that the resistance offered by the solid to a straight-away pull was known; from this base one might proceed to the discovery of many other results and their demonstrations; of these results the number to be found in nature is infinite.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 102216,
+      "endOffset": 102505
+    },
+    {
+      "text": "To put the matter more clearly, if a body were to continue its motion with the same speed which it had acquired during the first time-interval and were to retain this same uniform speed, then its motion would be twice as slow as that which it would have if its velocity had been acquired during two time-intervals.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 122439,
+      "endOffset": 122757
+    },
+    {
+      "text": "The present does not seem to be the proper time to investigate the cause of the acceleration of natural motion concerning which various opinions have been expressed by various philosophers, some explaining it by attraction to the center, others to repulsion between the very small parts of the body, while still others attribute it to a certain stress in the surrounding medium which closes in behind the falling body and drives it from one of its positions to another.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 133549,
+      "endOffset": 134024
+    },
+    {
+      "text": "Since then the body G in moving from A to F offers resistance only in so far as it rises through the vertical distance CF, while the other body H must fall vertically through the entire distance FA, and since this ratio is maintained whether the motion be large or small, the two bodies being inextensibly connected, we are able to assert positively that, in case of equilibrium (bodies at rest) the momenta, the velocities, or their tendency to motion [propensioni al moto], i. e., the spaces which would be traversed by them in equal times, must be in the inverse ratio to their weights.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 164142,
+      "endOffset": 164738
+    },
+    {
+      "text": "First we must recall the fact that on a plane of any inclination whatever a body starting from rest gains speed or momentum [la quantita dell’impeto] in direct proportion to the time, in agreement with the definition of naturally accelerated motion given by the Author.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 167259,
+      "endOffset": 167536
+    },
+    {
+      "text": "You give me frequent occasion to admire the wealth and profusion of nature when, from such common and even trivial phenomena, you derive facts which are not only striking and new but which are often far removed from what we would have imagined.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 2498,
+      "endOffset": 2745
+    },
+    {
+      "text": "The fifth is also a pleasing interval since for every two vibrations of the lower string the upper one gives three, so that considering the entire number of pulses from the upper string one-third ofthem will strike in unison, i. e., between each pair of concordant vibrations there intervene two single vibrations; and when the interval is a fourth, three single vibrations intervene.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 19220,
+      "endOffset": 19608
+    },
+    {
+      "text": "The number and ingenuity of his inventions, the brilliant discoveries which he made in the heavens, and the depth and beauty of his researches respecting the laws of motion, have gained him the admiration of every succeeding age, and have placed him next to Newton in the lists of original and inventive genius.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 232964,
+      "endOffset": 233284
+    },
+    {
+      "text": "If however the vibrations of two or more strings are incommensurable so that they never complete a definite number of vibrations at the same instant, or if commensurable they return only after a long interval of time and after a large number of vibrations, then the eye is confused by the disorderly succession of crossed threads.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 27062,
+      "endOffset": 27407
+    },
+    {
+      "text": "Yes, I am willing to concede him priority in point of time; but as regards rigor of demonstration the first place must be given to Archimedes, 16 since upon a single proposition proved in his book on Equilibrium depends not only the law of the lever but also those of most other mechanical devices.16 Works of Archimedes.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 30451,
+      "endOffset": 30866
+    },
+    {
+      "text": "Since now this principle is fundamental to all the demonstrations which you propose to set forth would it not be advisable to give us a complete and thorough proof of this proposition unless possibly it would take too much time?",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 30920,
+      "endOffset": 31151
+    },
+    {
+      "text": "For if such a ball be allowed to fall from some great elevation its speed will, owing to the resistance of the air, not go on increasing indefinitely; that which happens to bodies of small density in falling through short distances — I mean the reduction of their motion to uniformity — will also happen to a ball of iron or lead after it has fallen a few thousand cubits; this terminal or final speed [terminata velocità] is the maximum which such a heavy body can naturallyacquire in falling through the air.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 31966,
+      "endOffset": 32494
+    },
+    {
+      "text": "As for myself, I quite understood the property of the lever and how, by increasing or diminishing its length, one can increase or diminish the moment of force and of resistance; and yet, in the solution of the present problem I was not slightly, but greatly, deceived.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 79200,
+      "endOffset": 79497
+    },
+    {
+      "text": "Indeed I begin to understand that while logic is an excellent guide in discourse, it does not, as regards stimulation to discovery, compare with the power of sharp distinction which belongs to geometry.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 79505,
+      "endOffset": 79709
+    },
+    {
+      "text": "Plato thought that God, after having created the heavenly bodies, assigned them the proper and uniform speeds with which they were forever torevolve; and that He made them start from rest and move over definite distances under a natural and rectilinear acceleration such as governs the motion of terrestrial bodies.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 43207,
+      "endOffset": 43556
+    },
+    {
+      "text": "One of these is really remarkable; because by it I can trace thirty or forty parabolic curves with no less neatness and precision, and in a shorter time than another man can, by the aid of a compass, neatly draw four or six circles of different sizes upon paper.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 100494,
+      "endOffset": 100773
+    },
+    {
+      "text": "The speed of a body which has in this manner acquired any momentum whatever will, when converted into uniform motion, retain precisely such a speed as, during a time-interval equal to that of the fall, will carry the body through a distance equal to twice that of the fall.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 51307,
+      "endOffset": 51583
+    },
+    {
+      "text": "It is at once clear that if the momentum of a body at b, after having fallen from rest at a, be diverted along the horizontal direction bd, with uniform motion, its speed will be such that, during the time-interval ab, it will traverse a distance which is represented by the line bd and which is twice as great as ab.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 58563,
+      "endOffset": 58894
+    },
+    {
+      "text": "I will see if I can recall the demonstration; but in order to understand it, Simplicio, it will be necessary for you to take for granted concerning machines what is evident not alone from experiment but also from theoretical considerations, namely, that the velocity of a moving body [velocità del movente], even when its force [forza] is small, can overcome a very great resistance exerted by a slowly moving body, whenever the velocity of the moving body bears to that of the resisting body a greater ratio than the resistance [resistenza] of the resisting body to the force [forza] of the moving body.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 91710,
+      "endOffset": 92356
+    },
+    {
+      "text": "Then as the diminution of the outside impetus [impeto] continues, and gravitation gains the upper hand, the fall begins, but slowly at first on account of the opposing impetus [virtù impressa], a large portion of which still remains in the body; but as this continues to diminish it also continues to be more and more overcome by gravity, hence the continuous acceleration of motion.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 131110,
+      "endOffset": 131519
+    },
+    {
+      "text": "I concur in your opinion, because after various conversations with intimate friends of our Academician I have concluded that this question of impulsive forces is very obscure, and I think that, up to the present, none of those who have treated this subject have been able to clear up its dark corners which lie almost beyond the reach of human imagination; among the various views which I have heard expressed one, strangely fantastic, remains in my memory, namely, that impulsive forces are indeterminate, if not infinite.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 96754,
+      "endOffset": 97292
+    },
+    {
+      "text": "When one holds a stone in his hand does he do anything but give it a force impelling [virtù impellente] it upwards equal to the power [facoltà] of gravity drawing it downwards?",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 132644,
+      "endOffset": 132822
+    },
+    {
+      "text": "I do not describe such a feeling as one of envy, which usually degenerates into hatred and anger against those who discover such fallacies; I would call it a strong desire to maintain old errors, rather than accept newly discovered truths.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 138834,
+      "endOffset": 139076
+    },
+    {
+      "text": "I do not wish, Sagredo, that we trouble ourselves too much about this matter, since we are going to apply this principle mainly in motions which occur on plane surfaces, and not upon curved, along which accelerationvaries in a manner greatly different from that which we have assumed for planes.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 142701,
+      "endOffset": 143009
+    },
+    {
+      "text": "In striking these planes some of its momentum [impeto] will be lost and it will not be able to rise to the height of the line CD; but this obstacle, which interferes with the experiment, once removed, it is clear that the momentum [impeto] (which gains in strength with descent) will be able to carry the body to the same height.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 143687,
+      "endOffset": 144020
+    },
+    {
+      "text": "The author having assumed this single principle passes next to the propositions which he clearly demonstrates; the first of these is as follows: Theorem I, Proposition I The time in which any space is traversed by a body starting from rest and uniformly accelerated is equal to the time in which that same space would be traversed by the same body moving at a uniform speed whose value is the mean of the highest speed and the speed just before acceleration began.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 144219,
+      "endOffset": 144722
+    },
+    {
+      "text": "Since then I have your permission, let us first of all consider this notable fact, that the momenta or speeds [i momenti o le velocità] of one and the same moving body vary with the inclination of the plane.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 161131,
+      "endOffset": 161352
+    },
+    {
+      "text": "Corollary From this and the preceding proposition, it is clear that the vertical distance covered by a freely falling body, after a preliminary fall, and during the time- interval required to traverse an inclined plane, is greater than the length of the inclined plane, but less than the distance traversed on the inclined plane during an equal time, without any preliminary fall.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 196372,
+      "endOffset": 196769
+    },
+    {
+      "text": "For if we agree that CB shall represent the time through the entire distance CB, then BA (which, of course, is a mean proportional between BC and CD) will represent the time along CD; and since CA is a mean proportional between BC and CE, it follows that CA will be the time through CE; but the total length CB represents the time through the total distance CB.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 202544,
+      "endOffset": 202910
+    },
+    {
+      "text": "Theorem XIV, Proposition XXI If, on the path of a body falling vertically from rest, one lays off a portion which is traversed in any time you please and whose upper terminus coincides with the point where the motion begins, and if this fall is followed by a motion deflected along any inclined plane, then the space traversed along the inclined plane, during a time-interval equal to that occupied in the previous vertical fall, will be greater than twice, and less than three times, the length of the vertical fall.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 203191,
+      "endOffset": 203738
+    },
+    {
+      "text": "Our Author next undertakes to explain what happens when a body is urged by a motion compounded of one which is horizontal and uniform and of another which is vertical but naturally accelerated; from these two components results the path of a projectile, which is a parabola.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 37425,
+      "endOffset": 37711
+    },
+    {
+      "text": "Having agreed to represent the time of fall through AC by the length AC it follows that EC will represent the time along EC, and EF the time along the entire distance EO, while the difference CF will represent the time along the difference CO; but CF=CA; therefore the problem is solved.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 208218,
+      "endOffset": 208520
+    },
+    {
+      "text": "Accordingly we have here the superposition of two different states, namely, the velocity acquired during the preceding fall which if acting alone would carry the body at a uniform rate to infinity, and the velocity which results from a natural acceleration downwards common to all bodies.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 213684,
+      "endOffset": 213976
+    },
+    {
+      "text": "Accordingly if the length AB is employed to measure the time of fall along AB, then the distance AC will measure the time of descent through AC; but the time of descent through AF is measuredby the length AE, and that through FC by EC.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 225581,
+      "endOffset": 225818
+    },
+    {
+      "text": "It is clear therefore that all lines drawn from A to the inclined line, with the single exception of FA, will extend beyond the circumference of the circle, thus requiring more time to traverse any of them than is needed for FA. q. e. d.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 232508,
+      "endOffset": 232751
+    },
+    {
+      "text": "If now we assume the length EB as a measure of the time of descent along EB, the time of descent, from rest at B, along BM will be represented by BL; but, if the descent along BM is from rest at E or at A, then the time of descent will be measured by BN; and AB will measure the time along AB.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 245569,
+      "endOffset": 245873
+    },
+    {
+      "text": "In like manner, if one pendulum has a suspension nine times as long as another, this second pendulum will execute three vibrations during each one of the first; from which it follows that the lengths of the suspending cords bear to each other the [inverse] ratio of the squares of the number of vibrations performed in the same time.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 862,
+      "endOffset": 1212
+    },
+    {
+      "text": "Since it is impossible to count the vibrations of a sounding string on account of its high frequency, I should still have been in doubt as to whether a string, emitting the upper octave, made twice as many vibrations in the same time as one giving the fundamental, had it not been for the following fact, namely, that at the instant when the tone jumps to the octave, the waves which constantly accompany the vibrating glass divide up into smaller ones which are precisely half as long as the former.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 11581,
+      "endOffset": 12114
+    },
+    {
+      "text": "If we employ the same disposition of apparatus but change the lengths of the threads, always however in such a way that their vibrations correspond to those of agreeable musical intervals, we shall see a different crossing of these threads but always such that, after a definite interval of time and after a definite number of vibrations, all the threads, whether three or four, will reach the same terminus at the same instant, and then begin a repetition of the cycle.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 26571,
+      "endOffset": 27058
+    },
+    {
+      "text": "It was this observation which led me to the investigation of the fact which I am about to demonstrate to you: it is a very remarkable thing that, among the infinite variety of solids which are similar one to another, there are no two of which the forces [momenti], and the resistances of these solids are related in the same ratio.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 55368,
+      "endOffset": 55724
+    },
+    {
+      "text": "What you have just said appears at first glance highly probable, but on closer examination it proves to be quite far from true; as will be seen from the fact that whether the knee — the fulcrum of the two levers — be placed in the middle or not makes such a difference that, if fracture is to be produced at any other point than the middle, the breaking force at the middle, even when multiplied four, ten, a hundred, or a thousand times would not suffice.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 76552,
+      "endOffset": 77027
+    },
+    {
+      "text": "The above experiment furnishes clear and tangible evidence that the path of a projectile is a parabola; a fact first observed by our friend and demonstrated by him in his book on motion which we shall take up at our next meeting.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 101158,
+      "endOffset": 101396
+    },
+    {
+      "text": "Galileo, with morehardihood than prudence, remained at Rome for the purpose of giving his assistance in frustrating this plan; but there is reason to think that he injured by his presence the very cause which he meant to support.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 170767,
+      "endOffset": 170998
+    },
+    {
+      "text": "Although I can offer no rational objection to this or indeed to any other definition, devised by any author whomsoever, since all definitions are arbitrary, I may nevertheless without offense be allowed to doubt whether such a definition as the above, established in an abstract manner, corresponds to and describes that kind of accelerated motion which we meet in nature in the case of freely falling bodies.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 123119,
+      "endOffset": 123542
+    },
+    {
+      "text": "If Paul III. had, nearly a century before, patronised Copernicus, and accepted of the dedication of his great work, it was not unreasonable to expect that, in more enlightened times, another Pontiff might exhibit the same liberality to science.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 179810,
+      "endOffset": 180057
+    },
+    {
+      "text": "You say the experiment appears to show that immediately after a heavy body starts from rest it acquires a very considerable speed: and I say that the same experiment makes clear the fact that the initial motions of a falling body, no matter how heavy, are very slow and gentle.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 125789,
+      "endOffset": 126082
+    },
+    {
+      "text": "Not content with thus securing the friendship of the Pope, Galileo endeavoured to bespeak the good-will of the Cardinals towards the Copernican system.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 181925,
+      "endOffset": 182097
+    },
+    {
+      "text": "I hardly think you will refuse to grant that the gain of speed of the stone falling from rest follows the same sequence as the diminution and loss of this same speed when, by some impelling force, the stone is thrown to its former elevation: but even if you do not grant this, I do not see how you can doubt that the ascending stone, diminishing in speed, must before coming to rest pass through every possible degree of slowness.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 128625,
+      "endOffset": 129073
+    },
+    {
+      "text": "In studying with attention this portion of scientific history, the reader will not fail to perceive that the Church of Rome was driven into a dilemma, from which the submission and abjuration of Galileo could alone extricate it.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 206533,
+      "endOffset": 206763
+    },
+    {
+      "text": "That such a heavy rising body does not remain for any length of time at any given degree of velocity is evident from the following: because if, some time-interval having been assigned, the body moves with the same speed in the last as in the first instant of that time-interval, it could from this second degree of elevation be in like manner raised through an equal height, just as it was transferred from the first elevation to the second, and by the same reasoning would pass from the second to the third and would finally continue in uniform motion forever.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 129805,
+      "endOffset": 130385
+    },
+    {
+      "text": "Without any of the pedantry of exclusive talent, and without any of that ostentation which often marks the man of limited though profound acquirements, Galileo never conversed upon scientific or philosophical subjects except among those who were capable of understanding them.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 230181,
+      "endOffset": 230488
+    },
+    {
+      "text": "Since each and every instant of time in the time-interval AB has its corresponding point on the line AB, from which points parallels drawn in and limited by the triangle AEB represent the increasing values of the growing velocity, and since parallels contained within the rectangle represent the values of a speed which is not increasing, but constant, it appears, in like manner, that the momenta [momenta] assumed by the moving body may also be represented, in the case of the accelerated motion, by the increasing parallels of the triangle AEB, and, in the case of the uniform motion, by the parallels of the rectangle GB.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 145745,
+      "endOffset": 146410
+    },
+    {
+      "text": "In his contest with the Church of Rome, he fell under her victorious banner; and though his cause was that of truth, and hers that of superstition, yet the sympathy of Europe was not roused by his misfortunes.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 232387,
+      "endOffset": 232611
+    },
+    {
+      "text": "Theorem II, Proposition II The spaces described by a body falling from rest with a uniformly accelerated motion are to each other as the squares of the time-intervals employed in traversing these distances.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 146982,
+      "endOffset": 147192
+    },
+    {
+      "text": "Under the sure guidance of observation and experiment, he advanced to general laws; and if Bacon had never lived, the student of nature Would have found, in the writings and labours of Galileo, not only the boasted principles of the inductive philosophy, but also their practical application to the highest efforts of invention and discovery.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 233399,
+      "endOffset": 233774
+    },
+    {
+      "text": "It is clear that if the body continued to descend with the same speed BC, without acceleration, it would in the next time-interval CI traverse double the distance covered during the interval AC, with the uniform speed EC which is half of BC; but since the falling body acquires equal increments of speed during equal increments of time, it follows that the velocity BC, during the next time-interval CI will be increased by an amount represented by the parallels of the triangle BFG which is equal to the triangle ABC.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 151097,
+      "endOffset": 151632
+    },
+    {
+      "text": "In truth, I find more pleasure in this simple and clear argument of Sagredo than in the Author’s demonstration which to me appears rather obscure; so that I am convinced that matters are as described, once having accepted the definition of uniformly accelerated motion.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 154144,
+      "endOffset": 154426
+    },
+    {
+      "text": "The Grand-duke of Tuscany could not but be pleased at the discovery of Jupiter’s satellites, announced in the “Sidereus Nuncius;” and he was all the more ready to believe, because these new heavenly bodies had received his family name: yet his own secretary had to admit that the discovery would never receive the unanimous assent of the learned world until it was approved and verified at Rome.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 239802,
+      "endOffset": 240203
+    },
+    {
+      "text": "If the advance which you propose to make is such as will confirm and fully establish these sciences of motion, I will gladly devote to it any length of time.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 160729,
+      "endOffset": 160888
+    },
+    {
+      "text": "Finally on the horizontal plane the momentum vanishes altogether; the body finds itself in a condition of indifference as to motion or rest; has no inherent tendency to move in any direction, and offers no resistance to being set in motion.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 162123,
+      "endOffset": 162383
+    },
+    {
+      "text": "From the upper end of this diameter draw any inclined plane, DF, extending to meet the circumference; then, I say, a body will occupy the same time in falling along the plane DF as along the diameter DC.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 176980,
+      "endOffset": 177186
+    },
+    {
+      "text": "Please allow me to interrupt the lecture for a moment in order that I may clear up an idea which just occurs to me; one which, if it involve no fallacy, suggests at least a freakish and interesting circumstance, such as often occurs in nature and in the realm of necessary consequences.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 179073,
+      "endOffset": 179372
+    },
+    {
+      "text": "Further, if from the two points chosen as origins of motion, we draw lines not only along horizontal and vertical planes but in all directions then just as in the former cases, beginning at a single point ever-expanding circles areproduced, so in the latter case an infinite number of spheres are produced about a single point, or rather a single sphere which expands in size without limit; and this in two ways, one with the origin at the center, the other on the surface of the spheres.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 182207,
+      "endOffset": 182700
+    },
+    {
+      "text": "Problem I, Proposition XIII Given a perpendicular line of limited length, it is required to find a plane having a vertical height equal to the given perpendicular and so inclined that a body, having fallen from rest along the perpendicular, will make its descent along the inclined plane in the same time which it occupied in falling through the given perpendicular.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 192207,
+      "endOffset": 192579
+    },
+    {
+      "text": "Theorem XIII, Proposition XVI If a limited inclined plane and a limited vertical line are drawn from the same point, and if the time required for a body, starting from rest, to traverse each of these is the same, then a body falling from any higher altitude will traverse the inclined plane in less time than is required for the vertical line.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 195792,
+      "endOffset": 196140
+    },
+    {
+      "text": "For since we have just shown that bodies falling from an elevated point A will traverse the plane EC in Fig. 71 in a shorter time than the vertical EB, it is evident that the distance along EB which will be traversed during a time equal to that of descent along EC will be less than the whole of EB.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 196770,
+      "endOffset": 197073
+    },
+    {
+      "text": "Problem IV, Proposition XVII Given a vertical line and an inclined plane, it is required to lay off a distance along the given plane which will be traversed by a body, after fall along the perpendicular, in the same time-interval which is needed for this body to fall from rest through the given perpendicular.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 197809,
+      "endOffset": 198124
+    },
+    {
+      "text": "It was not Galileo, as tradition would have it, that uttered the famous saying, “Eppur si muove” but the general voice of mankind who, after his death, thus proclaimed the undying truth of his belief.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 284863,
+      "endOffset": 285081
+    },
+    {
+      "text": "The problem is to determine on BE a distance such that a body, after falling through AB, will traverse it in a time equal to that required to traverse the perpendicular AB itself, starting from rest.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 198183,
+      "endOffset": 198385
+    },
+    {
+      "text": "It is a fixed historical fact that in the beginning of the seventeenth century the Roman congregations, assuming to represent the Church, and not disavowed by her, made themselves the judges of a scientific question, and decided it in a way contrary to the conclusions of science.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 285207,
+      "endOffset": 285501
+    },
+    {
+      "text": "That beautiful Milky Way, which has for ages been the object of admiration to all lovers of nature, never disclosed its true nature to the eye of man till the astronomer of Padua turned on it his magic tube.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 300375,
+      "endOffset": 300585
+    },
+    {
+      "text": "One sceptical philosopher is reported to have affirmed, that even if he saw the moons of Jupiter himself he would not believe in them, as their existence was contrary to the principles of common-sense!",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 301911,
+      "endOffset": 302116
+    },
+    {
+      "text": "Theorem XVII, Proposition XXVII If a body descends along two inclined planes of different lengths but of the same vertical height, the distance which it will traverse, in the lower part of the longer plane, during a time-interval equal to that of descent over the shorter plane, is equal to the length of the shorter plane plus a portion of it to which the shorter plane bears the same ratio which the longer plane bears to the excess of the longer over the shorter plane.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part7.txt",
+      "sourceKind": "local-source",
+      "startOffset": 224594,
+      "endOffset": 225085
+    },
+    {
+      "text": "In like manner it may be shown that, if we take equal time-intervals of any size whatever, and if we imagine the particle to be carried by a similar compound motion, the positions of this particle, at the ends of these time-intervals, will lie on one and the same parabola. q. e. d.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 18353,
+      "endOffset": 18653
+    },
+    {
+      "text": "I now proceed to the consideration of motions through the air, since it is with these that we are now especially concerned; the resistance of the air exhibits itself in two ways: first by offering greater impedance to less dense than to very dense bodies, and secondly by offering greater resistance to a body in rapid motion than to the same body in slow motion.",
+      "sourceId": "server/data/galileo/Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceTitle": "Collected Works of Galileo Galilei",
+      "sourceFile": "Delphi Collected Works of Galileo Galilei (Illustrated) (Delphi Series Seven Book 26)_Part8.txt",
+      "sourceKind": "local-source",
+      "startOffset": 26758,
+      "endOffset": 27125
+    }
+  ]
+}

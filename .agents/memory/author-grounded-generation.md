@@ -51,6 +51,12 @@ Verbatim containment in a thinker's corpus is necessary but not sufficient for q
 
 **How to apply:** Limit extraction to the authored work, especially the fable body rather than Aesop's prefatory/biographical material. Apply a separate editorial/authorship review after source matching. Short, complete fable morals are valid; do not exclude them merely to satisfy a generic minimum sentence length.
 
+Representative quotations must contain complete sentences, not clipped sentence fragments. Prefer significant, self-contained claims over routine chapter references or editorial filler; return fewer rather than padding with poor or invented quotations. For requests without a topic, have 100 authentic quotations prepared for each thinker; serve the number the user requests from that collection rather than generating fresh quotations.
+
+**Why:** Dr. Kuczynski explicitly requested whole sentences and, where feasible, important passages rather than notices such as “You will find further references to this in Chapter 12.” He separately required 100 quotations per thinker ready for requests that specify no topic.
+
+**How to apply:** Apply this requirement to the representative-quote tool's author and document extraction paths while preserving the author's wording.
+
 In Compare Two Thinkers, each answer must express that author's source-supported position, not a generic expert answer silently substituted when an automated relevance judge fails. The user separately extended this requirement to the top function; preserve other answer modes unless separately requested.
 
 **Why:** Dr. Kuczynski reported Freud and Dworkin both giving interchangeable denials of gender differences. Their relevant primary texts were present, but the comparison fallback explicitly discarded author perspective. Author display names can also differ from corpus identity, and a provider-dependent failed judgment is not evidence of absent sources.

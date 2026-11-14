@@ -24,6 +24,14 @@ single shared constant. Each generator carries its own copy.
   "no provider configured" guard consistent with what the fallback chain actually
   supports (don't hardcode just anthropic/openai when deepseek/grok/etc. also work).
 
+# Bulk quotation curation
+
+Bulk quotation curation can exhaust one provider's rate quota even when a small preflight succeeds. Preserve verified partial selections and use an already-configured alternative for editorial ID selection; never replace source quotations with generated text.
+
+**Why:** A full author-wide preparation run hit sustained rate limits after initial successful collections, while a configured alternate provider could complete the remaining editorial reviews.
+
+**How to apply:** Make maintenance resumable, retain source offsets, and distinguish provider quota failures from a lack of authentic quotations. Do not rerun completed reviews or change application-wide provider settings for a maintenance job.
+
 # Audited chat search is slow — don't mistake a timeout for a breakage
 
 The figure-chat endpoint runs an LLM-judged "audited search" that makes one LLM call

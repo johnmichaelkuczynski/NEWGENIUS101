@@ -1,0 +1,906 @@
+{
+  "thinkerId": "machiavelli",
+  "editoriallyReviewed": true,
+  "items": [
+    {
+      "text": "God and nature have thrown all human fortunes into the midst of mankind; and they are thus attainable rather by rapine than by industry, by wicked actions rather than by good.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 310235,
+      "endOffset": 310410
+    },
+    {
+      "text": "If men were entirely good this precept would not hold, but because they are bad, and will not keep faith with you, you too are not bound to observe it with them.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 143376,
+      "endOffset": 143537
+    },
+    {
+      "text": "When I look for remedies for this state of things, I find two: first, to keep the citizens poor, so that wealth without worth shall corrupt neither them nor others; second, to be so prepared for war as always to be ready to make war; for then there will always be a need for worthy citizens, as was the case in Rome in early times.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 664093,
+      "endOffset": 664424
+    },
+    {
+      "text": "For a republic, therefore, no line of conduct could be more useful or more to be desired than this, because in following it the public interest is not neglected, and no room is given to suspect personal ambition.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 694853,
+      "endOffset": 695065
+    },
+    {
+      "text": "There is nothing more necessary to appear to have than this last quality, inasmuch as men judge generally more by the eye than by the hand, because it belongs to everybody to see you, to few to come in touch with you.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 147364,
+      "endOffset": 147581
+    },
+    {
+      "text": "When a city therefore is armed and trained as Rome was, and when its citizens have daily opportunity, both singly and together, to make trial of their valour and learn what fortune can effect, it will always happen, that at all times, and whether circumstances be adverse or favourable, they will remain of unaltered courage and preserve the same noble bearing.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 736121,
+      "endOffset": 736482
+    },
+    {
+      "text": "It makes him hated above all things, as I have said, to be rapacious, and to be a violator of the property and women of his subjects, from both of which he must abstain.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 149206,
+      "endOffset": 149375
+    },
+    {
+      "text": "Where authority is unrestricted and is conferred for a long term, meaning by that for a year or more, it is always attended with danger, and its results will be good or bad according as the men are good or bad to whom it is committed.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 198622,
+      "endOffset": 198856
+    },
+    {
+      "text": "For nature has so ordered it that while they desire everything, it is impossible for them to have everything, and thus their desires being always in excess of their capacity to gratify them, they remain constantly dissatisfied and discontented.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 204352,
+      "endOffset": 204596
+    },
+    {
+      "text": "Any one, therefore, who undertakes to control a people, either as their prince or as the head of a commonwealth, and does not make sure work with all who are hostile to his new institutions, founds a government which cannot last long.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 124986,
+      "endOffset": 125220
+    },
+    {
+      "text": "When these ordinances are duly observed, a city will live long in freedom, but when they are neglected, it must soon come to ruin.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 158225,
+      "endOffset": 158355
+    },
+    {
+      "text": "In the first place, to enable a citizen to work harm and to acquire undue authority, many circumstances must be present which never can be present in a State which is not corrupted.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 193505,
+      "endOffset": 193686
+    },
+    {
+      "text": "I conclude, therefore, that no principality is secure without having its own forces; on the contrary, it is entirely dependent on good fortune, not having the valour which in adversity would defend it.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 122100,
+      "endOffset": 122301
+    },
+    {
+      "text": "A prince, therefore, being compelled knowingly to adopt the beast, ought to choose the fox and the lion; because the lion cannot defend himself against snares and the fox cannot defend himself against wolves.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 142825,
+      "endOffset": 143033
+    },
+    {
+      "text": "When a people is absolutely uncontrolled, it is not so much the follies which it commits or the evil which it actually does that excites alarm, as the mischief which may thence result, since in such disorders it becomes possible for a tyrant to spring up.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 305703,
+      "endOffset": 305958
+    },
+    {
+      "text": "That prince is highly esteemed who conveys this impression of himself, and he who is highly esteemed is not easily conspired against; for, provided it is well known that he is an excellent man and revered by his people, he can only be attacked with difficulty.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150023,
+      "endOffset": 150283
+    },
+    {
+      "text": "When they have more of pretence than reality, it will be well either to dispense with them altogether, or resorting to them, to keep them, like the muleteers of Sulpitius, in the background, so that they be not too readily found out.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 657619,
+      "endOffset": 657852
+    },
+    {
+      "text": "For this reason a prince ought to have two fears, one from within, on account of his subjects, the other from without, on account of external powers.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 150284,
+      "endOffset": 150433
+    },
+    {
+      "text": "For this reason I consider that a prince ought to reckon conspiracies of little account when his people hold him in esteem; but when it is hostile to him, and bears hatred towards him, he ought to fear everything and everybody.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 154199,
+      "endOffset": 154426
+    },
+    {
+      "text": "Had this prudence and virtue of his been shared by all the citizens of Rome, the practice of prolonging the terms of civil offices would not have been suffered to establish itself, nor have led to the kindred practice of extending the term of military commands, which in progress of time effected the ruin of their republic.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 701618,
+      "endOffset": 701942
+    },
+    {
+      "text": "Now, any one who well considers the methods followed by Camillus, and the words spoken by him to encourage his soldiers to face their enemy, will perceive that these words and methods could never have been used with an army which had not been trained and disciplined in time of peace as well as of war.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 735364,
+      "endOffset": 735666
+    },
+    {
+      "text": "For those wounds or other injuries which a man inflicts upon himself by choice, and of his own free will, pain him far less than those inflicted by another.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 197332,
+      "endOffset": 197488
+    },
+    {
+      "text": "Men will not look at things as they really are, but as they wish them to be—and are ruined.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 21548,
+      "endOffset": 21639
+    },
+    {
+      "text": "Whence it happens that by far the greater number of those who read History, take pleasure in following the variety of incidents which it presents, without a thought to imitate them; judging such imitation to be not only difficult but impossible; as though the heavens, the sun, the elements, and man himself were no longer the same as they formerly were as regards motion, order, and power.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 23236,
+      "endOffset": 23626
+    },
+    {
+      "text": "In these cases, therefore, we see religion, wisely used, assist in the reduction of this city, and in restoring the tribuneship to the nobles; neither of which ends could well have been effected without it.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 110945,
+      "endOffset": 111151
+    },
+    {
+      "text": "To the difficulties above noticed, another has to be added, which is, that a State in becoming free makes for itself bitter enemies but not warm friends.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 123073,
+      "endOffset": 123226
+    },
+    {
+      "text": "For a free government bestows its honours and rewards in accordance with certain fixed rules, and on considerations of merit, without which none is honoured or rewarded.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 123670,
+      "endOffset": 123839
+    },
+    {
+      "text": "It may be assumed, however, as most certain, that a corrupted city living under a prince can never recover its freedom, even were the prince and all his line to be exterminated.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 130163,
+      "endOffset": 130340
+    },
+    {
+      "text": "Because as good customs stand in need of good laws for their support, so laws, that they may be respected, stand in need of good customs.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 135583,
+      "endOffset": 135720
+    },
+    {
+      "text": "It is thus evident, that force and necessity, not deeds and obligations, induce princes to keep faith.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 891559,
+      "endOffset": 891661
+    },
+    {
+      "text": "For nothing is more true than that where a country, having men, lacks soldiers, it results from some fault in its ruler, and not from any defect in the situation or climate.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 148979,
+      "endOffset": 149152
+    },
+    {
+      "text": "In the second place, the dictator was not created for life, but for a fixed term, and only to meet the emergency for which he was appointed.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 193957,
+      "endOffset": 194097
+    },
+    {
+      "text": "The principle that has guided them has been, first, to lower the credit of infantry so that they might increase their own.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 113610,
+      "endOffset": 113732
+    },
+    {
+      "text": "Now when we compare the authority of the Ten with that possessed by the dictator, we see that the power placed in the hands of the former was out of all proportion greater than that entrusted to the latter.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 198857,
+      "endOffset": 199063
+    },
+    {
+      "text": "Let it be noted, therefore, that when it is said that authority given by the public vote is never hurtful to any commonwealth, it is assumed that the people will never be led to confer that authority without due limitations, or for other than a reasonable term.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 200147,
+      "endOffset": 200408
+    },
+    {
+      "text": "People may go to war when they will, but cannot always withdraw when they like.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 283995,
+      "endOffset": 284074
+    },
+    {
+      "text": "For as it found the power of its adversaries doubled, such a flame of hatred was kindled between commons and senate, that, regardless of all civil restraints, they resorted to arms and bloodshed.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 208114,
+      "endOffset": 208309
+    },
+    {
+      "text": "Let no one, when raising popular commotions, imagine he can afterward control them at his pleasure, or restrain them from proceeding to the commission of violence.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 293514,
+      "endOffset": 293677
+    },
+    {
+      "text": "For he will wait until, with the support of the people, he can deal a fatal blow to the nobles, and will never set himself to oppress the people until the nobles have been rooted out.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 229633,
+      "endOffset": 229816
+    },
+    {
+      "text": "Princes, especially new ones, have found more fidelity and assistance in those men who in the beginning of their rule were distrusted than among those who in the beginning were trusted.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 173452,
+      "endOffset": 173637
+    },
+    {
+      "text": "Once more then, I repeat, that of all the various kinds of troops, auxiliaries are the most pernicious, because the prince or republic resorting to them for aid has no authority over them, the only person who possesses such authority being he who sends them.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 457737,
+      "endOffset": 457995
+    },
+    {
+      "text": "Not that I would be understood to maintain that recourse is never to be had to force and to arms, but that these are only to be used in the last resort, and when all other remedies are unavailing.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 464948,
+      "endOffset": 465144
+    },
+    {
+      "text": "For a tumultuary host is useless in war, simply because every word, or cry, or sound, may throw it into a panic and cause it to fly.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 655074,
+      "endOffset": 655206
+    },
+    {
+      "text": "Because such a government, being created by the prince, knows that it cannot stand without his friendship and interest, and does its utmost to support him; and therefore he who would keep a city accustomed to freedom will hold it more easily by the means of its own citizens than in any other way.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 54039,
+      "endOffset": 54336
+    },
+    {
+      "text": "Wherefore it behoves a good captain to provide that certain fixed persons shall receive his orders and pass them on to the rest, and to accustom his soldiers to look to these persons, and to them only, to be informed what his orders are.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 655207,
+      "endOffset": 655444
+    },
+    {
+      "text": "Rightly, therefore, may we conclude that in sending forth an army upon service, it is wiser to entrust it to one man of ordinary prudence, than to two of great parts but with a divided command.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 661647,
+      "endOffset": 661840
+    },
+    {
+      "text": "Every show of pride, therefore, a prince should shun as he would a rock, since to invite hatred without resulting advantage were utterly rash and futile.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 700039,
+      "endOffset": 700192
+    },
+    {
+      "text": "\"That time can neither destroy nor abate the desire for freedom is most certain; for it has been often observed, that those have reassumed their liberty who in their own persons had never tasted of its charms, and love it only from remembrance of what they have heard their fathers relate; and, therefore, when recovered, have preserved it with indomitable resolution and at every hazard.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 223778,
+      "endOffset": 224166
+    },
+    {
+      "text": "When they are, it is easier to hold them, especially when they have not been accustomed to self-government; and to hold them securely it is enough to have destroyed the family of the prince who was ruling them; because the two peoples, preserving in other things the old conditions, and not being unlike in customs, will live quietly together, as one has seen in Brittany, Burgundy, Gascony, and Normandy, which have been bound to France for so long a time: and, although there may be some difference in language, nevertheless the customs are alike, and the people will easily be able to get on amongst themselves.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 33785,
+      "endOffset": 34399
+    },
+    {
+      "text": "Whosoever observes this method in a city which is attacked, will be able to defend it with ease; but whosoever disregards it, and follows not the example of Camillus, shall never succeed.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 728617,
+      "endOffset": 728804
+    },
+    {
+      "text": "Very different is the behaviour of those weak-minded mortals who, puffed up and intoxicated with their success, ascribe all their felicity to virtues which they never knew, and thus grow hateful and insupportable to all around them.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 729487,
+      "endOffset": 729719
+    },
+    {
+      "text": "It is likewise shown that no army can be good unless it be thoroughly trained and exercised, and that this can only be the case with an army raised from your own subjects.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 734476,
+      "endOffset": 734647
+    },
+    {
+      "text": "Now if you will consider what was the nature of the government of Darius, you will find it similar to the kingdom of the Turk, and therefore it was only necessary for Alexander, first to overthrow him in the field, and then to take the country from him.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 51894,
+      "endOffset": 52147
+    },
+    {
+      "text": "For as a State is not and cannot always be at war, you must have opportunity to train your army in times of peace; but this, having regard to the cost, you can only have in respect of your own subjects.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 734648,
+      "endOffset": 734850
+    },
+    {
+      "text": "For which reason, the rulers of kingdoms and commonwealths should maintain the foundations of the faith which they hold; since thus it will be easy for them to keep their country religious, and, consequently, virtuous and united.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 104265,
+      "endOffset": 104494
+    },
+    {
+      "text": "For in the course of our inquiry it will be seen that many mistakes prejudicial to freedom were made by the senate and people, and that many were likewise made by Appius, the chief decemvir, prejudicial to that tyranny which it was his aim to establish in Rome.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 221964,
+      "endOffset": 222225
+    },
+    {
+      "text": "THAT WHICH CONCERNS A PRINCE ON THE SUBJECT OF THE ART OF WAR A prince ought to have no other aim or thought, nor select anything else for his study, than war and its rules and discipline; for this is the sole art that belongs to him who rules, and it is of such force that it not only upholds those who are born princes, but it often enables men to rise from a private station to that rank.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 122911,
+      "endOffset": 123304
+    },
+    {
+      "text": "The prejudice which is entertained against the people arises from this, that any man may speak ill of them openly and fearlessly, even when the government is in their hands; whereas princes are always spoken of with a thousand reserves and a constant eye to consequences.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 306469,
+      "endOffset": 306740
+    },
+    {
+      "text": "Because this is to be asserted in general of men, that they are ungrateful, fickle, false, cowardly, covetous, and as long as you succeed they are yours entirely; they will offer you their blood, property, life, and children, as is said above, when the need is far distant; but when it approaches they turn against you.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 137490,
+      "endOffset": 137809
+    },
+    {
+      "text": "Here we have to note that actions which seem good in themselves and unlikely to occasion harm to any one, very often become hurtful, nay, unless corrected in time, most dangerous for a republic.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 716228,
+      "endOffset": 716422
+    },
+    {
+      "text": "For that reason, let a prince have the credit of conquering and holding his state, the means will always be considered honest, and he will be praised by everybody; because the vulgar are always taken by what a thing seems to be and by what comes of it; and in the world there are only the vulgar, for the few find a place there only when the many have no ground to rest on.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 147892,
+      "endOffset": 148265
+    },
+    {
+      "text": "We may also learn from this contest how much more men value wealth than honours; for in the matter of honours, the Roman nobles always gave way to the commons without any extraordinary resistance; but when it came to be a question of property, so stubborn were they in its defence, that the commons to effect their ends had to resort to those irregular methods which have been described above.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 210203,
+      "endOffset": 210596
+    },
+    {
+      "text": "The arguments put forward by the Pope’s advisers had a certain show of reason in their favour, which looked at from a distance seemed plausible enough; but were in reality wholly contrary to truth; since it rarely happens that the captain who wins a victory loses any great number of his men, his loss being in battle only, and not in flight.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 468913,
+      "endOffset": 469255
+    },
+    {
+      "text": "For when men grow insolent in good fortune, and abject inn evil, the fault lies in themselves and in the character of their training, which, when slight and frivolous, assimilates them to itself; but when otherwise, makes them of another temper, and giving them better acquaintance with the world, causes them to be less disheartened by misfortunes and less elated by success.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 733528,
+      "endOffset": 733904
+    },
+    {
+      "text": "I believe that these lowly beginnings of great men occur because Fortune is desirous of showing to the world that such men owe much to her and little to wisdom, because she begins to show her hand when wisdom can really take no part in their career: thus all success must be attributed to her.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 225687,
+      "endOffset": 225980
+    },
+    {
+      "text": "For every religion has its root in certain fundamental ordinances peculiar to itself.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 103400,
+      "endOffset": 103485
+    },
+    {
+      "text": "WHAT FORTUNE CAN EFFECT IN HUMAN AFFAIRS AND HOW TO WITHSTAND HER It is not unknown to me how many men have had, and still have, the opinion that the affairs of the world are in such wise governed by fortune and by God that men with their wisdom cannot direct them and that no one can even help them; and because of this they would have us believe that it is not necessary to labour much in affairs, but to let chance govern them.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 195970,
+      "endOffset": 196402
+    },
+    {
+      "text": "It is true the corruption of the country is great, and much discretion will be requisite to correct it; but do not impute the past disorders to the nature of the men, but to the times, which, being changed, give reasonable ground to hope that, with better government, our city will be attended with better fortune; for the malignity of the people will be overcome by restraining the ambition and annulling the ordinances of those who have encouraged faction, and adopting in their stead only such principles as are conformable to true civil liberty.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 279951,
+      "endOffset": 280500
+    },
+    {
+      "text": "Desiring to rescue men from this error, I have thought fit to note down with respect to all those books of Titus Livius which have escaped the malignity of Time, whatever seems to me essential to a right understanding of ancient and modern affairs; so that any who shall read these remarks of mine, may reap from them that profit for the sake of which a knowledge of History is to be sought.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 23628,
+      "endOffset": 24019
+    },
+    {
+      "text": "It is certain, however, that such States can never be reformed without great risk; for, as a rule, men will accept no new law altering the institutions of their State, unless the necessity for such a change be demonstrated; and since this necessity cannot arise without danger, the State may easily be overthrown before the new order of things is established.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 34625,
+      "endOffset": 34984
+    },
+    {
+      "text": "For in the beginning of the world, its inhabitants, being few in number, for a time lived scattered after the fashion of beasts; but afterwards, as they increased and multiplied, gathered themselves into societies, and, the better to protect themselves, began to seek who among them was the strongest and of the highest courage, to whom, making him their head, they tendered obedience.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36573,
+      "endOffset": 36958
+    },
+    {
+      "text": "For Romulus and the other kings made many and good laws, and such as were not incompatible with freedom; but because they sought to found a kingdom and not a commonwealth, when the city became free many things were found wanting which in the interest of liberty it was necessary to supply, since these kings had not supplied them.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 43488,
+      "endOffset": 43818
+    },
+    {
+      "text": "For though the multitude be unfit to set a State in order, since they cannot, by reason of the divisions which prevail among them, agree wherein the true well-being of the State lies, yet when they have once been taught the truth, they never will consent to abandon it.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 84975,
+      "endOffset": 85244
+    },
+    {
+      "text": "As for the other desire of the people, namely, to recover their freedom, the prince, since he never can content them in this, should examine what the causes are which make them long to be free; and he will find a very few of them desiring freedom that they may obtain power, but all the rest, whose number is countless, only desiring it that they may live securely.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 127353,
+      "endOffset": 127718
+    },
+    {
+      "text": "For although it be the desire of the nobles to tyrannize, that section of them which finds itself outside the tyranny is always hostile to the tyrant, who can never succeed in gaining over the entire body of the nobles by reason of their greed and ambition; for no tyrant can ever have honours or wealth enough to satisfy them all.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 230489,
+      "endOffset": 230820
+    },
+    {
+      "text": "In all their actions, even in those which are matters of necessity rather than choice, prudent men will endeavour so to conduct themselves as to conciliate good-will.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 264528,
+      "endOffset": 264694
+    },
+    {
+      "text": "It is easy to understand whence this love of liberty arises among nations, for we know by experience that States have never signally increased, either as to dominion or wealth, except where they have lived under a free government.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 332219,
+      "endOffset": 332449
+    },
+    {
+      "text": "The wish to acquire is in truth very natural and common, and men always do so when they can, and for this they will be praised not blamed; but when they cannot do so, yet wish to do so by any means, then there is folly and blame.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 44603,
+      "endOffset": 44832
+    },
+    {
+      "text": "Money, indeed, is most necessary in a secondary place; but this necessity good soldiers will always be able to supply, since it is as impossible that good soldiers should lack money, as that money by itself should secure good soldiers.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 386415,
+      "endOffset": 386650
+    },
+    {
+      "text": "From this a general rule is drawn which never or rarely fails: that he who is the cause of another becoming powerful is ruined; because that predominancy has been brought about either by astuteness or else by force, and both are distrusted by him who has been raised to power.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 47803,
+      "endOffset": 48079
+    },
+    {
+      "text": "A wise man ought always to follow the paths beaten by great men, and to imitate those who have been supreme, so that if his ability does not equal theirs, at least it will savour of it.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 56503,
+      "endOffset": 56688
+    },
+    {
+      "text": "A republic may, likewise, be brought back to its original form, without recourse to ordinances for enforcing justice, by the mere virtues of a single citizen, by reason that these virtues are of such influence and authority that good men love to imitate them, and bad men are ashamed to depart from them.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 547645,
+      "endOffset": 547949
+    },
+    {
+      "text": "Yet there were in the duke such boldness and ability, and he knew so well how men are to be won or lost, and so firm were the foundations which in so short a time he had laid, that if he had not had those armies on his back, or if he had been in good health, he would have overcome all difficulties.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 74877,
+      "endOffset": 75176
+    },
+    {
+      "text": "For when in a republic some young man is seen to come forward endowed with rare excellence, the eyes of all the citizens are at once turned upon him, and all, without distinction, concur to do him honour; so that if he have one spark of ambition, the advantages which he has from nature, together with those he takes from this favourable disposition of men’s minds, raise him to such a pitch of power, that when the citizens at last see their mistake it is almost impossible for them to correct it; and when they do what they can to oppose his influence the only result is to extend it.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 188158,
+      "endOffset": 188744
+    },
+    {
+      "text": "The worst that a prince may expect from a hostile people is to be abandoned by them; but from hostile nobles he has not only to fear abandonment, but also that they will rise against him; for they, being in these affairs more far-seeing and astute, always come forward in time to save themselves, and to obtain favours from him whom they expect to prevail.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 89438,
+      "endOffset": 89794
+    },
+    {
+      "text": "Or if these methods for adding to their power are not to their mind, let them remember that acquisitions made in any other way are the ruin of republics, and so set bounds to their ambition, wisely regulating the internal government of their country by suitable laws and ordinances, forbidding extension, and looking only to defence, and taking heed that their defences are in good order, as do those republics of Germany which live and for long have lived, in freedom.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 448615,
+      "endOffset": 449084
+    },
+    {
+      "text": "Besides, pretexts for taking away the property are never wanting; for he who has once begun to live by robbery will always find pretexts for seizing what belongs to others; but reasons for taking life, on the contrary, are more difficult to find and sooner lapse.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 138970,
+      "endOffset": 139233
+    },
+    {
+      "text": "Returning to the question of being feared or loved, I come to the conclusion that, men loving according to their own will and fearing according to that of the prince, a wise prince should establish himself on that which is in his own control and not in that of others; he must endeavour only to avoid hatred, as is noted.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 141165,
+      "endOffset": 141486
+    },
+    {
+      "text": "Every one sees what you appear to be, few really know what you are, and those few dare not oppose themselves to the opinion of the many, who have the majesty of the state to defend them; and in the actions of all men, and especially of princes, which it is not prudent to challenge, one judges by the result.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 147582,
+      "endOffset": 147890
+    },
+    {
+      "text": "When, however, a good, wise, and powerful citizen appears (which is but seldom), who establishes ordinances capable of appeasing or restraining these contending dispositions, so as to prevent them from doing mischief, then the government may be called free, and its institutions firm and secure; for having good laws for its basis, and good regulations for carrying them into effect, it needs not, like others, the virtue of one man for its maintenance.",
+      "sourceId": "1b7e85b9-6b48-4935-b7a3-a85b73a69cda",
+      "sourceTitle": "machiavelli_works_3",
+      "sourceFile": "machiavelli_works_3.txt",
+      "sourceKind": "database-text",
+      "startOffset": 372869,
+      "endOffset": 373322
+    },
+    {
+      "text": "Speaking, then of those princes who have become the tyrants of their country, I say that the prince who seeks to gain over an unfriendly people should first of all examine what it is the people really desire, and he will always find that they desire two things: first, to be revenged upon those who are the cause of their servitude; and second, to regain their freedom.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 125940,
+      "endOffset": 126309
+    },
+    {
+      "text": "Desiring therefore to present myself to your Magnificence with some testimony of my devotion towards you, I have not found among my possessions anything which I hold more dear than, or value so much as, the knowledge of the actions of great men, acquired by long experience in contemporary affairs, and a continual study of antiquity; which, having reflected upon it with great and prolonged diligence, I now send, digested into a little volume, to your Magnificence.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 26510,
+      "endOffset": 26977
+    },
+    {
+      "text": "From whose example every ruler of a State may learn that a prince like Numa will hold or lose his power according as fortune and circumstances befriend him; but that the prince who resembles Romulus, and like him is fortified with foresight and arms, will hold his State whatever befall, unless deprived of it by some stubborn and irresistible force.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 146018,
+      "endOffset": 146368
+    },
+    {
+      "text": "It is necessary, therefore, if we desire to discuss this matter thoroughly, to inquire whether these innovators can rely on themselves or have to depend on others: that is to say, whether, to consummate their enterprise, have they to use prayers or can they use force?",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 60509,
+      "endOffset": 60777
+    },
+    {
+      "text": "Because men, when they receive good from him of whom they were expecting evil, are bound more closely to their benefactor; thus the people quickly become more devoted to him than if he had been raised to the principality by their favours; and the prince can win their affections in many ways, but as these vary according to the circumstances one cannot give fixed rules, so I omit them; but, I repeat, it is necessary for a prince to have the people friendly, otherwise he has no security in adversity.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 91314,
+      "endOffset": 91816
+    },
+    {
+      "text": "As regards action, he ought above all things to keep his men well organized and drilled, to follow incessantly the chase, by which he accustoms his body to hardships, and learns something of the nature of localities, and gets to find out how the mountains rise, how the valleys open out, how the plains lie, and to understand the nature of rivers and marshes, and in all this to take the greatest care.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 124685,
+      "endOffset": 125087
+    },
+    {
+      "text": "For it is the duty of every good man to teach others those wholesome lessons which the malice of Time or of Fortune has not permitted him to put in practice; to the end, that out of many who have the knowledge, some one better loved by Heaven may be found able to carry them out.",
+      "sourceId": "1dba4d8f-b8ba-4c3a-ab4a-5a56f8afc3ea",
+      "sourceTitle": "machiavelli_works_2",
+      "sourceFile": "machiavelli_works_2.txt",
+      "sourceKind": "database-text",
+      "startOffset": 321652,
+      "endOffset": 321931
+    },
+    {
+      "text": "I compare her to one of those raging rivers, which when in flood overflows the plains, sweeping away trees and buildings, bearing away the soil from place to place; everything flies before it, all yield to its violence, without being able in any way to withstand it; and yet, though its nature be such, it does not follow therefore that men, when the weather becomes fair, shall not make provision, both with defences and barriers, in such a manner that, rising again, the waters may pass away by canal, and their force be neither so unrestrained nor so dangerous.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 197089,
+      "endOffset": 197653
+    },
+    {
+      "text": "Upon this, one has to remark that men ought either to be well treated or crushed, because they can avenge themselves of lighter injuries, of more serious ones they cannot; therefore the injury that is to be done to a man ought to be of such a kind that one does not stand in fear of revenge.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 36729,
+      "endOffset": 37020
+    },
+    {
+      "text": "For injuries ought to be done all at one time, so that, being tasted less, they offend less; benefits ought to be given little by little, so that the flavour of them may last longer.",
+      "sourceId": "02a4d543-5a4d-48e5-914a-45650839b934",
+      "sourceTitle": "machiavelli_works_1",
+      "sourceFile": "machiavelli_works_1.txt",
+      "sourceKind": "database-text",
+      "startOffset": 86653,
+      "endOffset": 86835
+    }
+  ]
+}
