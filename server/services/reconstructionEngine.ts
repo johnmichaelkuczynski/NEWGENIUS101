@@ -196,6 +196,8 @@ async function callLLM(
   userPrompt: string,
   opts: { json?: boolean; maxTokens?: number; temperature?: number; signal?: AbortSignal } = {}
 ): Promise<string> {
+  const { withLibraryContext } = await import("../library/context");
+  systemPrompt = await withLibraryContext(systemPrompt, userPrompt);
   const maxTokens = opts.maxTokens ?? 4000;
   const temperature = opts.temperature ?? 0.4;
   checkAbort(opts.signal);

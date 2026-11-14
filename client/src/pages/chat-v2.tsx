@@ -34,6 +34,7 @@ import { ThinkingPanel } from "@/components/thinking-panel";
 import { DocumentGeneratorTools } from "@/components/document-generator-tools";
 import { SelfTestButton } from "@/components/self-test-dialog";
 import UserDocuments from "@/components/user-documents";
+import { BookLibrary } from "@/components/book-library";
 import type { DestinationType } from "@/components/send-to-dropdown";
 
 const DEFAULT_PERSONA_SETTINGS: Partial<PersonaSettings> = {
@@ -675,6 +676,7 @@ export default function ChatV2() {
                   setChatInputDocument(prev => ({ name, text, version: prev.version + 1 }))
                 }
               />
+              <BookLibrary />
               <Button
                 onClick={() => setShowChatHistory(!showChatHistory)}
                 variant="outline"

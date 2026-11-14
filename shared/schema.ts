@@ -4,6 +4,30 @@ import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Independent subject library. Never mix these records into author corpora.
+export const libraryBooks = pgTable("library_books", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull(),
+  author: text("author").notNull(),
+  filename: text("filename").notNull(),
+  content: text("content").notNull(),
+  contentHash: text("content_hash").notNull().unique(),
+  wordCount: integer("word_count").notNull().default(0),
+  chunkCount: integer("chunk_count").notNull().default(0),
+  indexedChunks: integer("indexed_chunks").notNull().default(0),
+  status: text("status").notNull().default("indexing"),
+  error: text("error"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+export const libraryChunks = pgTable("library_chunks", {
+  id: text("id").primaryKey(),
+  bookId: text("book_id").notNull().references(() => libraryBooks.id, { onDelete: "cascade" }),
+  chunkIndex: integer("chunk_index").notNull(),
+  text: text("text").notNull(),
+  embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+}, table => [uniqueIndex("library_chunks_book_id_chunk_index_key").on(table.bookId, table.chunkIndex)]);
+
 // Session storage table (express-session)
 export const sessions = pgTable(
   "sessions",

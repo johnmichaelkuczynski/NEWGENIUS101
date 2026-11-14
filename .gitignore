@@ -36,6 +36,8 @@ server/data/*
 !server/data/representative-quotes/
 !server/data/representative-quotes/*.json
 /generated-artifacts/
+/STANDING_LIBRARY/*
+!/STANDING_LIBRARY/README.md
 logs/
 test_outputs/
 test-results.json

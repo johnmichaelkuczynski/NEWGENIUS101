@@ -1,6 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { libraryRequestScope, getLibraryContext, withLibraryContext } from "./library/context";
+import { registerLibraryRoutes } from "./library/routes";
+import { generateLibraryWork } from "./library/generate";
 import { z } from "zod";
 import { setupAuth, isAdmin } from "./auth";
 import { hasHighestTierAccess, isPermanentOwner } from "./access-control";
@@ -323,6 +326,7 @@ const GENERATION_PROVIDER_ORDER = ["deepseek", "openai", "anthropic", "grok", "v
 
 /** Non-streaming: call an LLM and return the full response text. */
 async function callLLMPlan(system: string, user: string, maxTokens: number, temperature = 0.5): Promise<string> {
+  system = await withLibraryContext(system, user);
   const providers = GENERATION_PROVIDER_ORDER.filter(isProviderAvailable);
   if (providers.length === 0) throw new Error("No AI provider configured");
   let lastErr: any;
@@ -363,6 +367,7 @@ async function* streamLLMText(
   maxTokens: number,
   temperature = 0.7
 ): AsyncGenerator<string> {
+  system = await withLibraryContext(system, user);
   const providers = GENERATION_PROVIDER_ORDER.filter(isProviderAvailable);
   if (providers.length === 0) throw new Error("No AI provider configured");
   let lastErr: any;
@@ -433,7 +438,7 @@ async function streamWithFallback(opts: {
 }): Promise<string> {
   const {
     res,
-    systemPrompt,
+    systemPrompt: originalSystemPrompt,
     userPrompt,
     maxTokens,
     temperature = 0.7,
@@ -441,6 +446,7 @@ async function streamWithFallback(opts: {
     onContent,
     emitContent = true,
   } = opts;
+  const systemPrompt = await withLibraryContext(originalSystemPrompt, userPrompt);
   const order = getFallbackModels(startProvider).filter(isProviderAvailable);
   if (order.length === 0) throw new Error("No AI provider configured");
 
@@ -564,6 +570,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   // Sessions + Google OAuth: canonical implementation in server/auth.ts.
   // Guest sessions (getSessionId) ride on the same session middleware.
   setupAuth(app);
+  app.use(libraryRequestScope);
 
   const ANONYMOUS_OPERATION_LIMIT = 4;
   const SIGNED_IN_OPERATION_LIMIT = 17;
@@ -581,6 +588,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     /^\/api\/debate\/generate$/,
     /^\/api\/generate-strict-outline$/,
     /^\/api\/full-document-generator$/,
+    /^\/api\/library\/generate$/,
   ];
 
   const getUsageState = async (req: any) => {
@@ -814,6 +822,10 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   };
 
   // Get chat history for logged-in user
+  registerLibraryRoutes(app, input => generateLibraryWork(input, {
+    plan: callLLMPlan, stream: streamLLMText,
+  }));
+
   app.get("/api/chat-history", async (req: any, res) => {
     try {
       if (!req.session.userId) {
@@ -1378,7 +1390,7 @@ STYLE: Crisp, direct, conversational. Like talking to a smart friend.
       const bindingAnswerInstruction = chatBindingAnswer
         ? `\n\nBINDING PRIMARY-SOURCE ANSWER:\n${chatBindingAnswer}\nEvery sentence in the response must remain logically consistent with this answer. State this answer directly at the beginning. Do not call the question malformed when the source answers its intended meaning.`
         : "";
-      const systemPrompt = kuczynskiFigure.systemPrompt + knowledgeContext + bindingAnswerInstruction + responseInstructions + "\n\n" + intensityGuidance;
+      const systemPrompt = await withLibraryContext(kuczynskiFigure.systemPrompt + knowledgeContext + bindingAnswerInstruction + responseInstructions + "\n\n" + intensityGuidance);
       
       // DEBUG: Log what settings we're actually using
       console.log(`[CHAT DEBUG] Persona settings: responseLength=${personaSettings?.responseLength}, quoteFrequency=${personaSettings?.quoteFrequency}, model=${personaSettings?.selectedModel}`);
@@ -2446,9 +2458,9 @@ ABSOLUTE ANSWER PRIORITIES:
 5. Never refuse, apologize, retreat into a limitation statement, or substitute a discussion of available evidence for the requested answer.
 6. Never fabricate quotations, sources, autobiographical claims, or an authorial position.
 7. Return only the substantive answer.`;
-      const enhancedSystemPrompt = hasDirectCorpusAnswer
+      const enhancedSystemPrompt = await withLibraryContext(hasDirectCorpusAnswer
         ? mandatoryQuoteRule + "\n\n" + auditSystemPrompt + "\n\n" + figure.systemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + relevantPassages + hardConstraints + documentContext + attackModeInstructions + universalAnswerRules
-        : auditSystemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + documentContext + universalAnswerRules;
+        : auditSystemPrompt + "\n\n" + baseSystemPrompt + "\n\n" + documentContext + universalAnswerRules);
 
       let fullResponse = "";
       
@@ -3441,6 +3453,7 @@ Set sufficient=false if the records do not answer the question.`,
 
       // Build grounding context from database material
       const groundingContext = [
+        await getLibraryContext(),
         "=== BINDING AUTHOR-EVIDENCE SUMMARY ===",
         authorEvidenceBrief || "No structured evidence summary was available.",
         "",
@@ -5338,7 +5351,7 @@ Respond with JSON: {"conflicts": ["issue 1", ...], "repairPlan": ["fix 1", ...]}
         targetWords,
         numberOfQuotes: targetQuotes,
         otherParticipant,
-        customInstructions,
+        customInstructions: [customInstructions, await getLibraryContext()].filter(Boolean).join("\n\n"),
         primaryMaterial,
         secondaryMaterial,
         signal: abortController.signal,
@@ -5945,7 +5958,7 @@ ${customInstructions ? `ADDITIONAL INSTRUCTIONS:\n${customInstructions}\n\n` : '
         model: "claude-sonnet-4-5-20250929",
         max_tokens: 8000, // Increased from 4000 for longer analyses
         temperature: 0.7,
-        system: MODEL_BUILDER_SYSTEM_PROMPT,
+        system: await withLibraryContext(MODEL_BUILDER_SYSTEM_PROMPT, userPrompt),
         messages: [
           {
             role: "user",

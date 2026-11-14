@@ -1,6 +1,7 @@
 import { db } from "./db";
 import { sql } from "drizzle-orm";
 import { normalizeAuthorName } from "./vector-search";
+import { getLibraryContext, resolvedLibraryContext } from "./library/context";
 import type { AuditedSearchResult, AuditEventCallback, PassageCandidate } from "./audited-search";
 
 export type GroundingGenerator = (system: string, user: string, maxTokens: number) => Promise<string>;
@@ -86,6 +87,12 @@ export async function prepareComparisonGrounding(
   question: string, author: { id: string; name: string }, generate: GroundingGenerator, onEvent: AuditEventCallback,
   options: PrimaryRetrievalOptions = {},
 ): Promise<ComparisonGrounding> {
+  // The library establishes the subject; it never enters this author's source
+  // list or exact-quotation validator.
+  const librarySubject = await getLibraryContext();
+  const subjectRule = librarySubject
+    ? "\nWhen the question concerns a shared-library book, use its supplied passages for the book author's meaning and claims, and this thinker's OWN sources for the interpreting framework. A reconstructed application need not be a documented historical comment, but must be identified as such. Do not claim a library quotation is this thinker's own. Do not dismiss actual library evidence merely because it is not this thinker's writing.\n"
+    : "";
   const events: AuditedSearchResult["events"] = [];
   const emit = (detail: string, type: "table_search" | "search_complete" = "table_search") => {
     const event = { timestamp: Date.now(), type, detail };
@@ -169,7 +176,7 @@ export async function prepareComparisonGrounding(
   const sourcePrompt = sources.map((source) => `[${source.id}] ${source.title}, chunk ${source.index}\n${source.text}`).join("\n\n").slice(0, 110000);
   const raw = await generate(
     `Determine ${author.name}'s OWN position from primary passages, not today's general consensus. Distinguish what this author endorses from opponents' statements, fictional characters, editorial introductions, biographers, and hypotheses the author rejects. Do not attribute a prefatory writer's opinion to the author. Preserve polarity, quantifiers, and whether an account is biological, psychological, social, historical, or normative. A denial of innate differences is NOT a denial of all differences; equality is NOT sameness. Lead with the author's actual substantive thesis, including any differences the author explicitly posits, then give qualifications. Do not invent a stronger proposition by adding "wholly", "entirely", "purely", "every" or "universally" to the user's question and deny that instead. Do not force a yes/no conclusion beyond the sources. If passages disagree, describe the disagreement. Reconstruct the actual premises, distinctions, and inferential steps in the relevant passage, not merely a topical yes/no assertion. Do not accept an isolated occurrence of a keyword as evidence for a thesis. If a passage rejects an inference, preserve that rejection rather than repeating the inference as the author's view. Derive the answer from evidence, not stereotypes. Return ONLY JSON {"answer":"a detailed source-derived answer and supporting reasoning, or an honest statement of what cannot be established","quotes":[{"passageId":"exact supplied ID","text":"exact continuous text from that passage"}]}. Select at least 2 substantive quotations where available, retaining crucial qualifications. No invented or paraphrased quotations.`,
-    `QUESTION: ${question}\n\nPRIMARY PASSAGES:\n${sourcePrompt}`, 2400,
+    `QUESTION: ${question}${subjectRule}\n\nPRIMARY PASSAGES FROM THIS THINKER:\n${sourcePrompt}\n${librarySubject}`, 2400,
   );
   let binding: ReturnType<typeof validateComparisonBinding>;
   try {
@@ -243,7 +250,8 @@ BINDING SOURCE-DERIVED ANSWER:
 ${grounding.binding}
 
 GOVERNING PRIMARY PASSAGES:
-${grounding.context}`;
+${grounding.context}
+${resolvedLibraryContext()}`;
 }
 
 export async function checkComparisonFidelity(

@@ -19,6 +19,7 @@
 // in `getModeSpec`.
 
 import Anthropic from "@anthropic-ai/sdk";
+import { withLibraryContext } from "../library/context";
 import OpenAI from "openai";
 import { db } from "../db";
 import { coherentSessions, coherentChunks, stitchResults } from "../../shared/schema";
@@ -148,6 +149,7 @@ async function callLLM(
   userPrompt: string,
   opts: { json?: boolean; maxTokens?: number; temperature?: number; signal?: AbortSignal } = {}
 ): Promise<string> {
+  systemPrompt = await withLibraryContext(systemPrompt, userPrompt);
   const maxTokens = opts.maxTokens ?? 4000;
   const temperature = opts.temperature ?? 0.6;
   checkAbort(opts.signal);
@@ -197,6 +199,7 @@ async function* streamLLM(
   temperature = 0.7,
   signal?: AbortSignal
 ): AsyncGenerator<string> {
+  systemPrompt = await withLibraryContext(systemPrompt, userPrompt);
   checkAbort(signal);
   if (anthropic) {
     try {

@@ -68,6 +68,8 @@ You must significantly expand this chunk with substantive additions.
 }
 
 async function callLLM(prompt: string, systemPrompt: string, model: string = 'gpt-4o', maxTokens: number = 4000): Promise<string> {
+  const { withLibraryContext } = await import("../library/context");
+  systemPrompt = await withLibraryContext(systemPrompt, prompt);
   // Prefer Anthropic when available (since ANTHROPIC_API_KEY is set)
   if (anthropic) {
     const response = await anthropic.messages.create({

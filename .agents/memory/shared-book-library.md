@@ -9,6 +9,8 @@ Users must be able to see a list of the library's books. The app must also searc
 
 Library sources must be usable across the app's relevant generation capabilities, including papers, screenplays, dialogues, and debates involving existing thinkers. These examples illustrate the requested scope rather than exhaust it.
 
+The user also requires project-file drag/drop ingestion analogous to the existing author folders, not just an in-app file chooser.
+
 **Why:** The user explicitly distinguished adding a permanent repository from adding another person to the site.
 
-**How to apply:** Treat this as a requested capability, not an implemented feature. Keep library-book content distinct from the primary writings that ground each participating thinker's position.
+**How to apply:** Keep library-book content distinct from the primary writings that ground each participating thinker's position. Do not narrow the repository to manually selected books or a single generation mode.

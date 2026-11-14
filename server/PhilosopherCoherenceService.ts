@@ -102,6 +102,8 @@ function countWords(text: string): number {
 }
 
 async function callLLM(systemPrompt: string, userPrompt: string, expectJson = false, maxTokens = 4096): Promise<string> {
+  const { withLibraryContext } = await import("./library/context");
+  systemPrompt = await withLibraryContext(systemPrompt, userPrompt);
   try {
     const response = await getOpenAI().chat.completions.create({
       model: "gpt-4o",
