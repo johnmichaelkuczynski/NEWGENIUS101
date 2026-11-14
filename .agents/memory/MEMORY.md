@@ -13,3 +13,4 @@
 - [Conversation grounding](chat-grounding-continuity.md) — follow-ups must retain their subject; provider fallback must preserve sources; a closed SSE stream is not proof of a complete answer.
 - [Usage access tiers](usage-access-tiers.md) — no login wall: 4 anonymous operations, then Google login; 17 signed-in operations, then payment; Stripe waits for explicit setup.
 - [Deployment readiness evidence](deployment-readiness-evidence.md) — platform probe 500s do not prove an Express exception; distinguish verified failure from suspected cause.
+- [Shared book library](shared-book-library.md) — requested standing repository separate from thinker profiles; users can query books and have existing thinkers discuss them.
