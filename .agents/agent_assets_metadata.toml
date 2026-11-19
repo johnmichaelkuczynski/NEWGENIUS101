@@ -270,3 +270,17 @@ mtime_ms = 1795056967845
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/fe098ee8-ed51-4d8f-a785-ab5a002c47cd/d6072376-cbb9-41d1-876e-e61dbf3c641d"
 storage_version_token = "1795057200764206"
 content_type = "text/plain"
+
+[[outputs]]
+id = "yPNU_Z2SN7A99-Vd9h3vE"
+uri = "file://generated-artifacts/counterfactuals-answer.txt"
+type = "text"
+title = "Exact tested answer on counterfactuals"
+description = "The complete 321-word answer from the corrected top function, generated from Kuczynski database passages. Preview test: first text at 28.2 seconds, completed at 30.6 seconds; not yet published."
+logical_id = "62bb6876-a18f-442d-97d0-698cdfabb51d"
+content_hash = "sha256:e1da39f38ace06fecc706587390a9172e0504cf61084fabe74a11db2f5ce78e0"
+size = 2071
+mtime_ms = 1795063612545
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/62bb6876-a18f-442d-97d0-698cdfabb51d/a0b22ee4-c7f4-4ce5-a4db-b87bd3ac774c"
+storage_version_token = "1795063686219714"
+content_type = "text/plain"
