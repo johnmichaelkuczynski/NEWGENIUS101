@@ -242,3 +242,17 @@ mtime_ms = 1792158544120
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/33320572-cbab-489f-80a7-fe655cb588a5/6ede21b7-aea1-4e10-b708-77871c7a008c"
 storage_version_token = "1792158563935248"
 content_type = "text/plain"
+
+[[outputs]]
+id = "GmkzcASVBy-aEC6qllLPT"
+uri = "file://generated-artifacts/screenshots/zhi-live.png"
+type = "image"
+title = "Actual screenshot of genius101.xyz"
+description = "Captured from the published website. The uploaded ZHI logo and ZHI SYSTEMS caption are visible in the top header."
+logical_id = "629a49b7-8b0f-4872-9796-ae1366bbd389"
+content_hash = "sha256:c052f3a2a68976cc82111460de3567f0f291a632565edebc3b589aff4e56cc41"
+size = 246149
+mtime_ms = 1795055892477
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/629a49b7-8b0f-4872-9796-ae1366bbd389/fc714e7f-9f3f-426a-ad89-472e8c04eddc"
+storage_version_token = "1795055928723873"
+content_type = "image/png"
