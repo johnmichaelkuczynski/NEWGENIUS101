@@ -1,0 +1,912 @@
+-- 1 of 25 --
+
+The Imaginary
+Jean-Paul Sartre (1905–1980) was the foremost French thinker of
+the twentieth century: philosopher, novelist, dramatist, literary
+critic and political theorist. He studied philosophy first in Paris
+and Berlin, before publishing his first novel, Nausea, in 1938. He
+was a prisoner of war during World War Two, and when he
+returned to Paris upon his release he became active in the Resist-
+ance movement. He published his philosophical masterwork, Being
+and Nothingness, in 1943, and subsequently gave up teaching to
+spend more time writing. In 1964 Sartre turned down the Nobel
+Prize for literature, because he did not want to be associated with
+any awarding institution. When he died in 1980, fifty thousand
+people turned up at his funeral in Paris.
+
+-- 2 of 25 --
+
+To Albert Morel
+
+-- 3 of 25 --
+
+Jean-Paul
+Sartre
+The Imaginary
+A phenomenological psychology of the imagination
+Revisions and Historical Introduction by
+Arlette Elkaïm-Sartre
+Translation and Philosophical Introduction by
+Jonathan Webber
+
+-- 4 of 25 --
+
+First published 1940 in French as L’imaginaire by Éditions Gallimard
+This translation first published 2004 by Routledge
+11 New Fetter Lane, London EC4P 4EE
+Simultaneously published in the USA and Canada by Routledge
+29 West 35th Street, New York, NY 10001
+Routledge is an imprint of the Taylor & Francis Group
+© 1940, 1986 Éditions Gallimard
+Translation © 2004 Routledge
+Historical Introduction © 2004 Arlette Elkaïm-Sartre
+Philosophical Introduction © 2004 Jonathan Webber
+All rights reserved. No part of this book may be reprinted or reproduced or
+utilized in any form or by any electronic, mechanical, or other means, now known
+or hereafter invented, including photocopying and recording, or in any informa-
+tion storage or retrieval system, without permission in writing from the
+publishers.
+British Library Cataloguing in Publication Data
+A catalogue record for this book is available from the British Library
+Library of Congress Cataloging in Publication Data
+Sartre, Jean-Paul, 1905–1980
+[Imaginaire. English]
+The imaginary: a phenomenological psychology of the imagination/Jean-Paul
+Sartre; revised by Arlette Elkaïm-Sartre; translated and with an introduction by
+Jonathan Webber.
+p. cm.
+Includes bibliographical references and index.
+1. Imagination. I. Elkaïm-Sartre, Arlette. II. Title.
+BF408.S263 2003
+128'.3–dc21
+2003012478
+ISBN 0–415–28754–5 (hbk)
+ISBN 0–415–28755–3 (pbk)
+This edition published in the Taylor & Francis e-Library, 2004.
+ISBN 0-203-64410-7 Master e-book ISBN
+ISBN 0-203-67463-4 (Adobe eReader Format)
+
+-- 5 of 25 --
+
+C ONTENTS
+Historical Introduction by Arlette Elkaïm-Sartre 	vii
+Philosophical Introduction by Jonathan Webber 	xiii
+Notes on the Translation 	xxvii
+PART I The Certain 	1
+The Intentional Structure of the Image 	3
+1 	Description 	4
+I. 	The Method 	4
+II. 	First Characteristic: The Image is a Consciousness 	5
+III. 	Second Characteristic: The Phenomenon of
+Quasi-Observation 	8
+IV. 	Third Characteristic: The Imaging Consciousness Posits
+its Object as a Nothingness 	11
+V. 	Fourth Characteristic: Spontaneity 	14
+VI. 	Conclusion 	14
+2 The Image Family 	17
+I. 	Image, Portrait, Caricature 	17
+II. 	Sign and Portrait 	21
+III. 	From Sign to Image: Consciousness of Imitations 	25
+IV. 	From Sign to Image: Schematic Drawings 	29
+V. 	Faces in the Fire, Spots on Walls, Rocks in Human
+Form 	35
+VI. 	Hypnagogic Images, Scenes and Persons Seen in Coffee
+Grounds, in a Crystal Ball 	37
+VII. From Portrait to Mental Image 	50
+VIII. Mental Image 	52
+
+-- 6 of 25 --
+
+PART II The Probable 	55
+The Nature of the Analogon in the Mental Image 	57
+I. 	Knowledge 	57
+II. 	Affectivity 	68
+III. 	Movements 	73
+IV. 	The Role of the Word in the Mental Image 	83
+V. 	The Mode of Appearance of a Thing in the Mental Image 	85
+PART III The Role of the Image in Psychic Life 	95
+I. 	The Symbol 	97
+II. 	Symbolic Schemas and Illustrations of Thought 	107
+III. 	Image and Thought 	112
+IV. 	Image and Perception 	120
+PART IV The Imaginary Life 	123
+I. 	The Irreal Object 	125
+II. 	Conduct in the Face of the Irreal 	136
+III. 	Pathology of the Imagination 	148
+IV. 	The Dream 	159
+Conclusion 	177
+I. 	Consciousness and Imagination 	179
+II. 	The Work of Art 	188
+Notes 	195
+Index 	204
+contents	vi
+
+-- 7 of 25 --
+
+H ISTORICAL I NTRODUCTION
+by Arlette Elkaïm-Sartre
+Sartre was a young schoolteacher in Le Havre in 1934 when he undertook to
+write a work on imagination.1 He taught pupils for the baccalaureate. At that
+time, and for a long time after, French school students were introduced to the
+four classical fields of philosophy: general psychology (later called ‘theor-
+etical psychology’), metaphysics, morals and logic. Imagination belonged to
+the area of psychology that Sartre taught his pupils, along with perception,
+memory, attention, the association of ideas, the emotions, etc. Psychology
+was defined as ‘positive science of psychic facts and the laws governing
+them’, expressly ruling out ‘any immediately practical or aesthetic point of
+view, any ontological or normative concern’. 2 The Imagination, a short work
+that appeared in 1936 3, and The Imaginary, written at the same time but pub-
+lished four years later, and which could have been the author’s doctoral
+thesis 4, hardly depart from the aims of psychology thus defined – at least
+formally – except in the conclusions of this latter writing.
+But as we will soon see, facts, as Sartre understands them here, and con-
+sequently laws, will not have the same meaning as in the official handbook of
+psychology.
+Right from the start, The Imaginary manifests Sartre’s resolution to turn his
+back on the theories that he was taught and in turn had to inculcate in his
+pupils. He knew by heart the arguments for these theories based on certain
+facts and the objections to these arguments based on other facts, themselves
+more or less challenged by rival theories: Condillac’s sensualism, according
+to which all the human faculties can be produced by assembling elementary
+sensations; the associationist theories, due to Hume, Mill, Taine, etc., and all
+the nuances that distinguish them in their ways of conceiving the relation
+between sensory impressions and ‘states of consciousness’ as well as in their
+
+-- 8 of 25 --
+
+ways of conceiving the laws that govern these; the rationalist theories that
+challenge associationism but in Sartre’s view retain the spirit of it. In perus-
+ing this large student handbook of the time, or more detailed treatises of
+psychology, such as that of George Dumas who was authoritative, one can
+easily see how much their writers, partly accepting the theory of association-
+ism without wondering about the nature of association, have trouble in
+effectively refuting the automatism of psychic facts which goes hand in hand
+with this theory, while at the same time they would like to show the
+synthetic activity of consciousness. 5
+‘It must be that each man has been born to make, in order to understand
+the world, a new and solitary effort’, the young Sartre wrote candidly in a
+notebook. He retained the ambition to construct a new and concrete phil-
+osophy and it is with the concrete that he intends to begin here. 6 This does
+not mean that in his exploration of the imaginary life, he will give primacy to
+matter, and even less so to the matter that science studies. He is convinced, for
+example, that ‘cerebral localisations’, however precise and complex the pro-
+gress of technical instruments permits us to determine them, can explain
+nothing other than the conditions necessary for the existence of the psychic
+functions; they can never provide an account of the fact that I am a con-
+sciousness that perceives, remembers, imagines, and projects itself into the
+future.
+It is worth remembering that another philosopher had, forty years earlier,
+opened a study of the psychic life by invoking concrete experience and
+intuition. It was Henri Bergson (1859–1914), whose Time and Free Will: An
+Essay on the Immediate Data of Consciousness had originally given Sartre the taste for
+philosophy. Although he had first published his outstanding books, such as
+Matter and Memory, at the end of the nineteenth century, the originality of his
+philosophy was still fully felt in France in the thirties, as much among psy-
+chologists as among metaphysicians. The 1935 edition of Cuvillier’s manual
+clearly counts his ideas as standing out strongly from previous theories, but
+with many reservations. Sartre cited it approvingly in his Ecrits de Jeunesse. Its
+relevance here is that the author of Nausea often has it in mind when writing
+The Imaginary, either to refute it, or to draw on one of its ideas, such as duration
+in psychic life. It is impossible to give even a vague idea of the whole of
+Bergson’s philosophy, in which psychology and metaphysics are interlinked,
+within the scope of this introduction: I want only to outline the intellectual
+framework within which Sartre wrote this work. I am content to point out
+that the author of Matter and Memory intended to refute associationism; like
+Sartre, he held that the mental image is not a weakened perception, a more or
+less automatic revival, but that it differs from perception in its very nature
+and, more generally, that the metaphysical question of human freedom and
+that of the being of consciousness are closely linked. In The Imagination, Sartre
+historical introduction	viii
+
+-- 9 of 25 --
+
+provided a detailed analysis of the contradictions that he saw in the position
+of the ‘vitalist’ philosopher for whom ‘the evolution of life, from its origins
+to man, evokes the image of a current of consciousness inserted in matter like
+an underground passage’.
+But the concrete that concerns Sartre is far from Bergsonian intuition,
+which he considers too subjective. Besides, it will lead the philosopher to
+argue less and less, to cosmic reverie which is foreign to Sartre’s concerns. By
+‘concrete’, he understands the points of support that make it possible for the
+data of experience to have sense. The most indubitable concrete is for him the
+cogito of Descartes. ‘I think, therefore I am’ is the affirmation that reflective
+consciousness is possible, and is a solid springboard for researching other
+truths: for Descartes, if I can be mistaken about the existence of the world so
+long as I have not proven that there is a God who guarantees its existence, I
+can at least be certain that I exist, since I think. It is the same for Sartre:
+‘someone who, in an act of reflection, becomes conscious of “having an
+image” cannot be mistaken’. One should therefore initially explore all that
+reflective consciousness can reveal about the specific characteristics of the
+image, about what occurs for me when I have an image.
+But why does The Imaginary have as a subtitle ‘A Phenomenological Psych-
+ology of the Imagination’? Let me first point out the Greek etymology of the
+word ‘phenomenon’: that which is shown, that which appears evidently, and
+which is therefore suitable to be described, to lead, as Descartes would have
+said, to ‘clear and distinct ideas’. There is a truth of appearance. Sartre was
+convinced of this by reading Edmund Husserl (1859–1938). In 1933, he
+began to study the German philosopher – still little known in France – by
+reading his work Ideas in the original. 7 This study undoubtedly continued
+while he wrote The Imaginary. ‘For me’, wrote Sartre in February 1940, ‘to
+exhaust a philosophy is to reflect within its perspectives, and create my own
+private ideas at its expense, until I plunge into a blind alley. It took me four
+years to exhaust Husserl.’8
+The approach of the philosopher who holds Sartre’s primary interest – and
+which seemed to him a radical foundation like the Cartesian suspension of
+judgement that allows the cogito – is to ‘bracket the natural positing of the
+world’. The philosopher Paul Ricoeur, who translated Husserl’s Ideas into
+French, wrote in his preface a comment expressing something similar to
+what Sartre had grasped:
+I am at first lost and forgotten in the world, lost among things, lost in ideas,
+lost among plants and beasts, lost among others . . . Naturalism is to be
+understood as the lowest form of the natural attitude and as the level that
+includes its own collapse: for if I am lost in the world, I am already lending
+myself the character of a thing in the world. 9
+historical introduction 	ix
+
+-- 10 of 25 --
+
+Treating consciousness ‘as a thing in the world’ is what contemporary psych-
+ology more or less does. But if one ‘brackets’ the controversial issue of the
+relation between consciousness and sensory givens – what Sartre calls the
+‘matter’ of the image – what is left, as Husserl said, is that ‘all consciousness is
+consciousness of something’. Far from being a tautology, this affirmation
+means that all consciousness has an intentional structure; it means that in
+perception, mental imagery, and thought, consciousness, far from being a
+receptacle, is aimed at something outside itself. Psychology is offered a new
+perspective: to differentiate the modes of intentionality according to the
+situations where consciousness is at work – because consciousness is an act
+– and to treat sensory givens and knowledge in relation to intentionality.
+Sartre will adhere to this, for the case of ‘imaging consciousness’, in the first
+two parts of this work.
+In the first part of The Imaginary, entitled ‘The Certain’, he outlines a phe-
+nomenological description of the mental image. The aim is to provide an
+inventory and an articulation, based on his own experience, of all that
+immediate reflection can reveal of the fact (or rather, the event) of having
+an image. This does not mean that he will reject what others have written
+about the image, or the experiments conducted before him, nor that he will
+definitively give up making hypotheses, but that he leaves his philosophical
+knowledge temporarily suspended.
+The imagination is a broad field. It is not restricted to the mental image, the
+subjective evocation of an absent object, which is the most difficult form of
+imagination to describe, particularly because it occurs without obvious sens-
+ory support. It seemed necessary to Sartre to take a detour through other
+examples of ‘the image family’, more easily described since their sensible
+matter is present. He therefore considers the role of imaging consciousness in
+our dealings with portraits, caricatures, imitations, schematic drawings, etc.,
+to try to discern, in each case, the interplay of the real (the perceived) and the
+irreal by which consciousness will aim at its object.
+It is on returning to the mental image properly so called that Sartre takes
+up ‘the probable’. In his first attempt at phenomenological description, the
+more immediate, the question was: what is it for me to have an image? It is
+now a question of determining what an image is, at what consciousness
+actually aims, and what the structure of consciousness must be so that it is
+possible to imagine. However the mental image is almost inaccessible to
+reflection: as long as ‘I have an image’, I can say nothing of it without it
+vanishing, since the intentionality becomes different; when it is not there
+I cannot give a detailed account of it; in addition, when I evoke an image,
+for example, of an absent friend or the tune of a song, I am guided by no
+present sensory impression – visual, auditory, or otherwise. This is why, for
+some psychologists, the mental image does not exist.
+historical introduction	x
+
+-- 11 of 25 --
+
+For Sartre, there is indeed a sensible content, though it does not need a
+present perception as in the case of an imaging consciousness confronted by
+a performer’s imitation of a celebrity, for example. To support this hypoth-
+esis, he has recourse to introspection, not only his own, but also directed
+introspection such as it is practised with a certain rigour in experimental
+psychology, by the German Würzburg school, the French psychiatrist Alfred
+Binet, and many others. 10 It will be seen how, in this second part, Sartre tries
+to demonstrate the manner in which knowledge, affectivity, and minute
+bodily movements come into play in the creation of the sensible matter of the
+mental image, which is to say the analogical representation of the real object
+of the imaging intention, and how the object aimed at and the analogon can
+enter into conflict. Contrary to Bergson, for example, for whom ‘all images
+act on and react to one another in all their elementary parts according to
+constant laws, which I call the laws of nature’ – which implies that the
+spontaneity of the sensible givens is an automatism – Sartre holds that
+the whole subject of the mental image spontaneously summons his strength
+to bring it about: the act by which consciousness presents itself with an
+absent object is similar to the incantation of a medium who claims, by a
+concentration of energy, to make the spirit of a dead person come into them.
+The image is, according to most classical psychologists, a material trace,
+and thus affected with a certain inertia, whereas for Sartre, as one can see, it is
+the product of an act of consciousness, and so his conception of the relation
+between image and thought can only be different. It will not be a question of
+wondering how images can ‘combine’ so that thought is possible: the mental
+image is already on the side of thought. In the third part of his work, he subtly
+analyses the different levels of thought and the implications the image has
+for these levels, from the image-illustration that can paralyse or delay the
+effort of reasoning – or simply mark a pause – to the more evanescent
+symbolic schemas that partake of this effort while making possible, ‘as a
+fugitive outside’, the elaboration of a concept.
+The fourth part is principally concerned with the irreality of the space and
+time of imaginary life. It is most particularly in the dream and in the patholo-
+gies of the image, like hallucination, that consciousness seems to be given if
+not a world, at least the ‘atmosphere of a world’ with its own space and
+duration. Sartre had read Freud’s The Interpretation of Dreams, without worrying
+too much about the theories underlying this work, pursuing his own path,
+interested especially in what the rich introspective material of the actual
+narration of the dreams can provide. He had also read the philosopher and
+psychiatrist Pierre Janet’s clinical descriptions, short biographies of patients
+that this clinician had treated for years in a hospital environment. 11 Although
+Sartre queries his general theoretical ideas, he takes account of his concrete
+observations, most notably of the particularities of the patients’ belief in their
+historical introduction 	xi
+
+-- 12 of 25 --
+
+deliriums and their hallucinations, and the contradictions between the reality
+of their often close daily relations with their psychiatrist and the unreal
+worlds into which their pathologies plunge them.
+Nevertheless, the hallucinatory image long troubled the author of The
+Imaginary: can one talk of intentionality in connection with the hallucinatory
+image, even though the patient appears to undergo it, to suffer and fear it?
+Sartre discussed this with the psychiatrist Daniel Lagache, who had been his
+fellow student at the École Normale, and who had just written Les Hallucinations
+Verbales et la Parole. 12 Sartre decided to be an experimental subject himself:
+under Lagache’s control, he was administered a mescaline injection, faithful
+to his determination to remain close to the concrete.
+The two-part conclusion of The Imaginary is obviously a double move away
+from the field of psychology. The second, in line with his reflection in The
+Imaginary, is concerned with the activity of consciousness when faced with
+that irreal object, the work of art. One can suppose that the first, ‘Conscious-
+ness and Imagination’, was written last. It seems contemporaneous with his
+reading of Heidegger’s Being and Time in April 1939.13 Some psychologists
+contemporary with Sartre were anxious to discern the unity of psychology in
+its diverse areas of study. For forty or so years, many had been convinced that
+it was a science equal to physics and thrown themselves headlong into all
+kinds of psycho-physiological experiments and tests (measurement of feel-
+ing thresholds, intelligence tests, etc.). But ‘what could be more different, for
+example, than the study of the stroboscopic illusion and the study of the
+inferiority complex?’.14 Otherwise put, what global understanding of human
+being does psychology offer us? One goal becomes clear to Sartre at the end
+of The Imaginary: ‘To posit . . . as the object of our interrogation the human
+condition as an indivisible unity.’15 A being without substance, which is
+nothing but the outside of itself, which can create images in the absence of the
+object concerned, consciousness effects the negation of the real. Nothing,
+absence, negation: the reader of Being and Nothingness will easily judge that the
+study of imagination was a significant stage in setting up this ontological
+drama between consciousness (or being-for-itself), the nothingness that it
+generates, and being-in-itself.
+historical introduction	xii
+
+-- 13 of 25 --
+
+P HILOSOPHICAL I NTRODUCTION
+by Jonathan Webber
+What is imagination? What are we actually doing when we imagine? What
+are we aware of, and what kind of awareness do we have of it? The concept of
+imagination is central to a variety of debates, principally in aesthetics and
+philosophy of mind, yet these questions have rarely been addressed. Jean-Paul
+Sartre’s The Imaginary is the most sustained and detailed account of the nature
+of imagination in Western philosophical literature. It is the result of more
+than a decade’s work, over the course of which Sartre researched and formu-
+lated ideas about a wide range of issues. This range includes, for example, the
+nature of philosophical enquiry, the relation between philosophy and
+psychology, and the structures of emotion and of aesthetic experience. His
+theory of imagination is developed and defended partly through discussions
+and applications of these areas of his thought. As well as being of intrinsic
+interest, these discussions and applications and the theory of imagination
+they yield provide foundations for much of Sartre’s later existentialist work
+on the human condition and our responses to it. His theories of freedom
+and bad faith, for example, and of the nature of literature, quietly draw on
+thoughts and themes elaborated in this book.
+In The Imaginary, Sartre aims to show that a seemingly diverse array of
+experiences – including make-believe, watching an impressionist, watching a
+play, looking at pictures, forming mental images – share a fundamental struc-
+ture. He further aims to delineate this structure and show that it is distinct
+from both the structure of perception and that of conceptual thought. At the
+root of his theory is Edmund Husserl’s distinction between the matter of an
+experience and its form. In ordinary perception, according to Sartre, parts of
+our material environment provide the matter of experience. The form is
+provided by the attitude taken towards the matter. This attitude is a function
+
+-- 14 of 25 --
+
+of knowledge, affections, and goals pursued. This attitude is reflected back to
+us as the form or sense of the object perceived. It is due to my knowledge,
+affections, and goals that I see a certain chunk of matter not as a metal
+protuberance from a piece of wood, for example, but as a door handle that
+must be turned if I am to enter the interview room. Or it is because I am
+angry that I find a certain person obnoxious and repulsive.
+In imagination, the bestowal of sense is different. The matter is not experi-
+enced as properly having a certain sense, but as presenting a sense borrowed
+from some other object. We do not perceive the matter as having that sense,
+but rather imagine that other object. A child does not misperceive a hobby-
+horse as a horse, but imagines a horse by using the hobby-horse as a prop. A
+photograph is not confused for the thing it is a photograph of, but that thing
+is imagined through the photograph. This is the structure that unites the
+various kinds of event that Sartre understands as imaginings: the matter of the
+experience is endowed with the sense of another object, and is understood as
+in some way presenting that other object. As Sartre makes clear in his discus-
+sion of mental images, the matter involved in imagining need not be a part of
+the perceivable material world. Sensations of movement, for example, can
+play the role of matter for imagination, or ‘analogon’ as Sartre also calls it.
+Sartre’s use of this theory to explain the nature of depiction, or pictorial
+representation, provides an insightful contribution to the discussion of this
+issue in the philosophy of aesthetics. His discussion encompasses photo-
+graphs, portraits, caricatures and schematic line drawings, and their relations
+to impersonations and images seen in patterns. This broad purview allows for
+a rich and detailed description of depiction. The nature of depiction is,
+perhaps surprisingly, very puzzling. A natural thought is that it might simply
+be a matter of resemblance. A landscape painting depicts a particular land-
+scape, the thought runs, by sharing its arrangement of shapes and colours
+with that landscape at a particular time. Similarly, a picture of the grim reaper
+may share significant visual properties with the way the grim reaper is
+classically described as looking. And a picture may depict a horse without
+depicting any horse in particular by displaying significant visual properties
+shared by all, most, or paradigm cases of, horses.
+This thought, however, is fraught with difficulties. One is that resemblance
+is a symmetric relation, so if an artist’s self-portrait resembles that artist, then
+the artist resembles the self-portrait. But since the artist does not depict the
+self-portrait, depiction is not symmetric. Similarly, resemblance is reflexive
+where depiction is not: every picture resembles but does not depict itself. In
+fact, it is not even obvious that a picture could ever depict the thing that it will
+always most closely resemble: if you were to draw a picture that depicted only
+itself, what would it look like? A further difficulty arises with specifying the
+respects in which a depiction resembles the depicted. A picture of a café may
+philosophical introduction	xiv
+
+-- 15 of 25 --
+
+be grainy and monochrome, but the café may not. A photograph of an actor
+may be glossy and two-dimensional, but the actor may not. At least, not
+literally. Etchings, woodcuts, caricatures and schematic line drawings may
+have very little in common with the things they depict, and may differ from
+them in a great many respects. A depiction need share neither shape, nor
+colour, nor texture, it seems, with the thing it depicts.
+These difficulties seem to suggest that it is a mistake to think of pictorial
+representation purely in terms of a relation between depiction and depicted.
+Resemblance is such a relation, which seems to hold independently of the
+thoughts and attitudes of the viewer. Linguistic representation, on the other
+hand, seems to be a matter of convention. Words and sentences represent
+what they represent in virtue of decisions and practices tacitly agreed upon by
+members of a particular linguistic community. Perhaps depiction should also
+be understood as conventional. Nelson Goodman has provided this kind of
+theory of depiction. His theory is that pictorial representation consists in
+systems of arbitrary but agreed symbols that, unlike linguistic systems, are
+such that even the slightest alteration to a visible symbol can make a differ-
+ence to what it represents. So where the font or colour of a printed sentence
+make no difference to what that sentence represents, any alteration in a
+colour or shape on the surface of a canvas may affect how the depicted scene
+is represented as being. But as with languages, different pictorial systems can
+represent the same object or scene in different ways. The differences between
+cubist painting and black-and-white photography, for example, are akin to
+those between English and French: representations from each system can be
+equally adequate, but they rest on different conventions. Pictures that we find
+‘realistic’ are simply those we can read most fluently. 1
+One source of unease about Goodman’s theory is that it does not seem to
+take into account the visual nature of what is depicted. The theory seems
+to allow that just about anything, no matter how abstract, can be depicted. Of
+course, graphs might be described as pictures of abstract facts, but the kind of
+depiction we are concerned with here is one that seems to make the depicted
+object in some way present to the viewer, although not necessarily in such a
+way that the viewer mistakes the picture for the depicted object. This may
+underlie the natural thought that depiction is a matter of resemblance: the
+picture must in some way look as the depicted object looks. A second source
+of unease might be that in resting on the notion of convention, Goodman’s
+theory makes depiction too arbitrary. Conventions need have no rationale
+apart from the rationale of having a convention. It does not matter whether
+we drive on the left or the right side of the road, so long as we all do the same
+(on a given set of roads). But presumably the reason we find yellow pictures
+of bananas more realistic than blue ones is not that we are used to depictions
+of them being yellow, or that we have all tacitly agreed to represent them
+philosophical introduction 	xv
+
+-- 16 of 25 --
+
+using yellow, but that bananas themselves are generally yellow. Again, this
+seems to indicate some resemblance between the visual nature of the
+depiction and that of the depicted.
+Goodman’s emphasis on public conventions might also be criticized for
+underplaying the personal nature of at least some experiences of pictures. In
+his book on photography, dedicated ‘in homage to’ Sartre’s The Imaginary,
+Roland Barthes describes finding a photograph of his recently deceased
+mother taken when she was a child. ‘In this little girl’s image I saw the
+kindness that had formed her being’, he writes. This kindness ‘belonged to
+no system . . . I could not define it better than by this feature (among others):
+that during the whole of our life together, she never made a single “observa-
+tion”. This extreme and particular circumstance, so abstract in relation to an
+image, was nevertheless present in the face revealed in the photograph I had
+just discovered.’ 2 If Barthes is right to describe this kindness as present for
+him in the depiction, then it seems that depiction cannot just be a matter of
+public convention. The kindness depicted seems so abstract and detailed that
+no system of visual conventions could be so fine-grained as to capture it. And
+it seems, moreover, that it would require a particular knowledge of the
+woman in the picture to recognize it.
+Sartre’s theory is that depiction results from a combination of resemblance
+and the response this elicits in the viewer. He distinguishes pictures from
+signs on the grounds that signs need bear no visual similarity to the objects
+they signify. But the visual similarity between a picture and the object it
+depicts can be very slight indeed. A portrait or photograph resembles the
+person it depicts in respect of shape and perhaps also colour or patterns of
+light and dark. This resemblance, argues Sartre, stimulates an affective
+response similar to the response that would be stimulated by the presence of
+the person depicted. This affective response endows the picture with the
+same sense that the person depicted would have for the viewer. This explains
+why the same portrait or photograph can have different qualities for different
+viewers, and also why the same viewer might have different reactions to
+portraits or photographs that capture different expressions of the same
+subject. It explains, moreover, how a person can be presented through a
+portrait or photograph: endowing the pictorial matter with the affective
+sense of the person depicted gives, in conjunction with knowledge about that
+person, something of the feeling of being in that person’s presence. This
+claim, of course, need not be restricted to paintings and photographs of
+people. So long as it is accepted that our experience of landscapes – and
+indeed all our visual experience – is suffused with beliefs and affections, then
+our experiences of paintings and photographs can in principle be suffused
+with the beliefs and affections normally associated with what they depict, or
+with things relevantly similar to what they depict.
+philosophical introduction	xvi
+
+-- 17 of 25 --
+
+This theory accommodates the intuitive appeal of the idea that depiction
+involves resemblance. But its emphasis on the viewer’s response averts the
+difficulties of the simple resemblance idea. Similarly, it accommodates
+the thought that depiction crucially involves the response of the viewer,
+while avoiding the problems that beset Goodman’s theory that depiction
+is purely a matter of convention. But this theory will not be enough to
+account for pictures that are very thin on detail, such as schematic line
+drawings.
+This is why Sartre does not restrict the form of imaginative experience to
+knowledge and affective response, but adds that kinaesthetic sensations of
+bodily movement also play a role. Looking at a line drawing of a face, for
+example, the movements of our eyes following a line from one end to the
+other gives that line the sense of a nose, the movement away from the top of
+that line gives another line the sense of an eyebrow. Once the lines have this
+sense, they can operate as an analogon for a face, as matter for the image of a
+face. Awareness of eye movements also accounts for our ability to form
+images on the basis of arabesques on wallpaper, random patterns of spots on
+walls, patterns in flames or in clouds, and explains why we can sometimes see
+a face in the moon. The movements of our eyes along and around such
+patterns endows aspects of them with the same vectorial sense as familiar
+perceivable objects, and the patterns so organized can then function as matter
+for imaginative experiences. Sartre applies this theory to the puzzling phe-
+nomenon of hypnagogic imagery, images one can be aware of when falling
+asleep. In this case, he argues, the basis of the matter for the imaginative act is
+provided by phosphenes, or entoptic lights, which are patterns of light inside
+the eyeballs. In this case, however, the eyes cannot move along or around
+these patterns of light, since the lights are in the eyeballs and hence move
+with them. In so moving, however, phosphenes leave trails of light behind
+them, and these trails of light along with sensations of eye movement provide
+the analogon for imagining.
+Depiction, then, is for Sartre a matter of animating an analogon, or repre-
+sentative matter, on the basis of our knowledge and our affective responses.
+In cases of portraits and photographs, the analogon is already constructed
+for the viewer. In the case of less rich, more suggestive depictions, and in
+cases where pictures are seen in patterns not designed for this purpose, the
+analogon is constructed by the viewer’s awareness of lines and patterns and
+of eye movements in relation to those lines and patterns.
+Sartre extends this account of imaginative consciousness to our aesthetic
+experiences of watching plays and reading novels. In the case of plays, the
+imaginative apprehension of the scenes cannot be explained only in terms
+of the resemblance between the scenes and what they represent. An
+author’s description of a fictional character need not be so detailed as to
+philosophical introduction xvii
+
+-- 18 of 25 --
+
+allow resemblance between a particular actor, however dressed, and that
+character, and anyway the audience does not need to be familiar with the
+author’s description. So while cardboard trees on a stage resemble real
+trees, not all aspects of the audience’s imaginative engagement with a play
+can be stimulated by resemblance. Sartre addresses this problem when he
+discusses how Franconay, a short, plump, dark-haired woman, can success-
+fully impersonate Maurice Chevalier, a tall, thin, light-haired man. He relies
+here on his distinction between signs and pictures. Signs, such as words, need
+not resemble what they signify. When Franconay dons a straw hat at a
+rakish angle, this signifies Maurice Chevalier, which evokes in the audience
+knowledge and affective responses appropriate to Maurice Chevalier, allow-
+ing the audience to imagine Maurice Chevalier through Franconay. Similarly,
+the setting, title, programme notes, and the ways the actors address one
+another on stage are signs on the basis of which the audience imagine the
+characters through the actors. The knowledge and affective responses
+involved largely result from general experience of life, but may also result
+from the play itself, accumulating as the story develops, or from previous
+acquaintance with the play. But the bodies of impersonators and actors
+become analogons by means of signification, not resemblance.
+This theory can be extended to film and television. The difference here, of
+course, is that it is not bodies of actors that function as analogons but
+coloured or monochrome patterns of shapes on a screen. But can the theory
+be extended to reading? If a picture paints a thousand words, can a thousand
+words paint a picture? Sartre seems to think so. He argues that in the imagina-
+tive experience of reading a novel, the words cease to play the straight-
+forward role of signs. Once the reader has understood the signs, they become
+suffused with the reader’s background knowledge of what they signify and
+become analogons for imagination. Through the phrase ‘Pierre’s office’, for
+example, the reader may imagine an office in a particular location, with a
+particular layout, as described earlier in the novel. Through imaginative
+engagement with the words, that is, the reader may experience the world
+they describe.
+In this way, Sartre aims to present a unified theory of aesthetic appreciation
+as imaginative experience. The sensory pleasure gained from arrangements of
+colours and shapes on a canvas, he argues, should not be confused with the
+aesthetic pleasure gained from experiencing an imaginary object through the
+canvas. The artist presents the audience with an analogon, a canvas, through
+which the audience can imaginatively apprehend the aesthetic object itself.
+Similarly, the novelist presents the audience with a book, through which an
+aesthetic object can be imaginatively apprehended; and a performance of
+Beethoven’s Seventh Symphony is an analogon through which the audience
+can imagine the symphony itself.
+philosophical introduction	xviii
+
+-- 19 of 25 --
+
+This position affords interesting views of various problems in aesthetics.
+Take, for example, the issue of our emotional involvement with fiction. How
+can we be moved by the fate of Anna Karenina? There are various ways of
+understanding this question, such as whether it is rational to be so moved, or
+how it is psychologically possible to be so moved, but the core of the issue is
+that we are aware that fictional characters are fictional, that the events that
+move us are imaginary and not real, and yet we are still moved. It cannot
+simply be that we suspend our disbelief and consider the fictional scenes of
+films, plays, and novels as though they were real, for we do not engage with
+fictional events as though they were real: we do not, for example, try to
+intervene in the action, or call the police when a character is murdered, or
+run screaming when a monster appears. Sartre’s theory of the nature of
+imagination provides a way of answering this question. Our emotional
+involvement with fiction seems puzzling because it seems as though our
+emotions are reactions to the scenes that we imagine and that we are aware of
+as imaginary. But if Sartre is right, this puzzlement is based on a misunder-
+standing of the relation between imagination and affection. If it is rather that
+our affections are constitutive of our imagining the tribulations of Anna
+Karenina, then this emotional involvement is perfectly compatible with
+understanding the imaginary to be imaginary. In fact, it is required for it. 3
+This view of aesthetic experience also grounds Sartre’s later insistence, in
+What is Literature?, that writers can only ever address their contemporaries,
+whether they realize this or not. Reading is an imaginative act, involving
+knowledge and affectivity. The writer must therefore suppose certain areas of
+knowledge and certain kinds of affective reaction on the part of the reader.
+Writer and reader must share a common context. Later readers might engage
+with the text in the way the writer intended, but this can only be fortuitous:
+the writer cannot foresee cultural changes that might prevent this. 4 Although
+Sartre makes this point only with reference to literature, it can be extended to
+other arts. The sounds of rustic bagpipes and shepherd flutes would have
+been familiar to eighteenth-century audiences. Oboe and flute passages in the
+works of Bach and Handel, therefore, would have had rustic connotations
+for their first audiences. Although we might be able to learn about these
+connotations, our lack of familiarity with rustic bagpipes and shepherd flutes
+prevents us from imaginatively engaging with those passages in the way that
+eighteenth-century audiences would have done.
+Aesthetics aside, Sartre devotes much of the book to developing aspects of
+his theory of imaginative engagement with pictures, patterns, words, and
+sounds into a theory of mental images formed without the aid of such props.
+Daydreaming, memory recall, or simply considering how something might
+look can all involve visualizing or picturing something, and running through
+a tune in one’s head might be thought to involve an auditory version of the
+philosophical introduction 	xix
+
+-- 20 of 25 --
+
+same ability. But how should this ability be understood? The history of
+philosophy and psychology offers us two basic models of the visual case. On
+the pictorial model, forming a mental image is simply conjuring up a picture.
+So when you form an image of the Panthéon in Paris, for example, you are
+aware of a mental picture of the Panthéon. On the experiential model, forming a
+mental image is simply bringing about an experience subjectively similar in
+relevant ways to perceiving the imaged object. So when you form an image of
+the Panthéon, you have an experience like that of seeing the Panthéon.
+Sartre presents important criticisms of both of these models, as well as an
+interesting alternative. But he does not clearly distinguish the pictorial and
+the experiential models that he attacks. This is probably because in the three
+hundred years preceding the publication of The Imaginary, perception itself was
+generally understood as involving mental pictures. On such a view, to say that
+mental imagery consists in contemplating mental pictures is to say that it is
+akin to perceptual experience, and vice versa. This is the view that Sartre calls
+‘the illusion of immanence’. The difference between perception and imagin-
+ation, according to the illusion of immanence, consists in the reason the
+picture appeared, the relation between the picture and the world beyond the
+mind, and perhaps the vivacity of the picture. Throughout The Imaginary, Sartre
+is concerned not only to refute this view of the mind, but also to understand
+the pressures that have pushed theorists in its direction. The acceptability of
+an alternative model will, at least in part, be a function of how well it
+dissipates these pressures or can explain why they should be resisted.
+Although Sartre does not distinguish the pictorial and experiential models
+of imagery, however, we should do so. After all, one might think that imagery
+involves pictures where perception does not, or think that neither imagery
+nor perception involve pictures but are alike in some other important
+respects. One reason to reject the pictorial model is that it is based on an
+overly simplistic understanding of the nature of depiction. It seems to sup-
+pose that being faced with a mental picture is enough to explain our imagina-
+tive relation to the thing that is depicted. But, as we have seen, depiction is
+not so simple. In fact, depiction cannot be explained without reference to the
+kind of experience involved in looking at the picture. Once this kind of
+experience has been delineated – as Sartre is aware – the resources for a
+theory of mental imagery are in place without the need to postulate mental
+pictures. Mental imagery, for Sartre, involves the same kind of experience as
+is involved in looking at photographs and portraits, but does not involve
+anything relevantly similar to a photograph or a portrait, mental or
+otherwise.
+Some of the points that Sartre makes against the ‘illusion of immanence’
+can be directed at the experiential model. These points are among the most
+interesting and insightful observations on the nature of imagination made in
+philosophical introduction	xx
+
+-- 21 of 25 --
+
+this book, or anywhere else for that matter. One fundamental difference
+between perception and imagination, argues Sartre, is that perception
+involves observation of the object perceived, whereas imagination involves
+only ‘quasi-observation’. An imagined object, like a perceived object, is
+presented in profile. To visualize a cube is not to visualize all six faces of
+it together, but rather to visualize how it might look from a particular
+angle. Unlike perception, however, there is nothing that can be discovered
+about the object as it is imaged. It is immediately certain that what I am
+visualising is a cube, and not for example some trick object that merely looks
+like a cube from this angle. There is always more to the perceived object than
+we can see, but imagination shares with conceptual thought the trait of its
+object having all and only the properties that it is presented as having. In
+perception, knowledge of the object is consequent upon the experience of it,
+whereas in imagination knowledge is prior to experience. You cannot learn
+how many columns support the pediment of the Panthéon in Paris, he points
+out, just by forming a mental image of the Panthéon. Your image will have
+the number of columns you believe the Panthéon to have, and may even
+have an indeterminate number of columns. Although Sartre always refers to
+‘knowledge’ as a component of imaginative experience, it seems that the
+concept he requires is belief or opinion. You can know only what is the case,
+but you can form images on the basis of false beliefs. Your image can still
+be of the Panthéon even if it does not show eighteen columns supporting
+the pediment.
+A related distinction between perception and imagination is that perceived
+objects can bear relations to one another independently of whether the per-
+ceiver is aware of those relations. But in imagination, objects are related in all
+and only the ways they are imagined to be related. Some of René Magritte’s
+paintings are based on this phenomenon. His Personal Values, for example,
+depicts a comb larger than the bed it is resting on, a shaving brush occupying
+the whole top surface of the wardrobe it is lying on, a match half the length
+of the bed, and a glass as big as the wardrobe. But it remains indeterminate
+whether these are giant objects in an ordinary bedroom, ordinary objects in a
+doll’s house, or just a collection of objects represented without any intended
+relations of size. The same painting can be seen in any of these ways, depend-
+ing on the attitude of the viewer. Similarly, you can form a mental image of a
+banana next to a banana-sized model of the Eiffel Tower and you can form a
+different image of a giant banana the same size as the Eiffel Tower and
+standing next to it. The visual aspect of these two experiences can be exactly
+the same. So you cannot tell by observation whether you are imagining a
+souvenir in a fruit bowl or a giant banana in Paris. But imagining one is not
+the same as imagining the other. So mental images include aspects that are not
+purely visual, and which cannot be discerned by inspecting the visual aspect.
+philosophical introduction 	xxi
+
+-- 22 of 25 --
+
+Thus, in imagination the relations between objects are stipulated, where in
+perception they are discovered.
+So the experiential model is no more acceptable than the pictorial: the kind
+of experience involved in mental imagery is different from that involved in
+perception. Yet mental imagery, unlike conceptual thought, makes its object
+seem in some way present, not merely indicated. Sartre argues that this pres-
+ence is due to mental imagery involving the same kind of experience as
+depiction, a bestowal of sense that specifies an object other than the matter it
+is bestowed on. The matter in mental imagery, however, is not a perceivable
+part of the material world.
+Herein lies a methodological issue for Sartre. His discussions of the relation
+between form and matter in aesthetic experiences are based on phenomeno-
+logical description. They are based, that is, on first-personal reflection on the
+nature of the experiences under discussion. The matter of the experience in
+these cases is easily discernible. A portrait or photograph, for example, can be
+seen for itself. In the case of mental imagery, however, there is no obviously
+discernible matter. Sartre therefore consults the findings of experimental
+psychology in order to discern the matter involved in mental imagery. But he
+does not simply accept the pronouncements of psychologists. Rather, he
+critiques their experiments in the light of his phenomenological findings. For
+experimental data to be acceptable, the experiments must not have presup-
+posed a conception of imagination at odds with the data of phenomenology.
+Theories based on acceptable experimental data, moreover, will never be
+more than probable: there will always be other possible ways of accounting
+for the same data. But phenomenological description, Sartre believes, is
+certain. This relationship between first-person description and third-person
+experimentation is the ‘phenomenological psychology’ mentioned in the
+book’s subtitle, and runs throughout the work.
+On the basis of a critical review of experimental psychological literature,
+Sartre concludes that the matter involved in mental imagery is constructed
+out of purely subjective feelings. In some cases, this matter can be provided
+by affective feelings that you have towards the object or person to be
+imagined. Knowledge of (or beliefs or opinions about) this object or person
+then animates these feelings, giving them the sense of the presence of the
+object or person felt about. But in cases where movement or a specific visual
+shape is to be imagined, there may be no relevant affections. Sartre draws here
+on his analysis of schematic line drawings and images seen on the basis of
+patterns. The formation of some mental images involves bodily movement,
+and the kinaesthetic sensation of this movement provides the matter for the
+act. Try, for example, to form an image of a garden swing, or of the pendu-
+lum of a clock swinging to and fro. Your act of imagining, according to Sartre,
+will have involved some bodily movement on your part, however slight. Most
+philosophical introduction	xxii
+
+-- 23 of 25 --
+
+probably, he claims, it will have been eye movement. The image was formed
+by giving the sensation of eye movement the sense of following a swing or
+pendulum. You can to some extent assess this claim for yourself. Try the
+experiment again, this time focusing your eyes on the page number on this
+page. Could you form a moving image? If so, did your eyes leave the page
+number as the image began to move? Or did any other part of your body
+move? 5
+The nature of mental imagery is an interesting issue in the philosophy of
+mind in its own right. But it may also have ramifications elsewhere. In par-
+ticular, if hallucination can be understood as a form of imagination, as Sartre
+argues that it can, then the theory of imagination might have important
+ramifications for the theory of perception. The central issue in the philosophy
+of perception is the relation between perceptual experience and the world
+that it is experience of. How does perception provide us with knowledge? Is
+perceptual experience the direct manifestation of our surroundings, or is it
+simply grounds for inferences about those surroundings?
+Those who claim that perceptual experience does not directly reveal the
+world tend to argue that the experience involved in perception is the same as
+can be involved in hallucination and so cannot reveal the world as it is. If the
+experience I have when I see a tree, for example, is an experience I could have
+while hallucinating, then that experience cannot itself reveal the tree to me.
+At best, if I also believe that I am awake and probably not hallucinating, then
+the experience gives me reason to think that there is a tree in front of me.
+Those who oppose this view, on the other hand, argue that if experience falls
+short of the world in this way, then we have no way of knowing what the
+world is really like. Beyond the veil of our experiences, they argue, could lie
+just about anything, so long as it accounts for the regularity and predictability
+of those experiences. Not only that, but it is difficult to see how our ordinary
+concepts of worldly objects, such as ‘rainbow’, ‘donkey’, and ‘carburettor’,
+can have any meaning unless they gain their meaning from actual or potential
+experiences of rainbows, donkeys, and carburettors. 6
+If Sartre is right that hallucination is a form of imagination, and the experi-
+ence involved in imagination is different in kind from that involved in per-
+ception, then perception and hallucination do not involve the same kind of
+experience. The claim that perception involves the direct manifestation of the
+world then seems more acceptable. Of course, if Sartre’s theory of imagin-
+ation itself turns out to be in need of revision, then so will any related theory
+of hallucination. There is one immediate difficulty, however, that must be
+obviated. It appears to be characteristic of hallucinations that they seem like
+perceptions. Imagination, on the other hand, is typically experienced as a
+creative act. Images may arise unbidden, of course, but they are not mistaken
+for perceptions.
+philosophical introduction xxiii
+
+-- 24 of 25 --
+
+Sartre does not deny this aspect of imagination. In fact, he gives it a central
+role in his theory. Where perception involves taking an object to be real and
+present, he claims, imagination ‘posits its object as a nothingness’. This
+means that the object is never posited as present. An imagined object can be
+posited as elsewhere, meaning existent but not present, as for example when
+I imagine the surface of the planet Mars. Or it can be posited as nonexistent,
+as when I imagine a unicorn, knowing that there are no unicorns. Or it can be
+posited simply as absent, without any commitment either to its existence
+elsewhere or to its nonexistence, as I might imagine a car that runs on water,
+without any belief about whether there are such things but believing none-
+theless that there is not one present to me. Or, finally, it might simply not be
+imagined without any commitment to its existence, presence, or absence, as
+for example I might imagine a tree in some detail without any commitment
+to whether there is or is not any such tree in front of me or anywhere else. In
+none of these cases is the imagined object taken to be a present object tracked
+by experience.
+Sartre adds to this that imagination is distinguished from perception by a
+feeling of spontaneity. Both perception and imagination include ‘nonthetic’
+awareness of the kind of experience involved, and so the two seem different
+to the subject. Perceptual experience seems like a response to independent
+objects presented to it, argues Sartre, whereas imagination seems creative in
+relation to its object. He describes this feeling of spontaneity as a ‘counter-
+part’ of the fact that imagination posits its object as a nothingness. But there
+are three possible readings of this claim. It could mean that the sense of the
+imagined object as a nothingness indicates that it is being imagined, not
+perceived. Or it could mean that the object is posited as a nothingness
+precisely because the subject is aware of the creative spontaneity of the
+experience. Finally, it could simply mean that the subject has ‘nonthetic’
+awareness of the structure of the imaging consciousness, and this structure is
+responsible for the object being posited as a nothingness.
+So Sartre holds that hallucinations and dreams are imaginative experiences
+whilst also holding that imaginative experiences cannot be confused for
+perceptual ones. How, then, does he account for the fact that hallucinations
+and dreams can involve behaviour that seems appropriate to believing that the
+hallucinated or dreamed events are real? Such behaviour, he argues, does not
+arise from mistaking the imaginary for the real, but from taking up a new
+attitude towards the imaginary. This is imaginary behaviour with imaginary
+beliefs and imaginary feelings, a kind of make-believe. Sartre dramatizes this
+idea in his play The Condemned of Altona (or Loser Wins). 7 The central character,
+Franz Gerlach, has kept himself locked in the attic of his father’s house for
+thirteen years since fighting for the Nazis on the Russian front. He imagines
+that his beloved Germany has gone to rack and ruin, and records speech after
+philosophical introduction	xxiv
+
+-- 25 of 25 --

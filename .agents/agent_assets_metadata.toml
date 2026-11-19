@@ -284,3 +284,17 @@ mtime_ms = 1795063612545
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/62bb6876-a18f-442d-97d0-698cdfabb51d/a0b22ee4-c7f4-4ce5-a4db-b87bd3ac774c"
 storage_version_token = "1795063686219714"
 content_type = "text/plain"
+
+[[outputs]]
+id = "35O7c51GvalLYdt9tI493"
+uri = "file://generated-artifacts/author-import/verification.txt"
+type = "text"
+title = "Verified author-text import results"
+description = "Lists the eight indexed works, passage counts and successful author-restricted searches, plus the two incomplete Sartre uploads that need their main texts."
+logical_id = "07d14a83-b97f-4ab2-b752-2aa86fce11fe"
+content_hash = "sha256:9bfd4a4259bb443978b9d340b86d4764e17125c8340a0c4d928c2eb61db1a4a8"
+size = 1550
+mtime_ms = 1795121024756
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/07d14a83-b97f-4ab2-b752-2aa86fce11fe/5ea0bc16-f5f1-4575-ab7e-53675d043ecf"
+storage_version_token = "1795121035790322"
+content_type = "text/plain"
