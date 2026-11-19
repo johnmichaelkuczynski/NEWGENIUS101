@@ -14,4 +14,4 @@
 - [Usage access tiers](usage-access-tiers.md) — no login wall: 4 anonymous operations, then Google login; 17 signed-in operations, then payment; Stripe waits for explicit setup.
 - [Deployment readiness evidence](deployment-readiness-evidence.md) — platform probe 500s do not prove an Express exception; distinguish verified failure from suspected cause.
 - [Shared book library](shared-book-library.md) — user requires books apart from thinker profiles, automatically searchable and usable across generation modes.
-- [GitHub token wiring](github-token-wiring.md) — use the direct `github` remote for GITHUB_PAT; preserve Replit's internal origin and never persist the token.
+- [GitHub token wiring](github-token-wiring.md) — verify origin uses GITHUB_PAT directly; repository account permissions do not prove the token can push.
