@@ -322,7 +322,7 @@ function getOpenAIClient(provider: string): OpenAI | null {
 // Always tries DeepSeek first (less restrictive content policy),
 // then OpenAI, then Claude as a last resort.
 // -------------------------------------------------------------------
-const GENERATION_PROVIDER_ORDER = ["deepseek", "openai", "anthropic", "grok", "venice"];
+const GENERATION_PROVIDER_ORDER = ["deepseek", "openai", "anthropic", "grok", "venice", "gemini"];
 
 /** Non-streaming: call an LLM and return the full response text. */
 async function callLLMPlan(system: string, user: string, maxTokens: number, temperature = 0.5): Promise<string> {
@@ -8955,6 +8955,32 @@ Begin:`;
 
       console.log(`[Dialogue Creator] Generating dialogue, ${sourceText.length} chars input (${isTopicOnly ? 'topic' : 'text'}), thinker1=${authorId1}, thinker2=${authorId2 || 'none'}`);
 
+      // Keep source retrieval and arc planning alive through buffering proxies too,
+      // not just the later token-generation phase.
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache, no-transform');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('X-Accel-Buffering', 'no');
+      res.flushHeaders();
+      const sendDialogueEvent = (data: Record<string, unknown>) => {
+        if (!res.destroyed && !res.writableEnded) {
+          res.write(`data: ${JSON.stringify(data)}\n\n`);
+          (res as any).flush?.();
+        }
+      };
+      res.write(`: ${' '.repeat(2048)}\n\n`);
+      sendDialogueEvent({ status: "Retrieving the participants' primary sources…" });
+      let clientGone = false;
+      const dialogueHeartbeat = setInterval(() => {
+        if (!res.destroyed && !res.writableEnded) {
+          res.write(': keep-alive\n\n');
+          (res as any).flush?.();
+        }
+      }, 10000);
+      const stopDialogueHeartbeat = () => clearInterval(dialogueHeartbeat);
+      res.on('close', () => { clientGone = true; stopDialogueHeartbeat(); });
+      res.on('finish', stopDialogueHeartbeat);
+
       // Gather up to four participants (thinkers and/or Everyman), de-duplicating while preserving order
       const uniqueAuthorIds = Array.from(
         new Set([authorId1, authorId2, authorId3, authorId4].filter((id) => id && id !== 'none'))
@@ -8968,6 +8994,7 @@ Begin:`;
       const participants: DialogueParticipant[] = [];
 
       for (const aid of uniqueAuthorIds) {
+        if (clientGone) return;
         if (aid === 'everyman') {
           participants.push({ isEveryman: true, name: 'Everyman', shortName: 'EVERYMAN', content: '' });
           continue;
@@ -8977,6 +9004,7 @@ Begin:`;
           const author = await storage.getThinker(aid);
           if (!author) continue;
           const name = author.name;
+          sendDialogueEvent({ status: `Retrieving sources for ${name}…` });
           const normalizedAuthorName = normalizeAuthorName(name);
           console.log(`[Dialogue Creator] Participant: ${name} (normalized: ${normalizedAuthorName})`);
 
@@ -9009,10 +9037,7 @@ Begin:`;
       }
 
       if (participants.length === 0) {
-        return res.status(400).json({
-          success: false,
-          error: "Please select at least one valid thinker for the dialogue"
-        });
+        throw new Error("Please select at least one valid thinker for the dialogue");
       }
 
       // Disambiguate duplicate short names (e.g. shared surnames)
@@ -9210,14 +9235,8 @@ RULES:
       }
 
       // Set up SSE streaming
-      res.setHeader('Content-Type', 'text/event-stream');
-      res.setHeader('Cache-Control', 'no-cache');
-      res.setHeader('Connection', 'keep-alive');
-
-      // Stop generating as soon as the client disconnects (e.g. user hit "Stop"),
-      // so we don't keep burning LLM calls for output nobody is listening to.
-      let clientGone = false;
-      res.on('close', () => { clientGone = true; });
+      if (clientGone) return;
+      sendDialogueEvent({ status: "Planning the dialogue's argument…" });
 
       // Resume mode: seed with the partial dialogue the client already has so we
       // continue from where a stalled/interrupted generation left off.
@@ -9418,6 +9437,9 @@ ${isFinalChunk
         }
 
         totalWords = fullResponse.split(/\s+/).filter((w: string) => w.length > 0).length;
+        if (totalWords <= wordsBeforeChunk) {
+          throw new Error("The dialogue provider returned no new text.");
+        }
         console.log(`[Dialogue Creator] Chunk ${chunkNumber}: ${totalWords} words total`);
         // Only count closure as delivered once the FINAL chunk actually produced
         // new content (a flagged-but-empty chunk must not suppress the fallback).
@@ -9583,6 +9605,7 @@ ${fullResponse.slice(-1500)}`;
 
     } catch (error) {
       console.error("[Dialogue Creator] Error:", error);
+      if (res.destroyed || res.writableEnded) return;
       
       if (!res.headersSent) {
         res.status(500).json({

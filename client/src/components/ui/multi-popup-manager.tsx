@@ -146,10 +146,10 @@ export function MultiPopupManager() {
                   {activePopup.isGenerating ? (
                     <div className="flex items-center gap-2">
                       <Loader2 className="w-6 h-6 animate-spin" />
-                      <span>Generating content...</span>
+                      <span>{activePopup.statusText || "Generating content..."}</span>
                     </div>
                   ) : (
-                    <span>No content yet</span>
+                    <span>{activePopup.statusText || "No content yet"}</span>
                   )}
                 </div>
               )}
@@ -157,7 +157,7 @@ export function MultiPopupManager() {
 
             <div className="p-3 border-t flex-shrink-0 flex items-center justify-between bg-muted/30">
               <div className="text-sm text-muted-foreground">
-                {activePopup.isGenerating ? "Content is being generated..." : "Generation complete"}
+                {activePopup.statusText || (activePopup.isGenerating ? "Content is being generated..." : "Generation complete")}
               </div>
               <div className="flex items-center gap-2">
                 {activePopup.onReject && (
@@ -212,6 +212,7 @@ interface MinimizedPopupCardProps {
     title: string;
     content: string;
     isGenerating: boolean;
+    statusText?: string;
   };
   onExpand: () => void;
   onClose: () => void;
@@ -304,7 +305,7 @@ function MinimizedPopupCard({ popup, onExpand, onClose, onCopy, onDownload, styl
                     <span>Generating...</span>
                   </div>
                 ) : (
-                  <span>No content yet</span>
+                  <span>{popup.statusText || "No content yet"}</span>
                 )}
               </div>
             )}
@@ -319,7 +320,7 @@ function MinimizedPopupCard({ popup, onExpand, onClose, onCopy, onDownload, styl
                 <Download className="h-3 w-3" />
               </Button>
             </div>
-            <span className="text-xs text-muted-foreground">{popup.isGenerating ? "Streaming..." : "Complete"}</span>
+            <span className="text-xs text-muted-foreground">{popup.statusText || (popup.isGenerating ? "Streaming..." : "Complete")}</span>
           </div>
         </>
       )}

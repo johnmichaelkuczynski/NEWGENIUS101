@@ -20,3 +20,9 @@ Gemini's streaming transport can end mid-word without a terminal reason or SDK e
 **Why:** Real main-chat checks repeatedly received truncated prose that the app had marked successful. The defect was only exposed by inspecting the final sentence; checking topic keywords and word count had passed.
 
 **How to apply:** Validate natural completion as well as source grounding. Avoid exposing an unfinished tail when recovering a stream, continue from the last completed text with the same source constraints, and preserve the total requested length rather than asking a fallback provider for an additional full-length answer.
+
+Dialogue source retrieval and arc planning can precede the first generated word by a substantial interval; network chunks do not align with SSE messages.
+
+**Why:** A reported zero-word dialogue showed both a stalled-generation warning and a completion label. Inspection found unbuffered event parsing and swallowed provider errors; the screenshot alone could not identify the original transport failure.
+
+**How to apply:** Keep the connection alive during preparation, buffer incomplete events, propagate explicit errors, and distinguish interruption from successful completion. Offer continuation only when partial output actually exists.

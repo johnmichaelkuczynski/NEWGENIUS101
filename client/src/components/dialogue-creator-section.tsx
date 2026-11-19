@@ -14,6 +14,7 @@ import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
+import { readDialogueStream } from "@/lib/dialogue-stream";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
@@ -223,6 +224,7 @@ export function DialogueCreatorSection({
       title: `Dialogue: ${participantLabels.join(" & ") || "Author"}`,
       content: accumulatedText,
       isGenerating: true,
+      statusText: "Preparing the dialogue and retrieving author sources…",
       filename: `dialogue_${author1?.name.replace(/\s+/g, '_') || 'author'}.txt`,
       onStop: () => abortControllerRef.current?.abort(),
     });
@@ -290,49 +292,28 @@ export function DialogueCreatorSection({
         throw new Error(errorData.error || 'Failed to generate dialogue');
       }
 
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder();
-
-      if (!reader) throw new Error('No reader available');
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n');
-
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            const data = line.slice(6);
-            if (data === '[DONE]') continue;
-
-            try {
-              const parsed = JSON.parse(data);
-
-              if (parsed.content) {
-                accumulatedText += parsed.content;
-                setDialogue(accumulatedText);
-                updatePopup(dialoguePopupId, { content: accumulatedText });
-              }
-
-              if (parsed.done && parsed.wordCount) {
-                receivedDone = true;
-                setWordCount(parsed.wordCount);
-                updatePopup(dialoguePopupId, { isGenerating: false });
-              }
-
-              if (parsed.error) {
-                throw new Error(parsed.error);
-              }
-            } catch (e) {
-              // Ignore JSON parse errors for non-JSON lines
-            }
+      await readDialogueStream(response.body, event => {
+        if (event.type === "content") {
+          accumulatedText += event.content;
+          setDialogue(accumulatedText);
+          setWordCount(accumulatedText.split(/\s+/).filter(Boolean).length);
+          updatePopup(dialoguePopupId, { content: accumulatedText, statusText: "Streaming dialogue…" });
+        } else if (event.type === "done") {
+          receivedDone = true;
+        } else if (event.type === "metadata") {
+          if (event.data.done === true) receivedDone = true;
+          if (typeof event.data.status === "string") {
+            updatePopup(dialoguePopupId, { statusText: event.data.status });
           }
         }
+      });
+
+      if (!accumulatedText.trim()) {
+        throw new Error("No dialogue text was received. Your topic and source file are preserved; click Generate Dialogue to retry.");
       }
 
       if (receivedDone) {
+        updatePopup(dialoguePopupId, { statusText: "Generation complete" });
         toast({
           title: isContinue ? "Dialogue continued" : isSequel ? "Sequel generated" : "Dialogue generated",
           description: `${accumulatedText.split(/\s+/).filter(Boolean).length} words total`,
@@ -344,6 +325,7 @@ export function DialogueCreatorSection({
       } else {
         // Stream ended without a completion signal -> stalled mid-generation
         setCanContinue(accumulatedText.trim().length > 0);
+        updatePopup(dialoguePopupId, { statusText: "Generation interrupted — partial text preserved" });
         toast({
           title: "Generation stalled",
           description: "Output is incomplete. Click \"Continue Generation\" to pick up where it left off.",
@@ -357,6 +339,10 @@ export function DialogueCreatorSection({
       // Offer continue whenever we have partial output to resume from
       const hasPartial = accumulatedText.trim().length > 0;
       setCanContinue(hasPartial);
+      updatePopup(dialoguePopupId, {
+        statusText: hasPartial ? "Generation interrupted — partial text preserved"
+          : (aborted ? "Generation stopped — no text received" : `Generation failed: ${error instanceof Error ? error.message : "Connection lost"}`),
+      });
       toast({
         title: aborted
           ? "Generation stopped"

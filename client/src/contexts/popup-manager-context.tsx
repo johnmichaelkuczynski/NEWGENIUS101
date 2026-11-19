@@ -5,6 +5,7 @@ export interface PopupState {
   title: string;
   content: string;
   isGenerating: boolean;
+  statusText?: string;
   wordCount?: number;
   filename?: string;
   isMinimized: boolean;
