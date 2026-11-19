@@ -19,7 +19,6 @@ import { Sparkles, Search, Users, User, History, Download, MessageSquare, Plus, 
 import { Link } from "wouter";
 import type { Message, PersonaSettings, Figure } from "@shared/schema";
 import kuczynskiIcon from "@assets/image_1767777610408.png";
-import zhiLogo from "@assets/zhi_logoc_1787741086466.png";
 import { ComparisonModal } from "@/components/comparison-modal";
 import { ModelBuilderSection } from "@/components/model-builder-section";
 import { PaperWriterSection } from "@/components/paper-writer-section";
@@ -389,6 +388,16 @@ export default function ChatV2() {
 
   return (
     <div className="h-screen min-w-0 max-w-full overflow-x-hidden flex flex-col lg:flex-row">
+      <a
+        href="https://zhisystems.ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed left-1/2 top-0 z-[60] -translate-x-1/2 lg:hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-label="Visit ZHI Systems"
+        data-testid="link-zhi-logo-mobile"
+      >
+        <img src="/zhi-systems-logo.png" alt="ZHI Systems" className="h-[60px] w-20 object-contain" />
+      </a>
       {/* Far Left Column: Philosopher Figures - ALWAYS VISIBLE */}
       <aside className="w-40 border-r border-amber-200/30 dark:border-slate-700 flex-shrink-0 overflow-y-auto bg-gradient-to-b from-amber-50/50 via-orange-50/30 to-amber-50/50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 hidden lg:block">
         <div className="p-2 border-b border-amber-200/30 dark:border-slate-700 sticky top-0 bg-amber-50/80 dark:bg-slate-800/90 backdrop-blur-sm z-10 space-y-2">
@@ -632,17 +641,17 @@ export default function ChatV2() {
 
         {/* Header - Fixed */}
         <header className="min-w-0 max-w-full overflow-x-auto border-b bg-background/95 backdrop-blur-md relative z-20">
-          <div className="min-w-max lg:min-w-0 lg:w-full px-4 py-3 flex items-center justify-between">
+          <div className="min-w-max px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <a
                 href="https://zhisystems.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 rounded-md ring-1 ring-border shadow-sm transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="hidden lg:block flex-shrink-0 rounded-md ring-1 ring-border shadow-sm transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-label="Visit ZHI Systems"
                 data-testid="link-zhi-logo"
               >
-                <img src={zhiLogo} alt="ZHI Systems" className="h-7 w-7 rounded-md" />
+                <img src="/zhi-systems-logo.png" alt="ZHI Systems" className="h-[72px] w-24 rounded-md object-contain" />
               </a>
               <a
                 href="mailto:johnmichaelkuczynski@gmail.com"
