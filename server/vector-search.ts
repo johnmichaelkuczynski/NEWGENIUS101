@@ -479,15 +479,20 @@ export async function searchPhilosophicalChunks(
       console.log(`[Vector Search] STRICT author filter: "${authorFilter}" - will return ONLY this author's content`);
       console.log(`[Vector Search DEBUG] figureId="${figureId}", authorFilter="${authorFilter}", domain=${isLogicPhilosophyQuery ? 'LOGIC/PHILOSOPHY' : isFinanceQuery ? 'FINANCE' : 'GENERAL'}, excludePsych=${shouldExcludePsychology}`);
       
-      // Search ONLY the specified author's chunks from the 'chunks' table
-      // Apply domain exclusion to filter out irrelevant papers
+      // Filter before ranking: the global IVFFlat index can select a list
+      // containing no rows for a small/new author, then discard every hit.
+      // A materialized author set gives complete, author-isolated ranking.
       const authorResults = await db.execute(
         sql`
+          WITH authored AS MATERIALIZED (
+            SELECT thinker, source_text_id, chunk_text, chunk_index, embedding
+            FROM chunks
+            WHERE thinker ILIKE ${'%' + authorFilter + '%'}
+              AND embedding IS NOT NULL
+          )
           SELECT thinker, source_text_id, chunk_text, chunk_index,
                  embedding <=> ${JSON.stringify(queryEmbedding)}::vector as distance
-          FROM chunks
-          WHERE thinker ILIKE ${'%' + authorFilter + '%'}
-            AND embedding IS NOT NULL
+          FROM authored
           ORDER BY distance
           LIMIT ${topK}
         `

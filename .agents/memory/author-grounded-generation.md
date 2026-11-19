@@ -80,3 +80,9 @@ Missing passage records do not prove a saved work is missing. Search original st
 **Why:** A complete Spencer work was saved but had no passage records, so passage-only retrieval silently fell back to generic AI. Repeated SQL substring searches over its compressed multi-megabyte text also proved prohibitively slow.
 
 **How to apply:** Keep direct-text recovery bounded, read each large text once before selecting excerpts, and retain exact offsets and work provenance. Do not weaken quotation verification when a model miscopies text; use selection of literal excerpt IDs instead.
+
+For author-restricted semantic search, rank within the author's eligible passages rather than relying on post-filtering a global approximate nearest-neighbor index.
+
+**Why:** A newly indexed Sartre work had complete embeddings, but the global IVFFlat search returned zero results for a relevant ego/consciousness question. The same query vector returned ten passages when author filtering was materialized before ranking. Successful indexing alone therefore did not establish retrievability.
+
+**How to apply:** Verify actual author-filtered searches after importing a small or new corpus. Preserve author isolation and complete candidate eligibility; do not broaden the author filter or fabricate fallback evidence to hide empty approximate results.
