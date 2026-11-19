@@ -716,6 +716,11 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         return next();
       }
 
+      console.warn("[Usage Gate] Operation blocked before generation", {
+        path: req.path,
+        accessRequired: state.authenticated ? "payment" : "google_login",
+        limit: state.limit,
+      });
       return res.status(200).json({
         accessRequired: state.authenticated ? "payment" : "google_login",
         title: state.authenticated ? "Unlock full access" : "Continue with Google",

@@ -14,7 +14,7 @@ import { DragDropUpload } from "@/components/ui/drag-drop-upload";
 import { useQuery } from "@tanstack/react-query";
 import type { Figure } from "@shared/schema";
 import { usePopupManager } from "@/contexts/popup-manager-context";
-import { readDialogueStream } from "@/lib/dialogue-stream";
+import { DialogueAccessError, readDialogueResponse } from "@/lib/dialogue-stream";
 import { ElevenLabsOutput } from "@/components/elevenlabs-output";
 import { SendToDropdown, type DestinationType } from "@/components/send-to-dropdown";
 
@@ -52,6 +52,7 @@ export function DialogueCreatorSection({
   const [quoteCount, setQuoteCount] = useState<string>('3');
   const [elevenLabsMode, setElevenLabsMode] = useState(false);
   const [canContinue, setCanContinue] = useState(false);
+  const [accessError, setAccessError] = useState<DialogueAccessError | null>(null);
   const dialoguePopupIdRef = useRef<string>('');
   const abortControllerRef = useRef<AbortController | null>(null);
   const uploadedFileRef = useRef<File | null>(null);
@@ -60,7 +61,7 @@ export function DialogueCreatorSection({
   const [uploadedFileName, setUploadedFileName] = useState('');
   const [uploadedFileSize, setUploadedFileSize] = useState(0);
   const { toast } = useToast();
-  const { registerPopup, updatePopup } = usePopupManager();
+  const { registerPopup, updatePopup, closePopup, minimizePopup } = usePopupManager();
 
   // Fetch available authors/figures
   const { data: figures = [] } = useQuery<Figure[]>({
@@ -144,6 +145,10 @@ export function DialogueCreatorSection({
   const runGeneration = async (mode: 'new' | 'continue' | 'sequel') => {
     const isContinue = mode === 'continue';
     const isSequel = mode === 'sequel';
+    const previousDialogue = dialogue;
+    const previousPopupId = dialoguePopupIdRef.current;
+    const previousCanContinue = canContinue;
+    setAccessError(null);
 
     // Continue/sequel modes require an existing dialogue to work from
     if ((isContinue || isSequel) && !dialogue.trim()) {
@@ -284,15 +289,11 @@ export function DialogueCreatorSection({
       const response = await fetch('/api/dialogue-creator', {
         method: 'POST',
         body: formData,
+        credentials: 'include',
         signal: abortControllerRef.current.signal,
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to generate dialogue');
-      }
-
-      await readDialogueStream(response.body, event => {
+      await readDialogueResponse(response, event => {
         if (event.type === "content") {
           accumulatedText += event.content;
           setDialogue(accumulatedText);
@@ -334,6 +335,26 @@ export function DialogueCreatorSection({
       }
 
     } catch (error) {
+      if (error instanceof DialogueAccessError) {
+        // A quota response is not a failed generation. Leave the source/file and
+        // any previous output intact, and show the actual reason on both pages.
+        setAccessError(error);
+        setDialogue(previousDialogue);
+        setWordCount(previousDialogue.split(/\s+/).filter(Boolean).length);
+        setCanContinue(previousCanContinue);
+        if (isContinue) {
+          updatePopup(dialoguePopupId, { isGenerating: false, statusText: error.message });
+          minimizePopup(dialoguePopupId);
+        } else {
+          closePopup(dialoguePopupId);
+          dialoguePopupIdRef.current = previousPopupId;
+        }
+        toast({
+          title: error.accessRequired === "google_login" ? "Sign-in required" : "Preview limit reached",
+          description: error.message,
+        });
+        return;
+      }
       const aborted = error instanceof DOMException && error.name === 'AbortError';
       if (!aborted) console.error('Error generating dialogue:', error);
       // Offer continue whenever we have partial output to resume from
@@ -685,6 +706,31 @@ export function DialogueCreatorSection({
               </>
             )}
           </Button>
+
+          {accessError && (
+            <div role="alert" className="rounded-md border p-3 space-y-2" data-testid="dialogue-access-required">
+              <p className="text-sm">{accessError.message}</p>
+              <p className="text-sm text-muted-foreground">
+                Your topic, uploaded file, and any previous dialogue are still here.
+              </p>
+              {accessError.accessRequired === "google_login" ? (
+                <>
+                  <Button asChild>
+                    <a href="/api/auth/google" target="_blank" rel="noopener noreferrer" data-testid="dialogue-google-sign-in">
+                      Continue with Google
+                    </a>
+                  </Button>
+                  <p className="text-xs text-muted-foreground">
+                    Sign in in the new tab, then return here and generate again. This keeps your source open.
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  Full access is required. Payment is not available in this app yet.
+                </p>
+              )}
+            </div>
+          )}
 
           {isGenerating && (
             <Button

@@ -1,5 +1,5 @@
 - [Ingestion & live DB tables](ingestion-and-db-tables.md) — drop-folder ingester, thinker is citext (not enum), live tables ≠ schema.ts, paper_chunks/thinker_quotes don't exist, adding a new author needs storage.ts edit too.
-- [Auth history (Google OAuth, prod-only)](clerk-auth.md) — custom Google OAuth rebuilt July 5, 2026 after removal; never Clerk/Replit Auth; OAuth config/testing on PRODUCTION domain only, never *.replit.dev; sign-in needs target=_top.
+- [Auth history (Google OAuth, prod-only)](clerk-auth.md) — preserve custom Google OAuth, never Clerk/Replit Auth; test real OAuth on production only; sign-in must leave the Preview iframe.
 - [LLM model names & fallback](llm-provider-model-names.md) — retired Anthropic model = 404 kills ALL AI features; model names hardcoded everywhere; streamWithFallback + chat fallback loop in routes.ts; audited chat is slow (use long curl timeout).
 - [Diagnostic / generator endpoint quirks](diagnostic-endpoint-quirks.md) — debate needs mode:"auto"; quotes returns JSON not SSE; chat always runs slow audited search (~240s); SSE content keys vary; /diagnostics is intentionally public.
 - [Custom modals not Radix](custom-modals-not-radix.md) — hand-rolled overlays need explicit close; compare must stream independently in both columns, not buffer one answer until completion.
