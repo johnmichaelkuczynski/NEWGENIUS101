@@ -1,7 +1,7 @@
 import { db } from "./db";
 import { sql } from "drizzle-orm";
 import { normalizeAuthorName } from "./vector-search";
-import { getLibraryContext, resolvedLibraryContext } from "./library/context";
+import { getLibrarySubjectContext, resolvedLibraryContext, withoutLibraryContext } from "./library/context";
 import type { AuditedSearchResult, AuditEventCallback, PassageCandidate } from "./audited-search";
 
 export type GroundingGenerator = (system: string, user: string, maxTokens: number) => Promise<string>;
@@ -84,12 +84,14 @@ export function validateComparisonBinding(value: unknown, sources: ComparisonSou
 
 /** Exact author-filtered retrieval without a dependency on one embedding/judging provider. */
 export async function prepareComparisonGrounding(
-  question: string, author: { id: string; name: string }, generate: GroundingGenerator, onEvent: AuditEventCallback,
+  question: string, author: { id: string; name: string }, generateWithSources: GroundingGenerator, onEvent: AuditEventCallback,
   options: PrimaryRetrievalOptions = {},
 ): Promise<ComparisonGrounding> {
   // The library establishes the subject; it never enters this author's source
   // list or exact-quotation validator.
-  const librarySubject = await getLibraryContext();
+  const librarySubject = await getLibrarySubjectContext(question);
+  const generate: GroundingGenerator = (...args) =>
+    withoutLibraryContext(() => generateWithSources(...args));
   const subjectRule = librarySubject
     ? "\nWhen the question concerns a shared-library book, use its supplied passages for the book author's meaning and claims, and this thinker's OWN sources for the interpreting framework. A reconstructed application need not be a documented historical comment, but must be identified as such. Do not claim a library quotation is this thinker's own. Do not dismiss actual library evidence merely because it is not this thinker's writing.\n"
     : "";
@@ -245,6 +247,7 @@ Lead with the author's actual positive thesis and reasoning. Do not open by deny
 Use only quotations copied exactly from the passages. Do not invent autobiographical claims.
 If the sources cannot establish a particular claim, distinguish that uncertainty instead of attributing a generic substitute to the author.
 Prior assistant responses are not evidence; correct earlier source-inconsistent statements rather than repeating them.
+Answer the actual question, not whether an automatically retrieved library book contains its answer. Incidental library matches must not redirect a general question about this author's analysis into a report about another book's missing coverage.
 
 BINDING SOURCE-DERIVED ANSWER:
 ${grounding.binding}
@@ -260,10 +263,10 @@ export async function checkComparisonFidelity(
   if (hasStrengthenedDenial(question, answer)) {
     return { faithful: false, correction: "The opening evades the actual question by adding a stronger qualifier absent from it. Start with the author's substantive positive claim and supporting mechanism from the primary passages. Do NOT start with No followed by denial of a wholly/entirely/completely different or universal claim. State the author's asserted differences or other substantive position first, then qualify its causes and scope accurately." };
   }
-  const result = parseJson(await generate(
-    `Check ONLY author fidelity. Compare the answer attributed to ${name} against the binding answer and primary passages. The verbatim passages outrank the synopsis: reject an unsupported or contradicted synopsis too. Reject explicit contradictions, reversed theses/quantifiers, treating opponents' views as the author's, replacing historical author views with modern consensus, collapsing biological/social/normative distinctions, or evading the actual question by denying an invented stronger proposition (e.g. adding "wholly" or "entirely" absent from the question). Reject a generic answer that mentions the author or topic but omits the source's substantive argument or substitutes a standard textbook argument for it. Quotations must be literal excerpts, not invented paraphrases in quotation marks. The opening must not conceal differences or other controversial claims the author explicitly posits. Do not reject reasonable examples, accurate explanations or stylistic differences. Do not judge whether you agree with this author. Return ONLY JSON {"faithful":true/false,"correction":"specific contradiction and required correction, or empty string"}.`,
+  const result = parseJson(await withoutLibraryContext(() => generate(
+    `Check ONLY author fidelity. Compare the answer attributed to ${name} against the binding answer and primary passages. The verbatim passages outrank the synopsis: reject an unsupported or contradicted synopsis too. Reject explicit contradictions, reversed theses/quantifiers, treating opponents' views as the author's, replacing historical author views with modern consensus, collapsing biological/social/normative distinctions, or evading the actual question by denying an invented stronger proposition (e.g. adding "wholly" or "entirely" absent from the question). Reject a generic answer that mentions the author or topic but omits the source's substantive argument or substitutes a standard textbook argument for it. Reject redirecting the user's question to an unrequested library book or reporting that book's missing coverage instead of explaining the author's available argument. Quotations must be literal excerpts, not invented paraphrases in quotation marks. The opening must not conceal differences or other controversial claims the author explicitly posits. Do not reject reasonable examples, accurate explanations or stylistic differences. Do not judge whether you agree with this author. Return ONLY JSON {"faithful":true/false,"correction":"specific contradiction and required correction, or empty string"}.`,
     `QUESTION: ${question}\nBINDING ANSWER: ${grounding.binding}\nPRIMARY PASSAGES:\n${grounding.context}\n\nANSWER TO CHECK:\n${answer}`, 850,
-  ));
+  )));
   if (typeof result.faithful !== "boolean") throw new Error("The author-fidelity check could not be completed.");
   return { faithful: result.faithful, correction: typeof result.correction === "string" ? result.correction : "" };
 }

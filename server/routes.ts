@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { libraryRequestScope, getLibraryContext, withLibraryContext } from "./library/context";
+import { libraryRequestScope, getLibraryContext, withLibraryContext, withoutLibraryContext } from "./library/context";
 import { registerLibraryRoutes } from "./library/routes";
 import { generateLibraryWork } from "./library/generate";
 import { z } from "zod";
@@ -1100,23 +1100,12 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         });
       }
       
-      // Helper to convert ugly database filenames to readable titles
-      const formatTitle = (dbName: string): string => {
-        return dbName
-          .replace(/^CORPUS_ANALYSIS_/, '')
-          .replace(/_/g, ' ')
-          .replace(/([a-z])([A-Z])/g, '$1 $2')
-          .replace(/\s+\d{10,}$/g, '')  // Strip timestamps like "1762355363740"
-          .replace(/\s+\d+$/g, '')      // Strip any trailing numbers
-          .trim();
-      };
-
-      // HYBRID SEARCH: Combine embedding search (paper_chunks) with keyword search (text_chunks)
-      // This ensures we get both semantically similar AND topic-matched content from Kuczynski's full corpus
+      // Retrieval hints supplement the exact-author source join below; they
+      // never replace verified primary passages with extracted summaries.
       const retrievalQuery = await resolveChatRetrievalQuery(
         message,
         previousMessages,
-        (systemPrompt, userPrompt) => streamWithFallback({
+        (systemPrompt, userPrompt) => withoutLibraryContext(() => streamWithFallback({
           res,
           systemPrompt,
           userPrompt,
@@ -1125,169 +1114,23 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
           startProvider: "deepseek",
           onContent: () => {},
           emitContent: false,
-        }),
+        })),
         (error) => console.warn("[Chat] Contextual query resolution failed; retaining the conversation topic:", error),
       );
       console.log(`[Chat] Retrieval query: ${retrievalQuery}`);
       
-      // 1. Embedding-based search from paper_chunks (120 chunks with vectors)
-      const embeddingChunks = await searchPhilosophicalChunks(retrievalQuery, 20, "kuczynski", "Kuczynski");
-      
-      // 2. Keyword-based search from text_chunks (39,000+ chunks without vectors)
-      const textChunks = await searchTextChunks("Kuczynski", retrievalQuery, 20);
-      const retrievalTerms = Array.from(new Set(
-        retrievalQuery
-          .toLowerCase()
-          .replace(/[^\p{L}\p{N}\s-]/gu, " ")
-          .split(/\s+/)
-          .filter((word) => word.length >= 5)
-          .flatMap((word) =>
-            word.startsWith("non") && word.length >= 9
-              ? [word.replace(/-/g, ""), word.replace(/-/g, "").slice(3)]
-              : [word.replace(/-/g, "")]
-          ),
-      ));
-      const chatSourceAnchors = [
-        ...textChunks.map((chunk) => ({
-          sourceFile: chunk.sourceFile,
-          chunkIndex: chunk.chunkIndex,
-          content: chunk.chunkText,
-        })),
-        ...embeddingChunks.map((chunk) => ({
-          sourceFile: chunk.paperTitle,
-          chunkIndex: chunk.chunkIndex,
-          content: chunk.content,
-        })),
-      ]
-        .map((chunk) => {
-          const normalizedContent = chunk.content
-            .toLowerCase()
-            .replace(/[^\p{L}\p{N}]+/gu, "");
-          return {
-            sourceFile: chunk.sourceFile,
-            chunkIndex: chunk.chunkIndex,
-            conceptMatches: retrievalTerms.filter((term) =>
-              normalizedContent.includes(term)
-            ).length,
-          };
-        })
-        .filter((anchor) => anchor.conceptMatches >= 2)
-        .sort((a, b) => b.conceptMatches - a.conceptMatches)
-        .slice(0, 6);
-      const chatPrimaryNeighborhoods = await getSourceChunkNeighborhoods(
-        "Kuczynski",
-        chatSourceAnchors,
-        7,
-        80,
-      );
-      console.log(
-        `[Chat] Retrieved ${chatPrimaryNeighborhoods.length} neighboring primary-source chunks`,
-      );
-      // The strict source search below also reads saved but unindexed works;
-      // an empty legacy search must not prevent that recovery.
-      // 3. Structured arguments are the primary source of the author's actual
-      // premises and conclusions. Retrieve enough candidates to cover the
-      // question rather than relying on a handful of prose chunks.
-      const structuredArgumentsContext = await getArgumentsForThinker(
-        "Kuczynski",
-        retrievalQuery,
-        50,
-      );
-      
-      // 2b. If the question is about a paradox, also consult the external Paradoxes app
-      const paradoxMatches = isParadoxQuery(retrievalQuery) ? await searchParadoxes(retrievalQuery) : [];
-      if (paradoxMatches.length) {
-        console.log(`[Paradoxes] ${paradoxMatches.length} matches: ${paradoxMatches.map(p => p.name).join("; ")}`);
-      }
-      
-      // 3. CRITICAL: Search positions table for verified philosophical positions
-      // This is where the actual space/time, causation, and other core positions are stored
-      const queryWords = retrievalQuery.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-      let positionResults: Array<{ position: string; topic: string | null }> = [];
-      
-      if (queryWords.length > 0) {
-        // Build search conditions for each significant word
-        const searchPattern = queryWords.slice(0, 5).join('|'); // Top 5 words
-        const positionsQuery = await db
-          .select({ position: positions.positionText, topic: positions.topic })
-          .from(positions)
-          .where(
-            sql`thinker = 'kuczynski' AND (
-              position_text ILIKE ${'%' + queryWords[0] + '%'}
-              ${queryWords[1] ? sql` OR position_text ILIKE ${'%' + queryWords[1] + '%'}` : sql``}
-              ${queryWords[2] ? sql` OR position_text ILIKE ${'%' + queryWords[2] + '%'}` : sql``}
-              ${queryWords[3] ? sql` OR position_text ILIKE ${'%' + queryWords[3] + '%'}` : sql``}
-            )`
-          )
-          .limit(15);
-        positionResults = positionsQuery;
-      }
-      
-      console.log(`[HYBRID RAG] Arguments: ${structuredArgumentsContext ? "yes" : "no"} | Embedding: ${embeddingChunks.length} | Text: ${textChunks.length} | Positions: ${positionResults.length}`);
-      
-      // Build knowledge context with ACTUAL Kuczynski content from ALL THREE sources
-      let knowledgeContext = "";
-      const hasEmbeddingContent = embeddingChunks.length > 0;
-      const hasTextContent = textChunks.length > 0;
-      const hasPositions = positionResults.length > 0;
-      
-      if (structuredArgumentsContext || hasEmbeddingContent || hasTextContent || hasPositions) {
-        knowledgeContext = `\n\n--- YOUR WRITINGS (for reference) ---\n\n`;
-
-        if (chatPrimaryNeighborhoods.length > 0) {
-          knowledgeContext += `=== PRIMARY SOURCE SECTION AND NEIGHBORING PASSAGES ===\n`;
-          for (const chunk of chatPrimaryNeighborhoods) {
-            knowledgeContext += `${chunk.chunkText}\n\n`;
-          }
-        }
-
-        // PRIORITY 1: Add verified positions FIRST (most reliable source)
-        if (hasPositions && !structuredArgumentsContext) {
-          console.log(`[RAG] POSITIONS for query: "${message.substring(0, 80)}..."`);
-          knowledgeContext += `=== YOUR CORE POSITIONS ===\n`;
-          for (const pos of positionResults) {
-            console.log(`  [position] ${pos.position.substring(0, 60)}...`);
-            knowledgeContext += `• ${pos.position}\n`;
-          }
-          knowledgeContext += `\n`;
-        }
-        
-        // Primary source text governs derived arguments and summaries.
-        if (hasTextContent) {
-          console.log(`[RAG] Text chunks for query: "${message.substring(0, 80)}..."`);
-          for (const chunk of textChunks) {
-            const sourceFile = chunk.sourceFile.replace(/\.txt$/, '').replace(/_/g, ' ');
-            console.log(`  [text] ${sourceFile.substring(0, 60)}`);
-            knowledgeContext += `From "${sourceFile}":\n${chunk.chunkText}\n\n`;
-          }
-        }
-
-        if (structuredArgumentsContext) {
-          knowledgeContext += `${structuredArgumentsContext}\n`;
-        }
-
-        // Add embedding-based chunks after direct keyword-matched source text.
-        if (hasEmbeddingContent) {
-          console.log(`[RAG] Embedding chunks for query: "${message.substring(0, 80)}..."`);
-          for (const chunk of embeddingChunks) {
-            const readableTitle = formatTitle(chunk.paperTitle);
-            console.log(`  [embed] ${readableTitle.substring(0, 60)}`);
-            knowledgeContext += `From "${readableTitle}":\n${chunk.content}\n\n`;
-          }
-        }
-        
-        knowledgeContext += `--- END ---\n\n`;
-        knowledgeContext += `INSTRUCTION: Ground the substance of this answer in the author's relevant primary-source passages, including on follow-up questions. Resolve conversational references using the current standalone question and the conversation. Supporting expert knowledge may clarify, but must not replace or contradict the author's actual arguments. Never invent a position or substitute a generic model opinion for the author's view.\n`;
-      } else {
-        console.log(`[RAG] No relevant positions found for query: "${message.substring(0, 80)}..."`);
-      }
-      
-      // Append external Paradoxes app context (with conflict-reconciliation instruction)
-      knowledgeContext += formatParadoxesContext(paradoxMatches);
+      // Independent hints used to run serially. The old extra neighborhood,
+      // positions and external-paradox searches built a context that was then
+      // overwritten in full; do not make the user wait for discarded work.
+      const [embeddingChunks, textChunks, structuredArgumentsContext] = await Promise.all([
+        searchPhilosophicalChunks(retrievalQuery, 20, "kuczynski", "Kuczynski"),
+        searchTextChunks("Kuczynski", retrievalQuery, 20),
+        getArgumentsForThinker("Kuczynski", retrievalQuery, 50),
+      ]);
 
       const generateGrounding: GroundingGenerator = (systemPrompt, userPrompt, maxTokens) =>
-        streamWithFallback({ res, systemPrompt, userPrompt, maxTokens,
-          temperature: 0, startProvider: "deepseek", emitContent: false });
+        withoutLibraryContext(() => streamWithFallback({ res, systemPrompt, userPrompt, maxTokens,
+          temperature: 0, startProvider: "deepseek", emitContent: false }));
       const chatGrounding = await prepareComparisonGrounding(
         retrievalQuery, { id: "kuczynski", name: kuczynskiFigure.name },
         generateGrounding, () => {}, {
@@ -1301,7 +1144,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       const chatBindingAnswer = chatGrounding.binding;
       // Do not dilute verified evidence with the earlier unfiltered retrieval
       // dump or let an unrelated derived summary override primary text.
-      knowledgeContext = comparisonAnswerRules(kuczynskiFigure.name, chatGrounding);
+      const knowledgeContext = comparisonAnswerRules(kuczynskiFigure.name, chatGrounding);
       console.log(`[Chat] Bound answer to ${chatGrounding.sources.length} verified primary passages.`);
       
       // Build response instructions - ENFORCE word count and quote minimums

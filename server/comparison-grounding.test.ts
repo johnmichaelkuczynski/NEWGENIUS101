@@ -89,6 +89,16 @@ test("malformed fidelity checks cannot silently approve an answer", async () => 
   await assert.rejects(checkComparisonFidelity("Freud", "Question", "Answer", grounding,
     async () => '{"looksFine":true}'), /could not be completed/);
 });
+test("fidelity rules reject library-coverage deflection instead of the author's available answer", async () => {
+  assert.match(comparisonAnswerRules("Kuczynski", grounding), /Incidental library matches must not redirect/);
+  const verdict = await checkComparisonFidelity("Kuczynski", "HOW TO ANALYZE COUNTERFACTUALS",
+    "The supplied excerpts do not contain a passage from Sorensen explaining this.", grounding,
+    async (system) => {
+      assert.match(system, /Reject redirecting the user's question to an unrequested library book/);
+      return '{"faithful":false,"correction":"Explain the available author argument instead."}';
+    });
+  assert.equal(verdict.faithful, false);
+});
 test("an invented stronger question cannot conceal the author's actual thesis", async () => {
   assert.equal(hasStrengthenedDenial("Are there differences?", "No. I do not posit entirely different moral codes."), true);
   assert.equal(hasStrengthenedDenial("Are there entirely different codes?", "No. They are not entirely different."), false);

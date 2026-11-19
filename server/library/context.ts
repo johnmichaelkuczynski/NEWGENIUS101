@@ -1,14 +1,22 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 import type { RequestHandler } from "express";
 import { searchLibrary } from "./service";
-import { formatLibraryContext } from "./text";
+import { formatLibraryContext, librarySubjectPassages, type LibraryPassage } from "./text";
 
 interface LibraryScope {
   request: any;
   promise?: Promise<string>;
   context?: string;
+  passages?: LibraryPassage[];
+  explicitSelection?: boolean;
 }
 const scope = new AsyncLocalStorage<LibraryScope>();
+const suppression = new AsyncLocalStorage<boolean>();
+
+/** Internal retrieval/planning/judging must see only its explicitly supplied evidence. */
+export function withoutLibraryContext<T>(work: () => T): T {
+  return suppression.run(true, work);
+}
 export const libraryGenerationPath = (path: string) =>
   path === "/api/chat/stream"
   || /^\/api\/figures\/[^/]+\/(chat|write-paper|rewrite-paper|long-form)$/.test(path)
@@ -23,6 +31,7 @@ export const libraryRequestScope: RequestHandler = (req, _res, next) => {
 
 /** Resolved lazily, after multipart parsing; isolated between concurrent thinkers/users. */
 export async function getLibraryContext(queryHint = ""): Promise<string> {
+  if (suppression.getStore()) return "";
   const current = scope.getStore();
   if (!current) return "";
   if (!current.promise) current.promise = (async () => {
@@ -45,6 +54,8 @@ export async function getLibraryContext(queryHint = ""): Promise<string> {
     const resolvedQuery = query.length < 100 && /\b(it|that|this|those|he|she|they|continue|further)\b/i.test(query)
       ? `${req.session?.lastLibraryQuery || ""}\n${query}` : query;
     const passages = await searchLibrary(resolvedQuery, ids);
+    current.passages = passages;
+    current.explicitSelection = ids.length > 0;
     if (passages.length && req.session) req.session.lastLibraryQuery = resolvedQuery.slice(-1600);
     current.context = formatLibraryContext(passages, ids.length > 0);
     return current.context;
@@ -52,7 +63,19 @@ export async function getLibraryContext(queryHint = ""): Promise<string> {
   return current.promise;
 }
 
+export async function getLibrarySubjectContext(question: string): Promise<string> {
+  await getLibraryContext(question);
+  if (suppression.getStore()) return "";
+  const current = scope.getStore();
+  if (!current) return "";
+  return formatLibraryContext(
+    librarySubjectPassages(question, current.passages || [], current.explicitSelection),
+    current.explicitSelection,
+  );
+}
+
 export function resolvedLibraryContext(): string {
+  if (suppression.getStore()) return "";
   return scope.getStore()?.context || "";
 }
 

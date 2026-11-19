@@ -9,6 +9,12 @@ Every top-chat reply must remain grounded in the selected author's database mate
 
 **How to apply:** Resolve references using recent conversation before every retrieval layer and source-binding step. Keep a deterministic topical fallback when the query-rewriting provider fails or simply repeats the unresolved question. Test a substantive question followed by a short agreement/evaluation request in the same conversation; inspect the subject and author's actual arguments, not merely retrieval counts.
 
+An automatically retrieved library match is evidence of topical overlap, not evidence that the user asked about that book. Keep incidental library material out of author-thesis selection and internal retrieval/judging prompts; book-specific interpretation remains appropriate when the user selects or identifies the book or its author.
+
+**Why:** A direct question about analyzing counterfactuals was answered as a complaint about missing Sorensen excerpts despite relevant Kuczynski works being available. Shared-library material could silently enter multiple internal model calls, not just the final answer.
+
+**How to apply:** Preserve automatic library search and supplementary relevant material without letting it redefine a self-contained question. Check the source-derived argument and actual answer, not just successful database queries or matching keywords. When reducing delay, remove discarded retrieval work rather than weakening primary-source verification.
+
 Fresh source constraints must survive every generation-provider fallback and any continuation. No provider should receive source context only as an old user utterance, and unavailable sources must not silently become generic advice impersonating the author.
 
 **Why:** Changing the underlying model does not replace author grounding. The user explicitly objected to a response that sounded like a generic model rather than Kuczynski.
