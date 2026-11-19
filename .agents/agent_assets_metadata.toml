@@ -256,3 +256,17 @@ mtime_ms = 1795055892477
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/629a49b7-8b0f-4872-9796-ae1366bbd389/fc714e7f-9f3f-426a-ad89-472e8c04eddc"
 storage_version_token = "1795055928723873"
 content_type = "image/png"
+
+[[outputs]]
+id = "y3bp4fZTk1w27kp2po-Sr"
+uri = "file://generated-artifacts/dialogue-access-check.txt"
+type = "text"
+title = "Exact dialogue from the streaming check"
+description = "The real 547-word Preview output with Kuczynski, Freud, Nietzsche, and Plato. This verifies streaming, not production Google sign-in."
+logical_id = "fe098ee8-ed51-4d8f-a785-ab5a002c47cd"
+content_hash = "sha256:b6bd7b8dd521d86da78f1a10dd481a1b21694c948ed1e8147d09f0b5f6c0c3ff"
+size = 3375
+mtime_ms = 1795056967845
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/fe098ee8-ed51-4d8f-a785-ab5a002c47cd/d6072376-cbb9-41d1-876e-e61dbf3c641d"
+storage_version_token = "1795057200764206"
+content_type = "text/plain"
