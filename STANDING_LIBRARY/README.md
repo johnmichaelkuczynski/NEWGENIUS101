@@ -26,6 +26,7 @@ copy; your original files are never changed, renamed, moved, or deleted.
 After the files finish uploading, open Shared Library in Preview and click
 **Import drop folder**. Progress and any filename/extraction errors appear there.
 Wait until each book says Ready before querying it.
+Ready books appear in the Shared Library catalog.
 
 The equivalent terminal command is:
 
