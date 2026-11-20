@@ -2,6 +2,8 @@
 
 **Converse, Question, and Generate Long-Form Work in the Voice of History's Greatest Minds**
 
+GitHub pushes update the repository; publishing the website is a separate step.
+
 ---
 
 ## 🧩 Overview
