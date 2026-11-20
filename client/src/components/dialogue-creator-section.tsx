@@ -417,15 +417,13 @@ export function DialogueCreatorSection({
   };
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this dialogue?')) {
-      setDialogue('');
-      setWordCount(0);
-      setCanContinue(false);
-      toast({
-        title: "Deleted",
-        description: "Dialogue cleared",
-      });
-    }
+    setDialogue('');
+    setWordCount(0);
+    setCanContinue(false);
+    toast({
+      title: "Deleted",
+      description: "Dialogue cleared",
+    });
   };
 
   return (

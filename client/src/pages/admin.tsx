@@ -383,11 +383,8 @@ function ApiKeysPanel() {
                           size="sm"
                           variant="destructive"
                           disabled={revokeMutation.isPending}
-                          onClick={() => {
-                            if (window.confirm(`Revoke key "${k.label}"? Apps using it will stop working.`)) {
-                              revokeMutation.mutate(k.id);
-                            }
-                          }}
+                          onClick={() => revokeMutation.mutate(k.id)}
+                          title="Revoke this key immediately. Apps using it will stop working."
                           data-testid={`button-revoke-key-${k.id}`}
                         >
                           Revoke

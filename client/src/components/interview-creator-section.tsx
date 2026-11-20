@@ -341,15 +341,13 @@ export function InterviewCreatorSection({
   };
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this interview?')) {
-      setInterview('');
-      setWordCount(0);
-      setCurrentChapter(0);
-      toast({
-        title: "Deleted",
-        description: "Interview cleared",
-      });
-    }
+    setInterview('');
+    setWordCount(0);
+    setCurrentChapter(0);
+    toast({
+      title: "Deleted",
+      description: "Interview cleared",
+    });
   };
 
   const selectedFigure = figures.find(f => f.id === selectedThinker);
