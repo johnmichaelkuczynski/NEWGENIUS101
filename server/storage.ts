@@ -418,7 +418,7 @@ export class DatabaseStorage implements IStorage {
       'kernberg': '/attached_assets/image_1767774030569.png',
       'kuczynski': '/attached_assets/image_1767777610408.png',
       'la_rochefoucauld': '/attached_assets/image_1767764852081.png',
-      'lao_tzu': '道',
+      'lao_tzu': '/lao-tzu-avatar.png',
       'laplace': '/attached_assets/image_1767766767834.png',
       'le_bon': '/attached_assets/image_1767766966673.png',
       'leibniz': '/attached_assets/image_1767766392846.png',
