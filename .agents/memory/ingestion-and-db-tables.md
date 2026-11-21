@@ -37,3 +37,11 @@ Check the current ingester and author-folder instructions before giving upload s
 # Making a new author fully usable
 
 Data in tables is necessary but NOT sufficient to show in the UI. The figure list is hardcoded in `server/storage.ts` `getAllThinkers()` (`validThinkers` + `customIcons` + `customTitles`). A new author (e.g. Locke) must be added there to appear in `/api/figures`. Retrieval (`server/.../vector-search.ts`) matches thinker by ILIKE substring of the figureId.
+
+# Legacy upload encodings
+
+Validate text encoding before embedding legacy uploads; a `.txt` extension does not imply UTF-8.
+
+**Why:** Some uploaded works use Windows-1252 punctuation. Permissive UTF-8 decoding damages quotations, and this environment's Node Windows-1252 decoder can leave C1 control characters instead of typographic punctuation.
+
+**How to apply:** Try strict UTF-8 first, then use a verified Windows-1252 decoder when necessary. Check decoded punctuation and reject replacement characters or residual C1 controls. Preserve the original uploaded bytes.

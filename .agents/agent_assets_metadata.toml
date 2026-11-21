@@ -298,3 +298,31 @@ mtime_ms = 1795121024756
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/07d14a83-b97f-4ab2-b752-2aa86fce11fe/5ea0bc16-f5f1-4575-ab7e-53675d043ecf"
 storage_version_token = "1795121035790322"
 content_type = "text/plain"
+
+[[outputs]]
+id = "PA4qtbanetNf2dPvesZgZ"
+uri = "file://generated-artifacts/author-import/full-upload-verification.txt"
+type = "text"
+title = "Verified book ingestion results"
+description = "Lists indexed author texts and standing-library books, six newly indexed works, verification evidence, and four files requiring complete content or authorship clarification."
+logical_id = "e60e8708-1f75-4028-841f-90946ca0131d"
+content_hash = "sha256:6f1ccfe0a6afc3da824daf927cdc4921371e69fca4de42cfba8352baee691b97"
+size = 4368
+mtime_ms = 1795284324412
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/e60e8708-1f75-4028-841f-90946ca0131d/97ea580a-acf6-4e96-b5c3-a7d48cbba890"
+storage_version_token = "1795284360109743"
+content_type = "text/plain"
+
+[[outputs]]
+id = "3eKzxXHjdH1bIRxz1T3fK"
+uri = "file://client/public/lao-tzu-avatar.png"
+type = "image"
+title = "Lao Tzu avatar"
+description = "Square portrait cropped from your uploaded painting, now assigned to Lao Tzu in the app."
+logical_id = "7bf70a2a-dfd8-4511-a313-cc66e5c2083c"
+content_hash = "sha256:5390f04390445154ad15b262e35a516ba6db44bf49b21a4ced81e0167ef30c08"
+size = 30922
+mtime_ms = 1795284406015
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:53f582e9-e8bc-48cc-b9ef-1642c58ccbe9/7bf70a2a-dfd8-4511-a313-cc66e5c2083c/29785be5-6ce5-4448-a9e7-6068027cfe39"
+storage_version_token = "1795284454908959"
+content_type = "image/png"
