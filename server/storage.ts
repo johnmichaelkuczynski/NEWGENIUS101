@@ -359,6 +359,7 @@ export class DatabaseStorage implements IStorage {
       'kernberg': 'Kernberg',
       'kuczynski': 'Kuczynski',
       'la_rochefoucauld': 'La Rochefoucauld',
+      'lao_tzu': 'Lao Tzu',
       'laplace': 'Laplace',
       'le_bon': 'Le Bon',
       'leibniz': 'Leibniz',
@@ -417,6 +418,7 @@ export class DatabaseStorage implements IStorage {
       'kernberg': '/attached_assets/image_1767774030569.png',
       'kuczynski': '/attached_assets/image_1767777610408.png',
       'la_rochefoucauld': '/attached_assets/image_1767764852081.png',
+      'lao_tzu': '道',
       'laplace': '/attached_assets/image_1767766767834.png',
       'le_bon': '/attached_assets/image_1767766966673.png',
       'leibniz': '/attached_assets/image_1767766392846.png',
@@ -517,6 +519,7 @@ export class DatabaseStorage implements IStorage {
     // Custom titles for specific thinkers
     const customTitles: Record<string, string> = {
       'kuczynski': 'Epistemic Engineer',
+      'lao_tzu': 'Taoist Philosopher',
     };
     
     // Build unique list from canonical map
@@ -529,6 +532,7 @@ export class DatabaseStorage implements IStorage {
     }));
     
     const getLastName = (name: string): string => {
+      if (name === 'Lao Tzu') return name;
       if (name.includes(' Le Bon')) return 'Le Bon';
       if (name.includes(' de La Rochefoucauld')) return 'La Rochefoucauld';
       if (name.includes(' von Mises')) return 'von Mises';
